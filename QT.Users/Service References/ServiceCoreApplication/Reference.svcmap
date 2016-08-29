@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5a39dffc-9a32-4207-a664-7dde6602500e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://static2.websosanh.vn/Api/Admin/CoreApplication.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CoreApplication.wsdl" MetadataType="Wsdl" ID="3f5bc422-f463-425c-b8e9-f5524eb4988b" SourceId="1" SourceUrl="http://static2.websosanh.vn/Api/Admin/CoreApplication.svc?wsdl" />
+    <MetadataFile FileName="CoreApplication.xsd" MetadataType="Schema" ID="ab86952f-586a-4613-ba0a-b165d2dc09bd" SourceId="1" SourceUrl="http://static2.websosanh.vn/Api/Admin/CoreApplication.svc?xsd=xsd1" />
+    <MetadataFile FileName="CoreApplication1.xsd" MetadataType="Schema" ID="01722d94-776b-4cd7-8066-cfe153cff4a5" SourceId="1" SourceUrl="http://static2.websosanh.vn/Api/Admin/CoreApplication.svc?xsd=xsd0" />
+    <MetadataFile FileName="CoreApplication.disco" MetadataType="Disco" ID="ea49681a-c93d-4827-a5e3-84ca30bc1602" SourceId="1" SourceUrl="http://static2.websosanh.vn/Api/Admin/CoreApplication.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

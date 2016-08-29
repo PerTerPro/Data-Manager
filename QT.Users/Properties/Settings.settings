@@ -1,0 +1,22 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="QT.Users.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="QT_UserConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=183.91.14.82;Initial Catalog=QT_User;Persist Security Info=True;User ID=qt_user;Password="@F4sJ=l9/ryJt9M34T"&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=183.91.14.82;Initial Catalog=QT_User;Persist Security Info=True;User ID=qt_user;Password="@F4sJ=l9/ryJt9M34T"</Value>
+    </Setting>
+    <Setting Name="QTConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=42.112.28.93;Initial Catalog=QT_2;Persist Security Info=True;User ID=wss_price&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=42.112.28.93;Initial Catalog=QT_2;Persist Security Info=True;User ID=wss_price</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

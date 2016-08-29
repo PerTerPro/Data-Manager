@@ -1,0 +1,12 @@
+﻿Hướng dẫn dùng Keyword Suggestion.
+
+1.WSS.Keyword.Suggestion
+Crawler các keyword  suggest cho keyword đầu vào. 
+Có thể để chạy riêng trên 1 server. 
+Nhận keyword đầu vào từ RabbitMQ.
+Có thể chạy nhiều lần để tăng consumer.
+2.Manager
+Import keyword đầu vào.
+Danh sách keyword ra.
+Xóa danh sách keyword đã tìm trước đó.
+Import keyword: Xmain => Tools => KeywordSugest.

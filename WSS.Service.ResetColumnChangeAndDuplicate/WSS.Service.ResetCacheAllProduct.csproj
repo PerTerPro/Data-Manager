@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{452C3BE9-0E18-49C1-9E64-06B73EF10418}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSS.Service.ResetCacheAllProduct</RootNamespace>
+    <AssemblyName>WSS.Service.ResetCacheAllProduct</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GABIZ.Base, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\GABIZ.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Gelf4Net">
+      <HintPath>..\000\DLLs\Gelf4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="gelf4net.core">
+      <HintPath>..\000\DLLs\gelf4net.core.dll</HintPath>
+    </Reference>
+    <Reference Include="Gelf4Net.UdpAppender">
+      <HintPath>..\000\DLLs\Gelf4Net.UdpAppender.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="QT.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\QT.Moduls\bin\Release\QT.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="QT.Moduls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\QT.Moduls\bin\Release\QT.Moduls.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Activities.DurableInstancing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration.Install">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceProcess">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ServiceResetColumnChangeAndDuplicate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ServiceResetColumnChangeAndDuplicate.Designer.cs">
+      <DependentUpon>ServiceResetColumnChangeAndDuplicate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Runner.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Documents\Visual Studio 2013\Projects\WSS.Core.Crawler\WSS.Core.Crawler\WSS.Core.Crawler.csproj">
+      <Project>{f81a0ebe-34e3-4d1d-b2a8-432204e09cd9}</Project>
+      <Name>WSS.Core.Crawler</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

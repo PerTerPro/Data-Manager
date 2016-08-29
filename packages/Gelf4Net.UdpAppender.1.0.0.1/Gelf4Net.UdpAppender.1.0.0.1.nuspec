@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Gelf4Net.UdpAppender</id>
+    <version>1.0.0.1</version>
+    <title>Gelf4Net.UdpAppender</title>
+    <authors>micahlmartin, jjchiw, contributors</authors>
+    <owners>micahlmartin, jjchiw, contributors</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+    <projectUrl>https://github.com/jjchiw/gelf4net</projectUrl>
+    <iconUrl>http://nuget.org/Content/Images/packageDefaultIcon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>GELF log4net UdpAppender - graylog2. Built for log4net</description>
+    <summary />
+    <copyright>Copyright 2016</copyright>
+    <tags>tools utilities</tags>
+    <dependencies>
+      <dependency id="log4net" version="2.0.0" />
+    </dependencies>
+  </metadata>
+</package>

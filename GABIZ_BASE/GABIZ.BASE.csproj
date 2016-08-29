@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C825289-F1A7-4699-9D54-EEA95EC6AB21}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GABIZ.Base</RootNamespace>
+    <AssemblyName>GABIZ.Base</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="protobuf-net">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdvSearching\FuzzySearch.cs" />
+    <Compile Include="AdvSearching\LCS\LCSFinder.cs" />
+    <Compile Include="AdvSearching\LCS\PorterStemmer.cs" />
+    <Compile Include="AdvSearching\LCS\StopWordsHandler.cs" />
+    <Compile Include="AdvSearching\LCS\Tokeniser.cs" />
+    <Compile Include="Controls\ArrayDataView\ArrayDataView.cs" />
+    <Compile Include="Controls\ArrayDataView\ArrayPropertyDescriptor.cs" />
+    <Compile Include="Controls\ArrayDataView\ArrayRowView.cs" />
+    <Compile Include="Controls\Converters\RangeTypeConverter.cs" />
+    <Compile Include="Controls\SortableBindingList\PropertyComparer.cs" />
+    <Compile Include="Controls\SortableBindingList\SortableBindingList.cs" />
+    <Compile Include="Cryptography\CRC32.cs" />
+    <Compile Include="Cryptography\CRC64.cs" />
+    <Compile Include="Cryptography\Crypto.cs" />
+    <Compile Include="Cryptography\FingerPrint.cs" />
+    <Compile Include="Cryptography\HashWithSalt.cs" />
+    <Compile Include="Core\DoublePoint.cs" />
+    <Compile Include="Core\DoubleRange.cs" />
+    <Compile Include="Core\Exceptions.cs" />
+    <Compile Include="Core\Exceptions\ConvergenceException.cs" />
+    <Compile Include="Core\Exceptions\DimensionMismatchException.cs" />
+    <Compile Include="Core\Exceptions\NonPositiveDefiniteMatrixException.cs" />
+    <Compile Include="Core\Exceptions\NonSymmetricMatrixException.cs" />
+    <Compile Include="Core\Exceptions\SingularMatrixException.cs" />
+    <Compile Include="Core\IntPoint.cs" />
+    <Compile Include="Core\IntRange.cs" />
+    <Compile Include="Core\Parallel.cs" />
+    <Compile Include="Core\PolishExpression.cs" />
+    <Compile Include="Core\SystemTools.cs" />
+    <Compile Include="HtmlAgilityPack\crc32.cs" />
+    <Compile Include="HtmlAgilityPack\EncodingFoundException.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlAttribute.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlAttributeCollection.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlCmdLine.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlCommentNode.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlConsoleListener.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlDocument.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlElementFlag.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlEntity.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlNameTable.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlNode.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlNodeCollection.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlNodeNavigator.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlNodeType.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlParseError.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlParseErrorCode.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlTextNode.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlWeb.cs" />
+    <Compile Include="HtmlAgilityPack\HtmlWebException.cs" />
+    <Compile Include="HtmlAgilityPack\IOLibrary.cs" />
+    <Compile Include="HtmlAgilityPack\MixedCodeDocument.cs" />
+    <Compile Include="HtmlAgilityPack\MixedCodeDocumentCodeFragment.cs" />
+    <Compile Include="HtmlAgilityPack\MixedCodeDocumentFragment.cs" />
+    <Compile Include="HtmlAgilityPack\MixedCodeDocumentFragmentList.cs" />
+    <Compile Include="HtmlAgilityPack\MixedCodeDocumentFragmentType.cs" />
+    <Compile Include="HtmlAgilityPack\MixedCodeDocumentTextFragment.cs" />
+    <Compile Include="HtmlAgilityPack\NameValuePair.cs" />
+    <Compile Include="HtmlAgilityPack\NameValuePairList.cs" />
+    <Compile Include="Keyword\RankKeywordInfo.cs" />
+    <Compile Include="StackChecker.cs" />
+    <Compile Include="HtmlUrl\GooglePageRank.cs" />
+    <Compile Include="MachineLearning\Crossvalidation.cs" />
+    <Compile Include="MachineLearning\GaussianMixtureModel.cs" />
+    <Compile Include="MachineLearning\Gridsearch.cs" />
+    <Compile Include="MachineLearning\IO\SparseSampleReader.cs" />
+    <Compile Include="MachineLearning\KMeans.cs" />
+    <Compile Include="MachineLearning\Ransac.cs" />
+    <Compile Include="MachineLearning\VectorMachines\SupportVectorMachineManager.cs" />
+    <Compile Include="MachineLearning\VectorMachines\ISupportVectorMachine.cs" />
+    <Compile Include="MachineLearning\VectorMachines\KernelSupportVectorMachine.cs" />
+    <Compile Include="MachineLearning\VectorMachines\Learning\ISupportVectorMachineLearning.cs" />
+    <Compile Include="MachineLearning\VectorMachines\Learning\MulticlassSupportVectorLearning.cs" />
+    <Compile Include="MachineLearning\VectorMachines\Learning\SequentialMinimalOptimization.cs" />
+    <Compile Include="MachineLearning\VectorMachines\Learning\SequentialMinimalOptimizationRegression.cs" />
+    <Compile Include="MachineLearning\VectorMachines\MulticlassSupportVectorMachine.cs" />
+    <Compile Include="MachineLearning\VectorMachines\SupportVectorMachine.cs" />
+    <Compile Include="Mathematic\Complex.cs" />
+    <Compile Include="Mathematic\ContinuousHistogram.cs" />
+    <Compile Include="Mathematic\Decompositions\Base\ISolverDecomposition.cs" />
+    <Compile Include="Mathematic\Decompositions\CholeskyDecomposition.cs" />
+    <Compile Include="Mathematic\Decompositions\EigenValueDecomposition.cs" />
+    <Compile Include="Mathematic\Decompositions\GeneralizedEigenvalueDecomposition.cs" />
+    <Compile Include="Mathematic\Decompositions\LuDecomposition.cs" />
+    <Compile Include="Mathematic\Decompositions\NonnegativeFactorization.cs" />
+    <Compile Include="Mathematic\Decompositions\QrDecomposition.cs" />
+    <Compile Include="Mathematic\Decompositions\SingularValueDecomposition.cs" />
+    <Compile Include="Mathematic\Differentiation\FiniteDifferences.cs" />
+    <Compile Include="Mathematic\Distance.cs" />
+    <Compile Include="Mathematic\Formats\Base\IMatrixFormatProvider.cs" />
+    <Compile Include="Mathematic\Formats\Base\MatrixFormatProviderBase.cs" />
+    <Compile Include="Mathematic\Formats\Base\MatrixFormatter.cs" />
+    <Compile Include="Mathematic\Formats\CSharpJaggedMatrixFormatProvider.cs" />
+    <Compile Include="Mathematic\Formats\CSharpMatrixFormatProvider.cs" />
+    <Compile Include="Mathematic\Formats\DefaultMatrixFormatProvider.cs" />
+    <Compile Include="Mathematic\Formats\OctaveMatrixFormatProvider.cs" />
+    <Compile Include="Mathematic\FourierTransform.cs" />
+    <Compile Include="Mathematic\Gaussian.cs" />
+    <Compile Include="Mathematic\Geometry\ClosePointsMergingOptimizer.cs" />
+    <Compile Include="Mathematic\Geometry\ConvexHullDefects.cs" />
+    <Compile Include="Mathematic\Geometry\ConvexityDefect.cs" />
+    <Compile Include="Mathematic\Geometry\FlatAnglesOptimizer.cs" />
+    <Compile Include="Mathematic\Geometry\GeometryTools.cs" />
+    <Compile Include="Mathematic\Geometry\GrahamConvexHull.cs" />
+    <Compile Include="Mathematic\Geometry\IConvexHullAlgorithm.cs" />
+    <Compile Include="Mathematic\Geometry\IShapeOptimizer.cs" />
+    <Compile Include="Mathematic\Geometry\KCurvature.cs" />
+    <Compile Include="Mathematic\Geometry\Line.cs" />
+    <Compile Include="Mathematic\Geometry\LineSegment.cs" />
+    <Compile Include="Mathematic\Geometry\LineStraighteningOptimizer.cs" />
+    <Compile Include="Mathematic\Geometry\PointsCloud.cs" />
+    <Compile Include="Mathematic\Geometry\ShapeType.cs" />
+    <Compile Include="Mathematic\Geometry\SimpleShapeChecker.cs" />
+    <Compile Include="Mathematic\HilbertTransform.cs" />
+    <Compile Include="Mathematic\Histogram.cs" />
+    <Compile Include="Mathematic\Matrix\Matrix.Algebra.cs" />
+    <Compile Include="Mathematic\Matrix\Matrix.Common.cs" />
+    <Compile Include="Mathematic\Matrix\Matrix.Complex.cs" />
+    <Compile Include="Mathematic\Matrix\Matrix.Construction.cs" />
+    <Compile Include="Mathematic\Matrix\Matrix.Conversions.cs" />
+    <Compile Include="Mathematic\Matrix\Matrix.Elementwise.cs" />
+    <Compile Include="Mathematic\Matrix\Matrix.Linear.cs" />
+    <Compile Include="Mathematic\Matrix\Matrix.Parsing.cs" />
+    <Compile Include="Mathematic\Matrix\Matrix.Selection.cs" />
+    <Compile Include="Mathematic\Metrics\CosineDistance.cs" />
+    <Compile Include="Mathematic\Metrics\CosineSimilarity.cs" />
+    <Compile Include="Mathematic\Metrics\EuclideanDistance.cs" />
+    <Compile Include="Mathematic\Metrics\EuclideanSimilarity.cs" />
+    <Compile Include="Mathematic\Metrics\HammingDistance.cs" />
+    <Compile Include="Mathematic\Metrics\IDistance.cs" />
+    <Compile Include="Mathematic\Metrics\ISimilarity.cs" />
+    <Compile Include="Mathematic\Metrics\JaccardDistance.cs" />
+    <Compile Include="Mathematic\Metrics\ManhattanDistance.cs" />
+    <Compile Include="Mathematic\Metrics\PearsonCorrelation.cs" />
+    <Compile Include="Mathematic\Norm.cs" />
+    <Compile Include="Mathematic\Optimization\IOptimizationMethod.cs" />
+    <Compile Include="Mathematic\Optimization\LbfgsOptimization.cs" />
+    <Compile Include="Mathematic\Optimization\LineSearchFailedException.cs" />
+    <Compile Include="Mathematic\Optimization\OptimizationProgressEventHandler.cs" />
+    <Compile Include="Mathematic\PerlinNoise.cs" />
+    <Compile Include="Mathematic\Random\ExponentialGenerator.cs" />
+    <Compile Include="Mathematic\Random\GaussianGenerator.cs" />
+    <Compile Include="Mathematic\Random\IRandomNumberGenerator.cs" />
+    <Compile Include="Mathematic\Random\StandardGenerator.cs" />
+    <Compile Include="Mathematic\Random\UniformGenerator.cs" />
+    <Compile Include="Mathematic\Random\UniformOneGenerator.cs" />
+    <Compile Include="Mathematic\Special.cs" />
+    <Compile Include="Mathematic\Statistics.cs" />
+    <Compile Include="Mathematic\Tools.cs" />
+    <Compile Include="Mathematic\Wavelets\CDF97.cs" />
+    <Compile Include="Mathematic\Wavelets\Haar.cs" />
+    <Compile Include="Mathematic\Wavelets\IWavelet.cs" />
+    <Compile Include="HtmlUrl\HTMLTransmitter.cs" />
+    <Compile Include="HtmlUrl\LinkCanonicalization.cs" />
+    <Compile Include="NGenerics\Algorithms\Graph\DijkstrasAlgorithm.cs" />
+    <Compile Include="NGenerics\Algorithms\Graph\PrimsAlgorithm.cs" />
+    <Compile Include="NGenerics\Algorithms\Graph\VertexInfo.cs" />
+    <Compile Include="NGenerics\Algorithms\Math\Euclid.cs" />
+    <Compile Include="NGenerics\Algorithms\Math\Fibonacci.cs" />
+    <Compile Include="NGenerics\Comparers\AssociationKeyComparer.cs" />
+    <Compile Include="NGenerics\Comparers\ComparisonComparer.cs" />
+    <Compile Include="NGenerics\Comparers\EdgeWeightComparer.cs" />
+    <Compile Include="NGenerics\Comparers\KeyValuePairEqualityComparer.cs" />
+    <Compile Include="NGenerics\Comparers\NestedAssociationKeyComparer.cs" />
+    <Compile Include="NGenerics\Comparers\NestedAssociationValueComparer.cs" />
+    <Compile Include="NGenerics\Comparers\ReverseComparer.cs" />
+    <Compile Include="NGenerics\DataStructures\Association.cs" />
+    <Compile Include="NGenerics\DataStructures\Bag.cs" />
+    <Compile Include="NGenerics\DataStructures\BinarySearchTree.cs" />
+    <Compile Include="NGenerics\DataStructures\BinaryTree.cs" />
+    <Compile Include="NGenerics\DataStructures\Deque.cs" />
+    <Compile Include="NGenerics\DataStructures\Edge.cs" />
+    <Compile Include="NGenerics\DataStructures\GeneralTree.cs" />
+    <Compile Include="NGenerics\DataStructures\Graph.cs" />
+    <Compile Include="NGenerics\DataStructures\HashList.cs" />
+    <Compile Include="NGenerics\DataStructures\Heap.cs" />
+    <Compile Include="NGenerics\DataStructures\IBag.cs" />
+    <Compile Include="NGenerics\DataStructures\IDeque.cs" />
+    <Compile Include="NGenerics\DataStructures\IHeap.cs" />
+    <Compile Include="NGenerics\DataStructures\IMathematicalMatrix.cs" />
+    <Compile Include="NGenerics\DataStructures\IMatrix.cs" />
+    <Compile Include="NGenerics\DataStructures\IQueue.cs" />
+    <Compile Include="NGenerics\DataStructures\ISet.cs" />
+    <Compile Include="NGenerics\DataStructures\IStack.cs" />
+    <Compile Include="NGenerics\DataStructures\ITree.cs" />
+    <Compile Include="NGenerics\DataStructures\IVisitable.cs" />
+    <Compile Include="NGenerics\DataStructures\IVisitableCollection.cs" />
+    <Compile Include="NGenerics\DataStructures\IVisitableDictionary.cs" />
+    <Compile Include="NGenerics\DataStructures\IVisitableList.cs" />
+    <Compile Include="NGenerics\DataStructures\Matrix.cs" />
+    <Compile Include="NGenerics\DataStructures\ObjectMatrix.cs" />
+    <Compile Include="NGenerics\DataStructures\PascalSet.cs" />
+    <Compile Include="NGenerics\DataStructures\PriorityQueue.cs" />
+    <Compile Include="NGenerics\DataStructures\ReadOnlyPropertyList.cs" />
+    <Compile Include="NGenerics\DataStructures\RedBlackTree.cs" />
+    <Compile Include="NGenerics\DataStructures\RedBlackTreeNode.cs" />
+    <Compile Include="NGenerics\DataStructures\Singleton.cs" />
+    <Compile Include="NGenerics\DataStructures\SkipList.cs" />
+    <Compile Include="NGenerics\DataStructures\SkipListNode.cs" />
+    <Compile Include="NGenerics\DataStructures\SortedList.cs" />
+    <Compile Include="NGenerics\DataStructures\Vertex.cs" />
+    <Compile Include="NGenerics\DataStructures\VisitableHashtable.cs" />
+    <Compile Include="NGenerics\DataStructures\VisitableLinkedList.cs" />
+    <Compile Include="NGenerics\DataStructures\VisitableList.cs" />
+    <Compile Include="NGenerics\DataStructures\VisitableQueue.cs" />
+    <Compile Include="NGenerics\DataStructures\VisitableStack.cs" />
+    <Compile Include="NGenerics\Enumerations\HeapType.cs" />
+    <Compile Include="NGenerics\Enumerations\NodeColor.cs" />
+    <Compile Include="NGenerics\Enumerations\PriorityQueueType.cs" />
+    <Compile Include="NGenerics\Misc\Resources.Designer.cs" />
+    <Compile Include="NGenerics\Sorting\BubbleSorter.cs" />
+    <Compile Include="NGenerics\Sorting\BucketSorter.cs" />
+    <Compile Include="NGenerics\Sorting\CocktailSorter.cs" />
+    <Compile Include="NGenerics\Sorting\CombSorter.cs" />
+    <Compile Include="NGenerics\Sorting\GnomeSorter.cs" />
+    <Compile Include="NGenerics\Sorting\HeapSorter.cs" />
+    <Compile Include="NGenerics\Sorting\InsertionSorter.cs" />
+    <Compile Include="NGenerics\Sorting\ISortable.cs" />
+    <Compile Include="NGenerics\Sorting\ISorter.cs" />
+    <Compile Include="NGenerics\Sorting\MergeSorter.cs" />
+    <Compile Include="NGenerics\Sorting\OddEvenTransportSorter.cs" />
+    <Compile Include="NGenerics\Sorting\QuickSorter.cs" />
+    <Compile Include="NGenerics\Sorting\SelectionSorter.cs" />
+    <Compile Include="NGenerics\Sorting\ShakerSorter.cs" />
+    <Compile Include="NGenerics\Sorting\ShellSorter.cs" />
+    <Compile Include="NGenerics\Sorting\Sorter.cs" />
+    <Compile Include="NGenerics\Sorting\SortOrder.cs" />
+    <Compile Include="NGenerics\Visitors\ComparableFindingVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\CountingVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\EqualityFindingVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\IFindingVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\InOrderVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\IVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\KeyTrackingVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\OrderedVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\PostOrderVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\PreOrderVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\SumVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\TrackingVisitor.cs" />
+    <Compile Include="NGenerics\Visitors\ValueTrackingVisitor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statistics\Analysis\Base\IAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\Base\IDiscriminantAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\Base\IMultipleRegressionAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\Base\IMultivariateAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\Base\IProjectionAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\Base\IRegressionAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\ConfusionMatrix.cs" />
+    <Compile Include="Statistics\Analysis\DescriptiveAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\IndependentComponentAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\KernelDiscriminantAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\KernelPrincipalComponentAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\LinearDiscriminantAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\LogisticRegressionAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\PartialLeastSquaresAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\PrincipalComponentAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\ReceiverOperatingCharacteristic.cs" />
+    <Compile Include="Statistics\Analysis\StepwiseLogisticRegressionAnalysis.cs" />
+    <Compile Include="Statistics\Circular.cs" />
+    <Compile Include="Statistics\Distributions\Fitting\IFittingOptions.cs" />
+    <Compile Include="Statistics\Distributions\Fitting\MixtureOptions.cs" />
+    <Compile Include="Statistics\Distributions\Fitting\NormalOptions.cs" />
+    <Compile Include="Statistics\Distributions\Fitting\VonMisesOptions.cs" />
+    <Compile Include="Statistics\Distributions\IDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Multivariate\Base\MultivariateContinuousDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Multivariate\Base\MultivariateDiscreteDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Multivariate\Mixture.cs" />
+    <Compile Include="Statistics\Distributions\Multivariate\MultinomialDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Multivariate\NormalDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Univariate\Base\UnivariateContinuousDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Univariate\Base\UnivariateDiscreteDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Univariate\BernoulliDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Univariate\ChiSquareDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Univariate\FDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Univariate\GeneralDiscreteDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Univariate\Mixture.cs" />
+    <Compile Include="Statistics\Distributions\Univariate\NormalDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Univariate\PoissonDistribution.cs" />
+    <Compile Include="Statistics\Distributions\Univariate\VonMisesDistribution.cs" />
+    <Compile Include="Statistics\Filters\Base\BaseFilter.cs" />
+    <Compile Include="Statistics\Filters\Base\IFilter.cs" />
+    <Compile Include="Statistics\Filters\CodificationFilter.cs" />
+    <Compile Include="Statistics\Filters\DiscretizationFilter.cs" />
+    <Compile Include="Statistics\Filters\EqualizationFilter.cs" />
+    <Compile Include="Statistics\Filters\FilterSequence.cs" />
+    <Compile Include="Statistics\Filters\LinearScalingFilter.cs" />
+    <Compile Include="Statistics\Filters\NormalizationFilter.cs" />
+    <Compile Include="Statistics\Filters\ProjectionFilter.cs" />
+    <Compile Include="Statistics\Filters\SelectionFilter.cs" />
+    <Compile Include="Statistics\Kernels\Additive.cs" />
+    <Compile Include="Statistics\Kernels\Anova.cs" />
+    <Compile Include="Statistics\Kernels\Bessel.cs" />
+    <Compile Include="Statistics\Kernels\BSpline.cs" />
+    <Compile Include="Statistics\Kernels\Cauchy.cs" />
+    <Compile Include="Statistics\Kernels\ChiSquare.cs" />
+    <Compile Include="Statistics\Kernels\Circular.cs" />
+    <Compile Include="Statistics\Kernels\Custom.cs" />
+    <Compile Include="Statistics\Kernels\DynamicTimeWarping.cs" />
+    <Compile Include="Statistics\Kernels\Gaussian.cs" />
+    <Compile Include="Statistics\Kernels\HistogramIntersection.cs" />
+    <Compile Include="Statistics\Kernels\IDistance.cs" />
+    <Compile Include="Statistics\Kernels\IKernel.cs" />
+    <Compile Include="Statistics\Kernels\Laplacian.cs" />
+    <Compile Include="Statistics\Kernels\Linear.cs" />
+    <Compile Include="Statistics\Kernels\Log.cs" />
+    <Compile Include="Statistics\Kernels\Multiquadric.cs" />
+    <Compile Include="Statistics\Kernels\Polynomial.cs" />
+    <Compile Include="Statistics\Kernels\Power.cs" />
+    <Compile Include="Statistics\Kernels\Precomputed.cs" />
+    <Compile Include="Statistics\Kernels\RationalQuadratic.cs" />
+    <Compile Include="Statistics\Kernels\Sigmoid.cs" />
+    <Compile Include="Statistics\Kernels\Sparse\SparseCauchy.cs" />
+    <Compile Include="Statistics\Kernels\Sparse\SparseGaussian.cs" />
+    <Compile Include="Statistics\Kernels\Sparse\SparseLaplacian.cs" />
+    <Compile Include="Statistics\Kernels\Sparse\SparseLinear.cs" />
+    <Compile Include="Statistics\Kernels\Sparse\SparsePolynomial.cs" />
+    <Compile Include="Statistics\Kernels\Sparse\SparseSigmoid.cs" />
+    <Compile Include="Statistics\Kernels\Spherical.cs" />
+    <Compile Include="Statistics\Kernels\Spline.cs" />
+    <Compile Include="Statistics\Kernels\Tensor.cs" />
+    <Compile Include="Statistics\Kernels\TStudent.cs" />
+    <Compile Include="Statistics\Kernels\Wave.cs" />
+    <Compile Include="Statistics\Kernels\Wavelet.cs" />
+    <Compile Include="Statistics\Models\Fields\ConditionalRandomField.cs" />
+    <Compile Include="Statistics\Models\Fields\Features\Base\EdgeFeature.cs" />
+    <Compile Include="Statistics\Models\Fields\Features\Base\IFeature.cs" />
+    <Compile Include="Statistics\Models\Fields\Features\Base\StateFeature.cs" />
+    <Compile Include="Statistics\Models\Fields\Features\EmissionFeature.cs" />
+    <Compile Include="Statistics\Models\Fields\Features\TransitionFeature.cs" />
+    <Compile Include="Statistics\Models\Fields\ForwardBackwardAlgorithm.cs" />
+    <Compile Include="Statistics\Models\Fields\Functions\HiddenMarkovModelPotentialFunction.cs" />
+    <Compile Include="Statistics\Models\Fields\Functions\IPotentialFunction.cs" />
+    <Compile Include="Statistics\Models\Fields\Learning\Base\ILearning.cs" />
+    <Compile Include="Statistics\Models\Fields\Learning\QuasiNewtonLearning.cs" />
+    <Compile Include="Statistics\Models\Markov\Base\HiddenMarkovModelBase.cs" />
+    <Compile Include="Statistics\Models\Markov\Base\IHiddenMarkovModel.cs" />
+    <Compile Include="Statistics\Models\Markov\Base\ISequenceClassifier.cs" />
+    <Compile Include="Statistics\Models\Markov\Base\SequenceClassifierBase.cs" />
+    <Compile Include="Statistics\Models\Markov\ContinuousHiddenMarkovModel.cs" />
+    <Compile Include="Statistics\Models\Markov\ContinuousSequenceClassifier.cs" />
+    <Compile Include="Statistics\Models\Markov\ForwardBackwardAlgorithm.cs" />
+    <Compile Include="Statistics\Models\Markov\HiddenMarkovModel.cs" />
+    <Compile Include="Statistics\Models\Markov\Learning\Base\BaumWelchLearningBase.cs" />
+    <Compile Include="Statistics\Models\Markov\Learning\Base\ISupervisedLearning.cs" />
+    <Compile Include="Statistics\Models\Markov\Learning\Base\IUnsupervisedLearning.cs" />
+    <Compile Include="Statistics\Models\Markov\Learning\Base\SequenceClassifierLearningBase.cs" />
+    <Compile Include="Statistics\Models\Markov\Learning\BaumWelchLearning.cs" />
+    <Compile Include="Statistics\Models\Markov\Learning\ContinuousBaumWelchLearning.cs" />
+    <Compile Include="Statistics\Models\Markov\Learning\ContinuousSequenceClassifierLearning.cs" />
+    <Compile Include="Statistics\Models\Markov\Learning\SequenceClassifierLearning.cs" />
+    <Compile Include="Statistics\Models\Markov\SequenceClassifier.cs" />
+    <Compile Include="Statistics\Models\Markov\Topology\Custom.cs" />
+    <Compile Include="Statistics\Models\Markov\Topology\Ergodic.cs" />
+    <Compile Include="Statistics\Models\Markov\Topology\Forward.cs" />
+    <Compile Include="Statistics\Models\Markov\Topology\ITopology.cs" />
+    <Compile Include="Statistics\Models\Regression\Linear\ILinearRegression.cs" />
+    <Compile Include="Statistics\Models\Regression\Linear\MultipleLinearRegression.cs" />
+    <Compile Include="Statistics\Models\Regression\Linear\MultivariateLinearRegression.cs" />
+    <Compile Include="Statistics\Models\Regression\Linear\PolynomialRegression.cs" />
+    <Compile Include="Statistics\Models\Regression\Linear\SimpleLinearRegression.cs" />
+    <Compile Include="Statistics\Models\Regression\Nonlinear\LogisticRegression.cs" />
+    <Compile Include="Statistics\Moving\IMovingStatistics.cs" />
+    <Compile Include="Statistics\Moving\MovingCircularStatistics.cs" />
+    <Compile Include="Statistics\Moving\MovingNormalStatistics.cs" />
+    <Compile Include="Statistics\Running\IRunningStatistics.cs" />
+    <Compile Include="Statistics\Running\RunningNormalStatistics.cs" />
+    <Compile Include="Statistics\Testing\ChiSquareTest.cs" />
+    <Compile Include="Statistics\Testing\HypothesisTest.cs" />
+    <Compile Include="Statistics\Testing\WaldTest.cs" />
+    <Compile Include="Statistics\Testing\ZTest.cs" />
+    <Compile Include="Statistics\Tools.cs" />
+    <Compile Include="Statistics\Visualizations\Histogram.cs" />
+    <Compile Include="Tools.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mathematic\Images\close_points_merging_optimizer.png" />
+    <Content Include="Mathematic\Images\flat_angles_optimizer.png" />
+    <Content Include="Mathematic\Images\line_straightening_optimizer.png" />
+    <Content Include="Mathematic\Images\potential_corners.png" />
+    <Content Include="NGenerics\Misc\Version History.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NGenerics\Misc\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

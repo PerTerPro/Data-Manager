@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="dd72aeb7-63ff-4383-ac56-65139d73f4d8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.100.143:177/ServiceControl.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceControl4.xsd" MetadataType="Schema" ID="6f90355d-5296-4548-b111-50c4a1673837" SourceId="1" SourceUrl="http://192.168.100.143:177/ServiceControl.svc?xsd=xsd3" />
+    <MetadataFile FileName="ServiceControl41.xsd" MetadataType="Schema" ID="8014de16-6490-4099-8254-395f3e220ea2" SourceId="1" SourceUrl="http://192.168.100.143:177/ServiceControl.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceControl42.xsd" MetadataType="Schema" ID="913da6f5-881b-40eb-b014-e48e37c0d9f2" SourceId="1" SourceUrl="http://192.168.100.143:177/ServiceControl.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceControl43.xsd" MetadataType="Schema" ID="d96d6ccf-4af7-4691-ba40-659bd87b889d" SourceId="1" SourceUrl="http://192.168.100.143:177/ServiceControl.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceControl1.disco" MetadataType="Disco" ID="77de2a57-6557-4c89-b83b-70e8e1ca599a" SourceId="1" SourceUrl="http://192.168.100.143:177/ServiceControl.svc?disco" />
+    <MetadataFile FileName="ServiceControl1.wsdl" MetadataType="Wsdl" ID="312f5c7a-878d-44d8-9156-77998f9510dc" SourceId="1" SourceUrl="http://192.168.100.143:177/ServiceControl.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

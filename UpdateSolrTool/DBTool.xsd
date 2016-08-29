@@ -1,0 +1,1050 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DBTool" targetNamespace="http://tempuri.org/DBTool.xsd" xmlns:mstns="http://tempuri.org/DBTool.xsd" xmlns="http://tempuri.org/DBTool.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QTConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QTConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.UpdateSolrTools.Settings.GlobalReference.Default.QTConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QTCrawlerConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QTCrawlerConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.UpdateSolrTools.Settings.GlobalReference.Default.QTCrawlerConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="View_TongSanPhamTableAdapter" GeneratorDataComponentClassName="View_TongSanPhamTableAdapter" Name="View_TongSanPham" UserDataComponentName="View_TongSanPhamTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.View_TongSanPham" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, Domain, TongSP
+FROM            View_TongSanPham</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Domain" DataSetColumn="Domain" />
+              <Mapping SourceColumn="TongSP" DataSetColumn="TongSP" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="View_TongSanPhamValidTableAdapter" GeneratorDataComponentClassName="View_TongSanPhamValidTableAdapter" Name="View_TongSanPhamValid" UserDataComponentName="View_TongSanPhamValidTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.View_TongSanPhamValid" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, Domain, TongSP
+FROM            View_TongSanPhamValid</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Domain" DataSetColumn="Domain" />
+              <Mapping SourceColumn="TongSP" DataSetColumn="TongSP" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductIDHashNameTableAdapter" GeneratorDataComponentClassName="ProductIDHashNameTableAdapter" Name="ProductIDHashName" UserDataComponentName="ProductIDHashNameTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT.dbo.Product" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Product] WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_DetailUrl = 1 AND [DetailUrl] IS NULL) OR ([DetailUrl] = @Original_DetailUrl)) AND ((@IsNull_HashName = 1 AND [HashName] IS NULL) OR ([HashName] = @Original_HashName)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DetailUrl" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DetailUrl" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_DetailUrl" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="DetailUrl" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_HashName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HashName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_HashName" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="HashName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Product] ([ID], [Name], [DetailUrl], [HashName]) VALUES (@ID, @Name, @DetailUrl, @HashName);
+SELECT ID, Name, DetailUrl, HashName FROM Product WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@DetailUrl" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="DetailUrl" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@HashName" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="HashName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     ID, Name, DetailUrl, HashName
+FROM         Product</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Product] SET [ID] = @ID, [Name] = @Name, [DetailUrl] = @DetailUrl, [HashName] = @HashName WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_DetailUrl = 1 AND [DetailUrl] IS NULL) OR ([DetailUrl] = @Original_DetailUrl)) AND ((@IsNull_HashName = 1 AND [HashName] IS NULL) OR ([HashName] = @Original_HashName)));
+SELECT ID, Name, DetailUrl, HashName FROM Product WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@DetailUrl" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="DetailUrl" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@HashName" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="HashName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DetailUrl" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DetailUrl" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_DetailUrl" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="DetailUrl" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_HashName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HashName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_HashName" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="HashName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="DetailUrl" DataSetColumn="DetailUrl" />
+              <Mapping SourceColumn="HashName" DataSetColumn="HashName" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByAllAndDomain" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByAllAndDomain" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByAllAndDomain">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT   Product.ID, Product.Name, Product.DetailUrl, Product.HashName, Company.Domain
+FROM         Product INNER JOIN
+                      Company ON Product.Company = Company.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_HashName" Modifier="Public" Name="UpdateQuery_HashName" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateQuery_HashName">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE    Product
+SET              HashName = @HashName
+WHERE     (ID = @Original_ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="HashName" ColumnName="HashName" DataSourceName="QT.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@HashName" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="HashName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Original_ID" ColumnName="ID" DataSourceName="QT.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_ID_HashName" Modifier="Public" Name="UpdateQuery_ID_HashName" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateQuery_ID_HashName">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE    Product
+SET              ID = @ID, HashName = @HashName
+WHERE     (ID = @Original_ID); 
+SELECT ID, Name, DetailUrl, HashName FROM Product WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="QT.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="HashName" ColumnName="HashName" DataSourceName="QT.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@HashName" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="HashName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_ID" ColumnName="ID" DataSourceName="QT.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductClassificationTableAdapter" GeneratorDataComponentClassName="ProductClassificationTableAdapter" Name="ProductClassification" UserDataComponentName="ProductClassificationTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Product" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Product] WHERE (([ID] = @Original_ID) AND ((@IsNull_ClassificationID = 1 AND [ClassificationID] IS NULL) OR ([ClassificationID] = @Original_ClassificationID)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ClassificationID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ClassificationID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ClassificationID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ClassificationID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Product] ([ID], [ClassificationID]) VALUES (@ID, @ClassificationID);
+SELECT ID, ClassificationID FROM Product WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ClassificationID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ClassificationID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     ID, ClassificationID
+FROM         Product</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Product] SET [ID] = @ID, [ClassificationID] = @ClassificationID WHERE (([ID] = @Original_ID) AND ((@IsNull_ClassificationID = 1 AND [ClassificationID] IS NULL) OR ([ClassificationID] = @Original_ClassificationID)));
+SELECT ID, ClassificationID FROM Product WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ClassificationID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ClassificationID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ClassificationID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ClassificationID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ClassificationID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ClassificationID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="ClassificationID" DataSetColumn="ClassificationID" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_Classification" Modifier="Public" Name="UpdateQuery_Classification" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateQuery_Classification">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE    Product
+SET              ClassificationID = @ClassificationID
+WHERE     (ClassificationID = @Original_ClassificationID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="ClassificationID" ColumnName="ClassificationID" DataSourceName="QT_2.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ClassificationID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ClassificationID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Original_ClassificationID" ColumnName="ClassificationID" DataSourceName="QT_2.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Original_ClassificationID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ClassificationID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClassificationTableAdapter" GeneratorDataComponentClassName="ClassificationTableAdapter" Name="Classification" UserDataComponentName="ClassificationTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Classification" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Classification] WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Classification] ([ID], [Name]) VALUES (@ID, @Name);
+SELECT ID, Name FROM Classification WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     ID, Name
+FROM         Classification</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Classification] SET [ID] = @ID, [Name] = @Name WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)));
+SELECT ID, Name FROM Classification WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_ID" Modifier="Public" Name="UpdateQuery_ID" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateQuery_ID">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE    Classification
+SET              ID = @ID
+WHERE     (ID = @Original_ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="QT_2.dbo.Classification" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_ID" ColumnName="ID" DataSourceName="QT_2.dbo.Classification" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="View_QueueCountTableAdapter" GeneratorDataComponentClassName="View_QueueCountTableAdapter" Name="View_QueueCount" UserDataComponentName="View_QueueCountTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTCrawlerConnectionString (Settings)" DbObjectName="QTCrawler.dbo.View_QueueCount" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     Company, Count
+FROM         View_QueueCount</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Company" DataSetColumn="Company" />
+              <Mapping SourceColumn="Count" DataSetColumn="Count" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="View_VisitedCountTableAdapter" GeneratorDataComponentClassName="View_VisitedCountTableAdapter" Name="View_VisitedCount" UserDataComponentName="View_VisitedCountTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTCrawlerConnectionString (Settings)" DbObjectName="QTCrawler.dbo.View_VisitedCount" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     Company, Count
+FROM         View_VisitedCount</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Company" DataSetColumn="Company" />
+              <Mapping SourceColumn="Count" DataSetColumn="Count" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClassificationMapTableAdapter" GeneratorDataComponentClassName="ClassificationMapTableAdapter" Name="ClassificationMap" UserDataComponentName="ClassificationMapTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Classification" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByListClassificationMap" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="FillByListClassificationMap" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="FillByListClassificationMap">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, Name, IDCategory
+FROM            Classification
+WHERE        (IDCategory &gt; 0)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="IDCategory" DataSetColumn="IDCategory" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="View_SanPhamImageTableAdapter" GeneratorDataComponentClassName="View_SanPhamImageTableAdapter" Name="View_SanPhamImage" UserDataComponentName="View_SanPhamImageTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (100000) Product.ID, Product.ImageUrls, Classification.Name AS NameCategory, Product.Valid, Product.Name, Product.ImagePath, Product.DetailUrl
+FROM            Classification INNER JOIN
+                         Product ON Classification.ID = Product.ClassificationID
+WHERE        (Product.Valid = 1) AND (Product.ImagePath IS NULL)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="ImageUrls" DataSetColumn="ImageUrls" />
+              <Mapping SourceColumn="NameCategory" DataSetColumn="NameCategory" />
+              <Mapping SourceColumn="Valid" DataSetColumn="Valid" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="ImagePath" DataSetColumn="ImagePath" />
+              <Mapping SourceColumn="DetailUrl" DataSetColumn="DetailUrl" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Product" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy_AllByCompany" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy_AllByCompany" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy_AllByCompany">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (100000) ID, ImageUrls, Valid, Name, ImagePath, DetailUrl
+FROM            Product
+WHERE        (ImageUrls &lt;&gt; N'') AND (Company = @Company)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Company" ColumnName="Company" DataSourceName="QT_2.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Company" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Product" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy_ChuaKiemTraTheoCongTy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy_ChuaKiemTraTheoCongTy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy_ChuaKiemTraTheoCongTy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (100000) Product.ID, Product.ImageUrls, Product.Valid, Product.Name, Product.ImagePath, Product.DetailUrl
+FROM            Product INNER JOIN
+                         Company ON Product.Company = Company.ID
+WHERE        (Product.Valid = 0) AND (Company.Status = 1) AND (Product.ImageUrls &lt;&gt; N'') AND (Product.Company = @Company)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Company" ColumnName="Company" DataSourceName="QT_2.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Company" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy_SanPhamChuaKiemTra" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy_SanPhamChuaKiemTra" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillBy_SanPhamChuaKiemTra">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (100000) Product.ID, Product.ImageUrls, Classification.Name AS NameCategory, Product.Valid, Product.Name, Product.ImagePath, Product.DetailUrl, 
+                         Company.TotalValid
+FROM            Classification INNER JOIN
+                         Product ON Classification.ID = Product.ClassificationID INNER JOIN
+                         Company ON Product.Company = Company.ID
+WHERE        (Product.Valid = 0) AND (Product.ImagePath IS NULL) AND (Company.Status = 1) AND (Product.ImageUrls &lt;&gt; N'')
+ORDER BY Company.TotalValid DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Product" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy_SPConfigAnanytic" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy_SPConfigAnanytic" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="FillBy_SPConfigAnanytic">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (100000) ID, ImageUrls, Valid, Name, ImagePath, DetailUrl
+FROM            Product
+WHERE        (ImageUrls &lt;&gt; N'') AND (Company = @Company) AND (Status = 11)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Company" ColumnName="Company" DataSourceName="QT_2.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Company" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy_testDownloadImage" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy_testDownloadImage" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="FillBy_testDownloadImage">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (1000) Product.ID, Product.ImageUrls, Classification.Name AS NameCategory, Product.Valid, Product.Name, Product.ImagePath, Product.DetailUrl
+FROM            Classification INNER JOIN
+                         Product ON Classification.ID = Product.ClassificationID INNER JOIN
+                         Company ON Product.Company = Company.ID
+WHERE        (Product.Valid = 0) AND (Product.ImagePath &lt;&gt; N'') AND (Company.Status = 1) AND (Product.ImageUrls &lt;&gt; N'')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByAll_Da_TaiImage" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByAll_Da_TaiImage" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="FillByAll_Da_TaiImage">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT       Product.ID, Product.ImageUrls, Classification.Name AS NameCategory, Product.Valid, Product.Name, Product.ImagePath, Product.DetailUrl
+FROM            Classification INNER JOIN
+                         Product ON Classification.ID = Product.ClassificationID INNER JOIN
+                         Company ON Product.Company = Company.ID
+WHERE        (Product.ImagePath &lt;&gt; N'') AND (Company.Status = 1) AND (Product.ImageUrls &lt;&gt; N'')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByALL_SanPhamChuaKiemTra" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByALL_SanPhamChuaKiemTra" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="FillByALL_SanPhamChuaKiemTra">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (100000) Product.ID, Product.ImageUrls, Classification.Name AS NameCategory, Product.Valid, Product.Name, Product.ImagePath, 
+                         Product.DetailUrl
+FROM            Classification INNER JOIN
+                         Product ON Classification.ID = Product.ClassificationID INNER JOIN
+                         Company ON Product.Company = Company.ID
+WHERE        (Product.Valid = 0) AND (Company.Status = 1) AND (Product.ImageUrls &lt;&gt; N'')
+ORDER BY Company.TotalValid DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByAllImagePath" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByAllImagePath" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="FillByAllImagePath">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Product.ID, Product.ImageUrls, Classification.Name AS NameCategory, Product.Valid, Product.Name, Product.ImagePath, Product.DetailUrl
+FROM            Classification INNER JOIN
+                         Product ON Classification.ID = Product.ClassificationID
+WHERE        (Product.Valid = 1) AND (Product.ImagePath IS NOT NULL)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByALLNguocDau" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByALLNguocDau" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="FillByALLNguocDau">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (100000) Product.ID, Product.ImageUrls, Classification.Name AS NameCategory, Product.Valid, Product.Name, Product.ImagePath
+FROM            Classification INNER JOIN
+                         Product ON Classification.ID = Product.ClassificationID
+WHERE        (Product.ImagePath LIKE N'%\%')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByTestCrop_ByCompanyID" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByTestCrop_ByCompanyID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="FillByTestCrop_ByCompanyID">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (1000) Product.ID, Product.ImageUrls, Classification.Name AS NameCategory, Product.Valid, Product.Name, Product.ImagePath, Product.DetailUrl
+FROM            Classification INNER JOIN
+                         Product ON Classification.ID = Product.ClassificationID INNER JOIN
+                         Company ON Product.Company = Company.ID
+WHERE        (Product.ImagePath &lt;&gt; N'') AND (Company.Status = 1) AND (Product.ImageUrls &lt;&gt; N'') AND (Product.Company = @CompanyID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="CompanyID" ColumnName="Company" DataSourceName="QT_2.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@CompanyID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByToanBoSPDownloadLaiImage" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByToanBoSPDownloadLaiImage" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy10" UserSourceName="FillByToanBoSPDownloadLaiImage">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Product.ID, Product.ImageUrls, Classification.Name AS NameCategory, Product.Valid, Product.Name, Product.ImagePath, Product.DetailUrl
+FROM            Classification INNER JOIN
+                         Product ON Classification.ID = Product.ClassificationID INNER JOIN
+                         Company ON Product.Company = Company.ID
+WHERE        (Company.Status = 1) AND (Product.ImageUrls &lt;&gt; N'')
+ORDER BY Company.TotalValid DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductImagePathTableAdapter" GeneratorDataComponentClassName="ProductImagePathTableAdapter" Name="ProductImagePath" UserDataComponentName="ProductImagePathTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Product" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Product] WHERE (([ID] = @Original_ID) AND ((@IsNull_ImagePath = 1 AND [ImagePath] IS NULL) OR ([ImagePath] = @Original_ImagePath)) AND ((@IsNull_ImageWidth = 1 AND [ImageWidth] IS NULL) OR ([ImageWidth] = @Original_ImageWidth)) AND ((@IsNull_ImageHeight = 1 AND [ImageHeight] IS NULL) OR ([ImageHeight] = @Original_ImageHeight)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ImagePath" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImagePath" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_ImagePath" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ImagePath" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ImageWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageWidth" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ImageWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageWidth" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ImageHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageHeight" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ImageHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageHeight" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Product] ([ID], [ImagePath], [ImageWidth], [ImageHeight]) VALUES (@ID, @ImagePath, @ImageWidth, @ImageHeight);
+SELECT ID, ImagePath, ImageWidth, ImageHeight FROM Product WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ImagePath" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ImagePath" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ImageWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageWidth" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ImageHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageHeight" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, ImagePath, ImageWidth, ImageHeight
+FROM            Product</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Product] SET [ID] = @ID, [ImagePath] = @ImagePath, [ImageWidth] = @ImageWidth, [ImageHeight] = @ImageHeight WHERE (([ID] = @Original_ID) AND ((@IsNull_ImagePath = 1 AND [ImagePath] IS NULL) OR ([ImagePath] = @Original_ImagePath)) AND ((@IsNull_ImageWidth = 1 AND [ImageWidth] IS NULL) OR ([ImageWidth] = @Original_ImageWidth)) AND ((@IsNull_ImageHeight = 1 AND [ImageHeight] IS NULL) OR ([ImageHeight] = @Original_ImageHeight)));
+SELECT ID, ImagePath, ImageWidth, ImageHeight FROM Product WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ImagePath" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ImagePath" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ImageWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageWidth" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ImageHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageHeight" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ImagePath" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImagePath" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_ImagePath" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ImagePath" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ImageWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageWidth" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ImageWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageWidth" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ImageHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageHeight" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ImageHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ImageHeight" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="ImagePath" DataSetColumn="ImagePath" />
+              <Mapping SourceColumn="ImageWidth" DataSetColumn="ImageWidth" />
+              <Mapping SourceColumn="ImageHeight" DataSetColumn="ImageHeight" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Product" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy_ChuaUpdateWidth" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy_ChuaUpdateWidth" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy_ChuaUpdateWidth">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     top(100000)   ID, ImagePath, ImageWidth, ImageHeight
+FROM            Product
+WHERE        (ImagePath &lt;&gt; N'') AND (ImageWidth IS NULL)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery" Modifier="Public" Name="UpdateQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateQuery">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Product
+SET                ImagePath = @ImagePath, ImageWidth = @ImageWidth, ImageHeight = @ImageHeight
+WHERE        (ID = @Original_ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="ImagePath" ColumnName="ImagePath" DataSourceName="QT_2.dbo.Product" DataTypeServer="nvarchar(1000)" DbType="String" Direction="Input" ParameterName="@ImagePath" Precision="0" ProviderType="NVarChar" Scale="0" Size="1000" SourceColumn="ImagePath" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ImageWidth" ColumnName="ImageWidth" DataSourceName="QT_2.dbo.Product" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ImageWidth" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ImageWidth" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ImageHeight" ColumnName="ImageHeight" DataSourceName="QT_2.dbo.Product" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ImageHeight" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ImageHeight" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_ID" ColumnName="ID" DataSourceName="QT_2.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_WH" Modifier="Public" Name="UpdateQuery_WH" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateQuery_WH">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Product
+SET                ImageWidth = @ImageWidth, ImageHeight = @ImageHeight
+WHERE        (ID = @Original_ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="ImageWidth" ColumnName="ImageWidth" DataSourceName="QT_2.dbo.Product" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ImageWidth" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ImageWidth" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ImageHeight" ColumnName="ImageHeight" DataSourceName="QT_2.dbo.Product" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ImageHeight" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ImageHeight" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_ID" ColumnName="ID" DataSourceName="QT_2.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductTableAdapter" GeneratorDataComponentClassName="ProductTableAdapter" Name="Product" UserDataComponentName="ProductTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Product" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Product] WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_NameFT = 1 AND [NameFT] IS NULL) OR ([NameFT] = @Original_NameFT)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NameFT" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NameFT" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_NameFT" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NameFT" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Product] ([ID], [Name], [NameFT]) VALUES (@ID, @Name, @NameFT);
+SELECT ID, Name, NameFT FROM Product WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@NameFT" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NameFT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, Name, NameFT
+FROM            Product</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Product] SET [ID] = @ID, [Name] = @Name, [NameFT] = @NameFT WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_NameFT = 1 AND [NameFT] IS NULL) OR ([NameFT] = @Original_NameFT)));
+SELECT ID, Name, NameFT FROM Product WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@NameFT" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NameFT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NameFT" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NameFT" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_NameFT" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NameFT" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="NameFT" DataSetColumn="NameFT" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Product" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByUpdate" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByUpdate" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByUpdate">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT    ID, Name, NameFT
+FROM            Product
+ORDER BY LastUpdate</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQueryFulltext" Modifier="Public" Name="UpdateQueryFulltext" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateQueryFulltext">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Product
+SET                NameFT = @NameFT
+WHERE        (ID = @Original_ID); 
+SELECT ID, Name, NameFT FROM Product WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="NameFT" ColumnName="NameFT" DataSourceName="QT_2.dbo.Product" DataTypeServer="nvarchar(500)" DbType="String" Direction="Input" ParameterName="@NameFT" Precision="0" ProviderType="NVarChar" Scale="0" Size="500" SourceColumn="NameFT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_ID" ColumnName="ID" DataSourceName="QT_2.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="QT_2.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ManagerTypeTableAdapter" GeneratorDataComponentClassName="ManagerTypeTableAdapter" Name="ManagerType" UserDataComponentName="ManagerTypeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.ManagerType" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, Name, Des, STT
+FROM            ManagerType
+ORDER BY STT</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Des" DataSetColumn="Des" />
+              <Mapping SourceColumn="STT" DataSetColumn="STT" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Company_StatusTableAdapter" GeneratorDataComponentClassName="Company_StatusTableAdapter" Name="Company_Status" UserDataComponentName="Company_StatusTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Company_Status" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Company_Status] WHERE (([ID] = @Original_ID) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_STT = 1 AND [STT] IS NULL) OR ([STT] = @Original_STT)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Byte" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="TinyInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Description" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_STT" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="STT" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_STT" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="STT" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Company_Status] ([ID], [Description], [STT]) VALUES (@ID, @Description, @STT);
+SELECT ID, Description, STT FROM Company_Status WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Byte" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="TinyInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@STT" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="STT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, Description, STT
+FROM            Company_Status</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Company_Status] SET [ID] = @ID, [Description] = @Description, [STT] = @STT WHERE (([ID] = @Original_ID) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_STT = 1 AND [STT] IS NULL) OR ([STT] = @Original_STT)));
+SELECT ID, Description, STT FROM Company_Status WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Byte" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="TinyInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@STT" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="STT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Byte" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="TinyInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Description" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_STT" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="STT" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_STT" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="STT" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="STT" DataSetColumn="STT" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DBTool" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DBTool" msprop:Generator_UserDSName="DBTool">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="View_TongSanPham" msprop:Generator_TableClassName="View_TongSanPhamDataTable" msprop:Generator_TableVarName="tableView_TongSanPham" msprop:Generator_TablePropName="View_TongSanPham" msprop:Generator_RowDeletingName="View_TongSanPhamRowDeleting" msprop:Generator_RowChangingName="View_TongSanPhamRowChanging" msprop:Generator_RowEvHandlerName="View_TongSanPhamRowChangeEventHandler" msprop:Generator_RowDeletedName="View_TongSanPhamRowDeleted" msprop:Generator_UserTableName="View_TongSanPham" msprop:Generator_RowChangedName="View_TongSanPhamRowChanged" msprop:Generator_RowEvArgName="View_TongSanPhamRowChangeEvent" msprop:Generator_RowClassName="View_TongSanPhamRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Domain" msprop:Generator_ColumnVarNameInTable="columnDomain" msprop:Generator_ColumnPropNameInRow="Domain" msprop:Generator_ColumnPropNameInTable="DomainColumn" msprop:Generator_UserColumnName="Domain" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TongSP" msprop:Generator_ColumnVarNameInTable="columnTongSP" msprop:Generator_ColumnPropNameInRow="TongSP" msprop:Generator_ColumnPropNameInTable="TongSPColumn" msprop:Generator_UserColumnName="TongSP" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="View_TongSanPhamValid" msprop:Generator_TableClassName="View_TongSanPhamValidDataTable" msprop:Generator_TableVarName="tableView_TongSanPhamValid" msprop:Generator_TablePropName="View_TongSanPhamValid" msprop:Generator_RowDeletingName="View_TongSanPhamValidRowDeleting" msprop:Generator_RowChangingName="View_TongSanPhamValidRowChanging" msprop:Generator_RowEvHandlerName="View_TongSanPhamValidRowChangeEventHandler" msprop:Generator_RowDeletedName="View_TongSanPhamValidRowDeleted" msprop:Generator_UserTableName="View_TongSanPhamValid" msprop:Generator_RowChangedName="View_TongSanPhamValidRowChanged" msprop:Generator_RowEvArgName="View_TongSanPhamValidRowChangeEvent" msprop:Generator_RowClassName="View_TongSanPhamValidRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Domain" msprop:Generator_ColumnVarNameInTable="columnDomain" msprop:Generator_ColumnPropNameInRow="Domain" msprop:Generator_ColumnPropNameInTable="DomainColumn" msprop:Generator_UserColumnName="Domain" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TongSP" msprop:Generator_ColumnVarNameInTable="columnTongSP" msprop:Generator_ColumnPropNameInRow="TongSP" msprop:Generator_ColumnPropNameInTable="TongSPColumn" msprop:Generator_UserColumnName="TongSP" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProductIDHashName" msprop:Generator_TableClassName="ProductIDHashNameDataTable" msprop:Generator_TableVarName="tableProductIDHashName" msprop:Generator_TablePropName="ProductIDHashName" msprop:Generator_RowDeletingName="ProductIDHashNameRowDeleting" msprop:Generator_RowChangingName="ProductIDHashNameRowChanging" msprop:Generator_RowEvHandlerName="ProductIDHashNameRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductIDHashNameRowDeleted" msprop:Generator_UserTableName="ProductIDHashName" msprop:Generator_RowChangedName="ProductIDHashNameRowChanged" msprop:Generator_RowEvArgName="ProductIDHashNameRowChangeEvent" msprop:Generator_RowClassName="ProductIDHashNameRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DetailUrl" msprop:Generator_ColumnVarNameInTable="columnDetailUrl" msprop:Generator_ColumnPropNameInRow="DetailUrl" msprop:Generator_ColumnPropNameInTable="DetailUrlColumn" msprop:Generator_UserColumnName="DetailUrl" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HashName" msprop:Generator_ColumnVarNameInTable="columnHashName" msprop:Generator_ColumnPropNameInRow="HashName" msprop:Generator_ColumnPropNameInTable="HashNameColumn" msprop:Generator_UserColumnName="HashName" type="xs:long" minOccurs="0" />
+              <xs:element name="Domain" msprop:Generator_ColumnVarNameInTable="columnDomain" msprop:Generator_ColumnPropNameInRow="Domain" msprop:Generator_ColumnPropNameInTable="DomainColumn" msprop:Generator_UserColumnName="Domain" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProductClassification" msprop:Generator_TableClassName="ProductClassificationDataTable" msprop:Generator_TableVarName="tableProductClassification" msprop:Generator_TablePropName="ProductClassification" msprop:Generator_RowDeletingName="ProductClassificationRowDeleting" msprop:Generator_RowChangingName="ProductClassificationRowChanging" msprop:Generator_RowEvHandlerName="ProductClassificationRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductClassificationRowDeleted" msprop:Generator_UserTableName="ProductClassification" msprop:Generator_RowChangedName="ProductClassificationRowChanged" msprop:Generator_RowEvArgName="ProductClassificationRowChangeEvent" msprop:Generator_RowClassName="ProductClassificationRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="ClassificationID" msprop:Generator_ColumnVarNameInTable="columnClassificationID" msprop:Generator_ColumnPropNameInRow="ClassificationID" msprop:Generator_ColumnPropNameInTable="ClassificationIDColumn" msprop:Generator_UserColumnName="ClassificationID" type="xs:long" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Classification" msprop:Generator_TableClassName="ClassificationDataTable" msprop:Generator_TableVarName="tableClassification" msprop:Generator_TablePropName="Classification" msprop:Generator_RowDeletingName="ClassificationRowDeleting" msprop:Generator_RowChangingName="ClassificationRowChanging" msprop:Generator_RowEvHandlerName="ClassificationRowChangeEventHandler" msprop:Generator_RowDeletedName="ClassificationRowDeleted" msprop:Generator_UserTableName="Classification" msprop:Generator_RowChangedName="ClassificationRowChanged" msprop:Generator_RowEvArgName="ClassificationRowChangeEvent" msprop:Generator_RowClassName="ClassificationRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Domain" msprop:Generator_ColumnVarNameInTable="columnDomain" msprop:Generator_ColumnPropNameInRow="Domain" msprop:Generator_ColumnPropNameInTable="DomainColumn" msprop:Generator_UserColumnName="Domain" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="View_QueueCount" msprop:Generator_TableClassName="View_QueueCountDataTable" msprop:Generator_TableVarName="tableView_QueueCount" msprop:Generator_TablePropName="View_QueueCount" msprop:Generator_RowDeletingName="View_QueueCountRowDeleting" msprop:Generator_RowChangingName="View_QueueCountRowChanging" msprop:Generator_RowEvHandlerName="View_QueueCountRowChangeEventHandler" msprop:Generator_RowDeletedName="View_QueueCountRowDeleted" msprop:Generator_UserTableName="View_QueueCount" msprop:Generator_RowChangedName="View_QueueCountRowChanged" msprop:Generator_RowEvArgName="View_QueueCountRowChangeEvent" msprop:Generator_RowClassName="View_QueueCountRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Company" msprop:Generator_ColumnVarNameInTable="columnCompany" msprop:Generator_ColumnPropNameInRow="Company" msprop:Generator_ColumnPropNameInTable="CompanyColumn" msprop:Generator_UserColumnName="Company" type="xs:long" />
+              <xs:element name="Count" msprop:Generator_ColumnVarNameInTable="columnCount" msprop:Generator_ColumnPropNameInRow="Count" msprop:Generator_ColumnPropNameInTable="CountColumn" msprop:Generator_UserColumnName="Count" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="View_VisitedCount" msprop:Generator_TableClassName="View_VisitedCountDataTable" msprop:Generator_TableVarName="tableView_VisitedCount" msprop:Generator_TablePropName="View_VisitedCount" msprop:Generator_RowDeletingName="View_VisitedCountRowDeleting" msprop:Generator_RowChangingName="View_VisitedCountRowChanging" msprop:Generator_RowEvHandlerName="View_VisitedCountRowChangeEventHandler" msprop:Generator_RowDeletedName="View_VisitedCountRowDeleted" msprop:Generator_UserTableName="View_VisitedCount" msprop:Generator_RowChangedName="View_VisitedCountRowChanged" msprop:Generator_RowEvArgName="View_VisitedCountRowChangeEvent" msprop:Generator_RowClassName="View_VisitedCountRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Company" msprop:Generator_ColumnVarNameInTable="columnCompany" msprop:Generator_ColumnPropNameInRow="Company" msprop:Generator_ColumnPropNameInTable="CompanyColumn" msprop:Generator_UserColumnName="Company" type="xs:long" />
+              <xs:element name="Count" msprop:Generator_ColumnVarNameInTable="columnCount" msprop:Generator_ColumnPropNameInRow="Count" msprop:Generator_ColumnPropNameInTable="CountColumn" msprop:Generator_UserColumnName="Count" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ClassificationMap" msprop:Generator_TableClassName="ClassificationMapDataTable" msprop:Generator_TableVarName="tableClassificationMap" msprop:Generator_TablePropName="ClassificationMap" msprop:Generator_RowDeletingName="ClassificationMapRowDeleting" msprop:Generator_RowChangingName="ClassificationMapRowChanging" msprop:Generator_RowEvHandlerName="ClassificationMapRowChangeEventHandler" msprop:Generator_RowDeletedName="ClassificationMapRowDeleted" msprop:Generator_UserTableName="ClassificationMap" msprop:Generator_RowChangedName="ClassificationMapRowChanged" msprop:Generator_RowEvArgName="ClassificationMapRowChangeEvent" msprop:Generator_RowClassName="ClassificationMapRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDCategory" msprop:Generator_ColumnVarNameInTable="columnIDCategory" msprop:Generator_ColumnPropNameInRow="IDCategory" msprop:Generator_ColumnPropNameInTable="IDCategoryColumn" msprop:Generator_UserColumnName="IDCategory" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="View_SanPhamImage" msprop:Generator_TableClassName="View_SanPhamImageDataTable" msprop:Generator_TableVarName="tableView_SanPhamImage" msprop:Generator_TablePropName="View_SanPhamImage" msprop:Generator_RowDeletingName="View_SanPhamImageRowDeleting" msprop:Generator_RowChangingName="View_SanPhamImageRowChanging" msprop:Generator_RowEvHandlerName="View_SanPhamImageRowChangeEventHandler" msprop:Generator_RowDeletedName="View_SanPhamImageRowDeleted" msprop:Generator_UserTableName="View_SanPhamImage" msprop:Generator_RowChangedName="View_SanPhamImageRowChanged" msprop:Generator_RowEvArgName="View_SanPhamImageRowChangeEvent" msprop:Generator_RowClassName="View_SanPhamImageRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="ImageUrls" msprop:Generator_ColumnVarNameInTable="columnImageUrls" msprop:Generator_ColumnPropNameInRow="ImageUrls" msprop:Generator_ColumnPropNameInTable="ImageUrlsColumn" msprop:Generator_UserColumnName="ImageUrls" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NameCategory" msprop:Generator_ColumnVarNameInTable="columnNameCategory" msprop:Generator_ColumnPropNameInRow="NameCategory" msprop:Generator_ColumnPropNameInTable="NameCategoryColumn" msprop:Generator_UserColumnName="NameCategory" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Valid" msprop:Generator_ColumnVarNameInTable="columnValid" msprop:Generator_ColumnPropNameInRow="Valid" msprop:Generator_ColumnPropNameInTable="ValidColumn" msprop:Generator_UserColumnName="Valid" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ImagePath" msprop:Generator_ColumnVarNameInTable="columnImagePath" msprop:Generator_ColumnPropNameInRow="ImagePath" msprop:Generator_ColumnPropNameInTable="ImagePathColumn" msprop:Generator_UserColumnName="ImagePath" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DetailUrl" msprop:Generator_ColumnVarNameInTable="columnDetailUrl" msprop:Generator_ColumnPropNameInRow="DetailUrl" msprop:Generator_ColumnPropNameInTable="DetailUrlColumn" msprop:Generator_UserColumnName="DetailUrl" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProductImagePath" msprop:Generator_TableClassName="ProductImagePathDataTable" msprop:Generator_TableVarName="tableProductImagePath" msprop:Generator_TablePropName="ProductImagePath" msprop:Generator_RowDeletingName="ProductImagePathRowDeleting" msprop:Generator_RowChangingName="ProductImagePathRowChanging" msprop:Generator_RowEvHandlerName="ProductImagePathRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductImagePathRowDeleted" msprop:Generator_UserTableName="ProductImagePath" msprop:Generator_RowChangedName="ProductImagePathRowChanged" msprop:Generator_RowEvArgName="ProductImagePathRowChangeEvent" msprop:Generator_RowClassName="ProductImagePathRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="ImagePath" msprop:Generator_ColumnVarNameInTable="columnImagePath" msprop:Generator_ColumnPropNameInRow="ImagePath" msprop:Generator_ColumnPropNameInTable="ImagePathColumn" msprop:Generator_UserColumnName="ImagePath" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ImageWidth" msprop:Generator_ColumnVarNameInTable="columnImageWidth" msprop:Generator_ColumnPropNameInRow="ImageWidth" msprop:Generator_ColumnPropNameInTable="ImageWidthColumn" msprop:Generator_UserColumnName="ImageWidth" type="xs:int" minOccurs="0" />
+              <xs:element name="ImageHeight" msprop:Generator_ColumnVarNameInTable="columnImageHeight" msprop:Generator_ColumnPropNameInRow="ImageHeight" msprop:Generator_ColumnPropNameInTable="ImageHeightColumn" msprop:Generator_UserColumnName="ImageHeight" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Product" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct" msprop:Generator_TablePropName="Product" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_UserTableName="Product" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_RowEvArgName="ProductRowChangeEvent" msprop:Generator_RowClassName="ProductRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NameFT" msprop:Generator_ColumnVarNameInTable="columnNameFT" msprop:Generator_ColumnPropNameInRow="NameFT" msprop:Generator_ColumnPropNameInTable="NameFTColumn" msprop:Generator_UserColumnName="NameFT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ManagerType" msprop:Generator_TableClassName="ManagerTypeDataTable" msprop:Generator_TableVarName="tableManagerType" msprop:Generator_TablePropName="ManagerType" msprop:Generator_RowDeletingName="ManagerTypeRowDeleting" msprop:Generator_RowChangingName="ManagerTypeRowChanging" msprop:Generator_RowEvHandlerName="ManagerTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="ManagerTypeRowDeleted" msprop:Generator_UserTableName="ManagerType" msprop:Generator_RowChangedName="ManagerTypeRowChanged" msprop:Generator_RowEvArgName="ManagerTypeRowChangeEvent" msprop:Generator_RowClassName="ManagerTypeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Des" msprop:Generator_ColumnVarNameInTable="columnDes" msprop:Generator_ColumnPropNameInRow="Des" msprop:Generator_ColumnPropNameInTable="DesColumn" msprop:Generator_UserColumnName="Des" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="STT" msprop:Generator_ColumnVarNameInTable="columnSTT" msprop:Generator_ColumnPropNameInRow="STT" msprop:Generator_ColumnPropNameInTable="STTColumn" msprop:Generator_UserColumnName="STT" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Company_Status" msprop:Generator_TableClassName="Company_StatusDataTable" msprop:Generator_TableVarName="tableCompany_Status" msprop:Generator_TablePropName="Company_Status" msprop:Generator_RowDeletingName="Company_StatusRowDeleting" msprop:Generator_RowChangingName="Company_StatusRowChanging" msprop:Generator_RowEvHandlerName="Company_StatusRowChangeEventHandler" msprop:Generator_RowDeletedName="Company_StatusRowDeleted" msprop:Generator_UserTableName="Company_Status" msprop:Generator_RowChangedName="Company_StatusRowChanged" msprop:Generator_RowEvArgName="Company_StatusRowChangeEvent" msprop:Generator_RowClassName="Company_StatusRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:unsignedByte" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="STT" msprop:Generator_ColumnVarNameInTable="columnSTT" msprop:Generator_ColumnPropNameInRow="STT" msprop:Generator_ColumnPropNameInTable="STTColumn" msprop:Generator_UserColumnName="STT" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:View_TongSanPham" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="View_TongSanPhamValid_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:View_TongSanPhamValid" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="ProductIDHashName_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ProductIDHashName" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="ProductClassification_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ProductClassification" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Classification_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Classification" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="ClassificationMap_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ClassificationMap" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="View_SanPhamImage_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:View_SanPhamImage" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="ProductImagePath_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ProductImagePath" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Product_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Product" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="ManagerType_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ManagerType" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Company_Status_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Company_Status" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

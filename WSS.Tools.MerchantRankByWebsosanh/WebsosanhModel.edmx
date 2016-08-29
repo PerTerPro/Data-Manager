@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QT_2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MerchantScore">
+          <Key>
+            <PropertyRef Name="MerchantId" />
+          </Key>
+          <Property Name="MerchantId" Type="bigint" Nullable="false" />
+          <Property Name="ScoreNumberProduct1" Type="int" />
+          <Property Name="ScoreStore1" Type="int" />
+          <Property Name="ScoreTraffic1" Type="float" />
+          <Property Name="ScoreAdvertisementPR1" Type="int" />
+          <Property Name="ScoreScandal1" Type="int" />
+          <Property Name="TotalPart1" Type="float" />
+          <Property Name="ScoreAddressStore2" Type="int" />
+          <Property Name="ScorePhoneNumberAvaiable2" Type="int" />
+          <Property Name="ScoreCustomerServices2" Type="int" />
+          <Property Name="TotalPart2" Type="float" />
+          <Property Name="ScoreProductInformation3" Type="int" />
+          <Property Name="ScoreWebsosanhRate3" Type="int" />
+          <Property Name="ScoreGoogleRate3" Type="int" />
+          <Property Name="ScoreRateWebsite3" Type="int" />
+          <Property Name="TotalPart3" Type="float" />
+          <Property Name="ScoreStatusProduct4" Type="int" />
+          <Property Name="ScoreSignContract5" Type="int" />
+          <Property Name="ScoreResignContract5" Type="int" />
+          <Property Name="ScorePotential5" Type="int" />
+          <Property Name="ScoreSales5" Type="int" />
+          <Property Name="TotalPart5" Type="float" />
+          <Property Name="Score" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="QT_2ModelStoreContainer">
+          <EntitySet Name="MerchantScore" EntityType="Self.MerchantScore" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QT_2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MerchantScore">
+          <Key>
+            <PropertyRef Name="MerchantId" />
+          </Key>
+          <Property Name="MerchantId" Type="Int64" Nullable="false" />
+          <Property Name="ScoreNumberProduct1" Type="Int32" />
+          <Property Name="ScoreStore1" Type="Int32" />
+          <Property Name="ScoreTraffic1" Type="Double" />
+          <Property Name="ScoreAdvertisementPR1" Type="Int32" />
+          <Property Name="ScoreScandal1" Type="Int32" />
+          <Property Name="TotalPart1" Type="Double" />
+          <Property Name="ScoreAddressStore2" Type="Int32" />
+          <Property Name="ScorePhoneNumberAvaiable2" Type="Int32" />
+          <Property Name="ScoreCustomerServices2" Type="Int32" />
+          <Property Name="TotalPart2" Type="Double" />
+          <Property Name="ScoreProductInformation3" Type="Int32" />
+          <Property Name="ScoreWebsosanhRate3" Type="Int32" />
+          <Property Name="ScoreGoogleRate3" Type="Int32" />
+          <Property Name="ScoreRateWebsite3" Type="Int32" />
+          <Property Name="TotalPart3" Type="Double" />
+          <Property Name="ScoreStatusProduct4" Type="Int32" />
+          <Property Name="ScoreSignContract5" Type="Int32" />
+          <Property Name="ScoreResignContract5" Type="Int32" />
+          <Property Name="ScorePotential5" Type="Int32" />
+          <Property Name="ScoreSales5" Type="Int32" />
+          <Property Name="TotalPart5" Type="Double" />
+          <Property Name="Score" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="WebsosanhEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MerchantScores" EntityType="Self.MerchantScore" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QT_2ModelStoreContainer" CdmEntityContainer="WebsosanhEntities">
+          <EntitySetMapping Name="MerchantScores">
+            <EntityTypeMapping TypeName="QT_2Model.MerchantScore">
+              <MappingFragment StoreEntitySet="MerchantScore">
+                <ScalarProperty Name="MerchantId" ColumnName="MerchantId" />
+                <ScalarProperty Name="ScoreNumberProduct1" ColumnName="ScoreNumberProduct1" />
+                <ScalarProperty Name="ScoreStore1" ColumnName="ScoreStore1" />
+                <ScalarProperty Name="ScoreTraffic1" ColumnName="ScoreTraffic1" />
+                <ScalarProperty Name="ScoreAdvertisementPR1" ColumnName="ScoreAdvertisementPR1" />
+                <ScalarProperty Name="ScoreScandal1" ColumnName="ScoreScandal1" />
+                <ScalarProperty Name="TotalPart1" ColumnName="TotalPart1" />
+                <ScalarProperty Name="ScoreAddressStore2" ColumnName="ScoreAddressStore2" />
+                <ScalarProperty Name="ScorePhoneNumberAvaiable2" ColumnName="ScorePhoneNumberAvaiable2" />
+                <ScalarProperty Name="ScoreCustomerServices2" ColumnName="ScoreCustomerServices2" />
+                <ScalarProperty Name="TotalPart2" ColumnName="TotalPart2" />
+                <ScalarProperty Name="ScoreProductInformation3" ColumnName="ScoreProductInformation3" />
+                <ScalarProperty Name="ScoreWebsosanhRate3" ColumnName="ScoreWebsosanhRate3" />
+                <ScalarProperty Name="ScoreGoogleRate3" ColumnName="ScoreGoogleRate3" />
+                <ScalarProperty Name="ScoreRateWebsite3" ColumnName="ScoreRateWebsite3" />
+                <ScalarProperty Name="TotalPart3" ColumnName="TotalPart3" />
+                <ScalarProperty Name="ScoreStatusProduct4" ColumnName="ScoreStatusProduct4" />
+                <ScalarProperty Name="ScoreSignContract5" ColumnName="ScoreSignContract5" />
+                <ScalarProperty Name="ScoreResignContract5" ColumnName="ScoreResignContract5" />
+                <ScalarProperty Name="ScorePotential5" ColumnName="ScorePotential5" />
+                <ScalarProperty Name="ScoreSales5" ColumnName="ScoreSales5" />
+                <ScalarProperty Name="TotalPart5" ColumnName="TotalPart5" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

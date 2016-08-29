@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WebsosanhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="ClassificationID" Type="bigint" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Warranty" Type="int" />
+          <Property Name="Status" Type="smallint" />
+          <Property Name="Company" Type="bigint" />
+          <Property Name="LastUpdate" Type="datetime" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Promotion" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Summary" Type="ntext" />
+          <Property Name="ProductContent" Type="ntext" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="DetailUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ImageUrls" Type="nvarchar" MaxLength="2000" />
+          <Property Name="NameFT" Type="nvarchar" MaxLength="500" />
+          <Property Name="Valid" Type="bit" />
+          <Property Name="LastPriceChange" Type="datetime" />
+          <Property Name="PriceChange" Type="int" />
+          <Property Name="IsNews" Type="bit" />
+          <Property Name="HashName" Type="bigint" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="ContentFT" Type="nvarchar(max)" />
+          <Property Name="DownloadError" Type="tinyint" />
+          <Property Name="ImageWidth" Type="int" />
+          <Property Name="ImageHeight" Type="int" />
+          <Property Name="CategorySTT" Type="int" />
+          <Property Name="ViewCount" Type="int" />
+          <Property Name="PriceChangeWeek" Type="int" />
+          <Property Name="AddPosition" Type="int" />
+          <Property Name="VATInfo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PromotionInfo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsBlackList" Type="bit" />
+          <Property Name="OriginPrice" Type="int" />
+          <Property Name="DeliveryInfo" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsDeal" Type="bit" />
+          <Property Name="ShortDescription" Type="nvarchar(max)" />
+          <Property Name="StartDeal" Type="datetime" />
+          <Property Name="EndDeal" Type="datetime" />
+          <Property Name="InStock" Type="int" />
+          <Property Name="VATStatus" Type="int" />
+          <Property Name="ProductDuplicate" Type="bigint" />
+          <Property Name="CountFail" Type="tinyint" />
+          <Property Name="AdsScore" Type="int" />
+          <Property Name="CreateDate_AddPosition" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="WebsosanhModelStoreContainer">
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebsosanhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ClassificationID" Type="Int64" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Warranty" Type="Int32" />
+          <Property Name="Status" Type="Int16" />
+          <Property Name="Company" Type="Int64" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Promotion" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DetailUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrls" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="NameFT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Valid" Type="Boolean" />
+          <Property Name="LastPriceChange" Type="DateTime" Precision="3" />
+          <Property Name="PriceChange" Type="Int32" />
+          <Property Name="IsNews" Type="Boolean" />
+          <Property Name="HashName" Type="Int64" />
+          <Property Name="ImagePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="ContentFT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DownloadError" Type="Byte" />
+          <Property Name="ImageWidth" Type="Int32" />
+          <Property Name="ImageHeight" Type="Int32" />
+          <Property Name="CategorySTT" Type="Int32" />
+          <Property Name="ViewCount" Type="Int32" />
+          <Property Name="PriceChangeWeek" Type="Int32" />
+          <Property Name="AddPosition" Type="Int32" />
+          <Property Name="VATInfo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PromotionInfo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="IsBlackList" Type="Boolean" />
+          <Property Name="OriginPrice" Type="Int32" />
+          <Property Name="DeliveryInfo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeal" Type="Boolean" />
+          <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartDeal" Type="DateTime" Precision="3" />
+          <Property Name="EndDeal" Type="DateTime" Precision="3" />
+          <Property Name="InStock" Type="Int32" />
+          <Property Name="VATStatus" Type="Int32" />
+          <Property Name="ProductDuplicate" Type="Int64" />
+          <Property Name="CountFail" Type="Byte" />
+          <Property Name="AdsScore" Type="Int32" />
+          <Property Name="CreateDate_AddPosition" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="WebsosanhEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Products" EntityType="Self.Product" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebsosanhModelStoreContainer" CdmEntityContainer="WebsosanhEntities">
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="WebsosanhModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClassificationID" ColumnName="ClassificationID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Promotion" ColumnName="Promotion" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="ProductContent" ColumnName="ProductContent" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DetailUrl" ColumnName="DetailUrl" />
+                <ScalarProperty Name="ImageUrls" ColumnName="ImageUrls" />
+                <ScalarProperty Name="NameFT" ColumnName="NameFT" />
+                <ScalarProperty Name="Valid" ColumnName="Valid" />
+                <ScalarProperty Name="LastPriceChange" ColumnName="LastPriceChange" />
+                <ScalarProperty Name="PriceChange" ColumnName="PriceChange" />
+                <ScalarProperty Name="IsNews" ColumnName="IsNews" />
+                <ScalarProperty Name="HashName" ColumnName="HashName" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ContentFT" ColumnName="ContentFT" />
+                <ScalarProperty Name="DownloadError" ColumnName="DownloadError" />
+                <ScalarProperty Name="ImageWidth" ColumnName="ImageWidth" />
+                <ScalarProperty Name="ImageHeight" ColumnName="ImageHeight" />
+                <ScalarProperty Name="CategorySTT" ColumnName="CategorySTT" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="PriceChangeWeek" ColumnName="PriceChangeWeek" />
+                <ScalarProperty Name="AddPosition" ColumnName="AddPosition" />
+                <ScalarProperty Name="VATInfo" ColumnName="VATInfo" />
+                <ScalarProperty Name="PromotionInfo" ColumnName="PromotionInfo" />
+                <ScalarProperty Name="IsBlackList" ColumnName="IsBlackList" />
+                <ScalarProperty Name="OriginPrice" ColumnName="OriginPrice" />
+                <ScalarProperty Name="DeliveryInfo" ColumnName="DeliveryInfo" />
+                <ScalarProperty Name="IsDeal" ColumnName="IsDeal" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="StartDeal" ColumnName="StartDeal" />
+                <ScalarProperty Name="EndDeal" ColumnName="EndDeal" />
+                <ScalarProperty Name="InStock" ColumnName="InStock" />
+                <ScalarProperty Name="VATStatus" ColumnName="VATStatus" />
+                <ScalarProperty Name="ProductDuplicate" ColumnName="ProductDuplicate" />
+                <ScalarProperty Name="CountFail" ColumnName="CountFail" />
+                <ScalarProperty Name="AdsScore" ColumnName="AdsScore" />
+                <ScalarProperty Name="CreateDate_AddPosition" ColumnName="CreateDate_AddPosition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

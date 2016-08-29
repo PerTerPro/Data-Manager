@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4069E230-57AE-4F67-9288-D8222CCE4C46}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QT.Users</RootNamespace>
+    <AssemblyName>QT.Users</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bussiness">
+      <HintPath>..\000\DLLs\Bussiness.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ctrUserCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrUserCategory.Designer.cs">
+      <DependentUpon>ctrUserCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB.cs">
+      <DependentUpon>DB.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBCustomer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCustomer.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBPhanSP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBPhanSP.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmDanhSachQuyen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDanhSachQuyen.Designer.cs">
+      <DependentUpon>frmDanhSachQuyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmJobType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJobType.Designer.cs">
+      <DependentUpon>frmJobType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListUserOfTypeManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListUserOfTypeManager.Designer.cs">
+      <DependentUpon>frmListUserOfTypeManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManagerJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManagerJob.Designer.cs">
+      <DependentUpon>frmManagerJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManagerOwnWebsite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManagerOwnWebsite.Designer.cs">
+      <DependentUpon>frmManagerOwnWebsite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhanCongNhapDuLieuSanPhamGoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhanCongNhapDuLieuSanPhamGoc.Designer.cs">
+      <DependentUpon>frmPhanCongNhapDuLieuSanPhamGoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmResetPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmResetPass.Designer.cs">
+      <DependentUpon>frmResetPass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserManager.Designer.cs">
+      <DependentUpon>frmUserManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ReportConfigWebsite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportConfigWebsite.Designer.cs">
+      <DependentUpon>ReportConfigWebsite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportNhapDuLieuSPGoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportNhapDuLieuSPGoc.Designer.cs">
+      <DependentUpon>ReportNhapDuLieuSPGoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceCoreApplication\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="UserJob.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
+      <Project>{7F43CEBE-F21E-4C1F-91CB-1E400B8B76FB}</Project>
+      <Name>QT.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ctrUserCategory.resx">
+      <DependentUpon>ctrUserCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDanhSachQuyen.resx">
+      <DependentUpon>frmDanhSachQuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJobType.resx">
+      <DependentUpon>frmJobType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListUserOfTypeManager.resx">
+      <DependentUpon>frmListUserOfTypeManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManagerJob.resx">
+      <DependentUpon>frmManagerJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManagerOwnWebsite.resx">
+      <DependentUpon>frmManagerOwnWebsite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhanCongNhapDuLieuSanPhamGoc.resx">
+      <DependentUpon>frmPhanCongNhapDuLieuSanPhamGoc.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmResetPass.resx">
+      <DependentUpon>frmResetPass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserManager.resx">
+      <DependentUpon>frmUserManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportConfigWebsite.resx">
+      <DependentUpon>ReportConfigWebsite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportNhapDuLieuSPGoc.resx">
+      <DependentUpon>ReportNhapDuLieuSPGoc.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="DB.xsc">
+      <DependentUpon>DB.xsd</DependentUpon>
+    </None>
+    <None Include="DB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DB.xss">
+      <DependentUpon>DB.xsd</DependentUpon>
+    </None>
+    <None Include="DBCustomer.xsc">
+      <DependentUpon>DBCustomer.xsd</DependentUpon>
+    </None>
+    <None Include="DBCustomer.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCustomer.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DBCustomer.xss">
+      <DependentUpon>DBCustomer.xsd</DependentUpon>
+    </None>
+    <None Include="DBPhanSP.xsc">
+      <DependentUpon>DBPhanSP.xsd</DependentUpon>
+    </None>
+    <None Include="DBPhanSP.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBPhanSP2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DBPhanSP.xss">
+      <DependentUpon>DBPhanSP.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceCoreApplication\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceCoreApplication\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceCoreApplication\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceCoreApplication\CoreApplication.wsdl" />
+    <None Include="Service References\ServiceCoreApplication\CoreApplication.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceCoreApplication\CoreApplication1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceCoreApplication\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceCoreApplication\CoreApplication.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

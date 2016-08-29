@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateSolrApp", "UpdateSolrApp.csproj", "{9CBE5782-9007-49CE-B088-9A081F8A59E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateSolrTools", "..\UpdateSolrTool\UpdateSolrTools.csproj", "{A8737CD0-BF23-4194-BFDC-6DF477701BEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CBE5782-9007-49CE-B088-9A081F8A59E8}.Debug|x86.ActiveCfg = Debug|x86
+		{9CBE5782-9007-49CE-B088-9A081F8A59E8}.Debug|x86.Build.0 = Debug|x86
+		{9CBE5782-9007-49CE-B088-9A081F8A59E8}.Release|x86.ActiveCfg = Release|x86
+		{9CBE5782-9007-49CE-B088-9A081F8A59E8}.Release|x86.Build.0 = Release|x86
+		{A8737CD0-BF23-4194-BFDC-6DF477701BEE}.Debug|x86.ActiveCfg = Debug|x86
+		{A8737CD0-BF23-4194-BFDC-6DF477701BEE}.Debug|x86.Build.0 = Debug|x86
+		{A8737CD0-BF23-4194-BFDC-6DF477701BEE}.Release|x86.ActiveCfg = Release|x86
+		{A8737CD0-BF23-4194-BFDC-6DF477701BEE}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

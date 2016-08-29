@@ -1,0 +1,155 @@
+﻿namespace QT.Moduls.RaoVat
+{
+    partial class FrmSelectInGrid
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.button3);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(554, 32);
+            this.panelControl1.TabIndex = 0;
+            // 
+            // panelControl3
+            // 
+            this.panelControl3.Controls.Add(this.btnOK);
+            this.panelControl3.Controls.Add(this.btnClose);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl3.Location = new System.Drawing.Point(0, 332);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(554, 53);
+            this.panelControl3.TabIndex = 2;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.gridControl1);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(0, 32);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(554, 300);
+            this.panelControl2.TabIndex = 3;
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(2, 2);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(550, 296);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(194, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 44);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
+            // btnOK
+            // 
+            this.btnOK.Location = new System.Drawing.Point(275, 4);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 44);
+            this.btnOK.TabIndex = 1;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(474, 5);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Refresh";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // FrmSelectInGrid
+            // 
+            this.AcceptButton = this.btnClose;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(554, 385);
+            this.Controls.Add(this.panelControl2);
+            this.Controls.Add(this.panelControl3);
+            this.Controls.Add(this.panelControl1);
+            this.Name = "FrmSelectInGrid";
+            this.Text = "FrmSelectInGrid";
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.panelControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private System.Windows.Forms.Button button3;
+        private DevExpress.XtraEditors.PanelControl panelControl3;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnClose;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+    }
+}

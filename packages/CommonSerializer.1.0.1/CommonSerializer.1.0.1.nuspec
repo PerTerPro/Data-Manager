@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>CommonSerializer</id>
+    <version>1.0.1</version>
+    <title>CommonSerializer</title>
+    <authors>Brannon King</authors>
+    <owners>Brannon King</owners>
+    <licenseUrl>https://raw.githubusercontent.com/BrannonKing/CommonSerializer/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/BrannonKing/CommonSerializer</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CommonSerializer Base Class Library</description>
+    <summary />
+    <releaseNotes>Added overload for RegisterSubtype</releaseNotes>
+    <tags>serializer serialization common</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework="Unsupported0.0">
+        <dependency id="System.Runtime" version="4.0.21-beta-23409" />
+        <dependency id="System.IO" version="4.0.11-beta-23409" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="mscorlib" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="mscorlib" targetFramework="Unsupported0.0" />
+      <frameworkAssembly assemblyName="System" targetFramework="Unsupported0.0" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework="Unsupported0.0" />
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="Unsupported0.0" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

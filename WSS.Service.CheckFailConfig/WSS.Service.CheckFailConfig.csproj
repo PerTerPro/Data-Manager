@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A8695B9D-B80E-4204-8497-3344CD2E65BC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSS.Service.CheckFailConfig</RootNamespace>
+    <AssemblyName>WSS.Service.CheckFailConfig</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Activities.DurableInstancing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration.Install">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceProcess">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="WSS.Service.CheckFailConfig.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WSS.Service.CheckFailConfig.Designer.cs">
+      <DependentUpon>WSS.Service.CheckFailConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Runner.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GABIZ_BASE\GABIZ.BASE.csproj">
+      <Project>{8c825289-f1a7-4699-9d54-eea95ec6ab21}</Project>
+      <Name>GABIZ.BASE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
+      <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
+      <Name>QT.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QT.Moduls\QT.Moduls.csproj">
+      <Project>{b8d02031-c0b6-4e60-a318-9f39d9b9a8a9}</Project>
+      <Name>QT.Moduls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

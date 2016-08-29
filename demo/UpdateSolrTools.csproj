@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A8737CD0-BF23-4194-BFDC-6DF477701BEE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UpdateSolrTools</RootNamespace>
+    <AssemblyName>UpdateSolrTools</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SolrNet, Version=0.4.0.2002, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Websosanh.Core.Common">
+      <HintPath>..\000\DLLs\Websosanh.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.Product">
+      <HintPath>..\000\DLLs\Websosanh.Core.Product.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.SearchEngines">
+      <HintPath>..\000\DLLs\Websosanh.Core.SearchEngines.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CompanyDataSet.cs">
+      <DependentUpon>CompanyDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompanyDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompanyDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DB.cs">
+      <DependentUpon>DB.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBSorl.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSorl.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTool.Designer.cs">
+      <DependentUpon>DBTool.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DBTool2.cs">
+      <DependentUpon>DBTool2.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DBTool2.Designer.cs">
+      <DependentUpon>DBTool2.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="frmToolUpdateSolr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmToolUpdateSolr.Designer.cs">
+      <DependentUpon>frmToolUpdateSolr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="IndexProductTools.cs" />
+    <EmbeddedResource Include="frmToolUpdateSolr.resx">
+      <DependentUpon>frmToolUpdateSolr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CompanyDataSet.xsc">
+      <DependentUpon>CompanyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CompanyDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CompanyDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CompanyDataSet.xss">
+      <DependentUpon>CompanyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DB.xsc">
+      <DependentUpon>DB.xsd</DependentUpon>
+    </None>
+    <None Include="DB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DB.xss">
+      <DependentUpon>DB.xsd</DependentUpon>
+    </None>
+    <None Include="DBSorl.xsc">
+      <DependentUpon>DBSorl.xsd</DependentUpon>
+    </None>
+    <None Include="DBSorl.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBSorl.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DBSorl.xss">
+      <DependentUpon>DBSorl.xsd</DependentUpon>
+    </None>
+    <None Include="DBTool.xsc">
+      <DependentUpon>DBTool.xsd</DependentUpon>
+    </None>
+    <None Include="DBTool.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>DBTool.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DBTool.xss">
+      <DependentUpon>DBTool.xsd</DependentUpon>
+    </None>
+    <None Include="DBTool2.xsc">
+      <DependentUpon>DBTool2.xsd</DependentUpon>
+    </None>
+    <None Include="DBTool2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTool2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTool2.xss">
+      <DependentUpon>DBTool2.xsd</DependentUpon>
+    </None>
+    <None Include="Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GABIZ_BASE\GABIZ.BASE.csproj">
+      <Project>{8C825289-F1A7-4699-9D54-EEA95EC6AB21}</Project>
+      <Name>GABIZ.BASE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
+      <Project>{7F43CEBE-F21E-4C1F-91CB-1E400B8B76FB}</Project>
+      <Name>QT.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

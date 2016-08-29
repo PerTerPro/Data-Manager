@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Kafka</id>
+    <version>1.0.5814.23193</version>
+    <title>Kafka</title>
+    <authors>steven.smith</authors>
+    <owners>steven.smith</owners>
+    <licenseUrl>http://example.com/</licenseUrl>
+    <projectUrl>http://example.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The Kafka deployment package, built on 02/12/2015</description>
+    <summary />
+    <releaseNotes />
+  </metadata>
+</package>

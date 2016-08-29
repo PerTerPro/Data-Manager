@@ -1,0 +1,2759 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B8D02031-C0B6-4E60-A318-9F39D9B9A8A9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QT.Moduls</RootNamespace>
+    <AssemblyName>QT.Moduls</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>7428e259</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BizwebAPIAdapterLibrary">
+      <HintPath>..\000\DLLs\BizwebAPIAdapterLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Bussiness">
+      <HintPath>..\000\DLLs\Bussiness.dll</HintPath>
+    </Reference>
+    <Reference Include="Cassandra, Version=3.0.0.0, Culture=neutral, PublicKeyToken=10b231fbfc8c4b4d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CassandraCSharpDriver.3.0.2\lib\net40\Cassandra.dll</HintPath>
+    </Reference>
+    <Reference Include="Cms.BaseDAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Cms.BaseDAL.dll</HintPath>
+    </Reference>
+    <Reference Include="Cms.PoolConnection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Cms.PoolConnection.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Office.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v14.1.UI, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v14.1.Wizard, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v14.1.Design, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\000\DLLs\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="GABIZ.DAS">
+      <HintPath>..\000\DLLs\GABIZ.DAS.dll</HintPath>
+    </Reference>
+    <Reference Include="HaravanAPIAdapterLibrary">
+      <HintPath>..\000\DLLs\HaravanAPIAdapterLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="LZ4, Version=1.0.9.93, Culture=neutral, PublicKeyToken=62e1b5ec1eec9bdd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\lz4net.1.0.9.93\lib\net4-client\LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\MongoDB.Bson.2.0.1\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\MongoDB.Driver.2.0.1\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.0.1\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Legacy">
+      <HintPath>..\packages\mongocsharpdriver.2.0.1\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.9.7\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=3.5.6.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RabbitMQ.Client.3.5.6\lib\net40\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Client">
+      <HintPath>..\packages\ServiceStack.Client.4.0.46\lib\net40\ServiceStack.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\packages\ServiceStack.Interfaces.4.0.46\lib\portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.4.0.46\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="Solr.Client">
+      <HintPath>..\packages\Solr.Client.1.1.5675.36832\lib\net45\Solr.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="SolrNet, Version=0.5.0.1002, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\SolrNet.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.0.316.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TidyNet">
+      <HintPath>..\000\DLLs\TidyNet.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver, Version=2.48.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Selenium.WebDriver.2.48.2\lib\net40\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Websosanh.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
+      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.Drivers.Redis">
+      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.Drivers.Solr">
+      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.Solr.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.JobServer">
+      <HintPath>..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.Product, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Websosanh.Core.Product.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.SearchEngines, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Websosanh.Core.SearchEngines.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.ServiceStackUtilities">
+      <HintPath>..\000\DLLs\Websosanh.Core.ServiceStackUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Imaging">
+      <HintPath>..\000\DLLs\Websosanh.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.ProductSearchEnginesService.ServiceModel">
+      <HintPath>..\000\DLLs\Websosanh.ProductSearchEnginesService.ServiceModel.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\ctrBaseDateRange.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\ctrBaseDateRange.Designer.cs">
+      <DependentUpon>ctrBaseDateRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bizweb\DBBizweb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBBizweb.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Bizweb\frmSettingBizwebs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bizweb\frmSettingBizwebs.Designer.cs">
+      <DependentUpon>frmSettingBizwebs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bizweb\ProductBizwebInfo.cs" />
+    <Compile Include="Bizweb\StoreBizwebInfo.cs" />
+    <Compile Include="Cell.cs" />
+    <Compile Include="Class2.cs" />
+    <Compile Include="CompanyXPath\ExportXPath.cs" />
+    <Compile Include="CompanyXPath\StructXPath.cs" />
+    <Compile Include="Company\CompanyFunctions.cs" />
+    <Compile Include="Company\ctrCheckProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Company\ctrCheckProduct.Designer.cs">
+      <DependentUpon>ctrCheckProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\ctrListWebSite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Company\ctrListWebSite.Designer.cs">
+      <DependentUpon>ctrListWebSite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\ctrLogMananger.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Company\ctrLogMananger.Designer.cs">
+      <DependentUpon>ctrLogMananger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\DatafeedConfig.cs" />
+    <Compile Include="Company\DBCom.cs">
+      <DependentUpon>DBCom.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Company\DBCom.Designer.cs">
+      <DependentUpon>DBCom.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Company\DBLog.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBLog.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmAddWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmAddWeb.Designer.cs">
+      <DependentUpon>frmAddWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmCheckDataFeedUrl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmCheckDataFeedUrl.Designer.cs">
+      <DependentUpon>frmCheckDataFeedUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmChonNhomQuanLy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmChonNhomQuanLy.Designer.cs">
+      <DependentUpon>frmChonNhomQuanLy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmChonRegion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmChonRegion.Designer.cs">
+      <DependentUpon>frmChonRegion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmConfigClassification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmConfigClassification.Designer.cs">
+      <DependentUpon>frmConfigClassification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmCongTy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmCongTy.Designer.cs">
+      <DependentUpon>frmCongTy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmDatafeedConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmDatafeedConfig.Designer.cs">
+      <DependentUpon>frmDatafeedConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmEditCompanyRegion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmEditCompanyRegion.Designer.cs">
+      <DependentUpon>frmEditCompanyRegion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmManagerCom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmManagerCom.Designer.cs">
+      <DependentUpon>frmManagerCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmProduct.Designer.cs">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\FrmPublicProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\FrmPublicProduct.Designer.cs">
+      <DependentUpon>FrmPublicProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmQuangCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmQuangCao.Designer.cs">
+      <DependentUpon>frmQuangCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config_HaravanBizweb.cs" />
+    <Compile Include="CrawlerCompanyInfo\ConsumerUpdateAlexa.cs" />
+    <Compile Include="CrawlerCompanyInfo\MssUpdateAlexaCompany.cs" />
+    <Compile Include="CrawlerProduct\BLO.cs" />
+    <Compile Include="CrawlerProduct\BLOProductCheckName.cs" />
+    <Compile Include="CrawlerProduct\Cache\CacheCheckDupl.cs" />
+    <Compile Include="CrawlerProduct\Cache\CacheProductInfo.cs" />
+    <Compile Include="CrawlerProduct\Cache\CompanyRunning.cs" />
+    <Compile Include="CrawlerProduct\Cache\RedisCacheCheckDuplicateAdapter.cs" />
+    <Compile Include="CrawlerProduct\Cache\RedisCacheCompanyInfo.cs" />
+    <Compile Include="CrawlerProduct\Cache\RedisComanyWaitCrawler.cs" />
+    <Compile Include="CrawlerProduct\Cache\RedisHistoryCrawler.cs" />
+    <Compile Include="CrawlerProduct\Cache\RedisProductIDOfCompany.cs" />
+    <Compile Include="CrawlerProduct\CassandraLog.cs" />
+    <Compile Include="CrawlerProduct\CheckFailRegex.cs" />
+    <Compile Include="CrawlerProduct\CommentProduct.cs" />
+    <Compile Include="CrawlerProduct\Comment\ConsumerDownlaodHtml.cs" />
+    <Compile Include="CrawlerProduct\Comment\PublisherDownloadHtml.cs" />
+    <Compile Include="CrawlerProduct\Comment\WorkerDownloadHtml.cs" />
+    <Compile Include="CrawlerProduct\DelegateCrawler.cs" />
+    <Compile Include="CrawlerProduct\FixDuplicate.cs" />
+    <Compile Include="CrawlerProduct\FrmConfigDescXPath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmConfigDescXPath.Designer.cs">
+      <DependentUpon>FrmConfigDescXPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCrawlerData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCrawlerData.Designer.cs">
+      <DependentUpon>FrmCrawlerData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCrawlerTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCrawlerTest.Designer.cs">
+      <DependentUpon>FrmCrawlerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCacheLastCrawlerProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCacheLastCrawlerProduct.Designer.cs">
+      <DependentUpon>FrmCacheLastCrawlerProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCheckConfigError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCheckConfigError.Designer.cs">
+      <DependentUpon>FrmCheckConfigError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmExportProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmExportProduct.Designer.cs">
+      <DependentUpon>FrmExportProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmFindWebsiteFromGoogle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmFindWebsiteFromGoogle.Designer.cs">
+      <DependentUpon>FrmFindWebsiteFromGoogle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmHistoryCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmHistoryCrawler.Designer.cs">
+      <DependentUpon>FrmHistoryCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmHistoryCrawlerForCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmHistoryCrawlerForCompany.Designer.cs">
+      <DependentUpon>FrmHistoryCrawlerForCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmImportLink.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmImportLink.Designer.cs">
+      <DependentUpon>FrmImportLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmKeywordManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmKeywordManager.Designer.cs">
+      <DependentUpon>FrmKeywordManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushIsNewProductToChangeImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushIsNewProductToChangeImage.Designer.cs">
+      <DependentUpon>FrmPushIsNewProductToChangeImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushProductSolr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushProductSolr.Designer.cs">
+      <DependentUpon>FrmPushProductSolr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushProductImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushProductImage.Designer.cs">
+      <DependentUpon>FrmPushProductImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportCrawler.Designer.cs">
+      <DependentUpon>FrmReportCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmImportProductFromFixedLink.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmImportProductFromFixedLink.Designer.cs">
+      <DependentUpon>FrmImportProductFromFixedLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmAutoFixWebsite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmAutoFixWebsite.Designer.cs">
+      <DependentUpon>FrmAutoFixWebsite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmAutoPushCrawl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmAutoPushCrawl.Designer.cs">
+      <DependentUpon>FrmAutoPushCrawl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCheckCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCheckCrawler.Designer.cs">
+      <DependentUpon>FrmCheckCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCleanDuplicateProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmCleanDuplicateProduct.Designer.cs">
+      <DependentUpon>FrmCleanDuplicateProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPriceChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPriceChange.Designer.cs">
+      <DependentUpon>FrmPriceChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushCacheAllCompanyToRedis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushCacheAllCompanyToRedis.Designer.cs">
+      <DependentUpon>FrmPushCacheAllCompanyToRedis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushCacheRedis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushCacheRedis.Designer.cs">
+      <DependentUpon>FrmPushCacheRedis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushCrawlerRedis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushCrawlerRedis.Designer.cs">
+      <DependentUpon>FrmPushCrawlerRedis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushPriceLogDataRedis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushPriceLogDataRedis.Designer.cs">
+      <DependentUpon>FrmPushPriceLogDataRedis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushSanPhamSaiGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmPushSanPhamSaiGia.Designer.cs">
+      <DependentUpon>FrmPushSanPhamSaiGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportCompanyNeedFixConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportCompanyNeedFixConfig.Designer.cs">
+      <DependentUpon>FrmReportCompanyNeedFixConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportLogCrawlerMQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportLogCrawlerMQ.Designer.cs">
+      <DependentUpon>FrmReportLogCrawlerMQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportMinLastUpdateProductCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportMinLastUpdateProductCrawler.Designer.cs">
+      <DependentUpon>FrmReportMinLastUpdateProductCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportProductCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportProductCrawler.Designer.cs">
+      <DependentUpon>FrmReportProductCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportQueueAndVisitedLink.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportQueueAndVisitedLink.Designer.cs">
+      <DependentUpon>FrmReportQueueAndVisitedLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportReloadTimeNewProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmReportReloadTimeNewProduct.Designer.cs">
+      <DependentUpon>FrmReportReloadTimeNewProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmResetCompanyCacheCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmResetCompanyCacheCrawler.Designer.cs">
+      <DependentUpon>FrmResetCompanyCacheCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmShowDataTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmShowDataTable.Designer.cs">
+      <DependentUpon>FrmShowDataTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmShowDetailProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmShowDetailProduct.Designer.cs">
+      <DependentUpon>FrmShowDetailProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmSmallCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmSmallCrawler.Designer.cs">
+      <DependentUpon>FrmSmallCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmUpdateCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmUpdateCategory.Designer.cs">
+      <DependentUpon>FrmUpdateCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmViewErrorIsNewDownloadImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmViewErrorIsNewDownloadImage.Designer.cs">
+      <DependentUpon>FrmViewErrorIsNewDownloadImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmViewIsNewNotShowInCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmViewIsNewNotShowInCompany.Designer.cs">
+      <DependentUpon>FrmViewIsNewNotShowInCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmWebsiteNewManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmWebsiteNewManager.Designer.cs">
+      <DependentUpon>FrmWebsiteNewManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmWSS_LogManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmWSS_LogManager.Designer.cs">
+      <DependentUpon>FrmWSS_LogManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\IWorker.cs" />
+    <Compile Include="CrawlerProduct\JobCrawler.cs" />
+    <Compile Include="CrawlerProduct\JobCrawlerReview.cs" />
+    <Compile Include="CrawlerProduct\LogCrawlerMQ.cs" />
+    <Compile Include="CrawlerProduct\MssLog.cs" />
+    <Compile Include="CrawlerProduct\NoSql\NoSqlHistoryCrawler.cs" />
+    <Compile Include="CrawlerProduct\ProcuderQueueCrawler.cs" />
+    <Compile Include="CrawlerProduct\ProductAdapter.cs" />
+    <Compile Include="CrawlerProduct\ProductParse.cs" />
+    <Compile Include="CrawlerProduct\PublisherDesciption.cs" />
+    <Compile Include="CrawlerProduct\PublishProductWaitChangeQueue.cs" />
+    <Compile Include="CrawlerProduct\RabbitMQ\MQLogChangePrice.cs" />
+    <Compile Include="CrawlerProduct\RabbitMQ\MQLogChangeProduct.cs" />
+    <Compile Include="CrawlerProduct\RabbitMQ\MQLogQueueVisit.cs" />
+    <Compile Include="CrawlerProduct\Service\WorkerChangePriceToSqlLogChangePrice.cs" />
+    <Compile Include="CrawlerProduct\Service\WorkerChangePriceToHistoryPriceSqlUI.cs" />
+    <Compile Include="CrawlerProduct\Service\WorkerChangePriceToHistoryPrice.cs" />
+    <Compile Include="CrawlerProduct\SolrHistoryCrawlerProduct.cs" />
+    <Compile Include="CrawlerProduct\TaskCrawlerReload.cs" />
+    <Compile Include="CrawlerProduct\TaskRefreshCheckConfig.cs" />
+    <Compile Include="CrawlerProduct\TrackCrawler.cs" />
+    <Compile Include="CrawlerProduct\TypeLog.cs" />
+    <Compile Include="CrawlerProduct\FrmValidCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmValidCrawler.Designer.cs">
+      <DependentUpon>FrmValidCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\WorkerCrawlerReview.cs" />
+    <Compile Include="CrawlerProduct\WorkerDuyetID.cs" />
+    <Compile Include="CrawlerProduct\WorkerFindNew.cs" />
+    <Compile Include="CrawlerProduct\WorkerReload.cs" />
+    <Compile Include="CrawlerProduct\WorkerReloadProduct.cs" />
+    <Compile Include="CrawlerReviewFacebook\DBAnalysInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBAnalysInfo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerReviewFacebook\FacebookSubcomment.cs" />
+    <Compile Include="CrawlerReviewFacebook\FrmManagerFacebook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerReviewFacebook\FrmManagerFacebook.Designer.cs">
+      <DependentUpon>FrmManagerFacebook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerReviewFacebook\LogFacebookReview.cs" />
+    <Compile Include="CrawlerReviewFacebook\DateReview.cs" />
+    <Compile Include="CrawlerReviewFacebook\FrmAnalysicInfoFacebook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerReviewFacebook\FrmAnalysicInfoFacebook.Designer.cs">
+      <DependentUpon>FrmAnalysicInfoFacebook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\DBCrawler.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCrawler.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\DBQueue.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBQueue.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\frmCrawlerProduct.cs" />
+    <Compile Include="Crawler\frmCrawlerProduct.Designer.cs">
+      <DependentUpon>frmCrawlerProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\FrmCrawlerProductByQuerySql.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\FrmCrawlerProductByQuerySql.Designer.cs">
+      <DependentUpon>FrmCrawlerProductByQuerySql.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\frmCrawlerViewQueue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\frmCrawlerViewQueue.Designer.cs">
+      <DependentUpon>frmCrawlerViewQueue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\frmDowloadImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\frmDowloadImage.Designer.cs">
+      <DependentUpon>frmDowloadImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\FrmLoadClassificationToRedis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\FrmLoadClassificationToRedis.Designer.cs">
+      <DependentUpon>FrmLoadClassificationToRedis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\FrmPushBeginCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\FrmPushBeginCrawler.Designer.cs">
+      <DependentUpon>FrmPushBeginCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\FrmPushJobCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\FrmPushJobCrawler.Designer.cs">
+      <DependentUpon>FrmPushJobCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\FrmQuestionPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\FrmQuestionPassword.Designer.cs">
+      <DependentUpon>FrmQuestionPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\FrmReloadData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\FrmReloadData.Designer.cs">
+      <DependentUpon>FrmReloadData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\FrmViewAllLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\FrmViewAllLog.Designer.cs">
+      <DependentUpon>FrmViewAllLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\FrmViewLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\FrmViewLog.Designer.cs">
+      <DependentUpon>FrmViewLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\frmWebPerformance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\frmWebPerformance.Designer.cs">
+      <DependentUpon>frmWebPerformance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\ManagerCrawler.cs" />
+    <Compile Include="Crawler\QuestionAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crawler\QuestionAuto.Designer.cs">
+      <DependentUpon>QuestionAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\ucLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crawler\ucLog.Designer.cs">
+      <DependentUpon>ucLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\AbstractionCrawler.cs" />
+    <Compile Include="CrawlProd\FrmDelQueue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlProd\FrmDelQueue.Designer.cs">
+      <DependentUpon>FrmDelQueue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlProd\FrmTrackCrawlerData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlProd\FrmTrackCrawlerData.Designer.cs">
+      <DependentUpon>FrmTrackCrawlerData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlProd\FrmRunCrawlerRedis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlProd\FrmRunCrawlerRedis.Designer.cs">
+      <DependentUpon>FrmRunCrawlerRedis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crawler\IQueueWait.cs" />
+    <Compile Include="Crawler\IVisitedLink.cs" />
+    <Compile Include="Crawler\Job.cs" />
+    <Compile Include="CrawlProd\FrmValidAllKeyword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlProd\FrmValidAllKeyword.Designer.cs">
+      <DependentUpon>FrmValidAllKeyword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlProd\QueueWait.cs" />
+    <Compile Include="CrawlProd\QueueWaitRedis.cs" />
+    <Compile Include="CrawlProd\RedisCrlProduct.cs" />
+    <Compile Include="CrawlProd\RedisSession.cs" />
+    <Compile Include="CrawlProd\SetAddedQueue.cs" />
+    <Compile Include="CrawlProd\SetAddedQueueRedis.cs" />
+    <Compile Include="CrawlProd\SimpleCrawlerProduct.cs" />
+    <Compile Include="CrawlSale\FrmWebSites.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlSale\FrmWebSites.Designer.cs">
+      <DependentUpon>FrmWebSites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Excel\DBRoot.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBRoot.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Excel\frmProductToExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Excel\frmProductToExcel.Designer.cs">
+      <DependentUpon>frmProductToExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Excel\frmReadExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Excel\frmReadExcel.Designer.cs">
+      <DependentUpon>frmReadExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FindWeb\FrmCheckAliveWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindWeb\FrmCheckAliveWeb.Designer.cs">
+      <DependentUpon>FrmCheckAliveWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FindWeb\FrmFindWebInGoogle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindWeb\FrmFindWebInGoogle.Designer.cs">
+      <DependentUpon>FrmFindWebInGoogle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCheckClassification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCheckClassification.Designer.cs">
+      <DependentUpon>FrmCheckClassification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFixPhone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFixPhone.Designer.cs">
+      <DependentUpon>FrmFixPhone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNotification.Designer.cs">
+      <DependentUpon>FrmNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JobPushChangeImage.cs" />
+    <Compile Include="KeywordSuggest\FrmPushTopKeyword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeywordSuggest\FrmPushTopKeyword.Designer.cs">
+      <DependentUpon>FrmPushTopKeyword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeywordSuggest\FrmViewHistoryVolume.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeywordSuggest\FrmViewHistoryVolume.Designer.cs">
+      <DependentUpon>FrmViewHistoryVolume.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeywordSuggest\FrmViewKeywordSuggest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeywordSuggest\FrmViewKeywordSuggest.Designer.cs">
+      <DependentUpon>FrmViewKeywordSuggest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeywordSuggest\FrmChartMaxVolume.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeywordSuggest\FrmChartMaxVolume.Designer.cs">
+      <DependentUpon>FrmChartMaxVolume.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeywordSuggest\FrmImportKeywordSuggest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeywordSuggest\FrmImportKeywordSuggest.Designer.cs" />
+    <Compile Include="KeywordSuggest\FrmKeywordControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeywordSuggest\FrmKeywordControl.Designer.cs">
+      <DependentUpon>FrmKeywordControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Keyword\frmKeywordRank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Keyword\frmKeywordRank.Designer.cs">
+      <DependentUpon>frmKeywordRank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogCassandra\LogCrawler.cs" />
+    <Compile Include="LogJob\DBLogJob.cs">
+      <DependentUpon>DBLogJob.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LogJob\DBLogJob.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBLogJob.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="LogJob\frmDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogJob\frmDepartment.Designer.cs">
+      <DependentUpon>frmDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogJob\frmJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogJob\frmJob.Designer.cs">
+      <DependentUpon>frmJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogJob\FrmLogJobData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogJob\FrmLogJobData.Designer.cs">
+      <DependentUpon>FrmLogJobData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogJob\FrmLogJobViewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogJob\FrmLogJobViewReport.Designer.cs">
+      <DependentUpon>FrmLogJobViewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogJob\frmUpdateVAT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogJob\frmUpdateVAT.Designer.cs">
+      <DependentUpon>frmUpdateVAT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\FrmMapCategoryAndClassification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maps\FrmMapCategoryAndClassification.Designer.cs">
+      <DependentUpon>FrmMapCategoryAndClassification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\FrmSelectCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maps\FrmSelectCategories.Designer.cs">
+      <DependentUpon>FrmSelectCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notifycation\DBNotification.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBNotification.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Notifycation\FrmManagerNotifycation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notifycation\FrmManagerNotifycation.Designer.cs">
+      <DependentUpon>FrmManagerNotifycation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notifycation\FrmPushNotifycation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notifycation\FrmPushNotifycation.Designer.cs">
+      <DependentUpon>FrmPushNotifycation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notifycation\NotifycationAdapter.cs" />
+    <Compile Include="ProducerBasic.cs" />
+    <Compile Include="ProducerData.cs" />
+    <Compile Include="ProductID\FrmLocSanPhamGoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\FrmLocSanPhamGoc.Designer.cs">
+      <DependentUpon>FrmLocSanPhamGoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmPushDataToMQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmPushDataToMQ.Designer.cs">
+      <DependentUpon>frmPushDataToMQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\ProductNameHashEntry.cs" />
+    <Compile Include="Proxy\ProxyFactory.cs" />
+    <Compile Include="Proxy\WebsiteProxy.cs" />
+    <Compile Include="QT_2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QT_2DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QT_2DataSetRealTime.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QT_2DataSetRealTime.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QT_2Report.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QT_2Report.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RabbitMQ\MQPushDownloadImage.cs" />
+    <Compile Include="RabbitMQ\MQPushResetDuplicate.cs" />
+    <Compile Include="RabbitMQ\MQ_ReCacheCompany.cs" />
+    <Compile Include="RabbitMQ\RabbitMQAdapter.cs" />
+    <Compile Include="RaoVat\ConsumerRaoVat.cs" />
+    <Compile Include="RaoVat\FrmCrawlerProductConsumer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmCrawlerProductConsumer.Designer.cs">
+      <DependentUpon>FrmCrawlerProductConsumer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmCrawlerRaoVat2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmCrawlerRaoVat2.Designer.cs">
+      <DependentUpon>FrmCrawlerRaoVat2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmImportKeyword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmImportKeyword.Designer.cs">
+      <DependentUpon>FrmImportKeyword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\ProductSaleNewAdapter.cs" />
+    <Compile Include="RaoVat\FrmConfigRunCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmConfigRunCrawler.Designer.cs">
+      <DependentUpon>FrmConfigRunCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmCrawlerKeyword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmCrawlerKeyword.Designer.cs">
+      <DependentUpon>FrmCrawlerKeyword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmDetailConfigRunCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmDetailConfigRunCrawler.Designer.cs">
+      <DependentUpon>FrmDetailConfigRunCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmPushReloadProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmPushReloadProduct.Designer.cs">
+      <DependentUpon>FrmPushReloadProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmRunnerCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmRunnerCrawler.Designer.cs">
+      <DependentUpon>FrmRunnerCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\Keyword\QueueCrawlerKeyword.cs" />
+    <Compile Include="RaoVat\Keyword\VisitedCrawlerKeyword.cs" />
+    <Compile Include="RaoVat\PushKeyWordFromSql.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\PushKeyWordFromSql.Designer.cs">
+      <DependentUpon>PushKeyWordFromSql.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\SetCrawlerRaoVat.cs" />
+    <Compile Include="RaoVat\QueueCrawlerRaoVat.cs" />
+    <Compile Include="RaoVat\CrawlerBug.cs" />
+    <Compile Include="RaoVat\ConsumerSaleNew.cs" />
+    <Compile Include="RaoVat\CrawlerSaleNew.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrawlerSaleNew.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\DBRegex.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBRegex.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmCategory.Designer.cs">
+      <DependentUpon>FrmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmCrawlerRaoVatConsumer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmCrawlerRaoVatConsumer.Designer.cs">
+      <DependentUpon>FrmCrawlerRaoVatConsumer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmExtractKeyWordSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmExtractKeyWordSQL.Designer.cs">
+      <DependentUpon>FrmExtractKeyWordSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmFindKeywordOfProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmFindKeywordOfProduct.Designer.cs">
+      <DependentUpon>FrmFindKeywordOfProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmManagerKeyword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmManagerKeyword.Designer.cs">
+      <DependentUpon>FrmManagerKeyword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmManagerProductSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmManagerProductSale.Designer.cs">
+      <DependentUpon>FrmManagerProductSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmMapClassficationAndCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmMapClassficationAndCategory.Designer.cs">
+      <DependentUpon>FrmMapClassficationAndCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmMapClassificationAndCities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmMapClassificationAndCities.Designer.cs">
+      <DependentUpon>FrmMapClassificationAndCities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmPushJobToSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmPushJobToSQL.Designer.cs">
+      <DependentUpon>FrmPushJobToSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmRegexKeyword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmRegexKeyword.Designer.cs">
+      <DependentUpon>FrmRegexKeyword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmRegexManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmRegexManager.Designer.cs">
+      <DependentUpon>FrmRegexManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmSelectInGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmSelectInGrid.Designer.cs">
+      <DependentUpon>FrmSelectInGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmSyncCity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmSyncCity.Designer.cs">
+      <DependentUpon>FrmSyncCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmSyncData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmSyncData.Designer.cs">
+      <DependentUpon>FrmSyncData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmTrackSiteOfData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmTrackSiteOfData.Designer.cs">
+      <DependentUpon>FrmTrackSiteOfData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmConfigGetKeywordTerm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmConfigGetKeywordTerm.Designer.cs">
+      <DependentUpon>FrmConfigGetKeywordTerm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmControlConsumer.cs" />
+    <Compile Include="RaoVat\FrmControlConsumer.Designer.cs">
+      <DependentUpon>FrmControlConsumer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmExtractionKeyWord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmExtractionKeyWord.Designer.cs">
+      <DependentUpon>FrmExtractionKeyWord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmFindExtraInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmFindExtraInfo.Designer.cs">
+      <DependentUpon>FrmFindExtraInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmKeyWord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmKeyWord.Designer.cs">
+      <DependentUpon>FrmKeyWord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmKeyWordUrlManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmKeyWordUrlManager.Designer.cs">
+      <DependentUpon>FrmKeyWordUrlManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmPushJobReload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmPushJobReload.Designer.cs">
+      <DependentUpon>FrmPushJobReload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmReloadData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmReloadData.Designer.cs">
+      <DependentUpon>FrmReloadData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmRunQuickMongo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmRunQuickMongo.Designer.cs">
+      <DependentUpon>FrmRunQuickMongo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\JobCrawlerSale.cs" />
+    <Compile Include="RaoVat\KeywordSale.cs" />
+    <Compile Include="RaoVat\MongoDb.cs" />
+    <Compile Include="RaoVat\Product.cs" />
+    <Compile Include="RaoVat\QueueWaitRedis.cs" />
+    <Compile Include="RaoVat\RaoVatCategory.cs" />
+    <Compile Include="RaoVat\SetAddedQueueRedis.cs" />
+    <Compile Include="RaoVat\RedisSession.cs" />
+    <Compile Include="RaoVat\FrmControlAutoPush.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmControlAutoPush.Designer.cs">
+      <DependentUpon>FrmControlAutoPush.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmDataShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmDataShow.Designer.cs">
+      <DependentUpon>FrmDataShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\ManagerNameNameCrawler.cs" />
+    <Compile Include="RaoVat\FrmConfigXPath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmConfigXPath.Designer.cs">
+      <DependentUpon>FrmConfigXPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\FrmMainSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaoVat\FrmMainSale.Designer.cs">
+      <DependentUpon>FrmMainSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\SimpleCrawlerProduct.cs" />
+    <Compile Include="RaoVat\SimpleCrawlerRaoVat.cs" />
+    <Compile Include="RaoVat\SimpleCrawlerSale.cs" />
+    <Compile Include="Data\KW.cs">
+      <DependentUpon>KW.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\KW.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KW.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DB.cs">
+      <DependentUpon>DB.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FrmLoadCacheCrawler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLoadCacheCrawler.Designer.cs">
+      <DependentUpon>FrmLoadCacheCrawler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HashSetProduct.cs" />
+    <Compile Include="Maps\ctrEditeKeyword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Maps\ctrEditeKeyword.Designer.cs">
+      <DependentUpon>ctrEditeKeyword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ctrExportLinkKeyword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Maps\ctrExportLinkKeyword.Designer.cs">
+      <DependentUpon>ctrExportLinkKeyword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ctrListMapCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Maps\ctrListMapCategory.Designer.cs">
+      <DependentUpon>ctrListMapCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ctrListSPGoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Maps\ctrListSPGoc.Designer.cs">
+      <DependentUpon>ctrListSPGoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ctrProducAnanytic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Maps\ctrProducAnanytic.Designer.cs">
+      <DependentUpon>ctrProducAnanytic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ctrProductEdite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Maps\ctrProductEdite.Designer.cs">
+      <DependentUpon>ctrProductEdite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ctrProductIdentity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Maps\ctrProductIdentity.Designer.cs">
+      <DependentUpon>ctrProductIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ctrProductInCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Maps\ctrProductInCategory.Designer.cs">
+      <DependentUpon>ctrProductInCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ctrSeoKeyword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Maps\ctrSeoKeyword.Designer.cs">
+      <DependentUpon>ctrSeoKeyword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ctrTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Maps\ctrTree.Designer.cs">
+      <DependentUpon>ctrTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ctrTreeCompany.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Maps\ctrTreeCompany.Designer.cs">
+      <DependentUpon>ctrTreeCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\DBMap.cs">
+      <DependentUpon>DBMap.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Maps\DBMap.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBMap.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\DBPMan.cs">
+      <DependentUpon>DBPMan.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Maps\DBPMan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBPMan.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\frmChonChuyenMucGoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maps\frmChonChuyenMucGoc.Designer.cs">
+      <DependentUpon>frmChonChuyenMucGoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\frmClassificationToTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maps\frmClassificationToTree.Designer.cs">
+      <DependentUpon>frmClassificationToTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\frmManagerProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maps\frmManagerProduct.Designer.cs">
+      <DependentUpon>frmManagerProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\frmPhanTichTuKhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maps\frmPhanTichTuKhoa.Designer.cs">
+      <DependentUpon>frmPhanTichTuKhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\frmSeoKeyWord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maps\frmSeoKeyWord.Designer.cs">
+      <DependentUpon>frmSeoKeyWord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\frmUploadImageSPGoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maps\frmUploadImageSPGoc.Designer.cs">
+      <DependentUpon>frmUploadImageSPGoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\DBNew.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBNew.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="News\frmGetContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="News\frmGetContent.Designer.cs">
+      <DependentUpon>frmGetContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\frmManagerNews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="News\frmManagerNews.Designer.cs">
+      <DependentUpon>frmManagerNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\frmNewsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="News\frmNewsReport.Designer.cs">
+      <DependentUpon>frmNewsReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\DBJob.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBJob.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\DBProperties.cs">
+      <DependentUpon>DBProperties.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProductID\DBProperties.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBProperties.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmAddMerchantProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmAddMerchantProduct.Designer.cs">
+      <DependentUpon>frmAddMerchantProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmAddNewClassification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmAddNewClassification.Designer.cs">
+      <DependentUpon>frmAddNewClassification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmAddNewProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmAddNewProduct.Designer.cs">
+      <DependentUpon>frmAddNewProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmChuanHoaThongSoKyThuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmChuanHoaThongSoKyThuat.Designer.cs">
+      <DependentUpon>frmChuanHoaThongSoKyThuat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmDinhNghiaThongSoKyThuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmDinhNghiaThongSoKyThuat.Designer.cs">
+      <DependentUpon>frmDinhNghiaThongSoKyThuat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmEditeGroupProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmEditeGroupProperties.Designer.cs">
+      <DependentUpon>frmEditeGroupProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmEditeProductByCat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmEditeProductByCat.Designer.cs">
+      <DependentUpon>frmEditeProductByCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmEditeProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmEditeProperties.Designer.cs">
+      <DependentUpon>frmEditeProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmEditePropertiesValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmEditePropertiesValue.Designer.cs">
+      <DependentUpon>frmEditePropertiesValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmEditeTenSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmEditeTenSanPham.Designer.cs">
+      <DependentUpon>frmEditeTenSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmGhepChuyenMucVoiDinhNghia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmGhepChuyenMucVoiDinhNghia.Designer.cs">
+      <DependentUpon>frmGhepChuyenMucVoiDinhNghia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmMapClassificationProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmMapClassificationProperties.Designer.cs">
+      <DependentUpon>frmMapClassificationProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductID\frmThongSoKyThuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductID\frmThongSoKyThuat.Designer.cs">
+      <DependentUpon>frmThongSoKyThuat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="RaoVat\SolrQuery.cs" />
+    <Compile Include="RaoVat\TransferKeyWord.cs" />
+    <Compile Include="RaoVat\TypeRunSync.cs" />
+    <Compile Include="RatingCompany\EnumRatting_BigStore.cs" />
+    <Compile Include="RatingCompany\FrmRattingCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RatingCompany\FrmRattingCompany.Designer.cs">
+      <DependentUpon>FrmRattingCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Row.cs" />
+    <Compile Include="SaleNewsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleNewsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SharedStrings.cs" />
+    <Compile Include="Tag\DBTag.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTag.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Tag\frmCategorySearchPriority.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tag\frmCategorySearchPriority.Designer.cs">
+      <DependentUpon>frmCategorySearchPriority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tag\frmTagByCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tag\frmTagByCompany.Designer.cs">
+      <DependentUpon>frmTagByCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tag\frmTagSPGoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tag\frmTagSPGoc.Designer.cs">
+      <DependentUpon>frmTagSPGoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\DBTool.cs">
+      <DependentUpon>DBTool.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tool\DBTool.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTool.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\DBTool2.cs">
+      <DependentUpon>DBTool2.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tool\DBTool2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTool2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\DBTool3.cs">
+      <DependentUpon>DBTool3.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tool\DBTool3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTool3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\frmAnanyticTradeSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\frmAnanyticTradeSQL.Designer.cs">
+      <DependentUpon>frmAnanyticTradeSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\frmCheckXPath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\frmCheckXPath.Designer.cs">
+      <DependentUpon>frmCheckXPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\frmChoiceKeywordCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\frmChoiceKeywordCategories.Designer.cs">
+      <DependentUpon>frmChoiceKeywordCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\frmChuanHoaThanhPho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\frmChuanHoaThanhPho.Designer.cs">
+      <DependentUpon>frmChuanHoaThanhPho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\frmLoadCacheWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\frmLoadCacheWeb.Designer.cs">
+      <DependentUpon>frmLoadCacheWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\frmToolMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\frmToolMain.Designer.cs">
+      <DependentUpon>frmToolMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\frmToolUpdateSolr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\frmToolUpdateSolr.Designer.cs">
+      <DependentUpon>frmToolUpdateSolr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\frmUpdateAlexa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\frmUpdateAlexa.Designer.cs">
+      <DependentUpon>frmUpdateAlexa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\frmWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\frmWeb.Designer.cs">
+      <DependentUpon>frmWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\frmXoaSPLogTrung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\frmXoaSPLogTrung.Designer.cs">
+      <DependentUpon>frmXoaSPLogTrung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\DBUser.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBUser.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="User\FrmUserManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\FrmUserManager.Designer.cs">
+      <DependentUpon>FrmUserManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UtilCrawlSemi\UtilSeleiumCrawler.cs" />
+    <Compile Include="View\DBView.cs">
+      <DependentUpon>DBView.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\DBView.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBView.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmThongKeClick.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmThongKeClick.Designer.cs">
+      <DependentUpon>frmThongKeClick.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebPartner\DBWebPartner.cs">
+      <DependentUpon>DBWebPartner.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebPartner\DBWebPartner.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBWebPartner.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="WebPartner\frmSettingHaravan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WebPartner\frmSettingHaravan.Designer.cs">
+      <DependentUpon>frmSettingHaravan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebPartner\frmUpdateDomain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WebPartner\frmUpdateDomain.Designer.cs">
+      <DependentUpon>frmUpdateDomain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebPartner\ProductHaravanInfo.cs" />
+    <Compile Include="WebPartner\ShopHaravanInfo.cs" />
+    <Compile Include="Web\DBWeb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBWeb.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Web\frmFooter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Web\frmFooter.Designer.cs">
+      <DependentUpon>frmFooter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web\frmWebViewTop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Web\frmWebViewTop.Designer.cs">
+      <DependentUpon>frmWebViewTop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web\frmWebViewType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Web\frmWebViewType.Designer.cs">
+      <DependentUpon>frmWebViewType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workbook.cs" />
+    <Compile Include="Worksheet.cs" />
+    <Compile Include="ZipFile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Base\ctrBaseDateRange.resx">
+      <DependentUpon>ctrBaseDateRange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bizweb\frmSettingBizwebs.resx">
+      <DependentUpon>frmSettingBizwebs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\ctrCheckProduct.resx">
+      <DependentUpon>ctrCheckProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\ctrListWebSite.resx">
+      <DependentUpon>ctrListWebSite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\ctrLogMananger.resx">
+      <DependentUpon>ctrLogMananger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmAddWeb.resx">
+      <DependentUpon>frmAddWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmCheckDataFeedUrl.resx">
+      <DependentUpon>frmCheckDataFeedUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmChonNhomQuanLy.resx">
+      <DependentUpon>frmChonNhomQuanLy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmChonRegion.resx">
+      <DependentUpon>frmChonRegion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmConfigClassification.resx">
+      <DependentUpon>frmConfigClassification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmCongTy.resx">
+      <DependentUpon>frmCongTy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmDatafeedConfig.resx">
+      <DependentUpon>frmDatafeedConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmEditCompanyRegion.resx">
+      <DependentUpon>frmEditCompanyRegion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmManagerCom.resx">
+      <DependentUpon>frmManagerCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmProduct.resx">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\FrmPublicProduct.resx">
+      <DependentUpon>FrmPublicProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmQuangCao.resx">
+      <DependentUpon>frmQuangCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmConfigDescXPath.resx">
+      <DependentUpon>FrmConfigDescXPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmCrawlerData.resx">
+      <DependentUpon>FrmCrawlerData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmCrawlerTest.resx">
+      <DependentUpon>FrmCrawlerTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmCacheLastCrawlerProduct.resx">
+      <DependentUpon>FrmCacheLastCrawlerProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmCheckConfigError.resx">
+      <DependentUpon>FrmCheckConfigError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmExportProduct.resx">
+      <DependentUpon>FrmExportProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmFindWebsiteFromGoogle.resx">
+      <DependentUpon>FrmFindWebsiteFromGoogle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmHistoryCrawler.resx">
+      <DependentUpon>FrmHistoryCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmHistoryCrawlerForCompany.resx">
+      <DependentUpon>FrmHistoryCrawlerForCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmImportLink.resx">
+      <DependentUpon>FrmImportLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmKeywordManager.resx">
+      <DependentUpon>FrmKeywordManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmPushIsNewProductToChangeImage.resx">
+      <DependentUpon>FrmPushIsNewProductToChangeImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmPushProductSolr.resx">
+      <DependentUpon>FrmPushProductSolr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmPushProductImage.resx">
+      <DependentUpon>FrmPushProductImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmReportCrawler.resx">
+      <DependentUpon>FrmReportCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmImportProductFromFixedLink.resx">
+      <DependentUpon>FrmImportProductFromFixedLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmAutoFixWebsite.resx">
+      <DependentUpon>FrmAutoFixWebsite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmAutoPushCrawl.resx">
+      <DependentUpon>FrmAutoPushCrawl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmCheckCrawler.resx">
+      <DependentUpon>FrmCheckCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmCleanDuplicateProduct.resx">
+      <DependentUpon>FrmCleanDuplicateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmPriceChange.resx">
+      <DependentUpon>FrmPriceChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmPushCacheAllCompanyToRedis.resx">
+      <DependentUpon>FrmPushCacheAllCompanyToRedis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmPushCacheRedis.resx">
+      <DependentUpon>FrmPushCacheRedis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmPushCrawlerRedis.resx">
+      <DependentUpon>FrmPushCrawlerRedis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmPushPriceLogDataRedis.resx">
+      <DependentUpon>FrmPushPriceLogDataRedis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmPushSanPhamSaiGia.resx">
+      <DependentUpon>FrmPushSanPhamSaiGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmReportCompanyNeedFixConfig.resx">
+      <DependentUpon>FrmReportCompanyNeedFixConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmReportLogCrawlerMQ.resx">
+      <DependentUpon>FrmReportLogCrawlerMQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmReportMinLastUpdateProductCrawler.resx">
+      <DependentUpon>FrmReportMinLastUpdateProductCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmReportProductCrawler.resx">
+      <DependentUpon>FrmReportProductCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmReportQueueAndVisitedLink.resx">
+      <DependentUpon>FrmReportQueueAndVisitedLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmReportReloadTimeNewProduct.resx">
+      <DependentUpon>FrmReportReloadTimeNewProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmResetCompanyCacheCrawler.resx">
+      <DependentUpon>FrmResetCompanyCacheCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmShowDataTable.resx">
+      <DependentUpon>FrmShowDataTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmShowDetailProduct.resx">
+      <DependentUpon>FrmShowDetailProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmSmallCrawler.resx">
+      <DependentUpon>FrmSmallCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmUpdateCategory.resx">
+      <DependentUpon>FrmUpdateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmViewErrorIsNewDownloadImage.resx">
+      <DependentUpon>FrmViewErrorIsNewDownloadImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmViewIsNewNotShowInCompany.resx">
+      <DependentUpon>FrmViewIsNewNotShowInCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmWebsiteNewManager.resx">
+      <DependentUpon>FrmWebsiteNewManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmValidCrawler.resx">
+      <DependentUpon>FrmValidCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmWSS_LogManager.resx">
+      <DependentUpon>FrmWSS_LogManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerReviewFacebook\FrmAnalysicInfoFacebook.resx">
+      <DependentUpon>FrmAnalysicInfoFacebook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerReviewFacebook\FrmManagerFacebook.resx">
+      <DependentUpon>FrmManagerFacebook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crawler\frmCrawlerProduct.resx">
+      <DependentUpon>frmCrawlerProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crawler\FrmCrawlerProductByQuerySql.resx">
+      <DependentUpon>FrmCrawlerProductByQuerySql.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crawler\frmCrawlerViewQueue.resx">
+      <DependentUpon>frmCrawlerViewQueue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crawler\frmDowloadImage.resx">
+      <DependentUpon>frmDowloadImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crawler\FrmLoadClassificationToRedis.resx">
+      <DependentUpon>FrmLoadClassificationToRedis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crawler\FrmPushBeginCrawler.resx">
+      <DependentUpon>FrmPushBeginCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crawler\FrmPushJobCrawler.resx">
+      <DependentUpon>FrmPushJobCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crawler\FrmQuestionPassword.resx">
+      <DependentUpon>FrmQuestionPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crawler\FrmReloadData.resx">
+      <DependentUpon>FrmReloadData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crawler\FrmViewAllLog.resx">
+      <DependentUpon>FrmViewAllLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crawler\frmWebPerformance.resx">
+      <DependentUpon>frmWebPerformance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlProd\FrmDelQueue.resx">
+      <DependentUpon>FrmDelQueue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlProd\FrmTrackCrawlerData.resx">
+      <DependentUpon>FrmTrackCrawlerData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlProd\FrmRunCrawlerRedis.resx">
+      <DependentUpon>FrmRunCrawlerRedis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlProd\FrmValidAllKeyword.resx">
+      <DependentUpon>FrmValidAllKeyword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlSale\FrmWebSites.resx">
+      <DependentUpon>FrmWebSites.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Excel\frmProductToExcel.resx">
+      <DependentUpon>frmProductToExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Excel\frmReadExcel.resx">
+      <DependentUpon>frmReadExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindWeb\FrmCheckAliveWeb.resx">
+      <DependentUpon>FrmCheckAliveWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindWeb\FrmFindWebInGoogle.resx">
+      <DependentUpon>FrmFindWebInGoogle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCheckClassification.resx">
+      <DependentUpon>FrmCheckClassification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFixPhone.resx">
+      <DependentUpon>FrmFixPhone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNotification.resx">
+      <DependentUpon>FrmNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeywordSuggest\FrmKeywordControl.resx">
+      <DependentUpon>FrmKeywordControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeywordSuggest\FrmPushTopKeyword.resx">
+      <DependentUpon>FrmPushTopKeyword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeywordSuggest\FrmViewHistoryVolume.resx">
+      <DependentUpon>FrmViewHistoryVolume.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeywordSuggest\FrmViewKeywordSuggest.resx">
+      <DependentUpon>FrmViewKeywordSuggest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeywordSuggest\FrmChartMaxVolume.resx">
+      <DependentUpon>FrmChartMaxVolume.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeywordSuggest\FrmImportKeywordSuggest.resx" />
+    <EmbeddedResource Include="Keyword\frmKeywordRank.resx">
+      <DependentUpon>frmKeywordRank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogJob\frmDepartment.resx">
+      <DependentUpon>frmDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogJob\frmJob.resx">
+      <DependentUpon>frmJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogJob\FrmLogJobData.resx">
+      <DependentUpon>FrmLogJobData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogJob\FrmLogJobViewReport.resx">
+      <DependentUpon>FrmLogJobViewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogJob\frmUpdateVAT.resx">
+      <DependentUpon>frmUpdateVAT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\FrmMapCategoryAndClassification.resx">
+      <DependentUpon>FrmMapCategoryAndClassification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\FrmSelectCategories.resx">
+      <DependentUpon>FrmSelectCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifycation\FrmManagerNotifycation.resx">
+      <DependentUpon>FrmManagerNotifycation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifycation\FrmPushNotifycation.resx">
+      <DependentUpon>FrmPushNotifycation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\FrmLocSanPhamGoc.resx">
+      <DependentUpon>FrmLocSanPhamGoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmPushDataToMQ.resx">
+      <DependentUpon>frmPushDataToMQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmCategory.resx">
+      <DependentUpon>FrmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmConfigGetKeywordTerm.resx">
+      <DependentUpon>FrmConfigGetKeywordTerm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmConfigRunCrawler.resx">
+      <DependentUpon>FrmConfigRunCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmConfigXPath.resx">
+      <DependentUpon>FrmConfigXPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmControlAutoPush.resx">
+      <DependentUpon>FrmControlAutoPush.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmControlConsumer.resx">
+      <DependentUpon>FrmControlConsumer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmCrawlerProductConsumer.resx">
+      <DependentUpon>FrmCrawlerProductConsumer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmCrawlerRaoVat2.resx">
+      <DependentUpon>FrmCrawlerRaoVat2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmCrawlerRaoVatConsumer.resx">
+      <DependentUpon>FrmCrawlerRaoVatConsumer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmCrawlerKeyword.resx">
+      <DependentUpon>FrmCrawlerKeyword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmDataShow.resx">
+      <DependentUpon>FrmDataShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmDetailConfigRunCrawler.resx">
+      <DependentUpon>FrmDetailConfigRunCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmExtractionKeyWord.resx">
+      <DependentUpon>FrmExtractionKeyWord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmExtractKeyWordSQL.resx">
+      <DependentUpon>FrmExtractKeyWordSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmFindExtraInfo.resx">
+      <DependentUpon>FrmFindExtraInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmFindKeywordOfProduct.resx">
+      <DependentUpon>FrmFindKeywordOfProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmImportKeyword.resx">
+      <DependentUpon>FrmImportKeyword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmKeyWord.resx">
+      <DependentUpon>FrmKeyWord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmKeyWordUrlManager.resx">
+      <DependentUpon>FrmKeyWordUrlManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmMainSale.resx">
+      <DependentUpon>FrmMainSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmManagerKeyword.resx">
+      <DependentUpon>FrmManagerKeyword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmManagerProductSale.resx">
+      <DependentUpon>FrmManagerProductSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmMapClassficationAndCategory.resx">
+      <DependentUpon>FrmMapClassficationAndCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmMapClassificationAndCities.resx">
+      <DependentUpon>FrmMapClassificationAndCities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmPushJobReload.resx">
+      <DependentUpon>FrmPushJobReload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmPushJobToSQL.resx">
+      <DependentUpon>FrmPushJobToSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmPushReloadProduct.resx">
+      <DependentUpon>FrmPushReloadProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmRegexKeyword.resx">
+      <DependentUpon>FrmRegexKeyword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmRegexManager.resx">
+      <DependentUpon>FrmRegexManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmReloadData.resx">
+      <DependentUpon>FrmReloadData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmRunnerCrawler.resx">
+      <DependentUpon>FrmRunnerCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmRunQuickMongo.resx">
+      <DependentUpon>FrmRunQuickMongo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmSelectInGrid.resx">
+      <DependentUpon>FrmSelectInGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmSyncCity.resx">
+      <DependentUpon>FrmSyncCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmSyncData.resx">
+      <DependentUpon>FrmSyncData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\FrmTrackSiteOfData.resx">
+      <DependentUpon>FrmTrackSiteOfData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLoadCacheCrawler.resx">
+      <DependentUpon>FrmLoadCacheCrawler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\frmUploadImageSPGoc.resx">
+      <DependentUpon>frmUploadImageSPGoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmAddMerchantProduct.resx">
+      <DependentUpon>frmAddMerchantProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmAddNewClassification.resx">
+      <DependentUpon>frmAddNewClassification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Maps\ctrEditeKeyword.resx">
+      <DependentUpon>ctrEditeKeyword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\ctrExportLinkKeyword.resx">
+      <DependentUpon>ctrExportLinkKeyword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\ctrListMapCategory.resx">
+      <DependentUpon>ctrListMapCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\ctrListSPGoc.resx">
+      <DependentUpon>ctrListSPGoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\ctrProducAnanytic.resx">
+      <DependentUpon>ctrProducAnanytic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\ctrProductEdite.resx">
+      <DependentUpon>ctrProductEdite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\ctrProductIdentity.resx">
+      <DependentUpon>ctrProductIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\ctrProductInCategory.resx">
+      <DependentUpon>ctrProductInCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\ctrSeoKeyword.resx">
+      <DependentUpon>ctrSeoKeyword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\ctrTree.resx">
+      <DependentUpon>ctrTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\ctrTreeCompany.resx">
+      <DependentUpon>ctrTreeCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\frmChonChuyenMucGoc.resx">
+      <DependentUpon>frmChonChuyenMucGoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\frmClassificationToTree.resx">
+      <DependentUpon>frmClassificationToTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\frmManagerProduct.resx">
+      <DependentUpon>frmManagerProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\frmPhanTichTuKhoa.resx">
+      <DependentUpon>frmPhanTichTuKhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\frmSeoKeyWord.resx">
+      <DependentUpon>frmSeoKeyWord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="News\frmGetContent.resx">
+      <DependentUpon>frmGetContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="News\frmManagerNews.resx">
+      <DependentUpon>frmManagerNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="News\frmNewsReport.resx">
+      <DependentUpon>frmNewsReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmAddNewProduct.resx">
+      <DependentUpon>frmAddNewProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmChuanHoaThongSoKyThuat.resx">
+      <DependentUpon>frmChuanHoaThongSoKyThuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmDinhNghiaThongSoKyThuat.resx">
+      <DependentUpon>frmDinhNghiaThongSoKyThuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmEditeGroupProperties.resx">
+      <DependentUpon>frmEditeGroupProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmEditeProductByCat.resx">
+      <DependentUpon>frmEditeProductByCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmEditeProperties.resx">
+      <DependentUpon>frmEditeProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmEditePropertiesValue.resx">
+      <DependentUpon>frmEditePropertiesValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmEditeTenSanPham.resx">
+      <DependentUpon>frmEditeTenSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmGhepChuyenMucVoiDinhNghia.resx">
+      <DependentUpon>frmGhepChuyenMucVoiDinhNghia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmMapClassificationProperties.resx">
+      <DependentUpon>frmMapClassificationProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductID\frmThongSoKyThuat.resx">
+      <DependentUpon>frmThongSoKyThuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaoVat\PushKeyWordFromSql.resx">
+      <DependentUpon>PushKeyWordFromSql.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RatingCompany\FrmRattingCompany.resx">
+      <DependentUpon>FrmRattingCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tag\frmCategorySearchPriority.resx">
+      <DependentUpon>frmCategorySearchPriority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tag\frmTagByCompany.resx">
+      <DependentUpon>frmTagByCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tag\frmTagSPGoc.resx">
+      <DependentUpon>frmTagSPGoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\frmAnanyticTradeSQL.resx">
+      <DependentUpon>frmAnanyticTradeSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\frmCheckXPath.resx">
+      <DependentUpon>frmCheckXPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\frmChoiceKeywordCategories.resx">
+      <DependentUpon>frmChoiceKeywordCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\frmChuanHoaThanhPho.resx">
+      <DependentUpon>frmChuanHoaThanhPho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\frmLoadCacheWeb.resx">
+      <DependentUpon>frmLoadCacheWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\frmToolMain.resx">
+      <DependentUpon>frmToolMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\frmToolUpdateSolr.resx">
+      <DependentUpon>frmToolUpdateSolr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\frmUpdateAlexa.resx">
+      <DependentUpon>frmUpdateAlexa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\frmWeb.resx">
+      <DependentUpon>frmWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\frmXoaSPLogTrung.resx">
+      <DependentUpon>frmXoaSPLogTrung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\FrmUserManager.resx">
+      <DependentUpon>FrmUserManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmThongKeClick.resx">
+      <DependentUpon>frmThongKeClick.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebPartner\frmSettingHaravan.resx">
+      <DependentUpon>frmSettingHaravan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebPartner\frmUpdateDomain.resx">
+      <DependentUpon>frmUpdateDomain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\frmFooter.resx">
+      <DependentUpon>frmFooter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\frmWebViewTop.resx">
+      <DependentUpon>frmWebViewTop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\frmWebViewType.resx">
+      <DependentUpon>frmWebViewType.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WebPartner\app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Bizweb\DBBizweb.xsc">
+      <DependentUpon>DBBizweb.xsd</DependentUpon>
+    </None>
+    <None Include="Bizweb\DBBizweb.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBBizweb.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Bizweb\DBBizweb.xss">
+      <DependentUpon>DBBizweb.xsd</DependentUpon>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="Company\DBCom.xsc">
+      <DependentUpon>DBCom.xsd</DependentUpon>
+    </None>
+    <None Include="Company\DBCom.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCom1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Company\DBCom.xss">
+      <DependentUpon>DBCom.xsd</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Company\DBLog.xsc">
+      <DependentUpon>DBLog.xsd</DependentUpon>
+    </None>
+    <None Include="Company\DBLog.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBLog.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Company\DBLog.xss">
+      <DependentUpon>DBLog.xsd</DependentUpon>
+    </None>
+    <Compile Include="CrawlerProduct\CrawlerProductReloadConsumer.cs" />
+    <None Include="CrawlerReviewFacebook\DBAnalysInfo.xsc">
+      <DependentUpon>DBAnalysInfo.xsd</DependentUpon>
+    </None>
+    <None Include="CrawlerReviewFacebook\DBAnalysInfo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBAnalysInfo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CrawlerReviewFacebook\DBAnalysInfo.xss">
+      <DependentUpon>DBAnalysInfo.xsd</DependentUpon>
+    </None>
+    <None Include="Crawler\DBCrawler.xsc">
+      <DependentUpon>DBCrawler.xsd</DependentUpon>
+    </None>
+    <None Include="Crawler\DBCrawler.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCrawler.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Crawler\DBCrawler.xss">
+      <DependentUpon>DBCrawler.xsd</DependentUpon>
+    </None>
+    <None Include="Crawler\DBQueue.xsc">
+      <DependentUpon>DBQueue.xsd</DependentUpon>
+    </None>
+    <None Include="Crawler\DBQueue.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBQueue.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Crawler\DBQueue.xss">
+      <DependentUpon>DBQueue.xsd</DependentUpon>
+    </None>
+    <None Include="Data\KW.xsc">
+      <DependentUpon>KW.xsd</DependentUpon>
+    </None>
+    <None Include="Data\KW.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>KW.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\KW.xss">
+      <DependentUpon>KW.xsd</DependentUpon>
+    </None>
+    <None Include="DB.xsc">
+      <DependentUpon>DB.xsd</DependentUpon>
+    </None>
+    <None Include="DB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DB1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DB.xss">
+      <DependentUpon>DB.xsd</DependentUpon>
+    </None>
+    <None Include="Excel\DBRoot.xsc">
+      <DependentUpon>DBRoot.xsd</DependentUpon>
+    </None>
+    <None Include="Excel\DBRoot.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBRoot.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Excel\DBRoot.xss">
+      <DependentUpon>DBRoot.xsd</DependentUpon>
+    </None>
+    <None Include="LogJob\DBLogJob.xsc">
+      <DependentUpon>DBLogJob.xsd</DependentUpon>
+    </None>
+    <None Include="LogJob\DBLogJob.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBLogJob.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="LogJob\DBLogJob.xss">
+      <DependentUpon>DBLogJob.xsd</DependentUpon>
+    </None>
+    <None Include="Maps\DBMap.xsc">
+      <DependentUpon>DBMap.xsd</DependentUpon>
+    </None>
+    <None Include="Maps\DBMap.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBMap.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Maps\DBMap.xss">
+      <DependentUpon>DBMap.xsd</DependentUpon>
+    </None>
+    <None Include="Maps\DBPMan.xsc">
+      <DependentUpon>DBPMan.xsd</DependentUpon>
+    </None>
+    <None Include="Maps\DBPMan.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBPMan1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Maps\DBPMan.xss">
+      <DependentUpon>DBPMan.xsd</DependentUpon>
+    </None>
+    <None Include="News\DBNew.xsc">
+      <DependentUpon>DBNew.xsd</DependentUpon>
+    </None>
+    <None Include="News\DBNew.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBNew.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="News\DBNew.xss">
+      <DependentUpon>DBNew.xsd</DependentUpon>
+    </None>
+    <None Include="Notifycation\DBNotification.xsc">
+      <DependentUpon>DBNotification.xsd</DependentUpon>
+    </None>
+    <None Include="Notifycation\DBNotification.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBNotification.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Notifycation\DBNotification.xss">
+      <DependentUpon>DBNotification.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="ProductID\DBJob.xsc">
+      <DependentUpon>DBJob.xsd</DependentUpon>
+    </None>
+    <None Include="ProductID\DBJob.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBJob.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ProductID\DBJob.xss">
+      <DependentUpon>DBJob.xsd</DependentUpon>
+    </None>
+    <None Include="ProductID\DBProperties.xsc">
+      <DependentUpon>DBProperties.xsd</DependentUpon>
+    </None>
+    <None Include="ProductID\DBProperties.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBProperties.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ProductID\DBProperties.xss">
+      <DependentUpon>DBProperties.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="QT_2DataSet.xsc">
+      <DependentUpon>QT_2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QT_2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QT_2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QT_2DataSet.xss">
+      <DependentUpon>QT_2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QT_2DataSetRealTime.xsc">
+      <DependentUpon>QT_2DataSetRealTime.xsd</DependentUpon>
+    </None>
+    <None Include="QT_2DataSetRealTime.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QT_2DataSetRealTime.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QT_2DataSetRealTime.xss">
+      <DependentUpon>QT_2DataSetRealTime.xsd</DependentUpon>
+    </None>
+    <None Include="QT_2Report.xsc">
+      <DependentUpon>QT_2Report.xsd</DependentUpon>
+    </None>
+    <None Include="QT_2Report.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QT_2Report.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QT_2Report.xss">
+      <DependentUpon>QT_2Report.xsd</DependentUpon>
+    </None>
+    <None Include="RaoVat\CrawlerSaleNew.xsc">
+      <DependentUpon>CrawlerSaleNew.xsd</DependentUpon>
+    </None>
+    <None Include="RaoVat\CrawlerSaleNew.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CrawlerSaleNew.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="RaoVat\CrawlerSaleNew.xss">
+      <DependentUpon>CrawlerSaleNew.xsd</DependentUpon>
+    </None>
+    <None Include="RaoVat\DBRegex.xsc">
+      <DependentUpon>DBRegex.xsd</DependentUpon>
+    </None>
+    <None Include="RaoVat\DBRegex.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBRegex.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="RaoVat\DBRegex.xss">
+      <DependentUpon>DBRegex.xsd</DependentUpon>
+    </None>
+    <None Include="SaleNewsDataSet.xsc">
+      <DependentUpon>SaleNewsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SaleNewsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SaleNewsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SaleNewsDataSet.xss">
+      <DependentUpon>SaleNewsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Tag\DBTag.xsc">
+      <DependentUpon>DBTag.xsd</DependentUpon>
+    </None>
+    <None Include="Tag\DBTag.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTag.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tag\DBTag.xss">
+      <DependentUpon>DBTag.xsd</DependentUpon>
+    </None>
+    <None Include="Tool\DBTool.xsc">
+      <DependentUpon>DBTool.xsd</DependentUpon>
+    </None>
+    <None Include="Tool\DBTool.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTool1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tool\DBTool.xss">
+      <DependentUpon>DBTool.xsd</DependentUpon>
+    </None>
+    <None Include="Tool\DBTool2.xsc">
+      <DependentUpon>DBTool2.xsd</DependentUpon>
+    </None>
+    <None Include="Tool\DBTool2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTool2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tool\DBTool2.xss">
+      <DependentUpon>DBTool2.xsd</DependentUpon>
+    </None>
+    <None Include="Tool\DBTool3.xsc">
+      <DependentUpon>DBTool3.xsd</DependentUpon>
+    </None>
+    <None Include="Tool\DBTool3.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTool3.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tool\DBTool3.xss">
+      <DependentUpon>DBTool3.xsd</DependentUpon>
+    </None>
+    <None Include="User\DBUser.xsc">
+      <DependentUpon>DBUser.xsd</DependentUpon>
+    </None>
+    <None Include="User\DBUser.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBUser.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="User\DBUser.xss">
+      <DependentUpon>DBUser.xsd</DependentUpon>
+    </None>
+    <None Include="View\DBView.xsc">
+      <DependentUpon>DBView.xsd</DependentUpon>
+    </None>
+    <None Include="View\DBView.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBView1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="View\DBView.xss">
+      <DependentUpon>DBView.xsd</DependentUpon>
+    </None>
+    <None Include="WebPartner\DBWebPartner.xsc">
+      <DependentUpon>DBWebPartner.xsd</DependentUpon>
+    </None>
+    <None Include="WebPartner\DBWebPartner.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBWebPartner.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="WebPartner\DBWebPartner.xss">
+      <DependentUpon>DBWebPartner.xsd</DependentUpon>
+    </None>
+    <None Include="Web\DBWeb.xsc">
+      <DependentUpon>DBWeb.xsd</DependentUpon>
+    </None>
+    <None Include="Web\DBWeb.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBWeb.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web\DBWeb.xss">
+      <DependentUpon>DBWeb.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GABIZ_BASE\GABIZ.BASE.csproj">
+      <Project>{8C825289-F1A7-4699-9D54-EEA95EC6AB21}</Project>
+      <Name>GABIZ.BASE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
+      <Project>{7F43CEBE-F21E-4C1F-91CB-1E400B8B76FB}</Project>
+      <Name>QT.Entities</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\QT.Users\QT.Users.csproj">
+      <Project>{4069E230-57AE-4F67-9288-D8222CCE4C46}</Project>
+      <Name>QT.Users</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\microsoft-excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CrawlerProduct\Solr\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

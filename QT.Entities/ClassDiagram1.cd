@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="QT.Entities.Server">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAA=</HashCode>
+      <FileName>Server.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QT.Entities.Product">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAiAAAAEARAAgAAAAAEAAAQEAAAFEAAAAAQCAAgAAAA=</HashCode>
+      <FileName>Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QT.Entities.Configuration">
+    <Position X="2.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgABhAAhAAAIQAAACAEAAAAAAAAGEAICAAAAgQAQQAg=</HashCode>
+      <FileName>Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QT.Entities.Company">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgACGgAgggAgAAAAAAAQAAgAEABACCAAAoAGAIAg=</HashCode>
+      <FileName>Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QT.Entities.CrawlerProduct">
+    <Position X="6.75" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="QT.Entities.CrawlerProduct.DataEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CrawlerProduct.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EAAgAAAAACAAAAAAAAAAAAAQAAEAAAAAIAAAAJAAAAA=</HashCode>
+      <FileName>CrawlerProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QT.Entities.Common">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="QT.Entities.Common.ProductStatus" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Common.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="QT.Entities.Common.ListWebCommand" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Common.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="QT.Entities.Common.CrawlerCommand" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Common.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Struct Name="QT.Entities.Common.CompanyStatus" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Common.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACAQgAEAAAIAQAACAAAAAAEBAAIAgAAAABBgBAQAo=</HashCode>
+      <FileName>Common.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QT.Entities.FileLog" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAIAAAAAAAAACAAAAgAAAAAAAA=</HashCode>
+      <FileName>Common.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QT.Entities.Wait" Collapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAQAAEAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Common.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

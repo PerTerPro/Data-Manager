@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceControl" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.100.143:177/ServiceControl.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.100.143:177/ServiceControl.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.100.143:177/ServiceControl.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WSS.Service.CrawlerProduct.Control" />
+      <xsd:import schemaLocation="http://192.168.100.143:177/ServiceControl.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/QT.Moduls.CrawlerProduct" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServiceControl_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_GetCompanyCrawlerReload_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyCrawlerReload" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_GetCompanyCrawlerReload_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyCrawlerReloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_GetCompanyCrawlerFindNew_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyCrawlerFindNew" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_GetCompanyCrawlerFindNew_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyCrawlerFindNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_UpdateCrawlerReloadStopImediate_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCrawlerReloadStopImediate" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_UpdateCrawlerReloadStopImediate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCrawlerReloadStopImediateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_CoutListWait_InputMessage">
+    <wsdl:part name="parameters" element="tns:CoutListWait" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_CoutListWait_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CoutListWaitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_UpdateCrawlerReloadEnd_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCrawlerReloadEnd" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_UpdateCrawlerReloadEnd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCrawlerReloadEndResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_SaveWaiting_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveWaiting" />
+  </wsdl:message>
+  <wsdl:message name="IServiceControl_SaveWaiting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveWaitingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServiceControl">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceControl/GetData" message="tns:IServiceControl_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceControl/GetDataResponse" message="tns:IServiceControl_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceControl/GetDataUsingDataContract" message="tns:IServiceControl_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceControl/GetDataUsingDataContractResponse" message="tns:IServiceControl_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyCrawlerReload">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceControl/GetCompanyCrawlerReload" message="tns:IServiceControl_GetCompanyCrawlerReload_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceControl/GetCompanyCrawlerReloadResponse" message="tns:IServiceControl_GetCompanyCrawlerReload_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyCrawlerFindNew">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceControl/GetCompanyCrawlerFindNew" message="tns:IServiceControl_GetCompanyCrawlerFindNew_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceControl/GetCompanyCrawlerFindNewResponse" message="tns:IServiceControl_GetCompanyCrawlerFindNew_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCrawlerReloadStopImediate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceControl/UpdateCrawlerReloadStopImediate" message="tns:IServiceControl_UpdateCrawlerReloadStopImediate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceControl/UpdateCrawlerReloadStopImediateResponse" message="tns:IServiceControl_UpdateCrawlerReloadStopImediate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CoutListWait">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceControl/CoutListWait" message="tns:IServiceControl_CoutListWait_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceControl/CoutListWaitResponse" message="tns:IServiceControl_CoutListWait_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCrawlerReloadEnd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceControl/UpdateCrawlerReloadEnd" message="tns:IServiceControl_UpdateCrawlerReloadEnd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceControl/UpdateCrawlerReloadEndResponse" message="tns:IServiceControl_UpdateCrawlerReloadEnd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveWaiting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceControl/SaveWaiting" message="tns:IServiceControl_SaveWaiting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceControl/SaveWaitingResponse" message="tns:IServiceControl_SaveWaiting_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServiceControl" type="tns:IServiceControl">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IServiceControl/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IServiceControl/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyCrawlerReload">
+      <soap:operation soapAction="http://tempuri.org/IServiceControl/GetCompanyCrawlerReload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyCrawlerFindNew">
+      <soap:operation soapAction="http://tempuri.org/IServiceControl/GetCompanyCrawlerFindNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCrawlerReloadStopImediate">
+      <soap:operation soapAction="http://tempuri.org/IServiceControl/UpdateCrawlerReloadStopImediate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CoutListWait">
+      <soap:operation soapAction="http://tempuri.org/IServiceControl/CoutListWait" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCrawlerReloadEnd">
+      <soap:operation soapAction="http://tempuri.org/IServiceControl/UpdateCrawlerReloadEnd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveWaiting">
+      <soap:operation soapAction="http://tempuri.org/IServiceControl/SaveWaiting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceControl">
+    <wsdl:port name="BasicHttpBinding_IServiceControl" binding="tns:BasicHttpBinding_IServiceControl">
+      <soap:address location="http://192.168.100.143:177/ServiceControl.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
