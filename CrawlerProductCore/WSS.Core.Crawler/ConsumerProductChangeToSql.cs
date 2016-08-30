@@ -73,9 +73,8 @@ namespace WSS.Core.Crawler
                 {
                     if (_productAdapter.InsertProduct(pt))
                     {
-
                         _jobClient.PublishJob(new Websosanh.Core.JobServer.Job() {Data = ImageProductInfo.GetMessage(new ImageProductInfo(pt.ID, pt.Name, pt.DetailUrl, pt.ImageUrl, true))});
-                        _log.Info(string.Format("Company: {0} Insert product: {1}", pt.CompanyId, pt.ID));
+                        _log.Info(string.Format("Company: {0} Inserted product: {1}", pt.CompanyId, pt.ID));
                     }
                 }
                 else

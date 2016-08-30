@@ -38,46 +38,46 @@
   <ItemGroup>
     <Reference Include="Cassandra, Version=3.0.0.0, Culture=neutral, PublicKeyToken=10b231fbfc8c4b4d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\Cassandra.dll</HintPath>
+      <HintPath>..\DLLs\Cassandra.dll</HintPath>
     </Reference>
     <Reference Include="GABIZ.Base">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\GABIZ.Base.dll</HintPath>
+      <HintPath>..\DLLs\GABIZ.Base.dll</HintPath>
     </Reference>
     <Reference Include="GABIZ.DAS">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\GABIZ.DAS.dll</HintPath>
+      <HintPath>..\DLLs\GABIZ.DAS.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\log4net.dll</HintPath>
+      <HintPath>..\DLLs\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\DLLs\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\protobuf-net.dll</HintPath>
+      <HintPath>..\DLLs\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="QT.Entities">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\QT.Entities\bin\Release\QT.Entities.dll</HintPath>
+      <HintPath>..\DLLs\QT.Entities.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="QT.Moduls">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\QT.Moduls\bin\Release\QT.Moduls.dll</HintPath>
+      <HintPath>..\DLLs\QT.Moduls.dll</HintPath>
     </Reference>
     <Reference Include="RabbitMQ.Client">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\RabbitMQ.Client.dll</HintPath>
+      <HintPath>..\DLLs\RabbitMQ.Client.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="SolrNet, Version=0.5.0.1002, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\SolrNet.dll</HintPath>
+      <HintPath>..\DLLs\SolrNet.dll</HintPath>
     </Reference>
     <Reference Include="StackExchange.Redis">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\StackExchange.Redis.dll</HintPath>
+      <HintPath>..\DLLs\StackExchange.Redis.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System">
@@ -125,16 +125,16 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
+      <HintPath>..\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Websosanh.Core.Drivers.Redis">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\Websosanh.Core.Drivers.Redis.dll</HintPath>
+      <HintPath>..\DLLs\Websosanh.Core.Drivers.Redis.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Websosanh.Core.JobServer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
+      <HintPath>..\DLLs\Websosanh.Core.JobServer.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -146,7 +146,7 @@
     <Compile Include="ConsumerDuplicateToSql.cs" />
     <Compile Include="ConsumerDescription.cs" />
     <Compile Include="ConsumerLinkFindNewToSolr.cs" />
-    <Compile Include="ConsumerProductChange.cs" />
+    <Compile Include="ConsumerProductChangeToSql.cs" />
     <Compile Include="ConsumerProductChangeToCache.cs" />
     <Compile Include="ConsumerHistoryProductToSolr.cs" />
     <Compile Include="ConsumerPushCompanyCrawler.cs" />

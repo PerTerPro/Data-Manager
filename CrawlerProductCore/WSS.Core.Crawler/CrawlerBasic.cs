@@ -33,7 +33,7 @@ namespace WSS.Core.Crawler
 
         public  virtual  void ProcessProductLink (string url)
         {
-            _log.InfoFormat("Product link: {0}", jobNodeCrawler.Url);
+            
         }
 
         public void Start()

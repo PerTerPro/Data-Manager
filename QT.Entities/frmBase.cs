@@ -12,6 +12,8 @@ namespace QT.Entities
 {
     public partial class frmBase : Form
     {
+        
+
         public BarItemVisibility VisibleStart { get; set; }
         public BarItemVisibility VisibleStop { set; get; }
         public BarItemVisibility VisiblePause { set; get; }
@@ -31,7 +33,8 @@ namespace QT.Entities
 
         public delegate void ChangedEventHandler(object sender, EventArgs e);
         public event ChangedEventHandler InitComplete;
-       
+
+        
         public frmBase()
         {
             InitializeComponent();
@@ -49,6 +52,7 @@ namespace QT.Entities
             EnabledRestart = true;
             EnabledSave = true;
         }
+        
 
         public virtual bool Start()
         {
@@ -78,8 +82,10 @@ namespace QT.Entities
 
         public virtual bool Save()
         {
-            MessageBox.Show("Đang hoàn thiện");
-            return true;
+
+                MessageBox.Show("Đang hoàn thiện");
+                return true;
+
         }
         public virtual bool Analytics()
         {

@@ -1103,7 +1103,7 @@ namespace _000
                     {
                         try
                         {
-                            frmCongTy frm = new frmCongTy();
+                            frmCongTy frm = new frmCongTy(false);
                             frm.MdiParent = this;
                             frm.Text = "CongTy " + this.ctrListWebSite1.GetUrlWebCurrent();
                             frm.SelectCompany(this.ctrListWebSite1.GetIDCompanyCurrent);

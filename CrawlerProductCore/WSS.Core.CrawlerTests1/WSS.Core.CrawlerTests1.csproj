@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GABIZ.Base">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\GABIZ.Base.dll</HintPath>
+      <HintPath>..\DLLs\GABIZ.Base.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -49,22 +49,22 @@
     </Reference>
     <Reference Include="QT.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\QT.Moduls\bin\Release\QT.Entities.dll</HintPath>
+      <HintPath>..\DLLs\QT.Entities.dll</HintPath>
     </Reference>
     <Reference Include="QT.Moduls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\QT.Moduls\bin\Release\QT.Moduls.dll</HintPath>
+      <HintPath>..\DLLs\QT.Moduls.dll</HintPath>
     </Reference>
     <Reference Include="RabbitMQ.Client, Version=3.5.6.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\RabbitMQ.Client.dll</HintPath>
+      <HintPath>..\DLLs\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Websosanh.Core.Drivers.RabbitMQ, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
+      <HintPath>..\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>

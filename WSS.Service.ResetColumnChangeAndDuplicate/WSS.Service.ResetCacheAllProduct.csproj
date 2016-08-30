@@ -136,7 +136,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Documents\Visual Studio 2013\Projects\WSS.Core.Crawler\WSS.Core.Crawler\WSS.Core.Crawler.csproj">
+    <ProjectReference Include="..\CrawlerProductCore\WSS.Core.Crawler\WSS.Core.Crawler.csproj">
       <Project>{f81a0ebe-34e3-4d1d-b2a8-432204e09cd9}</Project>
       <Name>WSS.Core.Crawler</Name>
     </ProjectReference>

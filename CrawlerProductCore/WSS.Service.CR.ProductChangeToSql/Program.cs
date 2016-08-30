@@ -17,7 +17,7 @@ namespace WSS.Service.CR.ProductChangeToSql
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
             { 
-                new ServiceUpdateProduct() 
+                new ServiceProductChangeToSql() 
             };
             ServiceBase.Run(ServicesToRun);
         }

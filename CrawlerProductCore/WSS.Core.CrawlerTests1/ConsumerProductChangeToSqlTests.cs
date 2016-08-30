@@ -22,7 +22,8 @@ namespace WSS.Core.Crawler.Tests
 
         [Test()]
         public void ConsumerProductChangeToSqlTest1()
-        {ConsumerProductChangeToSql c = new ConsumerProductChangeToSql();
+        {
+            ConsumerProductChangeToSql c = new ConsumerProductChangeToSql();
             c.StartConsume();
         }
 
@@ -58,6 +59,30 @@ namespace WSS.Core.Crawler.Tests
 
         [Test()]
         public void ProcessMessageTest1()
+        {
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void ConsumerProductChangeToSqlTest4()
+        {
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void ConsumerProductChangeToSqlTest5()
+        {
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void InitTest2()
+        {
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void ProcessMessageTest2()
         {
             Assert.Fail();
         }

@@ -37,15 +37,17 @@ namespace QT.Moduls.Company
         private bool _upSpilit = true;
         private Entities.Company _company;
         private string _htmlSource = "";
-        
+        protected bool Ready = true;
         //private Price_LogsTableAdapter _adtPriceLog;
         //private DBTableAdapters.ClassificationTableAdapter _adtClass;
         //private DBTableAdapters.ProductTableAdapter _adtProduct;
         private CancellationTokenSource cancelUpdateDataFeedTokenSource;
         private Task updateDataFeedTask;
         private CompanyFunctions _companyFuction;
-        public frmCongTy()
+        public frmCongTy(bool Ready = true)
         {
+            this.Ready = Ready;
+
             InitializeComponent();
             this.companyTableAdapter.Connection.ConnectionString = QT.Entities.Server.ConnectionString;
             this.company_StatusTableAdapter.Connection.ConnectionString = QT.Entities.Server.ConnectionString;
@@ -87,6 +89,8 @@ namespace QT.Moduls.Company
             });
             comboBoxDataFeedType.SelectedIndex = 0;
 
+           
+
             #region Button Push Message to Rabbit Update SolrRedis
             if (QT.Users.User.UserName == "admin")
             {
@@ -112,6 +116,14 @@ namespace QT.Moduls.Company
 
             this.dBCom.Company_Address.CompanyIDColumn.DefaultValue = _idCongTy;
             this.companyTableAdapter.Company_SelectOne(this.dB.Company, ID);
+            trustedCheckEdit.Checked = Convert.ToBoolean(dB.Company.Rows[0]["Trusted"]);
+            comboBoxDataFeedType.Text = QT.Entities.Common.Obj2String(dB.Company.Rows[0]["DataFeedType"]);
+            textBoxDataFeedUrl.Text = QT.Entities.Common.Obj2String(dB.Company.Rows[0]["DataFeedUrl"]);
+            numericUpDownUpdateDataFeedFrequence.Value = QT.Entities.Common.Obj2Int(dB.Company.Rows[0]["UpdateFreq"]);
+            userDatafeedTextEdit.Text = QT.Entities.Common.Obj2String(dB.Company.Rows[0]["UserDatafeed"]);
+            passwordDatafeedTextEdit.Text = QT.Entities.Common.Obj2String(dB.Company.Rows[0]["PasswordDatafeed"]);
+
+            Ready = true;
             if (QT.Entities.Common.Obj2Int(this.dB.Company.Rows[0]["DeliveryType"]) == 0)
             {
                 _deliveryType = 0;
@@ -256,7 +268,7 @@ namespace QT.Moduls.Company
         {
             try
             {
-
+                if (!this.Ready) return false;
 
                 this.Validate();
                 byte status = Common.Obj2Byte(this.dB.Company.Rows[0]["Status"]);

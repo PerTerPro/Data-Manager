@@ -34,29 +34,50 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\log4net.dll</HintPath>
+      <HintPath>..\DLLs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="QT.Entities">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\QT.Moduls\bin\Release\QT.Entities.dll</HintPath>
-    </Reference>
-    <Reference Include="QT.Moduls">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\QT.Moduls\bin\Release\QT.Moduls.dll</HintPath>
+      <HintPath>..\DLLs\QT.Entities.dll</HintPath>
     </Reference>
     <Reference Include="RabbitMQ.Client">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\RabbitMQ.Client.dll</HintPath>
+      <HintPath>..\DLLs\RabbitMQ.Client.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration.Install" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.ServiceProcess" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration.Install">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceProcess">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
+      <HintPath>..\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

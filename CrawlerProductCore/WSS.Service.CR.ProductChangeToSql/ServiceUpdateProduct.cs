@@ -13,12 +13,12 @@ using WSS.Core.Crawler;
 
 namespace WSS.Service.CR.ProductChangeToSql
 {
-    partial class ServiceUpdateProduct : ServiceBase
+    partial class ServiceProductChangeToSql : ServiceBase
     {
         ConsumerProductChangeToSql consumer = null;
-        private ILog _log = LogManager.GetLogger(typeof(ServiceUpdateProduct));
+        private ILog _log = LogManager.GetLogger(typeof(ServiceProductChangeToSql));
 
-        public ServiceUpdateProduct()
+        public ServiceProductChangeToSql()
         {
             InitializeComponent();
         }

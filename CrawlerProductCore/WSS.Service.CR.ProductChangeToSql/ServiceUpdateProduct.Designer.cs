@@ -1,6 +1,6 @@
 ﻿namespace WSS.Service.CR.ProductChangeToSql
 {
-    partial class ServiceUpdateProduct
+    partial class ServiceProductChangeToSql
     {
         /// <summary> 
         /// Required designer variable.
