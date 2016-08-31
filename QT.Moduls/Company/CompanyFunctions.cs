@@ -88,7 +88,7 @@ namespace QT.Moduls.Company
                     switch (filetype)
                     {
                         case "csv":
-                            listProducts.AddRange(ReadDataFeedProductsFromCSVFile(datafeedFileName, company));
+                            listProducts.AddRange(ReadDataFeedProductsFromCsvFile(datafeedFileName, company));
                             break;
                         case "xml":
                             listProducts.AddRange(ReadDataFeedProductsFromXmlFile(datafeedFileName, company));
@@ -331,14 +331,9 @@ namespace QT.Moduls.Company
                     if (UpdateCompanyDataFeedProduct(product, company, ref categoriesSet, ref oldProducts,
                         ref namePriceSet))
                     {
-                        //Send message lên service change image
-                        //RabbitMQAdapter.Instance.PushProductToQueueChangeImage(product.ID);
                         updatedProductCount++;
                     }
-                    //if (!writelog) continue;
-                    //if (countwritelog * 20000 != updatedProductCount) continue;
-                    Log.InfoFormat("Update {0}/{1} CompanyID = {2}", updatedProductCount, listProducts.Count, company.ID);
-                    //countwritelog++;
+                    //Log.InfoFormat("Update {0}/{1} CompanyID = {2}", updatedProductCount, listProducts.Count, company.ID);
                 }
 
                 int totaldeleteProduct = 0;
@@ -419,7 +414,7 @@ namespace QT.Moduls.Company
         }
         public bool SendMessageDownloadImage(long companyID, bool reloadall = false)
         {
-            var job = new Job {Data = BitConverter.GetBytes(companyID), Type = (int) TypeJobWithRabbitMQ.Company};
+            var job = new Job { Data = BitConverter.GetBytes(companyID), Type = (int)TypeJobWithRabbitMQ.Company };
             if (reloadall)
                 job.Type = (int)TypeJobWithRabbitMQ.ReloadAll;
             if (_jobClientDownloadImage != null)
@@ -539,7 +534,7 @@ namespace QT.Moduls.Company
                             true,
                             DateTime.Now,
                             false,
-                            oldProduct.Price, product.ShortDescription, product.IsDeal, product.OriginPrice, (int)product.Instock, (short)product.Status,product.VATStatus,
+                            oldProduct.Price, product.ShortDescription, product.IsDeal, product.OriginPrice, (int)product.Instock, (short)product.Status, product.VATStatus,
                             product.ID);
                         //Insert Price Log
                         InsertPriceLog(product.ID, DateTime.Now, product.Price, oldProduct.Price);
@@ -597,7 +592,7 @@ namespace QT.Moduls.Company
                         0,
                         product.AddPosition, product.VATInfo, product.PromotionInfo
                         , product.DeliveryInfo,
-                        product.OriginPrice, product.ShortDescription, product.IsDeal, (int)product.Instock,product.VATStatus
+                        product.OriginPrice, product.ShortDescription, product.IsDeal, (int)product.Instock, product.VATStatus
                         );
                     namePriceSet.Add(namePricePair);
 
@@ -909,7 +904,7 @@ namespace QT.Moduls.Company
             var result = new List<Product>();
             if (datafeedConfig == null)
                 datafeedConfig = GetDatafeedConfig(company.ID);
-            Dictionary<long, long> dicProduct = new Dictionary<long, long>();
+            var dicProduct = new Dictionary<long, long>();
             var xmlDocument = XDocument.Load(xmlStream);
             try
             {
@@ -917,12 +912,7 @@ namespace QT.Moduls.Company
                 //int index = 0;
                 foreach (var productNode in productNodes)
                 {
-                    //Log.Info(index);
-                    //index++;
-                    var tmpProduct = new Product();
-                    //tmpProduct.
-                    tmpProduct.Domain = company.Domain;
-                    tmpProduct.IDCongTy = company.ID;
+                    var tmpProduct = new Product {Domain = company.Domain, IDCongTy = company.ID};
                     XNamespace g = "";
                     if (!string.IsNullOrEmpty(datafeedConfig.XNameSpace))
                     {
@@ -943,11 +933,6 @@ namespace QT.Moduls.Company
                         else
                             continue;
                     }
-
-                    //if (tmpProduct.DetailUrl.Contains("https://www.adayroi.com/sua-ba-bau-star-mom-gold-800g-p-35eGP-f1-2?pi=0W5ar&w=YMY6"))
-                    //{
-                    //    MessageBox.Show("Có sản phẩm");
-                    //}
                     var decodedUrl = HttpUtility.UrlDecode(tmpProduct.DetailUrl);
                     string originalUrl = string.Empty;
                     if (!string.IsNullOrEmpty(datafeedConfig.RegexConfigUrl))
@@ -963,19 +948,6 @@ namespace QT.Moduls.Company
                     }
                     else
                         tmpProduct.ID = Common.GetIDProduct(tmpProduct.DetailUrl);
-                    //fix adayroi: links convert to accesstrade links
-                    //if (company.ID == 3433481253691794480)
-                    //{
-                    //    string accesstrade = @"http://click.accesstrade.vn/adv.php?rk=0001qr00010w&url=";
-                    //    string utm = HttpUtility.UrlDecode(tmpProduct.DetailUrl) + @"&utm_source=accesstradevn&traffic_id={clickid}";
-                    //    tmpProduct.DetailUrl  = accesstrade + HttpUtility.UrlEncode(utm);
-                    //} 
-                    //tmpProduct.ID = Common.GetIDProduct(string.IsNullOrEmpty(originalUrl) ? tmpProduct.DetailUrl : originalUrl);
-
-                    //if (tmpProduct.ID == 1115057968355086600)
-                    //{
-                    //    MessageBox.Show("aaaaaaaaaaaaaa");
-                    //}
                     if (!string.IsNullOrEmpty(datafeedConfig.SkuNode))
                     {
                         var skuXElement = productNode.Element(g + datafeedConfig.SkuNode);
@@ -1008,10 +980,6 @@ namespace QT.Moduls.Company
                         if (productNameXElement != null)
                             tmpProduct.Name = productNameXElement.Value;
                     }
-                    //if (tmpProduct.Name == "Vũ trụ thu nhỏ rực rỡ - Sách tô màu cho người lớn" || tmpProduct.DetailUrl.Contains("http://mualachuan.com/chi-tiet/vu-tru-thu-nho-ruc-ro-sach-to-mau-cho-nguoi-lon-15396"))
-                    //{
-                    //    MessageBox.Show("Có sản phẩm");
-                    //}
                     tmpProduct.HashName = Common.GetHashNameProduct(company.Domain, tmpProduct.Name.Trim());
                     //
                     if (!string.IsNullOrEmpty(datafeedConfig.DescriptionNode))
@@ -1146,23 +1114,19 @@ namespace QT.Moduls.Company
                         var vatstatusElement = productNode.Element(g + datafeedConfig.VATStatus);
                         if (vatstatusElement != null)
                         {
-                            int vatstatus = 3;
-                            int.TryParse(vatstatusElement.Value.ToString(), out vatstatus);
-                            switch (vatstatus)
+                            if (vatstatusElement.Value.ToLower().Trim() == "true" ||
+                                vatstatusElement.Value.Trim() == "1" ||
+                                vatstatusElement.Value.ToLower().Trim() == "đã có vat")
+                                tmpProduct.VATStatus = Common.VATStatus.HaveVAT;
+                            else if (vatstatusElement.Value.ToLower().Trim() == "false" ||
+                                     vatstatusElement.Value.Trim() == "0" ||
+                                     vatstatusElement.Value.ToLower().Trim() == "không có vat" ||
+                                     vatstatusElement.Value.ToLower().Trim() == "chưa có vat")
                             {
-                                case (int)Common.VATStatus.NotVAT:
-                                    tmpProduct.VATStatus = Common.VATStatus.NotVAT;
-                                    break;
-                                case (int)Common.VATStatus.HaveVAT:
-                                    tmpProduct.VATStatus = Common.VATStatus.HaveVAT;
-                                    break;
-                                case (int)Common.VATStatus.UndefinedVAT:
-                                    tmpProduct.VATStatus = Common.VATStatus.UndefinedVAT;
-                                    break;
-                                default:
-                                    tmpProduct.VATStatus = Common.VATStatus.UndefinedVAT;
-                                    break;
+                                tmpProduct.VATStatus = Common.VATStatus.NotVAT;
                             }
+                            else
+                                tmpProduct.VATStatus = Common.VATStatus.UndefinedVAT;
                         }
                         else
                             tmpProduct.VATStatus = Common.VATStatus.UndefinedVAT;
@@ -1178,7 +1142,6 @@ namespace QT.Moduls.Company
                     {
                         Log.Info(string.Format("Trung SP. Product: {0}", tmpProduct.Name)); continue;
                     }
-
                     else
                     {
                         try
@@ -1188,7 +1151,6 @@ namespace QT.Moduls.Company
                         }
                         catch (Exception)
                         {
-                            //MessageBox.Show("ERROR " + ex.Message);
                         }
                     }
                 }
@@ -1201,21 +1163,20 @@ namespace QT.Moduls.Company
             }
         }
 
-        public List<Product> ReadDataFeedProductsFromCSVFile(string csvPath, QT.Entities.Company company, DatafeedConfig datafeedConfig = null)
+        public List<Product> ReadDataFeedProductsFromCsvFile(string csvPath, QT.Entities.Company company, DatafeedConfig datafeedConfig = null)
         {
             //string line = string.Empty;
             //char[] charSeparators = new char[] { ',','"' };
             if (datafeedConfig == null)
                 datafeedConfig = GetDatafeedConfig(company.ID);
             var result = new List<Product>();
-            DataTable dtProduct = Common.GetDataTableFromCSVFileUsingOLEDB(csvPath, "YES");
+            var dtProduct = Common.GetDataTableFromCSVFileUsingOLEDB(csvPath, "YES");
             for (int i = 0; i < dtProduct.Rows.Count; i++)
             {
                 try
                 {
-                    var tmpProduct = new Product();
-                    tmpProduct.Domain = company.Domain;
-                    tmpProduct.IDCongTy = company.ID;
+                    var tmpProduct = new Product {Domain = company.Domain, IDCongTy = company.ID};
+
                     #region Name
                     if (!string.IsNullOrEmpty(datafeedConfig.ProductNameNode))
                     {
@@ -1410,8 +1371,8 @@ namespace QT.Moduls.Company
                     }
 
                     #region Categories
-                    tmpProduct.Categories = new List<string>();
-                    tmpProduct.Categories.Add(company.Domain);
+
+                    tmpProduct.Categories = new List<string> {company.Domain};
                     if (!string.IsNullOrEmpty(datafeedConfig.Category1Node))
                     {
                         try
@@ -1459,6 +1420,8 @@ namespace QT.Moduls.Company
                     else
                         Log.Warn(string.Format("DatafeedConfig null. PictureUrl1Node = {0}. Product: {1}  ID = {2}", datafeedConfig.PictureUrl1Node, tmpProduct.Name, tmpProduct.ID));
                     #endregion
+
+                    tmpProduct.VATStatus = 1;
                     result.Add(tmpProduct);
                 }
                 catch (Exception ex)
@@ -1541,10 +1504,6 @@ namespace QT.Moduls.Company
 
         public List<Product> ConvertProductMasOfferToProductWebsosanh(List<ProductMasOffer> listProductMasOffers, Entities.Company company, DatafeedConfig datafeedConfig = null)
         {
-            //if (datafeedConfig == null)
-            //{
-            //    datafeedConfig = GetDatafeedConfig(company.ID);
-            //}
             var result = new List<Product>();
             foreach (var item in listProductMasOffers)
             {
@@ -1556,11 +1515,11 @@ namespace QT.Moduls.Company
                     DetailUrl = item.affiliate_url,
                     MerchantSku = item.product_sku,
                     Name = item.product_name,
-                    OriginPrice = (int) item.product_price,
-                    Price = (int) item.product_sale_price,
+                    OriginPrice = (int)item.product_price,
+                    Price = (int)item.product_sale_price,
                     ImageUrls = item.product_image_urls,
-                    Categories = new List<string>() {company.Domain},
-                    OriginalUrl = new List<string> {originalUrl}
+                    Categories = new List<string>() { company.Domain },
+                    OriginalUrl = new List<string> { originalUrl }
                 };
                 tmpProduct.ID = Common.GetIDProduct(string.IsNullOrEmpty(originalUrl) ? tmpProduct.DetailUrl : originalUrl);
                 tmpProduct.Status = item.product_inventory_quantity > 0 ? Common.ProductStatus.Available : Common.ProductStatus.Clear;
@@ -1568,7 +1527,7 @@ namespace QT.Moduls.Company
                 tmpProduct.HashName = Common.GetHashNameProduct(company.Domain, tmpProduct.Name.Trim());
                 tmpProduct.Categories.Add(item.product_category);
                 tmpProduct.IDCategories = Common.GetIDClassification(Common.ConvertToString(tmpProduct.Categories, " -> "));
-
+                tmpProduct.VATStatus = 1;
                 result.Add(tmpProduct);
             }
             return result;
@@ -1659,7 +1618,7 @@ namespace QT.Moduls.Company
                 tmpProduct.IDCategories = Common.GetIDClassification(Common.ConvertToString(tmpProduct.Categories, " -> "));
 
                 tmpProduct.ImageUrls = string.IsNullOrEmpty(listProductConCung[i].image_default) ? new List<string>() : new List<string>() { listProductConCung[i].image_default };
-
+                tmpProduct.VATStatus = 1;
                 result.Add(tmpProduct);
             }
             #endregion
