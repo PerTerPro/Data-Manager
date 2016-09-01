@@ -1131,6 +1131,8 @@ namespace QT.Moduls.Company
                         else
                             tmpProduct.VATStatus = Common.VATStatus.UndefinedVAT;
                     }
+                    else
+                        tmpProduct.VATStatus = Common.VATStatus.UndefinedVAT;
 
                     //Check Trùng sản phẩm
                     long hashchecktrung = 0;
