@@ -3493,7 +3493,7 @@ namespace QT.Entities
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                Log.Error(ImageUrl+ex.Message+ex.StackTrace);
                 return ImageUrl;
             }
         }

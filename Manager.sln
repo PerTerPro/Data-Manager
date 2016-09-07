@@ -216,6 +216,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Crawler.Product.Report"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Service.UpdateCompanyToWeb", "WSS.Service.UpdateCompanyToWeb\WSS.Service.UpdateCompanyToWeb.csproj", "{DD06258F-35E7-4952-9C5C-B0B6C6BA1983}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.IndividualCategoryWebsites", "WSS.IndividualCategoryWebsites\WSS.IndividualCategoryWebsites.csproj", "{9420F4F6-F6C4-486D-8803-0079F40280DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1157,6 +1159,16 @@ Global
 		{DD06258F-35E7-4952-9C5C-B0B6C6BA1983}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DD06258F-35E7-4952-9C5C-B0B6C6BA1983}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{DD06258F-35E7-4952-9C5C-B0B6C6BA1983}.Release|x86.ActiveCfg = Release|Any CPU
+		{9420F4F6-F6C4-486D-8803-0079F40280DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9420F4F6-F6C4-486D-8803-0079F40280DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9420F4F6-F6C4-486D-8803-0079F40280DF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9420F4F6-F6C4-486D-8803-0079F40280DF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9420F4F6-F6C4-486D-8803-0079F40280DF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9420F4F6-F6C4-486D-8803-0079F40280DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9420F4F6-F6C4-486D-8803-0079F40280DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9420F4F6-F6C4-486D-8803-0079F40280DF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9420F4F6-F6C4-486D-8803-0079F40280DF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9420F4F6-F6C4-486D-8803-0079F40280DF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

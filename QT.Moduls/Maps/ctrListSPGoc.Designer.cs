@@ -88,6 +88,7 @@
             this.gridControl5 = new DevExpress.XtraGrid.GridControl();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            this.checkEditLoadAllNew = new DevExpress.XtraEditors.CheckEdit();
             this.txtIDDataNew = new DevExpress.XtraEditors.TextEdit();
             this.rdbMotTuan = new System.Windows.Forms.RadioButton();
             this.rdbHomNay = new System.Windows.Forms.RadioButton();
@@ -127,7 +128,6 @@
             this.tableAdapterManager1 = new QT.Moduls.Maps.DBMapTableAdapters.TableAdapterManager();
             this.company_AddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.company_AddressTableAdapter = new QT.Moduls.Maps.DBMapTableAdapters.Company_AddressTableAdapter();
-            this.checkEditLoadAllNew = new DevExpress.XtraEditors.CheckEdit();
             iDLabel = new System.Windows.Forms.Label();
             iDLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -155,6 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditLoadAllNew.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIDDataNew.Properties)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
@@ -173,7 +174,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dBMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.company_AddressBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditLoadAllNew.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // iDLabel
@@ -431,6 +431,11 @@
             this.gridControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridControl1.DataSource = this.productBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gridControl1.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gridControl1.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gridControl1.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gridControl1.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.gridControl1.Location = new System.Drawing.Point(0, 34);
             this.gridControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl1.MainView = this.gridView1;
@@ -440,6 +445,7 @@
             this.repositoryItemLookUpEditCategory});
             this.gridControl1.Size = new System.Drawing.Size(520, 449);
             this.gridControl1.TabIndex = 3;
+            this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -762,6 +768,14 @@
             this.panelControl5.Name = "panelControl5";
             this.panelControl5.Size = new System.Drawing.Size(520, 47);
             this.panelControl5.TabIndex = 1;
+            // 
+            // checkEditLoadAllNew
+            // 
+            this.checkEditLoadAllNew.Location = new System.Drawing.Point(394, 16);
+            this.checkEditLoadAllNew.Name = "checkEditLoadAllNew";
+            this.checkEditLoadAllNew.Properties.Caption = "Load all";
+            this.checkEditLoadAllNew.Size = new System.Drawing.Size(63, 19);
+            this.checkEditLoadAllNew.TabIndex = 4;
             // 
             // txtIDDataNew
             // 
@@ -1099,14 +1113,6 @@
             // 
             this.company_AddressTableAdapter.ClearBeforeFill = true;
             // 
-            // checkEditLoadAllNew
-            // 
-            this.checkEditLoadAllNew.Location = new System.Drawing.Point(394, 16);
-            this.checkEditLoadAllNew.Name = "checkEditLoadAllNew";
-            this.checkEditLoadAllNew.Properties.Caption = "Load all";
-            this.checkEditLoadAllNew.Size = new System.Drawing.Size(63, 19);
-            this.checkEditLoadAllNew.TabIndex = 4;
-            // 
             // ctrListSPGoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1143,6 +1149,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
             this.panelControl5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditLoadAllNew.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIDDataNew.Properties)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
@@ -1162,7 +1169,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dBMap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.company_AddressBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditLoadAllNew.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

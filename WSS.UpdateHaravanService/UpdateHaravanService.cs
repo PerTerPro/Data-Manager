@@ -56,6 +56,7 @@ namespace WSS.UpdateHaravanService
                 {
                     var worker = new Worker(updateProductImageCompanyJobName, false, rabbitMQServer);
                     workers[i] = worker;
+                    CompanyFunctions companyFunctions = new CompanyFunctions();
                     Task workerTask = new Task(() =>
                     {
                         worker.JobHandler = (updateProductJob) =>
@@ -64,7 +65,7 @@ namespace WSS.UpdateHaravanService
                             try
                             {
                                 id = BitConverter.ToInt64(updateProductJob.Data, 0);
-                                UpdateProductHaravan(id);
+                                UpdateProductHaravan(companyFunctions,id);
                             }
                             catch (Exception ex)
                             {
@@ -85,7 +86,7 @@ namespace WSS.UpdateHaravanService
             }
 
         }
-        private void UpdateProductHaravan(long idWebsosanh)
+        private void UpdateProductHaravan(CompanyFunctions companyFunctions,long idWebsosanh)
         {
             //Log.Info(string.Format("Nhan message {0}", idWebsosanh));
             DBHarTableAdapters.Company_HaravanTableAdapter haravanAdapter = new DBHarTableAdapters.Company_HaravanTableAdapter();
@@ -121,7 +122,6 @@ namespace WSS.UpdateHaravanService
                         {
                             Log.InfoFormat("Get {0} product of Company {1}, ID = {2}", ListProducts.Count,
                                 company.Domain, company.ID);
-                            CompanyFunctions companyFunctions = new CompanyFunctions();
                             var cancelUpdateDataFeedTokenSource = new CancellationTokenSource();
                             companyFunctions.UpdateProductsToSql(company, ListProducts,
                                 cancelUpdateDataFeedTokenSource);
