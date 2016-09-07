@@ -64,20 +64,46 @@ namespace QT.Moduls
         protected override void MessageReturn(object sender, BasicReturnEventArgs args)
         {
         }
+
         public void Publish(byte[] mss, bool persistence = true, int timeLiveBySecond = 0)
         {
-            IBasicProperties properties = new BasicProperties();
-            if (timeLiveBySecond > 0) properties.Expiration = Convert.ToString(timeLiveBySecond * 1000);
-            properties.Persistent = persistence;
-            Publish(true, properties, mss);
+            while (true)
+            {
+                try
+                {
+                    IBasicProperties properties = new BasicProperties();
+                    if (timeLiveBySecond > 0) properties.Expiration = Convert.ToString(timeLiveBySecond * 1000);
+                    properties.Persistent = persistence;
+                    Publish(true, properties, mss);
+                    break;
+                }
+                catch (Exception exception)
+                {
+                    _log.Error(exception);
+                    Thread.Sleep(5000);
+                }
+            }
         }
 
         public void PublishString(string mss, bool persistence = true, int timeLiveBySecond = 0)
         {
-            IBasicProperties properties = new BasicProperties();
-            if (timeLiveBySecond > 0) properties.Expiration = Convert.ToString(timeLiveBySecond*1000);
-            properties.Persistent = persistence;
-            Publish(true, properties, UTF8Encoding.UTF8.GetBytes(mss));
+            while (true)
+            {
+                try
+                {
+                    IBasicProperties properties = new BasicProperties();
+                    if (timeLiveBySecond > 0) properties.Expiration = Convert.ToString(timeLiveBySecond * 1000);
+                    properties.Persistent = persistence;
+                    Publish(true, properties, UTF8Encoding.UTF8.GetBytes(mss));
+                    break;
+                }
+                catch(Exception exception)
+                {
+                    _log.Error(exception);
+                    Thread.Sleep(5000);
+                }
+            }
+
         }
     }
 }

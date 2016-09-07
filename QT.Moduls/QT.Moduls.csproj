@@ -408,7 +408,7 @@
     <Compile Include="CrawlerProduct\Cache\RedisProductIDOfCompany.cs" />
     <Compile Include="CrawlerProduct\CassandraLog.cs" />
     <Compile Include="CrawlerProduct\CheckFailRegex.cs" />
-    <Compile Include="CrawlerProduct\CommentProduct.cs" />
+    <Compile Include="CrawlerProduct\Comment\CommentProduct.cs" />
     <Compile Include="CrawlerProduct\Comment\ConsumerDownlaodHtml.cs" />
     <Compile Include="CrawlerProduct\Comment\PublisherDownloadHtml.cs" />
     <Compile Include="CrawlerProduct\Comment\WorkerDownloadHtml.cs" />
@@ -680,7 +680,7 @@
     </Compile>
     <Compile Include="CrawlerProduct\IWorker.cs" />
     <Compile Include="CrawlerProduct\JobCrawler.cs" />
-    <Compile Include="CrawlerProduct\JobCrawlerReview.cs" />
+    <Compile Include="CrawlerProduct\Comment\JobCrawlerReview.cs" />
     <Compile Include="CrawlerProduct\LogCrawlerMQ.cs" />
     <Compile Include="CrawlerProduct\MssLog.cs" />
     <Compile Include="CrawlerProduct\NoSql\NoSqlHistoryCrawler.cs" />
@@ -706,7 +706,7 @@
     <Compile Include="CrawlerProduct\FrmValidCrawler.Designer.cs">
       <DependentUpon>FrmValidCrawler.cs</DependentUpon>
     </Compile>
-    <Compile Include="CrawlerProduct\WorkerCrawlerReview.cs" />
+    <Compile Include="CrawlerProduct\Comment\WorkerCrawlerReview.cs" />
     <Compile Include="CrawlerProduct\WorkerDuyetID.cs" />
     <Compile Include="CrawlerProduct\WorkerFindNew.cs" />
     <Compile Include="CrawlerProduct\WorkerReload.cs" />

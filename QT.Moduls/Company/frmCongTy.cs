@@ -116,7 +116,7 @@ namespace QT.Moduls.Company
 
             this.dBCom.Company_Address.CompanyIDColumn.DefaultValue = _idCongTy;
             this.companyTableAdapter.Company_SelectOne(this.dB.Company, ID);
-            trustedCheckEdit.Checked = Convert.ToBoolean(dB.Company.Rows[0]["Trusted"]);
+            trustedCheckEdit.Checked = (dB.Company.Rows[0]["Trusted"] == DBNull.Value) ? false : Convert.ToBoolean(dB.Company.Rows[0]["Trusted"]);
             comboBoxDataFeedType.Text = QT.Entities.Common.Obj2String(dB.Company.Rows[0]["DataFeedType"]);
             textBoxDataFeedUrl.Text = QT.Entities.Common.Obj2String(dB.Company.Rows[0]["DataFeedUrl"]);
             numericUpDownUpdateDataFeedFrequence.Value = QT.Entities.Common.Obj2Int(dB.Company.Rows[0]["UpdateFreq"]);
