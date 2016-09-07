@@ -237,7 +237,6 @@ namespace QT.Moduls.Company
                 var categoriesSet = new HashSet<long>();
 
                 var newProductsDict = new Dictionary<long, Product>();
-
                 #region Init Connections
 
                 _adtClass = new DBTableAdapters.ClassificationTableAdapter

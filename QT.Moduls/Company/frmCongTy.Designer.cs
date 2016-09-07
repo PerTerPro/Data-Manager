@@ -348,7 +348,6 @@
             this.ckOriginalProduct = new DevExpress.XtraEditors.CheckEdit();
             this.ckNotOriginalProduct = new DevExpress.XtraEditors.CheckEdit();
             this.btnLoad = new DevExpress.XtraEditors.SimpleButton();
-            //this.company_DeliveryTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.companyBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.totalProductTextBox = new System.Windows.Forms.TextBox();
             this.websiteTextBox = new System.Windows.Forms.TextBox();
@@ -370,6 +369,7 @@
             this.productTableAdapter = new QT.Moduls.DBTableAdapters.ProductTableAdapter();
             this.job_SPGocNhapLieuTempTableAdapter1 = new QT.Users.DBPhanSPTableAdapters.Job_SPGocNhapLieuTempTableAdapter();
             this.companyTableAdapter1 = new QT.Users.DBTableAdapters.CompanyTableAdapter();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             websiteLabel = new System.Windows.Forms.Label();
@@ -511,7 +511,6 @@
             this.panelControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ckOriginalProduct.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckNotOriginalProduct.Properties)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.company_DeliveryTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyStatusBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -1090,8 +1089,8 @@
             // 
             // xtraTabControl1
             // 
-            this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 32);
             this.xtraTabControl1.Name = "xtraTabControl1";
@@ -2273,8 +2272,8 @@
             // 
             // gridControl1
             // 
-            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridControl1.DataSource = this.companyAddressBindingSource;
@@ -2461,7 +2460,7 @@
             // 
             // keywordsTextBox
             // 
-            this.keywordsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.keywordsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.keywordsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "Keywords", true));
             this.keywordsTextBox.Location = new System.Drawing.Point(81, 564);
@@ -2736,7 +2735,8 @@
             this.gridColumn1,
             this.gridColumnPrice,
             this.gridColumnInStock,
-            this.gridColumnUrl});
+            this.gridColumnUrl,
+            this.gridColumn2});
             this.gridViewListProduct.GridControl = this.gridControlListProduct;
             this.gridViewListProduct.Name = "gridViewListProduct";
             this.gridViewListProduct.OptionsView.ShowAutoFilterRow = true;
@@ -3606,11 +3606,6 @@
             this.btnLoad.Text = "Load Product";
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // company_DeliveryTypeBindingSource
-            // 
-            //this.company_DeliveryTypeBindingSource.DataMember = "Company_DeliveryType";
-            //this.company_DeliveryTypeBindingSource.DataSource = this.dB;
-            // 
             // companyBindingSource1
             // 
             this.companyBindingSource1.DataMember = "Company";
@@ -3632,7 +3627,7 @@
             // 
             // websiteTextBox
             // 
-            this.websiteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.websiteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.websiteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "Website", true));
             this.websiteTextBox.Location = new System.Drawing.Point(455, 6);
@@ -3775,8 +3770,13 @@
             // 
             this.companyTableAdapter1.ClearBeforeFill = true;
             // 
-            // company_DeliveryTypeTableAdapter
+            // gridColumn2
             // 
+            this.gridColumn2.Caption = "VATStatus";
+            this.gridColumn2.FieldName = "VATStatus";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 6;
             // 
             // frmCongTy
             // 
@@ -3904,7 +3904,6 @@
             this.panelControl7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ckOriginalProduct.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckNotOriginalProduct.Properties)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.company_DeliveryTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyStatusBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -4205,5 +4204,6 @@
         private System.Windows.Forms.TextBox deliveryInfomationTextBox;
         //private System.Windows.Forms.BindingSource company_DeliveryTypeBindingSource;
         private System.Windows.Forms.ComboBox cmbDeliveryType;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }

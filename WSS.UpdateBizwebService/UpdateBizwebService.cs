@@ -55,6 +55,7 @@ namespace WSS.UpdateBizwebService
                 for (int i = 0; i < workerCount; i++)
                 {
                     var worker = new Worker(updateProductImageCompanyJobName, false, rabbitMQServer);
+                    CompanyFunctions companyFunctions = new CompanyFunctions();
                     workers[i] = worker;
                     Task workerTask = new Task(() =>
                     {
@@ -64,7 +65,7 @@ namespace WSS.UpdateBizwebService
                             try
                             {
                                 id = BitConverter.ToInt64(updateProductJob.Data, 0);
-                                UpdateProductBizweb(id);
+                                UpdateProductBizweb(companyFunctions,id);
                             }
                             catch (Exception ex)
                             {
@@ -85,7 +86,7 @@ namespace WSS.UpdateBizwebService
             }
         }
 
-        private void UpdateProductBizweb(long idWebsosanh)
+        private void UpdateProductBizweb(CompanyFunctions companyFunctions,long idWebsosanh)
         {
             DBBizTableAdapters.Company_BizwebTableAdapter bizwebTableAdapter = new DBBizTableAdapters.Company_BizwebTableAdapter();
             bizwebTableAdapter.Connection.ConnectionString = connectionString;
@@ -114,7 +115,6 @@ namespace WSS.UpdateBizwebService
                         else
                         {
                             Log.InfoFormat("Get {0} product of Company {1}, ID = {2}", ListProducts.Count, company.Domain, company.ID);
-                            CompanyFunctions companyFunctions = new CompanyFunctions();
                             var cancelUpdateDataFeedTokenSource = new CancellationTokenSource();
                             companyFunctions.UpdateProductsToSql(company, ListProducts, cancelUpdateDataFeedTokenSource);
                         }

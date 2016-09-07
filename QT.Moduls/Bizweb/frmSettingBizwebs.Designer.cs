@@ -166,6 +166,7 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemUpdateByCurrentDomain = new System.Windows.Forms.ToolStripMenuItem();
             this.productTableAdapter = new QT.Moduls.Bizweb.DBBizwebTableAdapters.ProductTableAdapter();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             companyIdBizwebLabel = new System.Windows.Forms.Label();
             shopNameLabel = new System.Windows.Forms.Label();
             domainChinhXacLabel = new System.Windows.Forms.Label();
@@ -654,7 +655,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(798, 741);
+            this.panelControl2.Size = new System.Drawing.Size(801, 741);
             this.panelControl2.TabIndex = 0;
             // 
             // xtraTabControl1
@@ -663,7 +664,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPageProduct;
-            this.xtraTabControl1.Size = new System.Drawing.Size(798, 741);
+            this.xtraTabControl1.Size = new System.Drawing.Size(801, 741);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageProduct,
@@ -675,7 +676,7 @@
             this.xtraTabPageProduct.Controls.Add(this.gridControlProduct);
             this.xtraTabPageProduct.Controls.Add(this.panelControl5);
             this.xtraTabPageProduct.Name = "xtraTabPageProduct";
-            this.xtraTabPageProduct.Size = new System.Drawing.Size(790, 712);
+            this.xtraTabPageProduct.Size = new System.Drawing.Size(795, 713);
             this.xtraTabPageProduct.Text = "Product";
             // 
             // gridControlProduct
@@ -695,7 +696,7 @@
             this.gridControlProduct.Location = new System.Drawing.Point(0, 53);
             this.gridControlProduct.MainView = this.gridViewProduct;
             this.gridControlProduct.Name = "gridControlProduct";
-            this.gridControlProduct.Size = new System.Drawing.Size(790, 659);
+            this.gridControlProduct.Size = new System.Drawing.Size(795, 660);
             this.gridControlProduct.TabIndex = 2;
             this.gridControlProduct.UseEmbeddedNavigator = true;
             this.gridControlProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -708,7 +709,8 @@
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn6});
             this.gridViewProduct.GridControl = this.gridControlProduct;
             this.gridViewProduct.Name = "gridViewProduct";
             this.gridViewProduct.OptionsView.ShowAutoFilterRow = true;
@@ -762,7 +764,7 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl5.Location = new System.Drawing.Point(0, 0);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(790, 53);
+            this.panelControl5.Size = new System.Drawing.Size(795, 53);
             this.panelControl5.TabIndex = 0;
             // 
             // simpleButtonUpdateProduct
@@ -1398,6 +1400,14 @@
             // 
             this.productTableAdapter.ClearBeforeFill = true;
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "VATStatus";
+            this.gridColumn6.FieldName = "VATStatus";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
+            // 
             // frmSettingBizwebs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1599,5 +1609,6 @@
         private DevExpress.XtraEditors.TextEdit iDCompanySearchTextEdit;
         private System.Windows.Forms.BindingSource productBindingSource;
         private DBBizwebTableAdapters.ProductTableAdapter productTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }

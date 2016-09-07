@@ -36,14 +36,21 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.rbKeywords = new System.Windows.Forms.RichTextBox();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.txtLimitPushMessage = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumberFound.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLimitResult.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLimitPushMessage.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -123,6 +130,17 @@
             this.rbKeywords.TabIndex = 2;
             this.rbKeywords.Text = "";
             // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.simpleButton1);
+            this.panelControl2.Controls.Add(this.txtLimitPushMessage);
+            this.panelControl2.Controls.Add(this.labelControl4);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl2.Location = new System.Drawing.Point(206, 0);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(1051, 63);
+            this.panelControl2.TabIndex = 2;
+            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -131,11 +149,11 @@
             this.gridControl1.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridControl1.Location = new System.Drawing.Point(206, 0);
+            this.gridControl1.Location = new System.Drawing.Point(206, 63);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1051, 672);
-            this.gridControl1.TabIndex = 1;
+            this.gridControl1.Size = new System.Drawing.Size(1051, 609);
+            this.gridControl1.TabIndex = 2;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -145,12 +163,39 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
+            // txtLimitPushMessage
+            // 
+            this.txtLimitPushMessage.EditValue = "100000";
+            this.txtLimitPushMessage.Location = new System.Drawing.Point(830, 23);
+            this.txtLimitPushMessage.Name = "txtLimitPushMessage";
+            this.txtLimitPushMessage.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtLimitPushMessage.Size = new System.Drawing.Size(70, 20);
+            this.txtLimitPushMessage.TabIndex = 3;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(713, 26);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(101, 13);
+            this.labelControl4.TabIndex = 4;
+            this.labelControl4.Text = "Giới hạn số sản phẩm";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(927, 11);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(112, 43);
+            this.simpleButton1.TabIndex = 5;
+            this.simpleButton1.Text = "Push Message";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // frmGetProductFromSolr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1257, 672);
             this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Name = "frmGetProductFromSolr";
             this.Text = "frmGetProductFromSolr";
@@ -159,8 +204,12 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumberFound.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLimitResult.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLimitPushMessage.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -175,6 +224,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.RichTextBox rbKeywords;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.TextEdit txtLimitPushMessage;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }

@@ -42,14 +42,30 @@
     <Reference Include="Castle.Windsor">
       <HintPath>..\000\DLLs\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Data.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraBars.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="HttpWebAdapters">
       <HintPath>..\000\DLLs\HttpWebAdapters.dll</HintPath>
     </Reference>
@@ -63,27 +79,57 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
+    </Reference>
     <Reference Include="SolrNet">
       <HintPath>..\000\DLLs\SolrNet.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Websosanh.Core.Common">
       <HintPath>..\000\DLLs\Websosanh.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
+      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
     <Reference Include="Websosanh.Core.Drivers.Solr">
       <HintPath>..\000\DLLs\Websosanh.Core.Drivers.Solr.dll</HintPath>
     </Reference>
+    <Reference Include="Websosanh.Core.JobServer">
+      <HintPath>..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\ConfigRabbitMqIndividualCategoryWebsites.cs" />
     <Compile Include="DBIndi.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,6 +158,7 @@
     <Compile Include="SolrProduct\SolrProductConstants.cs" />
     <Compile Include="SolrProduct\SolrProductItem.cs" />
     <Compile Include="SolrProduct\SolrUtils.cs" />
+    <Compile Include="UtilZipFile.cs" />
     <EmbeddedResource Include="frmGetProductFromSolr.resx">
       <DependentUpon>frmGetProductFromSolr.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +198,9 @@
     <None Include="DBProduct.xss">
       <DependentUpon>DBProduct.xsd</DependentUpon>
     </None>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -166,6 +216,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ProductNew\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
+      <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
+      <Name>QT.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QT.Moduls\QT.Moduls.csproj">
+      <Project>{b8d02031-c0b6-4e60-a318-9f39d9b9a8a9}</Project>
+      <Name>QT.Moduls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

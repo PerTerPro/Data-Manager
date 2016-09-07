@@ -182,6 +182,7 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.UpdateByDomainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.companySearchTableAdapter = new QT.Moduls.WebPartner.DBWebPartnerTableAdapters.CompanySearchTableAdapter();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             shopNameLabel = new System.Windows.Forms.Label();
             companyIdHaravanLabel = new System.Windows.Forms.Label();
             domainChinhXacLabel = new System.Windows.Forms.Label();
@@ -778,7 +779,8 @@
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn6});
             this.gridViewProduct.GridControl = this.gridControlProduct;
             this.gridViewProduct.Name = "gridViewProduct";
             this.gridViewProduct.OptionsView.ShowAutoFilterRow = true;
@@ -1599,6 +1601,14 @@
             // 
             this.companySearchTableAdapter.ClearBeforeFill = true;
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "VATStatus";
+            this.gridColumn6.FieldName = "VATStatus";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
+            // 
             // frmSettingHaravan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1819,5 +1829,6 @@
         private DevExpress.XtraEditors.TextEdit websiteTextEdit1;
         private DevExpress.XtraEditors.TextEdit nameTextEdit1;
         private DevExpress.XtraEditors.TextEdit iDTextEditCompanySearch;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }
