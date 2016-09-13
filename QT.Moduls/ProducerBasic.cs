@@ -70,8 +70,7 @@ namespace QT.Moduls
             while (true)
             {
                 try
-                {
-                    IBasicProperties properties = new BasicProperties();
+                {IBasicProperties properties = new BasicProperties();
                     if (timeLiveBySecond > 0) properties.Expiration = Convert.ToString(timeLiveBySecond * 1000);
                     properties.Persistent = persistence;
                     Publish(true, properties, mss);

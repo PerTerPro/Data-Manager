@@ -35,21 +35,21 @@
   <ItemGroup>
     <Reference Include="QT.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\QT.Moduls\bin\Release\QT.Entities.dll</HintPath>
+      <HintPath>..\DLLs\QT.Entities.dll</HintPath>
     </Reference>
     <Reference Include="QT.Moduls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\QT.Moduls\bin\Release\QT.Moduls.dll</HintPath>
+      <HintPath>..\DLLs\QT.Moduls.dll</HintPath>
     </Reference>
     <Reference Include="QT.Users, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\QT.Moduls\bin\Release\QT.Users.dll</HintPath>
+      <HintPath>..\DLLs\QT.Users.dll</HintPath>
     </Reference>
     <Reference Include="RabbitMQ.Client">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\RabbitMQ.Client.dll</HintPath>
+      <HintPath>..\DLLs\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="StackExchange.Redis">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\StackExchange.Redis.dll</HintPath>
+      <HintPath>..\DLLs\StackExchange.Redis.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>True</Private>
@@ -73,13 +73,13 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
+      <HintPath>..\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
     <Reference Include="Websosanh.Core.Drivers.Redis">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\Websosanh.Core.Drivers.Redis.dll</HintPath>
+      <HintPath>..\DLLs\Websosanh.Core.Drivers.Redis.dll</HintPath>
     </Reference>
     <Reference Include="Websosanh.Core.JobServer">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager6\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
+      <HintPath>..\DLLs\Websosanh.Core.JobServer.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -87,7 +87,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

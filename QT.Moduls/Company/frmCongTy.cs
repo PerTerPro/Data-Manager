@@ -28,11 +28,15 @@ using QT.Moduls.CrawlerProduct;
 using System.Drawing;
 using QT.Moduls.DBTableAdapters;
 using Keys = OpenQA.Selenium.Keys;
+using QT.Moduls.Crawler;
 
 namespace QT.Moduls.Company
 {
     public partial class frmCongTy : QT.Entities.frmBase
     {
+
+        private IDownloadHtml htmlDownloader = new DownloadHtmlCrawler();
+
         private long _idCongTy = 0;
         private bool _upSpilit = true;
         private Entities.Company _company;
@@ -429,6 +433,9 @@ namespace QT.Moduls.Company
 
         private void AnalyticProduct()
         {
+            string url = this.linkTestTextBox.Text.Trim();
+            WebExceptionStatus webExceptionStatus = new WebExceptionStatus();
+
             this.Invoke((MethodInvoker)delegate
             {
                 txtResult.Text = "";
@@ -442,7 +449,7 @@ namespace QT.Moduls.Company
             {
                 List<QT.Entities.Company> ls = new List<Entities.Company>();
                 QT.Entities.CrawlerDomain obj = new CrawlerDomain();
-                string html = GABIZ.Base.HtmlUrl.HTMLTransmitter.getHTML(this.linkTestTextBox.Text.Trim(), 15, 1);
+                string html = this.htmlDownloader.GetHTML(url, 15, 1, out webExceptionStatus);
 
                 if (useClearHtmlCheckBox.Checked)
                 {
@@ -457,8 +464,10 @@ namespace QT.Moduls.Company
             }
             else
             {
-                QT.Entities.Product p = new Product();
-                string html = GABIZ.Base.HtmlUrl.HTMLTransmitter.getHTML(this.linkTestTextBox.Text.Trim(), 45, 2);
+
+
+                QT.Entities.ProductEntity p = new ProductEntity();
+                string html = this.htmlDownloader.GetHTML(url, 45, 2, out webExceptionStatus);
                 if (c.ContentAnanyticXPath.Count >= 1)
                 {
                     int i1 = 0, i2 = 0;
@@ -490,8 +499,14 @@ namespace QT.Moduls.Company
                 html = html.Replace("<form", "<div");
                 html = html.Replace("</form", "</div");
                 doc.LoadHtml(html);
-                p.Analytics(doc, this.linkTestTextBox.Text.Trim(), c, checboxPrice.Checked, _company.Domain, null);
-                ShowTest(p);
+
+
+                ProductEntity productEntity = new ProductEntity();
+                ProductParse productParse = new ProductParse();
+                productParse.Analytics(productEntity, doc, linkTestTextBox.Text,c,_company.Domain);
+
+                //p.Analytics(doc, this.linkTestTextBox.Text.Trim(), c, checboxPrice.Checked, _company.Domain, null);
+                ShowTest(productEntity);
                 pictureBox1.Image = null;
                 if (p.ImageUrls != null && p.ImageUrls.Count > 0)
                 {
@@ -507,7 +522,7 @@ namespace QT.Moduls.Company
             AnalyticProduct();
         }
 
-        private void ShowTest(Product outPro)
+        private void ShowTest(ProductEntity outPro)
         {
             if (outPro != null)
             {
@@ -525,7 +540,7 @@ namespace QT.Moduls.Company
                 str += "\r\n PromotionInfo\t:  " + outPro.PromotionInfo + "\r";
                 str += "\r\n DeliveryInfo\t:  " + outPro.DeliveryInfo + "\r";
                 str += "\r\n OriginalPrice\t:  " + outPro.OriginPrice + "\r";
-                str += "\r\n VATInfo\t:  " + outPro.VATInfo + "\r";
+                str += "\r\n VATInfo\t:  " + outPro.VatInfo + "\r";
                 str += "\r\n Sumary\t:  " + outPro.Summary + "\r";
                 str += "\r\n Content\t:  " + outPro.ProductContent + "\r";
                 str += "\r\n IsSuccess\t:  " + outPro.IsSuccessData(checkPriceCheckEdit.Checked) + "\r";

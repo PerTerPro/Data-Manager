@@ -39,10 +39,10 @@
             this.colTimeReport = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMachineCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.ckStop = new System.Windows.Forms.CheckBox();
             this.btnResetOld = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -56,7 +56,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1276, 765);
+            this.gridControl1.Size = new System.Drawing.Size(1276, 703);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -164,6 +164,13 @@
             this.panel1.Size = new System.Drawing.Size(1276, 38);
             this.panel1.TabIndex = 1;
             // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(171, 7);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(300, 20);
+            this.maskedTextBox1.TabIndex = 1;
+            // 
             // ckStop
             // 
             this.ckStop.AutoSize = true;
@@ -191,21 +198,14 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 38);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1276, 765);
+            this.panel2.Size = new System.Drawing.Size(1276, 703);
             this.panel2.TabIndex = 2;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(171, 7);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(300, 20);
-            this.maskedTextBox1.TabIndex = 1;
             // 
             // FrmTrackRunning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1276, 803);
+            this.ClientSize = new System.Drawing.Size(1276, 741);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmTrackRunning";

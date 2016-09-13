@@ -811,6 +811,7 @@
     <Compile Include="Crawler\frmWebPerformance.Designer.cs">
       <DependentUpon>frmWebPerformance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Crawler\IDownloadHtml.cs" />
     <Compile Include="Crawler\ManagerCrawler.cs" />
     <Compile Include="Crawler\QuestionAuto.cs">
       <SubType>Form</SubType>

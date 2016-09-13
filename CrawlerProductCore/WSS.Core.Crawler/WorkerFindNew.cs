@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using QT.Entities;
 using QT.Entities.CrawlerProduct;
 using QT.Entities.DsQTCrawlerTableAdapters;
 using QT.Moduls;
+using QT.Moduls.Crawler;
 using QT.Moduls.CrawlerProduct.Cache;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Framing;
@@ -22,6 +24,7 @@ namespace WSS.Core.Crawler
     public class WorkerFindNew : IWorker,IDisposable
     {
         public DelegateReportRun EventReportRun = null;
+        private IDownloadHtml htmDownloader = new DownloadHtmlCrawler();
 
         private CancellationToken _token;
         private const int MaxLengthUrl = 500;
@@ -146,11 +149,9 @@ namespace WSS.Core.Crawler
                     RunReportRunning();
                     AddRootQueue();
                     _log.Info(GetPrefixLog());
-
                     while (!CheckEnd())
                     {
-                        _token.ThrowIfCancellationRequested();
-                        var jobCrawl = _linkQueue.Dequeue();
+                        _token.ThrowIfCancellationRequested();var jobCrawl = _linkQueue.Dequeue();
 
                         string strLog = string.Format(GetPrefixLog() + string.Format(" Url: {0} Deep: {1}", jobCrawl.Url, jobCrawl.Deep));
                         _log.Info(strLog);
@@ -255,8 +256,7 @@ namespace WSS.Core.Crawler
             var countLinkAdds = 0;
             var countLinks = 0;
 
-            if (job.Deep > _config.MaxDeep)
-            {
+            if (job.Deep > _config.MaxDeep){
                 _log.Info("Over dee. Not extraction");
                 return;
             }
@@ -326,7 +326,8 @@ namespace WSS.Core.Crawler
 
         private string GetHtmlCode(string urlCurrent, bool useClearHtml)
         {
-            string html = HTMLTransmitter.getHTML(urlCurrent, 45, 2);
+            WebExceptionStatus webException = new WebExceptionStatus();
+            string html = this.htmDownloader.GetHTML(urlCurrent, 45, 2, out webException);
             html = html.Replace("<form", "<div");
             html = html.Replace("</form", "</div");
             if (_config.UseClearHtml)
