@@ -130,21 +130,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\ConfigRabbitMqIndividualCategoryWebsites.cs" />
+    <Compile Include="CtrlWebsite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlWebsite.Designer.cs">
+      <DependentUpon>CtrlWebsite.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBIndi.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBIndi.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DBProduct.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBProduct.xsd</DependentUpon>
+    <Compile Include="frmAddTagsWebsites.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddTagsWebsites.Designer.cs">
+      <DependentUpon>frmAddTagsWebsites.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGetProductFromSolr.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmGetProductFromSolr.Designer.cs">
       <DependentUpon>frmGetProductFromSolr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRootProductManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRootProductManager.Designer.cs">
+      <DependentUpon>frmRootProductManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -158,9 +171,22 @@
     <Compile Include="SolrProduct\SolrProductConstants.cs" />
     <Compile Include="SolrProduct\SolrProductItem.cs" />
     <Compile Include="SolrProduct\SolrUtils.cs" />
+    <Compile Include="SolrRootProduct\SolrRootProductClient.cs" />
+    <Compile Include="SolrRootProduct\SolrRootProductItem.cs" />
     <Compile Include="UtilZipFile.cs" />
+    <Compile Include="WssCommon.cs" />
+    <Compile Include="WssConnection.cs" />
+    <EmbeddedResource Include="CtrlWebsite.resx">
+      <DependentUpon>CtrlWebsite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddTagsWebsites.resx">
+      <DependentUpon>frmAddTagsWebsites.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGetProductFromSolr.resx">
       <DependentUpon>frmGetProductFromSolr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRootProductManager.resx">
+      <DependentUpon>frmRootProductManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -187,17 +213,6 @@
     <None Include="DBIndi.xss">
       <DependentUpon>DBIndi.xsd</DependentUpon>
     </None>
-    <None Include="DBProduct.xsc">
-      <DependentUpon>DBProduct.xsd</DependentUpon>
-    </None>
-    <None Include="DBProduct.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBProduct.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DBProduct.xss">
-      <DependentUpon>DBProduct.xsd</DependentUpon>
-    </None>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -214,9 +229,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ProductNew\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
       <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>

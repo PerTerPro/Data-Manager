@@ -32,13 +32,21 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.btnConvertProductToRoot = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.ctrlWebsite1 = new WSS.IndividualCategoryWebsites.CtrlWebsite();
+            this.btnConvertProductToRoot = new DevExpress.XtraBars.BarButtonItem();
+            this.barRootProductManager = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            this.dockPanel1.SuspendLayout();
+            this.dockPanel1_Container.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -50,12 +58,14 @@
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barSubItem1,
-            this.btnConvertProductToRoot});
+            this.btnConvertProductToRoot,
+            this.barRootProductManager});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 2;
+            this.barManager1.MaxItemId = 3;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -74,16 +84,7 @@
             // 
             this.barSubItem1.Caption = "Tool";
             this.barSubItem1.Id = 0;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnConvertProductToRoot)});
             this.barSubItem1.Name = "barSubItem1";
-            // 
-            // btnConvertProductToRoot
-            // 
-            this.btnConvertProductToRoot.Caption = "Chuyển sản phẩm gốc";
-            this.btnConvertProductToRoot.Id = 1;
-            this.btnConvertProductToRoot.Name = "btnConvertProductToRoot";
-            this.btnConvertProductToRoot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnConvertProductToRoot_ItemClick);
             // 
             // bar3
             // 
@@ -125,11 +126,69 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1257, 22);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 622);
             // 
+            // dockManager1
+            // 
+            this.dockManager1.Form = this;
+            this.dockManager1.MenuManager = this.barManager1;
+            this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
+            this.dockPanel1});
+            this.dockManager1.TopZIndexControls.AddRange(new string[] {
+            "DevExpress.XtraBars.BarDockControl",
+            "DevExpress.XtraBars.StandaloneBarDockControl",
+            "System.Windows.Forms.StatusBar",
+            "System.Windows.Forms.MenuStrip",
+            "System.Windows.Forms.StatusStrip",
+            "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
+            "DevExpress.XtraBars.Ribbon.RibbonControl",
+            "DevExpress.XtraBars.Navigation.OfficeNavigationBar",
+            "DevExpress.XtraBars.Navigation.TileNavPane"});
+            // 
+            // dockPanel1
+            // 
+            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
+            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
+            this.dockPanel1.ID = new System.Guid("f121e1a2-c75a-4f46-bfd9-15a91fe7569f");
+            this.dockPanel1.Location = new System.Drawing.Point(0, 22);
+            this.dockPanel1.Name = "dockPanel1";
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(422, 200);
+            this.dockPanel1.Size = new System.Drawing.Size(422, 622);
+            this.dockPanel1.Text = "Website";
+            // 
+            // dockPanel1_Container
+            // 
+            this.dockPanel1_Container.Controls.Add(this.ctrlWebsite1);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 23);
+            this.dockPanel1_Container.Name = "dockPanel1_Container";
+            this.dockPanel1_Container.Size = new System.Drawing.Size(414, 595);
+            this.dockPanel1_Container.TabIndex = 0;
+            // 
+            // ctrlWebsite1
+            // 
+            this.ctrlWebsite1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlWebsite1.Location = new System.Drawing.Point(0, 0);
+            this.ctrlWebsite1.Name = "ctrlWebsite1";
+            this.ctrlWebsite1.Size = new System.Drawing.Size(414, 595);
+            this.ctrlWebsite1.TabIndex = 0;
+            this.ctrlWebsite1.ExcuteCommand += new WSS.IndividualCategoryWebsites.CtrlWebsite.ChangedEventHandler(this.ctrlWebsite1_ExcuteCommand);
+            // 
+            // btnConvertProductToRoot
+            // 
+            this.btnConvertProductToRoot.Caption = "Chuyển sản phẩm gốc";
+            this.btnConvertProductToRoot.Id = 1;
+            this.btnConvertProductToRoot.Name = "btnConvertProductToRoot";
+            // 
+            // barRootProductManager
+            // 
+            this.barRootProductManager.Caption = "Quản lý sản phẩm gốc";
+            this.barRootProductManager.Id = 2;
+            this.barRootProductManager.Name = "barRootProductManager";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1257, 667);
+            this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -138,7 +197,11 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Websosanh.vn";
+            this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            this.dockPanel1.ResumeLayout(false);
+            this.dockPanel1_Container.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -154,6 +217,11 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem btnConvertProductToRoot;
+        private DevExpress.XtraBars.BarButtonItem barRootProductManager;
+        private DevExpress.XtraBars.Docking.DockManager dockManager1;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
+        private CtrlWebsite ctrlWebsite1;
     }
 }
 

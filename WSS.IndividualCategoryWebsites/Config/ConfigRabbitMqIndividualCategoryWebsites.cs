@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace WSS.IndividualCategoryWebsites
 {
-    public class ConfigRabbitMqIndividualCategoryWebsites
+    public static class ConfigRabbitMqIndividualCategoryWebsites
     {
         public static string RabbitMqServerName = "rabbitMQ177";
         public static string ExchangeIndividual = "ExchangeIndividual";
-        public static string QueueIndividual = "IndividualWebsites.RootProduct";
-        public static string RoutingKeyIndividual = "IndividualWebsites.RootProduct";
+        //Đưa product lên service a quang
+        public static string QueueProduct = "IndividualWebsites.Product";
+        public static string RoutingKeyProduct = "IndividualWebsites.Product";
+        //Nhận product từ service của a quang để xử lý
+        public static string QueueRootProductAnalyzed = "IndividualWebsites.RootProductAnalyzed";
+        public static string RoutingKeyRootProductAnalyzed = "IndividualWebsites.RootProductAnalyzed";
     }
 }
