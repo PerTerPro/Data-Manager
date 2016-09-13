@@ -37,8 +37,8 @@ namespace UpdateSolrTools
         public HashSet<long> ListMerchantUseDatafeedID;
         public HashSet<long> ListSpecialMerchantID;
         public HashSet<long> ListBadMerchantID;
-        public Dictionary<long, int> ListPriorMerchants; 
-        public Dictionary<int, string> ListPrefixCategory; 
+        public Dictionary<long, int> ListPriorMerchants;
+        public Dictionary<int, string> ListPrefixCategory;
 
         public int UpdateAllProductOfMerchant(long companyId, string companyName)
         {
@@ -84,7 +84,7 @@ namespace UpdateSolrTools
                     foreach (var productRow in productPart)
                     {
                         rowIndex++;
-                        productIndex ++;
+                        productIndex++;
                         var item = new SolrProductItem();
                         item.Id = productRow.ID;
                         if (productRow["Price"] != DBNull.Value)
@@ -96,7 +96,7 @@ namespace UpdateSolrTools
                             isPriceIncludeVat = merchantShortInfo.VATStatus == 1;
                         else
                             isPriceIncludeVat = productRow.VATStatus == 1;
-                        
+
                         item.PriceWithVAT = isPriceIncludeVat ? item.Price : (item.Price * 11) / 10;
                         item.MerchantID = companyId;
                         item.ProductType = 2;
@@ -143,9 +143,9 @@ namespace UpdateSolrTools
                             item.NameOther = otherNames;
                         if (!string.IsNullOrEmpty(categoryPrefix))
                         {
-                            if(item.NameOther == null)
+                            if (item.NameOther == null)
                                 item.NameOther = new List<string>();
-                            for (int otherNameIndex = 0;otherNameIndex < item.NameOther.Count; otherNameIndex ++)
+                            for (int otherNameIndex = 0; otherNameIndex < item.NameOther.Count; otherNameIndex++)
                             {
                                 item.NameOther[otherNameIndex] = categoryPrefix + item.NameOther[otherNameIndex];
                             }
@@ -165,9 +165,17 @@ namespace UpdateSolrTools
                         if (merchantRegions != null)
                         {
                             if (merchantRegions.AllMerchantProvins != null)
+                            {
                                 item.MerchantProvins = merchantRegions.AllMerchantProvins;
+                                if (item.MerchantProvins.Contains(100000))
+                                    item.MerchantProvins = new List<int> { 100000 };
+                            }
                             if (merchantRegions.AllMerchantDistrict != null)
+                            {
                                 item.MerchantDistricts = merchantRegions.AllMerchantDistrict;
+                                if (item.MerchantDistricts.Contains(1000000))
+                                    item.MerchantDistricts = new List<int> { 1000000 };
+                            }
                         }
                         if (productRow["ProductID"] != DBNull.Value)
                         {
@@ -241,13 +249,13 @@ namespace UpdateSolrTools
         {
             if (merchantPriorityScore == 1)
             {
-                if (productIndex < totalProduct/3 && productIndex < 20000)
+                if (productIndex < totalProduct / 3 && productIndex < 20000)
                     return merchantPriorityScore;
                 return 0;
             }
             if (merchantPriorityScore == 2)
             {
-                if (productIndex < 2 *totalProduct / 3 && productIndex < 50000)
+                if (productIndex < 2 * totalProduct / 3 && productIndex < 50000)
                     return merchantPriorityScore;
                 return 0;
             }
@@ -271,7 +279,7 @@ namespace UpdateSolrTools
             {
                 var isProductIndexed = false;
                 var dtProduct = productTableAdapter.GetMerchantProduct(productID);
-                if(dtProduct.Count == 0)
+                if (dtProduct.Count == 0)
                 {
                     productIDsToDelete.Add(productID);
                     Logger.DebugFormat("Product {0} rejected", productID);
@@ -288,7 +296,7 @@ namespace UpdateSolrTools
                         Logger.DebugFormat("Product {0} rejected", productID);
                         continue;
                     }
-                        
+
                     if (productRow["Company"] != DBNull.Value && productRow.Company > 0)
                         item.MerchantID = productRow.Company;
                     else
@@ -297,13 +305,13 @@ namespace UpdateSolrTools
                         continue;
                     }
                     var merchantShortInfo = MerchantBAL.GetMerchantShortInfoFromCache(productRow.Company);
-                    if(merchantShortInfo == null)
+                    if (merchantShortInfo == null)
                         continue;
                     bool isPriceIncludeVat;
                     if (productRow.IsVATStatusNull() || productRow.VATStatus == 2)
                         isPriceIncludeVat = merchantShortInfo.VATStatus == 1;
-                    else 
-                        isPriceIncludeVat =  productRow.VATStatus == 1;
+                    else
+                        isPriceIncludeVat = productRow.VATStatus == 1;
                     item.PriceWithVAT = isPriceIncludeVat ? item.Price : (item.Price * 11) / 10;
                     item.ProductType = 2;
                     item.RootId = productRow["ProductID"] != DBNull.Value ? productRow.ProductID : 0;
@@ -374,9 +382,17 @@ namespace UpdateSolrTools
                     if (merchantRegions != null)
                     {
                         if (merchantRegions.AllMerchantProvins != null)
+                        {
                             item.MerchantProvins = merchantRegions.AllMerchantProvins;
+                            if (item.MerchantProvins.Contains(100000))
+                                item.MerchantProvins = new List<int> { 100000 };
+                        }
                         if (merchantRegions.AllMerchantDistrict != null)
+                        {
                             item.MerchantDistricts = merchantRegions.AllMerchantDistrict;
+                            if (item.MerchantDistricts.Contains(1000000))
+                                item.MerchantDistricts = new List<int> { 1000000 };
+                        }
                     }
                     if (productRow["ProductID"] != DBNull.Value && productRow.ProductID > 0)
                     {
@@ -419,12 +435,12 @@ namespace UpdateSolrTools
                     isProductIndexed = true;
                     productsToIndex.Add(item);
                 }
-                if(!isProductIndexed)
+                if (!isProductIndexed)
                     productIDsToDelete.Add(productID);
             }
             if (productsToIndex.Count > 0)
                 SolrClient.IndexItems(productsToIndex);
-            if(productIDsToDelete.Count > 0)
+            if (productIDsToDelete.Count > 0)
                 DeleteProducts(productIDsToDelete, false);
             Logger.DebugFormat("UpdateMerchantProducts - Index {0} products, Deleted {1} products.", productsToIndex.Count, productIDsToDelete.Count);
         }
@@ -435,18 +451,18 @@ namespace UpdateSolrTools
             StringBuilder messageBuilder = new StringBuilder();
             var startTime = DateTime.Now;
             double indexTime = 0;
-            Logger.InfoFormat("Start download List Product ID");            
+            Logger.InfoFormat("Start download List Product ID");
             var numProductInserted = 0;
             int totalProduct = 0;
             var productTableAdapter = new ProductTableAdapter() { Connection = { ConnectionString = productConnectionString } };
             try
-            {                
+            {
                 var dtProduct = productTableAdapter.GetAllRootProducts();
-                HashSet<long> oldProductIDSet = new HashSet<long>();                
+                HashSet<long> oldProductIDSet = new HashSet<long>();
                 var oldProductIDList = SolrClient.GetAllProductIDOfCompany(IDWebsosanh);
                 foreach (var oldProductID in oldProductIDList)
                     oldProductIDSet.Add(oldProductID);
-                totalProduct = dtProduct.Rows.Count;                
+                totalProduct = dtProduct.Rows.Count;
                 var productParts = CollectionUtilities.Partition(dtProduct, 1000);
                 int partIndex = 0;
                 foreach (var productPart in productParts)
@@ -468,12 +484,12 @@ namespace UpdateSolrTools
                         string productName = AutoCorrector.Correct(productRow.Name);
                         if (string.IsNullOrEmpty(productName))
                         {
-                            Logger.WarnFormat("UpdateRootProduct: ProductName empty. ProductID: {0}",item.Id);
+                            Logger.WarnFormat("UpdateRootProduct: ProductName empty. ProductID: {0}", item.Id);
                             continue;
                         }
                         item.Name = productName;
                         item.NameIdentity = productName;
-                        
+
                         if (productRow["NameFT"] != DBNull.Value)
                             item.NameAscii = productRow["NameFT"].ToString();
                         item.NameLength = IndexProductTools.GetNameLength(productName);
@@ -549,7 +565,7 @@ namespace UpdateSolrTools
                                 continue;
                             }
                         }
-                        if(rootProductMapping.NumMerchant == 0)
+                        if (rootProductMapping.NumMerchant == 0)
                         {
                             //Logger.DebugFormat("UpdateRootProduct: Product have 0 merchant. ProductID: {0}", item.Id);
                             continue;
@@ -558,9 +574,13 @@ namespace UpdateSolrTools
                         item.MerchantProvins = rootProductMapping.ListProvin != null
                             ? rootProductMapping.ListProvin.Select(x => x.Key).Distinct().ToList()
                             : null;
+                        if (item.MerchantProvins != null && item.MerchantProvins.Contains(100000))
+                            item.MerchantProvins = new List<int> { 100000 };
                         item.MerchantDistricts = rootProductMapping.ListDistrict != null
                             ? rootProductMapping.ListDistrict.Select(x => x.Key).Distinct().ToList()
                             : null;
+                        if (item.MerchantDistricts != null && item.MerchantDistricts.Contains(1000000))
+                            item.MerchantDistricts = new List<int> { 1000000 };
                         if (productProperties.ContainsKey(item.Id))
                         {
                             var properties = productProperties[item.Id];
@@ -580,7 +600,7 @@ namespace UpdateSolrTools
                         numProductInserted += listProducts.Count;
                     }
                     if (partIndex % 10 == 0)
-                        Logger.InfoFormat("UpdateAllRootProducts. Inserted part {0}/{1}", partIndex,productParts.Count());
+                        Logger.InfoFormat("UpdateAllRootProducts. Inserted part {0}/{1}", partIndex, productParts.Count());
                     partIndex++;
                 }
                 DeleteProducts(oldProductIDSet, false);
@@ -597,7 +617,7 @@ namespace UpdateSolrTools
             var totalTime = (DateTime.Now - startTime).TotalSeconds;
             Logger.InfoFormat(
                         "Update Complete!TotalTime: {0}. IndexSolrTime:{1}. Num products inserted:{2} / {3}",
-                        totalTime, indexTime, numProductInserted,totalProduct);
+                        totalTime, indexTime, numProductInserted, totalProduct);
             messageBuilder.Append(BuildLog(
                         "Update Complete!\nTotalTime: {0}.\nIndexSolrTime:{1}.\nNum products inserted:{2} / {3}",
                         totalTime, indexTime, numProductInserted, totalProduct));
@@ -711,9 +731,13 @@ namespace UpdateSolrTools
                     item.MerchantProvins = rootProductMapping.ListProvin != null
                                 ? rootProductMapping.ListProvin.Select(x => x.Key).Distinct().ToList()
                                 : null;
+                    if (item.MerchantProvins != null && item.MerchantProvins.Contains(100000))
+                        item.MerchantProvins = new List<int> { 100000 };
                     item.MerchantDistricts = rootProductMapping.ListDistrict != null
                         ? rootProductMapping.ListDistrict.Select(x => x.Key).Distinct().ToList()
                         : null;
+                    if (item.MerchantDistricts != null && item.MerchantDistricts.Contains(1000000))
+                        item.MerchantProvins = new List<int> { 1000000 };
                     item.MerchantScore = 1;
                     isProductIndexed = true;
                     productsToIndex.Add(item);
