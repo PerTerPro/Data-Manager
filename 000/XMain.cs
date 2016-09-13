@@ -1612,7 +1612,7 @@ namespace _000
             }
             catch (Exception)
             {
-                throw;
+              
             }
         }
         private void barButtonItemTestXpath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

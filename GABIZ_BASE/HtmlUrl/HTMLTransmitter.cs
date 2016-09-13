@@ -244,6 +244,7 @@ namespace GABIZ.Base.HtmlUrl
                 CookieContainer cc = new CookieContainer();
                 request.CookieContainer = cc;
                 request.MaximumAutomaticRedirections = 50;
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
 
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 {

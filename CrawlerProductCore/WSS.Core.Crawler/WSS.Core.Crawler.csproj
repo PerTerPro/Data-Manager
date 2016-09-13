@@ -168,7 +168,6 @@
     <Compile Include="Parameter.cs" />
     <Compile Include="ProducerBasic.cs" />
     <Compile Include="ProductDuplicate.cs" />
-    <Compile Include="ProductParse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RabbitMQServerImp.cs" />

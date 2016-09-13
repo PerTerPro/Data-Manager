@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QT.Moduls.CrawlerProduct
+namespace QT.Moduls.CrawlerProduct.Comment
 {
     public class WorkerCrawlerReview
     {
