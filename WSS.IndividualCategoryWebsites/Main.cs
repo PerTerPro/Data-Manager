@@ -65,7 +65,7 @@ namespace WSS.IndividualCategoryWebsites
                 if (child is frmRootProductManager)
                 {
                     var f = (frmRootProductManager)child;
-                    if (f.Text == "Quản lý RootProduct")
+                    if (f.Text == @"Quản lý RootProduct "+domain)
                     {
                         child.BringToFront();
                         valForm = true;
@@ -77,7 +77,7 @@ namespace WSS.IndividualCategoryWebsites
             {
                 try
                 {
-                    var frm = new frmRootProductManager {MdiParent = this, Text = "Quản lý RootProduct"};
+                    var frm = new frmRootProductManager(idWebsite,domain) {MdiParent = this, Text = @"Quản lý RootProduct "+domain};
                     frm.Show();
                 }
                 catch (Exception ex)

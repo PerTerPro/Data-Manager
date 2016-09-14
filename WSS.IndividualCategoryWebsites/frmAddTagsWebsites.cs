@@ -35,58 +35,108 @@ namespace WSS.IndividualCategoryWebsites
             this.tagsTableAdapter.Connection.ConnectionString = WssConnection.ConnectionIndividual;
             _solrRootProductClient =
                 SolrRootProductClient.GetClient(SolrClientManager.GetSolrClient("solrRootProducts"));
-        }
-
-        private void InitDataSql(string tag)
-        {
             try
             {
-                tagsTableAdapter.FillByTag(dBIndi.Tags, tag);
+                tagsTableAdapter.FillBy_WebsiteId(dBIndi.Tags, _idWebsite);
             }
             catch (Exception exception)
             {
-                Log.Error(string.Format("Tag: {0} . {1}",tag,exception));
+                Log.Error(string.Format("Website: {0} . {1}", _domainCurrent, exception));
             }
         }
-        private void InitDataSolr(string tag)
+
+
+        private void InitDataSolr(string tags)
         {
             try
             {
-                var results =_solrRootProductClient.GetListRootProductsByTag(tag, _idWebsite, 0, 100000);
+                var results = _solrRootProductClient.GetListRootProductsByTag(tags, _idWebsite, 0, 100000);
                 grdRootProduct.DataSource = results;
             }
             catch (Exception exception)
             {
-                Log.Error(string.Format("Tag: {0} . {1}", tag, exception));
+                Log.Error(string.Format("Tag: {0} . {1}", tags[0], exception));
             }
-        }
-        private void btnViewTag_Click(object sender, EventArgs e)
-        {
-            InitDataSql(txtTag.Text.Trim().ToLower());
-            InitDataSolr(txtTag.Text.Trim().ToLower());
         }
 
         private void SelectedRootProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var arrIndexRowSelected = gvRootProduct.GetSelectedRows();
-            if (arrIndexRowSelected.Length > 0)
+            if (radioButtonUpdate.Checked || radioButtonNew.Checked)
             {
-                var listIdRootProduct = new List<long>();
-                foreach (var rowHande in arrIndexRowSelected)
+                var arrIndexRowSelected = gvRootProduct.GetSelectedRows();
+                if (arrIndexRowSelected.Length > 0)
                 {
-                    listIdRootProduct.Add(Common.Obj2Int64(gvRootProduct.GetRowCellValue(rowHande,"Id")));
+                    var listIdRootProduct = new List<long>();
+                    foreach (var rowHande in arrIndexRowSelected)
+                    {
+                        listIdRootProduct.Add(Common.Obj2Int64(gvRootProduct.GetRowCellValue(rowHande, "Id")));
+                    }
+                    txtListRootIdNew.Text = string.Join(",", listIdRootProduct);
                 }
-                txtListRootIdNew.Text = string.Join(",",listIdRootProduct);
+                else
+                    MessageBox.Show(@"Chọn sản phẩm rồi push message lên hệ thống");
+
+                if (radioButtonUpdate.Checked)
+                {
+                    rootProductIdListInSqlTextEdit.Text += @"," + txtListRootIdNew.Text;
+                }
+                else if (radioButtonNew.Checked)
+                {
+                    rootProductIdListInSqlTextEdit.Text = txtListRootIdNew.Text;
+                }
+                txtListRootIdNew.Focus();
+                tagsGridControl.Focus();
             }
             else
-                MessageBox.Show(@"Chọn sản phẩm rồi push message lên hệ thống");
+            {
+                var dialogResult = MessageBox.Show(
+                    @"Chọn Yes nếu như cập nhật thêm RootId vào list đã có, Chọn No nếu như cập nhật lại list RootId mới! Chỉ chọn lần đầu và mặc định lần sau sẽ không thay đổi.",
+                    @"Chọn cách cập nhật list RootId", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    radioButtonUpdate.Checked = true;
+                    radioButtonNew.Checked = false;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    radioButtonUpdate.Checked = false;
+                    radioButtonNew.Checked = true;
+                }
+            }
         }
 
         private void gvRootProduct_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
-                contextMenuStrip1.Show(this.grdRootProduct, new Point(e.X, e.Y));
+                contextMenuStripProduct.Show(this.grdRootProduct, new Point(e.X, e.Y));
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.tagsBindingSource.EndEdit();
+                this.tagsTableAdapter.Update(this.dBIndi.Tags);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"Lưu lỗi r !! " + exception.Message);
+            }
+        }
+
+        private void viewListProductByTagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitDataSolr(tagTextEdit.Text.Trim().ToLower());
+        }
+
+        private void gvTags_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStripTags.Show(this.tagsGridControl, new Point(e.X, e.Y));
             }
         }
     }
