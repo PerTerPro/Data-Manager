@@ -6,7 +6,9 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading;
@@ -29,10 +31,12 @@ namespace WSS.Products.UpdateSingleProductServices
 
         private bool _isRunning = true;
         int _workerCount;
+        private HashSet<string> _skuHashSet;
         public UpdateSingleProductService()
         {
             InitializeComponent();
             LoadConfig();
+            LoadListSkuLazada();
             //OnStart(new string[] { });
         }
         private void LoadConfig()
@@ -41,6 +45,30 @@ namespace WSS.Products.UpdateSingleProductServices
             _logConnectionString = ConfigurationSettings.AppSettings["LogConnectionString"];
             _rabbitMqServerName = ConfigurationSettings.AppSettings["rabbitMQServerName"];
             _workerCount = Common.Obj2Int(ConfigurationSettings.AppSettings["workerCount"]);
+        }
+
+        private void LoadListSkuLazada()
+        {
+            _skuHashSet = new HashSet<string>();
+            string line;
+            try
+            {
+                string executableLocation = Path.GetDirectoryName(
+                    Assembly.GetExecutingAssembly().Location);
+                string txtLocation = Path.Combine(executableLocation, "ListSkuLazada.txt");
+                System.IO.StreamReader file =
+                    new System.IO.StreamReader(txtLocation);
+                while ((line = file.ReadLine()) != null)
+                {
+                    _skuHashSet.Add(line.Trim());
+                }
+                file.Close();
+            }
+            catch (Exception exception)
+            {
+                Log.Error(exception.Message);
+            }
+
         }
         protected override void OnStart(string[] args)
         {
@@ -82,6 +110,16 @@ namespace WSS.Products.UpdateSingleProductServices
 
         private void UpdateSingleProduct(Product product, JobClient updateProductJobClient, JobClient downloadImageProductJobClient)
         {
+            #region Check xem phải xe máy k để giảm giá
+
+            if (_skuHashSet.Contains(product.MerchantSku))
+            {
+                int discount = (int)5*product.Price/100;
+                if (discount > 2500000)
+                    discount = 2500000;
+                product.Price = product.Price - discount;
+            }
+            #endregion
             var productAdapter = new DBProductsTableAdapters.ProductTableAdapter();
             productAdapter.Connection.ConnectionString = _connectionString;
             var productTable = new DBProducts.ProductDataTable();
@@ -110,7 +148,7 @@ namespace WSS.Products.UpdateSingleProductServices
                 InsertLogAddProduct(product.IDCongTy, product.ID, product.Name, product.DetailUrl);
 
                 SendMessageDownloadImageProduct(product, downloadImageProductJobClient, true);
-                Log.Info(string.Format("CompanyId = {0} :Insert ProductId = {1} . Name = {2} . DetailUrl = {3}",product.IDCongTy, product.ID, product.Name, product.DetailUrl));
+                Log.Info(string.Format("CompanyId = {0} :Insert ProductId = {1} . Name = {2} . DetailUrl = {3}", product.IDCongTy, product.ID, product.Name, product.DetailUrl));
             }
             else //UpdateProduct
             {
@@ -126,18 +164,18 @@ namespace WSS.Products.UpdateSingleProductServices
                 if (productTable.Rows[0]["ImagePath"] == DBNull.Value || string.IsNullOrEmpty(productTable.Rows[0]["ImagePath"].ToString()))
                     SendMessageDownloadImageProduct(product, downloadImageProductJobClient, false);
                 Log.Info(string.Format("CompanyId = {0} :Update ProductId = {1} . Name = {2} . DetailUrl = {3}", product.IDCongTy, product.ID, product.Name, product.DetailUrl));
-            
+
             }
             productAdapter.Connection.Close();
             var hashProductInfo = ProductEntity.GetHashChangeInfo((int)product.Instock, true, product.Price, product.Name, product.ImageUrl,
                 product.IDCategories, product.ShortDescription, product.OriginPrice);
-            if (RedisCacheProductDatafeed.CheckChangeInfoProduct(product.ID,hashProductInfo))
+            if (RedisCacheProductDatafeed.CheckChangeInfoProduct(product.ID, hashProductInfo))
                 SendMessageUpdateProductSolrAndRedisService(product, updateProductJobClient);
         }
 
         private void SendMessageDownloadImageProduct(Product product, JobClient downloadImageProductJobClient, bool isNews)
         {
-            var imageProductInfo = new ImageProductInfo(product.ID,product.Name,product.DetailUrl,product.ImageUrl,isNews);
+            var imageProductInfo = new ImageProductInfo(product.ID, product.Name, product.DetailUrl, product.ImageUrl, isNews);
             var job = new Job { Data = ImageProductInfo.GetMessage(imageProductInfo) };
             while (_isRunning)
             {
@@ -157,7 +195,7 @@ namespace WSS.Products.UpdateSingleProductServices
 
         private void SendMessageUpdateProductSolrAndRedisService(Product product, JobClient updateProductJobClient)
         {
-            var job = new Job {Data = BitConverter.GetBytes(product.ID), Type = 2};
+            var job = new Job { Data = BitConverter.GetBytes(product.ID), Type = 2 };
             while (_isRunning)
             {
                 try
@@ -167,7 +205,7 @@ namespace WSS.Products.UpdateSingleProductServices
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(string.Format("Publish Message update solr and redis product error. ProductId: {0}",product.ID), ex);
+                    Log.Error(string.Format("Publish Message update solr and redis product error. ProductId: {0}", product.ID), ex);
                     Thread.Sleep(10000);
                 }
             }
@@ -275,7 +313,7 @@ namespace WSS.Products.UpdateSingleProductServices
                         DateTime.Now,
                         false,
                         oldPrice, product.ShortDescription, product.IsDeal, product.OriginPrice, (int)product.Instock, (short)product.Status,
-                        product.ID); 
+                        product.ID);
                     break;
                 }
                 catch (Exception ex)

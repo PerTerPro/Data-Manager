@@ -895,6 +895,13 @@ namespace QT.Entities
             id = Math.Abs(GABIZ.Base.Tools.getCRC32(Cat.ToString() + "_" + Name.Trim().ToLower()));
             return id;
         }
+
+        public static long GetID_RootProductIDIndividual(string Name)
+        {
+            long id = 0;
+            id = Math.Abs(GABIZ.Base.Tools.getCRC64(Name.Trim().ToLower()));
+            return id;
+        }
         public static int GetID_Properties(String Name)
         {
             int id = 0;

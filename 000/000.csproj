@@ -346,6 +346,7 @@
     <Content Include="DLLs\SolrNet.pdb" />
     <Content Include="DLLs\StackExchange.Redis.dll" />
     <Content Include="DLLs\StackExchange.Redis.pdb" />
+    <Content Include="DLLs\StackExchange.Redis.xml" />
     <Content Include="DLLs\System.IO.dll" />
     <Content Include="DLLs\System.Runtime.dll" />
     <Content Include="DLLs\System.Threading.Tasks.dll" />
