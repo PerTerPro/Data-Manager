@@ -13,7 +13,8 @@ using WorkerFindNew = WSS.Core.Crawler.WorkerFindNew;
 
 namespace WSS.CrawlerProduct.Run
 {
-    public class Program{
+    public class Program
+    {
         public static CancellationTokenSource Source = new CancellationTokenSource();
         static void Main(string[] args)
         {
@@ -21,28 +22,27 @@ namespace WSS.CrawlerProduct.Run
             Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;
             Server.LogConnectionString = ConfigCrawler.ConnectLog;
 
-            ProductAdapter productAdapter = new ProductAdapter(new SqlDb(ConfigCrawler.ConnectProduct));
-            long companyId = productAdapter.GetCompanyIDFromDomain("hc.com.vn");
-
-            WorkerFindNew w = new WorkerFindNew(companyId, new CancellationToken(false), "Test");
-            w.StartCrawler();
-            return;
+            //ProductAdapter productAdapter = new ProductAdapter(new SqlDb(ConfigCrawler.ConnectProduct));
+            //long companyId = productAdapter.GetCompanyIDFromDomain("hc.com.vn");
+            //WorkerFindNew w = new WorkerFindNew(companyId, new CancellationToken(false), "Test");
+            //w.StartCrawler();
+            //return;
 
             if (args == null || args.Length == 0)
             {
                 Console.WriteLine(@"Input para:");
                 var readLine = Console.ReadLine();
                 if (readLine != null)
-                    args = readLine.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+                    args = readLine.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             }
             else
             {
                 Console.WriteLine(string.Join(";", args));
-            }var pr = new Parameter();
+            } var pr = new Parameter();
             pr.ParseData(args);
 
             Console.CancelKeyPress += EndApp;
-            
+
 
             if (pr.TypeRun == 1)
             {
@@ -60,10 +60,11 @@ namespace WSS.CrawlerProduct.Run
                         Thread.Sleep(10000);
                     }
                 }
-                 else{
+                else
+                {
                     var pt = new ProductAdapter(new SqlDb(QT.Entities.Server.ConnectionString));
                     var token = new CancellationToken();
-                    var wokerFn = new WSS.Core.Crawler.WorkerReload(pt.GetCompanyIDFromDomain(pr.Domain), token,"");
+                    var wokerFn = new WSS.Core.Crawler.WorkerReload(pt.GetCompanyIDFromDomain(pr.Domain), token, "");
                     wokerFn.StartCrawler();
                 }
             }
@@ -74,12 +75,11 @@ namespace WSS.CrawlerProduct.Run
                     for (var i = 0; i < pr.NumberThread; i++)
                     {
                         var token = Source.Token;
-                        var j = i;
-                        Task.Factory.StartNew(() =>
-                        {
-                            var consumer = new ConsumerFindNew(token,  j.ToString());
-                            consumer.Start();
-                        }, token);
+                        var j = i; Task.Factory.StartNew(() =>
+                         {
+                             var consumer = new ConsumerFindNew(token, j.ToString());
+                             consumer.Start();
+                         }, token);
                         Thread.Sleep(10000);
                     }
                 }
@@ -87,7 +87,7 @@ namespace WSS.CrawlerProduct.Run
                 {
                     var pt = new ProductAdapter(new SqlDb(QT.Entities.Server.ConnectionString));
                     var token = new CancellationToken();
-                    var wokerFn = new WorkerFindNew(pt.GetCompanyIDFromDomain(pr.Domain), token,"");
+                    var wokerFn = new WorkerFindNew(pt.GetCompanyIDFromDomain(pr.Domain), token, "");
                     wokerFn.StartCrawler();
                 }
             }
@@ -101,10 +101,10 @@ namespace WSS.CrawlerProduct.Run
                 }
                 else
                 {
-                     Thread.Sleep(1000);
+                    Thread.Sleep(1000);
                 }
             }
-            
+
         }
 
         private static void EndApp(object sender, ConsoleCancelEventArgs e)

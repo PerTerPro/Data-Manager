@@ -250,9 +250,7 @@ namespace WSS.Core.Crawler
                 ParentId = 0
             });
         }
-
-        private void Extraction(HtmlDocument doc, JobFindNew job)
-        {
+        private void Extraction(HtmlDocument doc, JobFindNew job){
             var countLinkAdds = 0;
             var countLinks = 0;
 
@@ -326,15 +324,22 @@ namespace WSS.Core.Crawler
 
         private string GetHtmlCode(string urlCurrent, bool useClearHtml)
         {
-            WebExceptionStatus webException = new WebExceptionStatus();
-            string html = this.htmDownloader.GetHTML(urlCurrent, 45, 2, out webException);
-            html = html.Replace("<form", "<div");
-            html = html.Replace("</form", "</div");
-            if (_config.UseClearHtml)
+            try
             {
-                html = Common.TidyCleanR(html);
+                WebExceptionStatus webException = new WebExceptionStatus();
+                string html = this.htmDownloader.GetHTML(urlCurrent, 45, 2, out webException);
+                html = html.Replace("<form", "<div");
+                html = html.Replace("</form", "</div");
+                if (_config.UseClearHtml)
+                {
+                    html = Common.TidyCleanR(html);
+                }
+                return html;
             }
-            return html;
+            catch(Exception ex)
+            {
+                _log.Error(ex);
+                return "";}
         }
 
         private bool IsNoVisitUrl(string url)
