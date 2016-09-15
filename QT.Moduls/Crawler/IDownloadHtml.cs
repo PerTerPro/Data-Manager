@@ -48,7 +48,7 @@ namespace QT.Moduls.Crawler
 
 
         public  string GetResponseString(string charSetInput, string url
-       , int TimeOutSeconds
+       , int timeOutSeconds
        , out bool success
        , out string charSet
        , out WebExceptionStatus status)
@@ -65,7 +65,7 @@ namespace QT.Moduls.Crawler
                 Uri requestURI = new Uri(url);
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.Timeout = TimeOutSeconds * 1000;  // 10 secs
+                request.Timeout = timeOutSeconds * 1000;  // 10 secs
                 request.Proxy = null;
                 //request.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.15) Gecko/20110303 Firefox/3.6.15";
                 //request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:9.0.1) Gecko/20100101 Firefox/9.0.1";
@@ -114,7 +114,7 @@ namespace QT.Moduls.Crawler
                             }
                             catch { }
 
-                            using (Stream responseStream = GetStreamForResponse(response, TimeOutSeconds * 1000))
+                            using (Stream responseStream = GetStreamForResponse(response, timeOutSeconds * 1000))
                             {
                                 StreamReader reader;
                                 if (x == null)

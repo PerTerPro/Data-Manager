@@ -396,6 +396,9 @@
       <DependentUpon>frmQuangCao.cs</DependentUpon>
     </Compile>
     <Compile Include="Config_HaravanBizweb.cs" />
+    <Compile Include="CrawlerAlexa\ConsumerUpdateAlexaCompany.cs" />
+    <Compile Include="CrawlerAlexa\ConsumerUpdateAlexaCompanySeo.cs" />
+    <Compile Include="CrawlerAlexa\MssUpdateAlexaCompany.cs" />
     <Compile Include="CrawlerProduct\BLO.cs" />
     <Compile Include="CrawlerProduct\BLOProductCheckName.cs" />
     <Compile Include="CrawlerProduct\Cache\CacheCheckDupl.cs" />

@@ -22,6 +22,8 @@ namespace WSS.CrawlerProduct.Run
             Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;
             Server.LogConnectionString = ConfigCrawler.ConnectLog;
 
+
+
             //ProductAdapter productAdapter = new ProductAdapter(new SqlDb(ConfigCrawler.ConnectProduct));
             //long companyId = productAdapter.GetCompanyIDFromDomain("hc.com.vn");
             //WorkerFindNew w = new WorkerFindNew(companyId, new CancellationToken(false), "Test");
@@ -58,8 +60,7 @@ namespace WSS.CrawlerProduct.Run
                             consumer.Start();
                         }, token);
                         Thread.Sleep(10000);
-                    }
-                }
+                    }}
                 else
                 {
                     var pt = new ProductAdapter(new SqlDb(QT.Entities.Server.ConnectionString));
@@ -107,6 +108,7 @@ namespace WSS.CrawlerProduct.Run
 
         }
 
+        
         private static void EndApp(object sender, ConsoleCancelEventArgs e)
         {
             Source.Cancel();

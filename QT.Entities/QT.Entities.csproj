@@ -169,6 +169,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlexaFull.cs" />
     <Compile Include="AnaylysicData\HandlerContentOfHtml.cs" />
     <Compile Include="AutoFixSignText.cs" />
     <Compile Include="Classification.cs" />

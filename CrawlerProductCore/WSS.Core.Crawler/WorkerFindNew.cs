@@ -144,24 +144,26 @@ namespace WSS.Core.Crawler
         public void StartCrawler()
         {
             try
-            {if (Init())
+            {
+                int MaxProducts = 1000000;
+                if (Init())
                 {
                     RunReportRunning();
                     AddRootQueue();
                     _log.Info(GetPrefixLog());
                     while (!CheckEnd())
                     {
-                        _token.ThrowIfCancellationRequested();var jobCrawl = _linkQueue.Dequeue();
-
-                        string strLog = string.Format(GetPrefixLog() + string.Format(" Url: {0} Deep: {1}", jobCrawl.Url, jobCrawl.Deep));
+                        _token.ThrowIfCancellationRequested();
+                        var jobCrawl = _linkQueue.Dequeue();
+                        string strLog =
+                            string.Format(GetPrefixLog() +
+                                          string.Format(" Url: {0} Deep: {1}", jobCrawl.Url, jobCrawl.Deep));
                         _log.Info(strLog);
                         if (EventReportRun != null) EventReportRun(strLog);
-
                         DelayCrawler();
-                        if (!IsNoVisitUrl(jobCrawl.Url))
+                        if (!IsNoVisitUrl(jobCrawl.Url) && (_crcProductOldGroup.Count + _countNewProduct > MaxProducts))
                         {
                             _countVisited++;
-
                             _producerVisitedLinkFindNew.PublishString(
                                 Newtonsoft.Json.JsonConvert.SerializeObject(new VisitedLinkFindNew()
                                 {

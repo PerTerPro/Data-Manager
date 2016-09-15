@@ -15,15 +15,25 @@ namespace QT.Moduls
     public class ProducerBasic : Producer
     {
         private readonly log4net.ILog _log = LogManager.GetLogger(typeof (ProducerBasic));
-        public ProducerBasic(RabbitMQServer rabbitmqServer, string exchangeName, string routingKey) : base(rabbitmqServer, exchangeName, routingKey, "")
+
+        public ProducerBasic(RabbitMQServer rabbitmqServer, string exchangeName, string routingKey)
+            : base(rabbitmqServer, exchangeName, routingKey, "")
         {
         }
 
-        public ProducerBasic(RabbitMQServer rabbitmqServer, string queueName, bool autoDeclareQueue = true)
+        public ProducerBasic(RabbitMQServer rabbitmqServer, string queueName)
+            : base(rabbitmqServer, "", queueName, queueName)
+        {
+            InitQueue(rabbitmqServer, queueName);
+
+        }
+
+        public ProducerBasic(RabbitMQServer rabbitmqServer, string queueName, bool autoDeclareQueue)
             : base(rabbitmqServer, "", queueName, queueName)
         {
             if (autoDeclareQueue) InitQueue(rabbitmqServer, queueName);
         }
+
 
         public void InitQueue(RabbitMQServer rabbitmqServer, string queueName)
         {
