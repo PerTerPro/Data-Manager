@@ -25,12 +25,27 @@ namespace WSS.IndividualCategoryWebsites.SolrRootProduct
             var response = solr.AddRange(newsRootProducts);
             return response.Status == 0;
         }
+        public bool Delete(long ID)
+        {
+            var solr = GetSolrOperations();
+            var response = solr.Delete(ID.ToString());
+            return response.Status == 0;
+
+        }
+
+        public bool DeleteByWebsiteId(int idWebsite)
+        {
+            var solr = GetSolrOperations();
+            SolrQuery solrQuery = new SolrQuery("website_id:"+idWebsite);
+            var response = solr.Delete(solrQuery);
+            return response.Status == 0;
+        }
         public List<SolrRootProductItem> GetListRootProductsByTag(string tag,int websiteId, int offset, int numRows)
         {
             var solr = GetSolrOperations();
-            var queryString = "name:*" + tag + "*";
             var queryString2 = "website_id:" + websiteId;
-            var queryResult = solr.Query(new SolrQuery(queryString) && new SolrQuery(queryString2), new QueryOptions
+
+            var queryResult = solr.Query(new SolrQueryByField("name", tag) && new SolrQuery(queryString2), new QueryOptions
             {
                 Start = offset,
                 Rows = numRows

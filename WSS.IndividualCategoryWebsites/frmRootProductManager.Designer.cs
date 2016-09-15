@@ -39,6 +39,7 @@
             System.Windows.Forms.Label imageLabel;
             this.dBIndi = new WSS.IndividualCategoryWebsites.DBIndi();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.btnDeleteAll = new DevExpress.XtraEditors.SimpleButton();
             this.idTextEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.rootProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -158,6 +159,7 @@
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.btnDeleteAll);
             this.panelControl2.Controls.Add(idLabel1);
             this.panelControl2.Controls.Add(this.idTextEdit1);
             this.panelControl2.Controls.Add(nameLabel);
@@ -179,6 +181,15 @@
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1281, 168);
             this.panelControl2.TabIndex = 1;
+            // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Location = new System.Drawing.Point(1076, 31);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(145, 74);
+            this.btnDeleteAll.TabIndex = 16;
+            this.btnDeleteAll.Text = "Xóa tất cả dữ liệu";
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // idTextEdit1
             // 
@@ -252,8 +263,10 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CategoriesTableAdapter = null;
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.RootProductsTableAdapter = null;
+            this.tableAdapterManager.TagsTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = WSS.IndividualCategoryWebsites.DBIndiTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.WebsitesTableAdapter = null;
             // 
@@ -338,5 +351,6 @@
         private DevExpress.XtraEditors.TextEdit imageTextEdit;
         private System.Windows.Forms.BindingSource websitesBindingSource;
         private DBIndiTableAdapters.WebsitesTableAdapter websitesTableAdapter;
+        private DevExpress.XtraEditors.SimpleButton btnDeleteAll;
     }
 }

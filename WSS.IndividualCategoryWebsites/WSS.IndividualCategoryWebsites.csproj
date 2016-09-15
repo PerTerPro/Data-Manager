@@ -79,6 +79,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="QT.Moduls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\QT.Moduls.dll</HintPath>
+    </Reference>
     <Reference Include="RabbitMQ.Client">
       <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
     </Reference>
@@ -159,6 +163,12 @@
     <Compile Include="frmRootProductManager.Designer.cs">
       <DependentUpon>frmRootProductManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRootProductManager.resx">
       <DependentUpon>frmRootProductManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -234,10 +247,6 @@
     <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
       <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
       <Name>QT.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QT.Moduls\QT.Moduls.csproj">
-      <Project>{b8d02031-c0b6-4e60-a318-9f39d9b9a8a9}</Project>
-      <Name>QT.Moduls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
