@@ -8,6 +8,7 @@ using QT.Entities;
 using QT.Entities.CrawlerProduct;
 using QT.Entities.CrawlerProduct.Cache;
 using QT.Moduls;
+using QT.Moduls.Crawler;
 using QT.Moduls.CrawlerProduct.Cache;
 using QT.Moduls.CrawlerProduct.RabbitMQ;
 using RabbitMQ.Client;
@@ -30,6 +31,7 @@ namespace WSS.Core.Crawler
 
         public CancellationToken Token = new CancellationToken();
 
+        private IDownloadHtml _downloadHtml = new DownloadHtmlCrawler();
         private TypeEnd _typeEnd = TypeEnd.None;
         private int _countVisited = 0;
         private int _countChange = 0;
@@ -84,23 +86,23 @@ namespace WSS.Core.Crawler
             var tokenReportSession = TokenSource.Token;
             Task.Factory.StartNew(() =>
             {
-                ProducerBasic _producerReportSessionRunning=null;
+                ProducerBasic producerReportSessionRunning=null;
                 try
                 {
                     
-                     _producerReportSessionRunning = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), ConfigCrawler.ExchangeSessionRunning, ConfigCrawler.RoutingkeySessionRunning);
+                     producerReportSessionRunning = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), ConfigCrawler.ExchangeSessionRunning, ConfigCrawler.RoutingkeySessionRunning);
                     while (true)
                     {
                         tokenReportSession.ThrowIfCancellationRequested();
                         var mss = new ReportSessionRunning() { Thread = _nameThread, CompanyId = _companyId, Ip = Server.IPHost, Session = _session, StartAt = _timeStart, Type = "Reload", MachineCode = Server.MachineCode };
-                        _producerReportSessionRunning.PublishString(Newtonsoft.Json.JsonConvert.SerializeObject(mss), true, 300);
+                        producerReportSessionRunning.PublishString(Newtonsoft.Json.JsonConvert.SerializeObject(mss), true, 300);
                         Thread.Sleep(60000);
                     }
                 }
                 catch (OperationCanceledException ex)
                 {
                     _log.Info(string.Format("Stop reporting session:{0}", _session));
-                    if (_producerReportSessionRunning != null) _producerReportSessionRunning.Dispose();
+                    if (producerReportSessionRunning != null) producerReportSessionRunning.Dispose();
                     return;
                 }
                 catch (Exception ex01)
@@ -172,7 +174,7 @@ namespace WSS.Core.Crawler
 
         private string GetHtmlCode(string urlCurrent, out WebExceptionStatus expo)
         {
-            var html = GABIZ.Base.HtmlUrl.HTMLTransmitter.getHTML(urlCurrent, 5, 2, out expo);
+            var html = this._downloadHtml.GetHTML(urlCurrent, 45, 2, out expo);
             html = html.Replace("<form", "<div");
             html = html.Replace("</form", "</div");
             if (_config.UseClearHtml)
