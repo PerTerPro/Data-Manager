@@ -59,7 +59,8 @@ namespace WSS.Crawler.Product.Report
                 foreach (DataRow rowInfo in companyChanged.Rows)
                 {
                     this.sqldb.RunQuery(
-                        @"update configuration set MinHourReload=@MinHourReload, MinHourFindNew=@MinHourFindNew, NumberThreadCrawler = @NumberThreadCrawler
+                        @"update configuration 
+set MinHourReload=@MinHourReload, MinHourFindNew=@MinHourFindNew, NumberThreadCrawler = @NumberThreadCrawler
 , AllowFindNew = @AllowFindNew, AllowReload = @AllowReload 
 , Website_SourceType = @Website_SourceType
 , MaxHourFindNew = @MaxHourFindNew
@@ -69,6 +70,7 @@ namespace WSS.Crawler.Product.Report
 , MaxProductToWarning = @MaxProductToWarning
 , MinProductToWarning = @MinProductToWarning
 , MaxDeep = @MaxDeep
+, LimitProductValid = @LimitProductValid
                     where id = @configuration_id",
                         CommandType.Text, new System.Data.SqlClient.SqlParameter[]
                         {
@@ -97,7 +99,8 @@ namespace WSS.Crawler.Product.Report
                                 Convert.ToInt32(rowInfo["MaxProductToWarning"]), SqlDbType.Int),
                             SqlDb.CreateParamteterSQL("@MinProductToWarning",
                                 Convert.ToInt32(rowInfo["MinProductToWarning"]), SqlDbType.Int),
-                            SqlDb.CreateParamteterSQL("@MaxDeep", Convert.ToInt32(rowInfo["MaxDeep"]), SqlDbType.Int)
+                            SqlDb.CreateParamteterSQL("@MaxDeep", Convert.ToInt32(rowInfo["MaxDeep"]), SqlDbType.Int),
+                            SqlDb.CreateParamteterSQL("@LimitProductValid", Convert.ToInt32(rowInfo["LimitProductValid"]), SqlDbType.Int)
                         });
                     countData++;
                 }
@@ -211,6 +214,7 @@ namespace WSS.Crawler.Product.Report
 	, CASE WHEN (a.MinProductToWarning>0 AND  b.TotalProduct<a.MinProductToWarning) THEN 0 ELSE 1 END AS ValidMinProduct
 	, CASE WHEN (a.MaxProductToWarning>0 AND  b.TotalProduct>a.MaxProductToWarning) THEN 0 ELSE 1 END AS ValidMaxProduct
     , a.MaxDeep
+    , ISNULL(a.LimitProductValid, 0) AS LimitProductValid
 --update a set MinHourReload = 8, MinHourFindNew = 8
 from Configuration a
 inner join Company b on a.companyid = b.id

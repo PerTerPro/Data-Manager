@@ -16,11 +16,9 @@ namespace WSS.CrawlerProduct.Run
     public class Program
     {
         public static CancellationTokenSource Source = new CancellationTokenSource();
-        static void Main(string[] args)
-        {
+        static void Main(string[] args){
             Server.ConnectionString = ConfigCrawler.ConnectProduct;
-            Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;
-            Server.LogConnectionString = ConfigCrawler.ConnectLog;
+            Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;Server.LogConnectionString = ConfigCrawler.ConnectLog;
 
 
 
@@ -29,7 +27,6 @@ namespace WSS.CrawlerProduct.Run
             //WorkerFindNew w = new WorkerFindNew(companyId, new CancellationToken(false), "Test");
             //w.StartCrawler();
             //return;
-
             if (args == null || args.Length == 0)
             {
                 Console.WriteLine(@"Input para:");

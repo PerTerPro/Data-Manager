@@ -62,12 +62,12 @@ namespace WSS.Core.Crawler
         private ProducerBasic _producerProductChange = null;
         private ProducerBasic _producerPushCompanyReload = null;
         private ProducerBasic _producerDuplicateProduct = null;
-        private ProducerBasic _producerEndCrawler = null;
-        private ProducerBasic _producerVisitedLinkFindNew = null;
+        private ProducerBasic _producerEndCrawler = null;private ProducerBasic _producerVisitedLinkFindNew = null;
 
         private readonly string _nameThread;
         private readonly CancellationTokenSource _tokenSource = new CancellationTokenSource();
         private List<string> _linksStart;
+        private int LimitProductValid = 1000;
 
         public WorkerFindNew(long companyId, CancellationToken token, string nameThread)
         {
@@ -145,7 +145,6 @@ namespace WSS.Core.Crawler
         {
             try
             {
-                int MaxProducts = 1000000;
                 if (Init())
                 {
                     RunReportRunning();
@@ -155,13 +154,13 @@ namespace WSS.Core.Crawler
                     {
                         _token.ThrowIfCancellationRequested();
                         var jobCrawl = _linkQueue.Dequeue();
-                        string strLog =
-                            string.Format(GetPrefixLog() +
-                                          string.Format(" Url: {0} Deep: {1}", jobCrawl.Url, jobCrawl.Deep));
+                        string strLog = string.Format(GetPrefixLog() +
+                                                      string.Format(" Url: {0} Deep: {1}", jobCrawl.Url, jobCrawl.Deep));
                         _log.Info(strLog);
                         if (EventReportRun != null) EventReportRun(strLog);
                         DelayCrawler();
-                        if (!IsNoVisitUrl(jobCrawl.Url) && (_crcProductOldGroup.Count + _countNewProduct > MaxProducts))
+                        if (!IsNoVisitUrl(jobCrawl.Url) &&
+                            (_crcProductOldGroup.Count + _countNewProduct < LimitProductValid))
                         {
                             _countVisited++;
                             _producerVisitedLinkFindNew.PublishString(
@@ -172,8 +171,7 @@ namespace WSS.Core.Crawler
                                     Url = jobCrawl.Url,
                                     Session = _session,
                                     LastUpdate = DateTime.Now
-                                }), true, 0);
-
+                                }));
                             var html = GetHtmlCode(jobCrawl.Url, _config.UseClearHtml);
                             if (html != "")
                             {
@@ -265,7 +263,6 @@ namespace WSS.Core.Crawler
                 _log.Info("Over max link crc. Not extraction");
                 return;
             }
-
             var nodeLinks = doc.DocumentNode.SelectNodes("//a[@href]");
             if (nodeLinks != null)
             {
@@ -443,16 +440,17 @@ namespace WSS.Core.Crawler
         {
             try
             {
-                var rabbitMQCrawler = RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler);
-                _producerReportSessionRunning = new ProducerBasic(rabbitMQCrawler, ConfigCrawler.ExchangeSessionRunning, ConfigCrawler.RoutingkeySessionRunning);
-                _producerReportError = new ProducerBasic(rabbitMQCrawler, ConfigCrawler.ExchangeErorrCrawler, ConfigCrawler.RoutingKeyErrorCrawler);
-                _producerProductChange = new ProducerBasic(rabbitMQCrawler, ConfigCrawler.ExchangeChangeProduct, ConfigCrawler.RoutingkeyChangeProduct);
-                _producerDuplicateProduct = new ProducerBasic(rabbitMQCrawler, ConfigCrawler.ExchangeDuplicateProductToCache, ConfigCrawler.ExchangeDuplicateProductToCache);
-                _producerPushCompanyReload = new ProducerBasic(rabbitMQCrawler, ConfigCrawler.ExchangeCompanyReload, ConfigCrawler.RoutingkeyCompanyReload);
-                _producerEndCrawler = new ProducerBasic(rabbitMQCrawler, ConfigCrawler.ExchangeEndSession, ConfigCrawler.RoutingEndSession);
-                _producerVisitedLinkFindNew = new ProducerBasic(rabbitMQCrawler, ConfigCrawler.ExchangeVisitedLinkFindNew, ConfigCrawler.RoutingKeyVisitedLinkFindNew);
+                var rabbitMqCrawler = RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler);
+                _producerReportSessionRunning = new ProducerBasic(rabbitMqCrawler, ConfigCrawler.ExchangeSessionRunning, ConfigCrawler.RoutingkeySessionRunning);
+                _producerReportError = new ProducerBasic(rabbitMqCrawler, ConfigCrawler.ExchangeErorrCrawler, ConfigCrawler.RoutingKeyErrorCrawler);
+                _producerProductChange = new ProducerBasic(rabbitMqCrawler, ConfigCrawler.ExchangeChangeProduct, ConfigCrawler.RoutingkeyChangeProduct);
+                _producerDuplicateProduct = new ProducerBasic(rabbitMqCrawler, ConfigCrawler.ExchangeDuplicateProductToCache, ConfigCrawler.ExchangeDuplicateProductToCache);
+                _producerPushCompanyReload = new ProducerBasic(rabbitMqCrawler, ConfigCrawler.ExchangeCompanyReload, ConfigCrawler.RoutingkeyCompanyReload);
+                _producerEndCrawler = new ProducerBasic(rabbitMqCrawler, ConfigCrawler.ExchangeEndSession, ConfigCrawler.RoutingEndSession);
+                _producerVisitedLinkFindNew = new ProducerBasic(rabbitMqCrawler, ConfigCrawler.ExchangeVisitedLinkFindNew, ConfigCrawler.RoutingKeyVisitedLinkFindNew);
                 _company = new Company(_companyId);
                 _config = new Configuration(_companyId);
+                if (_config.LimitProductValid == 0) this.LimitProductValid = 1000000;
                 _rootUri = new Uri(_company.Website);
                 _cacheCrcVisited = RedisCrcVisitedFindNew.Instance();
                 _cacheWaitCrawler = RedisCompanyWaitCrawler.Instance();

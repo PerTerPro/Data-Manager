@@ -68,6 +68,7 @@
             this.colMaxDeep = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLimitFailToDelProduct = new DevExpress.XtraGrid.Columns.GridColumn();
             this.menuCompanyPlus1 = new WSS.Crawler.Product.Report.MenuCompanyPlus();
+            this.colLimitProductValid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -215,7 +216,8 @@
             this.colMaxProductToWarning,
             this.colMinProductToWarning,
             this.colMaxDeep,
-            this.colLimitFailToDelProduct});
+            this.colLimitFailToDelProduct,
+            this.colLimitProductValid});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsSelection.MultiSelect = true;
@@ -473,6 +475,14 @@
             this.menuCompanyPlus1.Name = "menuCompanyPlus1";
             this.menuCompanyPlus1.Size = new System.Drawing.Size(61, 4);
             // 
+            // colLimitProductValid
+            // 
+            this.colLimitProductValid.Caption = "LimitProductValid";
+            this.colLimitProductValid.FieldName = "LimitProductValid";
+            this.colLimitProductValid.Name = "colLimitProductValid";
+            this.colLimitProductValid.Visible = true;
+            this.colLimitProductValid.VisibleIndex = 26;
+            // 
             // FrmCompany
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -536,5 +546,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMinProductToWarning;
         private DevExpress.XtraGrid.Columns.GridColumn colMaxDeep;
         private DevExpress.XtraGrid.Columns.GridColumn colLimitFailToDelProduct;
+        private DevExpress.XtraGrid.Columns.GridColumn colLimitProductValid;
     }
 }

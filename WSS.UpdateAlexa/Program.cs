@@ -40,9 +40,13 @@ namespace WSS.ConsumerTool
                 else if (p1.TypeRun == 1)
                 {
                     for (int i = 0; i < p1.NumberThread; i++)
-                    {Task.Factory.StartNew(() =>
+                    {
+                        Task.Factory.StartNew(() =>
                         {
-                            ConsumerUpdateAlexaCompanySeo consumer = new ConsumerUpdateAlexaCompanySeo(RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqProduct), "UpdateAlexaCompanySeo", Program.ConnectionSeo);
+                            ConsumerUpdateAlexaCompanySeo consumer =
+                                new ConsumerUpdateAlexaCompanySeo(
+                                    RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqProduct),
+                                    "UpdateAlexaCompanySeo", Program.ConnectionSeo);
                             consumer.StartConsume();
                         });
                     }
