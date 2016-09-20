@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WSS.Crawler.Product.Report")]
+[assembly: AssemblyTitle("WSS.Service.Crawler.Consumer.CheckFailCrawler")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WSS.Crawler.Product.Report")]
+[assembly: AssemblyProduct("WSS.Service.Crawler.Consumer.CheckFailCrawler")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a7545183-3a51-48b2-b1c8-47eee5e45155")]
+[assembly: Guid("39460002-2547-4aee-86b2-59a118bc2598")]
 
 // Version information for an assembly consists of the following four values:
 //

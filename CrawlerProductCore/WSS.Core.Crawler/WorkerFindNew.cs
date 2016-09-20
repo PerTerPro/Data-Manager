@@ -133,8 +133,7 @@ namespace WSS.Core.Crawler
                 {
                     // ignored
                 }
-            }, tokenReport);
-        }
+            }, tokenReport);}
 
         public void StartCrawler(List<string> linksStart)
         {
