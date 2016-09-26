@@ -51,7 +51,10 @@
             this.gvRootProduct = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.radioButtonNew = new System.Windows.Forms.RadioButton();
+            this.radioButtonUpdate = new System.Windows.Forms.RadioButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtListRootIdNew = new DevExpress.XtraEditors.TextEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -61,8 +64,6 @@
             this.SelectedRootProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripTags = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.viewListProductByTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.radioButtonUpdate = new System.Windows.Forms.RadioButton();
-            this.radioButtonNew = new System.Windows.Forms.RadioButton();
             tagLabel = new System.Windows.Forms.Label();
             relateKeywordsLabel = new System.Windows.Forms.Label();
             rootProductIdListLabel = new System.Windows.Forms.Label();
@@ -269,10 +270,10 @@
             this.grdRootProduct.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.grdRootProduct.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.grdRootProduct.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.grdRootProduct.Location = new System.Drawing.Point(0, 147);
+            this.grdRootProduct.Location = new System.Drawing.Point(0, 117);
             this.grdRootProduct.MainView = this.gvRootProduct;
             this.grdRootProduct.Name = "grdRootProduct";
-            this.grdRootProduct.Size = new System.Drawing.Size(721, 361);
+            this.grdRootProduct.Size = new System.Drawing.Size(718, 391);
             this.grdRootProduct.TabIndex = 1;
             this.grdRootProduct.UseEmbeddedNavigator = true;
             this.grdRootProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -282,7 +283,8 @@
             // 
             this.gvRootProduct.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
-            this.gridColumn2});
+            this.gridColumn2,
+            this.gridColumn3});
             this.gvRootProduct.GridControl = this.grdRootProduct;
             this.gvRootProduct.Name = "gvRootProduct";
             this.gvRootProduct.OptionsBehavior.Editable = false;
@@ -307,6 +309,15 @@
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "MinPrice";
+            this.gridColumn3.FieldName = "MinPrice";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 3;
+            this.gridColumn3.Width = 171;
+            // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.radioButtonNew);
@@ -317,12 +328,38 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(721, 147);
+            this.panelControl2.Size = new System.Drawing.Size(718, 117);
             this.panelControl2.TabIndex = 0;
+            // 
+            // radioButtonNew
+            // 
+            this.radioButtonNew.AutoSize = true;
+            this.radioButtonNew.Checked = true;
+            this.radioButtonNew.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.radioButtonNew.ForeColor = System.Drawing.Color.Red;
+            this.radioButtonNew.Location = new System.Drawing.Point(22, 78);
+            this.radioButtonNew.Name = "radioButtonNew";
+            this.radioButtonNew.Size = new System.Drawing.Size(228, 23);
+            this.radioButtonNew.TabIndex = 11;
+            this.radioButtonNew.TabStop = true;
+            this.radioButtonNew.Text = "Cập nhật theo ListId mới";
+            this.radioButtonNew.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonUpdate
+            // 
+            this.radioButtonUpdate.AutoSize = true;
+            this.radioButtonUpdate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.radioButtonUpdate.ForeColor = System.Drawing.Color.Red;
+            this.radioButtonUpdate.Location = new System.Drawing.Point(22, 49);
+            this.radioButtonUpdate.Name = "radioButtonUpdate";
+            this.radioButtonUpdate.Size = new System.Drawing.Size(296, 23);
+            this.radioButtonUpdate.TabIndex = 10;
+            this.radioButtonUpdate.Text = "Mặc định : Cập nhật thêm dữ liệu";
+            this.radioButtonUpdate.UseVisualStyleBackColor = true;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(5, 17);
+            this.labelControl2.Location = new System.Drawing.Point(22, 17);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(113, 13);
             this.labelControl2.TabIndex = 5;
@@ -330,9 +367,9 @@
             // 
             // txtListRootIdNew
             // 
-            this.txtListRootIdNew.Location = new System.Drawing.Point(238, 14);
+            this.txtListRootIdNew.Location = new System.Drawing.Point(141, 14);
             this.txtListRootIdNew.Name = "txtListRootIdNew";
-            this.txtListRootIdNew.Size = new System.Drawing.Size(334, 20);
+            this.txtListRootIdNew.Size = new System.Drawing.Size(431, 20);
             this.txtListRootIdNew.TabIndex = 4;
             // 
             // btnSave
@@ -352,6 +389,7 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CategoriesTableAdapter = null;
+            this.tableAdapterManager.LogKeywordsWebsiteTableAdapter = null;
             this.tableAdapterManager.RootProductsTableAdapter = null;
             this.tableAdapterManager.TagsTableAdapter = this.tagsTableAdapter;
             this.tableAdapterManager.UpdateOrder = WSS.IndividualCategoryWebsites.DBIndiTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -384,32 +422,6 @@
             this.viewListProductByTagToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.viewListProductByTagToolStripMenuItem.Text = "Xem List Product by Tag";
             this.viewListProductByTagToolStripMenuItem.Click += new System.EventHandler(this.viewListProductByTagToolStripMenuItem_Click);
-            // 
-            // radioButtonUpdate
-            // 
-            this.radioButtonUpdate.AutoSize = true;
-            this.radioButtonUpdate.Checked = true;
-            this.radioButtonUpdate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.radioButtonUpdate.ForeColor = System.Drawing.Color.Red;
-            this.radioButtonUpdate.Location = new System.Drawing.Point(22, 49);
-            this.radioButtonUpdate.Name = "radioButtonUpdate";
-            this.radioButtonUpdate.Size = new System.Drawing.Size(296, 23);
-            this.radioButtonUpdate.TabIndex = 10;
-            this.radioButtonUpdate.TabStop = true;
-            this.radioButtonUpdate.Text = "Mặc định : Cập nhật thêm dữ liệu";
-            this.radioButtonUpdate.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonNew
-            // 
-            this.radioButtonNew.AutoSize = true;
-            this.radioButtonNew.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.radioButtonNew.ForeColor = System.Drawing.Color.Red;
-            this.radioButtonNew.Location = new System.Drawing.Point(22, 78);
-            this.radioButtonNew.Name = "radioButtonNew";
-            this.radioButtonNew.Size = new System.Drawing.Size(228, 23);
-            this.radioButtonNew.TabIndex = 11;
-            this.radioButtonNew.Text = "Cập nhật theo ListId mới";
-            this.radioButtonNew.UseVisualStyleBackColor = true;
             // 
             // frmAddTagsWebsites
             // 
@@ -477,6 +489,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.RadioButton radioButtonNew;
         private System.Windows.Forms.RadioButton radioButtonUpdate;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
 
     }
 }

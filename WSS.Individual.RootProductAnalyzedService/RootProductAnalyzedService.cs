@@ -36,7 +36,7 @@ namespace WSS.Individual.RootProductAnalyzedService
         {
             InitializeComponent();
             LoadAppConfig();
-            OnStart(new string[] { });
+            //OnStart(new string[] { });
         }
         private void LoadAppConfig()
         {
@@ -104,7 +104,7 @@ namespace WSS.Individual.RootProductAnalyzedService
             {
                 try
                 {
-                    var rootProductSql = new RootProductSQL
+                    var rootProductSql = new RootProductSql()
                     {
                         RootId = rootItem.Key,
                         Name = rootItem.Value[0].Name,
@@ -132,8 +132,8 @@ namespace WSS.Individual.RootProductAnalyzedService
                     rootProductSql.Image = imagePath;
 
                     rootProductSql.ProductIdListString = rootProductSql.GetProductIdListString();
-                    InsertSQlRootProduct(rootProductSql, rootAdapter);
-                    InsertSolrRootProduct(rootProductSql, solrRootProductClient);
+                    if(InsertSQlRootProduct(ref rootProductSql, rootAdapter))
+                        InsertSolrRootProduct(rootProductSql, solrRootProductClient);
                 }
                 catch (Exception exception)
                 {
@@ -160,7 +160,7 @@ namespace WSS.Individual.RootProductAnalyzedService
             }
             return imagePath;
         }
-        private void InsertSolrRootProduct(RootProductSQL rootProductSql, SolrRootProductClient solrRootProductClient)
+        private void InsertSolrRootProduct(RootProductSql rootProductSql, SolrRootProductClient solrRootProductClient)
         {
             var item = new SolrRootProductItem
             {
@@ -170,7 +170,8 @@ namespace WSS.Individual.RootProductAnalyzedService
                 LocalPath = rootProductSql.LocalPath,
                 MinPrice = rootProductSql.MinPrice,
                 NumMerchant = rootProductSql.NumMerchant,
-                WebsiteId = rootProductSql.WebsiteId
+                WebsiteId = rootProductSql.WebsiteId,
+                CategoryId = rootProductSql.CategoryId
             };
             try
             {
@@ -183,25 +184,61 @@ namespace WSS.Individual.RootProductAnalyzedService
             }
         }
 
-        private void InsertSQlRootProduct(RootProductSQL rootProductSql, RootProductsTableAdapter rootAdapter)
+        private bool InsertSQlRootProduct(ref RootProductSql rootProductSql, RootProductsTableAdapter rootAdapter)
         {
-            while (_isRunning)
-            {
+            bool isUpdateSolr = false;
                 try
                 {
-                    rootAdapter.Insert(rootProductSql.RootId, rootProductSql.Name, rootProductSql.WebsiteId,
-                        rootProductSql.MinPrice, rootProductSql.NumMerchant, rootProductSql.LocalPath,
-                        rootProductSql.ProductIdListString, rootProductSql.Image, rootProductSql.CategoryId,rootProductSql.Image);
-                    Log.Info("insert success" + rootProductSql.RootId);
-                    break;
+                    DBIndi.RootProductsDataTable rootTable = new DBIndi.RootProductsDataTable();
+                    rootAdapter.FillBy_Id(rootTable, rootProductSql.RootId);
+                    if (rootTable.Rows.Count > 0)
+                    {
+                        bool isActive = Common.Obj2Bool(rootTable.Rows[0]["IsActive"]);
+                        if (isActive)
+                        {
+                            var listProductIdOld =
+                                rootTable.Rows[0]["LocalPath"].ToString()
+                                    .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                    .ToList();
+                            foreach (var item in rootProductSql.ProductIdList)
+                            {
+                                if (!listProductIdOld.Contains(item.ToString()))
+                                {
+                                    listProductIdOld.Add(item.ToString());
+                                }
+                            }
+                            rootProductSql.ProductIdListString = string.Join(",", listProductIdOld);
+                            rootProductSql.Name = rootTable.Rows[0]["Name"].ToString();
+                            rootProductSql.LocalPath = rootTable.Rows[0]["LocalPath"].ToString();
+                            rootProductSql.CategoryId = Common.Obj2Int(rootTable.Rows[0]["CategoryId"]);
+                            //Update SQL
+                            rootAdapter.UpdateIfIsActive(rootProductSql.MinPrice, rootProductSql.NumMerchant,
+                                rootProductSql.ProductIdListString, rootProductSql.Image, rootProductSql.RootId);
+                            isUpdateSolr= true;
+                        }
+                        else
+                        {
+                            rootAdapter.UpdateQuery(rootProductSql.Name, rootProductSql.WebsiteId,
+                            rootProductSql.MinPrice, rootProductSql.NumMerchant, rootProductSql.LocalPath,
+                            rootProductSql.ProductIdListString, rootProductSql.Image, rootProductSql.CategoryId,
+                            rootProductSql.Image, false,rootProductSql.RootId);
+                        }
+                    }
+                    else
+                    {
+                        rootAdapter.Insert(rootProductSql.RootId, rootProductSql.Name, rootProductSql.WebsiteId,
+                            rootProductSql.MinPrice, rootProductSql.NumMerchant, rootProductSql.LocalPath,
+                            rootProductSql.ProductIdListString, rootProductSql.Image, rootProductSql.CategoryId,
+                            rootProductSql.Image, false);
+                        Log.Info("insert success" + rootProductSql.RootId);
+                    }
                 }
                 catch (Exception ex)
                 {
                     Log.Error(string.Format("Insert SQL error with Id ={0} , Name = {1} {2}", rootProductSql.RootId,
                         rootProductSql.Name, ex.Message + ex.StackTrace));
-                    break;
                 }
-            }
+            return isUpdateSolr;
         }
 
         protected override void OnStop()
@@ -211,23 +248,5 @@ namespace WSS.Individual.RootProductAnalyzedService
             _rabbitMqServer.Stop();
             _isRunning = false;
         }
-    }
-
-    public class RootProductSQL
-    {
-        public long RootId { set; get; }
-        public string Name { set; get; }
-        public int WebsiteId { set; get; }
-        public long MinPrice { set; get; }
-        public int NumMerchant { set; get; }
-        public List<long> ProductIdList { set; get; }
-        public string ProductIdListString { set; get; }
-        public string GetProductIdListString()
-        {
-            return string.Join(",", ProductIdList);
-        }
-        public string LocalPath { set; get; }
-        public string Image { set; get; }
-        public int CategoryId { set; get; }
     }
 }

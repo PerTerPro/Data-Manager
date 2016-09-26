@@ -299,6 +299,8 @@ namespace WSS.Individual.RootProductAnalyzedService {
             
             private global::System.Data.DataColumn columnImagePath;
             
+            private global::System.Data.DataColumn columnIsActive;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public RootProductsDataTable() {
@@ -414,6 +416,14 @@ namespace WSS.Individual.RootProductAnalyzedService {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IsActiveColumn {
+                get {
+                    return this.columnIsActive;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -449,7 +459,7 @@ namespace WSS.Individual.RootProductAnalyzedService {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RootProductsRow AddRootProductsRow(long Id, string Name, int WebsiteId, long MinPrice, int NumMerchant, string LocalPath, string ProductIdList, string Image, int CategoryId, string ImagePath) {
+            public RootProductsRow AddRootProductsRow(long Id, string Name, int WebsiteId, long MinPrice, int NumMerchant, string LocalPath, string ProductIdList, string Image, int CategoryId, string ImagePath, bool IsActive) {
                 RootProductsRow rowRootProductsRow = ((RootProductsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -461,7 +471,8 @@ namespace WSS.Individual.RootProductAnalyzedService {
                         ProductIdList,
                         Image,
                         CategoryId,
-                        ImagePath};
+                        ImagePath,
+                        IsActive};
                 rowRootProductsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRootProductsRow);
                 return rowRootProductsRow;
@@ -501,6 +512,7 @@ namespace WSS.Individual.RootProductAnalyzedService {
                 this.columnImage = base.Columns["Image"];
                 this.columnCategoryId = base.Columns["CategoryId"];
                 this.columnImagePath = base.Columns["ImagePath"];
+                this.columnIsActive = base.Columns["IsActive"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -526,6 +538,8 @@ namespace WSS.Individual.RootProductAnalyzedService {
                 base.Columns.Add(this.columnCategoryId);
                 this.columnImagePath = new global::System.Data.DataColumn("ImagePath", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImagePath);
+                this.columnIsActive = new global::System.Data.DataColumn("IsActive", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsActive);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
@@ -808,6 +822,22 @@ namespace WSS.Individual.RootProductAnalyzedService {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsActive {
+                get {
+                    try {
+                        return ((bool)(this[this.tableRootProducts.IsActiveColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsActive\' in table \'RootProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRootProducts.IsActiveColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsProductIdListNull() {
                 return this.IsNull(this.tableRootProducts.ProductIdListColumn);
             }
@@ -840,6 +870,18 @@ namespace WSS.Individual.RootProductAnalyzedService {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetImagePathNull() {
                 this[this.tableRootProducts.ImagePathColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIsActiveNull() {
+                return this.IsNull(this.tableRootProducts.IsActiveColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIsActiveNull() {
+                this[this.tableRootProducts.IsActiveColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1012,10 +1054,11 @@ namespace WSS.Individual.RootProductAnalyzedService.DBIndiTableAdapters {
             tableMapping.ColumnMappings.Add("Image", "Image");
             tableMapping.ColumnMappings.Add("CategoryId", "CategoryId");
             tableMapping.ColumnMappings.Add("ImagePath", "ImagePath");
+            tableMapping.ColumnMappings.Add("IsActive", "IsActive");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [RootProducts] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([WebsiteId] = @Original_WebsiteId) AND ([MinPrice] = @Original_MinPrice) AND ([NumMerchant] = @Original_NumMerchant) AND ([LocalPath] = @Original_LocalPath) AND ([Image] = @Original_Image) AND ((@IsNull_CategoryId = 1 AND [CategoryId] IS NULL) OR ([CategoryId] = @Original_CategoryId)) AND ((@IsNull_ImagePath = 1 AND [ImagePath] IS NULL) OR ([ImagePath] = @Original_ImagePath)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [RootProducts] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([WebsiteId] = @Original_WebsiteId) AND ([MinPrice] = @Original_MinPrice) AND ([NumMerchant] = @Original_NumMerchant) AND ([LocalPath] = @Original_LocalPath) AND ([Image] = @Original_Image) AND ((@IsNull_CategoryId = 1 AND [CategoryId] IS NULL) OR ([CategoryId] = @Original_CategoryId)) AND ((@IsNull_ImagePath = 1 AND [ImagePath] IS NULL) OR ([ImagePath] = @Original_ImagePath)) AND ((@IsNull_IsActive = 1 AND [IsActive] IS NULL) OR ([IsActive] = @Original_IsActive)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -1028,10 +1071,12 @@ namespace WSS.Individual.RootProductAnalyzedService.DBIndiTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CategoryId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ImagePath", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImagePath", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ImagePath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImagePath", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsActive", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsActive", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsActive", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsActive", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [RootProducts] ([Id], [Name], [WebsiteId], [MinPrice], [NumMerchant], [LocalPath], [ProductIdList], [Image], [CategoryId], [ImagePath]) VALUES (@Id, @Name, @WebsiteId, @MinPrice, @NumMerchant, @LocalPath, @ProductIdList, @Image, @CategoryId, @ImagePath);
-SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Image, CategoryId, ImagePath FROM RootProducts WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [RootProducts] ([Id], [Name], [WebsiteId], [MinPrice], [NumMerchant], [LocalPath], [ProductIdList], [Image], [CategoryId], [ImagePath], [IsActive]) VALUES (@Id, @Name, @WebsiteId, @MinPrice, @NumMerchant, @LocalPath, @ProductIdList, @Image, @CategoryId, @ImagePath, @IsActive);
+SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Image, CategoryId, ImagePath, IsActive FROM RootProducts WHERE (Id = @Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1043,10 +1088,11 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Image", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CategoryId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImagePath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImagePath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsActive", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsActive", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [RootProducts] SET [Id] = @Id, [Name] = @Name, [WebsiteId] = @WebsiteId, [MinPrice] = @MinPrice, [NumMerchant] = @NumMerchant, [LocalPath] = @LocalPath, [ProductIdList] = @ProductIdList, [Image] = @Image, [CategoryId] = @CategoryId, [ImagePath] = @ImagePath WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([WebsiteId] = @Original_WebsiteId) AND ([MinPrice] = @Original_MinPrice) AND ([NumMerchant] = @Original_NumMerchant) AND ([LocalPath] = @Original_LocalPath) AND ([Image] = @Original_Image) AND ((@IsNull_CategoryId = 1 AND [CategoryId] IS NULL) OR ([CategoryId] = @Original_CategoryId)) AND ((@IsNull_ImagePath = 1 AND [ImagePath] IS NULL) OR ([ImagePath] = @Original_ImagePath)));
-SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Image, CategoryId, ImagePath FROM RootProducts WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [RootProducts] SET [Id] = @Id, [Name] = @Name, [WebsiteId] = @WebsiteId, [MinPrice] = @MinPrice, [NumMerchant] = @NumMerchant, [LocalPath] = @LocalPath, [ProductIdList] = @ProductIdList, [Image] = @Image, [CategoryId] = @CategoryId, [ImagePath] = @ImagePath, [IsActive] = @IsActive WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([WebsiteId] = @Original_WebsiteId) AND ([MinPrice] = @Original_MinPrice) AND ([NumMerchant] = @Original_NumMerchant) AND ([LocalPath] = @Original_LocalPath) AND ([Image] = @Original_Image) AND ((@IsNull_CategoryId = 1 AND [CategoryId] IS NULL) OR ([CategoryId] = @Original_CategoryId)) AND ((@IsNull_ImagePath = 1 AND [ImagePath] IS NULL) OR ([ImagePath] = @Original_ImagePath)) AND ((@IsNull_IsActive = 1 AND [IsActive] IS NULL) OR ([IsActive] = @Original_IsActive)));
+SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Image, CategoryId, ImagePath, IsActive FROM RootProducts WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1058,6 +1104,7 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Image", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CategoryId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImagePath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImagePath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsActive", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsActive", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_WebsiteId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "WebsiteId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -1069,6 +1116,8 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CategoryId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ImagePath", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImagePath", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ImagePath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImagePath", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsActive", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsActive", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsActive", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsActive", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1082,12 +1131,48 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdLis" +
-                "t, Image, CategoryId, ImagePath\r\nFROM            RootProducts";
+                "t, Image, CategoryId, ImagePath, IsActive\r\nFROM            RootProducts";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdLis" +
+                "t, Image, CategoryId, ImagePath, IsActive\r\nFROM            RootProducts\r\nwhere I" +
+                "d = @Id";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "UPDATE       RootProducts\r\nSET                MinPrice = @MinPrice, NumMerchant =" +
+                " @NumMerchant, ProductIdList = @ProductIdList, Image = @Image\r\nWHERE        (Id " +
+                "= @Id)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MinPrice", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "MinPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumMerchant", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "NumMerchant", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductIdList", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "ProductIdList", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Image", global::System.Data.SqlDbType.NVarChar, 250, global::System.Data.ParameterDirection.Input, 0, 0, "Image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"UPDATE       RootProducts
+SET                Name = @Name, WebsiteId = @WebsiteId, MinPrice = @MinPrice, NumMerchant = @NumMerchant, LocalPath = @LocalPath, ProductIdList = @ProductIdList, Image = @Image, CategoryId = @CategoryId, 
+                         ImagePath = @ImagePath, IsActive = @IsActive
+WHERE        (Id = @Original_Id)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 500, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WebsiteId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "WebsiteId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MinPrice", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "MinPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumMerchant", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "NumMerchant", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LocalPath", global::System.Data.SqlDbType.VarChar, 250, global::System.Data.ParameterDirection.Input, 0, 0, "LocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductIdList", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "ProductIdList", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Image", global::System.Data.SqlDbType.NVarChar, 250, global::System.Data.ParameterDirection.Input, 0, 0, "Image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CategoryId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImagePath", global::System.Data.SqlDbType.NVarChar, 500, global::System.Data.ParameterDirection.Input, 0, 0, "ImagePath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsActive", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "IsActive", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1112,6 +1197,20 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
             DBIndi.RootProductsDataTable dataTable = new DBIndi.RootProductsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy_Id(DBIndi.RootProductsDataTable dataTable, long Id) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(Id));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1147,7 +1246,7 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_Id, string Original_Name, int Original_WebsiteId, long Original_MinPrice, int Original_NumMerchant, string Original_LocalPath, string Original_Image, global::System.Nullable<int> Original_CategoryId, string Original_ImagePath) {
+        public virtual int Delete(long Original_Id, string Original_Name, int Original_WebsiteId, long Original_MinPrice, int Original_NumMerchant, string Original_LocalPath, string Original_Image, global::System.Nullable<int> Original_CategoryId, string Original_ImagePath, global::System.Nullable<bool> Original_IsActive) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
@@ -1186,6 +1285,14 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_ImagePath));
             }
+            if ((Original_IsActive.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((bool)(Original_IsActive.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1206,7 +1313,7 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(long Id, string Name, int WebsiteId, long MinPrice, int NumMerchant, string LocalPath, string ProductIdList, string Image, global::System.Nullable<int> CategoryId, string ImagePath) {
+        public virtual int Insert(long Id, string Name, int WebsiteId, long MinPrice, int NumMerchant, string LocalPath, string ProductIdList, string Image, global::System.Nullable<int> CategoryId, string ImagePath, global::System.Nullable<bool> IsActive) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((long)(Id));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -1247,6 +1354,12 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = ((string)(ImagePath));
             }
+            if ((IsActive.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((bool)(IsActive.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1278,6 +1391,7 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
                     string Image, 
                     global::System.Nullable<int> CategoryId, 
                     string ImagePath, 
+                    global::System.Nullable<bool> IsActive, 
                     long Original_Id, 
                     string Original_Name, 
                     int Original_WebsiteId, 
@@ -1286,7 +1400,8 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
                     string Original_LocalPath, 
                     string Original_Image, 
                     global::System.Nullable<int> Original_CategoryId, 
-                    string Original_ImagePath) {
+                    string Original_ImagePath, 
+                    global::System.Nullable<bool> Original_IsActive) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(Id));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -1327,43 +1442,57 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(ImagePath));
             }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((long)(Original_Id));
+            if ((IsActive.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(IsActive.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((long)(Original_Id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Name));
             }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_WebsiteId));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((long)(Original_MinPrice));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_NumMerchant));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_WebsiteId));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((long)(Original_MinPrice));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_NumMerchant));
             if ((Original_LocalPath == null)) {
                 throw new global::System.ArgumentNullException("Original_LocalPath");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_LocalPath));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_LocalPath));
             }
             if ((Original_Image == null)) {
                 throw new global::System.ArgumentNullException("Original_Image");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_Image));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_Image));
             }
             if ((Original_CategoryId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_CategoryId.Value));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_CategoryId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             if ((Original_ImagePath == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_ImagePath));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_ImagePath));
+            }
+            if ((Original_IsActive.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((bool)(Original_IsActive.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1395,6 +1524,7 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
                     string Image, 
                     global::System.Nullable<int> CategoryId, 
                     string ImagePath, 
+                    global::System.Nullable<bool> IsActive, 
                     long Original_Id, 
                     string Original_Name, 
                     int Original_WebsiteId, 
@@ -1403,8 +1533,116 @@ SELECT Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Ima
                     string Original_LocalPath, 
                     string Original_Image, 
                     global::System.Nullable<int> Original_CategoryId, 
-                    string Original_ImagePath) {
-            return this.Update(Original_Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Image, CategoryId, ImagePath, Original_Id, Original_Name, Original_WebsiteId, Original_MinPrice, Original_NumMerchant, Original_LocalPath, Original_Image, Original_CategoryId, Original_ImagePath);
+                    string Original_ImagePath, 
+                    global::System.Nullable<bool> Original_IsActive) {
+            return this.Update(Original_Id, Name, WebsiteId, MinPrice, NumMerchant, LocalPath, ProductIdList, Image, CategoryId, ImagePath, IsActive, Original_Id, Original_Name, Original_WebsiteId, Original_MinPrice, Original_NumMerchant, Original_LocalPath, Original_Image, Original_CategoryId, Original_ImagePath, Original_IsActive);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateIfIsActive(long MinPrice, int NumMerchant, string ProductIdList, string Image, long Id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            command.Parameters[0].Value = ((long)(MinPrice));
+            command.Parameters[1].Value = ((int)(NumMerchant));
+            if ((ProductIdList == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((string)(ProductIdList));
+            }
+            if ((Image == null)) {
+                throw new global::System.ArgumentNullException("Image");
+            }
+            else {
+                command.Parameters[3].Value = ((string)(Image));
+            }
+            command.Parameters[4].Value = ((long)(Id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateQuery(string Name, int WebsiteId, long MinPrice, int NumMerchant, string LocalPath, string ProductIdList, string Image, global::System.Nullable<int> CategoryId, string ImagePath, global::System.Nullable<bool> IsActive, long Original_Id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Name));
+            }
+            command.Parameters[1].Value = ((int)(WebsiteId));
+            command.Parameters[2].Value = ((long)(MinPrice));
+            command.Parameters[3].Value = ((int)(NumMerchant));
+            if ((LocalPath == null)) {
+                throw new global::System.ArgumentNullException("LocalPath");
+            }
+            else {
+                command.Parameters[4].Value = ((string)(LocalPath));
+            }
+            if ((ProductIdList == null)) {
+                command.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[5].Value = ((string)(ProductIdList));
+            }
+            if ((Image == null)) {
+                throw new global::System.ArgumentNullException("Image");
+            }
+            else {
+                command.Parameters[6].Value = ((string)(Image));
+            }
+            if ((CategoryId.HasValue == true)) {
+                command.Parameters[7].Value = ((int)(CategoryId.Value));
+            }
+            else {
+                command.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((ImagePath == null)) {
+                command.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[8].Value = ((string)(ImagePath));
+            }
+            if ((IsActive.HasValue == true)) {
+                command.Parameters[9].Value = ((bool)(IsActive.Value));
+            }
+            else {
+                command.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            command.Parameters[10].Value = ((long)(Original_Id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

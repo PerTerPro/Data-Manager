@@ -160,14 +160,18 @@ namespace QT.Moduls.ProductID
             }
             else
             {
+                //Check Category tồn tại trong bảng ListClassfication
+                // Nếu k tồn tại thì thông báo ra ngoài
+                // Nếu tồn tại thì lấy cái 
                 this.productBindingSource.MoveFirst();
                 for (int i = 0; i < this.productBindingSource.Count; i++)
                 {
                     if (nameTextBox.Text.IndexOf(txtNoiDungCat.Text.Trim()) >= 0)
                     {
                         this.categoryIDTextBox.Text = cat.ToString();
-                    }
-                    this.productBindingSource.MoveNext();
+                        this.contentFTTextEdit.Text = string.Format("c{0}_", cat.ToString("D3"));
+                        }
+                        this.productBindingSource.MoveNext();
                 }
                 LogJobAdapter.SaveLog(JobName.FrmEditeTenSanPham_Doi_Category, "Click vào nút đổi category sản phẩm hàng loạt nên ko có ID", 0, (int)JobTypeData.KhongXacDinh);
             }

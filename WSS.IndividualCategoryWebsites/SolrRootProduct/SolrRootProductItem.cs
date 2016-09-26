@@ -24,5 +24,8 @@ namespace WSS.IndividualCategoryWebsites.SolrRootProduct
 
         [SolrField("website_id")]
         public int WebsiteId { get; set; }
+
+        [SolrField("categoy_id")]
+        public int CategoryId { get; set; }
     }
 }

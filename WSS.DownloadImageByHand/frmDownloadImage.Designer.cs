@@ -37,6 +37,7 @@
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.rbSingleProduct = new System.Windows.Forms.RichTextBox();
             this.btnDownloadSingleProduct = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.txtLinks = new DevExpress.XtraEditors.TextEdit();
@@ -56,7 +57,6 @@
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.rbListLinksFails = new System.Windows.Forms.RichTextBox();
             this.rbListFails = new System.Windows.Forms.RichTextBox();
-            this.rbSingleProduct = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
@@ -86,7 +86,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1370, 185);
+            this.panelControl1.Size = new System.Drawing.Size(1362, 185);
             this.panelControl1.TabIndex = 0;
             // 
             // groupControl3
@@ -99,7 +99,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(1127, 2);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(241, 181);
+            this.groupControl3.Size = new System.Drawing.Size(233, 181);
             this.groupControl3.TabIndex = 15;
             this.groupControl3.Text = "Linh tinh";
             // 
@@ -165,6 +165,14 @@
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(578, 98);
             this.panelControl3.TabIndex = 1;
+            // 
+            // rbSingleProduct
+            // 
+            this.rbSingleProduct.Location = new System.Drawing.Point(5, 13);
+            this.rbSingleProduct.Name = "rbSingleProduct";
+            this.rbSingleProduct.Size = new System.Drawing.Size(385, 76);
+            this.rbSingleProduct.TabIndex = 2;
+            this.rbSingleProduct.Text = "";
             // 
             // btnDownloadSingleProduct
             // 
@@ -302,7 +310,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.splitContainerControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1370, 591);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1362, 556);
             this.splitContainerControl1.SplitterPosition = 405;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -312,7 +320,7 @@
             this.rbIndex.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rbIndex.Location = new System.Drawing.Point(0, 0);
             this.rbIndex.Name = "rbIndex";
-            this.rbIndex.Size = new System.Drawing.Size(405, 591);
+            this.rbIndex.Size = new System.Drawing.Size(405, 556);
             this.rbIndex.TabIndex = 1;
             this.rbIndex.Text = "";
             // 
@@ -325,7 +333,7 @@
             this.splitContainerControl2.Panel1.Text = "Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.rbListFails);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(960, 591);
+            this.splitContainerControl2.Size = new System.Drawing.Size(952, 556);
             this.splitContainerControl2.SplitterPosition = 650;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -335,7 +343,7 @@
             this.rbListLinksFails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rbListLinksFails.Location = new System.Drawing.Point(0, 0);
             this.rbListLinksFails.Name = "rbListLinksFails";
-            this.rbListLinksFails.Size = new System.Drawing.Size(650, 591);
+            this.rbListLinksFails.Size = new System.Drawing.Size(650, 556);
             this.rbListLinksFails.TabIndex = 2;
             this.rbListLinksFails.Text = "";
             // 
@@ -344,23 +352,15 @@
             this.rbListFails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rbListFails.Location = new System.Drawing.Point(0, 0);
             this.rbListFails.Name = "rbListFails";
-            this.rbListFails.Size = new System.Drawing.Size(305, 591);
+            this.rbListFails.Size = new System.Drawing.Size(297, 556);
             this.rbListFails.TabIndex = 2;
             this.rbListFails.Text = "";
-            // 
-            // rbSingleProduct
-            // 
-            this.rbSingleProduct.Location = new System.Drawing.Point(5, 13);
-            this.rbSingleProduct.Name = "rbSingleProduct";
-            this.rbSingleProduct.Size = new System.Drawing.Size(385, 76);
-            this.rbSingleProduct.TabIndex = 2;
-            this.rbSingleProduct.Text = "";
             // 
             // frmDownloadImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 776);
+            this.ClientSize = new System.Drawing.Size(1362, 741);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.panelControl1);
             this.Name = "frmDownloadImage";

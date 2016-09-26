@@ -16,6 +16,15 @@ namespace WSS.IndividualCategoryWebsites
             ViewTagInWebsites =3
         }
 
+        public static string ConvertTextRichtextBoxToString(string textRichtextBox)
+        {
+            var result = "";
+            var listKeywords = textRichtextBox.Replace('\n',',').ToList();
+            //var normalizedKeyword =
+            //    listKeywords.Select(SolrUtils.NormalizeToExactQuery).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            //result = string.Join(",", normalizedKeyword);
+            return result;
+        }
         public static string GetNameCategoryById(int id)
         {
             var categoriesTableAdapter = new CategoriesTableAdapter();

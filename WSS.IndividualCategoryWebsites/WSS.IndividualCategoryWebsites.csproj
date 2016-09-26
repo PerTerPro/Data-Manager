@@ -79,10 +79,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="QT.Moduls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\000\DLLs\QT.Moduls.dll</HintPath>
-    </Reference>
     <Reference Include="RabbitMQ.Client">
       <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
     </Reference>
@@ -145,6 +141,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBIndi.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DBPrd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBPrd.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmAddTagsWebsites.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +178,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RootProductSql.cs" />
     <Compile Include="SolrProduct\SolrProductClient.cs" />
     <Compile Include="SolrProduct\SolrProductConstants.cs" />
     <Compile Include="SolrProduct\SolrProductItem.cs" />
@@ -226,6 +228,17 @@
     <None Include="DBIndi.xss">
       <DependentUpon>DBIndi.xsd</DependentUpon>
     </None>
+    <None Include="DBPrd.xsc">
+      <DependentUpon>DBPrd.xsd</DependentUpon>
+    </None>
+    <None Include="DBPrd.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBPrd.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DBPrd.xss">
+      <DependentUpon>DBPrd.xsd</DependentUpon>
+    </None>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -247,6 +260,10 @@
     <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
       <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
       <Name>QT.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QT.Moduls\QT.Moduls.csproj">
+      <Project>{b8d02031-c0b6-4e60-a318-9f39d9b9a8a9}</Project>
+      <Name>QT.Moduls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
