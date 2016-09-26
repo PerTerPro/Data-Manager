@@ -16,18 +16,17 @@ namespace WSS.CrawlerProduct.Run
     public class Program
     {
         public static CancellationTokenSource Source = new CancellationTokenSource();
-        static void Main(string[] args)
-        {
+        static void Main(string[] args){
             Server.ConnectionString = ConfigCrawler.ConnectProduct;
-            Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;
-            Server.LogConnectionString = ConfigCrawler.ConnectLog;
+            Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;Server.LogConnectionString = ConfigCrawler.ConnectLog;
+
+
 
             //ProductAdapter productAdapter = new ProductAdapter(new SqlDb(ConfigCrawler.ConnectProduct));
             //long companyId = productAdapter.GetCompanyIDFromDomain("hc.com.vn");
             //WorkerFindNew w = new WorkerFindNew(companyId, new CancellationToken(false), "Test");
             //w.StartCrawler();
             //return;
-
             if (args == null || args.Length == 0)
             {
                 Console.WriteLine(@"Input para:");
@@ -58,8 +57,7 @@ namespace WSS.CrawlerProduct.Run
                             consumer.Start();
                         }, token);
                         Thread.Sleep(10000);
-                    }
-                }
+                    }}
                 else
                 {
                     var pt = new ProductAdapter(new SqlDb(QT.Entities.Server.ConnectionString));
@@ -107,6 +105,7 @@ namespace WSS.CrawlerProduct.Run
 
         }
 
+        
         private static void EndApp(object sender, ConsoleCancelEventArgs e)
         {
             Source.Cancel();

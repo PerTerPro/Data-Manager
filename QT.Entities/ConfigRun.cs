@@ -26,5 +26,6 @@ namespace QT.Entities
         public static int IndexRedisDbTrackDeleteProduct = 1;
         public static string KeySqlProduct = "ProductConnectionString";
         public static string QueueUpdateAlexa = "UpdateAlexaCompany";
+        public static string QueueUpdateAlexaFullInfo;
     }
 }

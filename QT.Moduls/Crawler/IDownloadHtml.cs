@@ -13,6 +13,7 @@ namespace QT.Moduls.Crawler
 {
     public interface IDownloadHtml
     {
+        //Test
         string GetHTML(string url, int secondsTimeOut, int numTry, out WebExceptionStatus status);
     }
 
@@ -43,44 +44,11 @@ namespace QT.Moduls.Crawler
             return html;
         }
 
-        private string TestData(string urlAddress)
-        {
-
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
-      | SecurityProtocolType.Tls11
-      | SecurityProtocolType.Tls12
-      | SecurityProtocolType.Ssl3;
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                Stream receiveStream = response.GetResponseStream();
-                StreamReader readStream = null;
-
-                if (response.CharacterSet == null)
-                {
-                    readStream = new StreamReader(receiveStream);
-                }
-                else
-                {
-                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
-                }
-
-                string data = readStream.ReadToEnd();
-
-                response.Close();
-                readStream.Close();
-                return data;
-            }
-            return "";
-          
-        }
+     
 
 
         public  string GetResponseString(string charSetInput, string url
-       , int TimeOutSeconds
+       , int timeOutSeconds
        , out bool success
        , out string charSet
        , out WebExceptionStatus status)
@@ -89,7 +57,7 @@ namespace QT.Moduls.Crawler
             success = false;
             charSet = charSetInput;
 
-            if (url == null || url.Length == 0) { success = true; return ""; }
+            if (string.IsNullOrEmpty(url)) { success = true; return ""; }
 
             string html = "";
             try
@@ -97,7 +65,7 @@ namespace QT.Moduls.Crawler
                 Uri requestURI = new Uri(url);
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.Timeout = TimeOutSeconds * 1000;  // 10 secs
+                request.Timeout = timeOutSeconds * 1000;  // 10 secs
                 request.Proxy = null;
                 //request.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.15) Gecko/20110303 Firefox/3.6.15";
                 //request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:9.0.1) Gecko/20100101 Firefox/9.0.1";
@@ -120,21 +88,21 @@ namespace QT.Moduls.Crawler
                         if (contentType.Contains("text/html"))
                         {
                             Encoding x = null;
-                            bool CharsetFound = false;
+                            bool charsetFound = false;
 
                             try
                             {
-                                int index = response.ContentType.LastIndexOf("charset");
+                                int index = response.ContentType.LastIndexOf("charset", StringComparison.Ordinal);
                                 if (index != -1)
                                 {
                                     charSet = response.ContentType.Substring(index + 7).Trim(new char[] { ' ', '=' }).ToLower();
                                     if (charSet != "")
                                     {
                                         x = Encoding.GetEncoding(charSet);
-                                        CharsetFound = true;
+                                        charsetFound = true;
                                     }
                                 }
-                                if (!CharsetFound)
+                                if (!charsetFound)
                                 {
                                     if (charSet != "")
                                         try
@@ -146,7 +114,7 @@ namespace QT.Moduls.Crawler
                             }
                             catch { }
 
-                            using (Stream responseStream = GetStreamForResponse(response, TimeOutSeconds * 1000))
+                            using (Stream responseStream = GetStreamForResponse(response, timeOutSeconds * 1000))
                             {
                                 StreamReader reader;
                                 if (x == null)

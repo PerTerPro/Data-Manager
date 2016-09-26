@@ -101,7 +101,7 @@ namespace QT.Entities
                 VideoXpath = Common.CellToString(_dt.Rows[0], "VideoXpath", "");
                 SpecsXPath = Common.CellToString(_dt.Rows[0], "SpecsXPath", "");
                 FullDescXPath = Common.CellToString(_dt.Rows[0], "FullDescXPath", "");
-
+                LimitProductValid = Common.CellToInt(_dt.Rows[0], "LimitProductValid", 0);
                 MaxDeep = Common.CellToInt(_dt.Rows[0], "MaxDeep", 20);
                 LimitFailToDelProduct = Common.CellToInt(_dt.Rows[0], "LimitFailToDelProduct", 1);
             }
@@ -250,5 +250,7 @@ namespace QT.Entities
 
         public List<string> ReviewXPath { get; set; }
 
+
+        public int LimitProductValid { get; set; }
     }
 }
