@@ -178,6 +178,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Redis\RedisProductInRootProductOfCompanyAdapter.cs" />
     <Compile Include="RootProductSql.cs" />
     <Compile Include="SolrProduct\SolrProductClient.cs" />
     <Compile Include="SolrProduct\SolrProductConstants.cs" />
