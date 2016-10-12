@@ -20,7 +20,7 @@ namespace ImboForm
             return _instance ?? (_instance = new ImboImage());
         }
 
-        private ILog _log = LogManager.GetLogger(typeof(ImboImage));
+        private ILog _log = LogManager.GetLogger(typeof (ImboImage));
         private string PreLInk = "";
         private const string _salt = "P&0myWHq";
 
@@ -40,7 +40,7 @@ namespace ImboForm
 
         public static string ToHexString(byte[] array)
         {
-            StringBuilder hex = new StringBuilder(array.Length * 2);
+            StringBuilder hex = new StringBuilder(array.Length*2);
             foreach (byte b in array)
             {
                 hex.AppendFormat("{0:x2}", b);
@@ -48,14 +48,18 @@ namespace ImboForm
             return hex.ToString();
         }
 
-   
+        public string DownloadImage(string user, string pub, string imageId)
+        {
+            return "";
+
+        }
+
         public string PushImage(string publicKey, string privateKey, string file, string userName)
         {
             string urlQuery = string.Format("http://192.168.100.34/users/{0}/images", userName);
             var request = (HttpWebRequest)WebRequest.Create(urlQuery);
             var accessToken = "";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            HMACSHA256 hmac = new HMACSHA256(UTF8Encoding.UTF8.GetBytes(privateKey));
             string str = "POST" + "|" + urlQuery + "|" + publicKey + "|" + strDate;
             string signleData = this.CreateToken(str, privateKey);
             request.Headers.Add("X-Imbo-PublicKey", "xtpu");

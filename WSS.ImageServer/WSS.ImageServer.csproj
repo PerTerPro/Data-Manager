@@ -97,6 +97,8 @@
     <Compile Include="Tester.cs" />
     <Compile Include="TestQerryPerformence.cs" />
     <Compile Include="HandlerJob.cs" />
+    <Compile Include="TestReadImbo.cs" />
+    <Compile Include="WorkerUpImageId.cs" />
     <Compile Include="WorkerUploadImage.cs" />
   </ItemGroup>
   <ItemGroup>

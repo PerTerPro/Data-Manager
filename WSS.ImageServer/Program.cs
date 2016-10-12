@@ -30,6 +30,14 @@ namespace ImboForm
         
         private static void Main(string[] args)
         {
+
+            TestReadImbo t1 = new TestReadImbo();
+            t1.Run();
+            Thread.Sleep(1000000);
+
+            WorkerUploadImage w1 = new WorkerUploadImage();
+            w1.StartConsume();
+
             while (true)
             {
                 try
@@ -43,6 +51,8 @@ namespace ImboForm
                     log.Error(ex);
                     Console.ReadLine();}
             }
+
+
 
             string help = "1. PushJob. 2. Download 3.TestHanlder";
             Console.WriteLine(help);

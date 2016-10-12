@@ -1,4 +1,5 @@
 ﻿{
 	"Path":"C:/Image",
-	"Thread":"10"
+	"Thread":"10",
+	"ConnectionSql":"Data Source=42.112.28.93;Initial Catalog=QT_2;Persist Security Info=True;User ID=wss_price;Password=HzlRt4$$axzG-*UlpuL2gYDu;Connect Timeout=5000"
 }
