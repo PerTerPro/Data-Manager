@@ -222,6 +222,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Individual.RootProductA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.UpdateAlexa", "WSS.UpdateAlexa\WSS.UpdateAlexa.csproj", "{116EA1B5-7237-4333-9B0D-8840685E0C71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.ImageServer", "WSS.ImageServer\WSS.ImageServer.csproj", "{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1193,6 +1195,16 @@ Global
 		{116EA1B5-7237-4333-9B0D-8840685E0C71}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{116EA1B5-7237-4333-9B0D-8840685E0C71}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{116EA1B5-7237-4333-9B0D-8840685E0C71}.Release|x86.ActiveCfg = Release|Any CPU
+		{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
