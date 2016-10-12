@@ -42,7 +42,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="QT.Entities">
       <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\QT.Entities.dll</HintPath>
@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImboImage.cs" />
     <Compile Include="MssReport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

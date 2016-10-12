@@ -27,15 +27,27 @@ namespace ImboForm
         private static ManualResetEvent m_reset = new ManualResetEvent(false);
         private static int itemInPage = 10000;
 
-
-
+        
         private static void Main(string[] args)
         {
+            while (true)
+            {
+                try
+                {
+                    ImboImage imboImage = ImboImage.Instance();
+                    imboImage.PushImage("xtpu", "xtpi", @"C:\Users\xuantrang\Documents\bb3249c2-fd7c-4858-a9d0-491eae5f0cd4.jpg","xtpu");
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex);
+                    Console.ReadLine();}
+            }
+
             string help = "1. PushJob. 2. Download 3.TestHanlder";
             Console.WriteLine(help);
             string str = Console.ReadLine();
-            if (str == "1")
-            {
+            if (str == "1"){
                     Task.Factory.StartNew(PushImageData);
             
             }
@@ -43,8 +55,7 @@ namespace ImboForm
             {
                 SettingSystem ss = SettingSystem.GetSetting();
                 for (int i = 0; i < ss.Thread; i++)
-                {
-                    Task.Factory.StartNew(() =>
+                {Task.Factory.StartNew(() =>
                     {
                         WorkerUploadImage w = new WorkerUploadImage();
                         w.StartConsume();

@@ -11,7 +11,6 @@ namespace ImboForm
     {
         private int icount = 0 ;
         private ILog log = log4net.LogManager.GetLogger(typeof (Tester));
-
         public void Test1()
         {
             for (int i = 0; i < 1
