@@ -122,6 +122,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PromotionLazada.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ListSkuLazada.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

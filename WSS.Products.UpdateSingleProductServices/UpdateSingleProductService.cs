@@ -32,13 +32,16 @@ namespace WSS.Products.UpdateSingleProductServices
         private bool _isRunning = true;
         int _workerCount;
         private HashSet<string> _skuHashSet;
+        private Dictionary<string, string> _promotionLazada;
         public UpdateSingleProductService()
         {
             InitializeComponent();
             LoadConfig();
             LoadListSkuLazada();
+            LoadPromotionLazada();
             //OnStart(new string[] { });
         }
+
         private void LoadConfig()
         {
             _connectionString = ConfigurationSettings.AppSettings["ConnectionString"];
@@ -46,7 +49,36 @@ namespace WSS.Products.UpdateSingleProductServices
             _rabbitMqServerName = ConfigurationSettings.AppSettings["rabbitMQServerName"];
             _workerCount = Common.Obj2Int(ConfigurationSettings.AppSettings["workerCount"]);
         }
-
+        private void LoadPromotionLazada()
+        {
+            _promotionLazada = new Dictionary<string, string>();
+            string line;
+            try
+            {
+                string executableLocation = Path.GetDirectoryName(
+                    Assembly.GetExecutingAssembly().Location);
+                string txtLocation = Path.Combine(executableLocation, "PromotionLazada.txt");
+                System.IO.StreamReader file =
+                    new System.IO.StreamReader(txtLocation);
+                while ((line = file.ReadLine()) != null)
+                {
+                    var promotion = line.Split('|');
+                    try
+                    {
+                        _promotionLazada.Add(promotion[0], promotion[1]);
+                    }
+                    catch (Exception exception)
+                    {
+                        Log.Error("Error add to dict: " + exception.Message);
+                    }
+                }
+                file.Close();
+            }
+            catch (Exception exception)
+            {
+                Log.Error("Error read file: "+exception.Message);
+            }
+        }
         private void LoadListSkuLazada()
         {
             _skuHashSet = new HashSet<string>();
@@ -120,6 +152,26 @@ namespace WSS.Products.UpdateSingleProductServices
                 product.Price = product.Price - discount;
             }
             #endregion
+            #region Check Promotion
+
+            try
+            {
+                if (_promotionLazada.ContainsKey(product.Categories[1]))
+                {
+                    product.PromotionInfo = _promotionLazada[product.Categories[1]];
+                }
+                else
+                {
+                    product.PromotionInfo = _promotionLazada["Default"];
+                    //Log.Info("category " + product.Categories[1] + " không tồn tại");
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.Error("Error check contain key "+exception.Message);
+            }
+            
+            #endregion
             var productAdapter = new DBProductsTableAdapters.ProductTableAdapter();
             productAdapter.Connection.ConnectionString = _connectionString;
             var productTable = new DBProducts.ProductDataTable();
@@ -169,8 +221,8 @@ namespace WSS.Products.UpdateSingleProductServices
             productAdapter.Connection.Close();
             var hashProductInfo = ProductEntity.GetHashChangeInfo((int)product.Instock, true, product.Price, product.Name, product.ImageUrl,
                 product.IDCategories, product.ShortDescription, product.OriginPrice);
-            //if (RedisCacheProductDatafeed.CheckChangeInfoProduct(product.ID, hashProductInfo))
-            //    SendMessageUpdateProductSolrAndRedisService(product, updateProductJobClient);
+            if (RedisCacheProductDatafeed.CheckChangeInfoProduct(product.ID, hashProductInfo))
+                SendMessageUpdateProductSolrAndRedisService(product, updateProductJobClient);
         }
 
         private void SendMessageDownloadImageProduct(Product product, JobClient downloadImageProductJobClient, bool isNews)
@@ -277,7 +329,7 @@ namespace WSS.Products.UpdateSingleProductServices
                         product.ProductContent,
                         Common.UnicodeToKoDauFulltext(product.Name + " " + product.Domain),
                         true,
-                        false, product.ShortDescription, product.IsDeal, product.OriginPrice, (int)product.Instock, (short)product.Status,
+                        false, product.ShortDescription, product.IsDeal, product.OriginPrice, (int)product.Instock, (short)product.Status,product.PromotionInfo,
                         product.ID);
                     break;
                 }
@@ -312,7 +364,7 @@ namespace WSS.Products.UpdateSingleProductServices
                         true,
                         DateTime.Now,
                         false,
-                        oldPrice, product.ShortDescription, product.IsDeal, product.OriginPrice, (int)product.Instock, (short)product.Status,
+                        oldPrice, product.ShortDescription, product.IsDeal, product.OriginPrice, (int)product.Instock, (short)product.Status, product.PromotionInfo,
                         product.ID);
                     break;
                 }

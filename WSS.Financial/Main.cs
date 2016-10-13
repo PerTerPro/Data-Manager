@@ -159,7 +159,7 @@ namespace WSS.Financial
             {
                 try
                 {
-                    var frm = new FrmBankLendingManager()
+                    var frm = new FrmBankLendingManager(bankId)
                     {
                         MdiParent = this,
                         Text = @"Quản lý các gói vay tiêu dùng của " + bankName

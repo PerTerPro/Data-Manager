@@ -20,6 +20,7 @@ namespace WSS.Financial.BankLending
         public FrmBankLendingManager(int bankId)
         {
             InitializeComponent();
+            _bankId = bankId;
         }
         private void bankLendingBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
@@ -34,8 +35,7 @@ namespace WSS.Financial.BankLending
             this.bankTableAdapter.Connection.ConnectionString = WssConnectionFinancial.ConnectionFinancial;
             this.paymentMethodTableAdapter.Connection.ConnectionString = WssConnectionFinancial.ConnectionFinancial;
             this.bankLendingTableAdapter.Connection.ConnectionString = WssConnectionFinancial.ConnectionFinancial;
-            InitData();
-        }
+            InitData();}
 
         private void InitData()
         {
