@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WSS.Financial
+namespace ImboForm
 {
-    public static class WssConnectionFinancial
+    class WorkerUpImageId
     {
-        public static string ConnectionFinancial { set; get; }
     }
 }

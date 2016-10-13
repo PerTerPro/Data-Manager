@@ -4116,7 +4116,6 @@ namespace QT.Entities
                 if (frm == null)
                 {
                     frm = new DevExpress.Utils.WaitDialogForm();
-                    frm.Size = new Size(20,1000);
                     frm.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
                 }
                 frm.Show();

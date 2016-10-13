@@ -89,6 +89,7 @@ namespace WSS.IndividualCategoryWebsites
 
         private void ctrlWebsite1_ExcuteCommand(WssCommon.ListWebCommand command, EventArgs e)
         {
+            bool valForm = false;
             switch (command)
             {
                 case WssCommon.ListWebCommand.IndividualWebsitesProduct:
