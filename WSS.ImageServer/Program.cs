@@ -32,8 +32,8 @@ namespace ImboForm
         {
 
             TestReadImbo t1 = new TestReadImbo();
-            t1.Run();
-            Thread.Sleep(1000000);
+            t1.TestMulThread1();
+            Thread.Sleep(10000000);
 
             WorkerUploadImage w1 = new WorkerUploadImage();
             w1.StartConsume();

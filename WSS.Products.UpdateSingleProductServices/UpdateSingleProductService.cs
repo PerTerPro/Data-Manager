@@ -169,8 +169,8 @@ namespace WSS.Products.UpdateSingleProductServices
             productAdapter.Connection.Close();
             var hashProductInfo = ProductEntity.GetHashChangeInfo((int)product.Instock, true, product.Price, product.Name, product.ImageUrl,
                 product.IDCategories, product.ShortDescription, product.OriginPrice);
-            if (RedisCacheProductDatafeed.CheckChangeInfoProduct(product.ID, hashProductInfo))
-                SendMessageUpdateProductSolrAndRedisService(product, updateProductJobClient);
+            //if (RedisCacheProductDatafeed.CheckChangeInfoProduct(product.ID, hashProductInfo))
+            //    SendMessageUpdateProductSolrAndRedisService(product, updateProductJobClient);
         }
 
         private void SendMessageDownloadImageProduct(Product product, JobClient downloadImageProductJobClient, bool isNews)
