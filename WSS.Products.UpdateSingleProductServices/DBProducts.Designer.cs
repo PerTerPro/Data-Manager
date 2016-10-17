@@ -2697,8 +2697,8 @@ FROM            Product";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        ID, Price, Name, DetailUrl\r\nFROM            Product\r\nWHERE        (" +
-                "ID = @ID)";
+            this._commandCollection[1].CommandText = "SELECT        ID, Price, Name, DetailUrl, ImagePath\r\nFROM            Product\r\nWHE" +
+                "RE        (ID = @ID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
@@ -2742,7 +2742,7 @@ VALUES        (@ID,@Name,@ClassificationID,@Price,@Warranty,@Status,@ImageUrls,@
             this._commandCollection[3].CommandText = @"UPDATE       Product
 SET                Name = @Name, ClassificationID = @ClassificationID, Price = @Price, Warranty = @Warranty, ImageUrls = @ImageUrls, Company = @Company, LastUpdate = @LastUpdate, DetailUrl = @DetailUrl, 
                          Promotion = @Promotion, Summary = @Summary, ProductContent = @ProductContent, NameFT = @NameFT, Valid = @Valid, IsNews = @IsNews, DownloadError = 0, ShortDescription = @ShortDescription, 
-                         IsDeal = @IsDeal, OriginPrice = @OriginPrice, InStock = @InStock, Status = @Status
+                         IsDeal = @IsDeal, OriginPrice = @OriginPrice, InStock = @InStock, Status = @Status, PromotionInfo = @PromotionInfo
 WHERE        (ID = @Original_ID)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 500, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2764,13 +2764,15 @@ WHERE        (ID = @Original_ID)";
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OriginPrice", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OriginPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InStock", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "InStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PromotionInfo", global::System.Data.SqlDbType.NVarChar, 1000, global::System.Data.ParameterDirection.Input, 0, 0, "PromotionInfo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
             this._commandCollection[4].CommandText = @"UPDATE       Product
 SET                Name = @Name, ClassificationID = @ClassificationID, Price = @Price, Warranty = @Warranty, ImageUrls = @ImageUrls, Company = @Company, LastUpdate = @LastUpdate, DetailUrl = @DetailUrl, 
                          Promotion = @Promotion, Summary = @Summary, ProductContent = @ProductContent, NameFT = @NameFT, Valid = @Valid, LastPriceChange = @LastPriceChange, IsNews = @IsNews, 
-                         PriceChange = @PriceChange, DownloadError = 0, ShortDescription = @ShortDescription, IsDeal = @IsDeal, OriginPrice = @OriginPrice, InStock = @InStock, Status = @Status
+                         PriceChange = @PriceChange, DownloadError = 0, ShortDescription = @ShortDescription, IsDeal = @IsDeal, OriginPrice = @OriginPrice, InStock = @InStock, Status = @Status, 
+                         PromotionInfo = @PromotionInfo
 WHERE        (ID = @Original_ID)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 500, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2794,6 +2796,7 @@ WHERE        (ID = @Original_ID)";
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OriginPrice", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OriginPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InStock", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "InStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PromotionInfo", global::System.Data.SqlDbType.NVarChar, 1000, global::System.Data.ParameterDirection.Input, 0, 0, "PromotionInfo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -4043,6 +4046,7 @@ WHERE        (ID = @Original_ID)";
                     global::System.Nullable<int> OriginPrice, 
                     global::System.Nullable<int> InStock, 
                     global::System.Nullable<short> Status, 
+                    string PromotionInfo, 
                     long Original_ID) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((Name == null)) {
@@ -4159,7 +4163,13 @@ WHERE        (ID = @Original_ID)";
             else {
                 command.Parameters[18].Value = global::System.DBNull.Value;
             }
-            command.Parameters[19].Value = ((long)(Original_ID));
+            if ((PromotionInfo == null)) {
+                command.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[19].Value = ((string)(PromotionInfo));
+            }
+            command.Parameters[20].Value = ((long)(Original_ID));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4203,6 +4213,7 @@ WHERE        (ID = @Original_ID)";
                     global::System.Nullable<int> OriginPrice, 
                     global::System.Nullable<int> InStock, 
                     global::System.Nullable<short> Status, 
+                    string PromotionInfo, 
                     long Original_ID) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((Name == null)) {
@@ -4331,7 +4342,13 @@ WHERE        (ID = @Original_ID)";
             else {
                 command.Parameters[20].Value = global::System.DBNull.Value;
             }
-            command.Parameters[21].Value = ((long)(Original_ID));
+            if ((PromotionInfo == null)) {
+                command.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[21].Value = ((string)(PromotionInfo));
+            }
+            command.Parameters[22].Value = ((long)(Original_ID));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

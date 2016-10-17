@@ -133,7 +133,7 @@ namespace WSS.Image.DownloadImageServices
                 Common.SaveImageProduct(imageProductInfo.ImageUrls, _pathImageProduct + folder, fileName);
                 imageProductInfo.ImagePath = Common.GetImagePathProduct(folder, fileName);
                 imageProductInfo.DownloadedTime = DateTime.Now;
-                //SendMessageToServiceUpdateImagePath(imageProductInfo, updateImagePathProductJobClient);
+                SendMessageToServiceUpdateImagePath(imageProductInfo, updateImagePathProductJobClient);
                 var fulldirectory =_pathImageProduct.Replace("\\",@"\")+folder.Replace("\\",@"\")+@"\"+fileName;
                 var thumbImageInfo = new ThumbImageProductInfo()
                 {

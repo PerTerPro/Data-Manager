@@ -193,7 +193,8 @@ namespace WSS.DownloadImageByHand
                             }));
                             continue;
                         }
-                        bool fileSaved = Common.SaveFileDownloadImage(imageurl, path + direct, filename + ".jpg", productId, companyId);
+                        bool fileSaved = false;
+                        //Common.SaveFileDownloadImage(imageurl, path + direct, filename + ".jpg", productId, companyId);
                         if (fileSaved)
                         {
                             this.Invoke(new Action(() =>
@@ -330,6 +331,10 @@ namespace WSS.DownloadImageByHand
                 url = url.Substring(url.LastIndexOf("http"));
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.Credentials = CredentialCache.DefaultCredentials;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                                                   | SecurityProtocolType.Tls11
+                                                   | SecurityProtocolType.Tls12
+                                                   | SecurityProtocolType.Ssl3;
                 request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 Bitmap thumbBitmap = null;
@@ -437,7 +442,7 @@ namespace WSS.DownloadImageByHand
                         bool fileSaved = true;
                         try
                         {
-                            fileSaved = Common.SaveFileDownloadImage(imageUrl, path + folder, filename + ".jpg", productId, companyId);
+                            //fileSaved = Common.SaveFileDownloadImage(imageUrl, path + folder, filename + ".jpg", productId, companyId);
                         }
                         catch (Exception)
                         { 

@@ -895,6 +895,13 @@ namespace QT.Entities
             id = Math.Abs(GABIZ.Base.Tools.getCRC32(Cat.ToString() + "_" + Name.Trim().ToLower()));
             return id;
         }
+
+        public static long GetID_RootProductIDIndividual(string Name)
+        {
+            long id = 0;
+            id = Math.Abs(GABIZ.Base.Tools.getCRC32(Name.Trim().ToLower()));
+            return id;
+        }
         public static int GetID_Properties(String Name)
         {
             int id = 0;
@@ -1906,6 +1913,10 @@ namespace QT.Entities
             request.Credentials = CredentialCache.DefaultCredentials;
             request.UserAgent =
                 "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                                                   | SecurityProtocolType.Tls11
+                                                   | SecurityProtocolType.Tls12
+                                                   | SecurityProtocolType.Ssl3;
             var response = (HttpWebResponse)request.GetResponse();
             Bitmap thumbBitmap = null;
             thumbBitmap = new Bitmap(response.GetResponseStream());
@@ -3750,6 +3761,126 @@ namespace QT.Entities
         {
             return (rowProduct[field] == DBNull.Value) ? def : Convert.ToInt64(rowProduct[field]);
         }
+
+        public static AlexaFull GetRankAlexaFull(String c_url)
+        {
+            AlexaFull alexa = new AlexaFull();
+            c_url = c_url.Trim();
+            if (!string.IsNullOrEmpty(c_url))
+            {
+                try
+                {
+                    c_url = c_url.Replace("www.", "");
+
+                    string url = string.Format("http://www.alexa.com/siteinfo/{0}#trafficstats", c_url);
+                    string html = Common.RemoveHTMLCommentTag(HTMLTransmitter.getHTML(url, 60, 3));
+                    // html = TidyCleanR(html);
+                    var doc = new HtmlDocument();
+                    doc.LoadHtml(html);
+                    // id="results"
+                    //string AlexaRankXPath = "//*[@id='traffic-rank-content']/div/span[2]/div[1]/span/span/div/strong/a";
+                    string AlexaRankXPath = "//*[@data-cat='globalRank']/div/strong";
+                    var node_AlexaRank = doc.DocumentNode.SelectNodes(AlexaRankXPath);
+                    if (node_AlexaRank != null)
+                    {
+                        try
+                        {
+                            var rank = node_AlexaRank[0].InnerText.Replace("\n", "").Replace("\t", "").Trim();
+                            alexa.AlexaRank = Obj2Int(rank);
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                    string AlexaRankVNXPath = "//*[@data-cat='countryRank']/div/strong";
+                    var node_AlexaRankVN = doc.DocumentNode.SelectNodes(AlexaRankVNXPath);
+                    if (node_AlexaRank != null)
+                    {
+                        try
+                        {
+                            var rankVN = node_AlexaRankVN[0].InnerText.Replace("\n", "").Replace("\t", "").Trim();
+                            alexa.AlexaRankContries = Obj2Int(rankVN);
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+
+                    try
+                    {
+                        string xPathInfoEngage = @"//section[@id='engage-panel-content']//span[@data-cat='bounce_percent']";
+                        var bouncePercentNode = doc.DocumentNode.SelectSingleNode(xPathInfoEngage);
+                        if (bouncePercentNode != null)
+                        {
+                            string primeDataXPath = "./div/strong";
+                            var nodePrimeData = bouncePercentNode.SelectSingleNode(primeDataXPath);
+                            alexa.BounceRate = nodePrimeData.InnerText.Trim();
+                            string primeDataXPathChange = "./div/span";
+                            var nodePrimeDataChange = bouncePercentNode.SelectSingleNode(primeDataXPathChange);
+                            alexa.BounceRateChange = nodePrimeDataChange.InnerText.Trim();
+                            alexa.BounceRateChangeTitle = nodePrimeDataChange.GetAttributeValue("title", "").Trim();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex);
+                    }
+
+                    try
+                    {
+                        string xPathPageViewPerVisitor = @"//section[@id='engage-panel-content']//span[@data-cat='pageviews_per_visitor']";
+                        var nodePageViewPerVisitor = doc.DocumentNode.SelectSingleNode(xPathPageViewPerVisitor);
+                        if (nodePageViewPerVisitor != null)
+                        {
+                            string primeDataXPath = "./div/strong";
+                            var nodePrimeData = nodePageViewPerVisitor.SelectSingleNode(primeDataXPath);
+                            alexa.DailyPageView = nodePrimeData.InnerText.Trim();
+                            string primeDataXPathChange = "./div/span";
+                            var nodePrimeDataChange = nodePageViewPerVisitor.SelectSingleNode(primeDataXPathChange);
+                            alexa.DailyPageViewChange = nodePrimeDataChange.InnerText.Trim();
+                            alexa.DailyPageViewTitle = nodePrimeDataChange.GetAttributeValue("title", "").Trim();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex);
+                    }
+
+                    try
+                    {
+                        string xPathDailyTimeOnSite = @"//section[@id='engage-panel-content']//span[@data-cat='time_on_site']";
+                        var pathDailyTimeOnSiteNode = doc.DocumentNode.SelectSingleNode(xPathDailyTimeOnSite);
+                        if (pathDailyTimeOnSiteNode != null)
+                        {
+                            string primeDataXPath = "./div/strong";
+                            var nodePrimeData = pathDailyTimeOnSiteNode.SelectSingleNode(primeDataXPath);
+                            alexa.DailyTimeOnSite = nodePrimeData.InnerText.Trim();
+                            string primeDataXPathChange = "./div/span";
+                            var nodePrimeDataChange = pathDailyTimeOnSiteNode.SelectSingleNode(primeDataXPathChange);
+                            alexa.DailyTimeOnSiteChange = nodePrimeDataChange.InnerText.Trim();
+                            alexa.DailyTimeOnSiteTitle = nodePrimeDataChange.GetAttributeValue("title", "").Trim();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex);
+                    }
+
+                }
+                catch (Exception)
+                {
+                    return null;
+                    //throw;
+                }
+
+            }
+            else
+            {
+                return null;
+            }
+            return alexa;
+        }
+
     }
 
     public static class NewWebInGoogle
@@ -3985,6 +4116,7 @@ namespace QT.Entities
                 if (frm == null)
                 {
                     frm = new DevExpress.Utils.WaitDialogForm();
+                    frm.Size = new Size(20,1000);
                     frm.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
                 }
                 frm.Show();

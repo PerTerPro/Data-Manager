@@ -206,19 +206,35 @@ namespace QT.Moduls.Company
             else
                 Log.WarnFormat("Reed datafeed return {0} products. Company: {1}", ListProducts.Count, company.Domain);
             #endregion
+
             if (company.ID == 3502170206813664485)
             {
                 Log.Info("Start send message to UpdateSingleProductServices");
                 var rabbitMqServer = RabbitMQManager.GetRabbitMQServer(_rabbitMqServerName);
-                JobClient jobclient = new JobClient("UpdateProductBatch", GroupType.Topic, "UpdateProduct.UpdateSingleProduct", true, rabbitMqServer);
+                JobClient jobclient = new JobClient("UpdateProductBatch", GroupType.Topic,
+                    "UpdateProduct.UpdateSingleProduct", true, rabbitMqServer);
                 foreach (var item in ListProducts)
                 {
                     SendMessageToUpdateSingleProductServices(item, jobclient);
                 }
-                Log.Info(string.Format("Finished send message to UpdateSingleProductServices. {0} product of Company {1}", ListProducts.Count, company.ID));
+                Log.Info(
+                    string.Format("Finished send message to UpdateSingleProductServices. {0} product of Company {1}",
+                        ListProducts.Count, company.ID));
             }
             else
-                UpdateProductsToSql(company, ListProducts, cancelUpdateDataFeedTokenSource);
+            {
+                //Check số lượng sản phẩm
+                //Nếu thay đổi hoặc giảm sản phẩm thì dừng update và ghi log
+                //Dung TotalVaid để so sánh nhưng để đỡ phải sửa code thì dùng totalproduct luôn nên k check đc lazada =))
+                //Comment bá đạo
+                if ((int)(ListProducts.Count / company.TotalProduct*100) < 80 || (company.TotalProduct - ListProducts.Count)>3000)
+                {
+                    HistoryDatafeedAdapter.InsertHistory(company.ID, company.DataFeedPath, ListProducts.Count, 0, 0, string.Format("Dừng update do số product ({0}) lấy trong datafeed chênh lệch với totalproduct {1}",ListProducts.Count,company.TotalProduct));
+                }
+                else
+                    UpdateProductsToSql(company, ListProducts, cancelUpdateDataFeedTokenSource);
+            }
+
 
         }
 
@@ -911,7 +927,7 @@ namespace QT.Moduls.Company
                 //int index = 0;
                 foreach (var productNode in productNodes)
                 {
-                    var tmpProduct = new Product {Domain = company.Domain, IDCongTy = company.ID};
+                    var tmpProduct = new Product { Domain = company.Domain, IDCongTy = company.ID };
                     XNamespace g = "";
                     if (!string.IsNullOrEmpty(datafeedConfig.XNameSpace))
                     {
@@ -1176,7 +1192,7 @@ namespace QT.Moduls.Company
             {
                 try
                 {
-                    var tmpProduct = new Product {Domain = company.Domain, IDCongTy = company.ID};
+                    var tmpProduct = new Product { Domain = company.Domain, IDCongTy = company.ID };
 
                     #region Name
                     if (!string.IsNullOrEmpty(datafeedConfig.ProductNameNode))
@@ -1373,7 +1389,7 @@ namespace QT.Moduls.Company
 
                     #region Categories
 
-                    tmpProduct.Categories = new List<string> {company.Domain};
+                    tmpProduct.Categories = new List<string> { company.Domain };
                     if (!string.IsNullOrEmpty(datafeedConfig.Category1Node))
                     {
                         try

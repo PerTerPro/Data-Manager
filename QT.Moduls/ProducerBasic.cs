@@ -14,46 +14,52 @@ namespace QT.Moduls
 {
     public class ProducerBasic : Producer
     {
-        private log4net.ILog _log = LogManager.GetLogger(typeof (ProducerBasic));
+        private readonly log4net.ILog _log = LogManager.GetLogger(typeof (ProducerBasic));
 
-        public ProducerBasic(RabbitMQServer rabbitmqServer, string exchangeName, string routingKey) : base(rabbitmqServer, exchangeName, routingKey, "")
+        public ProducerBasic(RabbitMQServer rabbitmqServer, string exchangeName, string routingKey)
+            : base(rabbitmqServer, exchangeName, routingKey, "")
         {
-            InitQueue(rabbitmqServer);
         }
 
         public ProducerBasic(RabbitMQServer rabbitmqServer, string queueName)
             : base(rabbitmqServer, "", queueName, queueName)
         {
-            InitQueue(rabbitmqServer);
+            InitQueue(rabbitmqServer, queueName);
 
         }
 
-        private void InitQueue(RabbitMQServer rabbitmqServer)
+        public ProducerBasic(RabbitMQServer rabbitmqServer, string queueName, bool autoDeclareQueue)
+            : base(rabbitmqServer, "", queueName, queueName)
         {
-            if (!string.IsNullOrEmpty(this.QueueName))
+            if (autoDeclareQueue) InitQueue(rabbitmqServer, queueName);
+        }
+
+
+        public void InitQueue(RabbitMQServer rabbitmqServer, string queueName)
+        {
+            if (string.IsNullOrEmpty(queueName)) return;
+            while (true)
             {
-                while (true)
+                try
                 {
-                    try
+                    var imodel = rabbitmqServer.CreateChannel();
+                    if (imodel != null)
                     {
-                        var imodel = rabbitmqServer.CreateChannel();
-                        if (imodel != null)
-                        {
-                            imodel.QueueDeclare(this.QueueName, true, false, false, null);
-                            return;
-                        }
-                        else Thread.Sleep(1000);
+                        imodel.QueueDeclare(queueName, true, false, false, null);
+                        break;
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        _log.Error(ex);
                         Thread.Sleep(1000);
                     }
                 }
+                catch (Exception ex)
+                {
+                    _log.Error(ex);
+                    Thread.Sleep(1000);
+                }
             }
         }
-
-      
 
 
         public override bool Init()

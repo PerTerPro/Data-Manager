@@ -63,8 +63,7 @@ namespace QT.Entities.Datafeed
         public static bool CheckChangeInfoProduct(long productId, long hashproductcheck)
         {
             var result = true;
-            var hashProductInRedis = GetHashProductInfo(productId);
-            if (hashproductcheck == hashProductInRedis)
+            var hashProductInRedis = GetHashProductInfo(productId);if (hashproductcheck == hashProductInRedis)
                 result = false;
             else
                 SetHashProductInfo(productId,hashproductcheck);
