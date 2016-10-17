@@ -56,43 +56,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BankLending\FrmBankLendingManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BankLending\FrmBankLendingManager.Designer.cs">
-      <DependentUpon>FrmBankLendingManager.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Bank\ctrBank.cs">
+    <Compile Include="Brand\ctrBrand.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Bank\ctrBank.Designer.cs">
-      <DependentUpon>ctrBank.cs</DependentUpon>
+    <Compile Include="Brand\ctrBrand.Designer.cs">
+      <DependentUpon>ctrBrand.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bank\FrmBankInfo.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Category\ctrCategory.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Bank\FrmBankInfo.Designer.cs">
-      <DependentUpon>FrmBankInfo.cs</DependentUpon>
+    <Compile Include="Category\ctrCategory.Designer.cs">
+      <DependentUpon>ctrCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bank\FrmBankManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Bank\FrmBankManager.Designer.cs">
-      <DependentUpon>FrmBankManager.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmPaymentMethod.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmPaymentMethod.Designer.cs">
-      <DependentUpon>FrmPaymentMethod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WssCommon.cs" />
-    <Compile Include="WssConnectionFinancial.cs" />
-    <Compile Include="DBFinancial.Designer.cs">
+    <Compile Include="DBFinancial1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBFinancial.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCategory.Designer.cs">
+      <DependentUpon>FrmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmItemInBrand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmItemInBrand.Designer.cs">
+      <DependentUpon>FrmItemInBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProperty.Designer.cs">
+      <DependentUpon>FrmProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPropertyGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPropertyGroup.Designer.cs">
+      <DependentUpon>FrmPropertyGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPropertyValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPropertyValue.Designer.cs">
+      <DependentUpon>FrmPropertyValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WssCommon.cs" />
+    <Compile Include="WssConnectionFinancial.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,20 +113,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BankLending\FrmBankLendingManager.resx">
-      <DependentUpon>FrmBankLendingManager.cs</DependentUpon>
+    <EmbeddedResource Include="Brand\ctrBrand.resx">
+      <DependentUpon>ctrBrand.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bank\ctrBank.resx">
-      <DependentUpon>ctrBank.cs</DependentUpon>
+    <EmbeddedResource Include="Category\ctrCategory.resx">
+      <DependentUpon>ctrCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bank\frmBankInfo.resx">
-      <DependentUpon>FrmBankInfo.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCategory.resx">
+      <DependentUpon>FrmCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bank\FrmBankManager.resx">
-      <DependentUpon>FrmBankManager.cs</DependentUpon>
+    <EmbeddedResource Include="FrmItemInBrand.resx">
+      <DependentUpon>FrmItemInBrand.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPaymentMethod.resx">
-      <DependentUpon>FrmPaymentMethod.cs</DependentUpon>
+    <EmbeddedResource Include="FrmProperty.resx">
+      <DependentUpon>FrmProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPropertyGroup.resx">
+      <DependentUpon>FrmPropertyGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPropertyValue.resx">
+      <DependentUpon>FrmPropertyValue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -136,7 +154,7 @@
     <None Include="DBFinancial.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBFinancial.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBFinancial1.Designer.cs</LastGenOutput>
     </None>
     <None Include="DBFinancial.xss">
       <DependentUpon>DBFinancial.xsd</DependentUpon>
