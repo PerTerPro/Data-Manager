@@ -67,7 +67,11 @@ namespace WSS.UpdateRootProductMappingService
                                     _logger.InfoFormat("Published job to update all rootProduts.");
                                     return true;
                                 }
-                                if (RootProductMappingCacheTool.InsertRootProductMappingCache(productID,searchEnginesServiceUrl))
+                                var success = RootProductMappingCacheTool.InsertRootProductMappingCache(productID,
+                                    searchEnginesServiceUrl);
+                                RootProductMappingCacheTool.InsertRootProductMappingCacheWithBlackList(productID,
+                                    searchEnginesServiceUrl);
+                                if (success)
                                 {
                                     var job = new Job {Data = BitConverter.GetBytes(productID)};
                                     updateProductRootIDJobClient.PublishJob(job, updateProductRootIDJobExpirationMS);
