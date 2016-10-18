@@ -18,11 +18,11 @@ namespace WebsosanhCacheTool
                 {
                     foreach(var product in productPart)
                     {
-                        var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(product.ID, 0, RootProductMappingSortType.PriceWithVAT);
+                        var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(product.ID, 0, RootProductMappingSortType.PriceWithVAT,false);
                         if(rootProductMapping == null)
                         {
                             RootProductMappingCacheTool.InsertRootProductMappingCache(product.ID, searchEnginesServiceUrl);
-                            rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(product.ID, 0, RootProductMappingSortType.PriceWithVAT);
+                            rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(product.ID, 0, RootProductMappingSortType.PriceWithVAT,false);
                         }
                         if (rootProductMapping == null || rootProductMapping.NumMerchant == 0)
                         {
@@ -46,11 +46,11 @@ namespace WebsosanhCacheTool
             var product = WebRootProductBAL.GetWebRootProduct(productID, productConnectionString, userConnectionString);
             if (product == null)
                 return false;
-            var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(product.ID, 0, RootProductMappingSortType.PriceWithVAT);
+            var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(product.ID, 0, RootProductMappingSortType.PriceWithVAT,false);
             if (rootProductMapping == null)
             {
                 RootProductMappingCacheTool.InsertRootProductMappingCache(product.ID, searchEnginesServiceUrl);
-                rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(product.ID, 0, RootProductMappingSortType.PriceWithVAT);
+                rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(product.ID, 0, RootProductMappingSortType.PriceWithVAT,false);
                 if (rootProductMapping == null)
                     return false;
             }

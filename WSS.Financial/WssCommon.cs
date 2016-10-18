@@ -8,10 +8,10 @@ namespace WSS.Financial
 {
     public class WssCommon
     {
-        public enum ListBankCommand
+        public enum ListBrandCommand
         {
             ViewInfo = 1,
-            ViewBankLending = 2
+            ViewItemManager = 2
         }
     }
 }

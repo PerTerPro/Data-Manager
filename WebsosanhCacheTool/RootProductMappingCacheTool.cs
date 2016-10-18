@@ -50,12 +50,12 @@ namespace WebsosanhCacheTool
         public static bool InsertRootProductMappingCache(long productID, string searchEnginesServiceUrl, TimeSpan? expiry = null)
         {
             var client = new ProtoBufServiceStackClient(searchEnginesServiceUrl);
-            var response = client.Send<GetRootProductMappingResponse>(new GetRootProductMappingRequest { ProductID = productID, RegionID = 0, UseBlackList = true, GetFacet = true,SortType = RootProductMappingSortType.PriceWithVAT});
+            var response = client.Send<GetRootProductMappingResponse>(new GetRootProductMappingRequest { ProductID = productID, RegionID = 0, IncludeBlackList = false, GetFacet = true,SortType = RootProductMappingSortType.PriceWithVAT});
             if (response.RootProductMapping != null)
             {
                 if (response.RootProductMapping.NumMerchant > 0)
                     QT.Entities.RedisPriceLogAdapter.PushRootProductPrice(productID, response.RootProductMapping.MinPrice, response.RootProductMapping.MaxPrice, response.RootProductMapping.MeanPrice, DateTime.Now.Date);
-                RootProductMappingBAL.InsertRootProductMappingIntoCache(response.RootProductMapping, 0, RootProductMappingSortType.PriceWithVAT, expiry);
+                RootProductMappingBAL.InsertRootProductMappingIntoCache(response.RootProductMapping, 0, RootProductMappingSortType.PriceWithVAT,false, expiry);
                 return true;
             }
             else
@@ -64,5 +64,22 @@ namespace WebsosanhCacheTool
                 return false;
             }
         }
+
+        public static bool InsertRootProductMappingCacheWithBlackList(long productID, string searchEnginesServiceUrl, TimeSpan? expiry = null)
+        {
+            var client = new ProtoBufServiceStackClient(searchEnginesServiceUrl);
+            var response = client.Send<GetRootProductMappingResponse>(new GetRootProductMappingRequest { ProductID = productID, RegionID = 0, IncludeBlackList = true, GetFacet = false, SortType = RootProductMappingSortType.PriceWithVAT });
+            if (response.RootProductMapping != null)
+            {
+                RootProductMappingBAL.InsertRootProductMappingIntoCache(response.RootProductMapping, 0, RootProductMappingSortType.PriceWithVAT, true, expiry);
+                return true;
+            }
+            else
+            {
+                Log.ErrorFormat("InsertRootProductMappingWithBlackListIntoCache failed - ProductID {0}", productID);
+                return false;
+            }
+        }
+
     }
 }

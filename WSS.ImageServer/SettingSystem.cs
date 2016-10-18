@@ -11,6 +11,7 @@ namespace ImboForm
     {
         public string Path { get; set; }
         public int Thread { get; set; }
+        public string ConnectionSql { get; set; }
 
         public static SettingSystem GetSetting()
         {

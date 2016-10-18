@@ -470,7 +470,7 @@ namespace UpdateSolrTools
                     var listProducts = new List<SolrProductItem>();
                     var productIDs = productPart.Select(x => x.ID).ToList();
                     var productProperties = WebProductPropertyBAL.GetFilterPropertiesOfProductsFromCache(productIDs);
-                    var rootProductMappingList = RootProductMappingBAL.GetListRootProductMappingFromCache(productIDs, RootProductMappingSortType.PriceWithVAT).Where(x => x != null).ToDictionary(x => x.ID, x => x);
+                    var rootProductMappingList = RootProductMappingBAL.GetListRootProductMappingFromCache(productIDs, RootProductMappingSortType.PriceWithVAT,false).Where(x => x != null).ToDictionary(x => x.ID, x => x);
                     var productCategories = ProductCategorizationTool.GetCategories(productIDs);
                     int rowIndex = -1;
                     foreach (var productRow in productPart)
@@ -557,7 +557,7 @@ namespace UpdateSolrTools
                         else
                         {
                             RootProductMappingCacheTool.InsertRootProductMappingCache(item.Id, searchEnginesServiceUrl);
-                            rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(item.Id, 0, RootProductMappingSortType.PriceWithVAT);
+                            rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(item.Id, 0, RootProductMappingSortType.PriceWithVAT,false);
                             if (rootProductMapping == null)
                             {
                                 Logger.WarnFormat("UpdateRootProduct: Cannot get RootProductMapping. Product ID: {0}", item.Id);
@@ -638,11 +638,11 @@ namespace UpdateSolrTools
                 for (int i = 0; i < dtProduct.Count; i++)
                 {
                     var productRow = dtProduct[i];
-                    var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(productID, 0, RootProductMappingSortType.PriceWithVAT);
+                    var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(productID, 0, RootProductMappingSortType.PriceWithVAT,false);
                     if (rootProductMapping == null)
                     {
                         RootProductMappingCacheTool.InsertRootProductMappingCache(productID, searchEnginesServiceUrl);
-                        rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(productID, 0, RootProductMappingSortType.PriceWithVAT);
+                        rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(productID, 0, RootProductMappingSortType.PriceWithVAT,false);
                         if (rootProductMapping == null)
                         {
                             Logger.ErrorFormat("UpdateRootProduct: Cannot get RootProductMapping. Product ID: {0}", productID);
