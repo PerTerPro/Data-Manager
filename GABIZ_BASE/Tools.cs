@@ -76,7 +76,6 @@ namespace GABIZ.Base
                         break;
                     case 'ạ': _c = 'a';
                         break;
-
                     case 'ă': _c = 'a';
                         break;
                     case 'ằ': _c = 'a';
@@ -89,7 +88,6 @@ namespace GABIZ.Base
                         break;
                     case 'ặ': _c = 'a';
                         break;
-
                     case 'â': _c = 'a';
                         break;
                     case 'ầ': _c = 'a';
@@ -102,7 +100,6 @@ namespace GABIZ.Base
                         break;
                     case 'ậ': _c = 'a';
                         break;
-
                     case 'b': _c = 'b';
                         break;
                     case 'c': _c = 'c';
@@ -111,7 +108,6 @@ namespace GABIZ.Base
                         break;
                     case 'đ': _c = 'd';
                         break;
-
                     case 'e': _c = 'e';
                         break;
                     case 'è': _c = 'e';
@@ -124,7 +120,6 @@ namespace GABIZ.Base
                         break;
                     case 'ẹ': _c = 'e';
                         break;
-
                     case 'ê': _c = 'e';
                         break;
                     case 'ề': _c = 'e';

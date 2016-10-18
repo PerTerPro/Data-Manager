@@ -224,6 +224,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.UpdateAlexa", "WSS.Upda
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Financial", "WSS.Financial\WSS.Financial.csproj", "{10EE609C-4D46-49E0-B70B-A6D4928AD304}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.WebMerchantSupport", "WSS.WebMerchantSupport\WSS.WebMerchantSupport.csproj", "{3A236F8E-C77E-466C-8124-5DA247383303}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1205,6 +1207,16 @@ Global
 		{10EE609C-4D46-49E0-B70B-A6D4928AD304}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{10EE609C-4D46-49E0-B70B-A6D4928AD304}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{10EE609C-4D46-49E0-B70B-A6D4928AD304}.Release|x86.ActiveCfg = Release|Any CPU
+		{3A236F8E-C77E-466C-8124-5DA247383303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A236F8E-C77E-466C-8124-5DA247383303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A236F8E-C77E-466C-8124-5DA247383303}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3A236F8E-C77E-466C-8124-5DA247383303}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3A236F8E-C77E-466C-8124-5DA247383303}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A236F8E-C77E-466C-8124-5DA247383303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A236F8E-C77E-466C-8124-5DA247383303}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A236F8E-C77E-466C-8124-5DA247383303}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3A236F8E-C77E-466C-8124-5DA247383303}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3A236F8E-C77E-466C-8124-5DA247383303}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
