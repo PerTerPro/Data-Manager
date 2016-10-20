@@ -121,6 +121,7 @@
             this.textEditDetectionResult = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonDetectRootProduct = new DevExpress.XtraEditors.SimpleButton();
             this.textEditProductName = new DevExpress.XtraEditors.TextEdit();
+            this.buttonGetAllOnlineFridayProductName = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMain)).BeginInit();
             this.xtraTabControlMain.SuspendLayout();
             this.xtraTabPageProductIdentity.SuspendLayout();
@@ -193,7 +194,7 @@
             // 
             this.xtraTabPageProductIdentity.Controls.Add(this.splitContainer3);
             this.xtraTabPageProductIdentity.Name = "xtraTabPageProductIdentity";
-            this.xtraTabPageProductIdentity.Size = new System.Drawing.Size(895, 397);
+            this.xtraTabPageProductIdentity.Size = new System.Drawing.Size(897, 398);
             this.xtraTabPageProductIdentity.Text = "Bộ nhận diện sản phẩm";
             // 
             // splitContainer3
@@ -214,7 +215,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.simpleButtonScheduleUpdateRootProductMapping);
             this.splitContainer3.Panel2.Controls.Add(this.groupControlInsertOneRootProductMapping);
             this.splitContainer3.Panel2.Controls.Add(this.buttonInsertAllRootProductMapping);
-            this.splitContainer3.Size = new System.Drawing.Size(895, 397);
+            this.splitContainer3.Size = new System.Drawing.Size(897, 398);
             this.splitContainer3.SplitterDistance = 419;
             this.splitContainer3.TabIndex = 3;
             // 
@@ -882,11 +883,11 @@
             // 
             // labelControl16
             // 
-            this.labelControl16.Location = new System.Drawing.Point(685, 237);
+            this.labelControl16.Location = new System.Drawing.Point(666, 237);
             this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(69, 13);
+            this.labelControl16.Size = new System.Drawing.Size(120, 13);
             this.labelControl16.TabIndex = 22;
-            this.labelControl16.Text = "Update Hourly";
+            this.labelControl16.Text = "Update One Per  6 Hours";
             // 
             // simpleButtonScheduleScanOnlineFridayProducts
             // 
@@ -1002,6 +1003,7 @@
             // 
             // xtraTabPageTest
             // 
+            this.xtraTabPageTest.Controls.Add(this.buttonGetAllOnlineFridayProductName);
             this.xtraTabPageTest.Controls.Add(this.simpleButtonTestGetNameLength);
             this.xtraTabPageTest.Controls.Add(this.textEditIDMerchantToTestNameLength);
             this.xtraTabPageTest.Controls.Add(this.simpleButtonScanCGDProducts);
@@ -1088,7 +1090,7 @@
             this.simpleButtonDetectRootProduct.Name = "simpleButtonDetectRootProduct";
             this.simpleButtonDetectRootProduct.Size = new System.Drawing.Size(75, 23);
             this.simpleButtonDetectRootProduct.TabIndex = 1;
-            this.simpleButtonDetectRootProduct.Text = "Detect";
+            this.simpleButtonDetectRootProduct.Text = "Detect RootId";
             this.simpleButtonDetectRootProduct.Click += new System.EventHandler(this.simpleButtonDetectRootProduct_Click);
             // 
             // textEditProductName
@@ -1097,6 +1099,15 @@
             this.textEditProductName.Name = "textEditProductName";
             this.textEditProductName.Size = new System.Drawing.Size(337, 20);
             this.textEditProductName.TabIndex = 0;
+            // 
+            // buttonGetAllOnlineFridayProductName
+            // 
+            this.buttonGetAllOnlineFridayProductName.Location = new System.Drawing.Point(595, 68);
+            this.buttonGetAllOnlineFridayProductName.Name = "buttonGetAllOnlineFridayProductName";
+            this.buttonGetAllOnlineFridayProductName.Size = new System.Drawing.Size(204, 23);
+            this.buttonGetAllOnlineFridayProductName.TabIndex = 24;
+            this.buttonGetAllOnlineFridayProductName.Text = "Get All OnlineFriday ProductName";
+            this.buttonGetAllOnlineFridayProductName.Click += new System.EventHandler(this.buttonGetAllOnlineFridayProductName_Click);
             // 
             // formCacheManager
             // 
@@ -1268,6 +1279,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButtonScanCGDProducts;
         private DevExpress.XtraEditors.SimpleButton simpleButtonTestGetNameLength;
         private DevExpress.XtraEditors.TextEdit textEditIDMerchantToTestNameLength;
+        private DevExpress.XtraEditors.SimpleButton buttonGetAllOnlineFridayProductName;
     }
 }
 
