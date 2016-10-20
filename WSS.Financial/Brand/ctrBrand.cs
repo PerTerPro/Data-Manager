@@ -62,5 +62,10 @@ namespace WSS.Financial.Brand
                 //GetRowAt(gridView1, e.X, e.Y);
             }
         }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            InitControl();
+        }
     }
 }
