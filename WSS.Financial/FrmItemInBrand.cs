@@ -113,5 +113,10 @@ namespace WSS.Financial
             };
             frm.Show();
         }
+
+        private void toolStripButtonAddNew_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

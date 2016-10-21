@@ -16,7 +16,7 @@ namespace WSS.Financial
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new FrmAddNewItem(5));
         }
     }
 }

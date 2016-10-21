@@ -79,6 +79,7 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.ctrCategory1 = new WSS.Financial.Category.ctrCategory();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.toolStripButtonAddNew = new System.Windows.Forms.ToolStripButton();
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             categoryIdLabel = new System.Windows.Forms.Label();
@@ -204,6 +205,7 @@
             this.btnLoadAll.Size = new System.Drawing.Size(75, 59);
             this.btnLoadAll.TabIndex = 11;
             this.btnLoadAll.Text = "Load all\r\nwith Brand";
+            this.btnLoadAll.Visible = false;
             this.btnLoadAll.Click += new System.EventHandler(this.btnLoadAll_Click);
             // 
             // btnItemProperties
@@ -305,6 +307,7 @@
             this.tableAdapterManager.PropertyStatusTableAdapter = null;
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
+            this.tableAdapterManager.PropertyValueTypeTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // brandTableAdapter
@@ -333,7 +336,8 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.itemBindingNavigatorSaveItem});
+            this.itemBindingNavigatorSaveItem,
+            this.toolStripButtonAddNew});
             this.itemBindingNavigator.Location = new System.Drawing.Point(2, 2);
             this.itemBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.itemBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -353,6 +357,7 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Visible = false;
             // 
             // bindingNavigatorCountItem
             // 
@@ -464,7 +469,7 @@
             this.colIsActive});
             this.gridView1.GridControl = this.itemGridControl;
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+            this.gridView1.OptionsView.ShowAutoFilterRow = true;
             // 
             // colId
             // 
@@ -574,6 +579,16 @@
             this.panelControl2.Size = new System.Drawing.Size(990, 635);
             this.panelControl2.TabIndex = 1;
             // 
+            // toolStripButtonAddNew
+            // 
+            this.toolStripButtonAddNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAddNew.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAddNew.Image")));
+            this.toolStripButtonAddNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddNew.Name = "toolStripButtonAddNew";
+            this.toolStripButtonAddNew.Size = new System.Drawing.Size(66, 22);
+            this.toolStripButtonAddNew.Text = "Thêm mới";
+            this.toolStripButtonAddNew.Click += new System.EventHandler(this.toolStripButtonAddNew_Click);
+            // 
             // FrmItemInBrand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -660,5 +675,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit1;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAddNew;
     }
 }
