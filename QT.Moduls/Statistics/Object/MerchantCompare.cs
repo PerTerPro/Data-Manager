@@ -10,6 +10,5 @@ namespace QT.Moduls.Statistics.Object
     {
         public long ID { get; set; }
         public string  Domain { get; set; }
-
     }
 }

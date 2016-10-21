@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,10 +71,10 @@ namespace QT.Moduls.Statistics
             DataColumn dcMaxPrice = new DataColumn("Gia_Cao_Nhat_TT", typeof(string));
             tblShow.Columns.Add(dcProduct); tblShow.Columns.Add(dcDetailUrl); tblShow.Columns.Add(dcMinPrice); tblShow.Columns.Add(dcPrice); tblShow.Columns.Add(dcMaxPrice);
 
-            DataTable tblProduct = sqldb.GetTblData(@"select top 10000 a.ID,a.Name,b.ID as RootId,b.Name as RootName,a.DetailUrl,a.ImageUrls, a.Price from Product a
+            DataTable tblProduct = sqldb.GetTblData(@"select a.ID,a.Name,b.ID as RootId,b.Name as RootName,a.DetailUrl,a.ImageUrls, a.Price from Product a
                                                             left join Product b
                                                             on a.ProductID = b.ID
-                                                            where a.Company = @Company and b.ID >0 and b.ID is not null", CommandType.Text, new System.Data.SqlClient.SqlParameter[]{
+                                                            where a.Company = @Company and b.ID >0 and b.ID is not null and a.Name like N'%tivi%'", CommandType.Text, new System.Data.SqlClient.SqlParameter[]{
                                                                                                             SqlDb.CreateParamteterSQL("@Company",company,SqlDbType.BigInt)
                                                                                                           });
             if (lstMerchant != null && lstMerchant.Count > 0)
@@ -134,6 +135,45 @@ namespace QT.Moduls.Statistics
                 tblShow.Rows.Add(dr);
             }
             return tblShow;
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "Excel (2003)(.xls)|*.xls|Excel (2010) (.xlsx)|*.xlsx |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
+                if (saveDialog.ShowDialog() != DialogResult.Cancel)
+                {
+                    //saveDialog.FileName = string.Format("{0}_click_date_{1}-{2}.xls", _domain, ctrBaseDateRange1.FromDate.ToString("dd_MM_yyyy"), ctrBaseDateRange1.ToDate.ToString("dd_MM_yyyy"));
+                    string exportFilePath = saveDialog.FileName;
+                    string fileExtenstion = new FileInfo(exportFilePath).Extension;
+                    //NImageExporter imageExporter = chartControl.ImageExporter;
+                    switch (fileExtenstion)
+                    {
+                        case ".xls":
+                            gridControlProductStatistics.ExportToXls(exportFilePath);
+                            break;
+                        case ".xlsx":
+                            gridControlProductStatistics.ExportToXlsx(exportFilePath);
+                            break;
+                        case ".rtf":
+                            gridControlProductStatistics.ExportToRtf(exportFilePath);
+                            break;
+                        case ".pdf":
+                            gridControlProductStatistics.ExportToPdf(exportFilePath);
+                            break;
+                        case ".html":
+                            gridControlProductStatistics.ExportToHtml(exportFilePath);
+                            break;
+                        case ".mht":
+                            gridControlProductStatistics.ExportToMht(exportFilePath);
+                            break;
+                        default:
+                            break;
+                    }
+                    MessageBox.Show("Export success!");
+                }
+            }
         }
     }
 }
