@@ -19,9 +19,18 @@ namespace WSS.Financial
 
         private void categoryBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.categoryBindingSource.EndEdit();
-            this.categoryTableAdapter.Update(this.dBFinancial.Category);
+            try
+            {
+                this.Validate();
+                this.categoryBindingSource.EndEdit();
+                this.categoryTableAdapter.Update(this.dBFinancial.Category);
+                MessageBox.Show(@"Lưu thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
 
         }
 
