@@ -34,10 +34,10 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.rtxtCompete = new System.Windows.Forms.RichTextBox();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.gridControlProductStatistics = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCategory.Properties)).BeginInit();
@@ -76,7 +76,7 @@
             this.lookUpEditCategory.Name = "lookUpEditCategory";
             this.lookUpEditCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditCategory.Size = new System.Drawing.Size(225, 20);
+            this.lookUpEditCategory.Size = new System.Drawing.Size(214, 20);
             this.lookUpEditCategory.TabIndex = 2;
             this.lookUpEditCategory.EditValueChanged += new System.EventHandler(this.lookUpEditCategory_EditValueChanged);
             // 
@@ -105,6 +105,15 @@
             this.panelControl2.Size = new System.Drawing.Size(1261, 37);
             this.panelControl2.TabIndex = 1;
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(1174, 6);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 1;
+            this.btnExport.Text = "Export";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // panelControl3
             // 
             this.panelControl3.Controls.Add(this.gridControlProductStatistics);
@@ -132,15 +141,6 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.PreviewLineCount = 10;
             this.gridView1.RowHeight = 30;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(1174, 6);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
-            this.btnExport.TabIndex = 1;
-            this.btnExport.Text = "Export";
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // FrmStatisticsPrice
             // 
