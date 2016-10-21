@@ -11,7 +11,7 @@ namespace WSS.IndividualCategoryWebsites.Redis
 {
     public class RedisProductInRootProductOfCompanyAdapter
     {
-        static ILog Log = LogManager.GetLogger(typeof(RedisErrorDownloadImageProductAdapter));
+        //static ILog Log = LogManager.GetLogger(typeof(RedisErrorDownloadImageProductAdapter));
         //static IDatabase _database = RedisManager.GetRedisServer(ConfigImages.KeyRedisCheckErrorDownloadImageProduct).GetDatabase(2);
         ////int numberError = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["numberError"].ToString());
 

@@ -44,6 +44,7 @@ using QT.Moduls.RatingCompany;
 using QT.Moduls.Notifycation;
 using QT.Moduls.Keyword;
 using WSS.Service.Crawler.Consumer.FindNew;
+using QT.Moduls.Statistics;
 //using UpdateSolrTools;
 
 namespace _000
@@ -1202,6 +1203,37 @@ namespace _000
                         try
                         {
                             FrmUpdateCategory frm = new FrmUpdateCategory(this.ctrListWebSite1.GetIDCompanyCurrent);
+                            frm.MdiParent = this;
+                            frm.Text = "CongTy " + this.ctrListWebSite1.GetUrlWebCurrent();
+                            frm.Show();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
+                    }
+                    #endregion
+                    break;
+                case QT.Entities.Common.ListWebCommand.StatisticsPrice:
+                    #region StatisticsPrice
+                    foreach (var child in MdiChildren)
+                    {
+                        if (child is FrmStatisticsPrice)
+                        {
+                            var f = (FrmStatisticsPrice)child;
+                            if (f.Text == "CongTy " + this.ctrListWebSite1.GetUrlWebCurrent())
+                            {
+                                child.BringToFront();
+                                valForm = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!valForm)
+                    {
+                        try
+                        {
+                            FrmStatisticsPrice frm = new FrmStatisticsPrice(ctrListWebSite1.GetIDCompanyCurrent);
                             frm.MdiParent = this;
                             frm.Text = "CongTy " + this.ctrListWebSite1.GetUrlWebCurrent();
                             frm.Show();

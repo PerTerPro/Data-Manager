@@ -509,6 +509,7 @@ namespace QT.Moduls
             _command = Common.ListWebCommand.ViewProduct1;
             ExcuteCommand(_command, e);
         }
+
         private void gridControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
@@ -632,8 +633,8 @@ namespace QT.Moduls
                           "",
                           DateTime.Now,
                           0, 0, "", false, 0, DateTime.Now.AddYears(-1), DateTime.Now.AddYears(-1));
-                    adtJob.Insert(QT.Users.User.UserID,Common.GetIDCompany(domain),"","",QT.Users.JobNhapLieuStatus.NhapMoi,DateTime.Now);
-                    LogJobAdapter.SaveLog(JobName.FrmCompany_AddNew, "Thêm mới công ty "+domain, Convert.ToInt64(Common.GetIDCompany(domain)), (int)JobTypeData.Company);
+                    adtJob.Insert(QT.Users.User.UserID, Common.GetIDCompany(domain), "", "", QT.Users.JobNhapLieuStatus.NhapMoi, DateTime.Now);
+                    LogJobAdapter.SaveLog(JobName.FrmCompany_AddNew, "Thêm mới công ty " + domain, Convert.ToInt64(Common.GetIDCompany(domain)), (int)JobTypeData.Company);
                 }
                 catch (Exception)
                 {
@@ -1110,7 +1111,7 @@ namespace QT.Moduls
         {
             RepaiConfig(sender, e);
         }
-        
+
         private void gridView4_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if (e.Info.IsRowIndicator && e.RowHandle >= 0)
@@ -1179,7 +1180,7 @@ namespace QT.Moduls
 
         private void btnDanhGiaCongTy_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnRemoveFailRegexProduct_Click(object sender, EventArgs e)
@@ -1219,14 +1220,14 @@ namespace QT.Moduls
         private void updateCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-                IsExcuteCommand = true;
-                ToolStripMenuItem tm = (ToolStripMenuItem)sender;
-                UncheckMenu();
-                tm.Checked = true;
-                _command = Common.ListWebCommand.UpdateCategory;
-                ExcuteCommand(_command, e);
+            IsExcuteCommand = true;
+            ToolStripMenuItem tm = (ToolStripMenuItem)sender;
+            UncheckMenu();
+            tm.Checked = true;
+            _command = Common.ListWebCommand.UpdateCategory;
+            ExcuteCommand(_command, e);
 
-            
+
         }
 
         private void btnPushCompanyInfoReset_Click(object sender, EventArgs e)
@@ -1236,6 +1237,16 @@ namespace QT.Moduls
             producerBasic.PublishString(companyInfo.ToString());
             MessageBox.Show("Pushed company!");
         }
+        private void StatisticsPriceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IsExcuteCommand = true;
+            ToolStripMenuItem tm = (ToolStripMenuItem)sender;
+            UncheckMenu();
+            tm.Checked = true;
+            _command = Common.ListWebCommand.StatisticsPrice;
+            ExcuteCommand(_command, e);
+        }
+
 
 
 

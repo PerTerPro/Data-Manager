@@ -548,7 +548,8 @@ namespace QT.Entities
             MapCatAndClass,
             ReloadNoValidManual,
             DanhGiaCongTy,
-            UpdateCategory
+            UpdateCategory,
+            StatisticsPrice
         };
         public enum CrawlerCommand { Init, Start, Stop, Pause, Restart, Finish, LoadClassification }
 

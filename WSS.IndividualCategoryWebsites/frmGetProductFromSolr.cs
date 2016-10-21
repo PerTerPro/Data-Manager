@@ -107,6 +107,7 @@ namespace WSS.IndividualCategoryWebsites
                     txtNumberFound.Text = numberFound.ToString();
                 }
                 else
+
                 {
                     var resultCategory = solrProductClient.GetListCategoryProductByKeyword(listkeywords,
                         listKeywordsBlock,
@@ -321,7 +322,6 @@ namespace WSS.IndividualCategoryWebsites
             spinEditMinPrice.EditValue = spinEditMinpriceSql.EditValue;
             spinEditMaxPrice.EditValue = spinEditMaxpriceSql.EditValue;
             txtCategoryId.Text = categoryIdSelectedTextEdit.Text;
-
         }
 
         private void selectProductToRootProductToolStripMenuItem_Click(object sender, EventArgs e)
