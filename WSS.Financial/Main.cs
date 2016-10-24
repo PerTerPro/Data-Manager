@@ -8,8 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WSS.Financial.Bank;
-using WSS.Financial.BankLending;
+using WSS.Financial.Brand;
 
 namespace WSS.Financial
 {
@@ -22,75 +21,7 @@ namespace WSS.Financial
         private void Main_Load(object sender, EventArgs e)
         {
             WssConnectionFinancial.ConnectionFinancial = ConfigurationSettings.AppSettings["ConnectionFinancial"];
-            ctrBank1.InitControl();
-        }
-
-        private void barButtonItemBankBlending_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var valForm = false;
-            foreach (var child in MdiChildren)
-            {
-                if (child is FrmBankManager)
-                {
-                    var f = (FrmBankManager)child;
-                    if (f.Text == (@"Quản lý ngân hàng"))
-                    {
-                        child.BringToFront();
-                        valForm = true;
-                        break;
-                    }
-                }
-            }
-            if (!valForm)
-            {
-                try
-                {
-                    var frm = new FrmBankManager()
-                    {
-                        MdiParent = this,
-                        Text = @"Quản lý ngân hàng"
-                    };
-                    frm.Show();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-        }
-
-        private void barButtonItemFrmBankLending_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var valForm = false;
-            foreach (var child in MdiChildren)
-            {
-                if (child is FrmBankLendingManager)
-                {
-                    var f = (FrmBankLendingManager)child;
-                    if (f.Text == (@"Quản lý các gói vay tiêu dùng của tất cả các ngân hàng"))
-                    {
-                        child.BringToFront();
-                        valForm = true;
-                        break;
-                    }
-                }
-            }
-            if (!valForm)
-            {
-                try
-                {
-                    var frm = new FrmBankLendingManager()
-                    {
-                        MdiParent = this,
-                        Text = @"Quản lý các gói vay tiêu dùng của tất cả các ngân hàng"
-                    };
-                    frm.Show();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-            }
+            ctrBrand1.InitControl();
         }
 
         private void barButtonItemPaymentMethod_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -98,10 +29,43 @@ namespace WSS.Financial
             var valForm = false;
             foreach (var child in MdiChildren)
             {
-                if (child is FrmPaymentMethod)
+                if (child is FrmPropertyGroup)
                 {
-                    var f = (FrmPaymentMethod)child;
-                    if (f.Text == (@"Hình thức trả khoản vay"))
+                    var f = (FrmPropertyGroup)child;
+                    if (f.Text == (@"Nhập thuộc tính chung (PropertyGroup)"))
+                    {
+                        child.BringToFront();
+                        valForm = true;
+                        break;
+                    }
+                }
+            }
+            if (!valForm){
+                try
+                {
+                    var frm = new FrmPropertyGroup()
+                    {
+                        MdiParent = this,
+                        Text = @"Nhập thuộc tính chung (PropertyGroup)"
+                    };
+                    frm.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        private void barButtonItemCategoryManager_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var valForm = false;
+            foreach (var child in MdiChildren)
+            {
+                if (child is FrmCategory)
+                {
+                    var f = (FrmCategory)child;
+                    if (f.Text == (@"Quản lý Category"))
                     {
                         child.BringToFront();
                         valForm = true;
@@ -113,9 +77,10 @@ namespace WSS.Financial
             {
                 try
                 {
-                    var frm = new FrmPaymentMethod(){
+                    var frm = new FrmCategory()
+                    {
                         MdiParent = this,
-                        Text = @"Hình thức trả khoản vay"
+                        Text = @"Quản lý Category"
                     };
                     frm.Show();
                 }
@@ -126,28 +91,95 @@ namespace WSS.Financial
             }
         }
 
-        private void ctrBank1_ExcuteCommand(WssCommon.ListBankCommand command, EventArgs e)
+        private void barButtonItemPropertyByCategory_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var valForm = false;
+            foreach (var child in MdiChildren)
+            {
+                if (child is FrmPropertyByCategory)
+                {
+                    var f = (FrmPropertyByCategory)child;
+                    if (f.Text == (@"Quản lý các thuộc tính theo category"))
+                    {
+                        child.BringToFront();
+                        valForm = true;
+                        break;
+                    }
+                }
+            }
+            if (!valForm)
+            {
+                try
+                {
+                    var frm = new FrmPropertyByCategory()
+                    {
+                        MdiParent = this,
+                        Text = @"Quản lý các thuộc tính theo category"
+                    };
+                    frm.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        private void barButtonItemPropertyValue_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var valForm = false;
+            foreach (var child in MdiChildren)
+            {
+                if (child is FrmPropertyValue)
+                {
+                    var f = (FrmPropertyValue)child;
+                    if (f.Text == (@"Nhập giá trị thuộc tính"))
+                    {
+                        child.BringToFront();
+                        valForm = true;
+                        break;
+                    }
+                }
+            }
+            if (!valForm)
+            {
+                try
+                {
+                    var frm = new FrmPropertyValue()
+                    {
+                        MdiParent = this,
+                        Text = @"Nhập giá trị thuộc tính"};
+                    frm.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        private void ctrBrand1_ExcuteCommand(WssCommon.ListBrandCommand command, EventArgs e)
         {
             switch (command)
             {
-                case WssCommon.ListBankCommand.ViewInfo:
-                    ViewInfo(ctrBank1.GetIdCurrent(),ctrBank1.GetBankCurrent());
+                case WssCommon.ListBrandCommand.ViewInfo:
+                    //ViewInfo(ctrBank1.GetIdCurrent(), ctrBank1.GetBankCurrent());
                     break;
-                case WssCommon.ListBankCommand.ViewBankLending:
-                    ViewBankLending(ctrBank1.GetIdCurrent(), ctrBank1.GetBankCurrent());
+                case WssCommon.ListBrandCommand.ViewItemManager:
+                    ViewItemOfBrand(ctrBrand1.GetIdCurrent(), ctrBrand1.GetBrandCurrent());
                     break;
             }
         }
 
-        private void ViewBankLending(int bankId,string bankName)
+        private void ViewItemOfBrand(int brandIdCurrent, string brandCurrent)
         {
             var valForm = false;
             foreach (var child in MdiChildren)
             {
-                if (child is FrmBankLendingManager)
+                if (child is FrmItemInBrand)
                 {
-                    var f = (FrmBankLendingManager)child;
-                    if (f.Text == (@"Quản lý các gói vay tiêu dùng của "+ bankName))
+                    var f = (FrmItemInBrand)child;
+                    if (f.Text == (@"Item of Brand " + brandCurrent))
                     {
                         child.BringToFront();
                         valForm = true;
@@ -159,10 +191,10 @@ namespace WSS.Financial
             {
                 try
                 {
-                    var frm = new FrmBankLendingManager()
+                    var frm = new FrmItemInBrand(brandIdCurrent)
                     {
                         MdiParent = this,
-                        Text = @"Quản lý các gói vay tiêu dùng của " + bankName
+                        Text = @"Item of Brand " + brandCurrent
                     };
                     frm.Show();
                 }
@@ -173,15 +205,15 @@ namespace WSS.Financial
             }
         }
 
-        private void ViewInfo(int bankId, string bankName)
+        private void barButtonItemBrandManager_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var valForm = false;
             foreach (var child in MdiChildren)
             {
-                if (child is FrmBankInfo)
+                if (child is FrmBrandManager)
                 {
-                    var f = (FrmBankInfo)child;
-                    if (f.Text == (@"Thông tin của ngân hàng "+bankName))
+                    var f = (FrmBrandManager)child;
+                    if (f.Text == (@"Quản lý Brand"))
                     {
                         child.BringToFront();
                         valForm = true;
@@ -193,10 +225,11 @@ namespace WSS.Financial
             {
                 try
                 {
-                    var frm = new FrmBankInfo(bankId)
+                    var frm = new FrmBrandManager()
                     {
                         MdiParent = this,
-                        Text = @"Thông tin của ngân hàng "+bankName};
+                        Text = @"Quản lý Brand"
+                    };
                     frm.Show();
                 }
                 catch (Exception ex)
@@ -205,7 +238,5 @@ namespace WSS.Financial
                 }
             }
         }
-
-        
     }
 }

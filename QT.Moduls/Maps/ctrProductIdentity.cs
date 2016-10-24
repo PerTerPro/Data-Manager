@@ -187,7 +187,7 @@ namespace QT.Moduls.Maps
             var client = new ProtoBufServiceStackClient(_searchEnginesServiceUrl);
             try
             {
-                var response = client.Send<GetRootProductMappingResponse>(new GetRootProductMappingByProductIdentityRequest { ProductIdentity = _productIdentity, RegionID = 0, UseBlackList = true, GetFacet = true });
+                var response = client.Send<GetRootProductMappingResponse>(new GetRootProductMappingByProductIdentityRequest { ProductIdentity = _productIdentity, RegionID = 0, IncludeBlackList = false, GetFacet = true });
                 if (response.RootProductMapping != null)
                 {
                     listProductFound = new List<long>();

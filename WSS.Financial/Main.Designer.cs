@@ -28,23 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.components = new System.ComponentModel.Container();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItemBankBlending = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItemVayTinDung = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItemBankLending = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItemPaymentMethod = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemBrandManager = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemCategoryManager = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemPropertyGroup = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemPropertyByCategory = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemPropertyValue = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager();
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.ctrBank1 = new WSS.Financial.Bank.ctrBank();
+            this.ctrBrand1 = new WSS.Financial.Brand.ctrBrand();
+            this.barSubItemVayTinDung = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItemBankLending = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItemBankBlending = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -68,9 +73,13 @@
             this.barSubItem1,
             this.barButtonItemBankBlending,
             this.barSubItem2,
-            this.barButtonItemPaymentMethod});
+            this.barButtonItemPropertyGroup,
+            this.barButtonItemCategoryManager,
+            this.barButtonItemPropertyByCategory,
+            this.barButtonItemPropertyValue,
+            this.barButtonItemBrandManager});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 6;
+            this.barManager1.MaxItemId = 14;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -80,57 +89,57 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemVayTinDung),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
-            // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Ngân hàng";
-            this.barSubItem1.Id = 2;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemBankBlending)});
-            this.barSubItem1.Name = "barSubItem1";
-            // 
-            // barButtonItemBankBlending
-            // 
-            this.barButtonItemBankBlending.Caption = "Quản lý danh sách ngân hàng";
-            this.barButtonItemBankBlending.Id = 3;
-            this.barButtonItemBankBlending.Name = "barButtonItemBankBlending";
-            this.barButtonItemBankBlending.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemBankBlending_ItemClick);
-            // 
-            // barSubItemVayTinDung
-            // 
-            this.barSubItemVayTinDung.Caption = "Vay tín dụng";
-            this.barSubItemVayTinDung.Id = 0;
-            this.barSubItemVayTinDung.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemBankLending)});
-            this.barSubItemVayTinDung.Name = "barSubItemVayTinDung";
-            // 
-            // barButtonItemBankLending
-            // 
-            this.barButtonItemBankLending.Caption = "Quản lý các gói vay tín dụng";
-            this.barButtonItemBankLending.Id = 1;
-            this.barButtonItemBankLending.Name = "barButtonItemBankLending";
-            this.barButtonItemBankLending.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemFrmBankLending_ItemClick);
             // 
             // barSubItem2
             // 
             this.barSubItem2.Caption = "Tool";
             this.barSubItem2.Id = 4;
             this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemPaymentMethod)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemBrandManager),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemCategoryManager),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemPropertyGroup),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemPropertyByCategory),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemPropertyValue)});
             this.barSubItem2.Name = "barSubItem2";
             // 
-            // barButtonItemPaymentMethod
+            // barButtonItemBrandManager
             // 
-            this.barButtonItemPaymentMethod.Caption = "Hình thức trả khoản vay";
-            this.barButtonItemPaymentMethod.Id = 5;
-            this.barButtonItemPaymentMethod.Name = "barButtonItemPaymentMethod";
-            this.barButtonItemPaymentMethod.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPaymentMethod_ItemClick);
+            this.barButtonItemBrandManager.Caption = "Quản lý Brand";
+            this.barButtonItemBrandManager.Id = 13;
+            this.barButtonItemBrandManager.Name = "barButtonItemBrandManager";
+            this.barButtonItemBrandManager.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemBrandManager_ItemClick);
+            // 
+            // barButtonItemCategoryManager
+            // 
+            this.barButtonItemCategoryManager.Caption = "Quản lý Category";
+            this.barButtonItemCategoryManager.Id = 10;
+            this.barButtonItemCategoryManager.Name = "barButtonItemCategoryManager";
+            this.barButtonItemCategoryManager.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCategoryManager_ItemClick);
+            // 
+            // barButtonItemPropertyGroup
+            // 
+            this.barButtonItemPropertyGroup.Caption = "Nhập thuộc tính chung (PropertyGroup)";
+            this.barButtonItemPropertyGroup.Id = 5;
+            this.barButtonItemPropertyGroup.Name = "barButtonItemPropertyGroup";
+            this.barButtonItemPropertyGroup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPaymentMethod_ItemClick);
+            // 
+            // barButtonItemPropertyByCategory
+            // 
+            this.barButtonItemPropertyByCategory.Caption = "Quản lý các thuộc tính theo category";
+            this.barButtonItemPropertyByCategory.Id = 11;
+            this.barButtonItemPropertyByCategory.Name = "barButtonItemPropertyByCategory";
+            this.barButtonItemPropertyByCategory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPropertyByCategory_ItemClick);
+            // 
+            // barButtonItemPropertyValue
+            // 
+            this.barButtonItemPropertyValue.Caption = "Nhập giá trị thuộc tính (PropertyValue)";
+            this.barButtonItemPropertyValue.Id = 12;
+            this.barButtonItemPropertyValue.Name = "barButtonItemPropertyValue";
+            this.barButtonItemPropertyValue.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPropertyValue_ItemClick);
             // 
             // bar3
             // 
@@ -198,24 +207,44 @@
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.OriginalSize = new System.Drawing.Size(435, 200);
             this.dockPanel1.Size = new System.Drawing.Size(435, 675);
-            this.dockPanel1.Text = "Danh sách ngân hàng";
+            this.dockPanel1.Text = "Danh sách Brand";
             // 
             // dockPanel1_Container
             // 
-            this.dockPanel1_Container.Controls.Add(this.ctrBank1);
+            this.dockPanel1_Container.Controls.Add(this.ctrBrand1);
             this.dockPanel1_Container.Location = new System.Drawing.Point(4, 23);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
             this.dockPanel1_Container.Size = new System.Drawing.Size(427, 648);
             this.dockPanel1_Container.TabIndex = 0;
             // 
-            // ctrBank1
+            // ctrBrand1
             // 
-            this.ctrBank1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrBank1.Location = new System.Drawing.Point(0, 0);
-            this.ctrBank1.Name = "ctrBank1";
-            this.ctrBank1.Size = new System.Drawing.Size(427, 648);
-            this.ctrBank1.TabIndex = 0;
-            this.ctrBank1.ExcuteCommand += new WSS.Financial.Bank.ctrBank.ChangedEventHandler(this.ctrBank1_ExcuteCommand);
+            this.ctrBrand1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrBrand1.Location = new System.Drawing.Point(0, 0);
+            this.ctrBrand1.Name = "ctrBrand1";
+            this.ctrBrand1.Size = new System.Drawing.Size(427, 648);
+            this.ctrBrand1.TabIndex = 0;
+            this.ctrBrand1.ExcuteCommand += new WSS.Financial.Brand.ctrBrand.ChangedEventHandler(this.ctrBrand1_ExcuteCommand);
+            // 
+            // barSubItemVayTinDung
+            // 
+            this.barSubItemVayTinDung.Id = 6;
+            this.barSubItemVayTinDung.Name = "barSubItemVayTinDung";
+            // 
+            // barButtonItemBankLending
+            // 
+            this.barButtonItemBankLending.Id = 7;
+            this.barButtonItemBankLending.Name = "barButtonItemBankLending";
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Id = 8;
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // barButtonItemBankBlending
+            // 
+            this.barButtonItemBankBlending.Id = 9;
+            this.barButtonItemBankBlending.Name = "barButtonItemBankBlending";
             // 
             // Main
             // 
@@ -255,11 +284,15 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItemBankBlending;
         private DevExpress.XtraBars.BarSubItem barSubItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemPaymentMethod;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemPropertyGroup;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
-        private Bank.ctrBank ctrBank1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCategoryManager;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemPropertyByCategory;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemPropertyValue;
+        private Brand.ctrBrand ctrBrand1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemBrandManager;
     }
 }
 

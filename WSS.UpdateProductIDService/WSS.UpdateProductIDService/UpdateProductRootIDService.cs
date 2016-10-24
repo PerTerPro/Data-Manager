@@ -89,7 +89,7 @@ namespace WSS.UpdateProductRootIDService
                 return;
             }
             UpdateProductCategoryToZero((int)rootId);
-            var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(rootId, 0,RootProductMappingSortType.PriceWithVAT);
+            var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(rootId, 0,RootProductMappingSortType.PriceWithVAT,true);
             if (rootProductMapping == null)
             {
                 Log.WarnFormat("Get RootProductMapping return null! with ProductID = {0}",rootId);

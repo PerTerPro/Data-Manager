@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -616,13 +617,17 @@ namespace CacheManager
             });
             buildTask.Start();
         }
-
+        /// <summary>
+        /// Use for build price log from scratch only!
+        /// </summary>
+        /// <param name="rootProductID"></param>
+        /// <returns></returns>
             private bool InsertRootProductPriceLog(long rootProductID)
             {
                 var filledPricelogDict = new Dictionary<DateTime, Dictionary<long, long>>();
                 var storedPriceLogDict = new Dictionary<long, List<KeyValuePair<DateTime, long>>>();
                 var startTime = DateTime.Now;
-                var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(rootProductID, 0, RootProductMappingSortType.PriceWithVAT);
+                var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(rootProductID, 0, RootProductMappingSortType.PriceWithVAT,false);
                 if (rootProductMapping == null)
                     return false;
                 if (rootProductMapping.ListMerchantProducts == null)
@@ -827,7 +832,7 @@ namespace CacheManager
             while (isRunScheduleScanOnlineFridayProducts)
             {
                 Thread.Sleep(1000);
-                if (DateTime.Now.Minute > 3)
+                if (DateTime.Now.Minute > 3 || DateTime.Now.Hour % 6 > 0)
                     continue;
                 Logger.Info("ScheduleScanOnlineFridayProducts Task Started.");
                 try
@@ -851,37 +856,61 @@ namespace CacheManager
             var startTime = DateTime.Now;
             var getTotalResult = GetOnlineFridayResult(0, 1);
             var totalProduct = getTotalResult.total;
-            int pageSize = 50;
-            int haveRootID = 0;
-            int haveHashID = 0;
-            int haveNerID = 0;
-            int updateCount = 0;
-            int updateSuccess = 0;
-            for (int i = 0; i < totalProduct + 1000; i = i + pageSize)
+            if (ProductNameHashTool.ProductIdentitiesDict == null)
+                ProductNameHashTool.BuildProductIdentitiesDict(_productConnectionString);
+            int taskNum = 4;
+            var taskSize = totalProduct / taskNum;
+            int[] haveRootID = new int[taskNum];
+            int[] haveHashID = new int[taskNum];
+            int[] haveNerID = new int[taskNum];
+            var runTasks = new Task[taskNum];
+            for (int i = 0; i < taskNum; i++)
             {
-                var result = GetOnlineFridayResult(i, pageSize);
+                var taskIndex = i;
+                int start = taskIndex * taskSize;
+                int size = taskIndex < taskNum - 1 ? taskSize : taskSize + 400;
+                runTasks[taskIndex] = new Task(() => RunScanOnlineidayProductPart(start, size, out haveRootID[taskIndex], out haveHashID[taskIndex], out haveNerID[taskIndex]));
+                runTasks[taskIndex].Start();
+            }
+            Task.WaitAll(runTasks);
+            var duration = (DateTime.Now - startTime).TotalSeconds;
+            Logger.InfoFormat("Scan OnlineFriday complete. Time: {0} s. Total product: {1}. HaveRootID: {2}. HaveHashID: {3}. Have NerID: {4}", duration, totalProduct, haveRootID.Sum(), haveHashID.Sum(), haveNerID.Sum());
+        }
+
+        private void RunScanOnlineidayProductPart(int start,int partSize, out int haveRootID, out int haveHashID, out int haveNerID)
+        {
+            const int limit = 60;
+            haveRootID = 0;
+            haveHashID = 0;
+            haveNerID = 0;
+            for (int i = start; i < start + partSize; i = i + limit)
+            {
+                var result = GetOnlineFridayResult(i, i+limit <= start + partSize ? limit :  start + partSize - i);
                 if (result.data != null)
                     foreach (var product in result.data)
                     {
                         string clusterID = Tools.getuCRC64(product.url + "wss").ToString();
-                        if (ProductNameHashTool.productIdentitiesDict == null)
+                        if (ProductNameHashTool.ProductIdentitiesDict == null)
                             ProductNameHashTool.BuildProductIdentitiesDict(_productConnectionString);
 
                         int minPrice = 0;
-                        long wssID = ProductNameHashTool.IdentifyProduct(product.product_name, (long)product.sale_price);
+                        long wssID = ProductNameHashTool.IdentifyProduct(product.product_name, (long) product.sale_price);
                         if (wssID != 0)
                         {
-                            var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(wssID, 0, RootProductMappingSortType.PriceWithVAT);
+                            var rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(wssID, 0,
+                                RootProductMappingSortType.PriceWithVAT,false);
                             if (rootProductMapping == null)
                             {
                                 RootProductMappingCacheTool.InsertRootProductMappingCache(wssID, _searchEnginesServiceUrl);
-                                rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(wssID, 0, RootProductMappingSortType.PriceWithVAT);
+                                rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(wssID, 0,
+                                    RootProductMappingSortType.PriceWithVAT,false);
                             }
-                            if (rootProductMapping != null && (int)rootProductMapping.MinPrice > product.sale_price / 3)
+                            if (rootProductMapping != null && (int) rootProductMapping.MinPrice > product.sale_price/3)
                             {
                                 haveRootID++;
-                                minPrice = (int)rootProductMapping.MinPrice;
+                                minPrice = (int) rootProductMapping.MinPrice;
                                 OnlineFridayIDBAL.InsertID(clusterID, wssID, 1);
+                                Logger.InfoFormat("Have RootId,{0},{1}", product.share_url, wssID);
                             }
                             else
                                 wssID = 0;
@@ -890,19 +919,17 @@ namespace CacheManager
                         {
                             //Use IdentityMapping
                             List<long> productIDs = GetOnlineFridayProductMap(product.product_name);
-                            if(productIDs ==null)
-                                continue;
-                            if (productIDs.Count > 0)
+                            if (productIDs != null && productIDs.Count > 0 && productIDs.Count <= 20)
                             {
                                 var products = WebMerchantProductBAL.GetWebMerchantProductsFromCache(productIDs);
                                 if (products.Count > 0)
                                 {
-                                    minPrice = (int)products.Min(x => x.Value.Price);
+                                    minPrice = (int) products.Min(x => x.Value.Price);
                                     haveNerID ++;
                                     wssID = Tools.getCRC32(product.url + "wss");
                                     OnlineFridayIDBAL.InsertID(clusterID, wssID, 3);
                                     ProductNameHashBAL.InsertOnlineFridayProductMapSet(wssID, productIDs);
-                                    Logger.InfoFormat("HaveNer,{0},{1},{2} products", product.share_url, wssID,products.Count);
+                                    Logger.InfoFormat("HaveNer,{0},{1},{2} products", product.share_url, wssID, products.Count);
                                 }
                             }
                         }
@@ -910,8 +937,9 @@ namespace CacheManager
                         {
                             List<KeyValuePair<long, long>> productID;
                             int rootID;
-                            ProductNameHashBAL.GetListProductByName(product.product_name, out productID, out minPrice, out rootID, out wssID);
-                            if (productID.Count > 0 && minPrice > product.sale_price / 2)
+                            ProductNameHashBAL.GetListProductByName(product.product_name, out productID, out minPrice,
+                                out rootID, out wssID);
+                            if (productID.Count > 0 && minPrice > product.sale_price/2)
                             {
                                 haveHashID++;
                                 OnlineFridayIDBAL.InsertID(clusterID, wssID, 2);
@@ -921,22 +949,20 @@ namespace CacheManager
                         }
                         if (wssID != 0)
                         {
-                            updateCount++;
-                            if (UpdateOnlineFridayProduct((long)product.product_id, minPrice, clusterID))
-                                updateSuccess++;
+                            if (UpdateOnlineFridayProduct((long) product.product_id, minPrice, clusterID));
                         }
                         else if (!string.IsNullOrEmpty(product.cluster_id_wss) || !string.IsNullOrEmpty(product.market_price_wss))
                         {
-                            UpdateOnlineFridayProduct((long)product.product_id, 0, clusterID);
+                            UpdateOnlineFridayProduct((long) product.product_id, 0, "-1");
                         }
                     }
             }
-            var duration = (DateTime.Now - startTime).TotalSeconds;
-            Logger.InfoFormat("Scan OnlineFriday complete. Time: {0} s. Total product: {1}. HaveRootID: {2}. HaveHashID: {3}. Have NerID: {4}", duration, totalProduct, haveRootID, haveHashID, haveNerID);
         }
 
         private OnlineFridayResult GetOnlineFridayResult(int offset, int limit)
         {
+            var start = DateTime.Now;
+            var result = new OnlineFridayResult();
             for (int i = 0; i < 10; i++)
             {
                 try
@@ -951,8 +977,7 @@ namespace CacheManager
                         client.Encoding = Encoding.UTF8;
                         string url = string.Format(urlFormat, offset, limit);
                         string s = client.DownloadString(url);
-                        var result = JsonConvert.DeserializeObject<OnlineFridayResult>(s);
-                        return result;
+                        result = JsonConvert.DeserializeObject<OnlineFridayResult>(s);
                     }
                 }
                 catch (Exception ex)
@@ -962,13 +987,16 @@ namespace CacheManager
                     Thread.Sleep(100);
                 }
             }
-            return new OnlineFridayResult();
+            var duration = (DateTime.Now - start).TotalMilliseconds;
+            Logger.DebugFormat("GetOnlineFridayResult. Offset: {0} - Limit: {1} - Time: {2} ms)",offset,limit,duration);
+            return result;
         }
 
         private bool UpdateOnlineFridayProduct(long productID, int price, string cluster_Id)
         {
             for (int i = 0; i < 10; i++)
             {
+                string url = "";
                 try
                 {
                     using (WebClient client = new WebClient())
@@ -978,7 +1006,7 @@ namespace CacheManager
                         client.Headers.Add("Accept", " text/html, application/xhtml+xml, */*");
                         client.Headers.Add("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)");
                         client.Encoding = Encoding.UTF8;
-                        string url = string.Format("http://api.onlinefriday.vn/api/websosanh?type=2&product_id={0}&market_price={1}&cluster_id={2}&key=92aabeacf70eeaa892b9e99a3b11c9e5", productID, price, cluster_Id);
+                        url = string.Format("http://api.onlinefriday.vn/api/websosanh?type=2&product_id={0}&market_price={1}&cluster_id={2}&key=92aabeacf70eeaa892b9e99a3b11c9e5", productID, price, cluster_Id);
                         string s = client.DownloadString(url);
                         var result = JsonConvert.DeserializeObject<OnlineFridayUpdateResult>(s);
                         return result.error == 0;
@@ -987,7 +1015,7 @@ namespace CacheManager
                 catch (Exception ex)
                 {
                     if (i == 9)
-                        Logger.Error("Update OF Price Error", ex);
+                        Logger.Error("Update OF Price Error. Url: " + url, ex);
                     Thread.Sleep(100);
                 }
                 
@@ -997,9 +1025,10 @@ namespace CacheManager
 
         private List<long> GetOnlineFridayProductMap(string productName)
         {
-            string url = string.Format("http://172.22.1.108/api/NerApi/recog.htm?text={0}", System.Uri.EscapeUriString(productName));
-            //for (int i = 0; i < 10; i++)
-            //{
+
+            string url = string.Format("http://172.22.1.108/api/NerApi/recog.htm?text={0}&size=100", System.Uri.EscapeUriString(productName));
+            for (int i = 0; i < 5; i++)
+            {
                 try
                 {
                     using (WebClient client = new WebClient())
@@ -1019,15 +1048,15 @@ namespace CacheManager
                 }
                 catch (Exception ex)
                 {
-                    //if (i == 9)
-                    //{
+                    if (i == 4)
+                    {
                         Logger.Error("GetOnlineFridayProductMap Error. url:" + url, ex);
                         return null;
-                    //}
+                    }
                     Thread.Sleep(100);
                 }
 
-            //}
+            }
             return new List<long>();
         }
 
@@ -1039,9 +1068,12 @@ namespace CacheManager
         #endregion
         private void simpleButtonDetectRootProduct_Click(object sender, EventArgs e)
         {
-            if (ProductNameHashTool.productIdentitiesDict == null)
+            if (ProductNameHashTool.ProductIdentitiesDict == null)
                 ProductNameHashTool.BuildProductIdentitiesDict(_productConnectionString);
-            long rootID = ProductNameHashTool.IdentifyProduct(textEditProductName.Text,0);
+            var input = textEditProductName.Text.Split('|');
+            string name = input[0];
+            long price = long.Parse(input[1]);
+            long rootID = ProductNameHashTool.IdentifyProduct(name,price);
             textEditDetectionResult.Text = rootID.ToString();
             return;
         }
@@ -1108,6 +1140,27 @@ namespace CacheManager
             }
             var duration = (DateTime.Now - startTime).TotalSeconds;
             Logger.InfoFormat("NumProduct: {0}. Time: {1} s", numProducs, duration);
+        }
+
+        private void buttonGetAllOnlineFridayProductName_Click(object sender, EventArgs e)
+        {
+            Task.Run(() =>
+            {
+                DisableButton(buttonGetAllOnlineFridayProductName);
+                var getTotalResult = GetOnlineFridayResult(0, 1);
+                var totalProduct = getTotalResult.total;
+                var allName = new StringBuilder();
+                for (int i = 0; i < totalProduct; i +=60)
+                {
+                    var resultPart = GetOnlineFridayResult(i, 60);
+                    foreach (var product in resultPart.data)
+                    {
+                        allName.AppendLine(string.Join(",",product.product_name,product.original_price,product.category_id,product.category_name));
+                    }
+                }
+                File.WriteAllText("C:\\Users\\vuhoang\\Desktop\\OFProductName.csv",allName.ToString(),Encoding.UTF8);
+                EnableButton(buttonGetAllOnlineFridayProductName);
+            });
         }
 
 

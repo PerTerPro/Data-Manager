@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label websiteLabel;
             System.Windows.Forms.Label iDLabel;
             System.Windows.Forms.Label checkLabel;
@@ -40,7 +39,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrListWebSite));
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.copyDomainToClipboadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pushIsNewToQueueImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,7 +78,7 @@
             this.btnRemoveFailRegexProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.updateCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPushCompanyInfoReset = new System.Windows.Forms.ToolStripMenuItem();
-            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.companyBindingSource = new System.Windows.Forms.BindingSource();
             this.dBCom = new QT.Moduls.Company.DBCom();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colCheck = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -99,8 +98,8 @@
             this.colMaxValid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastCrawlerReload = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dB = new QT.Moduls.DB();
-            this.companyStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.companyStatusBindingSource = new System.Windows.Forms.BindingSource();
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.barPage = new DevExpress.XtraBars.Bar();
             this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             this.cboCount = new DevExpress.XtraBars.BarEditItem();
@@ -118,7 +117,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemGridLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.repositoryItemGridLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -133,7 +132,7 @@
             this.repositoryItemGridLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.txtSearch = new DevExpress.XtraEditors.TextEdit();
             this.checkCheckBox = new System.Windows.Forms.CheckBox();
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -149,7 +148,7 @@
             this.tableAdapterManager1 = new QT.Moduls.Company.DBComTableAdapters.TableAdapterManager();
             this.statusLabel1 = new System.Windows.Forms.Label();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
-            this.managerTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.managerTypeBindingSource = new System.Windows.Forms.BindingSource();
             this.managerTypeTableAdapter = new QT.Moduls.Company.DBComTableAdapters.ManagerTypeTableAdapter();
             this.btRunQueue = new DevExpress.XtraEditors.SimpleButton();
             this.btAllHistory = new DevExpress.XtraEditors.SimpleButton();
@@ -158,7 +157,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.tabCrawler = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.viewManagerCrawlerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.viewManagerCrawlerBindingSource = new System.Windows.Forms.BindingSource();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colNameType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNameCommand = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -166,8 +165,8 @@
             this.colLastUpdate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colComment = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.company1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator();
+            this.company1BindingSource = new System.Windows.Forms.BindingSource();
             this.bindingNavigatorCountItem1 = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -229,6 +228,7 @@
             this.btnLoadErrorConfig = new DevExpress.XtraEditors.SimpleButton();
             this.btnNeedRepair = new DevExpress.XtraEditors.SimpleButton();
             this.btnRpMinLastRL = new DevExpress.XtraEditors.SimpleButton();
+            this.StatisticsPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             websiteLabel = new System.Windows.Forms.Label();
             iDLabel = new System.Windows.Forms.Label();
             checkLabel = new System.Windows.Forms.Label();
@@ -397,15 +397,16 @@
             this.btnViewProduct1,
             this.btnRemoveFailRegexProduct,
             this.updateCategoryToolStripMenuItem,
-            this.btnPushCompanyInfoReset});
+            this.btnPushCompanyInfoReset,
+            this.StatisticsPriceToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(236, 732);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(242, 754);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // copyDomainToClipboadToolStripMenuItem
             // 
             this.copyDomainToClipboadToolStripMenuItem.Name = "copyDomainToClipboadToolStripMenuItem";
-            this.copyDomainToClipboadToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.copyDomainToClipboadToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.copyDomainToClipboadToolStripMenuItem.Text = "CopyIDToClipboad";
             this.copyDomainToClipboadToolStripMenuItem.Click += new System.EventHandler(this.copyDomainToClipboadToolStripMenuItem_Click);
             // 
@@ -416,7 +417,7 @@
             this.crawlerReloadNoValidToolStripMenuItem,
             this.pushCompanyDownloadImageToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(235, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(241, 22);
             this.toolStripMenuItem1.Text = "FixData";
             // 
             // pushIsNewToQueueImageToolStripMenuItem
@@ -443,129 +444,129 @@
             // btnHistoryCrawlerData
             // 
             this.btnHistoryCrawlerData.Name = "btnHistoryCrawlerData";
-            this.btnHistoryCrawlerData.Size = new System.Drawing.Size(235, 22);
+            this.btnHistoryCrawlerData.Size = new System.Drawing.Size(241, 22);
             this.btnHistoryCrawlerData.Text = "HistoryCrawler";
             this.btnHistoryCrawlerData.Click += new System.EventHandler(this.btnHistoryCrawlerData_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(232, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(238, 6);
             // 
             // loadImageToolStripMenuItem
             // 
             this.loadImageToolStripMenuItem.Name = "loadImageToolStripMenuItem";
-            this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.loadImageToolStripMenuItem.Text = "Load Image";
             this.loadImageToolStripMenuItem.Click += new System.EventHandler(this.loadImageToolStripMenuItem_Click);
             // 
             // loadAllImageToolStripMenuItem
             // 
             this.loadAllImageToolStripMenuItem.Name = "loadAllImageToolStripMenuItem";
-            this.loadAllImageToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.loadAllImageToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.loadAllImageToolStripMenuItem.Text = "Load All Image";
             this.loadAllImageToolStripMenuItem.Click += new System.EventHandler(this.loadAllImageToolStripMenuItem_Click);
             // 
             // loadImageĐãValidToolStripMenuItem
             // 
             this.loadImageĐãValidToolStripMenuItem.Name = "loadImageĐãValidToolStripMenuItem";
-            this.loadImageĐãValidToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.loadImageĐãValidToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.loadImageĐãValidToolStripMenuItem.Text = "Download Image";
             this.loadImageĐãValidToolStripMenuItem.Click += new System.EventHandler(this.loadImageĐãValidToolStripMenuItem_Click);
             // 
             // loadAllImageValidToolStripMenuItem
             // 
             this.loadAllImageValidToolStripMenuItem.Name = "loadAllImageValidToolStripMenuItem";
-            this.loadAllImageValidToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.loadAllImageValidToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.loadAllImageValidToolStripMenuItem.Text = "Download All Image";
             this.loadAllImageValidToolStripMenuItem.Click += new System.EventHandler(this.loadAllImageValidToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(232, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(238, 6);
             // 
             // viewProfileToolStripMenuItem
             // 
             this.viewProfileToolStripMenuItem.Checked = true;
             this.viewProfileToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
-            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.viewProfileToolStripMenuItem.Text = "View Profile";
             this.viewProfileToolStripMenuItem.Click += new System.EventHandler(this.viewProfileToolStripMenuItem_Click);
             // 
             // viewProductToolStripMenuItem
             // 
             this.viewProductToolStripMenuItem.Name = "viewProductToolStripMenuItem";
-            this.viewProductToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.viewProductToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.viewProductToolStripMenuItem.Text = "ViewProduct";
             this.viewProductToolStripMenuItem.Click += new System.EventHandler(this.viewProductToolStripMenuItem_Click);
             // 
             // exportProductToolStripMenuItem
             // 
             this.exportProductToolStripMenuItem.Name = "exportProductToolStripMenuItem";
-            this.exportProductToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.exportProductToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.exportProductToolStripMenuItem.Text = "Export Product";
             this.exportProductToolStripMenuItem.Click += new System.EventHandler(this.exportProductToolStripMenuItem_Click);
             // 
             // viewWebToolStripMenuItem
             // 
             this.viewWebToolStripMenuItem.Name = "viewWebToolStripMenuItem";
-            this.viewWebToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.viewWebToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.viewWebToolStripMenuItem.Text = "ViewWeb";
             this.viewWebToolStripMenuItem.Click += new System.EventHandler(this.viewWebToolStripMenuItem_Click);
             // 
             // viewQuangCaoToolStripMenuItem
             // 
             this.viewQuangCaoToolStripMenuItem.Name = "viewQuangCaoToolStripMenuItem";
-            this.viewQuangCaoToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.viewQuangCaoToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.viewQuangCaoToolStripMenuItem.Text = "Quảng Cáo";
             this.viewQuangCaoToolStripMenuItem.Click += new System.EventHandler(this.viewQuangCaoToolStripMenuItem_Click);
             // 
             // viewThongKeLuotClick
             // 
             this.viewThongKeLuotClick.Name = "viewThongKeLuotClick";
-            this.viewThongKeLuotClick.Size = new System.Drawing.Size(235, 22);
+            this.viewThongKeLuotClick.Size = new System.Drawing.Size(241, 22);
             this.viewThongKeLuotClick.Text = "Thống kê lượt click";
             this.viewThongKeLuotClick.Click += new System.EventHandler(this.viewThongKeLuotClick_Click);
             // 
             // menuItemExportExcel
             // 
             this.menuItemExportExcel.Name = "menuItemExportExcel";
-            this.menuItemExportExcel.Size = new System.Drawing.Size(235, 22);
+            this.menuItemExportExcel.Size = new System.Drawing.Size(241, 22);
             this.menuItemExportExcel.Text = "Export To Excel";
             this.menuItemExportExcel.Click += new System.EventHandler(this.menuItemExportExcel_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(232, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(238, 6);
             // 
             // addNewWebToolStripMenuItem
             // 
             this.addNewWebToolStripMenuItem.Name = "addNewWebToolStripMenuItem";
-            this.addNewWebToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.addNewWebToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.addNewWebToolStripMenuItem.Text = "Add New Web";
             this.addNewWebToolStripMenuItem.Click += new System.EventHandler(this.addNewWebToolStripMenuItem_Click);
             // 
             // notAvailableToolStripMenuItem
             // 
             this.notAvailableToolStripMenuItem.Name = "notAvailableToolStripMenuItem";
-            this.notAvailableToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.notAvailableToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.notAvailableToolStripMenuItem.Text = "Change to Not Available";
             this.notAvailableToolStripMenuItem.Click += new System.EventHandler(this.notAvailableToolStripMenuItem_Click);
             // 
             // NewsToolStripMenuItem
             // 
             this.NewsToolStripMenuItem.Name = "NewsToolStripMenuItem";
-            this.NewsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.NewsToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.NewsToolStripMenuItem.Text = "Change to Web News";
             this.NewsToolStripMenuItem.Click += new System.EventHandler(this.NewsToolStripMenuItem_Click);
             // 
             // NotProductToolStripMenuItem
             // 
             this.NotProductToolStripMenuItem.Name = "NotProductToolStripMenuItem";
-            this.NotProductToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.NotProductToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.NotProductToolStripMenuItem.Text = "Change  to not product";
             this.NotProductToolStripMenuItem.Click += new System.EventHandler(this.NotProductToolStripMenuItem_Click);
             // 
@@ -573,96 +574,96 @@
             // 
             this.setStatusNormalToolStripMenuItem.Enabled = false;
             this.setStatusNormalToolStripMenuItem.Name = "setStatusNormalToolStripMenuItem";
-            this.setStatusNormalToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.setStatusNormalToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.setStatusNormalToolStripMenuItem.Text = "Set Status normal";
             this.setStatusNormalToolStripMenuItem.Click += new System.EventHandler(this.setStatusNormalToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(232, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(238, 6);
             // 
             // checkedAllToolStripMenuItem
             // 
             this.checkedAllToolStripMenuItem.Name = "checkedAllToolStripMenuItem";
-            this.checkedAllToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.checkedAllToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.checkedAllToolStripMenuItem.Text = "Checked All";
             this.checkedAllToolStripMenuItem.Click += new System.EventHandler(this.checkedAllToolStripMenuItem_Click);
             // 
             // unCheckedAllToolStripMenuItem
             // 
             this.unCheckedAllToolStripMenuItem.Name = "unCheckedAllToolStripMenuItem";
-            this.unCheckedAllToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.unCheckedAllToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.unCheckedAllToolStripMenuItem.Text = "UnCheckAll";
             this.unCheckedAllToolStripMenuItem.Click += new System.EventHandler(this.unCheckedAllToolStripMenuItem_Click);
             // 
             // AddNewProductMerchanttoolStripMenuItem
             // 
             this.AddNewProductMerchanttoolStripMenuItem.Name = "AddNewProductMerchanttoolStripMenuItem";
-            this.AddNewProductMerchanttoolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.AddNewProductMerchanttoolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.AddNewProductMerchanttoolStripMenuItem.Text = "Nhập SP Merchant";
             this.AddNewProductMerchanttoolStripMenuItem.Click += new System.EventHandler(this.AddNewProductMerchanttoolStripMenuItem_Click);
             // 
             // btnCrawlerByQueue
             // 
             this.btnCrawlerByQueue.Name = "btnCrawlerByQueue";
-            this.btnCrawlerByQueue.Size = new System.Drawing.Size(235, 22);
+            this.btnCrawlerByQueue.Size = new System.Drawing.Size(241, 22);
             this.btnCrawlerByQueue.Text = "CrawlerByQueue";
             this.btnCrawlerByQueue.Click += new System.EventHandler(this.btnCrawlerByQueue_Click);
             // 
             // btnCrawlerInRedis
             // 
             this.btnCrawlerInRedis.Name = "btnCrawlerInRedis";
-            this.btnCrawlerInRedis.Size = new System.Drawing.Size(235, 22);
+            this.btnCrawlerInRedis.Size = new System.Drawing.Size(241, 22);
             this.btnCrawlerInRedis.Text = "btnCrawlerInRedis";
             this.btnCrawlerInRedis.Click += new System.EventHandler(this.btnCrawlerInRedis_Click);
             // 
             // btnMapCategoryAndClassification
             // 
             this.btnMapCategoryAndClassification.Name = "btnMapCategoryAndClassification";
-            this.btnMapCategoryAndClassification.Size = new System.Drawing.Size(235, 22);
+            this.btnMapCategoryAndClassification.Size = new System.Drawing.Size(241, 22);
             this.btnMapCategoryAndClassification.Text = "Map Category ~ Classification";
             this.btnMapCategoryAndClassification.Click += new System.EventHandler(this.btnMapCategoryAndClassification_Click);
             // 
             // btnPushQueueFindData
             // 
             this.btnPushQueueFindData.Name = "btnPushQueueFindData";
-            this.btnPushQueueFindData.Size = new System.Drawing.Size(235, 22);
+            this.btnPushQueueFindData.Size = new System.Drawing.Size(241, 22);
             this.btnPushQueueFindData.Text = "btnPushQueueFindData";
             this.btnPushQueueFindData.Click += new System.EventHandler(this.btnPushQueueFindData_Click);
             // 
             // btnMapCatAndClassAuto
             // 
             this.btnMapCatAndClassAuto.Name = "btnMapCatAndClassAuto";
-            this.btnMapCatAndClassAuto.Size = new System.Drawing.Size(235, 22);
+            this.btnMapCatAndClassAuto.Size = new System.Drawing.Size(241, 22);
             this.btnMapCatAndClassAuto.Text = "MapCatAndClassAuto";
             this.btnMapCatAndClassAuto.Click += new System.EventHandler(this.btnMapCatAndClassAuto_Click);
             // 
             // btnViewProduct1
             // 
             this.btnViewProduct1.Name = "btnViewProduct1";
-            this.btnViewProduct1.Size = new System.Drawing.Size(235, 22);
+            this.btnViewProduct1.Size = new System.Drawing.Size(241, 22);
             this.btnViewProduct1.Text = "View Product 1";
             this.btnViewProduct1.Click += new System.EventHandler(this.btnViewProduct1_Click);
             // 
             // btnRemoveFailRegexProduct
             // 
             this.btnRemoveFailRegexProduct.Name = "btnRemoveFailRegexProduct";
-            this.btnRemoveFailRegexProduct.Size = new System.Drawing.Size(235, 22);
+            this.btnRemoveFailRegexProduct.Size = new System.Drawing.Size(241, 22);
             this.btnRemoveFailRegexProduct.Text = "RemoveFailRegexProduct";
             this.btnRemoveFailRegexProduct.Click += new System.EventHandler(this.btnRemoveFailRegexProduct_Click);
             // 
             // updateCategoryToolStripMenuItem
             // 
             this.updateCategoryToolStripMenuItem.Name = "updateCategoryToolStripMenuItem";
-            this.updateCategoryToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.updateCategoryToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.updateCategoryToolStripMenuItem.Text = "Update Category";
             this.updateCategoryToolStripMenuItem.Click += new System.EventHandler(this.updateCategoryToolStripMenuItem_Click);
             // 
             // btnPushCompanyInfoReset
             // 
             this.btnPushCompanyInfoReset.Name = "btnPushCompanyInfoReset";
-            this.btnPushCompanyInfoReset.Size = new System.Drawing.Size(235, 22);
+            this.btnPushCompanyInfoReset.Size = new System.Drawing.Size(241, 22);
             this.btnPushCompanyInfoReset.Text = "Push_Company_ResetInfoWeb";
             this.btnPushCompanyInfoReset.Click += new System.EventHandler(this.btnPushCompanyInfoReset_Click);
             // 
@@ -1071,7 +1072,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(871, 30);
+            this.barDockControlTop.Size = new System.Drawing.Size(871, 31);
             // 
             // barDockControlBottom
             // 
@@ -1084,15 +1085,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 432);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 431);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(871, 30);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 432);
+            this.barDockControlRight.Location = new System.Drawing.Point(871, 31);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 431);
             // 
             // imageList1
             // 
@@ -1254,14 +1255,14 @@
             this.bindingNavigatorSeparator2,
             this.btAdd,
             this.btDelete});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 304);
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 305);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = null;
             this.bindingNavigator1.MovePreviousItem = null;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(862, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(864, 25);
             this.bindingNavigator1.TabIndex = 27;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -1469,14 +1470,14 @@
             this.xtraTabPage1.Controls.Add(this.gridControl1);
             this.xtraTabPage1.Controls.Add(this.bindingNavigator1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(862, 329);
+            this.xtraTabPage1.Size = new System.Drawing.Size(864, 330);
             this.xtraTabPage1.Text = "ListWebsite";
             // 
             // tabCrawler
             // 
             this.tabCrawler.Controls.Add(this.gridControl2);
             this.tabCrawler.Name = "tabCrawler";
-            this.tabCrawler.Size = new System.Drawing.Size(862, 329);
+            this.tabCrawler.Size = new System.Drawing.Size(864, 330);
             this.tabCrawler.Text = "ListCrawler";
             // 
             // gridControl2
@@ -1487,7 +1488,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(862, 329);
+            this.gridControl2.Size = new System.Drawing.Size(864, 330);
             this.gridControl2.TabIndex = 1;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -1564,7 +1565,7 @@
             this.xtraTabPage2.Controls.Add(this.bindingNavigator2);
             this.xtraTabPage2.Controls.Add(this.company1GridControl);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(862, 329);
+            this.xtraTabPage2.Size = new System.Drawing.Size(864, 330);
             this.xtraTabPage2.Text = "ListErrorConfig";
             // 
             // bindingNavigator2
@@ -1584,14 +1585,14 @@
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem1,
             this.bindingNavigatorSeparator5});
-            this.bindingNavigator2.Location = new System.Drawing.Point(0, 304);
+            this.bindingNavigator2.Location = new System.Drawing.Point(0, 305);
             this.bindingNavigator2.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
             this.bindingNavigator2.MoveLastItem = this.bindingNavigatorMoveLastItem1;
             this.bindingNavigator2.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bindingNavigator2.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator2.Name = "bindingNavigator2";
             this.bindingNavigator2.PositionItem = this.bindingNavigatorPositionItem1;
-            this.bindingNavigator2.Size = new System.Drawing.Size(862, 25);
+            this.bindingNavigator2.Size = new System.Drawing.Size(864, 25);
             this.bindingNavigator2.TabIndex = 1;
             this.bindingNavigator2.Text = "bindingNavigator2";
             // 
@@ -1676,7 +1677,7 @@
             this.company1GridControl.MainView = this.gridView3;
             this.company1GridControl.MenuManager = this.barManager1;
             this.company1GridControl.Name = "company1GridControl";
-            this.company1GridControl.Size = new System.Drawing.Size(862, 329);
+            this.company1GridControl.Size = new System.Drawing.Size(864, 330);
             this.company1GridControl.TabIndex = 0;
             this.company1GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1741,7 +1742,7 @@
             // 
             this.ListError.Controls.Add(this.grvListNeedRepair);
             this.ListError.Name = "ListError";
-            this.ListError.Size = new System.Drawing.Size(862, 329);
+            this.ListError.Size = new System.Drawing.Size(864, 330);
             this.ListError.Text = "ListNeedRepairConfig";
             // 
             // grvListNeedRepair
@@ -1754,7 +1755,7 @@
             this.grvListNeedRepair.Name = "grvListNeedRepair";
             this.grvListNeedRepair.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemHyperLinkFixed});
-            this.grvListNeedRepair.Size = new System.Drawing.Size(862, 329);
+            this.grvListNeedRepair.Size = new System.Drawing.Size(864, 330);
             this.grvListNeedRepair.TabIndex = 0;
             this.grvListNeedRepair.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -1876,7 +1877,7 @@
             this.xtraTabPageRpMinLastRL.Controls.Add(this.panelControl2);
             this.xtraTabPageRpMinLastRL.Controls.Add(this.panelControl1);
             this.xtraTabPageRpMinLastRL.Name = "xtraTabPageRpMinLastRL";
-            this.xtraTabPageRpMinLastRL.Size = new System.Drawing.Size(862, 329);
+            this.xtraTabPageRpMinLastRL.Size = new System.Drawing.Size(864, 330);
             this.xtraTabPageRpMinLastRL.Text = "RpMinLastRL";
             // 
             // panelControl2
@@ -1885,7 +1886,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 61);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(862, 268);
+            this.panelControl2.Size = new System.Drawing.Size(864, 269);
             this.panelControl2.TabIndex = 1;
             // 
             // gridControlRpMinLastRL
@@ -1901,7 +1902,7 @@
             this.gridControlRpMinLastRL.MainView = this.gridView5;
             this.gridControlRpMinLastRL.MenuManager = this.barManager1;
             this.gridControlRpMinLastRL.Name = "gridControlRpMinLastRL";
-            this.gridControlRpMinLastRL.Size = new System.Drawing.Size(858, 264);
+            this.gridControlRpMinLastRL.Size = new System.Drawing.Size(860, 265);
             this.gridControlRpMinLastRL.TabIndex = 0;
             this.gridControlRpMinLastRL.UseEmbeddedNavigator = true;
             this.gridControlRpMinLastRL.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2041,7 +2042,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(862, 61);
+            this.panelControl1.Size = new System.Drawing.Size(864, 61);
             this.panelControl1.TabIndex = 0;
             // 
             // btnLoadData
@@ -2171,6 +2172,13 @@
             this.btnRpMinLastRL.TabIndex = 2;
             this.btnRpMinLastRL.Text = "RpMinLastRL";
             this.btnRpMinLastRL.Click += new System.EventHandler(this.btnRpMinLastRL_Click);
+            // 
+            // StatisticsPriceToolStripMenuItem
+            // 
+            this.StatisticsPriceToolStripMenuItem.Name = "StatisticsPriceToolStripMenuItem";
+            this.StatisticsPriceToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.StatisticsPriceToolStripMenuItem.Text = "Thống kê giá bán các merchant";
+            this.StatisticsPriceToolStripMenuItem.Click += new System.EventHandler(this.StatisticsPriceToolStripMenuItem_Click);
             // 
             // ctrListWebSite
             // 
@@ -2463,5 +2471,6 @@
         private System.Windows.Forms.ToolStripMenuItem exportProductToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateCategoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnPushCompanyInfoReset;
+        private System.Windows.Forms.ToolStripMenuItem StatisticsPriceToolStripMenuItem;
     }
 }
