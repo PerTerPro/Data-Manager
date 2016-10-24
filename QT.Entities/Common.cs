@@ -3727,6 +3727,7 @@ namespace QT.Entities
 
         internal static string ArParaToString(SqlParameter[] arPara)
         {
+            if (arPara == null) return "";
             List<string> lst = new List<string>();
             foreach (var par in arPara) lst.Add(par.ParameterName.ToString() + " " + par.Value.ToString());
             return string.Join("\r\n", lst);

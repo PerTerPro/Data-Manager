@@ -467,6 +467,7 @@ namespace QT.Moduls.Company
 
 
                 QT.Entities.ProductEntity p = new ProductEntity();
+
                 string html = this.htmlDownloader.GetHTML(url, 45, 2, out webExceptionStatus);
                 if (c.ContentAnanyticXPath.Count >= 1)
                 {
