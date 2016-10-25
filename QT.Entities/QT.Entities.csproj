@@ -260,6 +260,8 @@
     <Compile Include="Images\ConfigImages.cs" />
     <Compile Include="JobQueueFN.cs" />
     <Compile Include="LogJobAdapter.cs" />
+    <Compile Include="MasOffer\MasOfferAdapter.cs" />
+    <Compile Include="MasOffer\MasOfferCompany.cs" />
     <Compile Include="MqChangeImage.cs" />
     <Compile Include="ProductMasOffer.cs" />
     <Compile Include="RaoVat\CassandraColumn.cs" />
