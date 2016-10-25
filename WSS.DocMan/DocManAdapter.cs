@@ -54,9 +54,9 @@ Select Top 1 Id From Documents Order By Id DESC
                         SqlDb.CreateParamteterSQL("Ref",
                             (variable.Item1.Name == "")
                                 ? ""
-                                : variable.Item1.SelectSingleNode(".//a[@name]").GetAttributeValue("name", ""),
+                                : variable.Item1.GetAttributeValue("name", ""),
                             SqlDbType.NVarChar),
-                      
+
                     });
 
 

@@ -3233,12 +3233,28 @@ namespace QT.Entities
         public static string ChuanHoaTextOfHtml(string p)
         {
             string result = p;
-            string regex = @"<!--(.|\s)*?-->";
+            const string regex = @"<!--(.|\s)*?-->";
+            
+
             while (Regex.IsMatch(result, regex))
             {
                 result = Regex.Replace(result, regex, "");
             }
             return result;
+        }
+
+        public static string RemoveScripTag(string p)
+        {
+            string result = p;
+            const string regexScrip = @"<script(.+?)*</script>";
+
+
+            while (Regex.IsMatch(result, regexScrip))
+            {
+                result = Regex.Replace(result, regexScrip, "");
+            }
+            return result;
+           
         }
 
         public static long CrcProductID(string linkToCRC)
