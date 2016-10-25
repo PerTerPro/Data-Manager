@@ -231,6 +231,7 @@ namespace QT.Moduls.ProductID
 
         private void repositoryItemLookUpEditCate_EditValueChanged(object sender, EventArgs e)
         {
+            //Suawr
             LookUpEdit editor = gridView1.ActiveEditor as LookUpEdit;
             DataRowView rowView = (DataRowView)editor.GetSelectedDataRow();
             DataRow dr = rowView.Row;
