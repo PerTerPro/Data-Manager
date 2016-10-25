@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label iDLabel;
             System.Windows.Forms.Label iDLabel1;
             System.Windows.Forms.Label nameLabel;
@@ -35,14 +36,16 @@
             System.Windows.Forms.Label categoryIDLabel;
             System.Windows.Forms.Label contentFTLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditeTenSanPham));
-            DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.productStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dBPMan = new QT.Moduls.Maps.DBPMan();
+            this.repositoryItemLookUpEditCategory = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.listClassificationSelectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.chkTimChinhXac = new System.Windows.Forms.CheckBox();
             this.nameCategoryTextBox = new System.Windows.Forms.TextBox();
-            this.listClassificationBindingSource = new System.Windows.Forms.BindingSource();
-            this.dBPMan = new QT.Moduls.Maps.DBPMan();
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator();
+            this.listClassificationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -58,11 +61,11 @@
             this.iDCategoryTextBox = new System.Windows.Forms.TextBox();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.contentFTTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.productBindingSource = new System.Windows.Forms.BindingSource();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoryIDTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.iDTextBox = new System.Windows.Forms.TextBox();
-            this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator();
+            this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -92,13 +95,13 @@
             this.colName1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colValid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastUpdate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.productStatusBindingSource = new System.Windows.Forms.BindingSource();
-            this.colCategoryID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.listClassificationSelectBindingSource = new System.Windows.Forms.BindingSource();
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategoryID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.colCategoryID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEditCate = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.listClassificationTableAdapter = new QT.Moduls.Maps.DBPManTableAdapters.ListClassificationTableAdapter();
             this.productTableAdapter = new QT.Moduls.Maps.DBPManTableAdapters.ProductTableAdapter();
             this.productStatusTableAdapter = new QT.Moduls.Maps.DBPManTableAdapters.ProductStatusTableAdapter();
@@ -110,10 +113,14 @@
             nameLabel1 = new System.Windows.Forms.Label();
             categoryIDLabel = new System.Windows.Forms.Label();
             contentFTLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productStatusBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBPMan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listClassificationSelectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listClassificationBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBPMan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -132,10 +139,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNoiDungMuonThay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemLookUpEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productStatusBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemLookUpEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listClassificationSelectBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditCate)).BeginInit();
             this.SuspendLayout();
             // 
             // iDLabel
@@ -191,6 +196,47 @@
             contentFTLabel.Size = new System.Drawing.Size(63, 13);
             contentFTLabel.TabIndex = 13;
             contentFTLabel.Text = "Content FT:";
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.repositoryItemLookUpEdit1.DataSource = this.productStatusBindingSource;
+            this.repositoryItemLookUpEdit1.DisplayMember = "Name";
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.ValueMember = "ID";
+            // 
+            // productStatusBindingSource
+            // 
+            this.productStatusBindingSource.DataMember = "ProductStatus";
+            this.productStatusBindingSource.DataSource = this.dBPMan;
+            // 
+            // dBPMan
+            // 
+            this.dBPMan.DataSetName = "DBPMan";
+            this.dBPMan.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // repositoryItemLookUpEditCategory
+            // 
+            this.repositoryItemLookUpEditCategory.AutoHeight = false;
+            this.repositoryItemLookUpEditCategory.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEditCategory.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 30, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NameFull", "Name Full", 200, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.repositoryItemLookUpEditCategory.DataSource = this.listClassificationSelectBindingSource;
+            this.repositoryItemLookUpEditCategory.DisplayMember = "NameFull";
+            this.repositoryItemLookUpEditCategory.DropDownRows = 30;
+            this.repositoryItemLookUpEditCategory.Name = "repositoryItemLookUpEditCategory";
+            this.repositoryItemLookUpEditCategory.ValueMember = "ID";
+            // 
+            // listClassificationSelectBindingSource
+            // 
+            this.listClassificationSelectBindingSource.DataMember = "ListClassificationSelect";
+            this.listClassificationSelectBindingSource.DataSource = this.dBPMan;
             // 
             // splitContainerControl1
             // 
@@ -253,11 +299,6 @@
             // 
             this.listClassificationBindingSource.DataMember = "ListClassification";
             this.listClassificationBindingSource.DataSource = this.dBPMan;
-            // 
-            // dBPMan
-            // 
-            this.dBPMan.DataSetName = "DBPMan";
-            this.dBPMan.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigator1
             // 
@@ -681,6 +722,9 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 131);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemLookUpEdit2,
+            this.repositoryItemLookUpEditCate});
             this.gridControl1.Size = new System.Drawing.Size(810, 514);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -692,11 +736,11 @@
             this.colName1,
             this.colValid,
             this.colLastUpdate,
-            this.colStatus,
-            this.colCategoryID,
             this.colPrice,
             this.colCategoryID1,
-            this.gridColumn1});
+            this.gridColumn1,
+            this.colStatus,
+            this.colCategoryID});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
@@ -710,7 +754,7 @@
             this.colName1.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colName1.Visible = true;
             this.colName1.VisibleIndex = 0;
-            this.colName1.Width = 149;
+            this.colName1.Width = 195;
             // 
             // colValid
             // 
@@ -733,53 +777,6 @@
             this.colLastUpdate.Visible = true;
             this.colLastUpdate.VisibleIndex = 6;
             this.colLastUpdate.Width = 100;
-            // 
-            // colStatus
-            // 
-            repositoryItemLookUpEdit1.AutoHeight = false;
-            repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
-            repositoryItemLookUpEdit1.DisplayMember = "Name";
-            repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
-            repositoryItemLookUpEdit1.ValueMember = "ID";
-            this.colStatus.ColumnEdit = repositoryItemLookUpEdit1;
-            this.colStatus.FieldName = "Status";
-            this.colStatus.Name = "colStatus";
-            this.colStatus.OptionsColumn.FixedWidth = true;
-            this.colStatus.Visible = true;
-            this.colStatus.VisibleIndex = 5;
-            // 
-            // productStatusBindingSource
-            // 
-            this.productStatusBindingSource.DataMember = "ProductStatus";
-            this.productStatusBindingSource.DataSource = this.dBPMan;
-            // 
-            // colCategoryID
-            // 
-            this.colCategoryID.Caption = "NameCate";
-            repositoryItemLookUpEdit2.AutoHeight = false;
-            repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            repositoryItemLookUpEdit2.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 30, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NameFull", "Name Full", 200, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
-            repositoryItemLookUpEdit2.DisplayMember = "NameFull";
-            repositoryItemLookUpEdit2.DropDownRows = 30;
-            repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEditCategory";
-            repositoryItemLookUpEdit2.ValueMember = "ID";
-            this.colCategoryID.ColumnEdit = repositoryItemLookUpEdit2;
-            this.colCategoryID.FieldName = "CategoryID";
-            this.colCategoryID.Name = "colCategoryID";
-            this.colCategoryID.Visible = true;
-            this.colCategoryID.VisibleIndex = 1;
-            this.colCategoryID.Width = 89;
-            // 
-            // listClassificationSelectBindingSource
-            // 
-            this.listClassificationSelectBindingSource.DataMember = "ListClassificationSelect";
-            this.listClassificationSelectBindingSource.DataSource = this.dBPMan;
             // 
             // colPrice
             // 
@@ -807,6 +804,51 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 7;
+            this.gridColumn1.Width = 107;
+            // 
+            // colStatus
+            // 
+            this.colStatus.ColumnEdit = this.repositoryItemLookUpEdit2;
+            this.colStatus.FieldName = "Status";
+            this.colStatus.Name = "colStatus";
+            this.colStatus.Visible = true;
+            this.colStatus.VisibleIndex = 5;
+            this.colStatus.Width = 104;
+            // 
+            // repositoryItemLookUpEdit2
+            // 
+            this.repositoryItemLookUpEdit2.AutoHeight = false;
+            this.repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit2.DataSource = this.productStatusBindingSource;
+            this.repositoryItemLookUpEdit2.DisplayMember = "Name";
+            this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
+            this.repositoryItemLookUpEdit2.ValueMember = "ID";
+            // 
+            // colCategoryID
+            // 
+            this.colCategoryID.Caption = "NameCate";
+            this.colCategoryID.ColumnEdit = this.repositoryItemLookUpEditCate;
+            this.colCategoryID.FieldName = "CategoryID";
+            this.colCategoryID.Name = "colCategoryID";
+            this.colCategoryID.OptionsColumn.FixedWidth = true;
+            this.colCategoryID.Visible = true;
+            this.colCategoryID.VisibleIndex = 1;
+            this.colCategoryID.Width = 85;
+            // 
+            // repositoryItemLookUpEditCate
+            // 
+            this.repositoryItemLookUpEditCate.AutoHeight = false;
+            this.repositoryItemLookUpEditCate.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEditCate.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 34, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NameFull", "Name Full", 56, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.repositoryItemLookUpEditCate.DataSource = this.listClassificationSelectBindingSource;
+            this.repositoryItemLookUpEditCate.DisplayMember = "NameFull";
+            this.repositoryItemLookUpEditCate.Name = "repositoryItemLookUpEditCate";
+            this.repositoryItemLookUpEditCate.ValueMember = "ID";
+            this.repositoryItemLookUpEditCate.EditValueChanged += new System.EventHandler(this.repositoryItemLookUpEditCate_EditValueChanged);
             // 
             // listClassificationTableAdapter
             // 
@@ -846,10 +888,14 @@
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "frmEditeTenSanPham";
             this.Load += new System.EventHandler(this.frmEditeTenSanPham_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productStatusBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBPMan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listClassificationSelectBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listClassificationBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBPMan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
@@ -872,10 +918,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNoiDungMuonThay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productStatusBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemLookUpEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listClassificationSelectBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditCate)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -903,8 +947,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colName1;
         private DevExpress.XtraGrid.Columns.GridColumn colValid;
         private DevExpress.XtraGrid.Columns.GridColumn colLastUpdate;
-        private DevExpress.XtraGrid.Columns.GridColumn colStatus;
-        private DevExpress.XtraGrid.Columns.GridColumn colCategoryID;
         private System.Windows.Forms.BindingSource productBindingSource;
         private Maps.DBPManTableAdapters.ProductTableAdapter productTableAdapter;
         private DevExpress.XtraGrid.Columns.GridColumn colPrice;
@@ -949,5 +991,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.TextEdit contentFTTextEdit;
         private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditCategory;
+        private DevExpress.XtraGrid.Columns.GridColumn colStatus;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
+        private DevExpress.XtraGrid.Columns.GridColumn colCategoryID;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditCate;
     }
 }
