@@ -33,6 +33,7 @@ namespace ImboForm
         {
 
         }
+
         public override void ProcessMessage(BasicDeliverEventArgs message)
         {
             iCount ++;
@@ -45,7 +46,7 @@ namespace ImboForm
                 sql.RunQuery(
                     string.Format("Update Product Set ImageId = '{0}' Where Id = {1}", mss.ImageId, mss.ProductId),
                     CommandType.Text, null);
-                _log.Info(mss.ProductId + ":" + mss.ImageId + ":" + iCount);
+                if (iCount%100==0) _log.Info(mss.ProductId + ":" + mss.ImageId + ":" + iCount);
             }
             this.GetChannel().BasicAck(message.DeliveryTag, true);
         }

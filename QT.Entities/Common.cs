@@ -3233,12 +3233,28 @@ namespace QT.Entities
         public static string ChuanHoaTextOfHtml(string p)
         {
             string result = p;
-            string regex = @"<!--(.|\s)*?-->";
+            const string regex = @"<!--(.|\s)*?-->";
+            
+
             while (Regex.IsMatch(result, regex))
             {
                 result = Regex.Replace(result, regex, "");
             }
             return result;
+        }
+
+        public static string RemoveScripTag(string p)
+        {
+            string result = p;
+            const string regexScrip = @"<script(.+?)*</script>";
+
+
+            while (Regex.IsMatch(result, regexScrip))
+            {
+                result = Regex.Replace(result, regexScrip, "");
+            }
+            return result;
+           
         }
 
         public static long CrcProductID(string linkToCRC)
@@ -3728,6 +3744,7 @@ namespace QT.Entities
 
         internal static string ArParaToString(SqlParameter[] arPara)
         {
+            if (arPara == null) return "";
             List<string> lst = new List<string>();
             foreach (var par in arPara) lst.Add(par.ParameterName.ToString() + " " + par.Value.ToString());
             return string.Join("\r\n", lst);
