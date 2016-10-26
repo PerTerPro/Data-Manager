@@ -81,12 +81,14 @@
     <Compile Include="DocManAdapter.cs" />
     <Compile Include="Documet.cs" />
     <Compile Include="JobQueue.cs" />
+    <Compile Include="JobResetDocInfo.cs" />
     <Compile Include="ParserData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="WorkerCrawler.cs" />
     <Compile Include="DocInfo.cs" />
+    <Compile Include="WorkerDocInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

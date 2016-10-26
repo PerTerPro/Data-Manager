@@ -60,6 +60,7 @@ namespace WebsosanhCacheTool
                 var listWebMerchantProducts = WebMerchantProductBAL.GetListWebMerchantProductsOfCompany(companyID,
                         connProductString);
 
+                //XT. Change link if is MasOffer
                 if (masOffer.CheckIsMasOffer(companyID))
                 {
                     foreach (var itemProduct in listWebMerchantProducts)

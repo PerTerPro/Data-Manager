@@ -13,25 +13,32 @@ namespace WSS.DocMan
     {
         private static void Main(string[] args)
         {
-            //string str = "1. PushLinkParse. 2. RunWorkerProcess";
-            //Console.WriteLine(str);
-            //int a = Convert.ToInt32(Console.ReadLine());
-            //switch (a)
-            //{
-            //    case 1:
-            //        Test t = new Test();
-            //        t.PushQueueAs();
-            //        break;
-            //    case 2:
-            //        var v = new WorkerCrawler();
-            //        v.StartConsume();
-            //        break;
-            //}
-            //return;
+            string str = "1. PushLinkParse. 2. RunWorkerProcess. 3.PushDocInfo. 4.WorkerDocInfo";
+            Console.WriteLine(str);
+            int a = Convert.ToInt32(Console.ReadLine());
+            switch (a)
+            {
+                case 1:Test t = new Test();
+                    t.PushQueueAs();
+                    break;
+                case 3:
+                    Test t1 = new Test();
+                    t1.PushQueueAsDocInfo();
+                    break;
+                case 2:
+                    var v = new WorkerCrawler();
+                    v.StartConsume();
+                    break;
+                case 4:
+                    var v1 = new WorkerDocInfo();
+                    v1.StartConsume();
+                    break;
+            }
+            return;
 
-            //    //var v = new WorkerCrawler();
-            //    //v.StartConsume();
-            //    //return;
+            //var v = new WorkerCrawler();
+            //v.StartConsume();
+            //return;
 
 
 

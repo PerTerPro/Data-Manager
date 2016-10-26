@@ -14,6 +14,49 @@ namespace WSS.DocMan
     {
         private SqlDb sqlDb = new SqlDb(ConfigDocMan.ConnectionSql);
 
+        public void UpdateDocData(DocInfo docInfo)
+        {
+            string query = @"Update Documents Set
+
+DateEnable = @DateEnable, 
+DateNoEnable = @DateNoEnable, 
+DatePost = @DatePost, 
+DatePublish = @DatePublish, 
+DateUsed = @DateUsed, 
+DocNumber = @DocNumber, 
+DocRef  = @DocRef, 
+Enable = @Enable, 
+PartNoEnable = @PartNoEnable, 
+ReasonNoEnable = @ReasonNoEnable, 
+Source = @Source, 
+TypeDoc = @TypeDoc, 
+DocFrom = @DocFrom,
+Scope = @Scope,
+LastUpdate = Getdate()
+
+Where Id = @Id";
+            this.sqlDb.RunQuery(query, CommandType.Text, new SqlParameter[]
+            {
+                SqlDb.CreateParamteterSQL("Id", docInfo.Id, SqlDbType.BigInt),
+                SqlDb.CreateParamteterSQL("DateEnable", docInfo.DateEnable, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("DateNoEnable", docInfo.DateNoEnable, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("DatePost", docInfo.DatePost, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("DatePublish", docInfo.DatePublish, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("DateUsed", docInfo.DateUsed, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("DocNumber", docInfo.DocNumber, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("DocRef", docInfo.DocRef, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("Enable", docInfo.Enable, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("PartNoEnable", docInfo.PartNoEnable, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("ReasonNoEnable", docInfo.ReasonNoEnable, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("Source", docInfo.Source, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("TypeDoc", docInfo.TypeDoc, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("DocFrom", docInfo.DocFrom, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("Scope", docInfo.Scope, SqlDbType.NVarChar),
+
+            });
+        }
+
+
         public void InsertData(Documet document)
         {
             const string strData = @"
@@ -85,6 +128,11 @@ Select Top 1 Id From Documents Order By Id DESC
                     }
                 }
             }
+        }
+
+        internal DataTable GetUrls()
+        {
+            return this.sqlDb.GetTblData("select Id, Url From Documents");
         }
     }
 }

@@ -19,28 +19,35 @@ namespace WSS.DocMan
         {
             DocInfo info = new DocInfo();
             var trNodes = doc.DocumentNode.SelectNodes("//table[@class='tableproperties']//tr");
-            foreach (var VARIABLE in trNodes)
+            if (trNodes != null)
             {
-                var tdNodes = VARIABLE.SelectNodes("./td");
-                if (tdNodes != null)
+                foreach (var VARIABLE in trNodes)
                 {
-                    for (int i = 0; i < tdNodes.Count; i++)
+                    var tdNodes = VARIABLE.SelectNodes("./td");
+                    if (tdNodes != null)
                     {
-                        if (tdNodes[i].Attributes.Contains("class") &&
-                            tdNodes[i].GetAttributeValue("class","")== "headerproperties")
+                        for (int i = 0; i < tdNodes.Count; i++)
                         {
-                            if (tdNodes[i + 1].GetAttributeValue("class", "") == "contentproperties")
+                            if (tdNodes[i].Attributes.Contains("class") &&
+                                tdNodes[i].GetAttributeValue("class", "") == "headerproperties")
                             {
-                                string file = tdNodes[i].InnerText.Trim().ToLower();
-                                string properties = tdNodes[i + 1].InnerText.Trim();
-                                ParseData(file, properties, info);
+                                if (tdNodes[i + 1].GetAttributeValue("class", "") == "contentproperties")
+                                {
+                                    string file = tdNodes[i].InnerText.Trim().ToLower();
+                                    string properties = tdNodes[i + 1].InnerText.Trim();
+                                    ParseData(file, properties, info);
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            return info;
+                return info;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public void ParseData(string nameProperties, string valueProperties, DocInfo docinfo)
@@ -61,25 +68,53 @@ namespace WSS.DocMan
             {
                 docinfo.Source = valueProperties;
             }
-            else if (nameProperties=="phạm vi")
+            else if (nameProperties == "phạm vi")
             {
                 docinfo.Scope = valueProperties;
             }
-            else if (nameProperties=="ngày đăng công báo")
+            else if (nameProperties == "ngày đăng công báo")
             {
                 docinfo.DatePost = valueProperties;
             }
-            else if (nameProperties=="tình trạng hiệu lực")
+            else if (nameProperties == "tình trạng hiệu lực")
             {
                 docinfo.Enable = valueProperties;
             }
-            else if (nameProperties=="ngày có hiệu lực")
+            else if (nameProperties == "ngày có hiệu lực")
             {
                 docinfo.DateEnable = valueProperties;
             }
+            else if (nameProperties == "ngày hết hiệu lực")
+            {
+                docinfo.DateNoEnable = valueProperties;
+            }
             else if (nameProperties == "lí do hết hiệu lực")
             {
-                docinfo.ReasonNotEnable = valueProperties;
+                docinfo.ReasonNoEnable = valueProperties;
+            }
+            else if (nameProperties == "phần hết hiệu lực")
+            {
+                docinfo.PartNoEnable = valueProperties;
+            }
+            else if (nameProperties == "ngày áp dụng")
+            {
+                docinfo.DateUsed = valueProperties;
+            }
+            else if (nameProperties == "văn bản dẫn chiếu")
+            {
+                docinfo.DocRef = valueProperties;
+            }
+            else if (nameProperties == "văn bản căn cứ")
+            {
+                docinfo.DocFrom = valueProperties;
+            }
+            else if (nameProperties == "văn bản bị thay thế")
+            {
+                docinfo.DocIsReplate = valueProperties;
+            }
+            else if (nameProperties == "văn bản bị sửa đổi bổ sung")
+            {
+                docinfo.DocIsAlter = valueProperties;
             }
             else
             {

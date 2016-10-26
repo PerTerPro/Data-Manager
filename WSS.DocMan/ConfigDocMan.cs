@@ -14,5 +14,7 @@ namespace WSS.DocMan
 
         public static string ConnectionSql =
             @"Data Source=192.168.100.178;Initial Catalog=Docs;Persist Security Info=True;User ID=sa;Password=123456a@";
+
+        public static string QueueDocInfo = "DocMan.WaiAsDocInfo";
     }
 }
