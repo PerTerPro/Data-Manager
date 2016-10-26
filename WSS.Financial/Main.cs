@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WSS.Financial.Brand;
+using WSS.Financial.Backend.Brand;
 
-namespace WSS.Financial
+namespace WSS.Financial.Backend
 {
     public partial class Main : Form
     {

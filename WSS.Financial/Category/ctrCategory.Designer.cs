@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial.Category
+﻿namespace WSS.Financial.Backend.Category
 {
     partial class ctrCategory
     {
@@ -36,11 +36,11 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.idTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.parentIdTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.categoryTableAdapter = new WSS.Financial.DBFinancialTableAdapters.CategoryTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
+            this.categoryTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.CategoryTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
             this.treeListCategory = new DevExpress.XtraTreeList.TreeList();
             this.colName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colCategoryLevel = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -154,7 +154,7 @@
             this.tableAdapterManager.PropertyStatusTableAdapter = null;
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // treeListCategory
             // 

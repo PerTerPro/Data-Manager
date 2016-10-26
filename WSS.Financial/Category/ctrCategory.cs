@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 
-namespace WSS.Financial.Category
+namespace WSS.Financial.Backend.Category
 {
     public partial class ctrCategory : UserControl
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WSS.Financial
+namespace WSS.Financial.Backend
 {
     public class WssCommon
     {

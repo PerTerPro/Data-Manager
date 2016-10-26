@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial
+﻿namespace WSS.Financial.Backend
 {
     partial class FrmPropertyValue
     {
@@ -35,10 +35,10 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.idTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.propertyValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.valueTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.propertyValueTableAdapter = new WSS.Financial.DBFinancialTableAdapters.PropertyValueTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
+            this.propertyValueTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.PropertyValueTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
             this.propertyValueBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -145,7 +145,7 @@
             this.tableAdapterManager.PropertyStatusTableAdapter = null;
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = this.propertyValueTableAdapter;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // propertyValueBindingNavigator
             // 

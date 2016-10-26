@@ -224,7 +224,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.UpdateAlexa", "WSS.Upda
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.ImageServer", "WSS.ImageServer\WSS.ImageServer.csproj", "{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Financial", "WSS.Financial\WSS.Financial.csproj", "{10EE609C-4D46-49E0-B70B-A6D4928AD304}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Financial.Backend", "WSS.Financial\WSS.Financial.Backend.csproj", "{10EE609C-4D46-49E0-B70B-A6D4928AD304}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.WebMerchantSupport", "WSS.WebMerchantSupport\WSS.WebMerchantSupport.csproj", "{3A236F8E-C77E-466C-8124-5DA247383303}"
 EndProject

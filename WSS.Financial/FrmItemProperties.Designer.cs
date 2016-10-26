@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial
+﻿namespace WSS.Financial.Backend
 {
     partial class FrmItemProperties
     {
@@ -36,7 +36,7 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.itemIdTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.itemPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.propertyIdLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.propertyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -53,10 +53,10 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colValue = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.itemPropertiesTableAdapter = new WSS.Financial.DBFinancialTableAdapters.ItemPropertiesTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
-            this.propertyTableAdapter = new WSS.Financial.DBFinancialTableAdapters.PropertyTableAdapter();
-            this.propertyValueTableAdapter = new WSS.Financial.DBFinancialTableAdapters.PropertyValueTableAdapter();
+            this.itemPropertiesTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.ItemPropertiesTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
+            this.propertyTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.PropertyTableAdapter();
+            this.propertyValueTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.PropertyValueTableAdapter();
             this.itemPropertiesBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -81,7 +81,7 @@
             this.colPropertyValueId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSearchLookUpEditPropertyValue = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.repositoryItemSearchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.itemTableAdapter = new WSS.Financial.DBFinancialTableAdapters.ItemTableAdapter();
+            this.itemTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.ItemTableAdapter();
             this.colId2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGroupId1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -321,7 +321,7 @@
             this.tableAdapterManager.PropertyTableAdapter = this.propertyTableAdapter;
             this.tableAdapterManager.PropertyValueTableAdapter = this.propertyValueTableAdapter;
             this.tableAdapterManager.PropertyValueTypeTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // propertyTableAdapter
             // 
