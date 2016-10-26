@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial.Brand
+﻿namespace WSS.Financial.Backend.Brand
 {
     partial class ctrBrand
     {
@@ -34,10 +34,10 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.brandBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.idTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.brandTableAdapter = new WSS.Financial.DBFinancialTableAdapters.BrandTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
+            this.brandTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.BrandTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
             this.brandGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -134,7 +134,7 @@
             this.tableAdapterManager.PropertyStatusTableAdapter = null;
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // brandGridControl
             // 

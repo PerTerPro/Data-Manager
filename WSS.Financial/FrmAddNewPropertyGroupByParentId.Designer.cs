@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial
+﻿namespace WSS.Financial.Backend
 {
     partial class FrmAddNewPropertyGroupByParentId
     {
@@ -39,14 +39,14 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.parentIdTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.propertyGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.idTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.categoryIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupLevelTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.propertyGroupTableAdapter = new WSS.Financial.DBFinancialTableAdapters.PropertyGroupTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
+            this.propertyGroupTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.PropertyGroupTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
             this.propertyGroupBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -67,7 +67,7 @@
             this.colCategoryId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colParentId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGroupLevel = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.categoryTableAdapter = new WSS.Financial.DBFinancialTableAdapters.CategoryTableAdapter();
+            this.categoryTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.CategoryTableAdapter();
             this.viewOrderTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             idLabel = new System.Windows.Forms.Label();
@@ -239,7 +239,7 @@
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
             this.tableAdapterManager.PropertyValueTypeTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // propertyGroupBindingNavigator
             // 

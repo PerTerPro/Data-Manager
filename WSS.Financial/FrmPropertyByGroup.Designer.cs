@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial
+﻿namespace WSS.Financial.Backend
 {
     partial class FrmPropertyByGroup
     {
@@ -41,7 +41,7 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.idTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.propertyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.valueTypeIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.propertyValueTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -52,11 +52,11 @@
             this.isActiveCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.groupIdTreeListLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.propertyGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.propertyTableAdapter = new WSS.Financial.DBFinancialTableAdapters.PropertyTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
-            this.categoryTableAdapter = new WSS.Financial.DBFinancialTableAdapters.CategoryTableAdapter();
-            this.propertyGroupTableAdapter = new WSS.Financial.DBFinancialTableAdapters.PropertyGroupTableAdapter();
-            this.propertyValueTypeTableAdapter = new WSS.Financial.DBFinancialTableAdapters.PropertyValueTypeTableAdapter();
+            this.propertyTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.PropertyTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
+            this.categoryTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.CategoryTableAdapter();
+            this.propertyGroupTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.PropertyGroupTableAdapter();
+            this.propertyValueTypeTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.PropertyValueTypeTableAdapter();
             this.propertyBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -341,7 +341,7 @@
             this.tableAdapterManager.PropertyTableAdapter = this.propertyTableAdapter;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
             this.tableAdapterManager.PropertyValueTypeTableAdapter = this.propertyValueTypeTableAdapter;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // categoryTableAdapter
             // 

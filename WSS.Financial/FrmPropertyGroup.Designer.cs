@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial
+﻿namespace WSS.Financial.Backend
 {
     partial class FrmPropertyGroup
     {
@@ -37,13 +37,13 @@
             System.Windows.Forms.Label viewOrderLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPropertyGroup));
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.ctrCategory1 = new WSS.Financial.Category.ctrCategory();
+            this.ctrCategory1 = new WSS.Financial.Backend.Category.ctrCategory();
             this.treeListPropertyGroup = new DevExpress.XtraTreeList.TreeList();
             this.colName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colCategoryId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTreeListLookUpEditCategory = new DevExpress.XtraEditors.Repository.RepositoryItemTreeListLookUpEdit();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.repositoryItemTreeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
             this.colGroupLevel = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -77,9 +77,9 @@
             this.colName1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.parentIdLookUpEdit = new DevExpress.XtraEditors.TreeListLookUpEdit();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
-            this.propertyGroupTableAdapter = new WSS.Financial.DBFinancialTableAdapters.PropertyGroupTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
-            this.categoryTableAdapter = new WSS.Financial.DBFinancialTableAdapters.CategoryTableAdapter();
+            this.propertyGroupTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.PropertyGroupTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
+            this.categoryTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.CategoryTableAdapter();
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             categoryIdLabel = new System.Windows.Forms.Label();
@@ -185,7 +185,7 @@
             this.ctrCategory1.Name = "ctrCategory1";
             this.ctrCategory1.Size = new System.Drawing.Size(376, 710);
             this.ctrCategory1.TabIndex = 0;
-            this.ctrCategory1.IdCategoryChanged += new WSS.Financial.Category.ctrCategory.ChangedEventHandler(this.ctrCategory1_IdCategoryChanged);
+            this.ctrCategory1.IdCategoryChanged += new WSS.Financial.Backend.Category.ctrCategory.ChangedEventHandler(this.ctrCategory1_IdCategoryChanged);
             // 
             // treeListPropertyGroup
             // 
@@ -596,7 +596,7 @@
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
             this.tableAdapterManager.PropertyValueTypeTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // categoryTableAdapter
             // 

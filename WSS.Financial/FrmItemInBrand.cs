@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WSS.Financial
+namespace WSS.Financial.Backend
 {
     public partial class FrmItemInBrand : Form
     {

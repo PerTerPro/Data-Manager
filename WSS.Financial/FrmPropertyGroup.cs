@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WSS.Financial.DBFinancialTableAdapters;
+using WSS.Financial.Backend.DBFinancialTableAdapters;
 
-namespace WSS.Financial
+namespace WSS.Financial.Backend
 {
     public partial class FrmPropertyGroup : Form
     {

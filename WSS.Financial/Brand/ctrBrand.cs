@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 
-namespace WSS.Financial.Brand
+namespace WSS.Financial.Backend.Brand
 {
     public partial class ctrBrand : UserControl
     {

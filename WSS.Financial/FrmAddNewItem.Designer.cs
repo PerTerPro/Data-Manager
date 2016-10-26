@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial
+﻿namespace WSS.Financial.Backend
 {
     partial class FrmAddNewItem
     {
@@ -38,7 +38,7 @@
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.idTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.categoryIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -47,10 +47,10 @@
             this.isActiveCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.itemTableAdapter = new WSS.Financial.DBFinancialTableAdapters.ItemTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
-            this.categoryTableAdapter = new WSS.Financial.DBFinancialTableAdapters.CategoryTableAdapter();
-            this.brandTableAdapter = new WSS.Financial.DBFinancialTableAdapters.BrandTableAdapter();
+            this.itemTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.ItemTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
+            this.categoryTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.CategoryTableAdapter();
+            this.brandTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.BrandTableAdapter();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
@@ -256,7 +256,7 @@
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
             this.tableAdapterManager.PropertyValueTypeTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // categoryTableAdapter
             // 

@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial
+﻿namespace WSS.Financial.Backend
 {
     partial class Main
     {
@@ -45,7 +45,7 @@
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.ctrBrand1 = new WSS.Financial.Brand.ctrBrand();
+            this.ctrBrand1 = new WSS.Financial.Backend.Brand.ctrBrand();
             this.barSubItemVayTinDung = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItemBankLending = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
@@ -224,7 +224,7 @@
             this.ctrBrand1.Name = "ctrBrand1";
             this.ctrBrand1.Size = new System.Drawing.Size(427, 648);
             this.ctrBrand1.TabIndex = 0;
-            this.ctrBrand1.ExcuteCommand += new WSS.Financial.Brand.ctrBrand.ChangedEventHandler(this.ctrBrand1_ExcuteCommand);
+            this.ctrBrand1.ExcuteCommand += new WSS.Financial.Backend.Brand.ctrBrand.ChangedEventHandler(this.ctrBrand1_ExcuteCommand);
             // 
             // barSubItemVayTinDung
             // 

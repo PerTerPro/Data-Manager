@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial
+﻿namespace WSS.Financial.Backend
 {
     partial class FrmItemInBrand
     {
@@ -42,17 +42,17 @@
             this.btnItemProperties = new DevExpress.XtraEditors.SimpleButton();
             this.idTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.categoryIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.brandIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.brandBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.isActiveCheckEdit = new DevExpress.XtraEditors.CheckEdit();
-            this.itemTableAdapter = new WSS.Financial.DBFinancialTableAdapters.ItemTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
-            this.brandTableAdapter = new WSS.Financial.DBFinancialTableAdapters.BrandTableAdapter();
-            this.categoryTableAdapter = new WSS.Financial.DBFinancialTableAdapters.CategoryTableAdapter();
+            this.itemTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.ItemTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
+            this.brandTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.BrandTableAdapter();
+            this.categoryTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.CategoryTableAdapter();
             this.itemBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -77,7 +77,7 @@
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colIsActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.ctrCategory1 = new WSS.Financial.Category.ctrCategory();
+            this.ctrCategory1 = new WSS.Financial.Backend.Category.ctrCategory();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.toolStripButtonAddNew = new System.Windows.Forms.ToolStripButton();
             idLabel = new System.Windows.Forms.Label();
@@ -308,7 +308,7 @@
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
             this.tableAdapterManager.PropertyValueTypeTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // brandTableAdapter
             // 
@@ -567,7 +567,7 @@
             this.ctrCategory1.Name = "ctrCategory1";
             this.ctrCategory1.Size = new System.Drawing.Size(342, 728);
             this.ctrCategory1.TabIndex = 0;
-            this.ctrCategory1.IdCategoryChanged += new WSS.Financial.Category.ctrCategory.ChangedEventHandler(this.ctrCategory1_IdCategoryChanged);
+            this.ctrCategory1.IdCategoryChanged += new WSS.Financial.Backend.Category.ctrCategory.ChangedEventHandler(this.ctrCategory1_IdCategoryChanged);
             // 
             // panelControl2
             // 

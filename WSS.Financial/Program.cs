@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WSS.Financial
+namespace WSS.Financial.Backend
 {
     static class Program
     {
