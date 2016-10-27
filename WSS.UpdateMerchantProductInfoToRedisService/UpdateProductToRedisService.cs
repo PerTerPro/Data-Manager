@@ -40,7 +40,7 @@ namespace WSS.UpdateProductToRedisService
                 var productConnectionString =
                     ConfigurationManager.ConnectionStrings["productConnectionString"].ConnectionString;
                 MasOfferAdapter.SetConnection(productConnectionString);
-
+                
                 var userConnecionString = ConfigurationManager.ConnectionStrings["userConnecionString"].ConnectionString;
                 string rabbitMQServerName = ConfigurationManager.AppSettings["rabbitMQServerName"];
                 string updateAllProductOfMerchantToRedisJobName =

@@ -14,7 +14,7 @@ namespace QT.Entities.MasOffer
         private   Dictionary<long, MasOfferCompany> _dicData = null;
         private  DateTime _lastSysnListMasoffer = DateTime.Now;
         private static MasOfferAdapter _ins;
-        private ILog _log = log4net.LogManager.GetLogger(typeof (MasOfferAdapter));
+        private static ILog _log = log4net.LogManager.GetLogger(typeof (MasOfferAdapter));
 
         public MasOfferAdapter()
         {
@@ -32,6 +32,7 @@ namespace QT.Entities.MasOffer
             {
                 _connectionProduct = connectionString;
                 _sqlDb = new SqlDb(MasOfferAdapter._connectionProduct);
+                _log.Info("MasOffer connected!");
             }
 
         }
