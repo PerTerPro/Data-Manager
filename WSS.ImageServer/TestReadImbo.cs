@@ -25,19 +25,23 @@ namespace ImboForm
 
         public TestReadImbo()
         {
-            InitData();
+        
         }
 
         public void InitData()
         {
             string query =
-                @"select  top 20000 ImageId From Product WHere ImageId Is Not NUll";
+                @"select  top 20000 ImageId From Product WHere ImageId Is Not NUll order by Id";
             DataTable tbl = this.sqlDb.GetTblData(query, CommandType.Text, null);
 
             foreach (DataRow VARIABLE in tbl.Rows)
             {
                 string l =
-                    @"http://img.websosanh.net/ThumbImages/Store/images/nhi/nhiet-ke-dien-tu-do-tran-medisana-tm-65e_2001.jpg";
+                    string.Format(
+                        "http://192.168.100.34/users/xtpu/images/{0}.jpg?t[]=thumbnail:width=300,height=300,fit=insert",
+                        VARIABLE["ImageId"].ToString());
+
+                //    @"http://img.websosanh.net/ThumbImages/Store/images/nhi/nhiet-ke-dien-tu-do-tran-medisana-tm-65e_2001.jpg";
                 //l =
                 //    @"http://192.168.100.34/users/xtpu/images/6OE-fWXdPAaY.jpg";
                 ////l = @"http://192.168.100.34/aha.php";
@@ -47,11 +51,10 @@ namespace ImboForm
                 //l = string.Format("http://192.168.100.34/users/xtpu/images/{0}.jpg", l);
 
                 //l = "http://192.168.100.34/users/xtpu/images/XOT87Q9cvx7W.jpg";
-                l = "http://review.websosanh.net/Images/Uploaded/Share/2016/10/17/lzdabbotthotdeal2.jpg";
+                //l = "http://review.websosanh.net/Images/Uploaded/Share/2016/10/17/lzdabbotthotdeal2.jpg";
                 lst.Enqueue(l);}
             this.total = this.lst.Count;
         }
-
         public void TestMulThread1()
         {
             for (int i = 0; i < 100; i++)
@@ -86,9 +89,9 @@ namespace ImboForm
         private int iCount = 0;
         private object objIcountS = new object();
 
-        public void Run()
+        public void TestPerformanceDownload()
         {
-
+            InitData();
             this.startRun = DateTime.Now;
             for (int i = 0; i < countThread; i++)
             {
@@ -111,17 +114,22 @@ namespace ImboForm
                             {
                                 iCount++;
                                 var variable = lst.Dequeue();
-                                WebRequest req = WebRequest.Create(variable);
-                                req.Method = "GET";
 
-                                WebResponse response = req.GetResponse();
-                                //Stream stream = response.GetResponseStream();
-                                //stream.Close();
-                                response.Close();
+                                using (WebClient client = new WebClient())
+                                {
+                                    client.DownloadFile(variable,
+                                        string.Format("/IMG/{0}.jpg", Guid.NewGuid().ToString()));
+                                }
+                                
+                                
+                                //WebRequest req = WebRequest.Create(variable);
+                                //req.Method = "GET";
+                                //WebResponse response = req.GetResponse();
+                                //response.Close();
                             }
                             else
                             {
-                                log.InfoFormat("Run at {1} {0}",
+                                log.InfoFormat("TestPerformanceDownload at {1} {0}",
                                     (DateTime.Now - startRun).TotalMilliseconds, total);
                                 return;
                             }

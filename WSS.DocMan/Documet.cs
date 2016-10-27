@@ -19,7 +19,7 @@ namespace WSS.DocMan
         public int IdDoc { get; set; }
         public string TextDoc { get; set; }
         public string HtmlDoc { get; set; }
-        public object Id { get; set; }
+        public long Id { get; set; }
         public List<Tuple<HtmlNode, List<HtmlNode>, List<string>>> LstStructure;
 
         public void ParseDieu()

@@ -30,15 +30,14 @@ namespace ImboForm
         
         private static void Main(string[] args)
         {
-
             TestReadImbo t1 = new TestReadImbo();
-            t1.Run();
+            t1.TestPerformanceDownload();
+
             Thread.Sleep(10000000);
+
 
             //WorkerUploadImage w1 = new WorkerUploadImage();
             //w1.StartConsume();
-
-
             //while (true)
             //{
             //    try

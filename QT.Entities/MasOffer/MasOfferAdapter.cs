@@ -30,6 +30,7 @@ namespace QT.Entities.MasOffer
         {
             if (connectionString != _connectionProduct)
             {
+           
                 _connectionProduct = connectionString;
                 _sqlDb = new SqlDb(MasOfferAdapter._connectionProduct);
             }
