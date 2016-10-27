@@ -1,29 +1,15 @@
-﻿using log4net;
-using QT.Entities;
-using QT.Entities.CrawlerProduct;
-using QT.Entities.Data;
-using QT.Moduls.CrawlerProduct;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
+﻿using System;
 using System.ServiceProcess;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WSS.Service.ResetColumnChangeAndDuplicate;
 
-
-
-namespace WSS.Service.ResetColumnChangeAndDuplicate
+namespace WSS.Service.ResetCacheAllProduct
 {
     public partial class ServiceResetColumnChangeAndDuplicate : ServiceBase
     {
         log4net.ILog log = log4net.LogManager.GetLogger(typeof(ServiceResetColumnChangeAndDuplicate));
-        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+        readonly CancellationTokenSource _cancelTokenSource = new CancellationTokenSource();
 
         public ServiceResetColumnChangeAndDuplicate()
         {
@@ -32,7 +18,7 @@ namespace WSS.Service.ResetColumnChangeAndDuplicate
 
         protected override void OnStart(string[] args)
         {
-            var token = cancelTokenSource.Token;
+            var token = _cancelTokenSource.Token;
             Task.Factory.StartNew(() =>
                 {
 
@@ -53,10 +39,10 @@ namespace WSS.Service.ResetColumnChangeAndDuplicate
 
         protected override void OnStop()
         {
-            if (this.cancelTokenSource != null
-                && !this.cancelTokenSource.IsCancellationRequested)
+            if (this._cancelTokenSource != null
+                && !this._cancelTokenSource.IsCancellationRequested)
             {
-                this.cancelTokenSource.Cancel();
+                this._cancelTokenSource.Cancel();
                 log.Info("Cancellation all thread");
             }
         }

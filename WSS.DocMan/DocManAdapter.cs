@@ -56,6 +56,15 @@ Where Id = @Id";
             });
         }
 
+        public bool CheckExistDoc(long id)
+        {
+            DataTable tblData = this.sqlDb.GetTblData("Select Id From Documents where Id = @Id", CommandType.Text, new[]
+            {
+                SqlDb.CreateParamteterSQL("@Id", id, SqlDbType.BigInt)
+            });
+            return tblData.Rows.Count == 1;
+        }
+
 
         public void InsertData(Documet document)
         {
@@ -67,7 +76,7 @@ Delete From DocChapter where DocumentId = @Id
 
 Insert 
 Into Documents (Id, TextDoc, HtmlDoc, Url) Values (@Id, @TextDoc, @HtmlDoc, @Url);
- 
+
 Select Top 1 Id From Documents Order By Id DESC
 ";
             DataTable tbl = this.sqlDb.GetTblData(strData, CommandType.Text, new SqlParameter[]

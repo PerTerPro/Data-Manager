@@ -1,4 +1,4 @@
-﻿namespace WSS.Service.ResetColumnChangeAndDuplicate
+﻿namespace WSS.Service.ResetCacheAllProduct
 {
     partial class ServiceResetColumnChangeAndDuplicate
     {
