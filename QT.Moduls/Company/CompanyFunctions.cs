@@ -1248,6 +1248,11 @@ namespace QT.Moduls.Company
 
                     #region ID
                     var decodedUrl = HttpUtility.UrlDecode(tmpProduct.DetailUrl);
+                    if (company.ID == 3502170206813664485)
+                    {
+                        decodedUrl = HttpUtility.UrlDecode(decodedUrl);
+                    }
+                    
                     string originalUrl = string.Empty;
                     if (!string.IsNullOrEmpty(datafeedConfig.RegexConfigUrl))
                     {

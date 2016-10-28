@@ -30,7 +30,6 @@ namespace QT.Entities.MasOffer
         {
             if (connectionString != _connectionProduct)
             {
-           
                 _connectionProduct = connectionString;
                 _sqlDb = new SqlDb(MasOfferAdapter._connectionProduct);
                 _log.Info("MasOffer connected!");
@@ -83,9 +82,11 @@ namespace QT.Entities.MasOffer
             if (this.CheckIsMasOffer(companyId))
             {
                 var ms = this._dicData[companyId];
-                return string.Format(@"https://{0}/v0/{1}/websosanh/?go={2}",
+                var urlMas = string.Format(@"https://{0}/v0/{1}/websosanh/?go={2}",
                     (string.IsNullOrEmpty(ms.SubDomain)) ? "go.masoffer.net" : ms.SubDomain, ms.MasOfferCode,
                     System.Web.HttpUtility.UrlEncode(url));
+                _log.Info("UrlMasOffer: " + urlMas);
+                return urlMas;
             }
             return url;
         }
