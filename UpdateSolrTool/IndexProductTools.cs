@@ -107,6 +107,15 @@ namespace UpdateSolrTools
             {
                 allPriorMerchants.Add(priorMerchantDataTable[rowIndex].MechantId, Convert.ToInt32(priorMerchantDataTable[rowIndex].PriorityScore));
             }
+            var badMerchantTableAdapter = new BadMerchantsTableAdapter()
+            {
+                Connection = { ConnectionString = productConnectionString }
+            };
+            var badMerchantDataTable = badMerchantTableAdapter.GetAllBadMerchantIds();
+            for (int rowIndex = 0; rowIndex < badMerchantDataTable.Rows.Count; rowIndex++)
+            {
+                allPriorMerchants.Add(badMerchantDataTable[rowIndex].MerchantId, -1);
+            }
             return allPriorMerchants;
         }
 

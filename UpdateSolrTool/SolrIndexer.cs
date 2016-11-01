@@ -161,7 +161,7 @@ namespace UpdateSolrTools
                             if (tags.Length > 0)
                                 item.Tags.AddRange(tags);
                         }
-                        item.Tags = item.Tags.Count == 0 ? null : item.Tags.Select(tag => tag.Trim(" \r\n\t".ToCharArray()).ToLower()).Distinct().ToList();
+                        item.Tags = item.Tags.Count == 0 ? null : item.Tags.Select(x => StringUtilities.GetUCRC32(x, true, true).ToString()).Distinct().ToList();
                         if (merchantRegions != null)
                         {
                             if (merchantRegions.AllMerchantProvins != null)
@@ -187,7 +187,7 @@ namespace UpdateSolrTools
 
                         //Set PriorityScore
                         var priorityScore = GetProductPriorityScore(merchantPriorityScore, productIndex, totalProduct);
-                        if (priorityScore > item.Priority)
+                        if (priorityScore > item.Priority || priorityScore < 0)
                             item.Priority = priorityScore;
 
                         //AdsScore
@@ -265,6 +265,8 @@ namespace UpdateSolrTools
                     return merchantPriorityScore;
                 return 0;
             }
+            if (merchantPriorityScore < 0)
+                return merchantPriorityScore;
             return 0;
         }
         public void UpdateMerchantProducts(List<long> productIDs)
@@ -377,7 +379,7 @@ namespace UpdateSolrTools
                     if (item.Tags.Count == 0)
                         item.Tags = null;
                     else
-                        item.Tags = item.Tags.Select(tag => tag.Trim(" \r\n\t".ToCharArray()).ToLower()).Distinct().ToList();
+                        item.Tags = item.Tags.Select(x => StringUtilities.GetUCRC32(x,true,true).ToString()).Distinct().ToList();
                     var merchantRegions = MerchantRegionBAL.GetMerchantRegionsFromCache(item.MerchantID);
                     if (merchantRegions != null)
                     {
@@ -403,7 +405,7 @@ namespace UpdateSolrTools
 
                     item.Priority = Common.Obj2Int(productRow["AddPosition"]);
                     int merchantPriorityScore = ListPriorMerchants.ContainsKey(item.MerchantID) ? ListPriorMerchants[item.MerchantID] : 0;
-                    if (merchantPriorityScore > 1 && merchantPriorityScore > item.Priority)
+                    if (merchantPriorityScore < 0 || merchantPriorityScore > item.Priority)
                         item.Priority = merchantPriorityScore;
 
                     //AdsScore
@@ -463,7 +465,7 @@ namespace UpdateSolrTools
                 foreach (var oldProductID in oldProductIDList)
                     oldProductIDSet.Add(oldProductID);
                 totalProduct = dtProduct.Rows.Count;
-                var productParts = CollectionUtilities.Partition(dtProduct, 1000);
+                var productParts = dtProduct.Partition(1000);
                 int partIndex = 0;
                 foreach (var productPart in productParts)
                 {
@@ -514,6 +516,15 @@ namespace UpdateSolrTools
                         item.CategoryLevel2Id = item.CategoryIds.Count >= 2 ? item.CategoryIds[item.CategoryIds.Count - 2] : 0;
                         var otherNames = IndexProductTools.GetUnitNormalizedName(productName);
                         otherNames.AddRange(IndexProductTools.GetOtherNames(productName));
+                        var rootProductMappingWithBlackList = RootProductMappingBAL.GetRootProductMappingFromCache(item.Id, 0, RootProductMappingSortType.PriceWithVAT, false);
+                        if (rootProductMappingWithBlackList.ListMerchantProducts != null)
+                        {
+                            var listMerchantProductId =
+                                rootProductMappingWithBlackList.ListMerchantProducts.SelectMany(x => x.Value).ToList();
+                            var listMerchantProduct =
+                                WebMerchantProductBAL.GetWebMerchantProductsFromCache(listMerchantProductId);
+                            otherNames.AddRange(listMerchantProduct.Values.Select(p => p.Name));
+                        }
                         if (otherNames.Count > 0)
                             item.NameOther = otherNames;
                         var categoryPrefix = "";
@@ -685,6 +696,15 @@ namespace UpdateSolrTools
                     item.CategoryLevel2Id = item.CategoryIds.Count >= 2 ? item.CategoryIds[item.CategoryIds.Count - 2] : 0;
                     var otherNames = IndexProductTools.GetUnitNormalizedName(productName);
                     otherNames.AddRange(IndexProductTools.GetOtherNames(productName));
+                    var rootProductMappingWithBlackList = RootProductMappingBAL.GetRootProductMappingFromCache(productID, 0, RootProductMappingSortType.PriceWithVAT, false);
+                    if (rootProductMappingWithBlackList.ListMerchantProducts != null)
+                    {
+                        var listMerchantProductId =
+                            rootProductMappingWithBlackList.ListMerchantProducts.SelectMany(x => x.Value).ToList();
+                        var listMerchantProduct =
+                            WebMerchantProductBAL.GetWebMerchantProductsFromCache(listMerchantProductId);
+                        otherNames.AddRange(listMerchantProduct.Values.Select(p => p.Name));
+                    }
                     if (otherNames.Count > 0)
                         item.NameOther = otherNames;
                     var categoryPrefix = "";
