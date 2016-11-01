@@ -23,16 +23,17 @@ namespace ImboForm
 {
     internal class Program
     {
-        private static ILog log = LogManager.GetLogger(typeof (Program));
-        private static ManualResetEvent m_reset = new ManualResetEvent(false);
-        private static int itemInPage = 10000;
+        private static readonly ILog Log = LogManager.GetLogger(typeof (Program));
+        private static readonly ManualResetEvent m_reset = new ManualResetEvent(false);
+        private const int itemInPage = 10000;
 
-        
+
         private static void Main(string[] args)
         {
             TestReadImbo t1 = new TestReadImbo();
             t1.TestPerformanceDownload();
 
+       
             Thread.Sleep(10000000);
 
 
@@ -157,11 +158,11 @@ FETCH NEXT @RowspPage ROWS ONLY;
                                 ProductId = productId
                             }));
                             iCount++;
-                            if (iCount%100 == 0) log.Info(string.Format("pushed {0} {1} page: {2} item", iCount, productId, page-1));
+                            if (iCount%100 == 0) Log.Info(string.Format("pushed {0} {1} page: {2} item", iCount, productId, page-1));
                         }
                         catch (Exception ex)
                         {
-                            log.Error(ex.Message);
+                            Log.Error(ex.Message);
                         }
                     }
                    
@@ -244,7 +245,7 @@ FETCH NEXT @RowspPage ROWS ONLY;
                                                         );
                                                 sqlConnection.RunQuery(query1
                                                     , CommandType.Text, null);
-                                                log.Info(responseContent);
+                                                Log.Info(responseContent);
                                             }
                                         }
                                     }
@@ -252,11 +253,11 @@ FETCH NEXT @RowspPage ROWS ONLY;
                         }
                         catch (Exception ex)
                         {
-                            log.Error(ex);
+                            Log.Error(ex);
                         }
                     }
                     ftpClient.Disconnect();
-                    log.InfoFormat("SUccess page : {0}", page);
+                    Log.InfoFormat("SUccess page : {0}", page);
                     tbl = sqlConnection.GetTblData(query, CommandType.Text, new SqlParameter[]
                     {
                         SqlDb.CreateParamteterSQL("PageNumber", page++, SqlDbType.Int),
