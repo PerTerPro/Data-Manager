@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial
+﻿namespace WSS.Financial.Backend
 {
     partial class FrmCategory
     {
@@ -28,19 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label idLabel;
             System.Windows.Forms.Label nameLabel;
             System.Windows.Forms.Label parentIdLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCategory));
+            System.Windows.Forms.Label categoryLevelLabel;
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.idTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource();
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.parentIdTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.categoryTableAdapter = new WSS.Financial.DBFinancialTableAdapters.CategoryTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
-            this.categoryBindingNavigator = new System.Windows.Forms.BindingNavigator();
+            this.categoryTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.CategoryTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
+            this.categoryBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
@@ -58,9 +60,12 @@
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colParentId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCategoryLevel = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.categoryLevelTextEdit = new DevExpress.XtraEditors.TextEdit();
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             parentIdLabel = new System.Windows.Forms.Label();
+            categoryLevelLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.idTextEdit.Properties)).BeginInit();
@@ -72,6 +77,7 @@
             this.categoryBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoryGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryLevelTextEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // idLabel
@@ -86,7 +92,7 @@
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(209, 21);
+            nameLabel.Location = new System.Drawing.Point(109, 21);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(38, 13);
             nameLabel.TabIndex = 2;
@@ -95,7 +101,7 @@
             // parentIdLabel
             // 
             parentIdLabel.AutoSize = true;
-            parentIdLabel.Location = new System.Drawing.Point(693, 21);
+            parentIdLabel.Location = new System.Drawing.Point(600, 21);
             parentIdLabel.Name = "parentIdLabel";
             parentIdLabel.Size = new System.Drawing.Size(53, 13);
             parentIdLabel.TabIndex = 4;
@@ -103,6 +109,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(categoryLevelLabel);
+            this.panelControl1.Controls.Add(this.categoryLevelTextEdit);
             this.panelControl1.Controls.Add(idLabel);
             this.panelControl1.Controls.Add(this.idTextEdit);
             this.panelControl1.Controls.Add(nameLabel);
@@ -112,15 +120,16 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1019, 59);
+            this.panelControl1.Size = new System.Drawing.Size(979, 55);
             this.panelControl1.TabIndex = 0;
             // 
             // idTextEdit
             // 
             this.idTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.categoryBindingSource, "Id", true));
-            this.idTextEdit.Location = new System.Drawing.Point(86, 18);
+            this.idTextEdit.Location = new System.Drawing.Point(52, 18);
             this.idTextEdit.Name = "idTextEdit";
-            this.idTextEdit.Size = new System.Drawing.Size(100, 20);
+            this.idTextEdit.Properties.ReadOnly = true;
+            this.idTextEdit.Size = new System.Drawing.Size(46, 20);
             this.idTextEdit.TabIndex = 1;
             // 
             // categoryBindingSource
@@ -136,7 +145,7 @@
             // nameTextEdit
             // 
             this.nameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.categoryBindingSource, "Name", true));
-            this.nameTextEdit.Location = new System.Drawing.Point(268, 18);
+            this.nameTextEdit.Location = new System.Drawing.Point(168, 18);
             this.nameTextEdit.Name = "nameTextEdit";
             this.nameTextEdit.Size = new System.Drawing.Size(419, 20);
             this.nameTextEdit.TabIndex = 3;
@@ -144,7 +153,7 @@
             // parentIdTextEdit
             // 
             this.parentIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.categoryBindingSource, "ParentId", true));
-            this.parentIdTextEdit.Location = new System.Drawing.Point(752, 18);
+            this.parentIdTextEdit.Location = new System.Drawing.Point(659, 18);
             this.parentIdTextEdit.Name = "parentIdTextEdit";
             this.parentIdTextEdit.Size = new System.Drawing.Size(100, 20);
             this.parentIdTextEdit.TabIndex = 5;
@@ -164,7 +173,7 @@
             this.tableAdapterManager.PropertyStatusTableAdapter = null;
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // categoryBindingNavigator
             // 
@@ -185,14 +194,14 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.categoryBindingNavigatorSaveItem});
-            this.categoryBindingNavigator.Location = new System.Drawing.Point(0, 59);
+            this.categoryBindingNavigator.Location = new System.Drawing.Point(0, 55);
             this.categoryBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.categoryBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.categoryBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.categoryBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.categoryBindingNavigator.Name = "categoryBindingNavigator";
             this.categoryBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.categoryBindingNavigator.Size = new System.Drawing.Size(1019, 25);
+            this.categoryBindingNavigator.Size = new System.Drawing.Size(979, 25);
             this.categoryBindingNavigator.TabIndex = 1;
             this.categoryBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -294,10 +303,10 @@
             this.categoryGridControl.Cursor = System.Windows.Forms.Cursors.Default;
             this.categoryGridControl.DataSource = this.categoryBindingSource;
             this.categoryGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.categoryGridControl.Location = new System.Drawing.Point(0, 84);
+            this.categoryGridControl.Location = new System.Drawing.Point(0, 80);
             this.categoryGridControl.MainView = this.gridView1;
             this.categoryGridControl.Name = "categoryGridControl";
-            this.categoryGridControl.Size = new System.Drawing.Size(1019, 555);
+            this.categoryGridControl.Size = new System.Drawing.Size(979, 559);
             this.categoryGridControl.TabIndex = 2;
             this.categoryGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -307,7 +316,8 @@
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colName,
-            this.colParentId});
+            this.colParentId,
+            this.colCategoryLevel});
             this.gridView1.GridControl = this.categoryGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
@@ -319,7 +329,7 @@
             this.colId.OptionsColumn.ReadOnly = true;
             this.colId.Visible = true;
             this.colId.VisibleIndex = 0;
-            this.colId.Width = 115;
+            this.colId.Width = 140;
             // 
             // colName
             // 
@@ -327,7 +337,7 @@
             this.colName.Name = "colName";
             this.colName.Visible = true;
             this.colName.VisibleIndex = 1;
-            this.colName.Width = 659;
+            this.colName.Width = 624;
             // 
             // colParentId
             // 
@@ -335,13 +345,39 @@
             this.colParentId.Name = "colParentId";
             this.colParentId.Visible = true;
             this.colParentId.VisibleIndex = 2;
-            this.colParentId.Width = 227;
+            this.colParentId.Width = 117;
+            // 
+            // colCategoryLevel
+            // 
+            this.colCategoryLevel.FieldName = "CategoryLevel";
+            this.colCategoryLevel.Name = "colCategoryLevel";
+            this.colCategoryLevel.Visible = true;
+            this.colCategoryLevel.VisibleIndex = 3;
+            this.colCategoryLevel.Width = 120;
+            // 
+            // categoryLevelLabel
+            // 
+            categoryLevelLabel.AutoSize = true;
+            categoryLevelLabel.Location = new System.Drawing.Point(776, 21);
+            categoryLevelLabel.Name = "categoryLevelLabel";
+            categoryLevelLabel.Size = new System.Drawing.Size(81, 13);
+            categoryLevelLabel.TabIndex = 6;
+            categoryLevelLabel.Text = "Category Level:";
+            // 
+            // categoryLevelTextEdit
+            // 
+            this.categoryLevelTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.categoryBindingSource, "CategoryLevel", true));
+            this.categoryLevelTextEdit.Location = new System.Drawing.Point(863, 18);
+            this.categoryLevelTextEdit.Name = "categoryLevelTextEdit";
+            this.categoryLevelTextEdit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.categoryLevelTextEdit.Size = new System.Drawing.Size(76, 20);
+            this.categoryLevelTextEdit.TabIndex = 7;
             // 
             // FrmCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 639);
+            this.ClientSize = new System.Drawing.Size(979, 639);
             this.Controls.Add(this.categoryGridControl);
             this.Controls.Add(this.categoryBindingNavigator);
             this.Controls.Add(this.panelControl1);
@@ -361,6 +397,7 @@
             this.categoryBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoryGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryLevelTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,5 +431,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colParentId;
+        private DevExpress.XtraGrid.Columns.GridColumn colCategoryLevel;
+        private DevExpress.XtraEditors.TextEdit categoryLevelTextEdit;
     }
 }

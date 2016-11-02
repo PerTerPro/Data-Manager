@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial.Category
+﻿namespace WSS.Financial.Backend.Category
 {
     partial class ctrCategory
     {
@@ -31,143 +31,146 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label idLabel;
             System.Windows.Forms.Label nameLabel;
+            System.Windows.Forms.Label parentIdLabel;
+            System.Windows.Forms.Label categoryLevelLabel;
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.brandBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
             this.idTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.brandTableAdapter = new WSS.Financial.DBFinancialTableAdapters.BrandTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
-            this.brandGridControl = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colWebsite = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsActive = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.viewInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewItemInBrandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
+            this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.parentIdTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.categoryTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.CategoryTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
+            this.treeListCategory = new DevExpress.XtraTreeList.TreeList();
+            this.colName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colCategoryLevel = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumnId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.categoryLevelTextEdit = new DevExpress.XtraEditors.TextEdit();
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
+            parentIdLabel = new System.Windows.Forms.Label();
+            categoryLevelLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nameTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brandBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBFinancial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.idTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brandGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBFinancial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nameTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parentIdTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryLevelTextEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // idLabel
             // 
             idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(10, 24);
+            idLabel.Location = new System.Drawing.Point(7, 17);
             idLabel.Name = "idLabel";
             idLabel.Size = new System.Drawing.Size(19, 13);
-            idLabel.TabIndex = 0;
+            idLabel.TabIndex = 1;
             idLabel.Text = "Id:";
             // 
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(121, 24);
+            nameLabel.Location = new System.Drawing.Point(101, 17);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(38, 13);
-            nameLabel.TabIndex = 2;
+            nameLabel.TabIndex = 3;
             nameLabel.Text = "Name:";
+            // 
+            // parentIdLabel
+            // 
+            parentIdLabel.AutoSize = true;
+            parentIdLabel.Location = new System.Drawing.Point(9, 55);
+            parentIdLabel.Name = "parentIdLabel";
+            parentIdLabel.Size = new System.Drawing.Size(53, 13);
+            parentIdLabel.TabIndex = 5;
+            parentIdLabel.Text = "Parent Id:";
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(nameLabel);
-            this.panelControl1.Controls.Add(this.nameTextEdit);
+            this.panelControl1.Controls.Add(categoryLevelLabel);
+            this.panelControl1.Controls.Add(this.categoryLevelTextEdit);
             this.panelControl1.Controls.Add(idLabel);
             this.panelControl1.Controls.Add(this.idTextEdit);
+            this.panelControl1.Controls.Add(nameLabel);
+            this.panelControl1.Controls.Add(this.nameTextEdit);
+            this.panelControl1.Controls.Add(parentIdLabel);
+            this.panelControl1.Controls.Add(this.parentIdTextEdit);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(362, 62);
+            this.panelControl1.Size = new System.Drawing.Size(410, 49);
             this.panelControl1.TabIndex = 0;
             // 
-            // nameTextEdit
+            // idTextEdit
             // 
-            this.nameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.brandBindingSource, "Name", true));
-            this.nameTextEdit.Location = new System.Drawing.Point(165, 21);
-            this.nameTextEdit.Name = "nameTextEdit";
-            this.nameTextEdit.Size = new System.Drawing.Size(171, 20);
-            this.nameTextEdit.TabIndex = 3;
+            this.idTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.categoryBindingSource, "Id", true));
+            this.idTextEdit.Location = new System.Drawing.Point(32, 14);
+            this.idTextEdit.Name = "idTextEdit";
+            this.idTextEdit.Size = new System.Drawing.Size(57, 20);
+            this.idTextEdit.TabIndex = 2;
+            this.idTextEdit.EditValueChanged += new System.EventHandler(this.idTextEdit_EditValueChanged);
             // 
-            // brandBindingSource
+            // categoryBindingSource
             // 
-            this.brandBindingSource.DataMember = "Brand";
-            this.brandBindingSource.DataSource = this.dBFinancial;
+            this.categoryBindingSource.DataMember = "Category";
+            this.categoryBindingSource.DataSource = this.dBFinancial;
             // 
             // dBFinancial
             // 
             this.dBFinancial.DataSetName = "DBFinancial";
             this.dBFinancial.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // idTextEdit
+            // nameTextEdit
             // 
-            this.idTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.brandBindingSource, "Id", true));
-            this.idTextEdit.Location = new System.Drawing.Point(35, 21);
-            this.idTextEdit.Name = "idTextEdit";
-            this.idTextEdit.Size = new System.Drawing.Size(57, 20);
-            this.idTextEdit.TabIndex = 1;
+            this.nameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.categoryBindingSource, "Name", true));
+            this.nameTextEdit.Location = new System.Drawing.Point(160, 14);
+            this.nameTextEdit.Name = "nameTextEdit";
+            this.nameTextEdit.Size = new System.Drawing.Size(205, 20);
+            this.nameTextEdit.TabIndex = 4;
             // 
-            // brandTableAdapter
+            // parentIdTextEdit
             // 
-            this.brandTableAdapter.ClearBeforeFill = true;
+            this.parentIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.categoryBindingSource, "ParentId", true));
+            this.parentIdTextEdit.Location = new System.Drawing.Point(68, 52);
+            this.parentIdTextEdit.Name = "parentIdTextEdit";
+            this.parentIdTextEdit.Size = new System.Drawing.Size(100, 20);
+            this.parentIdTextEdit.TabIndex = 6;
+            // 
+            // categoryTableAdapter
+            // 
+            this.categoryTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.BrandTableAdapter = this.brandTableAdapter;
-            this.tableAdapterManager.CategoryTableAdapter = null;
+            this.tableAdapterManager.BrandTableAdapter = null;
+            this.tableAdapterManager.CategoryTableAdapter = this.categoryTableAdapter;
             this.tableAdapterManager.ItemPropertiesTableAdapter = null;
             this.tableAdapterManager.ItemTableAdapter = null;
             this.tableAdapterManager.PropertyGroupTableAdapter = null;
             this.tableAdapterManager.PropertyStatusTableAdapter = null;
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // brandGridControl
+            // treeListCategory
             // 
-            this.brandGridControl.Cursor = System.Windows.Forms.Cursors.Default;
-            this.brandGridControl.DataSource = this.brandBindingSource;
-            this.brandGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.brandGridControl.Location = new System.Drawing.Point(0, 62);
-            this.brandGridControl.MainView = this.gridView1;
-            this.brandGridControl.Name = "brandGridControl";
-            this.brandGridControl.Size = new System.Drawing.Size(362, 568);
-            this.brandGridControl.TabIndex = 2;
-            this.brandGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colId,
+            this.treeListCategory.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.colName,
-            this.colWebsite,
-            this.colDescription,
-            this.colIsActive});
-            this.gridView1.GridControl = this.brandGridControl;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseDown);
-            // 
-            // colId
-            // 
-            this.colId.FieldName = "Id";
-            this.colId.Name = "colId";
-            this.colId.OptionsColumn.ReadOnly = true;
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 0;
-            this.colId.Width = 37;
+            this.colCategoryLevel,
+            this.treeListColumnId});
+            this.treeListCategory.DataSource = this.categoryBindingSource;
+            this.treeListCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeListCategory.KeyFieldName = "Id";
+            this.treeListCategory.Location = new System.Drawing.Point(0, 49);
+            this.treeListCategory.Name = "treeListCategory";
+            this.treeListCategory.ParentFieldName = "ParentId";
+            this.treeListCategory.PreviewFieldName = "Name";
+            this.treeListCategory.Size = new System.Drawing.Size(410, 524);
+            this.treeListCategory.TabIndex = 1;
             // 
             // colName
             // 
@@ -175,66 +178,60 @@
             this.colName.Name = "colName";
             this.colName.Visible = true;
             this.colName.VisibleIndex = 1;
-            this.colName.Width = 167;
+            this.colName.Width = 177;
             // 
-            // colWebsite
+            // colCategoryLevel
             // 
-            this.colWebsite.FieldName = "Website";
-            this.colWebsite.Name = "colWebsite";
-            this.colWebsite.Visible = true;
-            this.colWebsite.VisibleIndex = 2;
-            this.colWebsite.Width = 126;
+            this.colCategoryLevel.FieldName = "CategoryLevel";
+            this.colCategoryLevel.Name = "colCategoryLevel";
+            this.colCategoryLevel.Visible = true;
+            this.colCategoryLevel.VisibleIndex = 2;
+            this.colCategoryLevel.Width = 80;
             // 
-            // colDescription
+            // treeListColumnId
             // 
-            this.colDescription.FieldName = "Description";
-            this.colDescription.Name = "colDescription";
+            this.treeListColumnId.Caption = "Id";
+            this.treeListColumnId.FieldName = "Id";
+            this.treeListColumnId.Name = "treeListColumnId";
+            this.treeListColumnId.Visible = true;
+            this.treeListColumnId.VisibleIndex = 0;
+            this.treeListColumnId.Width = 81;
             // 
-            // colIsActive
+            // categoryLevelLabel
             // 
-            this.colIsActive.FieldName = "IsActive";
-            this.colIsActive.Name = "colIsActive";
+            categoryLevelLabel.AutoSize = true;
+            categoryLevelLabel.Location = new System.Drawing.Point(176, 55);
+            categoryLevelLabel.Name = "categoryLevelLabel";
+            categoryLevelLabel.Size = new System.Drawing.Size(81, 13);
+            categoryLevelLabel.TabIndex = 6;
+            categoryLevelLabel.Text = "Category Level:";
             // 
-            // contextMenuStrip1
+            // categoryLevelTextEdit
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewInfoToolStripMenuItem,
-            this.ViewItemInBrandToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 48);
+            this.categoryLevelTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.categoryBindingSource, "CategoryLevel", true));
+            this.categoryLevelTextEdit.Location = new System.Drawing.Point(263, 52);
+            this.categoryLevelTextEdit.Name = "categoryLevelTextEdit";
+            this.categoryLevelTextEdit.Size = new System.Drawing.Size(100, 20);
+            this.categoryLevelTextEdit.TabIndex = 7;
             // 
-            // viewInfoToolStripMenuItem
-            // 
-            this.viewInfoToolStripMenuItem.Name = "viewInfoToolStripMenuItem";
-            this.viewInfoToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.viewInfoToolStripMenuItem.Text = "View Info";
-            this.viewInfoToolStripMenuItem.Click += new System.EventHandler(this.viewInfoToolStripMenuItem_Click);
-            // 
-            // ViewItemInBrandToolStripMenuItem
-            // 
-            this.ViewItemInBrandToolStripMenuItem.Name = "ViewItemInBrandToolStripMenuItem";
-            this.ViewItemInBrandToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.ViewItemInBrandToolStripMenuItem.Text = "Quản lý Item thuộc Brand";
-            this.ViewItemInBrandToolStripMenuItem.Click += new System.EventHandler(this.ViewItemInBrandToolStripMenuItem_Click);
-            // 
-            // ctrBrand
+            // ctrCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.brandGridControl);
+            this.Controls.Add(this.treeListCategory);
             this.Controls.Add(this.panelControl1);
-            this.Name = "ctrBrand";
-            this.Size = new System.Drawing.Size(362, 630);
+            this.Name = "ctrCategory";
+            this.Size = new System.Drawing.Size(410, 573);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nameTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brandBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBFinancial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.idTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brandGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBFinancial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nameTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parentIdTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryLevelTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -242,21 +239,17 @@
         #endregion
 
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DBFinancial dBFinancial;
-        private System.Windows.Forms.BindingSource brandBindingSource;
-        private DBFinancialTableAdapters.BrandTableAdapter brandTableAdapter;
-        private DBFinancialTableAdapters.TableAdapterManager tableAdapterManager;
-        private DevExpress.XtraEditors.TextEdit nameTextEdit;
         private DevExpress.XtraEditors.TextEdit idTextEdit;
-        private DevExpress.XtraGrid.GridControl brandGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraGrid.Columns.GridColumn colName;
-        private DevExpress.XtraGrid.Columns.GridColumn colWebsite;
-        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
-        private DevExpress.XtraGrid.Columns.GridColumn colIsActive;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem viewInfoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ViewItemInBrandToolStripMenuItem;
+        private System.Windows.Forms.BindingSource categoryBindingSource;
+        private DBFinancial dBFinancial;
+        private DevExpress.XtraEditors.TextEdit nameTextEdit;
+        private DevExpress.XtraEditors.TextEdit parentIdTextEdit;
+        private DBFinancialTableAdapters.CategoryTableAdapter categoryTableAdapter;
+        private DBFinancialTableAdapters.TableAdapterManager tableAdapterManager;
+        private DevExpress.XtraTreeList.TreeList treeListCategory;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colName;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colCategoryLevel;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnId;
+        private DevExpress.XtraEditors.TextEdit categoryLevelTextEdit;
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WSS.Financial
+namespace WSS.Financial.Backend
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace WSS.Financial
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new FrmAddNewItem(5));
         }
     }
 }

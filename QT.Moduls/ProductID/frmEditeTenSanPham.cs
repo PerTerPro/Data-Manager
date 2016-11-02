@@ -191,22 +191,22 @@ namespace QT.Moduls.ProductID
             }
         }
 
-        private void repositoryItemLookUpEditCategory_EditValueChanged(object sender, EventArgs e)
-        {
-            
-            //editor.Properties.ValueMember
-            //int index = editor.Properties.Get;
-            //DataRow row = (editor.Properties.DataSource as DataTable).Rows[index];
-            //var kq = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, colCategoryID);
-            //int id = 0;
-            //int.TryParse(kq.ToString(), out id);
-            //string expression = "ID = "+id.ToString();
-            //DataRow[] dr = dBPMan.ListClassificationSelect.Select(expression);
-            LookUpEdit editor = gridView1.ActiveEditor as LookUpEdit;
-            DataRowView rowView = (DataRowView)editor.GetSelectedDataRow();
-            DataRow dr = rowView.Row;
-            contentFTTextEdit.Text = dr["ListIDSearch"].ToString();
-        }
+        //private void repositoryItemLookUpEditCategory_EditValueChanged(object sender, EventArgs e)
+        //{
+
+        //    //editor.Properties.ValueMember
+        //    //int index = editor.Properties.Get;
+        //    //DataRow row = (editor.Properties.DataSource as DataTable).Rows[index];
+        //    //var kq = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, colCategoryID);
+        //    //int id = 0;
+        //    //int.TryParse(kq.ToString(), out id);
+        //    //string expression = "ID = "+id.ToString();
+        //    //DataRow[] dr = dBPMan.ListClassificationSelect.Select(expression);
+        //    LookUpEdit editor = gridView1.ActiveEditor as LookUpEdit;
+        //    DataRowView rowView = (DataRowView)editor.GetSelectedDataRow();
+        //    DataRow dr = rowView.Row;
+        //    contentFTTextEdit.Text = dr["ListIDSearch"].ToString();
+        //}
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
@@ -226,6 +226,15 @@ namespace QT.Moduls.ProductID
                 else
                     MessageBox.Show("Lỗi! Không có mã Category "+ cellValue.ToString());
             }
+        }
+
+
+        private void repositoryItemLookUpEditCate_EditValueChanged(object sender, EventArgs e)
+        {
+            LookUpEdit editor = gridView1.ActiveEditor as LookUpEdit;
+            DataRowView rowView = (DataRowView)editor.GetSelectedDataRow();
+            DataRow dr = rowView.Row;
+            contentFTTextEdit.Text = dr["ListIDSearch"].ToString();
         }
     }
 }

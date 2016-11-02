@@ -244,7 +244,6 @@
     <Compile Include="DesciptionProduct.cs" />
     <Compile Include="DsQTCrawler.cs">
       <DependentUpon>DsQTCrawler.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DsQTCrawler.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -260,6 +259,8 @@
     <Compile Include="Images\ConfigImages.cs" />
     <Compile Include="JobQueueFN.cs" />
     <Compile Include="LogJobAdapter.cs" />
+    <Compile Include="MasOffer\MasOfferAdapter.cs" />
+    <Compile Include="MasOffer\MasOfferCompany.cs" />
     <Compile Include="MqChangeImage.cs" />
     <Compile Include="ProductMasOffer.cs" />
     <Compile Include="RaoVat\CassandraColumn.cs" />
@@ -305,7 +306,6 @@
     <Compile Include="Data\SqlDB.cs" />
     <Compile Include="DB.cs">
       <DependentUpon>DB.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DBProduct.Designer.cs">
       <AutoGen>True</AutoGen>

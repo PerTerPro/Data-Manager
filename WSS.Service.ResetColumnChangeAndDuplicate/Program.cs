@@ -1,27 +1,16 @@
-﻿using QT.Entities.Data;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.ServiceProcess;
 
-namespace WSS.Service.ResetColumnChangeAndDuplicate
+namespace WSS.Service.ResetCacheAllProduct
 {
     class Program
     {
         static void Main(string[] args)
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[] 
+            var servicesToRun = new ServiceBase[] 
             { 
                 new ServiceResetColumnChangeAndDuplicate() 
             };
-            ServiceBase.Run(ServicesToRun);
+            ServiceBase.Run(servicesToRun);
         }
-
-
     }
 }

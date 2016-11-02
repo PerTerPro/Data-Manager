@@ -10,6 +10,7 @@ using System.Reflection;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using QT.Entities.MasOffer;
 using Websosanh.Core.Common.BAL;
 using Websosanh.Core.Drivers.RabbitMQ;
 using Websosanh.Core.JobServer;
@@ -21,6 +22,8 @@ namespace WSS.UpdateProductToRedisService
 {
     public partial class UpdateProductToRedisService : ServiceBase
     {
+        private readonly MasOfferAdapter massOffer = MasOfferAdapter.Instance();
+
         private Worker[] updateAllProductOfMerchantWorkers;
         private Worker[] updateProductWorkers;
         RabbitMQServer rabbitMQServer;
@@ -28,23 +31,35 @@ namespace WSS.UpdateProductToRedisService
         public UpdateProductToRedisService()
         {
             InitializeComponent();
+            //OnStart(new string[] {});
         }
 
         protected override void OnStart(string[] args)
         {
             try
             {
-                var productConnectionString = ConfigurationManager.ConnectionStrings["productConnectionString"].ConnectionString;
-                var userConnecionString =  ConfigurationManager.ConnectionStrings["userConnecionString"].ConnectionString;
+                var productConnectionString =
+                    ConfigurationManager.ConnectionStrings["productConnectionString"].ConnectionString;
+                MasOfferAdapter.SetConnection(productConnectionString);
+                //WebMerchantProductCacheTool.InsertWebMerchantProductToCache(2642071820174507179,
+                //"tiki.vn", productConnectionString);
+
+
+                var userConnecionString = ConfigurationManager.ConnectionStrings["userConnecionString"].ConnectionString;
                 string rabbitMQServerName = ConfigurationManager.AppSettings["rabbitMQServerName"];
-                string updateAllProductOfMerchantToRedisJobName = ConfigurationManager.AppSettings["updateAllProductOfMerchantToRedisJobName"];
-                int updateAllProductOfMerchantWorkerCount = CommonUtilities.Object2Int(ConfigurationManager.AppSettings["updateAllProductOfMerchantWorkerCount"], 1);
+                string updateAllProductOfMerchantToRedisJobName =
+                    ConfigurationManager.AppSettings["updateAllProductOfMerchantToRedisJobName"];
+                int updateAllProductOfMerchantWorkerCount =
+                    CommonUtilities.Object2Int(
+                        ConfigurationManager.AppSettings["updateAllProductOfMerchantWorkerCount"], 1);
                 updateAllProductOfMerchantWorkers = new Worker[updateAllProductOfMerchantWorkerCount];
                 string updateProductToRedisJobName = ConfigurationManager.AppSettings["updateProductToRedisJobName"];
-                int updateProductWorkerCount = CommonUtilities.Object2Int(ConfigurationManager.AppSettings["updateProductWorkerCount"], 1);
-                var searchEnginesServiceUrl =  ConfigurationManager.AppSettings["searchEnginesServiceUrl"];
+                int updateProductWorkerCount =
+                    CommonUtilities.Object2Int(ConfigurationManager.AppSettings["updateProductWorkerCount"], 1);
+                var searchEnginesServiceUrl = ConfigurationManager.AppSettings["searchEnginesServiceUrl"];
                 updateProductWorkers = new Worker[updateProductWorkerCount];
                 rabbitMQServer = RabbitMQManager.GetRabbitMQServer(rabbitMQServerName);
+                
                 for (int i = 0; i < updateAllProductOfMerchantWorkerCount; i++)
                 {
                     var worker = new Worker(updateAllProductOfMerchantToRedisJobName, false, rabbitMQServer);
@@ -57,22 +72,26 @@ namespace WSS.UpdateProductToRedisService
                             {
                                 var companyID = BitConverter.ToInt64(updateAllProductOfMerchantToRedisJob.Data, 0);
                                 if (companyID == -1) //UpdateAlL
-                                    WebMerchantProductCacheTool.InsertAllWebMerchantProductToCache(productConnectionString);
+                                    WebMerchantProductCacheTool.InsertAllWebMerchantProductToCache(
+                                        productConnectionString);
+                                else if (companyID == 6619858476258121218) // Websosanh
+                                    WebRootProductCacheTool.InsertAllWebRootProductIntoCache(productConnectionString,
+                                        userConnecionString, searchEnginesServiceUrl);
                                 else
-                                    if (companyID == 6619858476258121218) // Websosanh
-                                        WebRootProductCacheTool.InsertAllWebRootProductIntoCache(productConnectionString, userConnecionString, searchEnginesServiceUrl);
-                                    else
+                                {
+                                    var merchantShortInfo = MerchantBAL.GetMerchantShortInfoFromCache(companyID);
+                                    if (merchantShortInfo == null)
                                     {
-                                        var merchantShortInfo = MerchantBAL.GetMerchantShortInfoFromCache(companyID);
+                                        merchantShortInfo = MerchantBAL.GetMerchantShortInfo(companyID,
+                                            productConnectionString, userConnecionString);
                                         if (merchantShortInfo == null)
-                                        {
-                                            merchantShortInfo = MerchantBAL.GetMerchantShortInfo(companyID, productConnectionString, userConnecionString);
-                                            if (merchantShortInfo == null)
-                                                return false;
-                                            MerchantBAL.InsertMerchantShortInfoToCache(merchantShortInfo, new TimeSpan(10000, 0, 0, 0, 0));
-                                        }
-                                        WebMerchantProductCacheTool.InsertWebMerchantProductToCache(companyID, merchantShortInfo.Domain, productConnectionString);
+                                            return false;
+                                        MerchantBAL.InsertMerchantShortInfoToCache(merchantShortInfo,
+                                            new TimeSpan(10000, 0, 0, 0, 0));
                                     }
+                                    WebMerchantProductCacheTool.InsertWebMerchantProductToCache(companyID,
+                                        merchantShortInfo.Domain, productConnectionString);
+                                }
                                 return true;
                             }
                             catch (Exception ex)
@@ -86,6 +105,7 @@ namespace WSS.UpdateProductToRedisService
                     workerTask.Start();
                     Logger.InfoFormat("Worker {0} started", i);
                 }
+
                 for (int i = 0; i < updateProductWorkerCount; i++)
                 {
                     var worker = new Worker(updateProductToRedisJobName, false, rabbitMQServer);
@@ -105,17 +125,31 @@ namespace WSS.UpdateProductToRedisService
                                 }
                                 if (updateProductToRedisJob.Type == 1) //RootProduct
                                 {
-                                    WebRootProductCacheTool.InsertWebRootProductIntoCache(productID, productConnectionString, userConnecionString, searchEnginesServiceUrl);
+                                    WebRootProductCacheTool.InsertWebRootProductIntoCache(productID,
+                                        productConnectionString, userConnecionString, searchEnginesServiceUrl);
                                 }
                                 else
                                 {
-                                    var webMerchantProduct = WebMerchantProductBAL.GetWebMerchantProduct(productID, productConnectionString);
+                                    var webMerchantProduct = WebMerchantProductBAL.GetWebMerchantProduct(productID,
+                                        productConnectionString);
                                     if (webMerchantProduct != null)
-                                        WebMerchantProductBAL.InsertWebMerchantProductsIntoCache(new[] { webMerchantProduct });
+                                    {
+                                        //XT: Change link if masOffer company
+                                        MasOfferAdapter.SetConnection(productConnectionString);
+                                        if (massOffer.CheckIsMasOffer(webMerchantProduct.CompanyID))
+                                        {
+                                            webMerchantProduct.DetailUrl =
+                                                massOffer.GetFullUrl(webMerchantProduct.CompanyID,
+                                                    webMerchantProduct.DetailUrl);
+                                        }
+
+                                        WebMerchantProductBAL.InsertWebMerchantProductsIntoCache(new[]
+                                        {webMerchantProduct});
+                                    }
                                 }
                                 return true;
                             }
-                            catch(Exception ex)
+                            catch (Exception ex)
                             {
                                 Logger.Error("Update Product To Redis", ex);
                                 return false;

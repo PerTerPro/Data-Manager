@@ -49,11 +49,7 @@ namespace QT.Moduls.CrawlerProduct
             {
                 Common.CellToString(row, "ImageUrls", "")
             };
-         
-           
-
         }
-
         public void Analytics(ProductEntity pt, HtmlDocument doc, String detailUrl, Configuration conf, string domain)
         {
             try
@@ -529,19 +525,27 @@ namespace QT.Moduls.CrawlerProduct
 
         private long ParsePriceTranAnh(HtmlDocument doc, List<string> xpaths)
         {
+          
             long price = 0;
-            var nodes = doc.DocumentNode.SelectNodes(xpaths[0]);
-            string strData = Common.JoinList(nodes.ToList(), "", (objData) =>
+            if (xpaths.Count > 0)
             {
-                string dataText = objData.GetAttributeValue("class", "").ToLower();
-                if (Regex.IsMatch(dataText, @"number\d-sw"))
-                    return Regex.Match(dataText, @"\d").Captures[0].Value.ToString();
-                else if (dataText == "numberdot-sw") return ".";
-                else return "";
-            });
-            strData = strData + ".000";
-            strData = strData.Replace(".", "");
-            return Convert.ToInt64(strData);
+                var nodes = doc.DocumentNode.SelectNodes(xpaths[0]);
+                if (nodes != null)
+                {
+                    string strData = Common.JoinList(nodes.ToList(), "", (objData) =>
+                    {
+                        string dataText = objData.GetAttributeValue("class", "").ToLower();
+                        if (Regex.IsMatch(dataText, @"number\d-sw"))
+                            return Regex.Match(dataText, @"\d").Captures[0].Value.ToString();
+                        else if (dataText == "numberdot-sw") return ".";
+                        else return "";
+                    });
+                    strData = strData + ".000";
+                    strData = strData.Replace(".", "");
+                    return Convert.ToInt64(strData);
+                }
+            }
+            return 0;
         }
 
         private List<string> ParseCategories(HtmlDocument doc, List<string> xpaths,

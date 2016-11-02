@@ -28,7 +28,8 @@ namespace WSS.Products.UpdateSingleProductServices
         private static readonly ILog Log = LogManager.GetLogger(typeof(UpdateSingleProductService));
         RabbitMQServer _rabbitMqServer;
         string _rabbitMqServerName = "";
-
+        private bool _isPromotion;
+        private bool _isXeMay;
         private bool _isRunning = true;
         int _workerCount;
         private HashSet<string> _skuHashSet;
@@ -48,6 +49,8 @@ namespace WSS.Products.UpdateSingleProductServices
             _logConnectionString = ConfigurationSettings.AppSettings["LogConnectionString"];
             _rabbitMqServerName = ConfigurationSettings.AppSettings["rabbitMQServerName"];
             _workerCount = Common.Obj2Int(ConfigurationSettings.AppSettings["workerCount"]);
+            _isPromotion = Common.Obj2Bool(ConfigurationSettings.AppSettings["IsPromotion"]);
+            _isXeMay = Common.Obj2Bool(ConfigurationSettings.AppSettings["IsXeMay"]);
         }
         private void LoadPromotionLazada()
         {
@@ -76,7 +79,7 @@ namespace WSS.Products.UpdateSingleProductServices
             }
             catch (Exception exception)
             {
-                Log.Error("Error read file: "+exception.Message);
+                Log.Error("Error read file: " + exception.Message);
             }
         }
         private void LoadListSkuLazada()
@@ -143,34 +146,37 @@ namespace WSS.Products.UpdateSingleProductServices
         private void UpdateSingleProduct(Product product, JobClient updateProductJobClient, JobClient downloadImageProductJobClient)
         {
             #region Check xem phải xe máy k để giảm giá
-
-            if (_skuHashSet.Contains(product.MerchantSku))
+            if (_isXeMay)
             {
-                int discount = (int)5*product.Price/100;
-                if (discount > 2500000)
-                    discount = 2500000;
-                product.Price = product.Price - discount;
+                if (_skuHashSet.Contains(product.MerchantSku))
+                {
+                    int discount = (int)5 * product.Price / 100;
+                    if (discount > 2500000)
+                        discount = 2500000;
+                    product.Price = product.Price - discount;
+                }
             }
             #endregion
             #region Check Promotion
-
-            try
+            if (_isPromotion)
             {
-                if (_promotionLazada.ContainsKey(product.Categories[1]))
+                try
                 {
-                    product.PromotionInfo = _promotionLazada[product.Categories[1]];
+                    if (_promotionLazada.ContainsKey(product.Categories[1]))
+                    {
+                        product.PromotionInfo = _promotionLazada[product.Categories[1]];
+                    }
+                    else
+                    {
+                        product.PromotionInfo = _promotionLazada["Default"];
+                        //Log.Info("category " + product.Categories[1] + " không tồn tại");
+                    }
                 }
-                else
+                catch (Exception exception)
                 {
-                    product.PromotionInfo = _promotionLazada["Default"];
-                    //Log.Info("category " + product.Categories[1] + " không tồn tại");
+                    Log.Error("Error check contain key " + exception.Message);
                 }
             }
-            catch (Exception exception)
-            {
-                Log.Error("Error check contain key "+exception.Message);
-            }
-            
             #endregion
             var productAdapter = new DBProductsTableAdapters.ProductTableAdapter();
             productAdapter.Connection.ConnectionString = _connectionString;
@@ -221,8 +227,8 @@ namespace WSS.Products.UpdateSingleProductServices
             productAdapter.Connection.Close();
             var hashProductInfo = ProductEntity.GetHashChangeInfo((int)product.Instock, true, product.Price, product.Name, product.ImageUrl,
                 product.IDCategories, product.ShortDescription, product.OriginPrice);
-            //if (RedisCacheProductDatafeed.CheckChangeInfoProduct(product.ID, hashProductInfo))
-            //    SendMessageUpdateProductSolrAndRedisService(product, updateProductJobClient);
+            if (RedisCacheProductDatafeed.CheckChangeInfoProduct(product.ID, hashProductInfo))
+                SendMessageUpdateProductSolrAndRedisService(product, updateProductJobClient);
         }
 
         private void SendMessageDownloadImageProduct(Product product, JobClient downloadImageProductJobClient, bool isNews)
@@ -329,7 +335,7 @@ namespace WSS.Products.UpdateSingleProductServices
                         product.ProductContent,
                         Common.UnicodeToKoDauFulltext(product.Name + " " + product.Domain),
                         true,
-                        false, product.ShortDescription, product.IsDeal, product.OriginPrice, (int)product.Instock, (short)product.Status,product.PromotionInfo,
+                        false, product.ShortDescription, product.IsDeal, product.OriginPrice, (int)product.Instock, (short)product.Status, product.PromotionInfo,
                         product.ID);
                     break;
                 }

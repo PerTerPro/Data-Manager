@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial
+﻿namespace WSS.Financial.Backend
 {
     partial class FrmItemInBrand
     {
@@ -35,21 +35,24 @@
             System.Windows.Forms.Label brandIdLabel;
             System.Windows.Forms.Label isActiveLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmItemInBrand));
+            this.repositoryItemLookUpEditCategory = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repositoryItemLookUpEditBrand = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLoadAll = new DevExpress.XtraEditors.SimpleButton();
+            this.btnItemProperties = new DevExpress.XtraEditors.SimpleButton();
             this.idTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.categoryIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.brandIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.brandBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.isActiveCheckEdit = new DevExpress.XtraEditors.CheckEdit();
-            this.itemTableAdapter = new WSS.Financial.DBFinancialTableAdapters.ItemTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
-            this.brandTableAdapter = new WSS.Financial.DBFinancialTableAdapters.BrandTableAdapter();
-            this.categoryTableAdapter = new WSS.Financial.DBFinancialTableAdapters.CategoryTableAdapter();
+            this.itemTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.ItemTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
+            this.brandTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.BrandTableAdapter();
+            this.categoryTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.CategoryTableAdapter();
             this.itemBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -68,15 +71,22 @@
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategoryId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemLookUpEditCategory = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colBrandId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemLookUpEditBrand = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colIsActive = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.ctrCategory1 = new WSS.Financial.Backend.Category.ctrCategory();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.toolStripButtonAddNew = new System.Windows.Forms.ToolStripButton();
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             categoryIdLabel = new System.Windows.Forms.Label();
             brandIdLabel = new System.Windows.Forms.Label();
             isActiveLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditBrand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.idTextEdit.Properties)).BeginInit();
@@ -92,14 +102,19 @@
             this.itemBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditCategory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditBrand)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // idLabel
             // 
             idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(10, 15);
+            idLabel.Location = new System.Drawing.Point(118, 15);
             idLabel.Name = "idLabel";
             idLabel.Size = new System.Drawing.Size(19, 13);
             idLabel.TabIndex = 0;
@@ -108,7 +123,7 @@
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(110, 15);
+            nameLabel.Location = new System.Drawing.Point(218, 15);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(38, 13);
             nameLabel.TabIndex = 2;
@@ -117,7 +132,7 @@
             // categoryIdLabel
             // 
             categoryIdLabel.AutoSize = true;
-            categoryIdLabel.Location = new System.Drawing.Point(596, 15);
+            categoryIdLabel.Location = new System.Drawing.Point(118, 51);
             categoryIdLabel.Name = "categoryIdLabel";
             categoryIdLabel.Size = new System.Drawing.Size(64, 13);
             categoryIdLabel.TabIndex = 4;
@@ -126,7 +141,7 @@
             // brandIdLabel
             // 
             brandIdLabel.AutoSize = true;
-            brandIdLabel.Location = new System.Drawing.Point(984, 16);
+            brandIdLabel.Location = new System.Drawing.Point(510, 52);
             brandIdLabel.Name = "brandIdLabel";
             brandIdLabel.Size = new System.Drawing.Size(50, 13);
             brandIdLabel.TabIndex = 6;
@@ -135,15 +150,38 @@
             // isActiveLabel
             // 
             isActiveLabel.AutoSize = true;
-            isActiveLabel.Location = new System.Drawing.Point(1208, 16);
+            isActiveLabel.Location = new System.Drawing.Point(734, 51);
             isActiveLabel.Name = "isActiveLabel";
             isActiveLabel.Size = new System.Drawing.Size(51, 13);
             isActiveLabel.TabIndex = 8;
             isActiveLabel.Text = "Is Active:";
             // 
+            // repositoryItemLookUpEditCategory
+            // 
+            this.repositoryItemLookUpEditCategory.AutoHeight = false;
+            this.repositoryItemLookUpEditCategory.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEditCategory.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Category")});
+            this.repositoryItemLookUpEditCategory.DisplayMember = "Name";
+            this.repositoryItemLookUpEditCategory.Name = "repositoryItemLookUpEditCategory";
+            this.repositoryItemLookUpEditCategory.ValueMember = "Id";
+            // 
+            // repositoryItemLookUpEditBrand
+            // 
+            this.repositoryItemLookUpEditBrand.AutoHeight = false;
+            this.repositoryItemLookUpEditBrand.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEditBrand.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Brand")});
+            this.repositoryItemLookUpEditBrand.DisplayMember = "Name";
+            this.repositoryItemLookUpEditBrand.Name = "repositoryItemLookUpEditBrand";
+            this.repositoryItemLookUpEditBrand.ValueMember = "Id";
+            // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.simpleButton1);
+            this.panelControl1.Controls.Add(this.btnLoadAll);
+            this.panelControl1.Controls.Add(this.btnItemProperties);
             this.panelControl1.Controls.Add(idLabel);
             this.panelControl1.Controls.Add(this.idTextEdit);
             this.panelControl1.Controls.Add(nameLabel);
@@ -157,21 +195,32 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1456, 58);
+            this.panelControl1.Size = new System.Drawing.Size(990, 93);
             this.panelControl1.TabIndex = 0;
             // 
-            // simpleButton1
+            // btnLoadAll
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(1339, 8);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(106, 42);
-            this.simpleButton1.TabIndex = 10;
-            this.simpleButton1.Text = "Chọn thuộc tính \r\ncho Item";
+            this.btnLoadAll.Location = new System.Drawing.Point(5, 9);
+            this.btnLoadAll.Name = "btnLoadAll";
+            this.btnLoadAll.Size = new System.Drawing.Size(75, 59);
+            this.btnLoadAll.TabIndex = 11;
+            this.btnLoadAll.Text = "Load all\r\nwith Brand";
+            this.btnLoadAll.Visible = false;
+            this.btnLoadAll.Click += new System.EventHandler(this.btnLoadAll_Click);
+            // 
+            // btnItemProperties
+            // 
+            this.btnItemProperties.Location = new System.Drawing.Point(850, 15);
+            this.btnItemProperties.Name = "btnItemProperties";
+            this.btnItemProperties.Size = new System.Drawing.Size(106, 42);
+            this.btnItemProperties.TabIndex = 10;
+            this.btnItemProperties.Text = "Chọn thuộc tính \r\ncho Item";
+            this.btnItemProperties.Click += new System.EventHandler(this.btnItemProperties_Click);
             // 
             // idTextEdit
             // 
             this.idTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemBindingSource, "Id", true));
-            this.idTextEdit.Location = new System.Drawing.Point(35, 12);
+            this.idTextEdit.Location = new System.Drawing.Point(143, 12);
             this.idTextEdit.Name = "idTextEdit";
             this.idTextEdit.Size = new System.Drawing.Size(63, 20);
             this.idTextEdit.TabIndex = 1;
@@ -189,15 +238,15 @@
             // nameTextEdit
             // 
             this.nameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemBindingSource, "Name", true));
-            this.nameTextEdit.Location = new System.Drawing.Point(180, 12);
+            this.nameTextEdit.Location = new System.Drawing.Point(288, 12);
             this.nameTextEdit.Name = "nameTextEdit";
-            this.nameTextEdit.Size = new System.Drawing.Size(398, 20);
+            this.nameTextEdit.Size = new System.Drawing.Size(430, 20);
             this.nameTextEdit.TabIndex = 3;
             // 
             // categoryIdLookUpEdit
             // 
             this.categoryIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemBindingSource, "CategoryId", true));
-            this.categoryIdLookUpEdit.Location = new System.Drawing.Point(666, 12);
+            this.categoryIdLookUpEdit.Location = new System.Drawing.Point(192, 48);
             this.categoryIdLookUpEdit.Name = "categoryIdLookUpEdit";
             this.categoryIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -217,7 +266,7 @@
             // brandIdLookUpEdit
             // 
             this.brandIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemBindingSource, "BrandId", true));
-            this.brandIdLookUpEdit.Location = new System.Drawing.Point(1040, 12);
+            this.brandIdLookUpEdit.Location = new System.Drawing.Point(566, 48);
             this.brandIdLookUpEdit.Name = "brandIdLookUpEdit";
             this.brandIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -237,7 +286,7 @@
             // isActiveCheckEdit
             // 
             this.isActiveCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemBindingSource, "IsActive", true));
-            this.isActiveCheckEdit.Location = new System.Drawing.Point(1266, 13);
+            this.isActiveCheckEdit.Location = new System.Drawing.Point(792, 48);
             this.isActiveCheckEdit.Name = "isActiveCheckEdit";
             this.isActiveCheckEdit.Properties.Caption = "";
             this.isActiveCheckEdit.Size = new System.Drawing.Size(32, 19);
@@ -258,7 +307,8 @@
             this.tableAdapterManager.PropertyStatusTableAdapter = null;
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.PropertyValueTypeTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // brandTableAdapter
             // 
@@ -286,15 +336,16 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.itemBindingNavigatorSaveItem});
-            this.itemBindingNavigator.Location = new System.Drawing.Point(0, 58);
+            this.itemBindingNavigatorSaveItem,
+            this.toolStripButtonAddNew});
+            this.itemBindingNavigator.Location = new System.Drawing.Point(2, 2);
             this.itemBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.itemBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.itemBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.itemBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.itemBindingNavigator.Name = "itemBindingNavigator";
             this.itemBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.itemBindingNavigator.Size = new System.Drawing.Size(1456, 25);
+            this.itemBindingNavigator.Size = new System.Drawing.Size(986, 25);
             this.itemBindingNavigator.TabIndex = 1;
             this.itemBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -306,6 +357,7 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Visible = false;
             // 
             // bindingNavigatorCountItem
             // 
@@ -396,13 +448,13 @@
             this.itemGridControl.Cursor = System.Windows.Forms.Cursors.Default;
             this.itemGridControl.DataSource = this.itemBindingSource;
             this.itemGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemGridControl.Location = new System.Drawing.Point(0, 83);
+            this.itemGridControl.Location = new System.Drawing.Point(2, 2);
             this.itemGridControl.MainView = this.gridView1;
             this.itemGridControl.Name = "itemGridControl";
             this.itemGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemLookUpEditCategory,
-            this.repositoryItemLookUpEditBrand});
-            this.itemGridControl.Size = new System.Drawing.Size(1456, 645);
+            this.repositoryItemSearchLookUpEdit1,
+            this.repositoryItemLookUpEdit1});
+            this.itemGridControl.Size = new System.Drawing.Size(986, 631);
             this.itemGridControl.TabIndex = 2;
             this.itemGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -417,7 +469,7 @@
             this.colIsActive});
             this.gridView1.GridControl = this.itemGridControl;
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+            this.gridView1.OptionsView.ShowAutoFilterRow = true;
             // 
             // colId
             // 
@@ -438,45 +490,52 @@
             // 
             // colCategoryId
             // 
-            this.colCategoryId.ColumnEdit = this.repositoryItemLookUpEditCategory;
+            this.colCategoryId.ColumnEdit = this.repositoryItemSearchLookUpEdit1;
             this.colCategoryId.FieldName = "CategoryId";
             this.colCategoryId.Name = "colCategoryId";
             this.colCategoryId.Visible = true;
             this.colCategoryId.VisibleIndex = 2;
             this.colCategoryId.Width = 352;
             // 
-            // repositoryItemLookUpEditCategory
+            // repositoryItemSearchLookUpEdit1
             // 
-            this.repositoryItemLookUpEditCategory.AutoHeight = false;
-            this.repositoryItemLookUpEditCategory.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemSearchLookUpEdit1.AutoHeight = false;
+            this.repositoryItemSearchLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEditCategory.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Category")});
-            this.repositoryItemLookUpEditCategory.DataSource = this.categoryBindingSource;
-            this.repositoryItemLookUpEditCategory.DisplayMember = "Name";
-            this.repositoryItemLookUpEditCategory.Name = "repositoryItemLookUpEditCategory";
-            this.repositoryItemLookUpEditCategory.ValueMember = "Id";
+            this.repositoryItemSearchLookUpEdit1.DataSource = this.categoryBindingSource;
+            this.repositoryItemSearchLookUpEdit1.DisplayMember = "Name";
+            this.repositoryItemSearchLookUpEdit1.Name = "repositoryItemSearchLookUpEdit1";
+            this.repositoryItemSearchLookUpEdit1.ValueMember = "Id";
+            this.repositoryItemSearchLookUpEdit1.View = this.repositoryItemSearchLookUpEdit1View;
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowAutoFilterRow = true;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // colBrandId
             // 
-            this.colBrandId.ColumnEdit = this.repositoryItemLookUpEditBrand;
+            this.colBrandId.ColumnEdit = this.repositoryItemLookUpEdit1;
             this.colBrandId.FieldName = "BrandId";
             this.colBrandId.Name = "colBrandId";
             this.colBrandId.Visible = true;
             this.colBrandId.VisibleIndex = 3;
             this.colBrandId.Width = 157;
             // 
-            // repositoryItemLookUpEditBrand
+            // repositoryItemLookUpEdit1
             // 
-            this.repositoryItemLookUpEditBrand.AutoHeight = false;
-            this.repositoryItemLookUpEditBrand.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEditBrand.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Brand")});
-            this.repositoryItemLookUpEditBrand.DataSource = this.brandBindingSource;
-            this.repositoryItemLookUpEditBrand.DisplayMember = "Name";
-            this.repositoryItemLookUpEditBrand.Name = "repositoryItemLookUpEditBrand";
-            this.repositoryItemLookUpEditBrand.ValueMember = "Id";
+            this.repositoryItemLookUpEdit1.DataSource = this.brandBindingSource;
+            this.repositoryItemLookUpEdit1.DisplayMember = "Name";
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.ValueMember = "Id";
             // 
             // colIsActive
             // 
@@ -486,17 +545,61 @@
             this.colIsActive.VisibleIndex = 4;
             this.colIsActive.Width = 74;
             // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.ctrCategory1);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.panelControl2);
+            this.splitContainerControl1.Panel2.Controls.Add(this.panelControl1);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(1337, 728);
+            this.splitContainerControl1.SplitterPosition = 342;
+            this.splitContainerControl1.TabIndex = 3;
+            this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // ctrCategory1
+            // 
+            this.ctrCategory1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrCategory1.Location = new System.Drawing.Point(0, 0);
+            this.ctrCategory1.Name = "ctrCategory1";
+            this.ctrCategory1.Size = new System.Drawing.Size(342, 728);
+            this.ctrCategory1.TabIndex = 0;
+            this.ctrCategory1.IdCategoryChanged += new WSS.Financial.Backend.Category.ctrCategory.ChangedEventHandler(this.ctrCategory1_IdCategoryChanged);
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.itemBindingNavigator);
+            this.panelControl2.Controls.Add(this.itemGridControl);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(0, 93);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(990, 635);
+            this.panelControl2.TabIndex = 1;
+            // 
+            // toolStripButtonAddNew
+            // 
+            this.toolStripButtonAddNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAddNew.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAddNew.Image")));
+            this.toolStripButtonAddNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddNew.Name = "toolStripButtonAddNew";
+            this.toolStripButtonAddNew.Size = new System.Drawing.Size(66, 22);
+            this.toolStripButtonAddNew.Text = "Thêm mới";
+            this.toolStripButtonAddNew.Click += new System.EventHandler(this.toolStripButtonAddNew_Click);
+            // 
             // FrmItemInBrand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1456, 728);
-            this.Controls.Add(this.itemGridControl);
-            this.Controls.Add(this.itemBindingNavigator);
-            this.Controls.Add(this.panelControl1);
+            this.ClientSize = new System.Drawing.Size(1337, 728);
+            this.Controls.Add(this.splitContainerControl1);
             this.Name = "FrmItemInBrand";
             this.Text = "FrmItemInBrand";
             this.Load += new System.EventHandler(this.FrmItemInBrand_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditBrand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -514,10 +617,15 @@
             this.itemBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditCategory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditBrand)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -548,17 +656,25 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCategoryId;
         private DevExpress.XtraGrid.Columns.GridColumn colBrandId;
         private DevExpress.XtraGrid.Columns.GridColumn colIsActive;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnItemProperties;
         private DevExpress.XtraEditors.TextEdit idTextEdit;
         private DevExpress.XtraEditors.TextEdit nameTextEdit;
         private DevExpress.XtraEditors.LookUpEdit categoryIdLookUpEdit;
         private DevExpress.XtraEditors.LookUpEdit brandIdLookUpEdit;
         private DevExpress.XtraEditors.CheckEdit isActiveCheckEdit;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditCategory;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditBrand;
         private DBFinancialTableAdapters.CategoryTableAdapter categoryTableAdapter;
         private System.Windows.Forms.BindingSource categoryBindingSource;
         private DBFinancialTableAdapters.BrandTableAdapter brandTableAdapter;
         private System.Windows.Forms.BindingSource brandBindingSource;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private Category.ctrCategory ctrCategory1;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.SimpleButton btnLoadAll;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditCategory;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditBrand;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit1;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAddNew;
     }
 }

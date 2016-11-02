@@ -34,7 +34,9 @@ namespace QT.Moduls.Crawler
             bool success = false;
             while (html == "" && !success && tryLoop < loopTry)
             {
-                html = GetResponseString("", url, secondsTimeOut, out success, out charset, out status);
+                string chasetInput = "";
+                if (url.Contains("dienmayhcm.vn")) chasetInput = "iso-8859-1";
+                html = GetResponseString(chasetInput, url, secondsTimeOut, out success, out charset, out status);
                 tryLoop++;
             }
             if (success == false)
@@ -53,9 +55,16 @@ namespace QT.Moduls.Crawler
        , out string charSet
        , out WebExceptionStatus status)
         {
+
+            bool charsetFound = false;
             status = WebExceptionStatus.Success;
             success = false;
             charSet = charSetInput;
+            if (string.IsNullOrEmpty(charSetInput))
+            {
+                charsetFound = false;
+            }
+          
 
             if (string.IsNullOrEmpty(url)) { success = true; return ""; }
 
@@ -88,7 +97,7 @@ namespace QT.Moduls.Crawler
                         if (contentType.Contains("text/html"))
                         {
                             Encoding x = null;
-                            bool charsetFound = false;
+                          
 
                             try
                             {

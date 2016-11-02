@@ -9,24 +9,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 
-namespace WSS.Financial.Category
+namespace WSS.Financial.Backend.Category
 {
     public partial class ctrCategory : UserControl
     {
-        public delegate void ChangedEventHandler(WssCommon.ListBrandCommand command, EventArgs e);
-        public event ChangedEventHandler ExcuteCommand;
+        public delegate void ChangedEventHandler(EventArgs e);
+        public event ChangedEventHandler IdCategoryChanged;
         private static readonly ILog Log = LogManager.GetLogger(typeof(ctrCategory));
-        private WssCommon.ListBrandCommand _command = WssCommon.ListBrandCommand.ViewItemManager;
         public ctrCategory()
         {
             InitializeComponent();
         }
         public void InitControl()
         {
-            brandTableAdapter.Connection.ConnectionString = WssConnectionFinancial.ConnectionFinancial;
+            categoryTableAdapter.Connection.ConnectionString = WssConnectionFinancial.ConnectionFinancial;
             try
             {
-                brandTableAdapter.Fill(dBFinancial.Brand);
+                categoryTableAdapter.Fill(dBFinancial.Category);
+                treeListCategory.ExpandAll();
             }
             catch (Exception exception)
             {
@@ -34,33 +34,19 @@ namespace WSS.Financial.Category
                 Log.Error(exception);
             }
         }
-        public int GetIdCurrent()
+        public int GetIdCategoryCurrent()
         {
-            return Convert.ToInt32(idTextEdit.Text);
+            if (!string.IsNullOrEmpty(idTextEdit.Text))
+                return Convert.ToInt32(idTextEdit.Text);
+            else
+                return 0;
         }
-        public string GetBrandCurrent()
+        public string GetCategpryNameCurrent()
         {
             return this.nameTextEdit.Text;
         }
-        private void ViewItemInBrandToolStripMenuItem_Click(object sender, EventArgs e)
+        private void idTextEdit_EditValueChanged(object sender, EventArgs e)
         {
-            _command = WssCommon.ListBrandCommand.ViewItemManager;
-            ExcuteCommand(_command, e);
-        }
-
-        private void viewInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _command = WssCommon.ListBrandCommand.ViewInfo;
-            ExcuteCommand(_command, e);
-        }
-
-        private void gridView1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                contextMenuStrip1.Show(this.brandGridControl, new Point(e.X, e.Y));
-                //GetRowAt(gridView1, e.X, e.Y);
-            }
-        }
+            IdCategoryChanged(e);}
     }
 }

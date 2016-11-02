@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 
-namespace WSS.Financial.Brand
+namespace WSS.Financial.Backend.Brand
 {
     public partial class ctrBrand : UserControl
     {
@@ -61,6 +61,11 @@ namespace WSS.Financial.Brand
                 contextMenuStrip1.Show(this.brandGridControl, new Point(e.X, e.Y));
                 //GetRowAt(gridView1, e.X, e.Y);
             }
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            InitControl();
         }
     }
 }

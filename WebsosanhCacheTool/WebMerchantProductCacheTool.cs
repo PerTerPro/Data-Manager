@@ -12,12 +12,14 @@ using UTF_Converter;
 using WebsosanhCacheTool.ProductDataSetTableAdapters;
 using Websosanh.Core.Drivers.Redis;
 using ProtoBuf;
+using QT.Entities.MasOffer;
 
 namespace WebsosanhCacheTool
 {
     public class WebMerchantProductCacheTool
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof (WebMerchantProductCacheTool));
+        private static MasOfferAdapter masOffer = MasOfferAdapter.Instance();
 
         public static void InsertAllWebMerchantProductToCache(string connProductString)
         {
@@ -48,16 +50,27 @@ namespace WebsosanhCacheTool
             {
                 Log.Error("InsertAllWebMerchantProductToCache Error", ex);
             }
-
         }
 
         public static void InsertWebMerchantProductToCache(long companyID, string companyDomain, string connProductString)
         {
             try
             {
-                    //Get List Product Of Company
+                //Get List Product Of Company
                 var listWebMerchantProducts = WebMerchantProductBAL.GetListWebMerchantProductsOfCompany(companyID,
                         connProductString);
+
+                //XT. Change link if is MasOffer
+                if (masOffer.CheckIsMasOffer(companyID))
+                {
+                    
+                    foreach (var itemProduct in listWebMerchantProducts)
+                    {
+                        itemProduct.DetailUrl = masOffer.GetFullUrl(companyID, itemProduct.DetailUrl);
+                    }
+                    Log.Info("Masoffer: "+companyID + " : " + listWebMerchantProducts.Count);
+                }
+
                 if (listWebMerchantProducts.Count > 0)
                     {
                         var parts = CollectionUtilities.Partition<WebMerchantProduct>(listWebMerchantProducts, 10000);
@@ -73,7 +86,6 @@ namespace WebsosanhCacheTool
             {
                 Log.Error("InsertWebMerchantProductToCache Error", ex);
             }
-
         }
 
     }

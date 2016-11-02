@@ -7,11 +7,28 @@
     <ProjectGuid>{10EE609C-4D46-49E0-B70B-A6D4928AD304}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WSS.Financial</RootNamespace>
-    <AssemblyName>WSS.Financial</AssemblyName>
+    <RootNamespace>WSS.Financial.Backend</RootNamespace>
+    <AssemblyName>WSS.Financial.Backend</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +50,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Data.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -41,11 +62,21 @@
     <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="log4net">
       <HintPath>..\000\DLLs\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="LZ4">
+      <HintPath>DLLs\LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.1.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.1.0\lib\net451\protobuf-net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +85,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WSS.Financial.ItemBusiness">
+      <HintPath>DLLs\WSS.Financial.ItemBusiness.dll</HintPath>
+    </Reference>
+    <Reference Include="WSS.Financial.ItemDataAccess">
+      <HintPath>DLLs\WSS.Financial.ItemDataAccess.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brand\ctrBrand.cs">
@@ -61,6 +98,12 @@
     </Compile>
     <Compile Include="Brand\ctrBrand.Designer.cs">
       <DependentUpon>ctrBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Brand\FrmBrandManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Brand\FrmBrandManager.Designer.cs">
+      <DependentUpon>FrmBrandManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Category\ctrCategory.cs">
       <SubType>UserControl</SubType>
@@ -72,6 +115,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBFinancial.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddNewItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddNewItem.Designer.cs">
+      <DependentUpon>FrmAddNewItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddNewPropertyGroupByParentId.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddNewPropertyGroupByParentId.Designer.cs">
+      <DependentUpon>FrmAddNewPropertyGroupByParentId.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCategory.cs">
       <SubType>Form</SubType>
@@ -85,11 +140,23 @@
     <Compile Include="FrmItemInBrand.Designer.cs">
       <DependentUpon>FrmItemInBrand.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmProperty.cs">
+    <Compile Include="FrmItemProperties.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmProperty.Designer.cs">
-      <DependentUpon>FrmProperty.cs</DependentUpon>
+    <Compile Include="FrmItemProperties.Designer.cs">
+      <DependentUpon>FrmItemProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPropertyByCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPropertyByCategory.Designer.cs">
+      <DependentUpon>FrmPropertyByCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPropertyByGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPropertyByGroup.Designer.cs">
+      <DependentUpon>FrmPropertyByGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPropertyGroup.cs">
       <SubType>Form</SubType>
@@ -116,8 +183,17 @@
     <EmbeddedResource Include="Brand\ctrBrand.resx">
       <DependentUpon>ctrBrand.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Brand\FrmBrandManager.resx">
+      <DependentUpon>FrmBrandManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Category\ctrCategory.resx">
       <DependentUpon>ctrCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddNewItem.resx">
+      <DependentUpon>FrmAddNewItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddNewPropertyGroupByParentId.resx">
+      <DependentUpon>FrmAddNewPropertyGroupByParentId.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCategory.resx">
       <DependentUpon>FrmCategory.cs</DependentUpon>
@@ -125,8 +201,14 @@
     <EmbeddedResource Include="FrmItemInBrand.resx">
       <DependentUpon>FrmItemInBrand.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmProperty.resx">
-      <DependentUpon>FrmProperty.cs</DependentUpon>
+    <EmbeddedResource Include="FrmItemProperties.resx">
+      <DependentUpon>FrmItemProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPropertyByCategory.resx">
+      <DependentUpon>FrmPropertyByCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPropertyByGroup.resx">
+      <DependentUpon>FrmPropertyByGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPropertyGroup.resx">
       <DependentUpon>FrmPropertyGroup.cs</DependentUpon>
@@ -161,7 +243,9 @@
     </None>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -175,7 +259,37 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GABIZ_BASE\GABIZ.BASE.csproj">
+      <Project>{8c825289-f1a7-4699-9d54-eea95ec6ab21}</Project>
+      <Name>GABIZ.BASE</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

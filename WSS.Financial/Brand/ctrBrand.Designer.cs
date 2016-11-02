@@ -1,4 +1,4 @@
-﻿namespace WSS.Financial.Brand
+﻿namespace WSS.Financial.Backend.Brand
 {
     partial class ctrBrand
     {
@@ -34,10 +34,10 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.nameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.brandBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBFinancial = new WSS.Financial.DBFinancial();
+            this.dBFinancial = new WSS.Financial.Backend.DBFinancial();
             this.idTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.brandTableAdapter = new WSS.Financial.DBFinancialTableAdapters.BrandTableAdapter();
-            this.tableAdapterManager = new WSS.Financial.DBFinancialTableAdapters.TableAdapterManager();
+            this.brandTableAdapter = new WSS.Financial.Backend.DBFinancialTableAdapters.BrandTableAdapter();
+            this.tableAdapterManager = new WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager();
             this.brandGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,6 +48,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.viewInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewItemInBrandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReload = new DevExpress.XtraEditors.SimpleButton();
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -73,7 +74,7 @@
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(121, 24);
+            nameLabel.Location = new System.Drawing.Point(103, 24);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(38, 13);
             nameLabel.TabIndex = 2;
@@ -81,6 +82,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnReload);
             this.panelControl1.Controls.Add(nameLabel);
             this.panelControl1.Controls.Add(this.nameTextEdit);
             this.panelControl1.Controls.Add(idLabel);
@@ -88,13 +90,13 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(362, 62);
+            this.panelControl1.Size = new System.Drawing.Size(390, 62);
             this.panelControl1.TabIndex = 0;
             // 
             // nameTextEdit
             // 
             this.nameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.brandBindingSource, "Name", true));
-            this.nameTextEdit.Location = new System.Drawing.Point(165, 21);
+            this.nameTextEdit.Location = new System.Drawing.Point(147, 21);
             this.nameTextEdit.Name = "nameTextEdit";
             this.nameTextEdit.Size = new System.Drawing.Size(171, 20);
             this.nameTextEdit.TabIndex = 3;
@@ -132,7 +134,7 @@
             this.tableAdapterManager.PropertyStatusTableAdapter = null;
             this.tableAdapterManager.PropertyTableAdapter = null;
             this.tableAdapterManager.PropertyValueTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WSS.Financial.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WSS.Financial.Backend.DBFinancialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // brandGridControl
             // 
@@ -142,7 +144,7 @@
             this.brandGridControl.Location = new System.Drawing.Point(0, 62);
             this.brandGridControl.MainView = this.gridView1;
             this.brandGridControl.Name = "brandGridControl";
-            this.brandGridControl.Size = new System.Drawing.Size(362, 568);
+            this.brandGridControl.Size = new System.Drawing.Size(390, 568);
             this.brandGridControl.TabIndex = 2;
             this.brandGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -217,6 +219,15 @@
             this.ViewItemInBrandToolStripMenuItem.Text = "Quản lý Item thuộc Brand";
             this.ViewItemInBrandToolStripMenuItem.Click += new System.EventHandler(this.ViewItemInBrandToolStripMenuItem_Click);
             // 
+            // btnReload
+            // 
+            this.btnReload.Location = new System.Drawing.Point(324, 19);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(61, 23);
+            this.btnReload.TabIndex = 4;
+            this.btnReload.Text = "Reload";
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
             // ctrBrand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,7 +235,7 @@
             this.Controls.Add(this.brandGridControl);
             this.Controls.Add(this.panelControl1);
             this.Name = "ctrBrand";
-            this.Size = new System.Drawing.Size(362, 630);
+            this.Size = new System.Drawing.Size(390, 630);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -258,5 +269,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem viewInfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViewItemInBrandToolStripMenuItem;
+        private DevExpress.XtraEditors.SimpleButton btnReload;
     }
 }
