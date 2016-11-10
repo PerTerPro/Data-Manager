@@ -19,6 +19,7 @@ namespace WSS.IndividualCategoryWebsites.SolrProduct
         public const string SOLR_FIELD_NAME_LENGTH = "name_length";
         public const string SOLR_FIELD_CATEGORY_LEVEL2 = "category_level_2_id";
         public const string SOLR_FIELD_MERCHANT_SCORE = "merchant_score";
+        public const string SOLR_FIELD_VIEW_COUNT = "view_count";
         public const string SOLR_FIELD_VERSION = "_version_";
     }
 }

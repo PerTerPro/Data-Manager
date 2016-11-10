@@ -28,17 +28,18 @@ namespace WSS.Products.UpdateSingleProductServices
         private static readonly ILog Log = LogManager.GetLogger(typeof(UpdateSingleProductService));
         RabbitMQServer _rabbitMqServer;
         string _rabbitMqServerName = "";
-        private bool _isPromotion;
-        private bool _isXeMay;
+        private int _isPromotion;
+        private bool _isPriceBySku;
         private bool _isRunning = true;
         int _workerCount;
-        private HashSet<string> _skuHashSet;
-        private Dictionary<string, string> _promotionLazada;
+        private Dictionary<string, int> _priceWithSku;
+        private Dictionary<string, string> _promotionLazadaWithCategory;
+        private Dictionary<string, string> _promotionLazadaWithSku;
         public UpdateSingleProductService()
         {
             InitializeComponent();
             LoadConfig();
-            LoadListSkuLazada();
+            LoadPriceWithSkuLazada();
             LoadPromotionLazada();
             //OnStart(new string[] { });
         }
@@ -49,18 +50,29 @@ namespace WSS.Products.UpdateSingleProductServices
             _logConnectionString = ConfigurationSettings.AppSettings["LogConnectionString"];
             _rabbitMqServerName = ConfigurationSettings.AppSettings["rabbitMQServerName"];
             _workerCount = Common.Obj2Int(ConfigurationSettings.AppSettings["workerCount"]);
-            _isPromotion = Common.Obj2Bool(ConfigurationSettings.AppSettings["IsPromotion"]);
-            _isXeMay = Common.Obj2Bool(ConfigurationSettings.AppSettings["IsXeMay"]);
+            _isPromotion = Common.Obj2Int(ConfigurationSettings.AppSettings["IsPromotion"]);
+            _isPriceBySku = Common.Obj2Bool(ConfigurationSettings.AppSettings["isPriceBySku"]);
         }
         private void LoadPromotionLazada()
         {
-            _promotionLazada = new Dictionary<string, string>();
+            _promotionLazadaWithCategory = new Dictionary<string, string>();
+            _promotionLazadaWithSku = new Dictionary<string, string>();
             string line;
             try
             {
-                string executableLocation = Path.GetDirectoryName(
-                    Assembly.GetExecutingAssembly().Location);
-                string txtLocation = Path.Combine(executableLocation, "PromotionLazada.txt");
+                string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string txtLocation = "";
+                switch (_isPromotion)
+                {
+                    //Promotion theo Category
+                    case 1:
+                        txtLocation = Path.Combine(executableLocation, "PromotionLazadaByCat.txt");
+                        break;
+                    //Promotion theo Sku
+                    case 2:
+                        txtLocation = Path.Combine(executableLocation, "PromotionLazadaBySku.txt");
+                        break;
+                }
                 System.IO.StreamReader file =
                     new System.IO.StreamReader(txtLocation);
                 while ((line = file.ReadLine()) != null)
@@ -68,7 +80,18 @@ namespace WSS.Products.UpdateSingleProductServices
                     var promotion = line.Split('|');
                     try
                     {
-                        _promotionLazada.Add(promotion[0], promotion[1]);
+                        switch (_isPromotion)
+                        {
+                            //Promotion theo Category
+                            case 1:
+                                _promotionLazadaWithCategory.Add(promotion[0], promotion[1]);
+                                break;
+                            //Promotion theo Sku
+                            case 2:
+                                _promotionLazadaWithSku.Add(promotion[0], promotion[1]);
+                                break;
+                        }
+
                     }
                     catch (Exception exception)
                     {
@@ -82,20 +105,26 @@ namespace WSS.Products.UpdateSingleProductServices
                 Log.Error("Error read file: " + exception.Message);
             }
         }
-        private void LoadListSkuLazada()
+        private void LoadPriceWithSkuLazada()
         {
-            _skuHashSet = new HashSet<string>();
-            string line;
+            _priceWithSku = new Dictionary<string, int>();
             try
             {
-                string executableLocation = Path.GetDirectoryName(
-                    Assembly.GetExecutingAssembly().Location);
-                string txtLocation = Path.Combine(executableLocation, "ListSkuLazada.txt");
-                System.IO.StreamReader file =
-                    new System.IO.StreamReader(txtLocation);
+                var executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                var txtLocation = Path.Combine(executableLocation, "ListPriceWithSkuLazada.txt");
+                var file = new StreamReader(txtLocation);
+                string line;
                 while ((line = file.ReadLine()) != null)
                 {
-                    _skuHashSet.Add(line.Trim());
+                    var price = line.Split('|');
+                    try
+                    {
+                        _priceWithSku.Add(price[0], Common.Obj2Int(price[1]));
+                    }
+                    catch (Exception exception)
+                    {
+                        Log.Error("Error add price with sku to dict: " + exception.Message);
+                    }
                 }
                 file.Close();
             }
@@ -145,37 +174,42 @@ namespace WSS.Products.UpdateSingleProductServices
 
         private void UpdateSingleProduct(Product product, JobClient updateProductJobClient, JobClient downloadImageProductJobClient)
         {
-            #region Check xem phải xe máy k để giảm giá
-            if (_isXeMay)
+            #region Check Price
+
+            if (_isPriceBySku)
             {
-                if (_skuHashSet.Contains(product.MerchantSku))
-                {
-                    int discount = (int)5 * product.Price / 100;
-                    if (discount > 2500000)
-                        discount = 2500000;
-                    product.Price = product.Price - discount;
-                }
+                
             }
             #endregion
             #region Check Promotion
-            if (_isPromotion)
+            switch (_isPromotion)
             {
-                try
-                {
-                    if (_promotionLazada.ContainsKey(product.Categories[1]))
+                //Không có Promotion
+                case 0:
+                    product.PromotionInfo = "";
+                    break;
+                //Promotion theo Category
+                case 1:
+                    try
                     {
-                        product.PromotionInfo = _promotionLazada[product.Categories[1]];
+                        product.PromotionInfo = _promotionLazadaWithCategory.ContainsKey(product.Categories[1]) ? _promotionLazadaWithCategory[product.Categories[1]] : _promotionLazadaWithCategory["Default"];
                     }
-                    else
+                    catch (Exception exception)
                     {
-                        product.PromotionInfo = _promotionLazada["Default"];
-                        //Log.Info("category " + product.Categories[1] + " không tồn tại");
+                        Log.Error("Error check contain key " + exception.Message);
                     }
-                }
-                catch (Exception exception)
-                {
-                    Log.Error("Error check contain key " + exception.Message);
-                }
+                    break;
+                //Promotion theo SKU
+                case 2:
+                    try
+                    {
+                        product.PromotionInfo = _promotionLazadaWithSku.ContainsKey(product.MerchantSku) ? _promotionLazadaWithSku[product.MerchantSku] : "";
+                    }
+                    catch (Exception exception)
+                    {
+                        Log.Error("Error check contain key " + exception.Message);
+                    }
+                    break;
             }
             #endregion
             var productAdapter = new DBProductsTableAdapters.ProductTableAdapter();

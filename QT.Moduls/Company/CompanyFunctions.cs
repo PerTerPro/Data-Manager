@@ -227,7 +227,7 @@ namespace QT.Moduls.Company
                 //Nếu thay đổi hoặc giảm sản phẩm thì dừng update và ghi log
                 //Dung TotalVaid để so sánh nhưng để đỡ phải sửa code thì dùng totalproduct luôn nên k check đc lazada =))
                 //Comment bá đạo
-                if ((int)(ListProducts.Count / company.TotalProduct*100) < 50 || (company.TotalProduct - ListProducts.Count)>5000)
+                if ((int)(ListProducts.Count*100/company.TotalProduct) < 50 || (company.TotalProduct - ListProducts.Count)>10000)
                 {
                     HistoryDatafeedAdapter.InsertHistory(company.ID, company.DataFeedPath, ListProducts.Count, 0, 0, string.Format("Dừng update do số product ({0}) lấy trong datafeed chênh lệch với totalproduct {1}",ListProducts.Count,company.TotalProduct));
                 }

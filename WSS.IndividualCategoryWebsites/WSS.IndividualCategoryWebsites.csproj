@@ -85,6 +85,10 @@
     <Reference Include="SolrNet">
       <HintPath>..\000\DLLs\SolrNet.dll</HintPath>
     </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.1.605.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\StackExchange.Redis.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -121,6 +125,10 @@
     <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
       <HintPath>..\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
+    <Reference Include="Websosanh.Core.Drivers.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.Redis.dll</HintPath>
+    </Reference>
     <Reference Include="Websosanh.Core.Drivers.Solr">
       <HintPath>..\000\DLLs\Websosanh.Core.Drivers.Solr.dll</HintPath>
     </Reference>
@@ -135,6 +143,13 @@
     </Compile>
     <Compile Include="CtrlWebsite.Designer.cs">
       <DependentUpon>CtrlWebsite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataTeam\BlackListProductDataAccess.cs" />
+    <Compile Include="DataTeam\FrmSuggestRootProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataTeam\FrmSuggestRootProduct.Designer.cs">
+      <DependentUpon>FrmSuggestRootProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="DBIndi.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -191,6 +206,9 @@
     <Compile Include="WssConnection.cs" />
     <EmbeddedResource Include="CtrlWebsite.resx">
       <DependentUpon>CtrlWebsite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataTeam\FrmSuggestRootProduct.resx">
+      <DependentUpon>FrmSuggestRootProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddTagsWebsites.resx">
       <DependentUpon>frmAddTagsWebsites.cs</DependentUpon>
