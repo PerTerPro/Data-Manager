@@ -70,7 +70,7 @@ namespace WSS.UpdateRootProductMappingService
                                 var success = RootProductMappingCacheTool.InsertRootProductMappingCache(productID,
                                     searchEnginesServiceUrl);
                                 RootProductMappingCacheTool.InsertRootProductMappingCacheWithBlackList(productID,
-                                    searchEnginesServiceUrl);
+                                    searchEnginesServiceUrl,new TimeSpan(30,0,0,0));
                                 if (success)
                                 {
                                     var job = new Job {Data = BitConverter.GetBytes(productID)};

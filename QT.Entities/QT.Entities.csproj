@@ -244,7 +244,6 @@
     <Compile Include="DesciptionProduct.cs" />
     <Compile Include="DsQTCrawler.cs">
       <DependentUpon>DsQTCrawler.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DsQTCrawler.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -307,7 +306,6 @@
     <Compile Include="Data\SqlDB.cs" />
     <Compile Include="DB.cs">
       <DependentUpon>DB.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DBProduct.Designer.cs">
       <AutoGen>True</AutoGen>

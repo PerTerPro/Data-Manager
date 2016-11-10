@@ -20,6 +20,7 @@ using System.Text;
 using Newtonsoft.Json;
 using GABIZ.Base;
 using QT.Entities;
+using QT.Entities.MasOffer;
 
 namespace CacheManager
 {
@@ -35,7 +36,8 @@ namespace CacheManager
             _productConnectionString =
                 ConfigurationManager.ConnectionStrings["ProductConnectionString"].ToString();
             _userConnectionString = ConfigurationManager.ConnectionStrings["UserConnectionString"].ToString();
-            _searchEnginesServiceUrl = ConfigurationManager.AppSettings["searchEnginesServiceUrl"];           
+            _searchEnginesServiceUrl = ConfigurationManager.AppSettings["searchEnginesServiceUrl"];
+            MasOfferAdapter.SetConnection(_productConnectionString);
         }
 
         private void DisableButton(SimpleButton button)

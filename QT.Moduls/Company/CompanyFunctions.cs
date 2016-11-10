@@ -214,9 +214,10 @@ namespace QT.Moduls.Company
                 JobClient jobclient = new JobClient("UpdateProductBatch", GroupType.Topic,
                     "UpdateProduct.UpdateSingleProduct", true, rabbitMqServer);
                 foreach (var item in ListProducts)
-                {
+                { 
                     SendMessageToUpdateSingleProductServices(item, jobclient);
                 }
+                jobclient.Dispose();
                 Log.Info(
                     string.Format("Finished send message to UpdateSingleProductServices. {0} product of Company {1}",
                         ListProducts.Count, company.ID));
