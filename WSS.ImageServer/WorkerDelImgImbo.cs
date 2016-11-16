@@ -11,7 +11,7 @@ namespace ImboForm
     public class WorkerDelImgImbo : QueueingConsumer
     {
         private HandlerDelImgImbo h = new HandlerDelImgImbo();
-
+        //xuantrag
         public WorkerDelImgImbo() : base(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo), ConfigImbo.QueueDelImgImbo, false)
         {
 
