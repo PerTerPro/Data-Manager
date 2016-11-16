@@ -45,6 +45,7 @@ namespace WebsosanhCacheTool
                         var productDataTable = productTableAdapter.GetAllProductName(companyID);
                         for (int productRowIndex = 0; productRowIndex < productDataTable.Rows.Count; productRowIndex++)
                         {
+                            var productDict = productDataTable.ToDictionary(row => row.ID, row => row);
                             var productSign = new ProductSign();
                             var productRow = productDataTable[productRowIndex];
                             if (productRow["Name"] == DBNull.Value)

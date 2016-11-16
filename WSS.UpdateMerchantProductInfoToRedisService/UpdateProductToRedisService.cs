@@ -31,6 +31,7 @@ namespace WSS.UpdateProductToRedisService
         public UpdateProductToRedisService()
         {
             InitializeComponent();
+            //OnStart(new string[] {});
         }
 
         protected override void OnStart(string[] args)
@@ -40,6 +41,10 @@ namespace WSS.UpdateProductToRedisService
                 var productConnectionString =
                     ConfigurationManager.ConnectionStrings["productConnectionString"].ConnectionString;
                 MasOfferAdapter.SetConnection(productConnectionString);
+                //WebMerchantProductCacheTool.InsertWebMerchantProductToCache(2642071820174507179,
+                //"tiki.vn", productConnectionString);
+
+
                 var userConnecionString = ConfigurationManager.ConnectionStrings["userConnecionString"].ConnectionString;
                 string rabbitMQServerName = ConfigurationManager.AppSettings["rabbitMQServerName"];
                 string updateAllProductOfMerchantToRedisJobName =

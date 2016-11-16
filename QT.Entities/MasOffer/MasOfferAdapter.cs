@@ -14,7 +14,7 @@ namespace QT.Entities.MasOffer
         private   Dictionary<long, MasOfferCompany> _dicData = null;
         private  DateTime _lastSysnListMasoffer = DateTime.Now;
         private static MasOfferAdapter _ins;
-        private ILog _log = log4net.LogManager.GetLogger(typeof (MasOfferAdapter));
+        private static ILog _log = log4net.LogManager.GetLogger(typeof (MasOfferAdapter));
 
         public MasOfferAdapter()
         {
@@ -30,35 +30,39 @@ namespace QT.Entities.MasOffer
         {
             if (connectionString != _connectionProduct)
             {
-           
                 _connectionProduct = connectionString;
                 _sqlDb = new SqlDb(MasOfferAdapter._connectionProduct);
+                _log.Info("MasOffer connected!");
             }
 
         }
 
+        private static object _lock = new object();
         private  void SyncListMasOffer()
         {
             try
             {
-                if (_dicData == null || (DateTime.Now - _lastSysnListMasoffer).TotalMinutes > 120)
+                lock (_lock)
                 {
-                    if (_dicData == null) _dicData = new Dictionary<long, MasOfferCompany>();
-                    _dicData.Clear();
-                    DataTable tblData = _sqlDb.GetTblData("prc_Company_GetMasOfferAll", CommandType.StoredProcedure,
-                        null);
-                    foreach (DataRow variable in tblData.Rows)
+                    if (_dicData == null || (DateTime.Now - _lastSysnListMasoffer).TotalMinutes > 120)
                     {
-                        long companyId = Convert.ToInt64(variable["Id"]);
-                        _dicData.Add(companyId, new MasOfferCompany()
+                        if (_dicData == null) _dicData = new Dictionary<long, MasOfferCompany>();
+                        _dicData.Clear();
+                        DataTable tblData = _sqlDb.GetTblData("prc_Company_GetMasOfferAll", CommandType.StoredProcedure,
+                            null);
+                        foreach (DataRow variable in tblData.Rows)
                         {
-                            Id = companyId,
-                            MasOfferCode = Common.Obj2String(variable["MasOfferCode"]),
-                            SubDomain = Common.Obj2String(variable["SubDomain"]),
-                        });
+                            long companyId = Convert.ToInt64(variable["Id"]);
+                            _dicData.Add(companyId, new MasOfferCompany()
+                            {
+                                Id = companyId,
+                                MasOfferCode = Common.Obj2String(variable["MasOfferCode"]),
+                                SubDomain = Common.Obj2String(variable["SubDomain"]),
+                            });
+                        }
+                        _lastSysnListMasoffer = DateTime.Now;
+                        _log.Info(string.Format("Last sync data Company Masoffer {0}", _lastSysnListMasoffer));
                     }
-                    _lastSysnListMasoffer = DateTime.Now;
-                    _log.Info(string.Format("Last sync data Company Masoffer {0}", _lastSysnListMasoffer));
                 }
             }
             catch (Exception ex01)
@@ -82,9 +86,11 @@ namespace QT.Entities.MasOffer
             if (this.CheckIsMasOffer(companyId))
             {
                 var ms = this._dicData[companyId];
-                return string.Format(@"https://{0}/v0/{1}/websosanh/?go={2}",
+                var urlMas = string.Format(@"https://{0}/v0/{1}/websosanh/?go={2}",
                     (string.IsNullOrEmpty(ms.SubDomain)) ? "go.masoffer.net" : ms.SubDomain, ms.MasOfferCode,
                     System.Web.HttpUtility.UrlEncode(url));
+                //_log.Info("UrlMasOffer: " + urlMas);
+                return urlMas;
             }
             return url;
         }

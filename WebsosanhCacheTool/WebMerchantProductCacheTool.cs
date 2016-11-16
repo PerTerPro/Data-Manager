@@ -63,10 +63,12 @@ namespace WebsosanhCacheTool
                 //XT. Change link if is MasOffer
                 if (masOffer.CheckIsMasOffer(companyID))
                 {
+                    
                     foreach (var itemProduct in listWebMerchantProducts)
                     {
                         itemProduct.DetailUrl = masOffer.GetFullUrl(companyID, itemProduct.DetailUrl);
                     }
+                    Log.Info("Masoffer: "+companyID + " : " + listWebMerchantProducts.Count);
                 }
 
                 if (listWebMerchantProducts.Count > 0)

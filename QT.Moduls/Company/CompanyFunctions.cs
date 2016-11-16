@@ -214,9 +214,10 @@ namespace QT.Moduls.Company
                 JobClient jobclient = new JobClient("UpdateProductBatch", GroupType.Topic,
                     "UpdateProduct.UpdateSingleProduct", true, rabbitMqServer);
                 foreach (var item in ListProducts)
-                {
+                { 
                     SendMessageToUpdateSingleProductServices(item, jobclient);
                 }
+                jobclient.Dispose();
                 Log.Info(
                     string.Format("Finished send message to UpdateSingleProductServices. {0} product of Company {1}",
                         ListProducts.Count, company.ID));
@@ -227,7 +228,7 @@ namespace QT.Moduls.Company
                 //Nếu thay đổi hoặc giảm sản phẩm thì dừng update và ghi log
                 //Dung TotalVaid để so sánh nhưng để đỡ phải sửa code thì dùng totalproduct luôn nên k check đc lazada =))
                 //Comment bá đạo
-                if ((int)(ListProducts.Count / company.TotalProduct*100) < 80 || (company.TotalProduct - ListProducts.Count)>3000)
+                if ((int)(ListProducts.Count*100/company.TotalProduct) < 50 || (company.TotalProduct - ListProducts.Count)>10000)
                 {
                     HistoryDatafeedAdapter.InsertHistory(company.ID, company.DataFeedPath, ListProducts.Count, 0, 0, string.Format("Dừng update do số product ({0}) lấy trong datafeed chênh lệch với totalproduct {1}",ListProducts.Count,company.TotalProduct));
                 }
@@ -1248,6 +1249,11 @@ namespace QT.Moduls.Company
 
                     #region ID
                     var decodedUrl = HttpUtility.UrlDecode(tmpProduct.DetailUrl);
+                    if (company.ID == 3502170206813664485)
+                    {
+                        decodedUrl = HttpUtility.UrlDecode(decodedUrl);
+                    }
+                    
                     string originalUrl = string.Empty;
                     if (!string.IsNullOrEmpty(datafeedConfig.RegexConfigUrl))
                     {
