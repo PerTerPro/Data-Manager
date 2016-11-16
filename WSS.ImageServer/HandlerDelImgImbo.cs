@@ -10,7 +10,7 @@ namespace ImboForm
     {
         public void ProcessJob(JobWaitDelImg deserializeObject)
         {
-           
+           //Del data
         }
     }
 }
