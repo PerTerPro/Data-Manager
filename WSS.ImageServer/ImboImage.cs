@@ -11,7 +11,7 @@ using System.Security.Cryptography;
 
 namespace ImboForm
 {
-    public class ImboImage
+    public  class ImboImage
     {
         private static ImboImage _instance;
 
@@ -20,12 +20,12 @@ namespace ImboForm
             return _instance ?? (_instance = new ImboImage());
         }
 
-        private ILog _log = LogManager.GetLogger(typeof (ImboImage));
+        private static ILog _log = LogManager.GetLogger(typeof (ImboImage));
         private string PreLInk = "";
         private const string _salt = "P&0myWHq";
 
 
-        private string CreateToken(string message, string secret)
+        private static string CreateToken(string message, string secret)
         {
             secret = secret ?? "";
             var encoding = new System.Text.ASCIIEncoding();
@@ -54,14 +54,14 @@ namespace ImboForm
 
         }
 
-        public string PushImage(string publicKey, string privateKey, string file, string userName)
+        public static string PushImage(string publicKey, string privateKey, string file, string userName)
         {
-            string urlQuery = string.Format("http://192.168.100.34/users/{0}/images", userName);
+            string urlQuery = string.Format("http://172.22.1.226/users/{0}/images", userName);
             var request = (HttpWebRequest)WebRequest.Create(urlQuery);
             var accessToken = "";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
             string str = "POST" + "|" + urlQuery + "|" + publicKey + "|" + strDate;
-            string signleData = this.CreateToken(str, privateKey);
+            string signleData = CreateToken(str, privateKey);
             request.Headers.Add("X-Imbo-PublicKey", "xtpu");
             request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
             request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);

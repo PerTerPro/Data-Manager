@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ImboForm
 {
-    class WorkerUpImageId
+    public class HandlerDelImgImbo
     {
+        public void ProcessJob(JobWaitDelImg deserializeObject)
+        {
+           
+        }
     }
 }

@@ -30,75 +30,79 @@ namespace ImboForm
 
         private static void Main(string[] args)
         {
-            TestReadImbo t1 = new TestReadImbo();
-            t1.TestPerformanceDownload();
+            //TestReadImbo t1 = new TestReadImbo();
+            //t1.TestPerformanceDownload();
 
        
-            Thread.Sleep(10000000);
+            //Thread.Sleep(10000000);
 
 
-            //WorkerUploadImage w1 = new WorkerUploadImage();
+            //var  imboImage = ImboImage.Instance();
+            //imboImage.PushImage("xtpu", "xtpi", @"C:\Users\xuantrang\Documents\bb3249c2-fd7c-4858-a9d0-491eae5f0cd4.jpg", "xtpu");
+            //return;
+
+            //WorkerUpImgToServer w1 = new WorkerUpImgToServer();
             //w1.StartConsume();
             //while (true)
-            //{
-            //    try
+            //{//    try
             //    {
             //        ImboImage imboImage = ImboImage.Instance();
-            //        imboImage.PushImage("xtpu", "xtpi", @"C:\Users\xuantrang\Documents\bb3249c2-fd7c-4858-a9d0-491eae5f0cd4.jpg","xtpu");
+            //        imboImage.PushImage("xtpu", "xtpi", @"C:\Users\xuantrang\Documents\bb3249c2-fd7c-4858-a9d0-491eae5f0cd4.jpg", "xtpu");
             //        return;
             //    }
             //    catch (Exception ex)
             //    {
-            //        log.Error(ex);
-            //        Console.ReadLine();}
+            //        Log.Error(ex);
+            //        Console.ReadLine();
+            //    }
             //}
 
-            return;
+            //return;
             
-            string help = "1. PushJob. 2. Download 3.TestHanlder";
-            Console.WriteLine(help);
-            string str = Console.ReadLine();
-            if (str == "1"){
-                    Task.Factory.StartNew(PushImageData);
+            //string help = "1. PushJob. 2. Download 3.TestHanlder";
+            //Console.WriteLine(help);
+            //string str = Console.ReadLine();
+            //if (str == "1"){
+            //        Task.Factory.StartNew(PushImageData);
             
-            }
-            else if (str == "2")
-            {
-                SettingSystem ss = SettingSystem.GetSetting();
-                for (int i = 0; i < ss.Thread; i++)
-                {Task.Factory.StartNew(() =>
-                    {
-                        WorkerUploadImage w = new WorkerUploadImage();
-                        w.StartConsume();
-                        return;
-                    });
-                }
-                Thread.Sleep(10000000);
-                return;
-            }
-            else if (str == "3")
-            {
-               Tester t = new Tester();
-               t.Test1();
-                Thread.Sleep(1000000);
-            }
-            return;
+            //}
+            //else if (str == "2")
+            //{
+            //    SettingSystem ss = SettingSystem.GetSetting();
+            //    for (int i = 0; i < ss.Thread; i++)
+            //    {Task.Factory.StartNew(() =>
+            //        {
+            //            WorkerUpImgToServer w = new WorkerUpImgToServer();
+            //            w.StartConsume();
+            //            return;
+            //        });
+            //    }
+            //    Thread.Sleep(10000000);
+            //    return;
+            //}
+            //else if (str == "3")
+            //{
+            //   Tester t = new Tester();
+            //   t.Test1();
+            //    Thread.Sleep(1000000);
+            //}
+            //return;
          
 
 
-            TestData();
-            Thread.Sleep(10000000);
-            return;
-
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    Task.Factory.StartNew(() =>
-            //    {
-            DownloadImage();
-            //    });
-
-            //}
+            //TestData();
             //Thread.Sleep(10000000);
+            //return;
+
+            ////for (int i = 0; i < 5; i++)
+            ////{
+            ////    Task.Factory.StartNew(() =>
+            ////    {
+            //DownloadImage();
+            ////    });
+
+            ////}
+            ////Thread.Sleep(10000000);
         }
 
         private static void TestData()
@@ -174,8 +178,7 @@ FETCH NEXT @RowspPage ROWS ONLY;
 
 
 
-        private static
-            void DownloadImage()
+        private static  void DownloadImage()
         {
             int page = 1;
 
@@ -269,8 +272,7 @@ FETCH NEXT @RowspPage ROWS ONLY;
         }
 
 
-        private static
-            void BeginOpenReadCallback(IAsyncResult ar)
+        private static  void BeginOpenReadCallback(IAsyncResult ar)
         {
             FtpClient conn = ar.AsyncState as FtpClient;
             try
