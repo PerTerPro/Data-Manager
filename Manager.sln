@@ -236,7 +236,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Crl.ProducProperties.Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.ImageServer.Service", "WSS.ImageServer.Service\WSS.ImageServer.Service.csproj", "{AAC7C1F5-68F1-49C0-8CB3-42933F9B8160}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.ImageServer.ServiceTests", "WSS.ImageServer.ServiceTests\WSS.ImageServer.ServiceTests.csproj", "{14C6E760-8A32-44C3-97FE-CF52319B256A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.ImageServerTests1", "WSS.ImageServerTests1\WSS.ImageServerTests1.csproj", "{7F738547-5374-472C-8A57-180B605E8A0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1279,16 +1279,16 @@ Global
 		{AAC7C1F5-68F1-49C0-8CB3-42933F9B8160}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{AAC7C1F5-68F1-49C0-8CB3-42933F9B8160}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{AAC7C1F5-68F1-49C0-8CB3-42933F9B8160}.Release|x86.ActiveCfg = Release|Any CPU
-		{14C6E760-8A32-44C3-97FE-CF52319B256A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14C6E760-8A32-44C3-97FE-CF52319B256A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14C6E760-8A32-44C3-97FE-CF52319B256A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{14C6E760-8A32-44C3-97FE-CF52319B256A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{14C6E760-8A32-44C3-97FE-CF52319B256A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{14C6E760-8A32-44C3-97FE-CF52319B256A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14C6E760-8A32-44C3-97FE-CF52319B256A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14C6E760-8A32-44C3-97FE-CF52319B256A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{14C6E760-8A32-44C3-97FE-CF52319B256A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{14C6E760-8A32-44C3-97FE-CF52319B256A}.Release|x86.ActiveCfg = Release|Any CPU
+		{7F738547-5374-472C-8A57-180B605E8A0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F738547-5374-472C-8A57-180B605E8A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F738547-5374-472C-8A57-180B605E8A0C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7F738547-5374-472C-8A57-180B605E8A0C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7F738547-5374-472C-8A57-180B605E8A0C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7F738547-5374-472C-8A57-180B605E8A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F738547-5374-472C-8A57-180B605E8A0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F738547-5374-472C-8A57-180B605E8A0C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7F738547-5374-472C-8A57-180B605E8A0C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7F738547-5374-472C-8A57-180B605E8A0C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

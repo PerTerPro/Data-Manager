@@ -12,9 +12,9 @@ using System.Security.Cryptography;
 
 namespace ImboForm
 {
-    public static class ImboImage
+    public static class ImboImageService
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof (ImboImage));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ImboImageService));
         private static string CreateToken(string message, string secret)
         {
             secret = secret ?? "";
@@ -24,7 +24,7 @@ namespace ImboForm
             using (var hmacsha256 = new HMACSHA256(keyByte))
             {
                 byte[] hashmessage = hmacsha256.ComputeHash(messageBytes);
-                return ImboImage.ToHexString(hashmessage);
+                return ImboImageService.ToHexString(hashmessage);
             }
         }
 
@@ -38,7 +38,50 @@ namespace ImboForm
             return hex.ToString();
         }
 
-    
+
+        public static string PushFromFile(string publicKey, string privateKey, string path, string userName, string host)
+        {
+            string idImageNew = "";
+            string urlQuery = host + @"/users/" + userName + @"/images";
+            string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
+            string str = "POST" + "|" + urlQuery + "|" + "wss" + "|" + strDate;
+            var signleData = CreateToken(str, privateKey);
+            try
+            {
+                if (File.Exists(path))
+                    using (var ftpStream = File.OpenRead(path))
+                    {
+                        var request = (HttpWebRequest)WebRequest.Create(urlQuery);
+                        request.Headers.Add("X-Imbo-PublicKey", "wss");
+                        request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
+                        request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
+                        request.ContentType = "application/json";
+                        request.Method = "POST";
+                        using (Stream stream = request.GetRequestStream())
+                        {
+                            ftpStream.CopyTo(stream);
+                        }
+                        using (WebResponse response = request.GetResponse())
+                        {
+                            using (var stream = response.GetResponseStream())
+                            {
+                                using (StreamReader sr99 = new StreamReader(stream))
+                                {
+                                    var responseContent = sr99.ReadToEnd();
+                                    dynamic d = JObject.Parse(responseContent);
+                                    idImageNew = d.imageIdentifier;
+                                    Log.Info(responseContent);
+                                }
+                            }
+                        }
+                    }
+            }
+            catch (Exception ex)
+            {
+                // ignored
+            }
+            return idImageNew;
+        }
 
         public static string PushFromFtpServer(string publicKey, string privateKey, string path, string userName, string host)
         {
