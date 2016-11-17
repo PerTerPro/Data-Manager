@@ -3754,6 +3754,13 @@ order by ISNULL([LastJobCrawlerFindNew],'2010-10-10 10:10:10') ASC  --Ưu tiên 
             frm.Show();
         }
 
+        private void btnAutoAddAdv_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmAutoAddCampaign frm = new FrmAutoAddCampaign();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
 
 
 
