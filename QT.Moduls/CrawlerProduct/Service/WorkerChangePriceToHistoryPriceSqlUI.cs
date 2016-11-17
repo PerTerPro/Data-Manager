@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Text;
 using System.Threading;
@@ -13,11 +14,11 @@ namespace QT.Moduls.CrawlerProduct.Service
 {
     public class WorkerChangePriceToHistoryPriceSqlUi : Worker
     {
-        private readonly SqlDb _sqlDbUi = new SqlDb("Data Source=42.112.28.93;Initial Catalog=ReviewsCMS;Persist Security Info=True;User ID=wss_news;Password=HzlRt4$$axzG-*UlpuL2gYDu");
+        private readonly SqlDb _sqlDbUi = new SqlDb(ConfigurationManager.AppSettings.Get("ConnectionString"));
         readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(WorkerChangePriceToHistoryPriceSqlUi));
         private CancellationToken _token;
-        public WorkerChangePriceToHistoryPriceSqlUi(string jobName, bool autoAck, RabbitMQServer rabbitMqServer, CancellationToken token)
-            : base(jobName, autoAck, rabbitMqServer)
+        public WorkerChangePriceToHistoryPriceSqlUi(CancellationToken token)
+            : base("UpdatedProduct.ChangePrice.ToSQLUI", false, RabbitMQManager.GetRabbitMQServer("rabbitMQ177"))
         {
             _token = token;
             SetMethod();

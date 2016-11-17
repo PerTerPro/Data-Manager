@@ -15,7 +15,7 @@ namespace ImboForm
         ProducerBasic pb = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),ConfigImbo.QueueDelImgImbo);
         public void ProcessJob(JobWaitDelImg deserializeObject)
         {
-           //Del data
+            
         }
 
         public void PushBack(string imgId)

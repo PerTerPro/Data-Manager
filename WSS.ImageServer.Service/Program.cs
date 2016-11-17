@@ -13,32 +13,31 @@ namespace WSS.ImageServer.Service
         static void Main(string[] args)
         {
 
-            for (int i = 0; i < 5; i++)
-            {
-                Task.Factory.StartNew(() =>
-                {
-                    WorkerUpImgToServer w = new WorkerUpImgToServer();
-                    w.StartConsume();
-                });
-            }
-            Thread.Sleep(100000);
+            //Parameter pt = Parameter.FromStr(string.Join(" ", args));
+            Console.WriteLine(@"Input location directory: ");
+            string strDeirectory = Console.ReadLine();
+            HandlerTransferFolder h = new HandlerTransferFolder();
+            h.TransferData(strDeirectory);
             return;
 
-            Parameter pt = null;
-            switch (pt.Cmd)
-            {
-                case "p_cpn_transf":
-                {
-                    
-                }
-                    break;
-                case "w_phc_tranf":
-                {
-                    
-                }
-                    break;
 
-            }
+            //switch (pt.Cmd)
+            //{
+            //    case "p_cpn_transf":
+            //    {
+                    
+            //    } break;
+            //    case "w_phc_tranf":
+            //    {
+                    
+            //    }
+            //        break;
+            //    case "upbylocal":
+            //    {
+                    
+            //    }
+            //        break;
+            //}
 
         }
     }

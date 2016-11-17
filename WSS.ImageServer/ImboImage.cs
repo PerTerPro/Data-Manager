@@ -83,6 +83,37 @@ namespace ImboForm
             return idImageNew;
         }
 
+        public static string DelteImage(string publicKey, string privateKey, string imageId, string userName, string host)
+        {
+            string idImageNew = "";
+            string urlQuery = host + @"/users/" + userName + @"/images" + "/" + imageId;
+            string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
+            string str = "DELETE" + "|" + urlQuery + "|" + "wss" + "|" + strDate;
+            var signleData = CreateToken(str, privateKey);
+            try
+            {
+
+                var request =  WebRequest.Create(urlQuery);
+                request.Headers.Add("X-Imbo-PublicKey", "wss");
+                request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
+                request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
+                request.ContentType = "application/json";
+                request.Method = "DELETE";
+                using (var stream = (HttpWebResponse)request.GetResponse())
+                {
+                    Stream  x =  stream.GetResponseStream();
+                    var y = new StreamReader(x);
+                    var mss = y.ReadToEnd();
+                    dynamic d = JObject.Parse(mss);
+                    idImageNew = d.imageIdentifier;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return idImageNew;
+        }
+
         public static string PushFromFtpServer(string publicKey, string privateKey, string path, string userName, string host)
         {
             string idImageNew = "";

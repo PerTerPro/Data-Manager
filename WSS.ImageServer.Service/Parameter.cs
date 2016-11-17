@@ -12,5 +12,10 @@ namespace WSS.ImageServer.Service
         public string[] Domain { get; set; }
         public int Thread { get; set; }
 
+
+        internal static Parameter FromStr(string p)
+        {
+            return null;
+        }
     }
 }

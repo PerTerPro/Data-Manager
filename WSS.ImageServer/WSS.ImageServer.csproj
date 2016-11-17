@@ -94,6 +94,8 @@
     <Compile Include="HandlerImgIdToSql.cs" />
     <Compile Include="HandlerImgThumb.cs" />
     <Compile Include="HandlerProductWaitUpImg.cs" />
+    <Compile Include="HandlerPushFromFolder.cs" />
+    <Compile Include="HandlerTransferFolder.cs" />
     <Compile Include="ImageAdapterSql.cs" />
     <Compile Include="ImboImage.cs" />
     <Compile Include="JobCmpWaitTransf.cs" />

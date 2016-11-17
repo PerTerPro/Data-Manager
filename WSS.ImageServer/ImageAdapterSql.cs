@@ -40,5 +40,13 @@ order by a.TotalProduct asc
                 , CommandType.Text, null);
             return (from DataRow variable in tbl.Rows select Convert.ToInt64(variable["ID"])).ToList();
         }
+
+        public bool CheckExitProduct(long productId)
+        {
+            return this.GetSqlDb().GetTblData("Select Id From Product Where Id = @Id", CommandType.Text, new[]
+            {
+                SqlDb.CreateParamteterSQL("Id", productId, SqlDbType.BigInt)
+            }).Rows.Count > 0;
+        }
     }
 }
