@@ -235,7 +235,34 @@ FETCH NEXT @rowsPage ROWS ONLY";
             }
         }
 
+        public DataTable RunQueryAndReturn(string query, CommandType commandType, SqlParameter[] arPara, bool ReturnTable)
+        {
+            if (ReturnTable)
+            {
+                this.command.CommandType = commandType;
+                this.command.CommandText = query;
+                this.command.Parameters.Clear();
+                if (arPara != null)
+                    this.command.Parameters.AddRange(arPara);
+                if (this.command.Connection.State == ConnectionState.Closed)
+                {
+                    this.command.Connection.Open();
+                }
+                return this.CreateDataTable(command);
 
+            }
+            else
+            {
+                this.command.ExecuteNonQuery();
+                return null;
+            }
+        }
+        protected internal DataTable CreateDataTable(SqlCommand command)
+        {
+            DataTable dataTable = new DataTable();
+            new SqlDataAdapter(command).Fill(dataTable);
+            return dataTable;
+        }
         public SqlParameter CreateParamteter(string namePara, object valueType, SqlDbType type)
         {
             SqlParameter para = new SqlParameter();

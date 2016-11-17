@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
-            this.barAndDockingController1 = new DevExpress.XtraBars.BarAndDockingController();
-            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.components = new System.ComponentModel.Container();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.barAndDockingController1 = new DevExpress.XtraBars.BarAndDockingController(this.components);
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barCommand = new DevExpress.XtraBars.Bar();
             this.barComandRunAll = new DevExpress.XtraBars.BarCheckItem();
             this.barComandStart = new DevExpress.XtraBars.BarButtonItem();
@@ -84,6 +85,7 @@
             this.btnFixPhoneError = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             this.btnViewReportFielCrawler = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAutoAddAdv = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItemMap = new DevExpress.XtraBars.BarSubItem();
             this.map_BuildTree = new DevExpress.XtraBars.BarButtonItem();
             this.map_VatGiaToTree = new DevExpress.XtraBars.BarButtonItem();
@@ -162,6 +164,7 @@
             this.btnNotifycation = new DevExpress.XtraBars.BarButtonItem();
             this.btnCrawlerProductLog = new DevExpress.XtraBars.BarButtonItem();
             this.btnImportLink = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemTrustedFollow = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItemSale = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.bt_Sales_ChonKhachHang = new DevExpress.XtraBars.BarButtonItem();
@@ -200,7 +203,7 @@
             this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.btnPushJobFindNewProduct = new DevExpress.XtraBars.BarButtonItem();
             this.btnStartConsumerCrawler = new DevExpress.XtraBars.BarButtonItem();
             this.btnStopConsumer = new DevExpress.XtraBars.BarButtonItem();
@@ -212,20 +215,19 @@
             this.btnCleanAllDuplicateProduct = new DevExpress.XtraBars.BarButtonItem();
             this.btnReport = new DevExpress.XtraBars.BarButtonItem();
             this.btnReportCrawler = new DevExpress.XtraBars.BarButtonItem();
-            this.popupMenu2 = new DevExpress.XtraBars.PopupMenu();
+            this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.btnABC = new DevExpress.XtraBars.BarButtonItem();
             this.btnTopQueue = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.ListCompanyDockPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.ctrListWebSite1 = new QT.Moduls.ctrListWebSite();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
-            this.timerHistory = new System.Windows.Forms.Timer();
-            this.timer1 = new System.Windows.Forms.Timer();
-            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemTrustedFollow = new DevExpress.XtraBars.BarButtonItem();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.timerHistory = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -452,9 +454,10 @@
             this.barButtonItem19,
             this.btnViewReportFielCrawler,
             this.barButtonItem12,
-            this.barButtonItemTrustedFollow});
+            this.barButtonItemTrustedFollow,
+            this.btnAutoAddAdv});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 205;
+            this.barManager1.MaxItemId = 206;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
@@ -745,7 +748,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCheckClassification),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnFixPhoneError),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnViewReportFielCrawler)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnViewReportFielCrawler),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnAutoAddAdv)});
             this.barSubItemTools.Name = "barSubItemTools";
             // 
             // tool_Main
@@ -901,6 +905,13 @@
             this.btnViewReportFielCrawler.Id = 202;
             this.btnViewReportFielCrawler.Name = "btnViewReportFielCrawler";
             this.btnViewReportFielCrawler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnViewReportFielCrawler_ItemClick);
+            // 
+            // btnAutoAddAdv
+            // 
+            this.btnAutoAddAdv.Caption = "Auto Add Adv Campaign";
+            this.btnAutoAddAdv.Id = 205;
+            this.btnAutoAddAdv.Name = "btnAutoAddAdv";
+            this.btnAutoAddAdv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAutoAddAdv_ItemClick);
             // 
             // barSubItemMap
             // 
@@ -1520,6 +1531,13 @@
             this.btnImportLink.Name = "btnImportLink";
             this.btnImportLink.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImportLink_ItemClick);
             // 
+            // barButtonItemTrustedFollow
+            // 
+            this.barButtonItemTrustedFollow.Caption = "TrustedFollow";
+            this.barButtonItemTrustedFollow.Id = 204;
+            this.barButtonItemTrustedFollow.Name = "barButtonItemTrustedFollow";
+            this.barButtonItemTrustedFollow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemTrustedFollow_ItemClick);
+            // 
             // barSubItemSale
             // 
             this.barSubItemSale.Caption = "Sales";
@@ -1918,6 +1936,12 @@
             this.barButtonItem19.Id = 201;
             this.barButtonItem19.Name = "barButtonItem19";
             // 
+            // barButtonItem12
+            // 
+            this.barButtonItem12.Caption = "barButtonItem12";
+            this.barButtonItem12.Id = 203;
+            this.barButtonItem12.Name = "barButtonItem12";
+            // 
             // repositoryItemTextEdit1
             // 
             this.repositoryItemTextEdit1.AutoHeight = false;
@@ -1969,19 +1993,6 @@
             // 
             this.timerHistory.Interval = 10000;
             this.timerHistory.Tick += new System.EventHandler(this.timerHistory_Tick);
-            // 
-            // barButtonItem12
-            // 
-            this.barButtonItem12.Caption = "barButtonItem12";
-            this.barButtonItem12.Id = 203;
-            this.barButtonItem12.Name = "barButtonItem12";
-            // 
-            // barButtonItemTrustedFollow
-            // 
-            this.barButtonItemTrustedFollow.Caption = "TrustedFollow";
-            this.barButtonItemTrustedFollow.Id = 204;
-            this.barButtonItemTrustedFollow.Name = "barButtonItemTrustedFollow";
-            this.barButtonItemTrustedFollow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemTrustedFollow_ItemClick);
             // 
             // XMain
             // 
@@ -2218,5 +2229,6 @@
         private DevExpress.XtraBars.BarButtonItem btnViewReportFielCrawler;
         private DevExpress.XtraBars.BarButtonItem barButtonItemTrustedFollow;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraBars.BarButtonItem btnAutoAddAdv;
     }
 }
