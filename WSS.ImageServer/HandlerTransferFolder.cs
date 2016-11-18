@@ -31,10 +31,11 @@ namespace ImboForm
         private bool _isDelData = false;
         private  ImageAdapterSql _imageAdapter = new ImageAdapterSql();
         private ILog _log = LogManager.GetLogger(typeof (HandlerTransferFolder));
+        private HashSet<long> _hsProductIds; 
 
         public HandlerTransferFolder()
         {
-            
+            _hsProductIds = _imageAdapter.GetProductIds();
         }
 
         public void TransferData(string directory)
@@ -60,7 +61,7 @@ namespace ImboForm
                 bool bExistproduct = false;
                 if (productId > 0)
                 {
-                    bExistproduct = _imageAdapter.CheckExitProduct(productId);
+                    bExistproduct = this._hsProductIds.Contains(productId);
                     if (bExistproduct)
                     {
                         imgId = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, file, ConfigImbo.User, ConfigImbo.Host);

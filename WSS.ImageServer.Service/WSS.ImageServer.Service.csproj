@@ -62,7 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="bat.bat">
+    <None Include="bat_Trans_ProductId_Current_ToRedis.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Img.Product.WaitDelFile.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="bat_PushImgLocalToImbo.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="bat_Img.Product.WaitUpdImgIdSql.bat">

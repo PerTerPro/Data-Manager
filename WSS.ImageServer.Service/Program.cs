@@ -32,7 +32,7 @@ namespace WSS.ImageServer.Service
                 HandlerTransferFolder h = new HandlerTransferFolder();
                 h.TransferData(pt.Directory);
             }
-            else if (pt.Cmd == "DelImgPushedImbo")
+            else if (pt.Cmd == "DelImgLocalPushedImbo")
             {
                 WorkerDelFileLocal w = new WorkerDelFileLocal(pt.Directory);
                 w.StartConsume();
@@ -47,6 +47,11 @@ namespace WSS.ImageServer.Service
             {
                 WorkerImgIdToSql w = new WorkerImgIdToSql();
                 w.StartConsume();
+            }
+            else if (pt.Cmd == "PushProductIdCurrentToRedis")
+            {
+                ImageAdapterSql img = new ImageAdapterSql();
+                img.ProcessAddProduct();
             }
 
 

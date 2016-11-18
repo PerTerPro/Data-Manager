@@ -12,6 +12,8 @@ namespace WSS.ImageServer.Service
 {
     public class ServiceImbo
     {
+        
+
         public static void PushAllProductTransfer(IEnumerable<long> domains)
         {
             HandlerCmpWaitTransf handlerCmpWaitTransf = new HandlerCmpWaitTransf();
@@ -37,6 +39,9 @@ namespace WSS.ImageServer.Service
             }
 
         }
+
+
+
 
         public static void RunWorkerTransfer(int numThreads)
         {
