@@ -459,26 +459,29 @@ namespace QT.Moduls.Maps
         {
             Wait.Show("Get data from SQL...");
             //IDJob = 22
-            var formatquerry = @"SELECT L.IDData, P.Name,L.LastUpdate,L.ContentJob FROM LogJob as L inner join Product as P ON L.IDData = P.ID  where IDJob = {0} and IDUser = {1} and Status = 11 and Valid = 0 and L.LastUpdate > '{2}' and L.LastUpdate < '{3}'";
+            var formatquerry = @"SELECT L.IDData, P.Name,L.LastUpdate,L.ContentJob,P.Status,P.Valid FROM LogJob as L inner join Product as P ON L.IDData = P.ID  where IDJob = {0} and IDUser = {1} and Status = 11 and Valid = 0 and L.LastUpdate > '{2}' and L.LastUpdate < '{3}'";
             if (checkEditLoadAllNew.Checked)
             {
-                formatquerry = @"SELECT L.IDData, P.Name,L.LastUpdate,L.ContentJob FROM LogJob as L inner join Product as P ON L.IDData = P.ID  where IDJob = {0} and IDUser = {1} and L.LastUpdate > '{2}' and L.LastUpdate < '{3}'";
+                formatquerry = @"SELECT L.IDData, P.Name,L.LastUpdate,L.ContentJob,P.Status,P.Valid FROM LogJob as L inner join Product as P ON L.IDData = P.ID  where IDJob = {0} and IDUser = {1} and L.LastUpdate > '{2}' and L.LastUpdate < '{3}'";
             }
-
             var querry = "";
+            string start;
+            string end;
             if (rdbHomNay.Checked)
             {
-                var start = DateTime.Now.ToString("yyyy-MM-dd") + " 0:00:00";
-                var end = DateTime.Now.ToString("yyyy-MM-dd") + " 23:59:59";
-                querry = string.Format(formatquerry, JobName.FrmEditeProductByCat_Them_moi_san_pham_goc, QT.Users.User.UserID, start, end);
+                start = DateTime.Now.ToString("yyyy-MM-dd") + " 0:00:00";
+                end = DateTime.Now.ToString("yyyy-MM-dd") + " 23:59:59";
             }
             else
             {
-                var start = DateTime.Now.AddDays(-6).ToString("yyyy-MM-dd") + " 0:00:00";
-                var end = DateTime.Now.ToString("yyyy-MM-dd") + " 23:59:59";
-                querry = string.Format(formatquerry, JobName.FrmEditeProductByCat_Them_moi_san_pham_goc, QT.Users.User.UserID, start, end);
+                start = DateTime.Now.AddDays(-6).ToString("yyyy-MM-dd") + " 0:00:00";
+                end = DateTime.Now.ToString("yyyy-MM-dd") + " 23:59:59";
             }
 
+            if (QT.Users.User.UserName == "admin")
+                querry = string.Format(@"SELECT L.IDData, P.Name,L.LastUpdate,L.ContentJob,P.Status,P.Valid,U.UserName FROM LogJob as L inner join Product as P ON L.IDData = P.ID inner join tblUser as U on L.IDUser = U.ID where IDJob = {0} and L.LastUpdate > '{1}' and L.LastUpdate < '{2}'", JobName.FrmEditeProductByCat_Them_moi_san_pham_goc,start,end);
+            else
+                querry = string.Format(formatquerry, JobName.FrmEditeProductByCat_Them_moi_san_pham_goc, QT.Users.User.UserID, start, end);
             var sqldb = new SqlDb(Server.ConnectionString);
             var productTable = new DataTable();
             try
