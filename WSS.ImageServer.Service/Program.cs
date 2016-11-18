@@ -13,11 +13,43 @@ namespace WSS.ImageServer.Service
         static void Main(string[] args)
         {
 
-            //Parameter pt = Parameter.FromStr(string.Join(" ", args));
-            Console.WriteLine(@"Input location directory: ");
-            string strDeirectory = Console.ReadLine();
-            HandlerTransferFolder h = new HandlerTransferFolder();
-            h.TransferData(strDeirectory);
+          
+            string strDeirectory = "";
+            Parameter pt = null;
+            if (args.Length == 0)
+            {
+                Console.WriteLine(@"Input location directory: ");
+                strDeirectory = Console.ReadLine();
+                pt=Parameter.FromStr(strDeirectory);
+            }
+            else
+            {
+                pt=Parameter.FromStr(string.Join(" ", args));
+            }
+
+            if (pt.Cmd == "PushImgLocalToImbo")
+            {
+                HandlerTransferFolder h = new HandlerTransferFolder();
+                h.TransferData(pt.Directory);
+            }
+            else if (pt.Cmd == "DelImgPushedImbo")
+            {
+                WorkerDelFileLocal w = new WorkerDelFileLocal(pt.Directory);
+                w.StartConsume();
+
+            }
+            else if(pt.Cmd=="DelImgImbo")
+            {
+                WorkerDelImgImbo w = new WorkerDelImgImbo();
+                w.StartConsume();
+            }
+            else if (pt.Cmd=="ProductImgIdToSql")
+            {
+                WorkerImgIdToSql w = new WorkerImgIdToSql();
+                w.StartConsume();
+            }
+
+            else i
             return;
 
 

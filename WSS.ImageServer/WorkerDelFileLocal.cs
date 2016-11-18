@@ -8,14 +8,17 @@ using Websosanh.Core.Drivers.RabbitMQ;
 
 namespace ImboForm
 {
-    public class WorkerDelImgImbo : QueueingConsumer
+    public class WorkerDelFileLocal : QueueingConsumer
     {
-        private HandlerDelImgImbo h = new HandlerDelImgImbo();
+        private HandlerDelFileLocal h = null;
+        private string p;
         //xuantrag
-        public WorkerDelImgImbo() : base(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo), ConfigImbo.QueueDelImgImbo, false)
+        public WorkerDelFileLocal(string p)
+            : base(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo), ConfigImbo.QueueWaitDelFile, false)
         {
-
+            h = new HandlerDelFileLocal(p);
         }
+
 
         public override void Init()
         {
@@ -24,7 +27,8 @@ namespace ImboForm
 
         public override void ProcessMessage(BasicDeliverEventArgs message)
         {
-            h.ProcessJob(Newtonsoft.Json.JsonConvert.DeserializeObject<JobDelImgImbo>(Encoding.UTF8.GetString(message.Body)));
+           
+            h.ProcessJob(Encoding.UTF8.GetString(message.Body));
             this.GetChannel().BasicAck(message.DeliveryTag, true);
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QT.Entities.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace ImboForm
 {
     public class HandlerImgIdToSql
     {
+        SqlDb sqlDbProduct = new 
         public void ProcessJob(JobUploadedImg job)
         {
             

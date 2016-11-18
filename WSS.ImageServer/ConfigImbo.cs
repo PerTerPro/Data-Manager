@@ -11,7 +11,7 @@ namespace ImboForm
          public static string QueueJobProductWaitUpImg = "Img.Product.WaitUpImg";
          public static string QueueCompanyWaitPushProductTransferImage = "Img.Company.WaitPushTransfer";
          public static string QueueUploadImgIdToSql = "Img.Product.ImgIdToSql";
-         public static string QueueDelImgImbo = "Img.Product.DelImgImbo";
+         public static string QueueDelImgImbo = "Img.Imbo.Delete";
          
          public static string PrivateKey = "123websosanh@195";
          public static string PublicKey = "wss";
@@ -23,6 +23,8 @@ namespace ImboForm
 
          public static string ExchangeImage = "ImageImbo";
          public static string RoutingKeyUploadImb = "Img.Product.UploadedImg";
-
+         public static string QueueWaitDelFile = "Img.Product.WaitDelFile";
+         public static string QueueErrorUpImbo = "Img.Product.ErrorPushImbo";
+         public static string QueueNoProduct = "Img.Product.NoProduct";
      }
 }

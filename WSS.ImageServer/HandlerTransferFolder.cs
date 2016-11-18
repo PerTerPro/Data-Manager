@@ -14,16 +14,28 @@ namespace ImboForm
 {
     public class HandlerTransferFolder
     {
-        private ProducerBasic pb = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),
+        private readonly ProducerBasic _pb = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),
             ConfigImbo.ExchangeImage, ConfigImbo.RoutingKeyUploadImb);
-        
+        private readonly ProducerBasic _producerWaitDelFile = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),
+            ConfigImbo.QueueWaitDelFile);
+        private readonly ProducerBasic _producerErrorPushImbo = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),
+            ConfigImbo.QueueErrorUpImbo);
+        private readonly ProducerBasic _producerNoProduct = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),
+         ConfigImbo.QueueNoProduct); 
+     
         private int _iCount = 0;
         private int _iCountSuccess = 0;
         private DateTime _dtStart = DateTime.Now;
+        private long _iPushed = 0;
 
         private bool _isDelData = false;
         private  ImageAdapterSql _imageAdapter = new ImageAdapterSql();
         private ILog _log = LogManager.GetLogger(typeof (HandlerTransferFolder));
+
+        public HandlerTransferFolder()
+        {
+            
+        }
 
         public void TransferData(string directory)
         {
@@ -43,27 +55,61 @@ namespace ImboForm
         {
             string imgId = "";
             long productId = GetProductId(file);
-            if (productId > 0)
+            if (!RedisImage.GetIns().Contain(productId))
             {
-                if (_imageAdapter.CheckExitProduct(productId))
+                bool bExistproduct = false;
+                if (productId > 0)
                 {
-                    imgId = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, file, ConfigImbo.User, ConfigImbo.Host);
-                    if (!string.IsNullOrEmpty(imgId))
+                    bExistproduct = _imageAdapter.CheckExitProduct(productId);
+                    if (bExistproduct)
                     {
-                       
-                        this.pb.PublishString(new JobUploadedImg()
+                        imgId = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, file, ConfigImbo.User, ConfigImbo.Host);
+                        if (!string.IsNullOrEmpty(imgId))
                         {
-                            ImageId = imgId,
-                            ProductId = productId,
-                            TimeUpload = DateTime.Now
-                        }.ToJson());
-                        _iCountSuccess++;
+                            this._pb.PublishString(new JobUploadedImg()
+                            {
+                                ImageId = imgId,
+                                ProductId = productId,
+                                TimeUpload = DateTime.Now,
+                                NameImage = GetNameFile(file)
+                            }.ToJson());
+                            _iCountSuccess++;
+                        }
+                        else
+                        {
+                            this._producerErrorPushImbo.PublishString(new JobFailPushImage()
+                            {
+                                File = file,
+                                ProductId = productId
+                            }.ToJson());
+                        }
+                    }
+                    else
+                    {
+                        this._producerNoProduct.PublishString(file);
                     }
                 }
+                _iCount++;
+                _log.Info(string.Format("{0}/{1} {2}=>{3} {4} ExistsProduct: {5}", _iCountSuccess, _iCount, productId, imgId, file, bExistproduct));
+
+                if (imgId != "" || bExistproduct == false)
+                {
+                    this._producerWaitDelFile.PublishString(file);
+                }
+                if (_iCountSuccess%1000 == 0) _log.Info(string.Format("Speech: {0}/s", (_iCountSuccess/(DateTime.Now - _dtStart).TotalSeconds)));
             }
-            _iCount++;
-            _log.Info(string.Format("{0}/{1} {2}=>{3}", _iCountSuccess, _iCount, productId, imgId));
-            if (_iCountSuccess%100 == 0) _log.Info(string.Format("Speech: {0}/s", (_iCountSuccess/(DateTime.Now - _dtStart).TotalSeconds)));
+            else
+            {
+                _iPushed++;
+                if (_iPushed%1000 == 0) _log.Info(string.Format("Pushed: {0}", _iPushed));
+            }
+            RedisImage.GetIns().Add(productId);
+        }
+
+        private string GetNameFile(string file)
+        {
+            if (file.Contains("/")) return Regex.Match(file, @"\\[^\\]*$").Captures[0].Value;
+            else return file;
         }
 
         private long GetProductId(string file)
