@@ -23,6 +23,12 @@ namespace ImboForm
         public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+
+        }
+
+        public static JobUploadedImg FromJson(string str)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<JobUploadedImg>(str);
         }
     }
 }

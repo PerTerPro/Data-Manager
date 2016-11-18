@@ -73,9 +73,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceImboTests.cs" />
     <Compile Include="WorkerCmpWaitTransfTests.cs" />
+    <Compile Include="WorkerImgIdToSqlTests.cs" />
     <Compile Include="WorkerUpImgToServerTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

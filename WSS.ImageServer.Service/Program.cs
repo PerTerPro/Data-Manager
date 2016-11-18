@@ -43,13 +43,14 @@ namespace WSS.ImageServer.Service
                 WorkerDelImgImbo w = new WorkerDelImgImbo();
                 w.StartConsume();
             }
-            else if (pt.Cmd=="ProductImgIdToSql")
+            else if (pt.Cmd=="UdpImgIdToSql")
             {
                 WorkerImgIdToSql w = new WorkerImgIdToSql();
                 w.StartConsume();
             }
 
-            else i
+
+            
             return;
 
 

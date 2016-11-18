@@ -48,5 +48,21 @@ order by a.TotalProduct asc
                 SqlDb.CreateParamteterSQL("Id", productId, SqlDbType.BigInt)
             }).Rows.Count > 0;
         }
+
+        public string GetImageId(long p)
+        {
+            DataTable tbl = this.GetSqlDb().GetTblData(string.Format(@"Select ImageId From Product Where Id = {0}", p), CommandType.Text, null);
+            if (tbl.Rows.Count == 0) return "";
+            else return QT.Entities.Common.Obj2String(tbl.Rows[0]["ImageId"]);
+        }
+
+        internal void UpdateImboProcess(long p1, string p2)
+        {
+            bool bOK = this.GetSqlDb().RunQuery("Update Product Set ImageId = @ImageId where Id = @Id", CommandType.Text, new[]
+            {
+                SqlDb.CreateParamteterSQL("ImageId", p2, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("Id", p1, SqlDbType.BigInt)
+            });
+        }
     }
 }

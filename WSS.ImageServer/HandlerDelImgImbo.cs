@@ -27,7 +27,7 @@ namespace ImboForm
             pb.PublishString(new JobDelImgImbo()
             {
                 ImageId = imgId
-            }.GetJson());
+            }.ToJson());
         }
     }
 
@@ -64,12 +64,6 @@ namespace ImboForm
             
         }
 
-        public void PushBack(string imgId)
-        {
-            pb.PublishString(new JobDelImgImbo()
-            {
-                ImageId = imgId
-            }.GetJson());
-        }
+     
     }
 }

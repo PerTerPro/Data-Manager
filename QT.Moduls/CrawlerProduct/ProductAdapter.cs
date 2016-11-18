@@ -28,7 +28,7 @@ namespace QT.Moduls.CrawlerProduct
         JobClient updateProductJobClient_ChangeData = null;
         JobClient updateProductJobClient_AddProduct = null;
 
-        RedisServer redisServer = RedisManager.GetRedisServer("redisCacheCrawlerProduct");
+      
         public QT.Moduls.Crawler.DBCrawlerTableAdapters.Price_LogsTableAdapter _adtPriceLog;
 
         private readonly SqlDb _sqlDb;

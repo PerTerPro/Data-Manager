@@ -8,7 +8,7 @@ namespace ImboForm
 {
      public static class ConfigImbo
      {
-         public static string QueueJobProductWaitUpImg = "Img.Product.WaitUpImg";
+         public static string QueueJobProductWaitUpImg = "Img.Product.WaitUpdImgIdSql";
          public static string QueueCompanyWaitPushProductTransferImage = "Img.Company.WaitPushTransfer";
          public static string QueueUploadImgIdToSql = "Img.Product.ImgIdToSql";
          public static string QueueDelImgImbo = "Img.Imbo.Delete";
