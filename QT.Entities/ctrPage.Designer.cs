@@ -90,7 +90,7 @@
             // 
             // cboSize
             // 
-            this.cboSize.EditValue = "50";
+            this.cboSize.EditValue = "1000";
             this.cboSize.Location = new System.Drawing.Point(5, 6);
             this.cboSize.Name = "cboSize";
             this.cboSize.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
