@@ -95,7 +95,7 @@ namespace WSS.Products.UpdateSingleProductServices
                     }
                     catch (Exception exception)
                     {
-                        Log.Error("Error add to dict: " + exception.Message);
+                        Log.Error("Promotion Error add to dict: " + exception.Message);
                     }
                 }
                 file.Close();
@@ -178,7 +178,10 @@ namespace WSS.Products.UpdateSingleProductServices
 
             if (_isPriceBySku)
             {
-                
+                if (_priceWithSku.ContainsKey(product.MerchantSku))
+                {
+                    product.Price = _priceWithSku[product.MerchantSku];
+                }
             }
             #endregion
             #region Check Promotion
@@ -203,7 +206,13 @@ namespace WSS.Products.UpdateSingleProductServices
                 case 2:
                     try
                     {
-                        product.PromotionInfo = _promotionLazadaWithSku.ContainsKey(product.MerchantSku) ? _promotionLazadaWithSku[product.MerchantSku] : "";
+                        if (_promotionLazadaWithSku.ContainsKey(product.MerchantSku))
+                        {
+                            product.PromotionInfo = _promotionLazadaWithSku[product.MerchantSku];
+                            Log.Info("Promotion: " + product.ID + " --- " + _promotionLazadaWithSku[product.MerchantSku]);
+                        }
+                        else
+                            product.PromotionInfo = "";
                     }
                     catch (Exception exception)
                     {

@@ -18,10 +18,17 @@ namespace ImboForm
         public long ProductId { get; set; }
         public string ImageId { get; set; }
         public DateTime TimeUpload { get; set; }
+        public string NameImage { get; set; }
 
         public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+
+        }
+
+        public static JobUploadedImg FromJson(string str)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<JobUploadedImg>(str);
         }
     }
 }

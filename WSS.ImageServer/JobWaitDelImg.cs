@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace ImboForm
 {
-    public class JobWaitDelImg
+    public class JobDelImgImbo
     {
         public string ImageId { get; set; }
 
-        public string GetJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
         }
 
-        public static JobWaitDelImg GetJson(string str)
+        public static JobDelImgImbo From(string str)
         {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<JobWaitDelImg>(str);
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<JobDelImgImbo>(str);
         }
+
+     
     }
 }

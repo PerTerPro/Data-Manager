@@ -32,29 +32,23 @@ namespace WSS.Service.Log.LogChangePriceToSQLUI
             InitializeComponent();
           
         }
-
         protected override void OnStart(string[] args)
         {
             InitializeComponent();
-
             try
             {
                 _log.Info("Start service");
                 var workerCount = Common.Obj2Int(ConfigurationManager.AppSettings["WorkCount"], 1);
-                var queue = ConfigurationManager.AppSettings["QueueRun"];
                 var rabbitMqServer = RabbitMQManager.GetRabbitMQServer("rabbitMQ177");
-
                 _cancelTokenSource = new CancellationTokenSource();
                 _workers = new WorkerChangePriceToHistoryPriceSqlUi[workerCount];
-
                 for (var i = 0; i < workerCount; i++)
                 {
                     var j = i;
                     Task.Factory.StartNew(() =>
                     {
                         _log.InfoFormat("Start worker {0}", j);
-                        _workers[j] = new WorkerChangePriceToHistoryPriceSqlUi(queue, false, rabbitMqServer,
-                            _cancelTokenSource.Token);
+                        _workers[j] = new WorkerChangePriceToHistoryPriceSqlUi(_cancelTokenSource.Token);
                         _workers[j].Start();
                     });
                 }

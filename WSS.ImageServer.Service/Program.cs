@@ -13,32 +13,69 @@ namespace WSS.ImageServer.Service
         static void Main(string[] args)
         {
 
-            for (int i = 0; i < 5; i++)
+          
+            string strDeirectory = "";
+            Parameter pt = null;
+            if (args.Length == 0)
             {
-                Task.Factory.StartNew(() =>
-                {
-                    WorkerUpImgToServer w = new WorkerUpImgToServer();
-                    w.StartConsume();
-                });
+                Console.WriteLine(@"Input location directory: ");
+                strDeirectory = Console.ReadLine();
+                pt=Parameter.FromStr(strDeirectory);
             }
-            Thread.Sleep(100000);
+            else
+            {
+                pt=Parameter.FromStr(string.Join(" ", args));
+            }
+
+            if (pt.Cmd == "PushImgLocalToImbo")
+            {
+                HandlerTransferFolder h = new HandlerTransferFolder();
+                h.TransferData(pt.Directory);
+            }
+            else if (pt.Cmd == "DelImgLocalPushedImbo")
+            {
+                WorkerDelFileLocal w = new WorkerDelFileLocal(pt.Directory);
+                w.StartConsume();
+
+            }
+            else if(pt.Cmd=="DelImgImbo")
+            {
+                WorkerDelImgImbo w = new WorkerDelImgImbo();
+                w.StartConsume();
+            }
+            else if (pt.Cmd=="UdpImgIdToSql")
+            {
+                WorkerImgIdToSql w = new WorkerImgIdToSql();
+                w.StartConsume();
+            }
+            else if (pt.Cmd == "PushProductIdCurrentToRedis")
+            {
+                ImageAdapterSql img = new ImageAdapterSql();
+                img.ProcessAddProduct();
+            }
+
+
+            
             return;
 
-            Parameter pt = null;
-            switch (pt.Cmd)
-            {
-                case "p_cpn_transf":
-                {
-                    
-                }
-                    break;
-                case "w_phc_tranf":
-                {
-                    
-                }
-                    break;
 
-            }
+            //switch (pt.Cmd)
+            //{
+            //    case "p_cpn_transf":
+            //    {
+                    
+            //    } break;
+            //    case "w_phc_tranf":
+            //    {
+                    
+            //    }
+            //        break;
+            //    case "upbylocal":
+            //    {
+                    
+            //    }
+            //        break;
+            //}
 
         }
     }

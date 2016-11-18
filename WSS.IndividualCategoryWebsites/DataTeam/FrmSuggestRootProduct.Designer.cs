@@ -52,6 +52,7 @@
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.ctrPage1 = new QT.Entities.ctrPage();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.btnExcel = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddToBlackList = new DevExpress.XtraEditors.SimpleButton();
             this.lbCategoryNameSelected = new DevExpress.XtraEditors.LabelControl();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
@@ -84,7 +85,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControl3);
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1505, 709);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1362, 709);
             this.splitContainerControl1.SplitterPosition = 390;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -218,7 +219,7 @@
             this.grdProduct.Location = new System.Drawing.Point(0, 44);
             this.grdProduct.MainView = this.gvProduct;
             this.grdProduct.Name = "grdProduct";
-            this.grdProduct.Size = new System.Drawing.Size(1110, 630);
+            this.grdProduct.Size = new System.Drawing.Size(967, 630);
             this.grdProduct.TabIndex = 2;
             this.grdProduct.UseEmbeddedNavigator = true;
             this.grdProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -297,7 +298,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl3.Location = new System.Drawing.Point(0, 674);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1110, 35);
+            this.panelControl3.Size = new System.Drawing.Size(967, 35);
             this.panelControl3.TabIndex = 1;
             // 
             // ctrPage1
@@ -311,14 +312,25 @@
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.btnExcel);
             this.panelControl2.Controls.Add(this.btnAddToBlackList);
             this.panelControl2.Controls.Add(this.lbCategoryNameSelected);
             this.panelControl2.Controls.Add(this.btnRefresh);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1110, 44);
+            this.panelControl2.Size = new System.Drawing.Size(967, 44);
             this.panelControl2.TabIndex = 0;
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcel.Location = new System.Drawing.Point(880, 6);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnExcel.TabIndex = 3;
+            this.btnExcel.Text = "Excel";
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnAddToBlackList
             // 
@@ -341,7 +353,7 @@
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(1020, 12);
+            this.btnRefresh.Location = new System.Drawing.Point(788, 6);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 0;
@@ -352,7 +364,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1505, 709);
+            this.ClientSize = new System.Drawing.Size(1362, 709);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "FrmSuggestRootProduct";
             this.Text = "FrmSuggestRootProduct";
@@ -407,5 +419,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.MemoEdit memoIdCompany;
         private DevExpress.XtraEditors.SimpleButton btnAddToBlackList;
+        private DevExpress.XtraEditors.SimpleButton btnExcel;
     }
 }

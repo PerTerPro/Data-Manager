@@ -105,5 +105,10 @@ namespace WSS.IndividualCategoryWebsites.DataTeam
             blackListProductDataAccess.SetListProductToBlackList(blackListId);
             LoadDataProduct();
         }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            WssCommon.ExportExcel(grdProduct,"goiy");
+        }
     }
 }

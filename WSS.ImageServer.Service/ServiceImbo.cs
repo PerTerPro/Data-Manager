@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace WSS.ImageServer.Service
 {
     public class ServiceImbo
     {
+        
+
         public static void PushAllProductTransfer(IEnumerable<long> domains)
         {
             HandlerCmpWaitTransf handlerCmpWaitTransf = new HandlerCmpWaitTransf();
@@ -37,6 +40,9 @@ namespace WSS.ImageServer.Service
 
         }
 
+
+
+
         public static void RunWorkerTransfer(int numThreads)
         {
             
@@ -51,5 +57,7 @@ namespace WSS.ImageServer.Service
         {
             
         }
+
+       
     }
 }
