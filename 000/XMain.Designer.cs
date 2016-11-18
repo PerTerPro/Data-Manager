@@ -228,6 +228,7 @@
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.timerHistory = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnUnValidProduct = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -455,9 +456,10 @@
             this.btnViewReportFielCrawler,
             this.barButtonItem12,
             this.barButtonItemTrustedFollow,
-            this.btnAutoAddAdv});
+            this.btnAutoAddAdv,
+            this.btnUnValidProduct});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 206;
+            this.barManager1.MaxItemId = 207;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
@@ -1374,7 +1376,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnNotifycation),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCrawlerProductLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnImportLink),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemTrustedFollow)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemTrustedFollow),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnUnValidProduct)});
             this.barSubItem2.Name = "barSubItem2";
             // 
             // barButtonItem8
@@ -1994,6 +1997,13 @@
             this.timerHistory.Interval = 10000;
             this.timerHistory.Tick += new System.EventHandler(this.timerHistory_Tick);
             // 
+            // btnUnValidProduct
+            // 
+            this.btnUnValidProduct.Caption = "Hạ sản phẩm";
+            this.btnUnValidProduct.Id = 206;
+            this.btnUnValidProduct.Name = "btnUnValidProduct";
+            this.btnUnValidProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUnValidProduct_ItemClick);
+            // 
             // XMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2230,5 +2240,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemTrustedFollow;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.BarButtonItem btnAutoAddAdv;
+        private DevExpress.XtraBars.BarButtonItem btnUnValidProduct;
     }
 }

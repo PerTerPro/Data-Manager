@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.lblB = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblA = new System.Windows.Forms.Label();
+            this.btnCreateLandingPage = new DevExpress.XtraEditors.SimpleButton();
             this.btnBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.txtPathEx = new DevExpress.XtraEditors.TextEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnCreateLandingPage = new DevExpress.XtraEditors.SimpleButton();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.lblA = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblB = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPathEx.Properties)).BeginInit();
@@ -58,6 +58,42 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1031, 100);
             this.panelControl1.TabIndex = 0;
+            // 
+            // lblB
+            // 
+            this.lblB.AutoSize = true;
+            this.lblB.Location = new System.Drawing.Point(182, 75);
+            this.lblB.Name = "lblB";
+            this.lblB.Size = new System.Drawing.Size(16, 13);
+            this.lblB.TabIndex = 5;
+            this.lblB.Text = "...";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(100, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(12, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "/";
+            // 
+            // lblA
+            // 
+            this.lblA.AutoSize = true;
+            this.lblA.Location = new System.Drawing.Point(12, 75);
+            this.lblA.Name = "lblA";
+            this.lblA.Size = new System.Drawing.Size(16, 13);
+            this.lblA.TabIndex = 3;
+            this.lblA.Text = "...";
+            // 
+            // btnCreateLandingPage
+            // 
+            this.btnCreateLandingPage.Location = new System.Drawing.Point(12, 38);
+            this.btnCreateLandingPage.Name = "btnCreateLandingPage";
+            this.btnCreateLandingPage.Size = new System.Drawing.Size(248, 23);
+            this.btnCreateLandingPage.TabIndex = 2;
+            this.btnCreateLandingPage.Text = "Create LandingPage";
+            this.btnCreateLandingPage.Click += new System.EventHandler(this.btnCreateLandingPage_Click);
             // 
             // btnBrowse
             // 
@@ -84,19 +120,6 @@
             this.panelControl2.Size = new System.Drawing.Size(1031, 423);
             this.panelControl2.TabIndex = 1;
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btnCreateLandingPage
-            // 
-            this.btnCreateLandingPage.Location = new System.Drawing.Point(12, 38);
-            this.btnCreateLandingPage.Name = "btnCreateLandingPage";
-            this.btnCreateLandingPage.Size = new System.Drawing.Size(248, 23);
-            this.btnCreateLandingPage.TabIndex = 2;
-            this.btnCreateLandingPage.Text = "Create LandingPage";
-            this.btnCreateLandingPage.Click += new System.EventHandler(this.btnCreateLandingPage_Click);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -106,32 +129,9 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
-            // lblA
+            // openFileDialog1
             // 
-            this.lblA.AutoSize = true;
-            this.lblA.Location = new System.Drawing.Point(12, 75);
-            this.lblA.Name = "lblA";
-            this.lblA.Size = new System.Drawing.Size(16, 13);
-            this.lblA.TabIndex = 3;
-            this.lblA.Text = "...";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(100, 75);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(12, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "/";
-            // 
-            // lblB
-            // 
-            this.lblB.AutoSize = true;
-            this.lblB.Location = new System.Drawing.Point(182, 75);
-            this.lblB.Name = "lblB";
-            this.lblB.Size = new System.Drawing.Size(16, 13);
-            this.lblB.TabIndex = 5;
-            this.lblB.Text = "...";
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // FrmAutoAddCampaign
             // 
