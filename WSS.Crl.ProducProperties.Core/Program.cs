@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImboForm
+namespace WSS.Crl.ProducProperties.Core
 {
-    class WorkerUpImageId
+    class Program
     {
+        static void Main(string[] args)
+        {
+        }
     }
 }

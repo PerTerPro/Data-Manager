@@ -279,7 +279,6 @@ namespace QT.Moduls.CrawlerProduct
             if (string.IsNullOrEmpty(url)) return;
             if (!ExistInCache(pId, url)) return;
             if (!IsLinkProduct(pId, url)) return;
-
             ProductCache ptCache = null;
             if (_dicCacheProduct.ContainsKey(pId)) ptCache = _dicCacheProduct[pId];
             var pt = new Product() {ID = pId};
@@ -323,14 +322,14 @@ namespace QT.Moduls.CrawlerProduct
                         }
                         else
                         {
-                            LogProduct_ChangeInfo(DateTime.Now, "", "", "Not change", 0, pId, 0, _session, pt.DetailUrl,
-                                false);
+                            LogProduct_ChangeInfo(DateTime.Now, "", "", "Not change", 0, pId, 0, _session, pt.DetailUrl, false);
                         }
                     }
 
                 }
                 else
-                {if (_dicTrackDie.ContainsKey(pt.ID) && _dicTrackDie[pt.ID] > 1)
+                {
+                    if (_dicTrackDie.ContainsKey(pt.ID) && _dicTrackDie[pt.ID] > 1)
                     {
                         _productIdWaitDeleteGroup.Add(pt.ID);
                     }
@@ -341,6 +340,7 @@ namespace QT.Moduls.CrawlerProduct
                 }
             }
         }
+
         private void CheckChangeDesc(Product product)
         {
             var hNew = product.GetHashDesc();

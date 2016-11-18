@@ -193,8 +193,7 @@ namespace QT.Entities
                 return s;
             }
         }
-        public static String ServerRun
-        {
+        public static String ServerRun{
             get
             {
                 string r = "local";

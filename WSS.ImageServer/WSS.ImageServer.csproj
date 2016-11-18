@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ImboForm</RootNamespace>
     <AssemblyName>ImboForm</AssemblyName>
@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="GABIZ.Base">
       <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\GABIZ.Base.dll</HintPath>
@@ -46,15 +49,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="QT.Entities">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\QT.Entities.dll</HintPath>
-    </Reference>
-    <Reference Include="QT.Moduls">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\QT.Moduls.dll</HintPath>
-    </Reference>
     <Reference Include="RabbitMQ.Client, Version=3.5.6.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.1.605.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\StackExchange.Redis.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>True</Private>
@@ -85,23 +86,49 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
+    <Reference Include="Websosanh.Core.Drivers.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.Redis.dll</HintPath>
+    </Reference>
     <Reference Include="Websosanh.Core.JobServer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigImbo.cs" />
+    <Compile Include="HandlerCmpWaitTransf.cs" />
+    <Compile Include="HandlerDelImgImbo.cs" />
+    <Compile Include="HandlerImgIdToSql.cs" />
+    <Compile Include="HandlerImgThumb.cs" />
+    <Compile Include="HandlerProductWaitUpImg.cs" />
+    <Compile Include="HandlerPushFromFolder.cs" />
+    <Compile Include="HandlerTransferFolder.cs" />
+    <Compile Include="ImageAdapterSql.cs" />
     <Compile Include="ImboImage.cs" />
+    <Compile Include="JobCmpWaitTransf.cs" />
+    <Compile Include="JobFailPushImage.cs" />
+    <Compile Include="JobProductWaitUpImg.cs" />
+    <Compile Include="JobUploadedImg.cs" />
+    <Compile Include="JobWaitDelFileLocal.cs" />
+    <Compile Include="JobWaitDelImg.cs" />
+    <Compile Include="JobWaitThumb.cs" />
+    <Compile Include="JobWaitUpdateImageInfo.cs" />
     <Compile Include="MssReport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedisImage.cs" />
     <Compile Include="SettingSystem.cs" />
     <Compile Include="Tester.cs" />
     <Compile Include="TestQerryPerformence.cs" />
     <Compile Include="HandlerJob.cs" />
     <Compile Include="TestReadImbo.cs" />
-    <Compile Include="WorkerUpImageId.cs" />
-    <Compile Include="WorkerUploadImage.cs" />
+    <Compile Include="WorkerDelFileLocal.cs" />
+    <Compile Include="WorkerDelImgImbo.cs" />
+    <Compile Include="WorkerImgIdToSql.cs" />
+    <Compile Include="WorkerImgThumb.cs" />
+    <Compile Include="WorkerCmpWaitTransf.cs" />
+    <Compile Include="WorkerUpImgToServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -114,6 +141,19 @@
     <Content Include="Setting.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
+      <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
+      <Name>QT.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QT.Moduls\QT.Moduls.csproj">
+      <Project>{b8d02031-c0b6-4e60-a318-9f39d9b9a8a9}</Project>
+      <Name>QT.Moduls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

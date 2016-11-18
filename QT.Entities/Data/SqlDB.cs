@@ -77,6 +77,50 @@ namespace QT.Entities.Data
         }
 
 
+        public delegate void ProcessRow(DataRow row);
+
+        /// <summary>
+        /// PageNumber Is TextPage
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="row"></param>
+        /// <param name="rowsPage"></param>
+        /// <param name="processRow"></param>
+        public void ProcessDataTableLarge(string sql, int rowsPage, ProcessRow processRow)
+        {
+            int PageName = 1;
+            string fullSql = sql + @"
+OFFSET ((@PageNumber - 1) * @rowsPage) ROWS
+FETCH NEXT @rowsPage ROWS ONLY";
+
+            DataTable tbl = null;
+            do
+            {
+                try
+                {
+                 
+                    tbl = this.GetTblData(fullSql, CommandType.Text, new SqlParameter[]
+                    {
+                        SqlDb.CreateParamteterSQL("PageNumber", PageName, SqlDbType.Int),
+                        SqlDb.CreateParamteterSQL("rowsPage", rowsPage, SqlDbType.Int),
+                    });
+                    foreach (DataRow VARIABLE in tbl.Rows)
+                    {
+                        processRow(VARIABLE);
+                    }
+                    log.Info(string.Format("Processed {0} rows at page {1}", tbl.Rows.Count, PageName));
+                    PageName = PageName + 1;
+                }
+                catch (Exception exception)
+                {
+                    log.Error(exception);
+                }
+              
+             
+            } while (tbl == null || tbl.Rows.Count > 0);
+            return;
+        }
+
 
         public DataTable GetTblData(string query, CommandType commandType, SqlParameter[] arParameter, SqlConnection connection = null, bool WaitToRun = false, int iTimeOut = 0)
         {
@@ -191,7 +235,34 @@ namespace QT.Entities.Data
             }
         }
 
+        public DataTable RunQueryAndReturn(string query, CommandType commandType, SqlParameter[] arPara, bool ReturnTable)
+        {
+            if (ReturnTable)
+            {
+                this.command.CommandType = commandType;
+                this.command.CommandText = query;
+                this.command.Parameters.Clear();
+                if (arPara != null)
+                    this.command.Parameters.AddRange(arPara);
+                if (this.command.Connection.State == ConnectionState.Closed)
+                {
+                    this.command.Connection.Open();
+                }
+                return this.CreateDataTable(command);
 
+            }
+            else
+            {
+                this.command.ExecuteNonQuery();
+                return null;
+            }
+        }
+        protected internal DataTable CreateDataTable(SqlCommand command)
+        {
+            DataTable dataTable = new DataTable();
+            new SqlDataAdapter(command).Fill(dataTable);
+            return dataTable;
+        }
         public SqlParameter CreateParamteter(string namePara, object valueType, SqlDbType type)
         {
             SqlParameter para = new SqlParameter();
