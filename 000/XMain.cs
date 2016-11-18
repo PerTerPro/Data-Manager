@@ -3763,9 +3763,11 @@ order by ISNULL([LastJobCrawlerFindNew],'2010-10-10 10:10:10') ASC  --Ưu tiên 
 
         private void btnUnValidProduct_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //tạm chưa dùng
             //FrmUnvalidProduct frm = new FrmUnvalidProduct();
             //frm.MdiParent = this;
             //frm.Show();
+            
         }
 
 
