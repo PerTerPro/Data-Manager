@@ -37,19 +37,19 @@ namespace QT.Moduls.CrawlerProduct
             Dictionary<string, string> dicDetailUrl = new Dictionary<string, string>();
             foreach (DataRow row in tblLink.Rows)
             {
-                if (!dicDetailUrl.ContainsKey(row["Link"].ToString()))
+                if (!dicDetailUrl.ContainsKey(row["Link"].ToString().Trim()))
                 {
-                    dicDetailUrl.Add(row["Link"].ToString(), row["Link"].ToString());
+                    dicDetailUrl.Add(row["Link"].ToString().Trim(), row["Link"].ToString());
                 }
             }
             DataTable tblProduct = new DataTable();
-            tblProduct = sqldbProduct.GetTblData("select * from product where company = 3334136620239023863");
+            tblProduct = sqldbProduct.GetTblData("select * from product where company = 4257213322260895827 and IsBlackList = 0");
             foreach (DataRow row in tblProduct.Rows)
             {
-                if (!dicDetailUrl.ContainsKey(row["DetailUrl"].ToString()))
+                if (!dicDetailUrl.ContainsKey(row["DetailUrl"].ToString().Trim()))
                 {
-                    sqldbProduct.RunQuery("Update Product set IsBlackList = 1 where Company = 3334136620239023863 and DetailUrl = @DetailUrl", CommandType.Text, new System.Data.SqlClient.SqlParameter[] { 
-                        SqlDb.CreateParamteterSQL("@DetailUrl",row["DetailUrl"].ToString(),SqlDbType.NVarChar)
+                    sqldbProduct.RunQuery("Update Product set IsBlackList = 1 where Company = 4257213322260895827 and DetailUrl = @DetailUrl", CommandType.Text, new System.Data.SqlClient.SqlParameter[] { 
+                        SqlDb.CreateParamteterSQL("@DetailUrl",row["DetailUrl"].ToString().Trim(),SqlDbType.NVarChar)
                     });
                 }
             }
