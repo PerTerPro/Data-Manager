@@ -53,7 +53,11 @@ namespace WSS.ImageServer.Service
                 ImageAdapterSql img = new ImageAdapterSql();
                 img.ProcessAddProduct();
             }
-
+            else if (pt.Cmd == "ImgCallThumb")
+            {
+                WorkerThumbImg w = new WorkerThumbImg();
+                w.StartConsume();
+            }
 
             
             return;

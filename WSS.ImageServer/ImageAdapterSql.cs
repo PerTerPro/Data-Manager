@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
 using QT.Entities;
 using QT.Entities.Data;
 using QT.Moduls.CrawlerProduct;
@@ -15,7 +16,7 @@ namespace ImboForm
     public class ImageAdapterSql
     {
         private ProductAdapter _productAdapter = null;
-
+        private ILog log = LogManager.GetLogger(typeof (ImageAdapterSql));
         private IDatabase _database = null;
 
         public HashSet<long> GetProductIds()
@@ -24,6 +25,7 @@ namespace ImboForm
             foreach (var VARIABLE in this._database.SetScan("product_valid","*",10000))
             {
                 hs.Add(Common.Obj2Int64(VARIABLE));
+                if (hs.Count%10000 == 0) log.Info(string.Format("Loaded {0}", hs.Count));
             }
             return hs;
         }

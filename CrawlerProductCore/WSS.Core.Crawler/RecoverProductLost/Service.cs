@@ -44,18 +44,22 @@ namespace WSS.Core.Crawler.RecoverProductLost
         public void TransferData(long idStart)
         {
             HashSet<long> hsProductOld = this.GetHsOld();
-            SqlDb sqlDb = new SqlDb(connectionSource);
-            sqlDb.ProcessDataTableLarge(string.Format("Select Id From Product p Order By p.Id where Id > {0}",idStart), 10000, (row) =>
+            SqlDb sqlSource = new SqlDb(connectionSource);
+            SqlDb sqlDestion = new SqlDb(connectionDestination);
+
+            int countProduct = 0;
+            sqlSource.ProcessDataTableLarge(string.Format("Select Id From Product p  where Id > {0} Order By p.Id", idStart), 10000, (row) =>
             {
+                countProduct++;
                 long productId = Common.Obj2Int64(row["Id"]);
                 if (!hsProductOld.Contains(productId))
                 {
-                    DataRow rowProductInfo = sqlDb.GetTblData(string.Format("Select Id, Company, Price, Name, DetailUrl From Product where Id = {0}", productId), CommandType.Text, null).Rows[0];
+                    DataRow rowProductInfo = sqlSource.GetTblData(string.Format("Select Id, Company, Price, Name, DetailUrl From Product where Id = {0}", productId), CommandType.Text, null).Rows[0];
                     long cmpId = Common.Obj2Int64(rowProductInfo["Company"]);
                     long prdId = Common.Obj2Int64(rowProductInfo["Id"]);
                     string name = Common.Obj2String(rowProductInfo["Name"]);
                     string urlDetail = Common.Obj2String(rowProductInfo["DetailUrl"]);
-                    sqlDb.RunQuery(@"insert into Product_LogsAddProduct(IDCompany, IDProduct, Name, Url, DateAdd) values (@IDCompany, @IDProduct, Name, @Url, '2015-5-5')",
+                    sqlDestion.RunQuery(@"insert into Product_LogsAddProduct (IDCompany, IDProduct, Name, Url, DateAdd) values (@IDCompany, @IDProduct, @Name, @Url, '2015-5-5')",
                         CommandType.Text, new[]
                         {
                             SqlDb.CreateParamteterSQL("IDCompany", cmpId, SqlDbType.BigInt),
@@ -63,7 +67,10 @@ namespace WSS.Core.Crawler.RecoverProductLost
                             SqlDb.CreateParamteterSQL("Name", name, SqlDbType.NVarChar),
                             SqlDb.CreateParamteterSQL("Url", urlDetail, SqlDbType.NVarChar),
                         });
+                  
                 }
+                if (countProduct % 10000 == 0)
+                    log.Info(string.Format("Process {0} lastProductId {1}", productId));
             });
         }
 
@@ -78,27 +85,28 @@ namespace WSS.Core.Crawler.RecoverProductLost
             }return hst;
         }
 
-        public void PushToRedis()
+        public void PushToRedis(int startId)
         {
         
             List<long> lstTemp = new List<long>();
             HashSet<long> hstOld = this.GetHsOld();
 
             SqlDb sqlDb = new SqlDb(connectionDestination);
-            sqlDb.ProcessDataTableLarge("Select IDProduct, ID From Product_LogsAddProduct Where ID > 12970000 ORDER BY ID ", 10000, (row) =>
+            sqlDb.ProcessDataTableLarge(string.Format("Select IDProduct, ID From Product_LogsAddProduct Where ID > {0} ORDER BY ID ",startId), 50000, (row) =>
             {
-                long IDProduct = Common.Obj2Int64(row["ID"]);
+                long ID = Common.Obj2Int64(row["ID"]);
+                long ProductId = Common.Obj2Int64(row["IDProduct"]);
                 if (lstTemp.Count > 10000)
                 {
                     UpProductIdsToRedis(lstTemp);
                     lstTemp.Clear();
-                    log.Info(string.Format("LastID: {0}", IDProduct));
+                    log.Info(string.Format("LastID: {0}", ID));
                 }
 
-                if (!hstOld.Contains(IDProduct))
+                if (!hstOld.Contains(ProductId))
                 {
-                    hstOld.Add(IDProduct);
-                    lstTemp.Add(IDProduct);
+                    hstOld.Add(ProductId);
+                    lstTemp.Add(ProductId);
                 }
             
             });
