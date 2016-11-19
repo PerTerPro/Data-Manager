@@ -651,6 +651,12 @@
     <Compile Include="CrawlerProduct\FrmTrustedFollow.Designer.cs">
       <DependentUpon>FrmTrustedFollow.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrawlerProduct\FrmUnvalidProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmUnvalidProduct.Designer.cs">
+      <DependentUpon>FrmUnvalidProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="CrawlerProduct\FrmUpdateCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1970,6 +1976,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrawlerProduct\FrmTrustedFollow.resx">
       <DependentUpon>FrmTrustedFollow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmUnvalidProduct.resx">
+      <DependentUpon>FrmUnvalidProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrawlerProduct\FrmUpdateCategory.resx">
       <DependentUpon>FrmUpdateCategory.cs</DependentUpon>
