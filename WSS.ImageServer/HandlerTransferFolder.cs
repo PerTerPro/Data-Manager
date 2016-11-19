@@ -54,57 +54,69 @@ namespace ImboForm
 
         private void TransferImage(string file)
         {
-            string imgId = "";
-            long productId = GetProductId(file);
-            if (!RedisImage.GetIns().Contain(productId))
+            while (true)
             {
-                bool bExistproduct = false;
-                if (productId > 0)
+                try
                 {
-                    bExistproduct = this._hsProductIds.Contains(productId);
-                    if (bExistproduct)
+                    string imgId = "";
+                    long productId = GetProductId(file);
+                    if (!RedisImage.GetIns().Contain(productId))
                     {
-                        imgId = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, file, ConfigImbo.User, ConfigImbo.Host);
-                        if (!string.IsNullOrEmpty(imgId))
+                        bool bExistproduct = false;
+                        if (productId > 0)
                         {
-                            this._pb.PublishString(new JobUploadedImg()
+                            bExistproduct = this._hsProductIds.Contains(productId);
+                            if (bExistproduct)
                             {
-                                ImageId = imgId,
-                                ProductId = productId,
-                                TimeUpload = DateTime.Now,
-                                NameImage = GetNameFile(file)
-                            }.ToJson());
-                            _iCountSuccess++;
+                                imgId = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, file, ConfigImbo.User, ConfigImbo.Host);
+                                if (!string.IsNullOrEmpty(imgId))
+                                {
+                                    this._pb.PublishString(new JobUploadedImg()
+                                    {
+                                        ImageId = imgId,
+                                        ProductId = productId,
+                                        TimeUpload = DateTime.Now,
+                                        NameImage = GetNameFile(file)
+                                    }.ToJson());
+                                    _iCountSuccess++;
+                                }
+                                else
+                                {
+                                    this._producerErrorPushImbo.PublishString(new JobFailPushImage()
+                                    {
+                                        File = file,
+                                        ProductId = productId
+                                    }.ToJson());
+                                }
+                            }
+                            else
+                            {
+                                this._producerNoProduct.PublishString(file);
+                            }
                         }
-                        else
+                        _iCount++;
+                        _log.Info(string.Format("{0}/{1} {2}=>{3} {4} ExistsProduct: {5}", _iCountSuccess, _iCount, productId, imgId, file, bExistproduct));
+
+                        if (imgId != "" || bExistproduct == false)
                         {
-                            this._producerErrorPushImbo.PublishString(new JobFailPushImage()
-                            {
-                                File = file,
-                                ProductId = productId
-                            }.ToJson());
+                            this._producerWaitDelFile.PublishString(file);
                         }
+                        if (_iCountSuccess % 1000 == 0) _log.Info(string.Format("Speech: {0}/s", (_iCountSuccess / (DateTime.Now - _dtStart).TotalSeconds)));
                     }
                     else
                     {
-                        this._producerNoProduct.PublishString(file);
+                        _iPushed++;
+                        if (_iPushed % 1000 == 0) _log.Info(string.Format("Pushed: {0}", _iPushed));
                     }
+                    RedisImage.GetIns().Add(productId);
+                    return;
                 }
-                _iCount++;
-                _log.Info(string.Format("{0}/{1} {2}=>{3} {4} ExistsProduct: {5}", _iCountSuccess, _iCount, productId, imgId, file, bExistproduct));
-
-                if (imgId != "" || bExistproduct == false)
+                catch (Exception ex)
                 {
-                    this._producerWaitDelFile.PublishString(file);
+                    _log.Error(ex);
                 }
-                if (_iCountSuccess%1000 == 0) _log.Info(string.Format("Speech: {0}/s", (_iCountSuccess/(DateTime.Now - _dtStart).TotalSeconds)));
             }
-            else
-            {
-                _iPushed++;
-                if (_iPushed%1000 == 0) _log.Info(string.Format("Pushed: {0}", _iPushed));
-            }
-            RedisImage.GetIns().Add(productId);
+            
         }
 
         private string GetNameFile(string file)

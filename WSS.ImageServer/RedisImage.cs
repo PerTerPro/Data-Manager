@@ -32,7 +32,6 @@ namespace ImboForm
         {
             this.database.SetAdd(this.KeyImbo, productId);
         }
-
      
         public RedisKey KeyImbo = "imbo_trans";
         private HashSet<long> hs;
@@ -64,8 +63,6 @@ namespace ImboForm
         {
             this.database.SetAdd(this.KeyImbo, productId);
         }
-
-       
 
         private bool CheckHave(long productId)
         {

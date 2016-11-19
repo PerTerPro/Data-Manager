@@ -13,14 +13,14 @@ namespace ImboForm
 {
     public class HandlerImgIdToSql
     {
-        ImageAdapterSql imgAdapterSql = new ImageAdapterSql();
-        ProducerBasic _producerDelImbo = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),ConfigImbo.QueueDelImgImbo);
+        readonly ImageAdapterSql _imgAdapterSql = new ImageAdapterSql();
+        readonly ProducerBasic _producerDelImbo = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),ConfigImbo.QueueDelImgImbo);
         private ILog log = LogManager.GetLogger(typeof (HandlerImgIdToSql));
 
         public void ProcessJob(string str)
         {
             JobUploadedImg job = JobUploadedImg.FromJson(str);
-            string imageIdOld = imgAdapterSql.GetImageId(job.ProductId);
+            string imageIdOld = _imgAdapterSql.GetImageId(job.ProductId);
             if (!string.IsNullOrEmpty(imageIdOld))
             {
                 _producerDelImbo.PublishString(new JobDelImgImbo()
@@ -28,7 +28,7 @@ namespace ImboForm
                     ImageId = imageIdOld
                 }.ToJson()); 
             }
-            imgAdapterSql.UpdateImboProcess(job.ProductId, job.ImageId);
+            _imgAdapterSql.UpdateImboProcess(job.ProductId, job.ImageId);
         }
     }
 }

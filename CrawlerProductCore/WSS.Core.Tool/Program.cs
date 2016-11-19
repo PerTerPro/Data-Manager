@@ -25,11 +25,18 @@ namespace WSS.CrawlerProduct.Tool
         {
             
             WSS.Core.Crawler.RecoverProductLost.Service s = new Core.Crawler.RecoverProductLost.Service();
-            s.PushToRedis();
-            s.TransferData(0);
+            Console.WriteLine("1. Push. 2.Transfer");
+            int i = Convert.ToInt32(Console.ReadLine());
+            if (i == 1)
+            {
+                Console.WriteLine("Input start ID");
+                int startId = Convert.ToInt32(Console.ReadLine());
+                s.PushToRedis(startId);
+            }
+            else if (i == 2)
+                s.TransferData(0);
             return;
 
-            s.TransferData();
             return;
             Server.ConnectionString = ConfigCrawler.ConnectProduct;
             Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;

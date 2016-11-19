@@ -39,6 +39,22 @@ namespace ImboForm
         }
 
 
+        public static string CallThumb(string imgId, List<Tuple<int, int>> sizes)
+        {
+            string host = @"http://172.22.1.226";
+            string linkImg = host + @"/" + imgId + ".jpg";
+            foreach (var VARIABLE in sizes)
+            {
+                var str = string.Format(@"http://172.22.1.226/users/{0}/images/{1}.{2}?t[]=thumbnail:width={3},height={4}", "wss", imgId, "jpg", VARIABLE.Item1, VARIABLE.Item2);
+                HttpWebRequest imageRequest = (HttpWebRequest) WebRequest.Create(str);
+                var imageResponse = (HttpWebResponse) imageRequest.GetResponse();
+                string strSize = imageResponse.Headers["Content-Length"];
+                Log.Info(string.Format("{0} {1} size: {2} {3}", imageResponse.StatusCode, imgId, strSize, (VARIABLE.Item1 + ":" + VARIABLE.Item2)));
+                imageResponse.Close();
+            }
+            return "";
+        }
+
         public static string PushFromFile(string publicKey, string privateKey, string path, string userName, string host)
         {
             string idImageNew = "";
