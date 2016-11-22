@@ -64,6 +64,7 @@
     <Compile Include="ConsumerProductChangeToSqlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkerFindNewTests.cs" />
+    <Compile Include="WorkerLogAddProductTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WSS.Core.Crawler\WSS.Core.Crawler.csproj">

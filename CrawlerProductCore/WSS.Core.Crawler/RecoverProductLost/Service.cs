@@ -84,7 +84,6 @@ namespace WSS.Core.Crawler.RecoverProductLost
                 if (hst.Count%10000 == 0) log.Info(string.Format("Loaded {0}", hst.Count));
             }return hst;
         }
-
         public void PushToRedis(int startId)
         {
         

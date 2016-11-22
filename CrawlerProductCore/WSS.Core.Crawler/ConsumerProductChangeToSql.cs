@@ -28,7 +28,7 @@ namespace WSS.Core.Crawler
         private readonly ILog _log = LogManager.GetLogger(typeof (ConsumerProductChangeToSql));
         private JobClient _jobClient = null;
 
-        private readonly ProducerBasic _producerLogAddProduct = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqCrawler), "CrawlerProduct.LogAddProduct.ToSql");
+        private readonly ProducerBasic _producerLogAddProduct = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqCrawler), ConfigCrawler.QueueLogAddProduct);
         private readonly ProducerBasic _producerLogDelProduct = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqCrawler), "CrawlerProduct.LogDelProduct.ToSql");
        
         private ProductAdapter _productAdapter = null;
@@ -56,7 +56,6 @@ namespace WSS.Core.Crawler
                 var pt = ProductEntity.GetFromJson(message.Body);
                 if (pt.StatusChange.IsDelete)
                 {
-
                     string sql = string.Format(@"select top 1 p.DetailUrl, p.Name, p.Price, p.CategoryID, p.LastUpdate, p.ImagePath, p.ImageUrls, p.ImageId, p.ID
 	from Product p
 	where p.ID = {0} ", pt.ID);

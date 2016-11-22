@@ -184,6 +184,7 @@
     <Compile Include="WorkerClassification.cs" />
     <Compile Include="WorkerExportCategory.cs" />
     <Compile Include="WorkerFindNew.cs" />
+    <Compile Include="WorkerLogAddProduct.cs" />
     <Compile Include="WorkerReload.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -84,5 +84,6 @@ namespace WSS.Core.Crawler
         public static string RoutingKeyNoValidTotalProduct = "Notifycation.Warning.Company.NoValidTotalProduct";
         public static string QueueWaitCheckNotify = "Notifycation.WaitCheckNotify";
 
+        public static string QueueLogAddProduct = "CrawlerProduct.LogAddProduct.ToSql";
     }
 }
