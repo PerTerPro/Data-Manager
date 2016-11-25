@@ -15,9 +15,7 @@ namespace QT.Entities
         public static string RottingChangePrice = "UpdatedProduct.ChangePrice.#";
         public static string QueueChangeDescription = "UpdateProduct.ChangeDesciption";
         public static string KeyRedisCrawlerProduct = "redisCacheCompany";
-
         public static string QueueUpdateCompanyInfoToWeb  = "UpdateCompany.ToWeb";
-
         public static string SolrHistoryCrwaler = @"http://192.168.100.48:8983/solr/history_product";
         public static string SolrLinkFindNew = @"http://192.168.100.48:8983/solr/link_find_new";
 

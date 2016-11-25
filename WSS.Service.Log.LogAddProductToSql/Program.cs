@@ -11,7 +11,6 @@ namespace WSS.Service.Log.LogAddProductToSql
     {
         static void Main(string[] args)
         {
-        
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
             { 

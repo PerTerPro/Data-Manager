@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceProcess;
+using System.Text;
+using System.Threading.Tasks;
+using WSS.Core.Crawler;
+using WSS.Service.CR.ClassificationToSql;
+
+namespace WSS.Service.CR.AddClassification
+{
+    static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        static void Main()
+        {
+            var consumer = new ConsumerAddClassification(ConfigCrawler.QueueAddClassification);
+            consumer.StartConsume();
+
+            ServiceBase[] ServicesToRun;
+            ServicesToRun = new ServiceBase[] 
+            { 
+                new ServiceAddClassification() 
+            };
+            ServiceBase.Run(ServicesToRun);
+        }
+    }
+}

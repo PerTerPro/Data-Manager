@@ -20,7 +20,10 @@ namespace WSS.IndividualCategoryWebsites.SolrProduct
         public int MerchantScore { get; set; }
         [SolrField(SolrProductConstants.SOLR_FIELD_CATEGORY_LEVEL2)]
         public int CategoryId { get; set; }
+        [SolrField(SolrProductConstants.SOLR_FIELD_MERCHANT_ID)]
         public long WebsiteId { set; get; }
+        [SolrField(SolrProductConstants.SOLR_FIELD_VIEW_COUNT)]
+        public int ViewCount { set; get; }
 
         public static byte[] GetMessage(SolrProductItem productItem)
         {

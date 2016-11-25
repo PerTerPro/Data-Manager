@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WSS.IndividualCategoryWebsites.DataTeam;
 
 namespace WSS.IndividualCategoryWebsites
 {
@@ -16,7 +17,8 @@ namespace WSS.IndividualCategoryWebsites
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            //Application.Run(new Main());
+            Application.Run(new FrmSuggestRootProduct());
         }
     }
 }

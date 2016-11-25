@@ -782,9 +782,5 @@ namespace QT.Moduls.LogJob
             return data;
         }
         #endregion
-
-
-
-
     }
 }

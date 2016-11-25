@@ -311,6 +311,7 @@
     <Compile Include="Company\DatafeedConfig.cs" />
     <Compile Include="Company\DBCom.cs">
       <DependentUpon>DBCom.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Company\DBCom.Designer.cs">
       <DependentUpon>DBCom.xsd</DependentUpon>
@@ -650,6 +651,12 @@
     <Compile Include="CrawlerProduct\FrmTrustedFollow.Designer.cs">
       <DependentUpon>FrmTrustedFollow.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrawlerProduct\FrmUnvalidProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmUnvalidProduct.Designer.cs">
+      <DependentUpon>FrmUnvalidProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="CrawlerProduct\FrmUpdateCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -964,6 +971,7 @@
     <Compile Include="LogCassandra\LogCrawler.cs" />
     <Compile Include="LogJob\DBLogJob.cs">
       <DependentUpon>DBLogJob.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="LogJob\DBLogJob.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1318,6 +1326,7 @@
     <Compile Include="RaoVat\SimpleCrawlerSale.cs" />
     <Compile Include="Data\KW.cs">
       <DependentUpon>KW.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\KW.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1326,6 +1335,7 @@
     </Compile>
     <Compile Include="DB.cs">
       <DependentUpon>DB.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="FrmLoadCacheCrawler.cs">
       <SubType>Form</SubType>
@@ -1402,6 +1412,7 @@
     </Compile>
     <Compile Include="Maps\DBMap.cs">
       <DependentUpon>DBMap.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Maps\DBMap.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1410,6 +1421,7 @@
     </Compile>
     <Compile Include="Maps\DBPMan.cs">
       <DependentUpon>DBPMan.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Maps\DBPMan.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1482,6 +1494,7 @@
     </Compile>
     <Compile Include="ProductID\DBProperties.cs">
       <DependentUpon>DBProperties.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ProductID\DBProperties.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1627,6 +1640,7 @@
     </Compile>
     <Compile Include="Tool\DBTool.cs">
       <DependentUpon>DBTool.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1635,6 +1649,7 @@
     </Compile>
     <Compile Include="Tool\DBTool2.cs">
       <DependentUpon>DBTool2.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1643,6 +1658,7 @@
     </Compile>
     <Compile Include="Tool\DBTool3.cs">
       <DependentUpon>DBTool3.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool3.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1654,6 +1670,12 @@
     </Compile>
     <Compile Include="Tool\frmAnanyticTradeSQL.Designer.cs">
       <DependentUpon>frmAnanyticTradeSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\FrmAutoAddCampaign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\FrmAutoAddCampaign.Designer.cs">
+      <DependentUpon>FrmAutoAddCampaign.cs</DependentUpon>
     </Compile>
     <Compile Include="Tool\frmCheckXPath.cs">
       <SubType>Form</SubType>
@@ -1723,6 +1745,7 @@
     <Compile Include="UtilCrawlSemi\UtilSeleiumCrawler.cs" />
     <Compile Include="View\DBView.cs">
       <DependentUpon>DBView.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\DBView.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1737,6 +1760,7 @@
     </Compile>
     <Compile Include="WebPartner\DBWebPartner.cs">
       <DependentUpon>DBWebPartner.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebPartner\DBWebPartner.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1952,6 +1976,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrawlerProduct\FrmTrustedFollow.resx">
       <DependentUpon>FrmTrustedFollow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmUnvalidProduct.resx">
+      <DependentUpon>FrmUnvalidProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrawlerProduct\FrmUpdateCategory.resx">
       <DependentUpon>FrmUpdateCategory.cs</DependentUpon>
@@ -2333,6 +2360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\frmAnanyticTradeSQL.resx">
       <DependentUpon>frmAnanyticTradeSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\FrmAutoAddCampaign.resx">
+      <DependentUpon>FrmAutoAddCampaign.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\frmCheckXPath.resx">
       <DependentUpon>frmCheckXPath.cs</DependentUpon>

@@ -28,21 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label iDUserLabel;
             System.Windows.Forms.Label iDDataLabel;
             System.Windows.Forms.Label iDJobLabel;
             System.Windows.Forms.Label iDLabel;
             System.Windows.Forms.Label departmentLabel;
-            this.tblUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBLogJobBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tblUserBindingSource = new System.Windows.Forms.BindingSource();
+            this.dBLogJobBindingSource = new System.Windows.Forms.BindingSource();
             this.dBLogJob = new QT.Moduls.LogJob.DBLogJob();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageUser = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.logJobGridControl = new DevExpress.XtraGrid.GridControl();
-            this.logJobBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.logJobBindingSource = new System.Windows.Forms.BindingSource();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colID2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIDUser1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,7 +55,7 @@
             this.colDayLog1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEditUser = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemLookUpEditJobName = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.jobBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.jobBindingSource = new System.Windows.Forms.BindingSource();
             this.repositoryItemLookUpEditTypeData = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButtonExportExcel = new DevExpress.XtraEditors.SimpleButton();
@@ -131,7 +130,11 @@
             this.txtPath = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl17 = new DevExpress.XtraEditors.PanelControl();
+            this.gridControlLastChangeProduct = new DevExpress.XtraGrid.GridControl();
+            this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl15 = new DevExpress.XtraEditors.PanelControl();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
+            this.btnViewLastChange = new DevExpress.XtraEditors.SimpleButton();
             this.lblB = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblA = new System.Windows.Forms.Label();
@@ -174,10 +177,10 @@
             this.iDUserTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.checkEditAll = new DevExpress.XtraEditors.CheckEdit();
             this.ctrDateRanger1 = new QT.Entities.ctrDateRanger();
-            this.tblUserBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tblUserBindingSource1 = new System.Windows.Forms.BindingSource();
             this.logJobTableAdapter = new QT.Moduls.LogJob.DBLogJobTableAdapters.LogJobTableAdapter();
             this.jobTableAdapter = new QT.Moduls.LogJob.DBLogJobTableAdapters.JobTableAdapter();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.viewLogTheoDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIDUser = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -190,10 +193,6 @@
             this.colNameProduct = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDayLog = new DevExpress.XtraGrid.Columns.GridColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnViewLastChange = new DevExpress.XtraEditors.SimpleButton();
-            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
-            this.gridControlLastChangeProduct = new DevExpress.XtraGrid.GridControl();
-            this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
             iDUserLabel = new System.Windows.Forms.Label();
             iDDataLabel = new System.Windows.Forms.Label();
             iDJobLabel = new System.Windows.Forms.Label();
@@ -264,6 +263,8 @@
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl17)).BeginInit();
             this.panelControl17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlLastChangeProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
             this.panelControl15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFileEx.Properties)).BeginInit();
@@ -282,8 +283,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEditAll.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblUserBindingSource1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlLastChangeProduct)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
             this.SuspendLayout();
             // 
             // iDUserLabel
@@ -377,7 +376,7 @@
             this.xtraTabPageUser.Controls.Add(this.panelControl4);
             this.xtraTabPageUser.Controls.Add(this.panelControl3);
             this.xtraTabPageUser.Name = "xtraTabPageUser";
-            this.xtraTabPageUser.Size = new System.Drawing.Size(1285, 576);
+            this.xtraTabPageUser.Size = new System.Drawing.Size(1283, 575);
             this.xtraTabPageUser.Text = "Log User";
             // 
             // panelControl4
@@ -387,7 +386,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(0, 35);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(1285, 541);
+            this.panelControl4.Size = new System.Drawing.Size(1283, 540);
             this.panelControl4.TabIndex = 2;
             // 
             // logJobGridControl
@@ -407,7 +406,7 @@
             this.repositoryItemLookUpEditUser,
             this.repositoryItemLookUpEditJobName,
             this.repositoryItemLookUpEditTypeData});
-            this.logJobGridControl.Size = new System.Drawing.Size(1285, 541);
+            this.logJobGridControl.Size = new System.Drawing.Size(1283, 540);
             this.logJobGridControl.TabIndex = 0;
             this.logJobGridControl.UseEmbeddedNavigator = true;
             this.logJobGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -560,13 +559,13 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1285, 35);
+            this.panelControl3.Size = new System.Drawing.Size(1283, 35);
             this.panelControl3.TabIndex = 1;
             // 
             // simpleButtonExportExcel
             // 
             this.simpleButtonExportExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonExportExcel.Location = new System.Drawing.Point(1194, 5);
+            this.simpleButtonExportExcel.Location = new System.Drawing.Point(1192, 5);
             this.simpleButtonExportExcel.Name = "simpleButtonExportExcel";
             this.simpleButtonExportExcel.Size = new System.Drawing.Size(75, 23);
             this.simpleButtonExportExcel.TabIndex = 15;
@@ -1146,7 +1145,7 @@
             this.panelControl16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl16.Location = new System.Drawing.Point(0, 37);
             this.panelControl16.Name = "panelControl16";
-            this.panelControl16.Size = new System.Drawing.Size(656, 485);
+            this.panelControl16.Size = new System.Drawing.Size(653, 485);
             this.panelControl16.TabIndex = 1;
             // 
             // btnExport2
@@ -1164,7 +1163,7 @@
             this.gridControlOriginalNotConfig.Location = new System.Drawing.Point(2, 2);
             this.gridControlOriginalNotConfig.MainView = this.gridView7;
             this.gridControlOriginalNotConfig.Name = "gridControlOriginalNotConfig";
-            this.gridControlOriginalNotConfig.Size = new System.Drawing.Size(652, 481);
+            this.gridControlOriginalNotConfig.Size = new System.Drawing.Size(649, 481);
             this.gridControlOriginalNotConfig.TabIndex = 0;
             this.gridControlOriginalNotConfig.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView7});
@@ -1180,7 +1179,7 @@
             this.panelControl13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl13.Location = new System.Drawing.Point(0, 0);
             this.panelControl13.Name = "panelControl13";
-            this.panelControl13.Size = new System.Drawing.Size(656, 37);
+            this.panelControl13.Size = new System.Drawing.Size(653, 37);
             this.panelControl13.TabIndex = 0;
             // 
             // label2
@@ -1244,7 +1243,7 @@
             this.xtraTabPage2.Controls.Add(this.panelControl17);
             this.xtraTabPage2.Controls.Add(this.panelControl15);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1285, 576);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1283, 575);
             this.xtraTabPage2.Text = "ReportLastChangePrpduct";
             // 
             // panelControl17
@@ -1253,8 +1252,24 @@
             this.panelControl17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl17.Location = new System.Drawing.Point(0, 57);
             this.panelControl17.Name = "panelControl17";
-            this.panelControl17.Size = new System.Drawing.Size(1285, 519);
+            this.panelControl17.Size = new System.Drawing.Size(1283, 518);
             this.panelControl17.TabIndex = 1;
+            // 
+            // gridControlLastChangeProduct
+            // 
+            this.gridControlLastChangeProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlLastChangeProduct.Location = new System.Drawing.Point(2, 2);
+            this.gridControlLastChangeProduct.MainView = this.gridView8;
+            this.gridControlLastChangeProduct.Name = "gridControlLastChangeProduct";
+            this.gridControlLastChangeProduct.Size = new System.Drawing.Size(1279, 514);
+            this.gridControlLastChangeProduct.TabIndex = 0;
+            this.gridControlLastChangeProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView8});
+            // 
+            // gridView8
+            // 
+            this.gridView8.GridControl = this.gridControlLastChangeProduct;
+            this.gridView8.Name = "gridView8";
             // 
             // panelControl15
             // 
@@ -1269,8 +1284,26 @@
             this.panelControl15.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl15.Location = new System.Drawing.Point(0, 0);
             this.panelControl15.Name = "panelControl15";
-            this.panelControl15.Size = new System.Drawing.Size(1285, 57);
+            this.panelControl15.Size = new System.Drawing.Size(1283, 57);
             this.panelControl15.TabIndex = 0;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(333, 29);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 7;
+            this.btnExport.Text = "Export";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnViewLastChange
+            // 
+            this.btnViewLastChange.Location = new System.Drawing.Point(252, 29);
+            this.btnViewLastChange.Name = "btnViewLastChange";
+            this.btnViewLastChange.Size = new System.Drawing.Size(75, 23);
+            this.btnViewLastChange.TabIndex = 6;
+            this.btnViewLastChange.Text = "View";
+            this.btnViewLastChange.Click += new System.EventHandler(this.btnViewLastChange_Click);
             // 
             // lblB
             // 
@@ -1720,40 +1753,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // btnViewLastChange
-            // 
-            this.btnViewLastChange.Location = new System.Drawing.Point(252, 29);
-            this.btnViewLastChange.Name = "btnViewLastChange";
-            this.btnViewLastChange.Size = new System.Drawing.Size(75, 23);
-            this.btnViewLastChange.TabIndex = 6;
-            this.btnViewLastChange.Text = "View";
-            this.btnViewLastChange.Click += new System.EventHandler(this.btnViewLastChange_Click);
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(333, 29);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
-            this.btnExport.TabIndex = 7;
-            this.btnExport.Text = "Export";
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // gridControlLastChangeProduct
-            // 
-            this.gridControlLastChangeProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlLastChangeProduct.Location = new System.Drawing.Point(2, 2);
-            this.gridControlLastChangeProduct.MainView = this.gridView8;
-            this.gridControlLastChangeProduct.Name = "gridControlLastChangeProduct";
-            this.gridControlLastChangeProduct.Size = new System.Drawing.Size(1281, 515);
-            this.gridControlLastChangeProduct.TabIndex = 0;
-            this.gridControlLastChangeProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView8});
-            // 
-            // gridView8
-            // 
-            this.gridView8.GridControl = this.gridControlLastChangeProduct;
-            this.gridView8.Name = "gridView8";
-            // 
             // FrmLogJobViewReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1831,6 +1830,8 @@
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl17)).EndInit();
             this.panelControl17.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlLastChangeProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).EndInit();
             this.panelControl15.ResumeLayout(false);
             this.panelControl15.PerformLayout();
@@ -1851,8 +1852,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEditAll.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblUserBindingSource1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlLastChangeProduct)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
             this.ResumeLayout(false);
 
         }

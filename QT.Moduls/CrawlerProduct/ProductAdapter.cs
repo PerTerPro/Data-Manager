@@ -22,14 +22,13 @@ namespace QT.Moduls.CrawlerProduct
     {
         //BuidApp
         //BuidLan2
-        RabbitMQServer rabbitMQServer = null;
+        //RabbitMQServer rabbitMQServer = null;
 
         JobClient updateProductJobClient_PushCompany = null;
-        
         JobClient updateProductJobClient_ChangeData = null;
         JobClient updateProductJobClient_AddProduct = null;
 
-        RedisServer redisServer = RedisManager.GetRedisServer("redisCacheCrawlerProduct");
+      
         public QT.Moduls.Crawler.DBCrawlerTableAdapters.Price_LogsTableAdapter _adtPriceLog;
 
         private readonly SqlDb _sqlDb;
@@ -56,98 +55,45 @@ namespace QT.Moduls.CrawlerProduct
         private void InitData()
         {
 
-            try
-            {
-                while (this.rabbitMQServer == null || this.rabbitMQServer.IsStarted == false)
-                {
-                    try
-                    {
-                        this.rabbitMQServer = RabbitMQManager.GetRabbitMQServer("rabbitMQ177");
-                    }
-                    catch (Exception ex01)
-                    {
-                        _log.Error(ex01);
-                        Thread.Sleep(10000);
-                    }
-                }
+            //try
+            //{
+            //    while (this.rabbitMQServer == null || this.rabbitMQServer.IsStarted == false)
+            //    {
+            //        try
+            //        {
+            //            this.rabbitMQServer = RabbitMQManager.GetRabbitMQServer("rabbitMQ177");
+            //        }
+            //        catch (Exception ex01)
+            //        {
+            //            _log.Error(ex01);
+            //            Thread.Sleep(10000);
+            //        }
+            //    }
 
-                //while (true)
-                //{
-                //    try
-                //    {
-                //        string updateProductGroupName_ChangeMainInfo = System.Configuration.ConfigurationManager.AppSettings["updateProductGroupName"].ToString();
-                //        string updateProductJobName_ChangeMainInfo = System.Configuration.ConfigurationManager.AppSettings["updateProductToWebJobName"].ToString();
-                //        this.updateProductJobClient_PushCompany = new JobClient(updateProductGroupName_ChangeMainInfo, GroupType.Topic, updateProductJobName_ChangeMainInfo, true, rabbitMQServer);
-                //        break;
-                //    }
-                //    catch (Exception ex01)
-                //    {
-                //        log.Error(ex01);
-                //        Thread.Sleep(10000);
-                //    }
-                //}
-
-                //while (true)
-                //{
-                //    try
-                //    {
-                //        string updateProductGroupName_ChangeImage = System.Configuration.ConfigurationManager.AppSettings["updateProductImageGroupName"].ToString();
-                //        string updateProductJobName_ChangeImage = System.Configuration.ConfigurationManager.AppSettings["updateProductImageProductJobName"].ToString();
-                //        this.updateProductJobClient_ChangeImage = new JobClient(updateProductGroupName_ChangeImage, GroupType.Topic, updateProductJobName_ChangeImage, true, rabbitMQServer);
-                //        break;
-                //    }
-                //    catch (Exception ex01)
-                //    {
-                //        log.Error(ex01);
-                //        Thread.Sleep(10000);
-                //    }
-                //}
-
-               
-
-                //while (true)
-                //{
-                //    try
-                //    {
-                //        string updateProductGroupName_AddProduct = System.Configuration.ConfigurationManager.AppSettings["updateProductGroupName_AddProduct"].ToString();
-                //        string updateProductJobName_AddProduct = System.Configuration.ConfigurationManager.AppSettings["updateProductJobName_AddProduct"].ToString();
-                //        this.updateProductJobClient_AddProduct = new JobClient(updateProductGroupName_AddProduct, GroupType.Topic, updateProductJobName_AddProduct, true, rabbitMQServer);
-                //        break;
-                //    }
-                //    catch (Exception ex01)
-                //    {
-                //        log.Error(ex01);
-                //        Thread.Sleep(10000);
-                //    }
-                //}
-
-                //while (true)
-                //{
-                //    try
-                //    {
-                //        string updateProductGroupName_ChangeData = System.Configuration.ConfigurationManager.AppSettings["updateProductGroupNameSingle"].ToString();
-                //        string updateProductJobName_ChangeData = System.Configuration.ConfigurationManager.AppSettings["updateProductToWebJobNameSingle"].ToString();
-                //        this.updateProductJobClient_ChangeData = new JobClient(updateProductGroupName_ChangeData, GroupType.Topic, updateProductJobName_ChangeData, true, rabbitMQServer);
-                //        break;
-                //    }
-                //    catch (Exception ex01)
-                //    {
-                //        log.Error(ex01);
-                //        Thread.Sleep(10000);
-                //    }
-                //}
-
-                this._adtPriceLog = new Crawler.DBCrawlerTableAdapters.Price_LogsTableAdapter();
-                this._adtPriceLog.Connection.ConnectionString = QT.Entities.Server.LogConnectionString;
-            }
-            catch (Exception ex01)
-            {
-                _log.Error(ex01);
-                Thread.Sleep(10000);
-            }
+            
+            //    this._adtPriceLog = new Crawler.DBCrawlerTableAdapters.Price_LogsTableAdapter();
+            //    this._adtPriceLog.Connection.ConnectionString = QT.Entities.Server.LogConnectionString;
+            //}
+            //catch (Exception ex01)
+            //{
+            //    _log.Error(ex01);
+            //    Thread.Sleep(10000);
+            //}
         }
 
         log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ProductAdapter));
+
+        public void SetBlackListForProduct(List<long> productIds)
+        {
+            string query = "Update Product Set Valid = 0, IsBlackList = 1 Where Id = @Id";
+            foreach (var productId in productIds)
+            {
+                this._sqlDb.RunQuery(query, CommandType.Text, new SqlParameter[]
+                {
+                    SqlDb.CreateParamteterSQL("Id", productId, SqlDbType.BigInt)
+                });
+            }
+        }
 
         public bool CheckExistInDb(long idProduct)
         {
@@ -969,25 +915,26 @@ where a.id in ({0})", string.Join(",", productIds));
 
         public void PushQueueReloadCacheProductInfo(long CompanyID, string Domain)
         {
-            try
-            {
-                JobClient jobClientReloadCacheProductInfo = new JobClient("CacheCrawlerProduct", GroupType.Topic, "CacheCrawlerProduct.Refresh.ProductInfo.#", true, this.rabbitMQServer);
-                QT.Entities.CrawlerProduct.RabbitMQ.MssRefreshCacheProductInfo mss = new Entities.CrawlerProduct.RabbitMQ.MssRefreshCacheProductInfo()
-                {
-                    CompanyID = CompanyID,
-                    Domain = Domain
-                };
+            throw new Exception("Not support by xuantrang");
+            //try
+            //{
+            //    JobClient jobClientReloadCacheProductInfo = new JobClient("CacheCrawlerProduct", GroupType.Topic, "CacheCrawlerProduct.Refresh.ProductInfo.#", true, this.rabbitMQServer);
+            //    QT.Entities.CrawlerProduct.RabbitMQ.MssRefreshCacheProductInfo mss = new Entities.CrawlerProduct.RabbitMQ.MssRefreshCacheProductInfo()
+            //    {
+            //        CompanyID = CompanyID,
+            //        Domain = Domain
+            //    };
 
-                var updateProductJob = new Websosanh.Core.JobServer.Job();
-                updateProductJob.Data = System.Text.Encoding.UTF8.GetBytes(mss.GetMss());
-                int updateProductJobExpirationMS = 3600000;
-                jobClientReloadCacheProductInfo.PublishJob(updateProductJob, updateProductJobExpirationMS);
-            }
-            catch (Exception ex01)
-            {
-                _log.Error(string.Format("Error push job ChangeMainInfo to MQ:{0}.{1}", ex01.Message, ex01.StackTrace));
-                Thread.Sleep(10000);
-            }
+            //    var updateProductJob = new Websosanh.Core.JobServer.Job();
+            //    updateProductJob.Data = System.Text.Encoding.UTF8.GetBytes(mss.GetMss());
+            //    int updateProductJobExpirationMS = 3600000;
+            //    jobClientReloadCacheProductInfo.PublishJob(updateProductJob, updateProductJobExpirationMS);
+            //}
+            //catch (Exception ex01)
+            //{
+            //    _log.Error(string.Format("Error push job ChangeMainInfo to MQ:{0}.{1}", ex01.Message, ex01.StackTrace));
+            //    Thread.Sleep(10000);
+            //}
         }
        
       
@@ -1641,7 +1588,7 @@ VALUES (@CompanyID, @TypeCrawler, @StartAt, @EndAt, @CountLink, @CountVisited, @
         public long GetCompanyIdByDomain(string Domain)
         {
             long CompanyID = 0;
-            DataTable tbl = _sqlDb.GetTblData("select ID from Company where status = 1 and datafeedtype = 0 and Domain = @Domain", CommandType.Text, new SqlParameter[] { 
+            DataTable tbl = _sqlDb.GetTblData("select ID from Company where  Domain = @Domain", CommandType.Text, new SqlParameter[] { 
                 SqlDb.CreateParamteterSQL("@Domain",Domain,SqlDbType.NVarChar)
             });
             if (tbl.Rows.Count>0)
