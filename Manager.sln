@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "000", "000\000.csproj", "{2265B7CB-1E89-4094-9C72-78E81A0F920D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -227,6 +227,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.DocMan", "WSS.DocMan\WSS.DocMan.csproj", "{C562A843-82AE-4E98-B583-EB1206387AEB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QT.EntitiesTests", "QT.EntitiesTests\QT.EntitiesTests.csproj", "{218BC61B-A3E0-4638-A783-1118B18819E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateSolrToolsTests", "UpdateSolrToolsTests\UpdateSolrToolsTests.csproj", "{926150E7-43D7-4DDF-8E4E-372699247746}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1229,6 +1231,16 @@ Global
 		{218BC61B-A3E0-4638-A783-1118B18819E9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{218BC61B-A3E0-4638-A783-1118B18819E9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{218BC61B-A3E0-4638-A783-1118B18819E9}.Release|x86.ActiveCfg = Release|Any CPU
+		{926150E7-43D7-4DDF-8E4E-372699247746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{926150E7-43D7-4DDF-8E4E-372699247746}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{926150E7-43D7-4DDF-8E4E-372699247746}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{926150E7-43D7-4DDF-8E4E-372699247746}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{926150E7-43D7-4DDF-8E4E-372699247746}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{926150E7-43D7-4DDF-8E4E-372699247746}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{926150E7-43D7-4DDF-8E4E-372699247746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{926150E7-43D7-4DDF-8E4E-372699247746}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{926150E7-43D7-4DDF-8E4E-372699247746}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{926150E7-43D7-4DDF-8E4E-372699247746}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

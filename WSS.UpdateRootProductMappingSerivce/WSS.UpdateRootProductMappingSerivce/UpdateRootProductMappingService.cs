@@ -67,10 +67,15 @@ namespace WSS.UpdateRootProductMappingService
                                     _logger.InfoFormat("Published job to update all rootProduts.");
                                     return true;
                                 }
+                                var startTime = DateTime.Now;
                                 var success = RootProductMappingCacheTool.InsertRootProductMappingCache(productID,
                                     searchEnginesServiceUrl);
+                                var updateNoBlackListTime = (DateTime.Now - startTime).TotalMilliseconds;
                                 RootProductMappingCacheTool.InsertRootProductMappingCacheWithBlackList(productID,
                                     searchEnginesServiceUrl,new TimeSpan(30,0,0,0));
+                                var totalTime = (DateTime.Now - startTime).TotalMilliseconds;
+                                if (totalTime > 1000)
+                                    _logger.WarnFormat("Too slow! Id: {0} | TotalTime: {1:0.00} | UpdateNoBlackListTime: {2:0.00}", productID, totalTime, updateNoBlackListTime);
                                 if (success)
                                 {
                                     var job = new Job {Data = BitConverter.GetBytes(productID)};
