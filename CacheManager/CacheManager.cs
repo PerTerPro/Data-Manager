@@ -917,24 +917,24 @@ namespace CacheManager
                             else
                                 wssID = 0;
                         }
-                        if (wssID == 0)
-                        {
-                            //Use IdentityMapping
-                            List<long> productIDs = GetOnlineFridayProductMap(product.product_name);
-                            if (productIDs != null && productIDs.Count > 0 && productIDs.Count <= 20)
-                            {
-                                var products = WebMerchantProductBAL.GetWebMerchantProductsFromCache(productIDs);
-                                if (products.Count > 0)
-                                {
-                                    minPrice = (int) products.Min(x => x.Value.Price);
-                                    haveNerID ++;
-                                    wssID = Tools.getCRC32(product.url + "wss");
-                                    OnlineFridayIDBAL.InsertID(clusterID, wssID, 3);
-                                    ProductNameHashBAL.InsertOnlineFridayProductMapSet(wssID, productIDs);
-                                    Logger.InfoFormat("HaveNer,{0},{1},{2} products", product.share_url, wssID, products.Count);
-                                }
-                            }
-                        }
+                        //if (wssID == 0)
+                        //{
+                        //    //Use IdentityMapping
+                        //    List<long> productIDs = GetOnlineFridayProductMap(product.product_name);
+                        //    if (productIDs != null && productIDs.Count > 0 && productIDs.Count <= 20)
+                        //    {
+                        //        var products = WebMerchantProductBAL.GetWebMerchantProductsFromCache(productIDs);
+                        //        if (products.Count > 0)
+                        //        {
+                        //            minPrice = (int) products.Min(x => x.Value.Price);
+                        //            haveNerID ++;
+                        //            wssID = Tools.getCRC32(product.url + "wss");
+                        //            OnlineFridayIDBAL.InsertID(clusterID, wssID, 3);
+                        //            ProductNameHashBAL.InsertOnlineFridayProductMapSet(wssID, productIDs);
+                        //            Logger.InfoFormat("HaveNer,{0},{1},{2} products", product.share_url, wssID, products.Count);
+                        //        }
+                        //    }
+                        //}
                         if (wssID == 0)
                         {
                             List<KeyValuePair<long, long>> productID;
@@ -1088,7 +1088,7 @@ namespace CacheManager
             var startTime = DateTime.Now;
             foreach (var product in products)
             {
-                var otherName = IndexProductTools.GetUnitNormalizedName(product.Name);
+                var otherName = UnitNormalization.GetUnitNormalizedName(product.Name);
                 if (otherName.Count > 0)
                     numProductHaveUnit++;
             }

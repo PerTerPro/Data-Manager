@@ -261,7 +261,8 @@ namespace WSS.Core.Crawler
                     {
                         CheckDeleteProduct(product);
                         CheckChangeBasic(product);
-                        CheckChangeDesc(product); CheckChangePrice(product);
+                        CheckChangeDesc(product); 
+                        CheckChangePrice(product);
                         CheckChangeImg(product);
                     }
                 }

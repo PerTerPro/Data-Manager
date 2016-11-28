@@ -45,7 +45,6 @@ namespace WebsosanhCacheTool
                         var productDataTable = productTableAdapter.GetAllProductName(companyID);
                         for (int productRowIndex = 0; productRowIndex < productDataTable.Rows.Count; productRowIndex++)
                         {
-                            var productDict = productDataTable.ToDictionary(row => row.ID, row => row);
                             var productSign = new ProductSign();
                             var productRow = productDataTable[productRowIndex];
                             if (productRow["Name"] == DBNull.Value)
@@ -142,7 +141,7 @@ namespace WebsosanhCacheTool
                 var buidDuration = (DateTime.Now - startTime).TotalSeconds;
                 Log.InfoFormat("Build ProductIdentities Dict. GetDB Time: {0}, Build Time: {1} s", getDBDuration,
                     buidDuration);
-                cacheServer.Set(cacheKey, ProductIdentitiesDict, true, new TimeSpan(2, 0, 0, 0));
+                cacheServer.Set(cacheKey, ProductIdentitiesDict, true, new TimeSpan(20, 0, 0, 0));
             }
             
         }

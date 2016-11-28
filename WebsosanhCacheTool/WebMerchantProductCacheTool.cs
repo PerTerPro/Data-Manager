@@ -73,7 +73,7 @@ namespace WebsosanhCacheTool
 
                 if (listWebMerchantProducts.Count > 0)
                     {
-                        var parts = CollectionUtilities.Partition<WebMerchantProduct>(listWebMerchantProducts, 10000);
+                        var parts = CollectionUtilities.Partition<WebMerchantProduct>(listWebMerchantProducts, 2000);
                         foreach (var part in parts)
                         {
                             WebMerchantProductBAL.InsertWebMerchantProductsIntoCache(part);

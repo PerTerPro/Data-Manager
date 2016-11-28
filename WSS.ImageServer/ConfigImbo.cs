@@ -15,7 +15,12 @@ namespace ImboForm
          public static string PrivateKey = "123websosanh@195";
          public static string PublicKey = "wss";
          public static string User = "wss";
+
          public static string KeyRabbitMqTransferImbo = "RabbitMqTransferImage";
+         public static string KeyRabbitMqImageIdToSql = "RabbitMqImageIdToSql";
+         public static string QueueRabbitMqImageIdToSql = "ImboImage.UpdateImageIdSql";
+
+
          public static string ConnectionProduct = @"Data Source=42.112.28.93;Initial Catalog=QT_2;Persist Security Info=True;User ID=wss_price;Password=HzlRt4$$axzG-*UlpuL2gYDu;connection timeout=200";
          public static string Host = @"http://172.22.1.226";
          public static string ExchangeImage = "ImageImbo";
