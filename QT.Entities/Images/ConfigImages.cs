@@ -40,5 +40,28 @@ namespace QT.Entities.Images
 
         //Redis error image Database(0)
         public static string KeyRedisCheckErrorDownloadImageProduct = "redisFPT201";
+
+        //Imbo Image
+        public static string ImboExchangeImages = "ImboImageBatch";
+        public static string ImboRoutingKeyDownloadImageProduct = "ImboImage.DownloadImageProduct.#";
+        public static string ImboQueueDownloadImageProduct = "ImboImage.DownloadImageProduct";
+
+        public static string ImboRoutingKeyDownloadImageRootProduct = "ImboImage.DownloadImageRootProduct.#";
+        public static string ImboQueueDownloadImageRootProduct = "ImboImage.DownloadImageRootProduct";
+
+        public static string ImboRoutingKeyCheckErrorDownload = "ImboImage.CheckErrorProduct.#";
+        public static string ImboQueueCheckErrorDownload = "ImboImage.CheckErrorProduct";
+
+        public static string ImboRoutingKeyHistoryDownloadImage = "ImboImage.HistoryDownload.#";
+        public static string ImboQueueHistoryDownloadImage = "ImboImage.HistoryDownload";
+
+        public static string ImboRoutingKeyUploadImageIdSql = "ImboImage.UpdateImageIdSql.#";
+        public static string ImboQueueUploadImageIdSql = "ImboImage.UpdateImageIdSql";
+
+        public static string ImboRoutingKeyThumbImage = "ImboImage.ThumbImage.#";
+        public static string ImboQueueThumbImage = "ImboImage.ThumbImage";
+
+        public static string ImboRoutingKeyDownloadImageCompany = "ImboImage.DownloadImageCompany.#";
+        public static string ImboQueueDownloadImageCompany = "ImboImage.DownloadImageCompany";
     }
 }

@@ -229,9 +229,7 @@ namespace QT.Moduls.Company
                 //Dung TotalVaid để so sánh nhưng để đỡ phải sửa code thì dùng totalproduct luôn nên k check đc lazada =))
                 //Comment bá đạo
                 if ((int)(ListProducts.Count*100/company.TotalProduct) < 50 || (company.TotalProduct - ListProducts.Count)>10000)
-                {
                     HistoryDatafeedAdapter.InsertHistory(company.ID, company.DataFeedPath, ListProducts.Count, 0, 0, string.Format("Dừng update do số product ({0}) lấy trong datafeed chênh lệch với totalproduct {1}",ListProducts.Count,company.TotalProduct));
-                }
                 else
                     UpdateProductsToSql(company, ListProducts, cancelUpdateDataFeedTokenSource);
             }
@@ -346,9 +344,7 @@ namespace QT.Moduls.Company
 
                     if (UpdateCompanyDataFeedProduct(product, company, ref categoriesSet, ref oldProducts,
                         ref namePriceSet))
-                    {
                         updatedProductCount++;
-                    }
                     //Log.InfoFormat("Update {0}/{1} CompanyID = {2}", updatedProductCount, listProducts.Count, company.ID);
                 }
 

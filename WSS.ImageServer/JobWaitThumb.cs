@@ -9,7 +9,7 @@ namespace ImboForm
     public class JobWaitThumb
     {
         public string ImageId { get; set; }
-
+        public List<Tuple<int,int>> Sizes { set; get; } 
         public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "000", "000\000.csproj", "{2265B7CB-1E89-4094-9C72-78E81A0F920D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -239,6 +239,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.ImageServerTests1", "WSS.ImageServerTests1\WSS.ImageServerTests1.csproj", "{7F738547-5374-472C-8A57-180B605E8A0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QT.ModulsTests", "QT.ModulsTests\QT.ModulsTests.csproj", "{7B7FAA64-FF14-4702-91BB-53459724C2CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.ImageImbo.DownloadImageService", "WSS.ImageImbo.DownloadImageService\WSS.ImageImbo.DownloadImageService.csproj", "{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.ImageImbo.CheckErrorDownloadService", "WSS.ImageImbo.CheckErrorDownloadService\WSS.ImageImbo.CheckErrorDownloadService.csproj", "{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1301,6 +1305,30 @@ Global
 		{7B7FAA64-FF14-4702-91BB-53459724C2CC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7B7FAA64-FF14-4702-91BB-53459724C2CC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7B7FAA64-FF14-4702-91BB-53459724C2CC}.Release|x86.ActiveCfg = Release|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Debug|x86.Build.0 = Debug|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Release|x86.ActiveCfg = Release|Any CPU
+		{AEECE8B4-9E9C-4C07-ACB6-E3F0086DAC42}.Release|x86.Build.0 = Release|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Debug|x86.Build.0 = Debug|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Release|x86.ActiveCfg = Release|Any CPU
+		{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

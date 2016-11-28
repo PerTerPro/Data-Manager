@@ -86,7 +86,6 @@ namespace ImboForm
                                     var responseContent = sr99.ReadToEnd();
                                     dynamic d = JObject.Parse(responseContent);
                                     idImageNew = d.imageIdentifier;
-                                    //Log.Info(responseContent);
                                 }
                             }
                         }
@@ -94,7 +93,7 @@ namespace ImboForm
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                
             }
             return idImageNew;
         }

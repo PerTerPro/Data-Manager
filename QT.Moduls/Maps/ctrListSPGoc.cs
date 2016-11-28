@@ -459,10 +459,16 @@ namespace QT.Moduls.Maps
         {
             Wait.Show("Get data from SQL...");
             //IDJob = 22
-            var formatquerry = @"SELECT L.IDData, P.Name,L.LastUpdate,L.ContentJob,P.Status,P.Valid FROM LogJob as L inner join Product as P ON L.IDData = P.ID  where IDJob = {0} and IDUser = {1} and Status = 11 and Valid = 0 and L.LastUpdate > '{2}' and L.LastUpdate < '{3}'";
+            var formatquerry = @"SELECT L.IDData, P.Name,L.LastUpdate,L.ContentJob,PS.Name as Status,P.Valid FROM LogJob as L 
+                                                        inner join Product as P ON L.IDData = P.ID 
+                                                        inner join ProductStatus as PS on P.Status = PS.ID   
+                                                        where IDJob = {0} and IDUser = {1} and Status = 11 and L.LastUpdate > '{2}' and L.LastUpdate < '{3}'";
             if (checkEditLoadAllNew.Checked)
             {
-                formatquerry = @"SELECT L.IDData, P.Name,L.LastUpdate,L.ContentJob,P.Status,P.Valid FROM LogJob as L inner join Product as P ON L.IDData = P.ID  where IDJob = {0} and IDUser = {1} and L.LastUpdate > '{2}' and L.LastUpdate < '{3}'";
+                formatquerry = @"SELECT L.IDData, P.Name,L.LastUpdate,L.ContentJob,PS.Name as Status,P.Valid FROM LogJob as L 
+                                                        inner join Product as P ON L.IDData = P.ID 
+                                                        inner join ProductStatus as PS on P.Status = PS.ID  
+                                                        where IDJob = {0} and IDUser = {1} and L.LastUpdate > '{2}' and L.LastUpdate < '{3}'";
             }
             var querry = "";
             string start;
@@ -479,7 +485,12 @@ namespace QT.Moduls.Maps
             }
 
             if (QT.Users.User.UserName == "admin")
-                querry = string.Format(@"SELECT L.IDData, P.Name,L.LastUpdate,L.ContentJob,P.Status,P.Valid,U.UserName FROM LogJob as L inner join Product as P ON L.IDData = P.ID inner join tblUser as U on L.IDUser = U.ID where IDJob = {0} and L.LastUpdate > '{1}' and L.LastUpdate < '{2}'", JobName.FrmEditeProductByCat_Them_moi_san_pham_goc,start,end);
+                querry = string.Format(@"SELECT L.IDData, P.Name,L.LastUpdate,L.ContentJob,PS.Name as Status,P.Valid,U.UserName FROM LogJob as L 
+                                                        inner join Product as P ON L.IDData = P.ID 
+                                                        inner join tblUser as U on L.IDUser = U.ID 
+                                                        inner join ProductStatus as PS on P.Status = PS.ID 
+                                                        where IDJob = {0} and L.LastUpdate > '{1}' and L.LastUpdate < '{2}'", 
+                                                        JobName.FrmEditeProductByCat_Them_moi_san_pham_goc,start,end);
             else
                 querry = string.Format(formatquerry, JobName.FrmEditeProductByCat_Them_moi_san_pham_goc, QT.Users.User.UserID, start, end);
             var sqldb = new SqlDb(Server.ConnectionString);
@@ -509,6 +520,14 @@ namespace QT.Moduls.Maps
             if (xtraTabControl1.SelectedTabPage == xtraTabPageNew && !string.IsNullOrEmpty(txtIDDataNew.Text))
             {
                 txtIDProduct.Text = txtIDDataNew.Text;
+            }
+        }
+
+        private void gridView5_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (e.FocusedRowHandle >= 0)
+            {
+                txtIDDataNew.Text = gridView5.GetRowCellValue(e.FocusedRowHandle, "IDData").ToString();
             }
         }
     }
