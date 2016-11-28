@@ -44,11 +44,6 @@ namespace ImboForm
                 {
                     redisServer = RedisManager.GetRedisServer("RedisImbo");
                     database = redisServer.GetDatabase(0);
-
-                 
-
-                 
-
                     return;
                 }
                 catch (Exception ex01)
@@ -59,9 +54,19 @@ namespace ImboForm
             }
         }
 
+
+        private readonly List<long> _hsPushedTmp = new List<long>();
         public void Add(long productId)
         {
-            this.database.SetAdd(this.KeyImbo, productId);
+            _hsPushedTmp.Add(productId);
+            if (_hsPushedTmp.Count > 10000)
+            {
+                RedisValue[] rs = _hsPushedTmp.Select(x => (RedisValue)x).ToArray();
+                this.database.SetAdd(this.KeyImbo, rs);
+                log.Info(string.Format("Pushed {0} item to pushed imbo", _hsPushedTmp.Count));
+                _hsPushedTmp.Clear();
+              
+            }
         }
 
         private bool CheckHave(long productId)
@@ -72,6 +77,17 @@ namespace ImboForm
         internal bool Contain(long productId)
         {
             return this.database.SetContains(this.KeyImbo, productId);
+        }
+
+        internal HashSet<long> GetAllPushed()
+        {
+            HashSet<long> hs = new HashSet<long>();
+            foreach (var itemData in this.database.SetScan(this.KeyImbo, "*", 10000))
+            {
+                hs.Add(Convert.ToInt64(itemData));
+                if (hs.Count % 10000 == 0) log.Info(string.Format("Loaded pushed imbo: {0}", hs.Count));
+            }
+            return hs;
         }
     }
 }

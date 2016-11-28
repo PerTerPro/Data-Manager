@@ -16,6 +16,7 @@ namespace WSS.ImageServer.Service
           
             string strDeirectory = "";
             Parameter pt = null;
+            
             if (args.Length == 0)
             {
                 Console.WriteLine(@"Input location directory: ");
@@ -31,6 +32,11 @@ namespace WSS.ImageServer.Service
             {
                 HandlerTransferFolder h = new HandlerTransferFolder();
                 h.TransferData(pt.Directory);
+            }
+            else if  (pt.Cmd=="RePushThumb")
+            {
+                HandlerTransferFolder.RePushThumb();
+   
             }
             else if (pt.Cmd == "DelImgLocalPushedImbo")
             {
@@ -59,7 +65,6 @@ namespace WSS.ImageServer.Service
                 w.StartConsume();
             }
 
-            
             return;
 
 
