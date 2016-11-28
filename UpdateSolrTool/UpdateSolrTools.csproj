@@ -122,6 +122,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="IndexProductTools.cs" />
+    <Compile Include="ProductCodeNormalization.cs" />
     <Compile Include="ProductDataset.cs">
       <DependentUpon>ProductDataset.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -138,6 +139,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="SolrIndexer.cs" />
+    <Compile Include="UnitNormalization.cs" />
     <Compile Include="UserDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

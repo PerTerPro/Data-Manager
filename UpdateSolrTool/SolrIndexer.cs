@@ -137,8 +137,8 @@ namespace UpdateSolrTools
                                 categoryPrefix = categoryPrefix + ListPrefixCategory[category] + " ";
                             }
                         }
-                        var otherNames = IndexProductTools.GetUnitNormalizedName(productName);
-                        otherNames.AddRange(IndexProductTools.GetOtherNames(productName));
+                        var otherNames = UnitNormalization.GetUnitNormalizedName(productName);
+                        otherNames.AddRange(ProductCodeNormalization.GetOtherNames(productName));
                         if (otherNames.Count > 0)
                             item.NameOther = otherNames;
                         if (!string.IsNullOrEmpty(categoryPrefix))
@@ -352,8 +352,8 @@ namespace UpdateSolrTools
                         item.CategoryIds = categories;
                     }
                     item.CategoryLevel2Id = item.CategoryIds.Count >= 2 ? item.CategoryIds[item.CategoryIds.Count - 2] : 0;
-                    var otherNames = IndexProductTools.GetUnitNormalizedName(productName);
-                    otherNames.AddRange(IndexProductTools.GetOtherNames(productName));
+                    var otherNames = UnitNormalization.GetUnitNormalizedName(productName);
+                    otherNames.AddRange(ProductCodeNormalization.GetOtherNames(productName));
                     if (otherNames.Count > 0)
                         item.NameOther = otherNames;
                     var categoryPrefix = item.CategoryIds.Where(category => ListPrefixCategory.ContainsKey(category)).Aggregate("", (current, category) => current + ListPrefixCategory[category] + " ");
@@ -514,8 +514,8 @@ namespace UpdateSolrTools
                             item.CategoryIds = categories;
                         }
                         item.CategoryLevel2Id = item.CategoryIds.Count >= 2 ? item.CategoryIds[item.CategoryIds.Count - 2] : 0;
-                        var otherNames = IndexProductTools.GetUnitNormalizedName(productName);
-                        otherNames.AddRange(IndexProductTools.GetOtherNames(productName));
+                        var otherNames = UnitNormalization.GetUnitNormalizedName(productName);
+                        otherNames.AddRange(ProductCodeNormalization.GetOtherNames(productName));
                         var rootProductMappingWithBlackList = RootProductMappingBAL.GetRootProductMappingFromCache(item.Id, 0, RootProductMappingSortType.PriceWithVAT, false);
                         if (rootProductMappingWithBlackList.ListMerchantProducts != null)
                         {
@@ -694,8 +694,8 @@ namespace UpdateSolrTools
                         item.CategoryIds = categories;
                     }
                     item.CategoryLevel2Id = item.CategoryIds.Count >= 2 ? item.CategoryIds[item.CategoryIds.Count - 2] : 0;
-                    var otherNames = IndexProductTools.GetUnitNormalizedName(productName);
-                    otherNames.AddRange(IndexProductTools.GetOtherNames(productName));
+                    var otherNames = UnitNormalization.GetUnitNormalizedName(productName);
+                    otherNames.AddRange(ProductCodeNormalization.GetOtherNames(productName));
                     var rootProductMappingWithBlackList = RootProductMappingBAL.GetRootProductMappingFromCache(productID, 0, RootProductMappingSortType.PriceWithVAT, false);
                     if (rootProductMappingWithBlackList.ListMerchantProducts != null)
                     {
