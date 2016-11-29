@@ -38,20 +38,15 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GABIZ.Base">
-      <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\GABIZ.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\log4net.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\000\DLLs\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RabbitMQ.Client, Version=3.5.6.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\RabbitMQ.Client.dll</HintPath>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="StackExchange.Redis, Version=1.1.605.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -82,17 +77,15 @@
     <Reference Include="System.Xml">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Websosanh.Core.Drivers.RabbitMQ, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
+    <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
+      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
     <Reference Include="Websosanh.Core.Drivers.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\Websosanh.Core.Drivers.Redis.dll</HintPath>
     </Reference>
-    <Reference Include="Websosanh.Core.JobServer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Manager7\Data-Manager\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
+    <Reference Include="Websosanh.Core.JobServer">
+      <HintPath>..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +137,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GABIZ_BASE\GABIZ.BASE.csproj">
+      <Project>{8c825289-f1a7-4699-9d54-eea95ec6ab21}</Project>
+      <Name>GABIZ.BASE</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
       <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
       <Name>QT.Entities</Name>
