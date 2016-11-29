@@ -7,7 +7,7 @@ using log4net;
 using RabbitMQ.Client.Events;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class WorkerImgIdToSql:QueueingConsumer
         
@@ -15,7 +15,8 @@ namespace ImboForm
         readonly HandlerImgIdToSql _h = new HandlerImgIdToSql();
         private readonly ILog _log = LogManager.GetLogger(typeof (WorkerImgIdToSql));
 
-        public WorkerImgIdToSql() : base (RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqImageIdToSql), ConfigImbo.QueueUploadImgIdToSql, false)
+        public WorkerImgIdToSql()
+            : base(RabbitMQManager.GetRabbitMQServer(QT.Entities.Images.ConfigImages.RabbitMqServerName), QT.Entities.Images.ConfigImages.ImboQueueUploadImageIdSql, false)
         {
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using RabbitMQ.Client.Events;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class WorkerDelImgImbo : QueueingConsumer
     {
@@ -24,7 +24,9 @@ namespace ImboForm
 
         public override void ProcessMessage(BasicDeliverEventArgs message)
         {
-            h.ProcessJob(Newtonsoft.Json.JsonConvert.DeserializeObject<JobDelImgImbo>(Encoding.UTF8.GetString(message.Body)));
+            string strMss = Encoding.UTF8.GetString(message.Body);
+            Logger.Info(string.Format("Get mss: {0}", strMss));
+            h.ProcessJob(strMss);
             this.GetChannel().BasicAck(message.DeliveryTag, true);
         }
     }

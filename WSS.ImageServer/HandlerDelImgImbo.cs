@@ -10,16 +10,16 @@ using log4net.Filter;
 using QT.Moduls;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class HandlerDelImgImbo
     {
 
 
         ProducerBasic pb = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),ConfigImbo.QueueDelImgImbo);
-        public void ProcessJob(JobDelImgImbo deserializeObject)
+        public void ProcessJob(string imageId)
         {
-            
+            bool deleteFile = ImboImageService.DelteImage(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, imageId, ConfigImbo.User, ConfigImbo.Host);
         }
 
         public void PushBack(string imgId)

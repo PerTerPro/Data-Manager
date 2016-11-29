@@ -6,13 +6,14 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using GABIZ.Base.NGenerics.Algorithms.Graph;
+using ImboForm;
 using log4net;
 using QT.Entities;
 using QT.Entities.Data;
 using QT.Moduls;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class HandlerTransferFolder
     {
@@ -155,7 +156,7 @@ namespace ImboForm
                 @"select ImageId, Id
 from product
 where valid = 1
-order by Id", 10000, (rowData) =>
+order by Id", 10000, (rowData,iRow) =>
                 {
                     string imgId = Common.Obj2String(rowData["ImageId"]);
                     long Id = Common.Obj2Int64(rowData["Id"]);
@@ -168,6 +169,12 @@ order by Id", 10000, (rowData) =>
                         }.ToJson());
                     }
                 });
+        }
+
+        public static void PushImgCompany(string rootDirectory)
+        {
+           HandlerTransferLogoCompany h = new HandlerTransferLogoCompany();
+           h.Start();
         }
     }
 }

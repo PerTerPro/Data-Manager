@@ -12,8 +12,10 @@ namespace WSS.ImageServer.Service
     {
         static void Main(string[] args)
         {
+            //args = new[] {"-cmd UdpImgIdToSql"};
+            //args = new[] {"-cmd DelImgImbo"};\
+            args = new[] {"-cmd PushImgCompany"};
 
-          
             string strDeirectory = "";
             Parameter pt = null;
             
@@ -25,7 +27,8 @@ namespace WSS.ImageServer.Service
             }
             else
             {
-                pt=Parameter.FromStr(string.Join(" ", args));
+                pt = Parameter.FromStr(string.Join(" ", args));
+
             }
 
             if (pt.Cmd == "PushImgLocalToImbo")
@@ -33,10 +36,14 @@ namespace WSS.ImageServer.Service
                 HandlerTransferFolder h = new HandlerTransferFolder();
                 h.TransferData(pt.Directory);
             }
-            else if  (pt.Cmd=="RePushThumb")
+            else if (pt.Cmd == "PushImgCompany")
+            {
+                HandlerTransferLogoCompany f = new HandlerTransferLogoCompany();
+                f.Start();
+            }
+            else if (pt.Cmd == "RePushThumb")
             {
                 HandlerTransferFolder.RePushThumb();
-   
             }
             else if (pt.Cmd == "DelImgLocalPushedImbo")
             {
@@ -44,12 +51,12 @@ namespace WSS.ImageServer.Service
                 w.StartConsume();
 
             }
-            else if(pt.Cmd=="DelImgImbo")
+            else if (pt.Cmd == "DelImgImbo")
             {
                 WorkerDelImgImbo w = new WorkerDelImgImbo();
                 w.StartConsume();
             }
-            else if (pt.Cmd=="UdpImgIdToSql")
+            else if (pt.Cmd == "UdpImgIdToSql")
             {
                 WorkerImgIdToSql w = new WorkerImgIdToSql();
                 w.StartConsume();

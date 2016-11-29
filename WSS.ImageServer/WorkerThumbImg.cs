@@ -7,7 +7,7 @@ using log4net;
 using RabbitMQ.Client.Events;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class WorkerThumbImg:QueueingConsumer
     {

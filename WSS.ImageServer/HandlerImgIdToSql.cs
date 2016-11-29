@@ -9,7 +9,7 @@ using QT.Entities;
 using QT.Moduls;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class HandlerImgIdToSql
     {

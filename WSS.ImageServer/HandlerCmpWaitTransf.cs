@@ -31,7 +31,7 @@ from Product p
 where p.Company = {0}
 order by ID asc
 ", companyId);
-            sqlDb.ProcessDataTableLarge(sql, 100, (row) =>
+            sqlDb.ProcessDataTableLarge(sql, 100, (row,iRow) =>
             {
                 _producerProductWaitUpImg.PublishString(new JobProductWaitUpImg()
                 {
