@@ -30,6 +30,7 @@ namespace WSS.Core.Crawler
 
         private readonly ProducerBasic _producerLogAddProduct = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqCrawler), ConfigCrawler.QueueLogAddProduct);
         private readonly ProducerBasic _producerLogDelProduct = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqCrawler), "CrawlerProduct.LogDelProduct.ToSql");
+        private readonly ProducerBasic _producerDelImgImbo = new ProducerBasic(RabbitMQManager.GetRabbitMQServer("ImboImg"), "Img.Imbo.Delete");
        
         private ProductAdapter _productAdapter = null;
 
@@ -42,7 +43,7 @@ namespace WSS.Core.Crawler
         private void InitData()
         {
             _productAdapter = new ProductAdapter(new SqlDb(ConfigCrawler.ConnectProduct));
-            _jobClient = new JobClient(ConfigImages.ExchangeImages, GroupType.Topic, ConfigImages.RoutingKeyChangeImageProduct, true, RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName));
+            _jobClient = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic, ConfigImages.ImboRoutingKeyDownloadImageProduct, true, RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName));
         }
 
         public override void Init()
@@ -63,19 +64,24 @@ namespace WSS.Core.Crawler
                     DataTable tbl = _productAdapter.GetSqlDb().GetTblData(sql, CommandType.Text, null);
                     if (tbl.Rows.Count > 0 && _productAdapter.DeleteProduct(pt.ID))
                     {
+                   
+
                         _log.Info("Deleted Success product: " + pt.ID + pt.DetailUrl);
                         var row1 = tbl.Rows[0];
+                        string imgId = Common.Obj2String(row1["ImageId"]);
                         var objBackUp = new JobBackupProductToDel()
                         {
 
                             Id = Common.Obj2Int64(row1["ID"]),
                             Price = Common.Obj2Int64(row1["Price"]),
-                            ImageId = Common.Obj2String(row1["ImageId"]),
+                            ImageId = imgId,
                             ImageUrl = Common.Obj2String(row1["ImageUrls"]),
                             Name = Common.Obj2String(row1["Name"]),
                             ProductUrl = Common.Obj2String("DetailUrl")
                         };
                         RabbitMQAdapter.Instance.PushProductToQueueChangeMainInfo(new List<long>() {pt.ID});
+                        if (!string.IsNullOrEmpty(imgId))
+                            _producerDelImgImbo.PublishString(imgId);
                         _producerLogDelProduct.PublishString(objBackUp.ToJson());
                     }
 
@@ -92,7 +98,8 @@ namespace WSS.Core.Crawler
                 {
                     if (_productAdapter.InsertProduct(pt))
                     {
-                        _jobClient.PublishJob(new Websosanh.Core.JobServer.Job() {Data = ImageProductInfo.GetMessage(new ImageProductInfo(pt.ID, pt.Name, pt.DetailUrl, pt.ImageUrl, true))});
+                        _jobClient.PublishJob(new Websosanh.Core.JobServer.Job() 
+                        {Data = ImageProductInfo.GetMessage(new ImageProductInfo(pt.ID, pt.Name, pt.DetailUrl, pt.ImageUrl, true))});
                         _producerLogAddProduct.PublishString(Newtonsoft.Json.JsonConvert.SerializeObject(new JobRabbitAddProduct()
                         {
                             DateAdd = DateTime.Now,
@@ -109,6 +116,7 @@ namespace WSS.Core.Crawler
                     if (_productAdapter.UpdateProduct(pt))
                     {
                         _log.Info(string.Format("Company: {0} Updated product: {1}", pt.CompanyId, pt.ID));
+                        
                         if (pt.StatusChange.IsChangeImage)
                         {
                             _jobClient.PublishJob(new Websosanh.Core.JobServer.Job() {Data = ImageProductInfo.GetMessage(new ImageProductInfo(pt.ID, pt.Name, pt.DetailUrl, pt.ImageUrl, false))});

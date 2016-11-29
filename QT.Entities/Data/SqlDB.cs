@@ -77,7 +77,7 @@ namespace QT.Entities.Data
         }
 
 
-        public delegate void ProcessRow(DataRow row);
+        public delegate void ProcessRow(DataRow row, int iRow);
 
         /// <summary>
         /// PageNumber Is TextPage
@@ -89,6 +89,8 @@ namespace QT.Entities.Data
         public void ProcessDataTableLarge(string sql, int rowsPage, ProcessRow processRow)
         {
             int PageName = 1;
+            int iRow = 0;
+
             string fullSql = sql + @"
 OFFSET ((@PageNumber - 1) * @rowsPage) ROWS
 FETCH NEXT @rowsPage ROWS ONLY";
@@ -106,7 +108,8 @@ FETCH NEXT @rowsPage ROWS ONLY";
                     });
                     foreach (DataRow VARIABLE in tbl.Rows)
                     {
-                        processRow(VARIABLE);
+                        iRow++;
+                        processRow(VARIABLE,iRow);
                     }
                     log.Info(string.Format("Processed {0} rows at page {1}", tbl.Rows.Count, PageName));
                     PageName = PageName + 1;

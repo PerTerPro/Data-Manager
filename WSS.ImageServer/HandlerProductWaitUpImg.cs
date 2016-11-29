@@ -10,13 +10,14 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using GABIZ.Base.Statistics.Kernels;
+using ImboForm;
 using log4net;
 using Newtonsoft.Json.Linq;
 using QT.Entities.Data;
 using QT.Moduls;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class HandlerProductWaitUpImg
     {

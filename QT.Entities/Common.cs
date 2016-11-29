@@ -2006,13 +2006,14 @@ namespace QT.Entities
 
 
         #region DownloadImage with ImboServer
-        public static string DownloadImageProductWithImboServer(string url, string publicKey, string privateKey, string userName, string host)
+        public static string DownloadImageProductWithImboServer(string url, string publicKey, string privateKey, string userName, string host, int port)
         {
             string idImageNew = "";
             // Imbo
-            string urlQuery = host + @"/users/" + userName + @"/images";
+            string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "POST" + "|" + urlQuery + "|" + "wss" + "|" + strDate;
+            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + "wss" + "|" + strDate;
+            
             var signleData = CreateToken(str, privateKey);
             //download image
             var regexhttp = Regex.Match(url, "http").Captures;
@@ -2022,12 +2023,16 @@ namespace QT.Entities
                 url = "http://" + url;
             var requestdownload = (HttpWebRequest)WebRequest.Create(url);
             requestdownload.Credentials = CredentialCache.DefaultCredentials;
-            requestdownload.UserAgent =
-                "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
+            requestdownload.UserAgent ="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
                                                    | SecurityProtocolType.Tls11
                                                    | SecurityProtocolType.Tls12
                                                    | SecurityProtocolType.Ssl3;
+
+            ServicePointManager
+                .ServerCertificateValidationCallback +=
+                (sender, cert, chain, sslPolicyErrors) => true;
+
             var responseImageDownload = (HttpWebResponse)requestdownload.GetResponse();
             Bitmap thumbBitmap = null;
             var streamImageDownload = responseImageDownload.GetResponseStream();

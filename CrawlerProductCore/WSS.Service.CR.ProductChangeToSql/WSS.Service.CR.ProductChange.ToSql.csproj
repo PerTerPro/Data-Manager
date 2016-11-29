@@ -79,6 +79,9 @@
     <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
       <HintPath>..\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
+    <Reference Include="WSS.ImageServer">
+      <HintPath>..\DLLs\WSS.ImageServer.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ProjectInstaller.cs">

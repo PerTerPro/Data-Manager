@@ -9,7 +9,7 @@ using QT.Moduls.CrawlerProduct.Cache;
 using StackExchange.Redis;
 using Websosanh.Core.Drivers.Redis;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class RedisImage
     {

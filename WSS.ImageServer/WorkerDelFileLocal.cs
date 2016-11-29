@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using RabbitMQ.Client.Events;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class WorkerDelFileLocal : QueueingConsumer
     {

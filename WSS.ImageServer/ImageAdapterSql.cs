@@ -11,7 +11,7 @@ using QT.Moduls.CrawlerProduct;
 using StackExchange.Redis;
 using Websosanh.Core.Drivers.Redis;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class ImageAdapterSql
     {
@@ -86,7 +86,7 @@ order by a.TotalProduct asc
         public void ProcessAddProduct()
         {
             List<long> lst = new List<long>();
-            this.GetSqlDb().ProcessDataTableLarge("Select Id From Product Where Valid = 1 Order By Id", 10000, (row) =>
+            this.GetSqlDb().ProcessDataTableLarge("Select Id From Product Where Valid = 1 Order By Id", 10000, (row,iRow) =>
             {
                 lst.Add(Common.Obj2Int64(row["Id"]));
                 if (lst.Count > 10000)
