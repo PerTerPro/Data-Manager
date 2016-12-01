@@ -20,6 +20,7 @@ using QT.Entities.Data;
 using System.Configuration;
 using Websosanh.Core.Drivers.RabbitMQ;
 using Websosanh.Core.JobServer;
+using QT.Entities.Images;
 
 namespace QT.Moduls.Company
 {
@@ -57,13 +58,10 @@ namespace QT.Moduls.Company
                 string updateProductGroupName = ConfigurationManager.AppSettings["updateProductGroupName"];
                 string updateProductToWebJobName = ConfigurationManager.AppSettings["updateProductToWebJobName"];
                 _updateProductToWebJobExpirationMs = Common.Obj2Int(ConfigurationManager.AppSettings["updateProductToWebJobExpirationMS"].ToString());
-                //jobclient send message to service download image
-                string updateProductImageGroupName = ConfigurationManager.AppSettings["updateProductImageGroupName"];
-                string updateProductImageJobName = ConfigurationManager.AppSettings["updateProductImageCompanyJobName"];
                 #endregion
                 var rabbitMqServer = RabbitMQManager.GetRabbitMQServer(_rabbitMqServerName);
                 _jobClientUpdateProductToWeb = new JobClient(updateProductGroupName, GroupType.Topic, updateProductToWebJobName, true, rabbitMqServer);
-                _jobClientDownloadImage = new JobClient(updateProductImageGroupName, GroupType.Topic, updateProductImageJobName, true, rabbitMqServer);
+                _jobClientDownloadImage = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic, ConfigImages.ImboRoutingKeyDownloadImageCompany, true, rabbitMqServer);
             }
             catch (Exception ex)
             {

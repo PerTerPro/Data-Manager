@@ -158,7 +158,7 @@ namespace WSS.ImageImbo.DownloadImageService
                         worker.Start();
                     });
                     workerTask.Start();
-                    Log.InfoFormat("Worker {0} started", i);
+                    Log.InfoFormat("Worker(Company) {0} started", i);
                 }
                 #endregion
             }
@@ -190,6 +190,7 @@ namespace WSS.ImageImbo.DownloadImageService
                         product.ImageUrls = productTable.Rows[i]["ImageUrls"].ToString();
                         DownloadImageProduct(product, producerUpdateImageIdSql, producerThumbImage);
                     }
+                    Log.Info(string.Format("CompanyId = {0} downloaded {1} image", idCompany, productTable.Count));
                 }
                 else
                     Log.Info(string.Format("CompanyId {0} 0 product download image", idCompany));
@@ -236,12 +237,13 @@ namespace WSS.ImageImbo.DownloadImageService
                         ImageId = idImbo,
                         Sizes = _widthHeightImages
                     }.ToJson());
+                    break;
                 }
                 catch (Exception exception)
                 {
-                    Thread.Sleep(60000);
+                    Thread.Sleep(600000);
                     Log.Error(
-                        string.Format("Product: ID = {0} Send message to service check error download image.",
+                        string.Format("Product: ID = {0} Send message to service check error download image. Thread Sleep 10p",
                             productId), exception);
                 }
             }
@@ -257,12 +259,13 @@ namespace WSS.ImageImbo.DownloadImageService
                         ImageId = idImageImbo,
                         ProductId = productId
                     }.ToJson());
+                    break;
                 }
                 catch (Exception exception)
                 {
-                    Thread.Sleep(60000);
+                    Thread.Sleep(600000);
                     Log.Error(
-                        string.Format("Product: ID = {0} Send message to service check error download image.",
+                        string.Format("Product: ID = {0} Send message to service check error download image. Thread Sleep 10p",
                             productId), exception);
                 }
             }
