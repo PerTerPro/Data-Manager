@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using ImboForm;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WSS.ImageServer;
+
 namespace ImboForm.Tests
 {
     [TestClass()]

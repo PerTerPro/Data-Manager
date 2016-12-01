@@ -63,6 +63,7 @@
     <Reference Include="System.Core">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.FtpClient, Version=1.0.5824.34026, Culture=neutral, PublicKeyToken=fa4be07daa57c2b7, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.FtpClient.1.0.5824.34026\lib\net40\System.Net.FtpClient.dll</HintPath>
       <Private>True</Private>
@@ -105,11 +106,13 @@
     <Compile Include="HandlerPushFromFolder.cs" />
     <Compile Include="HandlerTransferFolder.cs" />
     <Compile Include="HandlerTransferLogoCompany.cs" />
+    <Compile Include="HandlerTransRootProduct.cs" />
     <Compile Include="ImageAdapterSql.cs" />
     <Compile Include="ImboImage.cs" />
     <Compile Include="JobCmpWaitTransf.cs" />
     <Compile Include="JobFailPushImage.cs" />
     <Compile Include="JobProductWaitUpImg.cs" />
+    <Compile Include="JobRootProductWaitTrans.cs" />
     <Compile Include="JobUploadedImg.cs" />
     <Compile Include="JobWaitDelFileLocal.cs" />
     <Compile Include="JobWaitDelImg.cs" />
@@ -130,6 +133,7 @@
     <Compile Include="WorkerImgThumb.cs" />
     <Compile Include="WorkerCmpWaitTransf.cs" />
     <Compile Include="WorkerThumbImg.cs" />
+    <Compile Include="WorkerDownloadRootProduct.cs" />
     <Compile Include="WorkerUpImgToServer.cs" />
   </ItemGroup>
   <ItemGroup>

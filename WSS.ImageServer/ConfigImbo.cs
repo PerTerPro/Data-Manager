@@ -47,5 +47,6 @@ namespace WSS.ImageServer
 
         public static int Port = 443;
 
+        public static string QueueRootProductWaitTrans ="Img.Product.RootProduct.WaitTrans";
     }
 }

@@ -33,9 +33,8 @@ namespace WSS.ImageServer
 select replace(Domain, '.', '_') as Domain, id, LogoImageId
 from company 
 where TotalProduct>0
-and id = 3502170206813664485
 order by id
-", 100, (row,iRow) =>
+", 10000, (row,iRow) =>
                 {
                     string imgIdOld = Common.Obj2String(row["LogoImageId"]);
                     long id = Common.Obj2Int64(row["Id"]);
@@ -66,7 +65,7 @@ order by id
                         _log.Error(ex);
                     }
 
-                  
+                    _log.Info(string.Format("Uploaded {0} {1}", iRow, id));
 
                 });
         }

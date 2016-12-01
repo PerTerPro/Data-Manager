@@ -14,8 +14,11 @@ namespace WSS.ImageServer.Service
         {
             //args = new[] {"-cmd UdpImgIdToSql"};
             //args = new[] {"-cmd DelImgImbo"};\
-            args = new[] {"-cmd PushImgCompany"};
-
+            //args = new[] {"-cmd PushImgCompany"};
+            //args = new[] {"-cmd ImgCallThumb"};
+             args = new[] { "-cmd PushRootProductWaitTrans" };
+            //args = new[] { "-cmd UdpImgIdToSql" };
+            
             string strDeirectory = "";
             Parameter pt = null;
             
@@ -35,6 +38,16 @@ namespace WSS.ImageServer.Service
             {
                 HandlerTransferFolder h = new HandlerTransferFolder();
                 h.TransferData(pt.Directory);
+            }
+            else if (pt.Cmd == "PushRootProductWaitTrans")
+            {
+                HandlerTransRootProduct h = new HandlerTransRootProduct();
+                h.PushRootProduct();
+            }
+            else if (pt.Cmd == "DownloadRootProduct")
+            {
+                WorkerDownloadRootProduct w = new WorkerDownloadRootProduct();
+                w.StartConsume();
             }
             else if (pt.Cmd == "PushImgCompany")
             {

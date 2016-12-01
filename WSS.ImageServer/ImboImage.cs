@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -41,16 +42,27 @@ namespace WSS.ImageServer
 
         public static string CallThumb(string imgId, List<Tuple<int, int>> sizes)
         {
-            string host = @"http://172.22.1.226";
-            string linkImg = host + @"/" + imgId + ".jpg";
-            foreach (var VARIABLE in sizes)
+
+            ServicePointManager
+                  .ServerCertificateValidationCallback +=
+                  (sender, cert, chain, sslPolicyErrors) => true;
+            foreach (var variable in sizes)
             {
-                var str = string.Format(@"http://172.22.1.226/users/{0}/images/{1}.{2}?t[]=thumbnail:width={3},height={4}", "wss", imgId, "jpg", VARIABLE.Item1, VARIABLE.Item2);
-                HttpWebRequest imageRequest = (HttpWebRequest) WebRequest.Create(str);
-                var imageResponse = (HttpWebResponse) imageRequest.GetResponse();
-                string strSize = imageResponse.Headers["Content-Length"];
-                Log.Info(string.Format("{0} {1} size: {2} {3}", imageResponse.StatusCode, imgId, strSize, (VARIABLE.Item1 + ":" + VARIABLE.Item2)));
-                imageResponse.Close();
+                try
+                {
+                    var str = string.Format(@"{5}:{6}/users/{0}/images/{1}.{2}?t[]=maxSize:width={3}", "wss", imgId, "jpg", variable.Item1, variable.Item2, ConfigImbo.Host,
+                        ConfigImbo.Port);
+                    HttpWebRequest imageRequest = (HttpWebRequest) WebRequest.Create(str);
+                    imageRequest.Headers.Add("Accept", "image/webp,image/*,*/*;q=0.8");
+                    var imageResponse = (HttpWebResponse) imageRequest.GetResponse();
+                    string strSize = imageResponse.Headers["Content-Length"];
+                    Log.Info(string.Format("{0} {1} size: {2} {3}", imageResponse.StatusCode, imgId, strSize, (variable.Item1 + ":" + variable.Item2)));
+                    imageResponse.Close();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex);
+                }
             }
             return "";
         }
@@ -101,32 +113,41 @@ namespace WSS.ImageServer
             return idImageNew;
         }
 
-        public static bool DelteImage(string publicKey, string privateKey, string imageId, string userName, string host)
+        public static bool DelteImage(string publicKey, string privateKey, string imageId, string userName, string host, int port)
         {
-            string urlQuery = host + @"/users/" + userName + @"/images" + "/" + imageId;
+            ServicePointManager
+                .ServerCertificateValidationCallback +=
+                (sender, cert, chain, sslPolicyErrors) => true;
+
+            string urlQuery = host + ":" + port + @"/users/" + userName + @"/images" + "/" + imageId;
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "DELETE" + "|" + urlQuery + "|" + "wss" + "|" + strDate;
+            string str = "DELETE" + "|" + host + @"/users/" + userName + @"/images" + "/" + imageId + "|" + "wss" + "|" + strDate;
             var signleData = CreateToken(str, privateKey);
             try
             {
 
-                var request =  WebRequest.Create(urlQuery);
+                var request = WebRequest.Create(urlQuery);
                 request.Headers.Add("X-Imbo-PublicKey", "wss");
                 request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
                 request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
                 request.ContentType = "application/json";
                 request.Method = "DELETE";
-                using (var stream = (HttpWebResponse)request.GetResponse())
+                using (var stream = (HttpWebResponse) request.GetResponse())
                 {
-                    Stream  x =  stream.GetResponseStream();
+                    Stream x = stream.GetResponseStream();
                     var y = new StreamReader(x);
                     var mss = y.ReadToEnd();
                     dynamic d = JObject.Parse(mss);
                 }
             }
-            catch (Exception ex)
+            catch (WebException ex1)
             {
-                Log.Error(ex);
+                Log.Info(ex1.Message);
+                return true;
+            }
+            catch (Exception ex2)
+            {
+                Log.Error(ex2);
                 return false;
             }
             return true;

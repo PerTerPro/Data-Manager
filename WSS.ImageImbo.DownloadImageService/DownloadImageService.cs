@@ -19,6 +19,7 @@ using QT.Entities;
 using QT.Entities.Images;
 using QT.Moduls;
 using WSS.ImageImbo.DownloadImageService.DBImageTableAdapters;
+using WSS.ImageServer;
 
 namespace WSS.ImageImbo.DownloadImageService
 {

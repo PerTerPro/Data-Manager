@@ -76,7 +76,7 @@ order by a.TotalProduct asc
 
         internal void UpdateImboProcess(long p1, string p2)
         {
-            bool bOK = this.GetSqlDb().RunQuery("Update Product Set ImageId = @ImageId where Id = @Id", CommandType.Text, new[]
+            bool bOK = this.GetSqlDb().RunQuery("Update Product Set ImageId = @ImageId, Valid = 1 where Id = @Id", CommandType.Text, new[]
             {
                 SqlDb.CreateParamteterSQL("ImageId", p2, SqlDbType.NVarChar),
                 SqlDb.CreateParamteterSQL("Id", p1, SqlDbType.BigInt)
