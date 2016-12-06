@@ -21,12 +21,12 @@ namespace QT.Moduls.RabbitMQ
         public MQPushDownloadImage(RabbitMQServer rabbitMQServer)
         {
             _rabbitMQServer = rabbitMQServer;
-            _jobClient = new JobClient(ConfigImages.ExchangeImages, GroupType.Topic, ConfigImages.RoutingKeyChangeImageProduct, true, RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName));
+            _jobClient = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic, ConfigImages.ImboRoutingKeyDownloadImageProduct, true, RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName));
         }
         public MQPushDownloadImage()
         {
             _rabbitMQServer = RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqProduct);
-            _jobClient = new JobClient(ConfigImages.ExchangeImages, GroupType.Topic, ConfigImages.RoutingKeyChangeImageProduct, true, RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName));
+            _jobClient = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic, ConfigImages.ImboRoutingKeyDownloadImageProduct, true, RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName));
         }
 
         public void PushQueueChangeChangeImage(ImageProductInfo mss)

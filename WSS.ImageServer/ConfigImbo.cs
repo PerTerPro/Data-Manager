@@ -25,6 +25,8 @@ namespace WSS.ImageServer
 
 
         public static string ConnectionProduct = @"Data Source=42.112.28.93;Initial Catalog=QT_2;Persist Security Info=True;User ID=wss_price;Password=HzlRt4$$axzG-*UlpuL2gYDu;connection timeout=200";
+        public static string ConnectionNew = @"Data Source=172.22.1.83;Initial Catalog=ReviewsCMS;Persist Security Info=True;User ID=wss_news;Password=HzlRt4$$axzG-*UlpuL2gYDu;connection timeout=200"; 
+
 
         public static string Host = @"https://172.22.1.226";
 
@@ -47,5 +49,8 @@ namespace WSS.ImageServer
 
         public static int Port = 443;
 
+        public static string QueueRootProductWaitTrans ="Img.Product.RootProduct.WaitTrans";
+
+        public static string QueuePublishedWaitTrans = "Img.PublishedNew.WaitTrans";
     }
 }

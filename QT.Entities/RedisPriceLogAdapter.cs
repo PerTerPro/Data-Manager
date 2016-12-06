@@ -173,8 +173,8 @@ namespace QT.Entities
             return _instance;
         }
 
-        ILog log = log4net.LogManager.GetLogger(typeof(RedisCacheLastUpdateProduct));
-        IDatabase database = RedisManager.GetRedisServer("redis_cache_product_last_update").GetDatabase(13);
+        ILog _log = log4net.LogManager.GetLogger(typeof(RedisCacheLastUpdateProduct));
+        readonly IDatabase database = RedisManager.GetRedisServer("redis_cache_product_last_update").GetDatabase(13);
         public void SetLastUpdateProduct (long ProductID,long CompanyID, long HashChange)
         {
             while (true)
@@ -198,11 +198,11 @@ namespace QT.Entities
         static   RedisCacheCurrentCrawlerCompany _instance = null;
         public static RedisCacheCurrentCrawlerCompany Instance()
         {
-            return (_instance == null) ? (_instance = new RedisCacheCurrentCrawlerCompany()) : _instance;
+            return _instance ?? (_instance = new RedisCacheCurrentCrawlerCompany());
         }
 
-        ILog log = log4net.LogManager.GetLogger(typeof(RedisCacheCurrentCrawlerCompany));
-        IDatabase database = null;
+        readonly ILog log = log4net.LogManager.GetLogger(typeof(RedisCacheCurrentCrawlerCompany));
+        IDatabase _database = null;
 
         public void Init ()
         {
@@ -210,7 +210,7 @@ namespace QT.Entities
             {
                 try
                 {
-                    database = RedisManager.GetRedisServer("redisCacheCrawlerProduct").GetDatabase(0);
+                    _database = RedisManager.GetRedisServer("redisCacheCrawlerProduct").GetDatabase(0);
                     return;
                 }
                 catch (Exception ex01)
@@ -236,8 +236,8 @@ namespace QT.Entities
                                                                 new HashEntry("Machine",QT.Entities.Server.GetMachineCode())
                                                              };
 
-                    database.HashSet("cmp_crawler_running:" + CompanyID.ToString() + ":" + TypeCrawler, hashEntry);
-                    database.KeyExpire("cmp_crawler_running:" + CompanyID.ToString(), new TimeSpan(0, 1, 0));
+                    _database.HashSet("cmp_crawler_running:" + CompanyID.ToString() + ":" + TypeCrawler, hashEntry);
+                    _database.KeyExpire("cmp_crawler_running:" + CompanyID.ToString(), new TimeSpan(0, 1, 0));
                     return;
                 }
                 catch (Exception ex001)
@@ -257,11 +257,11 @@ namespace QT.Entities
                 {
                     try
                     {
-                        string Domain = this.database.HashGet(key, "Domain").ToString();
-                        long ID = QT.Entities.Common.Obj2Int64(this.database.HashGet(key, "ID"));
-                        string StartRun = QT.Entities.Common.Obj2String(this.database.HashGet(key, "StartRun"));
-                        string Machine = this.database.HashGet(key, "Machine").ToString();
-                        int TypeCrawler = QT.Entities.Common.Obj2Int(this.database.HashGet(key, "TypeCrawler"),-1);
+                        string Domain = this._database.HashGet(key, "Domain").ToString();
+                        long ID = QT.Entities.Common.Obj2Int64(this._database.HashGet(key, "ID"));
+                        string StartRun = QT.Entities.Common.Obj2String(this._database.HashGet(key, "StartRun"));
+                        string Machine = this._database.HashGet(key, "Machine").ToString();
+                        int TypeCrawler = QT.Entities.Common.Obj2Int(this._database.HashGet(key, "TypeCrawler"),-1);
                         lst.Add(new ClassCompanyRunning()
                         {
                             Domain = Domain,

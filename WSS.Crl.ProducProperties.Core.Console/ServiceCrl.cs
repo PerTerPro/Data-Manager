@@ -31,7 +31,7 @@ namespace WSS.Crl.ProducProperties.Service
                         "
                     , productAdapter.GetCompanyIdByDomain(domain));
                 sql.ProcessDataTableLarge(queryData,
-                    1000, (Row) =>
+                    1000, (Row, iRow) =>
                     {
                         producerBasic.PublishString(new JobDownloadHtml()
                         {

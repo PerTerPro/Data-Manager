@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WSS.Crl.ProducProperties.Manager
 {
-    public partial class Form1 : Form
+    public partial class FrmCompanyConfigProperty : Form
     {
-        public Form1()
+        public FrmCompanyConfigProperty()
         {
             InitializeComponent();
         }
@@ -25,8 +25,12 @@ namespace WSS.Crl.ProducProperties.Manager
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FrmCompanyConfigProperty_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'productQT.Configuration_Property' table. You can move, or remove it, as needed.
+            this.configuration_PropertyTableAdapter.Fill(this.productQT.Configuration_Property);
+            // TODO: This line of code loads data into the 'productQT.Configuration' table. You can move, or remove it, as needed.
+            this.configurationTableAdapter.Fill(this.productQT.Configuration);
             // TODO: This line of code loads data into the 'productQT.Company' table. You can move, or remove it, as needed.
             this.companyTableAdapter.Fill(this.productQT.Company);
 

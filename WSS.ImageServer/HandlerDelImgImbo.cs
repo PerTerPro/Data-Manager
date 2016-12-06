@@ -19,7 +19,7 @@ namespace WSS.ImageServer
         ProducerBasic pb = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),ConfigImbo.QueueDelImgImbo);
         public void ProcessJob(string imageId)
         {
-            bool deleteFile = ImboImageService.DelteImage(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, imageId, ConfigImbo.User, ConfigImbo.Host);
+            bool deleteFile = ImboImageService.DelteImage(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, imageId, ConfigImbo.User, ConfigImbo.Host, ConfigImbo.Port);
         }
 
         public void PushBack(string imgId)

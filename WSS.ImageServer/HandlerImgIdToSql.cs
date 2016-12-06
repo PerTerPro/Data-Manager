@@ -19,16 +19,21 @@ namespace WSS.ImageServer
 
         public void ProcessJob(string str)
         {
-            JobUploadedImg job = JobUploadedImg.FromJson(str);
-            string imageIdOld = _imgAdapterSql.GetImageId(job.ProductId);
-            if (!string.IsNullOrEmpty(imageIdOld))
+            try
             {
-                _producerDelImbo.PublishString(new JobDelImgImbo()
+
+                JobUploadedImg job = JobUploadedImg.FromJson(str);
+                string imageIdOld = _imgAdapterSql.GetImageId(job.ProductId);
+                if (!string.IsNullOrEmpty(imageIdOld))
                 {
-                    ImageId = imageIdOld
-                }.ToJson()); 
+                    _producerDelImbo.PublishString(imageIdOld);
+                }
+                _imgAdapterSql.UpdateImboProcess(job.ProductId, job.ImageId);
             }
-            _imgAdapterSql.UpdateImboProcess(job.ProductId, job.ImageId);
+            catch (Exception ex)
+            {
+                log.Error(ex);
+            }
         }
     }
 }
