@@ -71,6 +71,9 @@
     <None Include="bat_DownloadRootProductWaitTrans.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="bat_PushUpImboReview.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="bat_RunPushImgCompany.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

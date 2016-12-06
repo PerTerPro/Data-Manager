@@ -67,6 +67,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="HandlerCmpWaitTransfTests.cs" />
+    <Compile Include="HandlerNewPublisherTests.cs" />
     <Compile Include="HandlerProductWaitUpImgTests.cs" />
     <Compile Include="HandlerPushDlImageByCompnayTests.cs" />
     <Compile Include="HandlerTransferFolderTests.cs" />
@@ -75,10 +76,14 @@
     <Compile Include="ServiceImboTests.cs" />
     <Compile Include="WorkerCmpWaitTransfTests.cs" />
     <Compile Include="WorkerImgIdToSqlTests.cs" />
+    <Compile Include="WorkerPushImboPublishedTests.cs" />
     <Compile Include="WorkerUpImgToServerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -75,7 +75,7 @@ namespace WSS.ImageServer
                             bExistproduct = this._hsProductIds.Contains(productId);
                             if (bExistproduct)
                             {
-                                imgId = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, file, ConfigImbo.User, ConfigImbo.Host);
+                                imgId = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, file, "landingpage", ConfigImbo.Host, ConfigImbo.Port);
                                 if (!string.IsNullOrEmpty(imgId))
                                 {
                                     this._pb.PublishString(new JobUploadedImg()

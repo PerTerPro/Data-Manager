@@ -53,7 +53,7 @@ namespace WSS.ImageServer
                     var str = string.Format(@"{5}:{6}/users/{0}/images/{1}.{2}?t[]=maxSize:width={3}", "wss", imgId, "jpg", variable.Item1, variable.Item2, ConfigImbo.Host,
                         ConfigImbo.Port);
                     HttpWebRequest imageRequest = (HttpWebRequest) WebRequest.Create(str);
-                    imageRequest.Headers.Add("Accept", "image/webp,image/*,*/*;q=0.8");
+                    imageRequest.Accept= "image/webp,image/*,*/*;q=0.8";
                     var imageResponse = (HttpWebResponse) imageRequest.GetResponse();
                     string strSize = imageResponse.Headers["Content-Length"];
                     Log.Info(string.Format("{0} {1} size: {2} {3}", imageResponse.StatusCode, imgId, strSize, (variable.Item1 + ":" + variable.Item2)));
@@ -67,15 +67,15 @@ namespace WSS.ImageServer
             return "";
         }
 
-        public static string PushFromFile(string publicKey, string privateKey, string path, string userName, string host)
+        public static string PushFromFile(string publicKey, string privateKey, string path, string userName, string host, int port)
         {
-           
-
 
             string idImageNew = "";
-            string urlQuery = host + @"/users/" + userName + @"/images";
+
+            string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "POST" + "|" + urlQuery + "|" + "wss" + "|" + strDate;
+            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + "wss" + "|" + strDate;
+
             var signleData = CreateToken(str, privateKey);
             try
             {
@@ -153,58 +153,9 @@ namespace WSS.ImageServer
             return true;
         }
 
-        public static string PushFromUrl (string publicKey, string privateKey, string path, string userName, string host, int port)
+        public static string PushFromUrl(string publicKey, string privateKey, string path, string userName, string host, int port)
         {
             return QT.Entities.Common.DownloadImageProductWithImboServer(path, publicKey, privateKey, userName, host, port);
-
-            //string idImageNew = "";
-            //string urlQuery = host + @"/users/" + userName + @"/images";
-            //string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            //string str = "POST" + "|" + urlQuery + "|" + "wss" + "|" + strDate;
-            //var signleData = CreateToken(str, privateKey);
-            //try
-            //{
-            //    string readyPath = path.Replace("Store/", "");
-            //    using (var ftpClient = new FtpClient())
-            //    {
-            //        ftpClient.Host = "183.91.14.84";
-            //        ftpClient.Credentials = new NetworkCredential("xuantrang_dev", "123456!@#$%^");
-            //        ftpClient.Connect();
-            //        if (ftpClient.FileExists(readyPath))
-            //            using (var ftpStream = ftpClient.OpenRead(readyPath))
-            //            {
-            //                var request = (HttpWebRequest)WebRequest.Create(urlQuery);
-            //                request.Headers.Add("X-Imbo-PublicKey", "wss");
-            //                request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
-            //                request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
-            //                request.ContentType = "application/json";
-            //                request.Method = "POST";
-            //                using (Stream stream = request.GetRequestStream())
-            //                {
-            //                    ftpStream.CopyTo(stream);
-            //                }
-            //                using (WebResponse response = request.GetResponse())
-            //                {
-            //                    using (Stream stream = response.GetResponseStream())
-            //                    {
-            //                        using (StreamReader sr99 = new StreamReader(stream))
-            //                        {
-            //                            var responseContent = sr99.ReadToEnd();
-            //                            dynamic d = JObject.Parse(responseContent);
-            //                            idImageNew = d.imageIdentifier;
-            //                            Log.Info(responseContent);
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //        ftpClient.Disconnect();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    // ignored
-            //}
-            //return idImageNew;
         }
 
         public static string PushFromFtpServer(string publicKey, string privateKey, string path, string userName, string host)

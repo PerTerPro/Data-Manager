@@ -16,8 +16,8 @@ namespace WSS.Core.Crawler.RecoverProductLost
 {
     public class Service
     {
-        private string connectionSource = "Data Source=172.22.1.83;Initial Catalog=QT_2;Persist Security Info=True;User ID=wss;Password=HzlRt4$$axzG-*UlpuL2gYDu;Connect Timeout=5000";
-        private string connectionDestination = "Data Source=172.22.30.86,1455;Initial Catalog=QT_2;Persist Security Info=True;User ID=qt_vn;Password=@F4sJ=l9/ryJt9MT;connection timeout=200";
+        private readonly string connectionSource = "Data Source=172.22.1.83;Initial Catalog=QT_2;Persist Security Info=True;User ID=wss;Password=HzlRt4$$axzG-*UlpuL2gYDu;Connect Timeout=5000";
+        private readonly string connectionDestination = "Data Source=172.22.30.86,1455;Initial Catalog=QT_2;Persist Security Info=True;User ID=qt_vn;Password=@F4sJ=l9/ryJt9MT;connection timeout=200";
         private IDatabase database = null;
         public RedisKey KeyRedis = "recov_product";
         private ILog log = LogManager.GetLogger(typeof (Service));
@@ -84,9 +84,9 @@ namespace WSS.Core.Crawler.RecoverProductLost
                 if (hst.Count%10000 == 0) log.Info(string.Format("Loaded {0}", hst.Count));
             }return hst;
         }
+
         public void PushToRedis(int startId)
         {
-        
             List<long> lstTemp = new List<long>();
             HashSet<long> hstOld = this.GetHsOld();
 

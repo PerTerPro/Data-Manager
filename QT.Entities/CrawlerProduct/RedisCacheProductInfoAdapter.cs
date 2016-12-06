@@ -23,7 +23,7 @@ namespace QT.Entities.CrawlerProduct
 
         public static RedisCacheCheckDupNameProduct Instace()
         {
-            return _RedisCacheProductInfoAdapter == null ? _RedisCacheProductInfoAdapter = new RedisCacheCheckDupNameProduct() : _RedisCacheProductInfoAdapter;
+            return _RedisCacheProductInfoAdapter ?? (_RedisCacheProductInfoAdapter = new RedisCacheCheckDupNameProduct());
         }
 
         void Connect()
