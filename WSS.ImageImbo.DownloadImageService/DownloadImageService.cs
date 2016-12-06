@@ -11,7 +11,6 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using ImboForm;
 using log4net;
 using Websosanh.Core.Drivers.RabbitMQ;
 using Websosanh.Core.JobServer;
@@ -29,7 +28,7 @@ namespace WSS.ImageImbo.DownloadImageService
         private static readonly ILog Log = LogManager.GetLogger(typeof(DownloadImageService));
 
         private string _connectionString =
-            "Data Source = 42.112.28.93; Initial Catalog = QT_2; Persist Security Info=True;User ID = wss_price; Password=HzlRt4$$axzG-*UlpuL2gYDu;connection timeout = 200";
+            "Data Source = 172.22.1.82; Initial Catalog = QT_2; Persist Security Info=True;User ID = wss_price; Password=HzlRt4$$axzG-*UlpuL2gYDu;connection timeout = 200";
         private bool _isRunning = true;
         RabbitMQServer _rabbitMqServer;
         private int _workerProduct;
@@ -40,7 +39,11 @@ namespace WSS.ImageImbo.DownloadImageService
         private string _publicKeyImbo = "wss";
         private string _privateKeyImbo = "123websosanh@195";
         private string _userNameImbo = "wss";
-        private string _hostImbo = "http://172.22.1.226";
+        private string _hostImbo = "https://172.22.1.226";
+        private int _portImbo = 443;
+
+        //log product
+        private History_DownloadImageProductTableAdapter _historyProductAdapter = new History_DownloadImageProductTableAdapter();
         public DownloadImageService()
         {
             InitializeComponent();
@@ -56,6 +59,7 @@ namespace WSS.ImageImbo.DownloadImageService
             _privateKeyImbo = ConfigurationSettings.AppSettings["PrivateKeyImboImageProduct"];
             _userNameImbo = ConfigurationSettings.AppSettings["UserNameImboImageProduct"];
             _hostImbo = ConfigurationSettings.AppSettings["HostImboImageProduct"];
+            _portImbo = Common.Obj2Int(ConfigurationSettings.AppSettings["PortImboImageProduct"]);
 
             _workerProduct = Common.Obj2Int(ConfigurationSettings.AppSettings["workerProduct"]);
             _workerCompany = Common.Obj2Int(ConfigurationSettings.AppSettings["workerCompany"]);
@@ -73,6 +77,7 @@ namespace WSS.ImageImbo.DownloadImageService
         {
             try
             {
+                _historyProductAdapter.Connection.ConnectionString = _connectionString;
                 _workers = new Worker[_workerProduct + _workerCompany + 1];
                 _rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
                 _checkErrorJobClient = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic, ConfigImages.ImboRoutingKeyCheckErrorDownload, true, _rabbitMqServer);
@@ -147,7 +152,11 @@ namespace WSS.ImageImbo.DownloadImageService
                             try
                             {
                                 idCompany = BitConverter.ToInt64(downloadImageJob.Data, 0);
-                                DownloadImageCompany(idCompany, producerUpdateImageIdSql, producerThumbImage);
+                                if (downloadImageJob.Type == (int)TypeJobWithRabbitMQ.ReloadAll)
+                                    DownloadImageCompany(idCompany, producerUpdateImageIdSql, producerThumbImage, true);
+                                else
+                                    DownloadImageCompany(idCompany, producerUpdateImageIdSql, producerThumbImage, false);
+
                             }
                             catch (Exception exception)
                             {
@@ -168,10 +177,11 @@ namespace WSS.ImageImbo.DownloadImageService
                 throw;
             }
         }
-        private void DownloadImageCompany(long idCompany, ProducerBasic producerUpdateImageIdSql, ProducerBasic producerThumbImage)
+        private void DownloadImageCompany(long idCompany, ProducerBasic producerUpdateImageIdSql, ProducerBasic producerThumbImage, bool redownloadAll)
         {
             try
             {
+                var start = DateTime.Now;
                 var productTableAdapter = new ProductTableAdapter();
                 productTableAdapter.Connection.ConnectionString = _connectionString;
                 var productTable = new DBImage.ProductDataTable();
@@ -179,18 +189,41 @@ namespace WSS.ImageImbo.DownloadImageService
                     productTableAdapter.FillBy_RootProduct(productTable);
                 else if (idCompany == 1)
                     productTableAdapter.FillAllImageIdNull(productTable);
+                else if (redownloadAll)
+                    productTableAdapter.FillAllBy_Company(productTable, idCompany);
                 else
                     productTableAdapter.FillBy_CompanyAndImageIdNull(productTable, idCompany);
                 if (productTable.Rows.Count > 0)
                 {
+                    List<long> listIdFail = new List<long>();
+                    int success = 0;
+                    int fail = 0;
                     for (int i = 0; i < productTable.Rows.Count; i++)
                     {
                         ImageProductInfo product = new ImageProductInfo();
                         product.Id = Common.Obj2Int64(productTable.Rows[i]["ID"]);
                         product.ImageUrls = productTable.Rows[i]["ImageUrls"].ToString();
-                        DownloadImageProduct(product, producerUpdateImageIdSql, producerThumbImage);
+                        if (DownloadImageProduct(product, producerUpdateImageIdSql, producerThumbImage)) success++;
+                        else
+                        {
+                            fail++;
+                            listIdFail.Add(product.Id);
+                        }
                     }
-                    Log.Info(string.Format("CompanyId = {0} downloaded {1} image", idCompany, productTable.Count));
+                    Log.Info(string.Format("CompanyId = {0} downloaded {1}/{2} image", idCompany, success, productTable.Count));
+                    var end = DateTime.Now;
+                    #region Insert History donwloadimage Company
+                    try
+                    {
+                        History_DownloadImageCompanyTableAdapter historyCompanyAdapter = new History_DownloadImageCompanyTableAdapter();
+                        historyCompanyAdapter.Connection.ConnectionString = _connectionString;
+                        historyCompanyAdapter.Insert(idCompany, productTable.Count, success, fail, start, end, string.Join(",", listIdFail));
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(string.Format("Insert log error companyId = {1}", idCompany), ex);
+                    }
+                    #endregion
                 }
                 else
                     Log.Info(string.Format("CompanyId {0} 0 product download image", idCompany));
@@ -201,16 +234,19 @@ namespace WSS.ImageImbo.DownloadImageService
                 Log.Error(string.Format("CompanyId: ID = {0} ERROR: ", idCompany), exception);
             }
         }
-        private void DownloadImageProduct(ImageProductInfo imageProductInfo, ProducerBasic producerUpdateImageIdSql, ProducerBasic producerThumbImage)
+        private bool DownloadImageProduct(ImageProductInfo imageProductInfo, ProducerBasic producerUpdateImageIdSql, ProducerBasic producerThumbImage)
         {
+            bool result = false;
             try
             {
-                var idImbo = Common.DownloadImageProductWithImboServer(imageProductInfo.ImageUrls, _publicKeyImbo, _privateKeyImbo, _userNameImbo, _hostImbo);
+                var idImbo = Common.DownloadImageProductWithImboServer(imageProductInfo.ImageUrls, _publicKeyImbo, _privateKeyImbo, _userNameImbo, _hostImbo, _portImbo);
                 if (!string.IsNullOrEmpty(idImbo))
                 {
                     UpdateImageIdSqlService(imageProductInfo.Id, idImbo, producerUpdateImageIdSql);
                     ThumbImageService(imageProductInfo.Id, idImbo, producerThumbImage);
                     Log.Info(string.Format("Product: ID = {0} download image success!", imageProductInfo.Id));
+                    //InsertLogDownloadImageProduct(imageProductInfo.Id);
+                    result = true;
                 }
                 else
                 {
@@ -224,10 +260,28 @@ namespace WSS.ImageImbo.DownloadImageService
                 imageProductInfo.ErrorMessage = exception.ToString();
                 SendErrorDownloadImageToService(imageProductInfo);
             }
+            return result;
         }
-
+        private void InsertLogDownloadImageProduct(long productId, History_DownloadImageProductTableAdapter historyProductAdapter)
+        {
+                while (_isRunning)
+                {
+                    try
+                    {
+                        if (historyProductAdapter.Connection.State == ConnectionState.Closed) historyProductAdapter.Connection.Open();
+                        _historyProductAdapter.Insert(productId, DateTime.Now, true, false, "");
+                        break;
+                    }
+                    catch (Exception exception)
+                    {
+                        Log.Error(string.Format("ProductId {0} : Insert log error.", productId), exception);
+                        Thread.Sleep(60000);
+                    }
+                }
+        }
         public void ThumbImageService(long productId, string idImbo, ProducerBasic producerThumbImage)
         {
+            int index = 0;
             while (_isRunning)
             {
                 try
@@ -245,11 +299,16 @@ namespace WSS.ImageImbo.DownloadImageService
                     Log.Error(
                         string.Format("Product: ID = {0} Send message to service check error download image. Thread Sleep 10p",
                             productId), exception);
+                    if (index == 5)
+                        break;
+                    else
+                        index++;
                 }
             }
         }
         public void UpdateImageIdSqlService(long productId, string idImageImbo, ProducerBasic producerUpdateImageIdSql)
         {
+            int index = 0;
             while (_isRunning)
             {
                 try
@@ -267,6 +326,10 @@ namespace WSS.ImageImbo.DownloadImageService
                     Log.Error(
                         string.Format("Product: ID = {0} Send message to service check error download image. Thread Sleep 10p",
                             productId), exception);
+                    if (index == 5)
+                        break;
+                    else
+                        index++;
                 }
             }
         }
@@ -275,6 +338,7 @@ namespace WSS.ImageImbo.DownloadImageService
         {
             lock (_keyLock)
             {
+                int index = 0;
                 var job = new Job { Data = ImageProductInfo.GetMessage(imageProductInfo) };
                 while (_isRunning)
                 {
@@ -290,6 +354,10 @@ namespace WSS.ImageImbo.DownloadImageService
                         Log.Error(
                             string.Format("Product: ID = {0} Send message to service check error download image.",
                                 imageProductInfo.Id), exception);
+                        if (index == 5)
+                            break;
+                        else
+                            index++;
                     }
                 }
             }
@@ -297,6 +365,7 @@ namespace WSS.ImageImbo.DownloadImageService
 
         protected override void OnStop()
         {
+            Log.Info("Stop Service!");
             foreach (var worker in _workers)
                 worker.Stop();
             _rabbitMqServer.Stop();

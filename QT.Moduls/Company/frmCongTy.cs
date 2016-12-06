@@ -1480,7 +1480,7 @@ namespace QT.Moduls.Company
             try
             {
                 if (checkEditLoadProductNotImagePath.Checked)
-                    productTableAdapter.FillBy_CompanyAndValidAndImagePath(dB.Product, _idCongTy, valid);
+                    productTableAdapter.FillBy_CompanyAndValidAndImageId(dB.Product, _idCongTy, valid);
                 else
                     productTableAdapter.FillBy_CompanyAndValid(dB.Product, _idCongTy, valid);
             }

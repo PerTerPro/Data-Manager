@@ -1,11 +1,13 @@
-﻿namespace QT.Moduls {
-    
-    
-    public partial class DB {
+﻿namespace QT.Moduls
+{
+
+
+    public partial class DB
+    {
         partial class Company2DataTable
         {
         }
-    
+
         partial class PropertyDataTable
         {
         }
