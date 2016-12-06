@@ -2034,7 +2034,6 @@ namespace QT.Entities
                 (sender, cert, chain, sslPolicyErrors) => true;
 
             var responseImageDownload = (HttpWebResponse)requestdownload.GetResponse();
-            Bitmap thumbBitmap = null;
             var streamImageDownload = responseImageDownload.GetResponseStream();
             var request = (HttpWebRequest)WebRequest.Create(urlQuery);
             request.Headers.Add("X-Imbo-PublicKey", "wss");

@@ -256,6 +256,7 @@
             this.gridColumnPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnInStock = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnUrl = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEditInstock = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnUpdateSolrRedis = new DevExpress.XtraEditors.SimpleButton();
@@ -327,7 +328,7 @@
             this.colShortDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOriginPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInStock = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colImagePath = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colImageId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.checkEditReloadAllImage = new DevExpress.XtraEditors.CheckEdit();
             this.simpleButtonExportExcel = new DevExpress.XtraEditors.SimpleButton();
@@ -369,7 +370,6 @@
             this.productTableAdapter = new QT.Moduls.DBTableAdapters.ProductTableAdapter();
             this.job_SPGocNhapLieuTempTableAdapter1 = new QT.Users.DBPhanSPTableAdapters.Job_SPGocNhapLieuTempTableAdapter();
             this.companyTableAdapter1 = new QT.Users.DBTableAdapters.CompanyTableAdapter();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             websiteLabel = new System.Windows.Forms.Label();
@@ -2795,6 +2795,14 @@
             this.gridColumnUrl.VisibleIndex = 5;
             this.gridColumnUrl.Width = 266;
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "VATStatus";
+            this.gridColumn2.FieldName = "VATStatus";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 6;
+            // 
             // repositoryItemLookUpEditInstock
             // 
             this.repositoryItemLookUpEditInstock.AutoHeight = false;
@@ -3240,7 +3248,7 @@
             this.colShortDescription,
             this.colOriginPrice,
             this.colInStock,
-            this.colImagePath});
+            this.colImageId});
             this.gridView3.GridControl = this.productGridControl;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsView.ShowAutoFilterRow = true;
@@ -3410,13 +3418,14 @@
             this.colInStock.VisibleIndex = 9;
             this.colInStock.Width = 99;
             // 
-            // colImagePath
+            // colImageId
             // 
-            this.colImagePath.FieldName = "ImagePath";
-            this.colImagePath.Name = "colImagePath";
-            this.colImagePath.Visible = true;
-            this.colImagePath.VisibleIndex = 6;
-            this.colImagePath.Width = 84;
+            this.colImageId.Caption = "ImageIdImbo";
+            this.colImageId.FieldName = "ImageId";
+            this.colImageId.Name = "colImageId";
+            this.colImageId.Visible = true;
+            this.colImageId.VisibleIndex = 6;
+            this.colImageId.Width = 84;
             // 
             // panelControl5
             // 
@@ -3769,14 +3778,6 @@
             // companyTableAdapter1
             // 
             this.companyTableAdapter1.ClearBeforeFill = true;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "VATStatus";
-            this.gridColumn2.FieldName = "VATStatus";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 6;
             // 
             // frmCongTy
             // 
@@ -4149,7 +4150,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colShortDescription;
         private DevExpress.XtraGrid.Columns.GridColumn colOriginPrice;
         private DevExpress.XtraGrid.Columns.GridColumn colInStock;
-        private DevExpress.XtraGrid.Columns.GridColumn colImagePath;
+        private DevExpress.XtraGrid.Columns.GridColumn colImageId;
         private DevExpress.XtraEditors.CheckEdit checkEditLoadProductNotImagePath;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditInstock;
         private DevExpress.XtraEditors.SimpleButton simpleButtonReloadHistory;

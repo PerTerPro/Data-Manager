@@ -39,7 +39,7 @@
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.ServiceName = "WSS.ImageImbo.DownloadImageProduct";
+            this.serviceInstaller1.ServiceName = "WSS.ImageImbo.DownloadImage";
             this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
