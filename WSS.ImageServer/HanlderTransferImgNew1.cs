@@ -46,10 +46,10 @@ namespace WSS.ImageServer
             {
                 if (this.bUpdateSql)
                 {
-                    this.sqlDb.RunQuery("Update [AdvProductHotdeal_BackUp] Set [FilePath] = @FilePath where AdvID = @AdvID", CommandType.Text, new SqlParameter[]
+                    this.sqlDb.RunQuery("Update [AdvProductHotdeal_BackUp] Set [ImageId] = @ImageId where AdvID = @AdvID", CommandType.Text, new SqlParameter[]
                     {
                         SqlDb.CreateParamteterSQL("AdvID", advID, SqlDbType.BigInt),
-                        SqlDb.CreateParamteterSQL("FilePath", imageId, SqlDbType.NVarChar)
+                        SqlDb.CreateParamteterSQL("ImageId", imageId, SqlDbType.NVarChar)
                     });
                 }
                 log.Info(string.Format("Pushed for {0} {1} => {2}", advID, filePath, imageId));
