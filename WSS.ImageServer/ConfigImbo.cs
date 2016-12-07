@@ -16,7 +16,7 @@ namespace WSS.ImageServer
 
         public static string QueueDelImgImbo = "Img.Imbo.Delete";
         public static string PrivateKey = "123websosanh@195";
-        public static string PublicKey = "wss";
+        public static string PublicKey = "wss_write";
         public static string User = "wss";
 
         public static string KeyRabbitMqTransferImbo = "RabbitMqTransferImage";

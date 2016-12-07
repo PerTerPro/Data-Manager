@@ -21,7 +21,9 @@ namespace WSS.ImageServer.Service
 
             //args = new[] { "-cmd PushUpImboReview" };
             args = new[] { "-cmd HanlderTransferImgNew1" };
-            
+
+
+
 
             string strDeirectory = "";
             Parameter pt = null;

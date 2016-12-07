@@ -31,7 +31,7 @@ namespace WSS.ImageServer
         private DateTime _dtStart = DateTime.Now;
         private long _iPushed = 0;
 
-        private bool _isDelData = false;
+        private bool _isDelData = true;
         private  ImageAdapterSql _imageAdapter = new ImageAdapterSql();
         private ILog _log = LogManager.GetLogger(typeof (HandlerTransferFolder));
 

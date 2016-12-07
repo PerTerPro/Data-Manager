@@ -21,8 +21,7 @@ namespace WSS.CrawlerProduct.Tool
 {
     public class Program
     {
-        private static void Main(string[] args)
-        {
+        private static void Main(string[] args){
             
             WSS.Core.Crawler.RecoverProductLost.Service s = new Core.Crawler.RecoverProductLost.Service();
             Console.WriteLine("1. Push. 2.Transfer");

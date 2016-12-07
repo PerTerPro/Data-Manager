@@ -69,12 +69,14 @@ namespace WSS.ImageServer
 
         public static string PushFromFile(string publicKey, string privateKey, string path, string userName, string host, int port)
         {
-
+            ServicePointManager
+               .ServerCertificateValidationCallback +=
+               (sender, cert, chain, sslPolicyErrors) => true;
             string idImageNew = "";
 
             string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + "wss" + "|" + strDate;
+            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
 
             var signleData = CreateToken(str, privateKey);
             try
@@ -83,7 +85,7 @@ namespace WSS.ImageServer
                     using (var ftpStream = File.OpenRead(path))
                     {
                         var request = (HttpWebRequest)WebRequest.Create(urlQuery);
-                        request.Headers.Add("X-Imbo-PublicKey", "wss");
+                        request.Headers.Add("X-Imbo-PublicKey", publicKey);
                         request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
                         request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
                         request.ContentType = "application/json";
