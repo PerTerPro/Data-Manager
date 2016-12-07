@@ -48,7 +48,6 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.lbMessage = new DevExpress.XtraEditors.LabelControl();
             this.btnChooseFile = new DevExpress.XtraEditors.SimpleButton();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.pictureBoxNew = new System.Windows.Forms.PictureBox();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.domainTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -76,7 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxwebsosanh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -123,7 +121,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.splitContainerControl2);
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1015, 603);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1000, 603);
             this.splitContainerControl1.SplitterPosition = 345;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -216,7 +214,7 @@
             this.splitContainerControl2.Panel1.Text = "Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.groupControl2);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(665, 541);
+            this.splitContainerControl2.Size = new System.Drawing.Size(650, 541);
             this.splitContainerControl2.SplitterPosition = 306;
             this.splitContainerControl2.TabIndex = 7;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -244,12 +242,11 @@
             // 
             this.groupControl2.Controls.Add(this.lbMessage);
             this.groupControl2.Controls.Add(this.btnChooseFile);
-            this.groupControl2.Controls.Add(this.textEdit1);
             this.groupControl2.Controls.Add(this.pictureBoxNew);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(354, 541);
+            this.groupControl2.Size = new System.Drawing.Size(339, 541);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Logo mới";
             // 
@@ -257,7 +254,7 @@
             // 
             this.lbMessage.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMessage.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.lbMessage.Location = new System.Drawing.Point(125, 182);
+            this.lbMessage.Location = new System.Drawing.Point(125, 113);
             this.lbMessage.Name = "lbMessage";
             this.lbMessage.Size = new System.Drawing.Size(12, 19);
             this.lbMessage.TabIndex = 4;
@@ -265,19 +262,12 @@
             // 
             // btnChooseFile
             // 
-            this.btnChooseFile.Location = new System.Drawing.Point(125, 141);
+            this.btnChooseFile.Location = new System.Drawing.Point(125, 84);
             this.btnChooseFile.Name = "btnChooseFile";
             this.btnChooseFile.Size = new System.Drawing.Size(75, 23);
             this.btnChooseFile.TabIndex = 3;
             this.btnChooseFile.Text = "Chọn File";
             this.btnChooseFile.Click += new System.EventHandler(this.btnChooseFile_Click);
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.Location = new System.Drawing.Point(5, 106);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(337, 20);
-            this.textEdit1.TabIndex = 2;
             // 
             // pictureBoxNew
             // 
@@ -299,7 +289,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(665, 62);
+            this.panelControl2.Size = new System.Drawing.Size(650, 62);
             this.panelControl2.TabIndex = 6;
             // 
             // domainTextEdit
@@ -348,11 +338,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1015, 603);
+            this.ClientSize = new System.Drawing.Size(1000, 603);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "FrmUploadLogoWebsosanh";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmUploadLogoWebsosanh";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmUploadLogoWebsosanh_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
@@ -371,7 +361,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
@@ -404,7 +393,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.LabelControl lbMessage;
         private DevExpress.XtraEditors.SimpleButton btnChooseFile;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
         private System.Windows.Forms.PictureBox pictureBoxNew;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.TextEdit domainTextEdit;

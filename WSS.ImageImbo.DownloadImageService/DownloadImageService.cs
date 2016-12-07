@@ -34,7 +34,7 @@ namespace WSS.ImageImbo.DownloadImageService
         private int _workerProduct;
         private int _workerCompany;
         private JobClient _checkErrorJobClient;
-        private List<Tuple<int, int>> _widthHeightImages;
+        //private List<Tuple<int, int>> _widthHeightImages;
         //Imbo
         private string _publicKeyImbo = "wss";
         private string _privateKeyImbo = "123websosanh@195";
@@ -64,14 +64,17 @@ namespace WSS.ImageImbo.DownloadImageService
             _workerProduct = Common.Obj2Int(ConfigurationSettings.AppSettings["workerProduct"]);
             _workerCompany = Common.Obj2Int(ConfigurationSettings.AppSettings["workerCompany"]);
 
-            _widthHeightImages = new List<Tuple<int, int>>();
-            var widthHeightImagesConfig = ConfigurationSettings.AppSettings["WithHeightImagesConfig"];
-            var arrWidthHeightImages = widthHeightImagesConfig.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var item in arrWidthHeightImages)
-            {
-                var wh = item.Split('x');
-                _widthHeightImages.Add(new Tuple<int, int>(Common.Obj2Int(wh[0]), Common.Obj2Int(wh[1])));
-            }
+
+            //6.12.2016
+            //Không phải gửi size và message thumb lên imboserver
+            //_widthHeightImages = new List<Tuple<int, int>>();
+            //var widthHeightImagesConfig = ConfigurationSettings.AppSettings["WithHeightImagesConfig"];
+            //var arrWidthHeightImages = widthHeightImagesConfig.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            //foreach (var item in arrWidthHeightImages)
+            //{
+            //    var wh = item.Split('x');
+            //    _widthHeightImages.Add(new Tuple<int, int>(Common.Obj2Int(wh[0]), Common.Obj2Int(wh[1])));
+            //}
         }
         protected sealed override void OnStart(string[] args)
         {
@@ -90,12 +93,12 @@ namespace WSS.ImageImbo.DownloadImageService
                     {
                         //JobClient send message to service upload sql & thumb của tráng
                         var producerUpdateImageIdSql = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
-                        var producerThumbImage = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyThumbImage);
+                        //var producerDelImage = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyThumbImage);
                         worker.JobHandler = (downloadImageJob) =>
                         {
                             try
                             {
-                                DownloadImageProduct(ImageProductInfo.GetDataFromMessage(downloadImageJob.Data), producerUpdateImageIdSql, producerThumbImage);
+                                DownloadImageProduct(ImageProductInfo.GetDataFromMessage(downloadImageJob.Data), producerUpdateImageIdSql);
                             }
                             catch (Exception exception)
                             {
@@ -117,12 +120,12 @@ namespace WSS.ImageImbo.DownloadImageService
                 {
                     //JobClient send message to service upload sql & thumb của tráng
                     var producerUpdateImageIdSql = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
-                    var producerThumbImage = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyThumbImage);
+                    //var producerThumbImage = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyThumbImage);
                     workerSpGoc.JobHandler = (downloadImageJob) =>
                     {
                         try
                         {
-                            DownloadImageProduct(ImageProductInfo.GetDataFromMessage(downloadImageJob.Data), producerUpdateImageIdSql, producerThumbImage);
+                            DownloadImageProduct(ImageProductInfo.GetDataFromMessage(downloadImageJob.Data), producerUpdateImageIdSql);
                         }
                         catch (Exception exception)
                         {
@@ -145,7 +148,7 @@ namespace WSS.ImageImbo.DownloadImageService
                     {
                         //JobClient send message to service upload sql & thumb của tráng
                         var producerUpdateImageIdSql = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
-                        var producerThumbImage = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyThumbImage);
+                        //var producerThumbImage = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyThumbImage);
                         worker.JobHandler = (downloadImageJob) =>
                         {
                             long idCompany;
@@ -153,9 +156,9 @@ namespace WSS.ImageImbo.DownloadImageService
                             {
                                 idCompany = BitConverter.ToInt64(downloadImageJob.Data, 0);
                                 if (downloadImageJob.Type == (int)TypeJobWithRabbitMQ.ReloadAll)
-                                    DownloadImageCompany(idCompany, producerUpdateImageIdSql, producerThumbImage, true);
+                                    DownloadImageCompany(idCompany, producerUpdateImageIdSql, true);
                                 else
-                                    DownloadImageCompany(idCompany, producerUpdateImageIdSql, producerThumbImage, false);
+                                    DownloadImageCompany(idCompany, producerUpdateImageIdSql, false);
 
                             }
                             catch (Exception exception)
@@ -177,7 +180,7 @@ namespace WSS.ImageImbo.DownloadImageService
                 throw;
             }
         }
-        private void DownloadImageCompany(long idCompany, ProducerBasic producerUpdateImageIdSql, ProducerBasic producerThumbImage, bool redownloadAll)
+        private void DownloadImageCompany(long idCompany, ProducerBasic producerUpdateImageIdSql,bool redownloadAll)
         {
             try
             {
@@ -203,7 +206,7 @@ namespace WSS.ImageImbo.DownloadImageService
                         ImageProductInfo product = new ImageProductInfo();
                         product.Id = Common.Obj2Int64(productTable.Rows[i]["ID"]);
                         product.ImageUrls = productTable.Rows[i]["ImageUrls"].ToString();
-                        if (DownloadImageProduct(product, producerUpdateImageIdSql, producerThumbImage)) success++;
+                        if (DownloadImageProduct(product, producerUpdateImageIdSql)) success++;
                         else
                         {
                             fail++;
@@ -243,7 +246,7 @@ namespace WSS.ImageImbo.DownloadImageService
                 if (!string.IsNullOrEmpty(idImbo))
                 {
                     UpdateImageIdSqlService(imageProductInfo.Id, idImbo, producerUpdateImageIdSql);
-                    ThumbImageService(imageProductInfo.Id, idImbo, producerThumbImage);
+                    //ThumbImageService(imageProductInfo.Id, idImbo, producerThumbImage);
                     Log.Info(string.Format("Product: ID = {0} download image success!", imageProductInfo.Id));
                     //InsertLogDownloadImageProduct(imageProductInfo.Id);
                     result = true;
@@ -279,33 +282,33 @@ namespace WSS.ImageImbo.DownloadImageService
                     }
                 }
         }
-        public void ThumbImageService(long productId, string idImbo, ProducerBasic producerThumbImage)
-        {
-            int index = 0;
-            while (_isRunning)
-            {
-                try
-                {
-                    producerThumbImage.PublishString(new JobWaitThumb()
-                    {
-                        ImageId = idImbo,
-                        Sizes = _widthHeightImages
-                    }.ToJson());
-                    break;
-                }
-                catch (Exception exception)
-                {
-                    Thread.Sleep(600000);
-                    Log.Error(
-                        string.Format("Product: ID = {0} Send message to service check error download image. Thread Sleep 10p",
-                            productId), exception);
-                    if (index == 5)
-                        break;
-                    else
-                        index++;
-                }
-            }
-        }
+        //public void ThumbImageService(long productId, string idImbo, ProducerBasic producerThumbImage)
+        //{
+        //    int index = 0;
+        //    while (_isRunning)
+        //    {
+        //        try
+        //        {
+        //            producerThumbImage.PublishString(new JobWaitThumb()
+        //            {
+        //                ImageId = idImbo,
+        //                Sizes = _widthHeightImages
+        //            }.ToJson());
+        //            break;
+        //        }
+        //        catch (Exception exception)
+        //        {
+        //            Thread.Sleep(600000);
+        //            Log.Error(
+        //                string.Format("Product: ID = {0} Send message to service check error download image. Thread Sleep 10p",
+        //                    productId), exception);
+        //            if (index == 5)
+        //                break;
+        //            else
+        //                index++;
+        //        }
+        //    }
+        //}
         public void UpdateImageIdSqlService(long productId, string idImageImbo, ProducerBasic producerUpdateImageIdSql)
         {
             int index = 0;
