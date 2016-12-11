@@ -424,6 +424,7 @@ namespace QT.Moduls.Company
         }
         public bool SendMessageDownloadImage(long companyID, bool reloadall = false)
         {
+            
             var job = new Job { Data = BitConverter.GetBytes(companyID), Type = (int)TypeJobWithRabbitMQ.Company };
             if (reloadall)
                 job.Type = (int)TypeJobWithRabbitMQ.ReloadAll;
