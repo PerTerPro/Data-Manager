@@ -9098,11 +9098,24 @@ namespace WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT ID, Name, Description, Website, Domain, AddDate, Phone, Fax, Yahoo, Address, Status, UseDataFeed, Image, PageRank, AlexaRank, TimeStartUp, TimeSleep, TimeDelay, TotalProduct, LastCrawler, LastFullCrawler, FullCrawlerDay, TotalValid, TotalQueue, TotalVisited, Keywords, LastCheck, LastCheckTotalValid, TotalViewMonth, LastUpdateSolr, DataFeedUrl, DataFeedType, UpdateFreq, LastUpdateDataFeed, UserDatafeed, PasswordDatafeed, LastCrawlerFindNew, LastEndCrawlerFindNew, IsStopCrawlerImediate, StatusLive, LastEndCrawlerReload, LastCrawlerReload, LastSyncProductToRedis, LastSyncClassificationToRedis, LastSyncHashNameToRedis, LastJobCrawlerFindNew, LastJobCrawlerReload, NotVisibleProduct, TotalNewProduct, CountAlive, MaxValid, WaitCrawlerReload, WaitCrawlerFindNew, Process, AllowAutoPushNewProduct, AllowAutoBlackLink, MinHourRecrawl, MinHourFindNew, NextWaiCrawler, AllowFindNew, AllowReload, ClearQueueWhenFN, UserRanking, IndexRanking, LastUpdate, LastUpdateRedisCrawler, Merchant_Ranking, StartDate_MinDirect, EndDate_MinDirect, CreateDate_MinDirect, LastupDate_MinDirect, Merchant_MinDirect, ShortTermPriorityScore, ConfigSuccess, Trusted, DeliveryInfomation, DeliveryType, LastUpdateAlexa, click, MaxLinkCrawl, LogoImageId FROM dbo.Company";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        ID, Name, Description, Website, Domain, AddDate, Phone, Fax, Yahoo, Address, Status, UseDataFeed, Image, PageRank, AlexaRank, TimeStartUp, TimeSleep, TimeDelay, TotalProduct, LastCrawler, 
+                         LastFullCrawler, FullCrawlerDay, TotalValid, TotalQueue, TotalVisited, Keywords, LastCheck, LastCheckTotalValid, TotalViewMonth, LastUpdateSolr, DataFeedUrl, DataFeedType, UpdateFreq, LastUpdateDataFeed,
+                          UserDatafeed, PasswordDatafeed, LastCrawlerFindNew, LastEndCrawlerFindNew, IsStopCrawlerImediate, StatusLive, LastEndCrawlerReload, LastCrawlerReload, LastSyncProductToRedis, 
+                         LastSyncClassificationToRedis, LastSyncHashNameToRedis, LastJobCrawlerFindNew, LastJobCrawlerReload, NotVisibleProduct, TotalNewProduct, CountAlive, MaxValid, WaitCrawlerReload, 
+                         WaitCrawlerFindNew, Process, AllowAutoPushNewProduct, AllowAutoBlackLink, MinHourRecrawl, MinHourFindNew, NextWaiCrawler, AllowFindNew, AllowReload, ClearQueueWhenFN, UserRanking, 
+                         IndexRanking, LastUpdate, LastUpdateRedisCrawler, Merchant_Ranking, StartDate_MinDirect, EndDate_MinDirect, CreateDate_MinDirect, LastupDate_MinDirect, Merchant_MinDirect, ShortTermPriorityScore, 
+                         ConfigSuccess, Trusted, DeliveryInfomation, DeliveryType, LastUpdateAlexa, click, MaxLinkCrawl, LogoImageId
+FROM            Company
+WHERE        (ID = @CompanyID)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyID", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9124,6 +9137,32 @@ namespace WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual ProductQT.CompanyDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            ProductQT.CompanyDataTable dataTable = new ProductQT.CompanyDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByID(ProductQT.CompanyDataTable dataTable, long CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ProductQT.CompanyDataTable GetDataByID(long CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID));
             ProductQT.CompanyDataTable dataTable = new ProductQT.CompanyDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -12873,11 +12912,24 @@ namespace WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT ID, VisitUrlsRegex, ProductUrlsRegex, ProductNameXPath, CategoryXPath, PriceXPath, WarrantyXPath, StatusXPath, ImageXPath, ImageGetFromRoot, ManufactureXPath, OriginXPath, CompanyID, LinkTest, UseClearHtml, TimeDelay, HoursReCrawler, ItemReCrawler, DayReFullCrawler, PromotionXPath, SummaryXPath, ContentXPath, BlockXPath, ContentAnanyticXPath, MapRowsXPath, MapColumnPropertyXPath, MapColumnValueXPath, AutoDelete, PromotionInfoXPath, VATInfoXPath, OrigrinPriceXPath, DeliveryInfoXPath, OriginPriceXPath, RegexDeliveryInfoXPath, EndDealXPath, StartDealXPath, RemoveLastItemClassification, MutilRootLink, use_selenium_crawler, RegexNotValidProduct, ValidProductXPath, UseSeleniumCrawler, IncludedVAT, ReloadAllNoValid, ReloadWhenCrawlerFindNew, WaitToNextCrawlerReload, VATStatus, MaxToNoValid, FixedLinkShow, AutoFixLinkImage, RegexNoPrice, RegexPrice, DefaultRegexPrice, MinHourReload, MinHourFindNew, CheckPrice, NumberThreadCrawler, AllowFindNew, AllowReload, MaxLinksFindNew, MaxHourFindNew, Website_SourceType, LinkAutoTest, AllowAutoCheckPrice, MaxProductToWarning, MinProductToWarning, ShortDescriptionXPath, SpecsXpath, VideoXpath, FullDescXPath, MaxDeep, LimitFailToDelProduct, LimitProductValid FROM dbo.Configuration";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        ID, VisitUrlsRegex, ProductUrlsRegex, ProductNameXPath, CategoryXPath, PriceXPath, WarrantyXPath, StatusXPath, ImageXPath, ImageGetFromRoot, ManufactureXPath, OriginXPath, CompanyID, LinkTest, 
+                         UseClearHtml, TimeDelay, HoursReCrawler, ItemReCrawler, DayReFullCrawler, PromotionXPath, SummaryXPath, ContentXPath, BlockXPath, ContentAnanyticXPath, MapRowsXPath, MapColumnPropertyXPath, 
+                         MapColumnValueXPath, AutoDelete, PromotionInfoXPath, VATInfoXPath, OrigrinPriceXPath, DeliveryInfoXPath, OriginPriceXPath, RegexDeliveryInfoXPath, EndDealXPath, StartDealXPath, 
+                         RemoveLastItemClassification, MutilRootLink, use_selenium_crawler, RegexNotValidProduct, ValidProductXPath, UseSeleniumCrawler, IncludedVAT, ReloadAllNoValid, ReloadWhenCrawlerFindNew, 
+                         WaitToNextCrawlerReload, VATStatus, MaxToNoValid, FixedLinkShow, AutoFixLinkImage, RegexNoPrice, RegexPrice, DefaultRegexPrice, MinHourReload, MinHourFindNew, CheckPrice, NumberThreadCrawler, 
+                         AllowFindNew, AllowReload, MaxLinksFindNew, MaxHourFindNew, Website_SourceType, LinkAutoTest, AllowAutoCheckPrice, MaxProductToWarning, MinProductToWarning, ShortDescriptionXPath, SpecsXpath, 
+                         VideoXpath, FullDescXPath, MaxDeep, LimitFailToDelProduct, LimitProductValid
+FROM            Configuration
+WHERE        (CompanyID = @CompanyID)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyID", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12899,6 +12951,32 @@ namespace WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual ProductQT.ConfigurationDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            ProductQT.ConfigurationDataTable dataTable = new ProductQT.ConfigurationDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByCompanyID(ProductQT.ConfigurationDataTable dataTable, long CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ProductQT.ConfigurationDataTable GetDataByCompanyID(long CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID));
             ProductQT.ConfigurationDataTable dataTable = new ProductQT.ConfigurationDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -15591,11 +15669,17 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, CompanyId, TypeLayout, XPath FROM dbo.Configuration_Property";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        Id, CompanyId, TypeLayout, XPath\r\nFROM            Configuration_Pro" +
+                "perty\r\nWHERE        (CompanyId = @CompanyID)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyID", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15617,6 +15701,42 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual ProductQT.Configuration_PropertyDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            ProductQT.Configuration_PropertyDataTable dataTable = new ProductQT.Configuration_PropertyDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(ProductQT.Configuration_PropertyDataTable dataTable, global::System.Nullable<long> CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CompanyID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ProductQT.Configuration_PropertyDataTable GetDataBy(global::System.Nullable<long> CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CompanyID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             ProductQT.Configuration_PropertyDataTable dataTable = new ProductQT.Configuration_PropertyDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

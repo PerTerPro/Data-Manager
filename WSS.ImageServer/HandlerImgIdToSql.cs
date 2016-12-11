@@ -29,6 +29,9 @@ namespace WSS.ImageServer
                     _producerDelImbo.PublishString(imageIdOld);
                 }
                 _imgAdapterSql.UpdateImboProcess(job.ProductId, job.ImageId);
+
+                //PushChangeMainInfo
+                RabbitMQAdapter.Instance.PushProductToQueueChangeMainInfo(new List<long>() { job.ProductId });
             }
             catch (Exception ex)
             {

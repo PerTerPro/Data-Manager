@@ -64,7 +64,7 @@ namespace WSS.Core.Crawler
                         }
                         else
                         {
-                            using (var worker = new WorkerReload(jobCompany.CompanyId, _cancellationToken, _nameThread))
+                            using (var worker = new WorkerReload(jobCompany.CompanyId, _nameThread))
                             {
                                 worker.StartCrawler();
                             }

@@ -110,7 +110,7 @@ namespace WSS.ImageServer
             }
             catch (Exception ex)
             {
-                
+                Log.Error(ex);
             }
             return idImageNew;
         }
@@ -160,12 +160,17 @@ namespace WSS.ImageServer
             return QT.Entities.Common.DownloadImageProductWithImboServer(path, publicKey, privateKey, userName, host, port);
         }
 
-        public static string PushFromFtpServer(string publicKey, string privateKey, string path, string userName, string host)
+        public static string PushFromFtpServer(string publicKey, string privateKey, string path, string userName, string host, int port)
         {
+            ServicePointManager
+                       .ServerCertificateValidationCallback +=
+                       (sender, cert, chain, sslPolicyErrors) => true;
             string idImageNew = "";
-            string urlQuery = host + @"/users/" + userName + @"/images";
+
+            string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "POST" + "|" + urlQuery + "|" + "wss" + "|" + strDate;
+            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
+
             var signleData = CreateToken(str, privateKey);
             try
             {

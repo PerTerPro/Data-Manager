@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using GABIZ.Base.HtmlAgilityPack;
 using QT.Entities;
 using QT.Entities.CrawlerProduct;
 using QT.Entities.CrawlerProduct.Cache;
+using QT.Entities.Data;
 using QT.Moduls;
 using QT.Moduls.Crawler;
 using QT.Moduls.CrawlerProduct.Cache;
@@ -21,16 +23,15 @@ namespace WSS.Core.Crawler
     public class WorkerReload : IWorker, IDisposable
     {
         public DelegateReportRun EventReportRun = null;
+        private SqlDb sqlDb = new SqlDb(ConfigCrawler.ConnectProduct);
 
-        public WorkerReload(long companyId, CancellationToken toke, string nameThread)
+        public WorkerReload(long companyId , string nameThread)
         {
             _companyId = companyId;
             _nameThread = nameThread;
-            Token = toke;
         }
 
         public CancellationToken Token = new CancellationToken();
-
         private IDownloadHtml _downloadHtml = new DownloadHtmlCrawler();
         private TypeEnd _typeEnd = TypeEnd.None;
         private int _countVisited = 0;
@@ -77,8 +78,14 @@ namespace WSS.Core.Crawler
             if (Init())
             {
                 RunReportRunning();
+                UpdateLastCrawler();
                 Crawl();
             }
+        }
+
+        private void UpdateLastCrawler()
+        {
+            this.sqlDb.RunQuery(string.Format("update Company Set LastCrawlerReload = GetDate(), LastEndCrawlerReload = NULL Where Id = {0}", this._companyId), CommandType.Text, null);
         }
 
         private void RunReportRunning()

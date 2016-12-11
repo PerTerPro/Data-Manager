@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using log4net;
 using QT.Entities;
@@ -13,50 +14,63 @@ using QT.Entities.Data;
 
 namespace WSS.ImageServer
 {
-    public  class HanlderTransferImgNew1
+    public class HanlderTransferImgNew1
     {
-        private SqlDb sqlDb = new SqlDb(ConfigImbo.ConnectionNew);
-        private  bool bUpdateSql = false;
-        private ILog log = log4net.LogManager.GetLogger(typeof (HanlderTransferImgNew1));
-        private string folderImg;
+        private readonly SqlDb _sqlDb = new SqlDb(ConfigImbo.ConnectionNew);
+        private readonly ILog _log = log4net.LogManager.GetLogger(typeof (HanlderTransferImgNew1));
+        private string _folderImg;
+        private  RedisTransfer _redisTransfer = new RedisTransfer();
+
+        public HanlderTransferImgNew1()
+        {
+            this._folderImg = ConfigurationSettings.AppSettings.Get("FoldeImage");
+        }
 
         public void TransferData()
         {
-            Console.WriteLine("Input foler ImgSource:");
-            this.folderImg = ConfigurationSettings.AppSettings.Get("FoldeImage");
-           
-        
-            this.sqlDb.ProcessDataTableLarge(
-                @"   SELECT [AdvID],[FilePath], REPLACE([FilePath], 'http://img.websosanh.vn/Store/', '') as FullFile
-  FROM [ReviewsCMS].[dbo].[AdvProductHotdeal_BackUp]
-  ORDER BY AdvID
+            while (true)
+            {
+                this._sqlDb.ProcessDataTableLarge(
+                    @"   
+        SELECT [AdvID]
+      ,   REPLACE([FilePath], 'http://img.websosanh.vn/Store', '') as FullFile
+  FROM [ReviewsCMS].[dbo].[AdvProductHotdeal]
+  where [FilePath] like N'http://img.websosanh.vn/%' AND [FilePath] != 'http://img.websosanh.vn/null' AND [FilePath] != 'http://img.websosanh.vn/'
+  and LEN(FilePath) > 20
+ORDER BY AdvID
+
 ", 10000, (row, iRow) =>
-                {
-                    long advID = Common.Obj2Int64(row["AdvID"]);
-                    string filePath = Common.Obj2String(row["FullFile"]);
-                    this.TransferData(advID, filePath);
-                });
+                    {
+                        var advId = Common.Obj2Int64(row["AdvID"]);
+                        var filePath = Common.Obj2String(row["FullFile"]);
+                        if (!this._redisTransfer.CheckExit(advId))
+                        {
+                            this.TransferData(advId, filePath);
+                            this._redisTransfer.SetTrans(advId);
+                        }
+                        else
+                        {
+                            _log.Info(string.Format("Transfered for {0}", advId));
+                        }
+                    });
+                Thread.Sleep(30000);
+            }
+
         }
 
-        private void TransferData(long advID, string filePath)
+        private void TransferData(long advId, string filePath)
         {
-            string fullFile = this.folderImg + "/" + filePath;
-            string imageId = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, fullFile, "landingpage", ConfigImbo.Host, ConfigImbo.Port);
+            var fullFile = _folderImg + @"/" + filePath;
+            var imageId = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, fullFile, "landingpage", ConfigImbo.Host, ConfigImbo.Port);
             if (!string.IsNullOrEmpty(imageId))
             {
-                if (this.bUpdateSql)
-                {
-                    this.sqlDb.RunQuery("Update [AdvProductHotdeal_BackUp] Set [ImageId] = @ImageId where AdvID = @AdvID", CommandType.Text, new SqlParameter[]
-                    {
-                        SqlDb.CreateParamteterSQL("AdvID", advID, SqlDbType.BigInt),
-                        SqlDb.CreateParamteterSQL("ImageId", imageId, SqlDbType.NVarChar)
-                    });
-                }
-                log.Info(string.Format("Pushed for {0} {1} => {2}", advID, filePath, imageId));
+                this._sqlDb.RunQuery(string.Format("Update [AdvProductHotdeal] Set [FilePath] = '{0}' where AdvID = {1}",
+                    imageId, advId), CommandType.Text, null);
+                _log.Info(string.Format("Pushed for {0} {1} => {2}", advId, filePath, imageId));
             }
             else
             {
-                log.Info(string.Format("Error push at img: {0} {1}", advID, fullFile));
+                _log.Info(string.Format("Error push at img: {0} {1}", advId, fullFile));
             }
         }
     }

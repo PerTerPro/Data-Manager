@@ -1,7 +1,7 @@
 ﻿{
 	"PathApp" : "C:\\Users\\xuantrang\\Desktop\\DemoSyncAppPath",
 	"FileRun" : "WSS.CrawlerProduct.Run.exe",
-	"Parameter" : "-t 1 -dm babieskids.vn",
+	"Parameter" : "-t 1 -nt 50 -QueuMq Normal.Cmp.Crl.Fn -ackIm 1",
 	"VersionCurrent" : "1",
 	"NumberApp" : "1"
 }

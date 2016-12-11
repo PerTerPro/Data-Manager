@@ -48,7 +48,7 @@ namespace WSS.Core.Crawler.RecoverProductLost
             SqlDb sqlDestion = new SqlDb(connectionDestination);
 
             int countProduct = 0;
-            sqlSource.ProcessDataTableLarge(string.Format("Select Id From Product p  where Id > {0} Order By p.Id", idStart), 10000, (row) =>
+            sqlSource.ProcessDataTableLarge(string.Format("Select Id From Product p  where Id > {0} Order By p.Id", idStart), 10000, (row, iRow) =>
             {
                 countProduct++;
                 long productId = Common.Obj2Int64(row["Id"]);
@@ -91,7 +91,7 @@ namespace WSS.Core.Crawler.RecoverProductLost
             HashSet<long> hstOld = this.GetHsOld();
 
             SqlDb sqlDb = new SqlDb(connectionDestination);
-            sqlDb.ProcessDataTableLarge(string.Format("Select IDProduct, ID From Product_LogsAddProduct Where ID > {0} ORDER BY ID ",startId), 50000, (row) =>
+            sqlDb.ProcessDataTableLarge(string.Format("Select IDProduct, ID From Product_LogsAddProduct Where ID > {0} ORDER BY ID ",startId), 50000, (row, iRow) =>
             {
                 long ID = Common.Obj2Int64(row["ID"]);
                 long ProductId = Common.Obj2Int64(row["IDProduct"]);

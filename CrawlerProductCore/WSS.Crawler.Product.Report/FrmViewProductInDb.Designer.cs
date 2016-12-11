@@ -41,8 +41,9 @@
             this.colDetailUrl = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_OriginPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_HashName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.menuCompanyPlus1 = new WSS.Crawler.Product.Report.MenuCompanyPlus();
             this.col_VAT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.menuCompanyPlus1 = new WSS.Crawler.Product.Report.MenuCompanyPlus();
+            this.col_ImageId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +76,8 @@
             this.colDetailUrl,
             this.col_OriginPrice,
             this.col_HashName,
-            this.col_VAT});
+            this.col_VAT,
+            this.col_ImageId});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsSelection.MultiSelect = true;
@@ -171,11 +173,6 @@
             this.col_HashName.Visible = true;
             this.col_HashName.VisibleIndex = 10;
             // 
-            // menuCompanyPlus1
-            // 
-            this.menuCompanyPlus1.Name = "menuCompanyPlus1";
-            this.menuCompanyPlus1.Size = new System.Drawing.Size(61, 4);
-            // 
             // col_VAT
             // 
             this.col_VAT.Caption = "VATStatus";
@@ -183,6 +180,19 @@
             this.col_VAT.Name = "col_VAT";
             this.col_VAT.Visible = true;
             this.col_VAT.VisibleIndex = 11;
+            // 
+            // menuCompanyPlus1
+            // 
+            this.menuCompanyPlus1.Name = "menuCompanyPlus1";
+            this.menuCompanyPlus1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // col_ImageId
+            // 
+            this.col_ImageId.Caption = "ImageId";
+            this.col_ImageId.FieldName = "ImageId";
+            this.col_ImageId.Name = "col_ImageId";
+            this.col_ImageId.Visible = true;
+            this.col_ImageId.VisibleIndex = 12;
             // 
             // FrmViewProductInDb
             // 
@@ -217,5 +227,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_OriginPrice;
         private DevExpress.XtraGrid.Columns.GridColumn col_HashName;
         private DevExpress.XtraGrid.Columns.GridColumn col_VAT;
+        private DevExpress.XtraGrid.Columns.GridColumn col_ImageId;
     }
 }

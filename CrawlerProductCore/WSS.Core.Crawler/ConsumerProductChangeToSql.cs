@@ -60,7 +60,6 @@ namespace WSS.Core.Crawler
                     string sql = string.Format(@"select top 1 p.DetailUrl, p.Name, p.Price, p.CategoryID, p.LastUpdate, p.ImagePath, p.ImageUrls, p.ImageId, p.ID
 	from Product p
 	where p.ID = {0} ", pt.ID);
-
                     DataTable tbl = _productAdapter.GetSqlDb().GetTblData(sql, CommandType.Text, null);
                     if (tbl.Rows.Count > 0 && _productAdapter.DeleteProduct(pt.ID))
                     {
