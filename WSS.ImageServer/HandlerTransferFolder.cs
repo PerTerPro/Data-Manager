@@ -6,11 +6,14 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using GABIZ.Base.NGenerics.Algorithms.Graph;
+using ImboForm;
 using log4net;
+using QT.Entities;
+using QT.Entities.Data;
 using QT.Moduls;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class HandlerTransferFolder
     {
@@ -28,14 +31,18 @@ namespace ImboForm
         private DateTime _dtStart = DateTime.Now;
         private long _iPushed = 0;
 
-        private bool _isDelData = false;
+        private bool _isDelData = true;
         private  ImageAdapterSql _imageAdapter = new ImageAdapterSql();
         private ILog _log = LogManager.GetLogger(typeof (HandlerTransferFolder));
-        private HashSet<long> _hsProductIds; 
+
+        private readonly HashSet<long> _hsProductIds;
+        private readonly HashSet<long> _hsPushed;
+     
 
         public HandlerTransferFolder()
         {
             _hsProductIds = _imageAdapter.GetProductIds();
+            _hsPushed = RedisImage.GetIns().GetAllPushed();
         }
 
         public void TransferData(string directory)
@@ -52,7 +59,7 @@ namespace ImboForm
             }
         }
 
-        private void TransferImage(string file)
+        public void TransferImage(string file)
         {
             while (true)
             {
@@ -60,7 +67,7 @@ namespace ImboForm
                 {
                     string imgId = "";
                     long productId = GetProductId(file);
-                    if (!RedisImage.GetIns().Contain(productId))
+                    if (!_hsPushed.Contains(productId))
                     {
                         bool bExistproduct = false;
                         if (productId > 0)
@@ -68,7 +75,7 @@ namespace ImboForm
                             bExistproduct = this._hsProductIds.Contains(productId);
                             if (bExistproduct)
                             {
-                                imgId = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, file, ConfigImbo.User, ConfigImbo.Host);
+                                imgId = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, file, "landingpage", ConfigImbo.Host, ConfigImbo.Port);
                                 if (!string.IsNullOrEmpty(imgId))
                                 {
                                     this._pb.PublishString(new JobUploadedImg()
@@ -93,6 +100,8 @@ namespace ImboForm
                             {
                                 this._producerNoProduct.PublishString(file);
                             }
+
+                            RedisImage.GetIns().Add(productId);
                         }
                         _iCount++;
                         _log.Info(string.Format("{0}/{1} {2}=>{3} {4} ExistsProduct: {5}", _iCountSuccess, _iCount, productId, imgId, file, bExistproduct));
@@ -102,13 +111,16 @@ namespace ImboForm
                             this._producerWaitDelFile.PublishString(file);
                         }
                         if (_iCountSuccess % 1000 == 0) _log.Info(string.Format("Speech: {0}/s", (_iCountSuccess / (DateTime.Now - _dtStart).TotalSeconds)));
+                    
                     }
                     else
                     {
+                        this._producerWaitDelFile.PublishString(file);
                         _iPushed++;
-                        if (_iPushed % 1000 == 0) _log.Info(string.Format("Pushed: {0}", _iPushed));
+                        if (_iPushed % 1000 == 0) _log.Info(string.Format("Pushed: {0} {1}", _iPushed, productId, file));
                     }
-                    RedisImage.GetIns().Add(productId);
+
+                   
                     return;
                 }
                 catch (Exception ex)
@@ -116,7 +128,6 @@ namespace ImboForm
                     _log.Error(ex);
                 }
             }
-            
         }
 
         private string GetNameFile(string file)
@@ -133,6 +144,37 @@ namespace ImboForm
                 return Convert.ToInt64(productId);
             }
             return 0;
+        }
+
+        public static void RePushThumb()
+        {
+            SqlDb sqlDb = new SqlDb(ConfigImbo.ConnectionProduct);
+            ProducerBasic producerBasic = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),
+                "Img.Product.Thumb");
+
+            sqlDb.ProcessDataTableLarge(
+                @"select ImageId, Id
+from product
+where valid = 1
+order by Id", 10000, (rowData,iRow) =>
+                {
+                    string imgId = Common.Obj2String(rowData["ImageId"]);
+                    long Id = Common.Obj2Int64(rowData["Id"]);
+                    if (!string.IsNullOrEmpty(imgId))
+                    {
+                        producerBasic.PublishString(new JobUploadedImg()
+                        {
+                            ImageId = imgId,
+                            ProductId = Id
+                        }.ToJson());
+                    }
+                });
+        }
+
+        public static void PushImgCompany(string rootDirectory)
+        {
+           HandlerTransferLogoCompany h = new HandlerTransferLogoCompany();
+           h.Start();
         }
     }
 }

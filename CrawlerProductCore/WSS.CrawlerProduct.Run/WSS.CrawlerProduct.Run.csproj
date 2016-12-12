@@ -61,6 +61,8 @@
     <Reference Include="System.Core">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <Private>True</Private>
     </Reference>
@@ -94,18 +96,42 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Crl_Fn_Normal.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Crl_Fn_Vip.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Crl_Rl_Normal.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Crl_Rl_Vip.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WSS.Core.CrawlerTests2\WSS.Core.CrawlerTests2.csproj">
+      <Project>{880A9A08-FF26-4C42-AEB7-6797AA70D225}</Project>
+      <Name>WSS.Core.CrawlerTests2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WSS.Core.Crawler\WSS.Core.Crawler.csproj">
       <Project>{f81a0ebe-34e3-4d1d-b2a8-432204e09cd9}</Project>
       <Name>WSS.Core.Crawler</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

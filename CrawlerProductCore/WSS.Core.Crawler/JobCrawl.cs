@@ -1,17 +1,18 @@
-﻿using QT.Entities.CrawlerProduct.Reload;
-
-public class JobCompanyCrawler
+﻿namespace WSS.Core.Crawler
 {
-    public long CompanyId { get; set; }
-    public bool CheckRunning { get; set; }
-
-    public string GetJSon()
+    public class JobCompanyCrawler
     {
-        return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-    }
+        public long CompanyId { get; set; }
+        public bool CheckRunning { get; set; }
 
-    public static JobCompanyCrawler ParseFromJson(string str)
-    {
-        return Newtonsoft.Json.JsonConvert.DeserializeObject<JobCompanyCrawler>(str);
+        public string GetJSon()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static JobCompanyCrawler ParseFromJson(string str)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<JobCompanyCrawler>(str);
+        }
     }
 }

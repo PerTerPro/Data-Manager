@@ -157,6 +157,10 @@
     <Compile Include="ConsumerReload.cs" />
     <Compile Include="ConsumerSaveEndSession.cs" />
     <Compile Include="CrawlerBasic.cs" />
+    <Compile Include="CrlProduct\ControlCmpCrlw.cs" />
+    <Compile Include="CrlProduct\ReportCrawler.cs" />
+    <Compile Include="CrlProduct\WorkerFN.cs" />
+    <Compile Include="CrlProduct\WorkerRL.cs" />
     <Compile Include="DelegateShowReport.cs" />
     <Compile Include="ErrorCrawler.cs" />
     <Compile Include="FindNewVisited.cs" />
@@ -219,6 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DomainExtractCategory.txt" />
+    <Content Include="RecoverProductLost\DocHelp.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -755,6 +755,7 @@
             this.gridView5.OptionsBehavior.Editable = false;
             this.gridView5.OptionsView.ShowAutoFilterRow = true;
             this.gridView5.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView5_RowClick);
+            this.gridView5.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView5_FocusedRowChanged);
             // 
             // panelControl5
             // 

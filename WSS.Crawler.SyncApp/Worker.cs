@@ -1,5 +1,4 @@
 ﻿using Ionic.Zip;
-using QT.Moduls.CrawlerProduct.Cache;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using QT.Moduls.CrawlerProduct.Cache;
 
 namespace WSS.Crawler.SyncApp
 {

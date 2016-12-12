@@ -311,7 +311,6 @@
     <Compile Include="Company\DatafeedConfig.cs" />
     <Compile Include="Company\DBCom.cs">
       <DependentUpon>DBCom.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Company\DBCom.Designer.cs">
       <DependentUpon>DBCom.xsd</DependentUpon>
@@ -971,7 +970,6 @@
     <Compile Include="LogCassandra\LogCrawler.cs" />
     <Compile Include="LogJob\DBLogJob.cs">
       <DependentUpon>DBLogJob.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="LogJob\DBLogJob.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1326,7 +1324,6 @@
     <Compile Include="RaoVat\SimpleCrawlerSale.cs" />
     <Compile Include="Data\KW.cs">
       <DependentUpon>KW.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\KW.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1335,7 +1332,6 @@
     </Compile>
     <Compile Include="DB.cs">
       <DependentUpon>DB.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="FrmLoadCacheCrawler.cs">
       <SubType>Form</SubType>
@@ -1412,7 +1408,6 @@
     </Compile>
     <Compile Include="Maps\DBMap.cs">
       <DependentUpon>DBMap.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Maps\DBMap.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1421,7 +1416,6 @@
     </Compile>
     <Compile Include="Maps\DBPMan.cs">
       <DependentUpon>DBPMan.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Maps\DBPMan.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1494,7 +1488,6 @@
     </Compile>
     <Compile Include="ProductID\DBProperties.cs">
       <DependentUpon>DBProperties.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ProductID\DBProperties.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1640,7 +1633,6 @@
     </Compile>
     <Compile Include="Tool\DBTool.cs">
       <DependentUpon>DBTool.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1649,7 +1641,6 @@
     </Compile>
     <Compile Include="Tool\DBTool2.cs">
       <DependentUpon>DBTool2.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1658,7 +1649,6 @@
     </Compile>
     <Compile Include="Tool\DBTool3.cs">
       <DependentUpon>DBTool3.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool3.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1745,7 +1735,6 @@
     <Compile Include="UtilCrawlSemi\UtilSeleiumCrawler.cs" />
     <Compile Include="View\DBView.cs">
       <DependentUpon>DBView.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\DBView.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1760,7 +1749,6 @@
     </Compile>
     <Compile Include="WebPartner\DBWebPartner.cs">
       <DependentUpon>DBWebPartner.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebPartner\DBWebPartner.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2125,6 +2113,7 @@
     <EmbeddedResource Include="ProductID\frmPushDataToMQ.resx">
       <DependentUpon>frmPushDataToMQ.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="RaoVat\FrmCategory.resx">
       <DependentUpon>FrmCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -2245,7 +2234,6 @@
     <EmbeddedResource Include="ProductID\frmAddNewClassification.resx">
       <DependentUpon>frmAddNewClassification.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Maps\ctrEditeKeyword.resx">
       <DependentUpon>ctrEditeKeyword.cs</DependentUpon>
     </EmbeddedResource>

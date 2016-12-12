@@ -9,7 +9,7 @@ using QT.Entities;
 using QT.Moduls;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class HandlerImgIdToSql
     {
@@ -19,16 +19,24 @@ namespace ImboForm
 
         public void ProcessJob(string str)
         {
-            JobUploadedImg job = JobUploadedImg.FromJson(str);
-            string imageIdOld = _imgAdapterSql.GetImageId(job.ProductId);
-            if (!string.IsNullOrEmpty(imageIdOld))
+            try
             {
-                _producerDelImbo.PublishString(new JobDelImgImbo()
+
+                JobUploadedImg job = JobUploadedImg.FromJson(str);
+                string imageIdOld = _imgAdapterSql.GetImageId(job.ProductId);
+                if (!string.IsNullOrEmpty(imageIdOld))
                 {
-                    ImageId = imageIdOld
-                }.ToJson()); 
+                    _producerDelImbo.PublishString(imageIdOld);
+                }
+                _imgAdapterSql.UpdateImboProcess(job.ProductId, job.ImageId);
+
+                //PushChangeMainInfo
+                RabbitMQAdapter.Instance.PushProductToQueueChangeMainInfo(new List<long>() { job.ProductId });
             }
-            _imgAdapterSql.UpdateImboProcess(job.ProductId, job.ImageId);
+            catch (Exception ex)
+            {
+                log.Error(ex);
+            }
         }
     }
 }

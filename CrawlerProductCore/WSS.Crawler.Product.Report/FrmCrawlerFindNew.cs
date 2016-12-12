@@ -33,14 +33,13 @@ namespace WSS.Crawler.Product.Report
         public void Start(bool bFN, List<string> linkStatic = null)
         {
             Company company = new Company(_companyId);
-
             if (bFN)
             {
                 this.Text = @"FN:" + company.Domain;
                 var token = _cancellationTokenSource.Token;
                 Task.Factory.StartNew(() =>
                 {
-                    WorkerFindNew worker = new WorkerFindNew(_companyId, token,"" );
+                    WorkerFindNew worker = new WorkerFindNew(_companyId,"" );
                     worker.EventReportRun += (data) =>
                     {
                         this.Invoke(new Action(() =>

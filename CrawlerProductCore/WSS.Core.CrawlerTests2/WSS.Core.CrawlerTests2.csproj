@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLs\Newtonsoft.Json.dll</HintPath>
@@ -44,10 +48,23 @@
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="QT.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\QT.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="QT.Moduls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\QT.Moduls.dll</HintPath>
+    </Reference>
+    <Reference Include="QT.Users, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\QT.Users.dll</HintPath>
+    </Reference>
     <Reference Include="RabbitMQ.Client">
       <HintPath>..\DLLs\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
       <HintPath>..\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
@@ -62,7 +79,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConsumerProductChangeToSqlTests.cs" />
+    <Compile Include="CrlProduct\ControlCmpCrlwTests.cs" />
+    <Compile Include="CrlProduct\WorkerFnTests.cs" />
+    <Compile Include="CrlProduct\WorkerRlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceEndSessionToSqlTests.cs" />
     <Compile Include="WorkerFindNewTests.cs" />
     <Compile Include="WorkerLogAddProductTests.cs" />
   </ItemGroup>
@@ -70,6 +91,10 @@
     <ProjectReference Include="..\WSS.Core.Crawler\WSS.Core.Crawler.csproj">
       <Project>{F81A0EBE-34E3-4D1D-B2A8-432204E09CD9}</Project>
       <Name>WSS.Core.Crawler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WSS.Service.CR.EndSession.ToSql\WSS.Service.CR.EndSession.ToSql.csproj">
+      <Project>{AA5409AF-590A-438C-9CB8-0D8DFFE09456}</Project>
+      <Name>WSS.Service.CR.EndSession.ToSql</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

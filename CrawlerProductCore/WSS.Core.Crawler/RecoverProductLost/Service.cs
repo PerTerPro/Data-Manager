@@ -16,8 +16,8 @@ namespace WSS.Core.Crawler.RecoverProductLost
 {
     public class Service
     {
-        private string connectionSource = "Data Source=172.22.1.83;Initial Catalog=QT_2;Persist Security Info=True;User ID=wss;Password=HzlRt4$$axzG-*UlpuL2gYDu;Connect Timeout=5000";
-        private string connectionDestination = "Data Source=172.22.30.86,1455;Initial Catalog=QT_2;Persist Security Info=True;User ID=qt_vn;Password=@F4sJ=l9/ryJt9MT;connection timeout=200";
+        private readonly string connectionSource = "Data Source=172.22.1.83;Initial Catalog=QT_2;Persist Security Info=True;User ID=wss;Password=HzlRt4$$axzG-*UlpuL2gYDu;Connect Timeout=5000";
+        private readonly string connectionDestination = "Data Source=172.22.30.86,1455;Initial Catalog=QT_2;Persist Security Info=True;User ID=qt_vn;Password=@F4sJ=l9/ryJt9MT;connection timeout=200";
         private IDatabase database = null;
         public RedisKey KeyRedis = "recov_product";
         private ILog log = LogManager.GetLogger(typeof (Service));
@@ -48,7 +48,7 @@ namespace WSS.Core.Crawler.RecoverProductLost
             SqlDb sqlDestion = new SqlDb(connectionDestination);
 
             int countProduct = 0;
-            sqlSource.ProcessDataTableLarge(string.Format("Select Id From Product p  where Id > {0} Order By p.Id", idStart), 10000, (row) =>
+            sqlSource.ProcessDataTableLarge(string.Format("Select Id From Product p  where Id > {0} Order By p.Id", idStart), 10000, (row, iRow) =>
             {
                 countProduct++;
                 long productId = Common.Obj2Int64(row["Id"]);
@@ -84,14 +84,14 @@ namespace WSS.Core.Crawler.RecoverProductLost
                 if (hst.Count%10000 == 0) log.Info(string.Format("Loaded {0}", hst.Count));
             }return hst;
         }
+
         public void PushToRedis(int startId)
         {
-        
             List<long> lstTemp = new List<long>();
             HashSet<long> hstOld = this.GetHsOld();
 
             SqlDb sqlDb = new SqlDb(connectionDestination);
-            sqlDb.ProcessDataTableLarge(string.Format("Select IDProduct, ID From Product_LogsAddProduct Where ID > {0} ORDER BY ID ",startId), 50000, (row) =>
+            sqlDb.ProcessDataTableLarge(string.Format("Select IDProduct, ID From Product_LogsAddProduct Where ID > {0} ORDER BY ID ",startId), 50000, (row, iRow) =>
             {
                 long ID = Common.Obj2Int64(row["ID"]);
                 long ProductId = Common.Obj2Int64(row["IDProduct"]);

@@ -14,6 +14,7 @@ using QT.Entities.Data;
 using Websosanh.Core.JobServer;
 using Websosanh.Core.Drivers.RabbitMQ;
 using DevExpress.XtraGrid;
+using QT.Entities.Images;
 
 namespace QT.Moduls.Maps
 {
@@ -647,9 +648,9 @@ namespace QT.Moduls.Maps
 
         }
 
-        private string _rabbitMqServerName;
-        private string _updateProductImageGroupName;
-        private string _updateProductImageProductJobName;
+        //private string _rabbitMqServerName;
+        //private string _updateProductImageGroupName;
+        //private string _updateProductImageProductJobName;
         private RabbitMQServer _rabbitMqServer;
         private JobClient _downloadImageProductJobClient;
         private void UploadImageButton_Click(object sender, EventArgs e)
@@ -663,41 +664,24 @@ namespace QT.Moduls.Maps
                 }
                 else
                 {
-                    _rabbitMqServerName = System.Configuration.ConfigurationSettings.AppSettings["rabbitMQServerName"];
-                    _updateProductImageGroupName = System.Configuration.ConfigurationSettings.AppSettings["updateProductImageGroupName"];
-                    _updateProductImageProductJobName = System.Configuration.ConfigurationSettings.AppSettings["updateProductImageProductSPGocJobName"];
                     if(_rabbitMqServer == null)
-                        _rabbitMqServer = RabbitMQManager.GetRabbitMQServer(_rabbitMqServerName);
+                        _rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
                     if(_downloadImageProductJobClient == null)
-                        _downloadImageProductJobClient = new JobClient(_updateProductImageGroupName, GroupType.Topic, _updateProductImageProductJobName, true, _rabbitMqServer);
-                    Job job = new Job();
-                    MqChangeImage mq = new MqChangeImage
-                    {
-                        ProductID = productid,
-                        Type = 3
-                    };
-                    //sp gốc type = 3      
-                    job.Data = MqChangeImage.GetMess(mq);
+                        _downloadImageProductJobClient = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic,ConfigImages.ImboRoutingKeyDownloadImageRootProduct, true, _rabbitMqServer);
+                    ImageProductInfo product = new ImageProductInfo();
+                    product.Id = productid;
+                    product.ImageUrls = imageUrlsTextEdit.Text;
                     try
                     {
-                        _downloadImageProductJobClient.PublishJob(job);
+                        _downloadImageProductJobClient.PublishJob(new Job() { Data = ImageProductInfo.GetMessage(product) });
                         UploadImageButton.Visible = false;
                         MessageBox.Show("Push message thành công");
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: Liên hệ Hải - Code ... " + ex.Message);
+                        MessageBox.Show("Error: " + ex.Message);
                     }
                 }
-                //Comment ngày 30.5.2016 chuyển từ fpt sang push message lên service download image product
-                //if (Common.UploadImageSPGoc(productid, nameTextBox.Text, imageUrlsTextEdit.Text))
-                //{
-                //    MessageBox.Show("Upload success!");
-                //    validCheckBox.Checked = true;
-                //    LogJobAdapter.SaveLog(JobName.FrmManagerProduct_Upload_Image, "Upload ảnh sản phẩm gốc bằng tay...", productid, (int)JobTypeData.Product);
-                //}
-                //else
-                //    MessageBox.Show("Upload fails!");
             }
             else
                 MessageBox.Show("ERROR : ID product = 0.");

@@ -10,7 +10,7 @@ using QT.Moduls;
 using RabbitMQ.Client.Events;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class WorkerUpImgToServer : QueueingConsumer
     {

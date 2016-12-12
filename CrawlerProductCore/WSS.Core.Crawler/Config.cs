@@ -85,5 +85,8 @@ namespace WSS.Core.Crawler
         public static string QueueWaitCheckNotify = "Notifycation.WaitCheckNotify";
 
         public static string QueueLogAddProduct = "CrawlerProduct.LogAddProduct.ToSql";
+
+        public static string QueueVipCompanyReload = "Vip.Cmp.Crl.Rl";
+        public static string QueueVipCompanyFindNew = "Vip.Cmp.Crl.Fn";
     }
 }

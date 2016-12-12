@@ -408,8 +408,7 @@ namespace WSS.Crawler.Product.Report
         }
 
         private void ClickSetBlackList(object sender, EventArgs e)
-        {
-            int countData = 0;var lstProductGroup = eventGetProductIDs();
+        {int countData = 0;var lstProductGroup = eventGetProductIDs();
             var pa = new ProductAdapter(new SqlDb(QT.Entities.Server.ConnectionString));
 
             MQPushDownloadImage mqPushDownloadImage = new MQPushDownloadImage();

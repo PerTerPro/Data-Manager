@@ -20,6 +20,7 @@ using QT.Entities.Data;
 using System.Configuration;
 using Websosanh.Core.Drivers.RabbitMQ;
 using Websosanh.Core.JobServer;
+using QT.Entities.Images;
 
 namespace QT.Moduls.Company
 {
@@ -57,13 +58,10 @@ namespace QT.Moduls.Company
                 string updateProductGroupName = ConfigurationManager.AppSettings["updateProductGroupName"];
                 string updateProductToWebJobName = ConfigurationManager.AppSettings["updateProductToWebJobName"];
                 _updateProductToWebJobExpirationMs = Common.Obj2Int(ConfigurationManager.AppSettings["updateProductToWebJobExpirationMS"].ToString());
-                //jobclient send message to service download image
-                string updateProductImageGroupName = ConfigurationManager.AppSettings["updateProductImageGroupName"];
-                string updateProductImageJobName = ConfigurationManager.AppSettings["updateProductImageCompanyJobName"];
                 #endregion
                 var rabbitMqServer = RabbitMQManager.GetRabbitMQServer(_rabbitMqServerName);
                 _jobClientUpdateProductToWeb = new JobClient(updateProductGroupName, GroupType.Topic, updateProductToWebJobName, true, rabbitMqServer);
-                _jobClientDownloadImage = new JobClient(updateProductImageGroupName, GroupType.Topic, updateProductImageJobName, true, rabbitMqServer);
+                _jobClientDownloadImage = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic, ConfigImages.ImboRoutingKeyDownloadImageCompany, true, rabbitMqServer);
             }
             catch (Exception ex)
             {
@@ -228,10 +226,8 @@ namespace QT.Moduls.Company
                 //Nếu thay đổi hoặc giảm sản phẩm thì dừng update và ghi log
                 //Dung TotalVaid để so sánh nhưng để đỡ phải sửa code thì dùng totalproduct luôn nên k check đc lazada =))
                 //Comment bá đạo
-                if ((int)(ListProducts.Count*100/company.TotalProduct) < 50 || (company.TotalProduct - ListProducts.Count)>10000)
-                {
+                if (company.TotalProduct > 0 && ((int)(ListProducts.Count*100/company.TotalProduct) < 50 || (company.TotalProduct - ListProducts.Count)>10000))
                     HistoryDatafeedAdapter.InsertHistory(company.ID, company.DataFeedPath, ListProducts.Count, 0, 0, string.Format("Dừng update do số product ({0}) lấy trong datafeed chênh lệch với totalproduct {1}",ListProducts.Count,company.TotalProduct));
-                }
                 else
                     UpdateProductsToSql(company, ListProducts, cancelUpdateDataFeedTokenSource);
             }
@@ -346,9 +342,7 @@ namespace QT.Moduls.Company
 
                     if (UpdateCompanyDataFeedProduct(product, company, ref categoriesSet, ref oldProducts,
                         ref namePriceSet))
-                    {
                         updatedProductCount++;
-                    }
                     //Log.InfoFormat("Update {0}/{1} CompanyID = {2}", updatedProductCount, listProducts.Count, company.ID);
                 }
 
@@ -430,6 +424,7 @@ namespace QT.Moduls.Company
         }
         public bool SendMessageDownloadImage(long companyID, bool reloadall = false)
         {
+            
             var job = new Job { Data = BitConverter.GetBytes(companyID), Type = (int)TypeJobWithRabbitMQ.Company };
             if (reloadall)
                 job.Type = (int)TypeJobWithRabbitMQ.ReloadAll;

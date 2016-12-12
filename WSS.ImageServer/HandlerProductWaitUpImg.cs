@@ -10,13 +10,14 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using GABIZ.Base.Statistics.Kernels;
+using ImboForm;
 using log4net;
 using Newtonsoft.Json.Linq;
 using QT.Entities.Data;
 using QT.Moduls;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class HandlerProductWaitUpImg
     {
@@ -24,15 +25,7 @@ namespace ImboForm
         private readonly ProducerBasic _producerImageUploaed = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo), "ImageImbo", "Img.Product.UploadedImg");
         public void ProcessJob(JobProductWaitUpImg jobProductWaitUpImg)
         {
-            var imageIdNew = ImboImageService.PushFromFtpServer("wss", "123websosanh@195", jobProductWaitUpImg.ImgPathOld, "wss", @"http://172.22.1.226");
-            if (!string.IsNullOrEmpty(imageIdNew))
-            {
-                this._producerImageUploaed.PublishString(new JobUploadedImg()
-                {
-                    ImageId = imageIdNew,
-                    ProductId = jobProductWaitUpImg.ProductId
-                }.ToJson());
-            }
+        
 
         }
     }

@@ -98,6 +98,7 @@ namespace WSS.Products.UpdateSingleProductServices
                         Log.Error("Promotion Error add to dict: " + exception.Message);
                     }
                 }
+                Log.Info("Loaded promotion.");
                 file.Close();
             }
             catch (Exception exception)
@@ -126,6 +127,7 @@ namespace WSS.Products.UpdateSingleProductServices
                         Log.Error("Error add price with sku to dict: " + exception.Message);
                     }
                 }
+                Log.Info("Loaded price.");
                 file.Close();
             }
             catch (Exception exception)

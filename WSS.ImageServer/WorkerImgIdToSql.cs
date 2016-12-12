@@ -7,15 +7,16 @@ using log4net;
 using RabbitMQ.Client.Events;
 using Websosanh.Core.Drivers.RabbitMQ;
 
-namespace ImboForm
+namespace WSS.ImageServer
 {
     public class WorkerImgIdToSql:QueueingConsumer
         
     {
-        HandlerImgIdToSql h = new HandlerImgIdToSql();
-        private ILog _log = LogManager.GetLogger(typeof (WorkerImgIdToSql));
+        readonly HandlerImgIdToSql _h = new HandlerImgIdToSql();
+        private readonly ILog _log = LogManager.GetLogger(typeof (WorkerImgIdToSql));
 
-        public WorkerImgIdToSql() : base (RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo), ConfigImbo.QueueJobProductWaitUpImg, false)
+        public WorkerImgIdToSql()
+            : base(RabbitMQManager.GetRabbitMQServer(QT.Entities.Images.ConfigImages.RabbitMqServerName), QT.Entities.Images.ConfigImages.ImboQueueUploadImageIdSql, false)
         {
         }
 
@@ -26,9 +27,9 @@ namespace ImboForm
 
         public override void ProcessMessage(BasicDeliverEventArgs message)
         {
-            string strMss = UTF8Encoding.UTF8.GetString(message.Body);
+            var strMss = Encoding.UTF8.GetString(message.Body);
             _log.Info(string.Format("Process mss: {0}", strMss));
-            h.ProcessJob(strMss);
+            _h.ProcessJob(strMss);
             this.GetChannel().BasicAck(message.DeliveryTag, true);
         }
     }
