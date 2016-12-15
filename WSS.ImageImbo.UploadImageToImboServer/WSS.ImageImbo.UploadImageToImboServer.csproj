@@ -34,6 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cassandra, Version=3.0.0.0, Culture=neutral, PublicKeyToken=10b231fbfc8c4b4d" />
+    <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc" />
     <Reference Include="DevExpress.Data.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -42,10 +44,35 @@
     <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="GABIZ.Base, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GABIZ_BASE\bin\Release\GABIZ.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.0.1.27, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67" />
+    <Reference Include="RabbitMQ.Client, Version=3.5.6.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="SolrNet, Version=0.5.0.1002, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq">
@@ -75,8 +102,21 @@
     <Reference Include="System.Xml">
       <Private>True</Private>
     </Reference>
+    <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="WebDriver, Version=2.53.1.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Websosanh.Core.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Websosanh.Core.Drivers.RabbitMQ, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.Drivers.Solr, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Websosanh.Core.JobServer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonDownloadImage.cs" />
     <Compile Include="ConnectionCommon.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -86,16 +126,37 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Websosanh\DBWss.cs">
+      <DependentUpon>DBWss.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Websosanh\DBWss.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBWss.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Websosanh\FrmDownloadImageProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Websosanh\FrmDownloadImageProduct.Designer.cs">
+      <DependentUpon>FrmDownloadImageProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Websosanh\FrmPushMessageDownloadImageCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Websosanh\FrmPushMessageDownloadImageCompany.Designer.cs">
+      <DependentUpon>FrmPushMessageDownloadImageCompany.cs</DependentUpon>
     </Compile>
     <Compile Include="Websosanh\FrmUpLoadListLogo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Websosanh\FrmUpLoadListLogo.Designer.cs">
       <DependentUpon>FrmUpLoadListLogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Websosanh\FrmDownloadImageWithCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Websosanh\FrmDownloadImageWithCompany.Designer.cs">
+      <DependentUpon>FrmDownloadImageWithCompany.cs</DependentUpon>
     </Compile>
     <Compile Include="Websosanh\FrmUploadLogoWebsosanh.cs">
       <SubType>Form</SubType>
@@ -116,8 +177,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Websosanh\FrmDownloadImageProduct.resx">
+      <DependentUpon>FrmDownloadImageProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Websosanh\FrmPushMessageDownloadImageCompany.resx">
+      <DependentUpon>FrmPushMessageDownloadImageCompany.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Websosanh\FrmUpLoadListLogo.resx">
       <DependentUpon>FrmUpLoadListLogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Websosanh\FrmDownloadImageWithCompany.resx">
+      <DependentUpon>FrmDownloadImageWithCompany.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Websosanh\FrmUploadLogoWebsosanh.resx">
       <DependentUpon>FrmUploadLogoWebsosanh.cs</DependentUpon>
@@ -152,6 +222,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
+      <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
+      <Name>QT.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QT.Moduls\QT.Moduls.csproj">
+      <Project>{b8d02031-c0b6-4e60-a318-9f39d9b9a8a9}</Project>
+      <Name>QT.Moduls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WSS.ImageServer\WSS.ImageServer.csproj">
       <Project>{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}</Project>
       <Name>WSS.ImageServer</Name>

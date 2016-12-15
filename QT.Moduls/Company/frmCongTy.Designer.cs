@@ -330,6 +330,8 @@
             this.colInStock = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colImageId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.checkEditReloadAllImage = new DevExpress.XtraEditors.CheckEdit();
             this.simpleButtonExportExcel = new DevExpress.XtraEditors.SimpleButton();
             this.checkEditValid = new DevExpress.XtraEditors.CheckEdit();
@@ -3188,9 +3190,9 @@
             // 
             this.groupControl1.Controls.Add(this.productGridControl);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 61);
+            this.groupControl1.Location = new System.Drawing.Point(0, 63);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1238, 553);
+            this.groupControl1.Size = new System.Drawing.Size(1238, 551);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Danh sách sản phẩm trong Database";
             // 
@@ -3207,7 +3209,7 @@
             this.productGridControl.Location = new System.Drawing.Point(2, 21);
             this.productGridControl.MainView = this.gridView3;
             this.productGridControl.Name = "productGridControl";
-            this.productGridControl.Size = new System.Drawing.Size(1234, 530);
+            this.productGridControl.Size = new System.Drawing.Size(1234, 528);
             this.productGridControl.TabIndex = 0;
             this.productGridControl.UseEmbeddedNavigator = true;
             this.productGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -3429,6 +3431,8 @@
             // 
             // panelControl5
             // 
+            this.panelControl5.Controls.Add(this.simpleButton1);
+            this.panelControl5.Controls.Add(this.richTextBox1);
             this.panelControl5.Controls.Add(this.checkEditReloadAllImage);
             this.panelControl5.Controls.Add(this.simpleButtonExportExcel);
             this.panelControl5.Controls.Add(this.checkEditValid);
@@ -3438,8 +3442,26 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl5.Location = new System.Drawing.Point(0, 0);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(1238, 61);
+            this.panelControl5.Size = new System.Drawing.Size(1238, 63);
             this.panelControl5.TabIndex = 0;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(861, 130);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(121, 42);
+            this.simpleButton1.TabIndex = 25;
+            this.simpleButton1.Text = "PushMessage\r\nDownloadImage";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(477, 194);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(378, 125);
+            this.richTextBox1.TabIndex = 24;
+            this.richTextBox1.Text = "";
             // 
             // checkEditReloadAllImage
             // 
@@ -4206,5 +4228,7 @@
         //private System.Windows.Forms.BindingSource company_DeliveryTypeBindingSource;
         private System.Windows.Forms.ComboBox cmbDeliveryType;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
