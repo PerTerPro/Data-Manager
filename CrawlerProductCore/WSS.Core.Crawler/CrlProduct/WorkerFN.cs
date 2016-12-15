@@ -13,6 +13,8 @@ namespace WSS.Core.Crawler.CrlProduct
         private readonly ILog _log = LogManager.GetLogger(typeof (WorkerMqFn));
         public override void ProcessMessage(RabbitMQ.Client.Events.BasicDeliverEventArgs message)
         {
+            DateTime dtFrom = DateTime.Now;
+
             string mss = Encoding.UTF8.GetString(message.Body);
             _log.Info(string.Format("Get mss : {0}", mss));
             JobCompanyCrawler jobCompanyCrawler = JobCompanyCrawler.ParseFromJson(mss);
@@ -22,6 +24,10 @@ namespace WSS.Core.Crawler.CrlProduct
                 fn.StartCrawler();
             }
             this.GetChannel().BasicAck(message.DeliveryTag, true);
+
+            int minuteRun = (int)(DateTime.Now - dtFrom).TotalMinutes;
+            _log.Info(string.Format("Processed {0} in {1}", mss, minuteRun));
+        
         }
 
         public override void Init()

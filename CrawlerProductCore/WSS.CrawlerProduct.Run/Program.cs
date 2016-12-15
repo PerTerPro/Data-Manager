@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using GABIZ.Base.HtmlAgilityPack;
+using log4net;
+using Newtonsoft.Json;
 using QT.Entities;
 using QT.Entities.Data;
 using QT.Moduls.Crawler;
@@ -20,98 +26,115 @@ namespace WSS.CrawlerProduct.Run
     public class Program
     {
         public static CancellationTokenSource Source = new CancellationTokenSource();
+        private static ILog log = log4net.LogManager.GetLogger(typeof (Program));
         static void Main(string[] args){
-            Server.ConnectionString = ConfigCrawler.ConnectProduct;
-            Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;Server.LogConnectionString = ConfigCrawler.ConnectLog;
-            
-            //ProductAdapter productAdapter = new ProductAdapter(new SqlDb(ConfigCrawler.ConnectProduct));
-            //long companyId = productAdapter.GetCompanyIDFromDomain("hc.com.vn");
-            //WSS.Core.Crawler.WorkerReload w1 = new WSS.Core.Crawler.WorkerReload(companyId, new CancellationToken(),
-            //    "Test");
-            //   w1.StartCrawler();
-            //string url = @"https://www.trananh.vn/noi-com-dien/noi-com-dien-tu-shap-da-chuc-nang-ks-com19v-1-8l-pid24086cid1081";
-            //ProductParse pp = new ProductParse();
-            //ProductEntity pe = new ProductEntity();
-            //IDownloadHtml idownloadHtm = new DownloadHtmlCrawler();
-            //WebExceptionStatus ws = new WebExceptionStatus();
-            //var html = idownloadHtm.GetHTML(url, 45, 2, out ws);
-            //Uri uri = new Uri(url);HtmlDocument htmlDocument = new HtmlDocument();
-            //htmlDocument.LoadHtml(html);
-            //pp.Analytics(pe,htmlDocument,url, new Configuration(7627466712688617332,true),"trananh.vn"); 
-            //return;
-            //WorkerFindNew w = new WorkerFindNew(companyId, new CancellationToken(false), "Test");
-            //w.StartCrawler();
-            //return;
 
-            //args = new string[] { "-t 1 -nt 1 -ackIm 1 -QueueMq Normal.Cmp.Crl.Rl" };
-            if (args == null || args.Length == 0)
+            try
             {
-                Console.WriteLine(@"Input para:");
-                var readLine = Console.ReadLine();
-                if (readLine != null)
-                    args = readLine.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            }else
-            {Console.WriteLine(string.Join(";", args));
-            }
-            var pr = new Parameter();
-            pr.ParseData(string.Join(" ", args));Console.CancelKeyPress += EndApp;
-            if (pr.TypeRun == 1)
-            {
-                if (string.IsNullOrEmpty(pr.Domain))
+                Server.ConnectionString = ConfigCrawler.ConnectProduct;
+                Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;
+                Server.LogConnectionString = ConfigCrawler.ConnectLog;
+
+                //ProductAdapter productAdapter = new ProductAdapter(new SqlDb(ConfigCrawler.ConnectProduct));
+                //long companyId = productAdapter.GetCompanyIDFromDomain("hc.com.vn");
+                //WSS.Core.Crawler.WorkerReload w1 = new WSS.Core.Crawler.WorkerReload(companyId, new CancellationToken(),
+                //    "Test");
+                //   w1.StartCrawler();//string url = @"https://www.trananh.vn/noi-com-dien/noi-com-dien-tu-shap-da-chuc-nang-ks-com19v-1-8l-pid24086cid1081";
+                //ProductParse pp = new ProductParse();//ProductEntity pe = new ProductEntity();
+                //IDownloadHtml idownloadHtm = new DownloadHtmlCrawler();
+                //WebExceptionStatus ws = new WebExceptionStatus();
+                //var html = idownloadHtm.GetHTML(url, 45, 2, out ws);
+                //Uri uri = new Uri(url);HtmlDocument htmlDocument = new HtmlDocument();
+                //htmlDocument.LoadHtml(html);
+                //pp.Analytics(pe,htmlDocument,url, new Configuration(7627466712688617332,true),"trananh.vn"); //return;
+                //WorkerFindNew w = new WorkerFindNew(companyId, new CancellationToken(false), "Test");//w.StartCrawler();
+                //return;
+ 
+
+               
+                if (args == null || args.Length == 0)
                 {
-                    for (var i = 0; i < pr.NumberThread; i++)
-                    {
-                        Task.Factory.StartNew(() =>
-                        {
-                            var w = new WorkerMqRl(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), pr.QueueMQ, pr.AckIm);
-                            w.StartConsume();
-                        });
-                        Thread.Sleep(2000);
-                    }}
+                    Console.WriteLine(@"Input para:");
+                    var readLine = Console.ReadLine();
+                    if (readLine != null)
+                        args = readLine.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+                }
                 else
                 {
-                    var pt = new ProductAdapter(new SqlDb(QT.Entities.Server.ConnectionString));
-                    var token = new CancellationToken();
-                    var wokerFn = new WSS.Core.Crawler.WorkerReload(pt.GetCompanyIDFromDomain(pr.Domain), "");
-                    wokerFn.StartCrawler();
+                    Console.WriteLine(string.Join(" ", args));
                 }
-            }
-            else if (pr.TypeRun == 0)
-            {
-                if (string.IsNullOrEmpty(pr.Domain))
+
+                var strPara = string.Join(" ", args);
+                var pr = new Parameter();
+                pr.ParseData(strPara);
+                Console.Title =  strPara;
+
+                Console.CancelKeyPress += EndApp;
+                if (pr.TypeRun == 1)
                 {
-                    for (var i = 0; i < pr.NumberThread; i++)
+                    if (string.IsNullOrEmpty(pr.Domain))
                     {
-                        var token = Source.Token;
-                        var j = i; Task.Factory.StartNew(() =>
+                        for (var i = 0; i < pr.NumberThread; i++)
                         {
-                            var w = new WorkerMqFn(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), pr.QueueMQ);
-                            w.StartConsume();
-                        }, token);
-                        Thread.Sleep(2000);
+                            Task.Factory.StartNew(() =>
+                            {
+                                var w = new WorkerMqRl(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), pr.QueueMQ, pr.AckIm);
+                                w.StartConsume();
+                            });
+                            Thread.Sleep(2000);
+                        }
+                    }
+                    else
+                    {
+                        var pt = new ProductAdapter(new SqlDb(QT.Entities.Server.ConnectionString));
+                        var token = new CancellationToken();
+                        var wokerFn = new WSS.Core.Crawler.WorkerReload(pt.GetCompanyIDFromDomain(pr.Domain), "");
+                        wokerFn.StartCrawler();
                     }
                 }
-                else
+                else if (pr.TypeRun == 0)
                 {
-                    var pt = new ProductAdapter(new SqlDb(QT.Entities.Server.ConnectionString));
-                    var token = new CancellationToken();
-                    var wokerFn = new WorkerFindNew(pt.GetCompanyIDFromDomain(pr.Domain), "");
-                    wokerFn.StartCrawler();
+                    if (string.IsNullOrEmpty(pr.Domain))
+                    {
+                        for (var i = 0; i < pr.NumberThread; i++)
+                        {
+                            var token = Source.Token;
+                            var j = i;
+                            Task.Factory.StartNew(() =>
+                            {
+                                var w = new WorkerMqFn(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), pr.QueueMQ);
+                                w.StartConsume();
+                            }, token);
+                            Thread.Sleep(2000);
+                        }
+                    }
+                    else
+                    {
+                        var pt = new ProductAdapter(new SqlDb(QT.Entities.Server.ConnectionString));
+                        var token = new CancellationToken();
+                        var wokerFn = new WorkerFindNew(pt.GetCompanyIDFromDomain(pr.Domain), "");
+                        wokerFn.StartCrawler();
+                    }
                 }
-            }
 
-            while (true)
-            {
-                if (Source.IsCancellationRequested)
-                {
-                    Thread.Sleep(10000);
-                    return;
-                }
-                else
-                {
-                    Thread.Sleep(1000);
+                while (true){
+                    if (Source.IsCancellationRequested)
+                    {
+                        Thread.Sleep(10000);
+                        return;
+                    }
+                    else
+                    {
+                        Thread.Sleep(1000);
+                    }
                 }
             }
+            catch(Exception ex0)
+            {
+                log.Error(ex0);
+                Console.ReadLine();
+            }
+            
 
         }
 

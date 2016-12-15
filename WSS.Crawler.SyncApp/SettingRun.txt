@@ -1,7 +1,10 @@
-﻿{
-	"PathApp" : "C:\\Users\\xuantrang\\Desktop\\DemoSyncAppPath",
+﻿[{
+	"PathApp" : "001",
 	"FileRun" : "WSS.CrawlerProduct.Run.exe",
-	"Parameter" : "-t 1 -nt 50 -QueuMq Normal.Cmp.Crl.Fn -ackIm 1",
-	"VersionCurrent" : "1",
-	"NumberApp" : "1"
-}
+	"Runner" : "172.22.1.73_001"
+},
+{
+	"PathApp" : "002",
+	"FileRun" : "WSS.CrawlerProduct.Run.exe",
+	"Runner" : "172.22.1.73_002"
+}]

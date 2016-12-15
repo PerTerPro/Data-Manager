@@ -51,7 +51,8 @@ order by a.id
            JobRootProductWaitTrans job = JobRootProductWaitTrans.FromJson(mss1);
            try
            {
-               string imgId = Common.DownloadImageProductWithImboServer(job.Url, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "root_product", ConfigImbo.Host, 443);
+               string url = job.Url.Replace(@"http://img.websosanh.vn/", "http://img.websosanh.net/ThumbImages/").Replace(".jpg", "_200.jpg");
+               string imgId = Common.DownloadImageProductWithImboServer(url, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "root_product", ConfigImbo.Host, 443);
                if (!string.IsNullOrEmpty(imgId))
                {
                    this.pbUpdateId.PublishString(new JobUploadedImg()
@@ -59,6 +60,7 @@ order by a.id
                        ImageId = imgId,
                        ProductId = job.Id
                    }.ToJson());
+                   this.log.Info(string.Format("Processed for {0} {1}", job.Id, imgId));
                }
            }
            catch (Exception ex)

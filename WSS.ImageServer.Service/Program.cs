@@ -10,8 +10,7 @@ namespace WSS.ImageServer.Service
 {
     class Program
     {
-        static void Main(string[] args)
-        {
+        static void Main(string[] args){
             try
             {
                 //args = new[] {"-cmd UdpImgIdToSql"};
@@ -22,7 +21,7 @@ namespace WSS.ImageServer.Service
                 //args = new[] { "-cmd UdpImgIdToSql" };
 
                 //args = new[] { "-cmd PushUpImboReview" };
-                //args = new[] { "-cmd HanlderTransferImgNew1" };
+                args = new[] { "-cmd DownloadRootProduct" };
 
 
                 //string s = ImboImageService.PushFromFile(ConfigImbo.PublicKey, "123websosanh@195",
@@ -57,7 +56,6 @@ namespace WSS.ImageServer.Service
                         h.TransferData();
                         Thread.Sleep(6000000);
                     }
-                  
                 }
                 else if (pt.Cmd == "PushUpImboReview")
                 {

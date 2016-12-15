@@ -54,9 +54,8 @@ namespace WSS.Crawler.Product.Report
             {
                 this.Text = @"RL:" + company.Domain;
                 var token = _cancellationTokenSource.Token;
-                Task.Factory.StartNew(() =>
-                {
-                    WorkerReload worker = new WorkerReload(_companyId, token, "");
+                Task.Factory.StartNew(() =>{
+                    WorkerReload worker = new WorkerReload(_companyId, "");
                     worker.EventReportRun += (data) =>
                     {
                         this.Invoke(new Action(() =>

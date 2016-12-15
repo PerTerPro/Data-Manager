@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using WSS.Core.Crawler;
 using NUnit.Framework;
+using QT.Entities;
+
 namespace WSS.Core.Crawler.Tests
 {
     [TestFixture()]
@@ -55,6 +57,57 @@ namespace WSS.Core.Crawler.Tests
 
         [Test()]
         public void DisposeTest()
+        {
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void WorkerFindNewTest1()
+        {
+            Server.ConnectionString = ConfigCrawler.ConnectProduct;
+            Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler; Server.LogConnectionString = ConfigCrawler.ConnectLog;
+            WorkerFindNew w = new WorkerFindNew(15908872101896924, "");
+            w.StartCrawler();
+        }
+
+        [Test()]
+        public void StartCrawlerTest2()
+        {
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void StartCrawlerTest3()
+        {
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void InitTest1()
+        {
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void LogImportantInfoTest1()
+        {
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void EndTest1()
+        {
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void StopTest1()
+        {
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void DisposeTest1()
         {
             Assert.Fail();
         }

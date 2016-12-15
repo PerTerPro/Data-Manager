@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigProperty.cs" />
+    <Compile Include="ConfigPropertySql.cs" />
     <Compile Include="ConfigStatic.cs" />
     <Compile Include="ETypeLayout.cs" />
     <Compile Include="HandlerAdayroi.cs" />

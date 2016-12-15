@@ -1533,14 +1533,17 @@ ELSE
         where ID = @CompanyID
     END
 
-INSERT INTO Company_TrackCrawler (CompanyID, TypeCrawler, StartAt, EndAt, CountLink, CountVisited, CountProduct, CountChange, session, TotalProduct, IP, Domain, TypeEnd, NumberDuplicates) 
-VALUES (@CompanyID, @TypeCrawler, @StartAt, @EndAt, @CountLink, @CountVisited, @CountProduct, @CountChange, @session, (select TotalProduct from Company where ID = @CompanyID), @IP,@Domain, @TypeEnd, @NumberDuplicates);
+INSERT INTO Company_TrackCrawler 
+    (CompanyID, TypeCrawler, StartAt, EndAt, CountLink, CountVisited, CountProduct, CountChange, session, TotalProduct, IP, Domain, TypeEnd, NumberDuplicates) 
+VALUES 
+    (@CompanyID, @TypeCrawler, @StartAt, @EndAt, @CountLink, @CountVisited, @CountProduct, @CountChange, @session, (select TotalProduct from Company where ID = @CompanyID), @IP,@Domain, @TypeEnd, @NumberDuplicates);
 
 ", CommandType.Text,
                 new SqlParameter[]
                 {
                     SqlDb.CreateParamteterSQL("@TypeRun", endSession.TypeRun, SqlDbType.NVarChar), SqlDb.CreateParamteterSQL("@CompanyID", endSession.CompanyId, SqlDbType.BigInt),
-                    SqlDb.CreateParamteterSQL("@TypeCrawler", endSession.TypeCrawler, SqlDbType.Int), SqlDb.CreateParamteterSQL("@StartAt", endSession.StartAt, SqlDbType.DateTime),
+                    SqlDb.CreateParamteterSQL("@TypeCrawler", endSession.TypeCrawler, SqlDbType.Int), 
+                    SqlDb.CreateParamteterSQL("@StartAt", endSession.StartAt, SqlDbType.DateTime),
                     SqlDb.CreateParamteterSQL("@EndAt", endSession.EndAt, SqlDbType.DateTime), 
                     SqlDb.CreateParamteterSQL("@CountLink", 0, SqlDbType.BigInt),
                     SqlDb.CreateParamteterSQL("@CountVisited", endSession.CountVisited, SqlDbType.Int), SqlDb.CreateParamteterSQL("@CountProduct", endSession.CountProduct, SqlDbType.Int),

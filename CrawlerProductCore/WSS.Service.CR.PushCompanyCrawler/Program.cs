@@ -20,7 +20,7 @@ namespace WSS.Service.CR.PushCompanyCrawler
                 log.Info(string.Format("Start push at {0}",DateTime.Now.ToString("yyyy-MM-dd")));
                 ControlCmpCrlw.PushCmp();
                 log.Info("Wait 10' to next");
-                Thread.Sleep(600000);
+                Thread.Sleep(60000*5);
             }
 
             return;

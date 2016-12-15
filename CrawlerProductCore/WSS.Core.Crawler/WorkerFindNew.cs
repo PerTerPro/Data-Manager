@@ -171,7 +171,6 @@ namespace WSS.Core.Crawler
                                     Session = _session,
                                     LastUpdate = DateTime.Now
                                 }), false, 300);
-
                             var html = GetHtmlCode(jobCrawl.Url, _config.UseClearHtml);
                             if (html != "")
                             {
@@ -207,7 +206,6 @@ namespace WSS.Core.Crawler
             string str = string.Format("Update COmpany Set LastCrawlerFindNew = GetDate(), LastEndCrawlerFindNew = NULL Where Id = {0}", this._companyId);
             bool bOk = this.sqldb.RunQuery(str, CommandType.Text, null);
         }
-
 
         private void ProcessLink(JobFindNew jobCrawl, string html)
         {
@@ -467,7 +465,7 @@ namespace WSS.Core.Crawler
                 _tokenCrawler.ThrowIfCancellationRequested();
                 _visitRegexs = _config.VisitUrlsRegex;
                 _detailLinkRegexs = _config.ProductUrlsRegex;
-                _noCrawlerRegexs = _config.NoVisitUrlRegex;
+                _noCrawlerRegexs = _config.NoVisitUrlRegex ?? new List<string>(); 
                 _noCrawlerRegexs.AddRange(UtilCrawlerProduct.NoCrawlerRegexDefault);
                 _timeStart = DateTime.Now;
                 _rootUri = Common.GetUriFromUrl(_company.Website);
@@ -486,6 +484,25 @@ namespace WSS.Core.Crawler
                 string mss =
                     Newtonsoft.Json.JsonConvert.SerializeObject(new ErrorCrawler() {CompanyId = _companyId, ProductId = 0, TimeError = DateTime.Now, Message = "Init" + ex.Message + ex.StackTrace});
                 _producerReportError.PublishString(mss, true);
+                if (_producerEndCrawler != null)
+                {
+                    _producerEndCrawler.PublishString(new CrawlerSessionLog()
+                    {
+                        CompanyId = _companyId,
+                        CountChange = 0,
+                        CountProduct = 0,
+                        CountVisited = 0,
+                        Domain = "",
+                        EndAt =DateTime.Now,
+                        Ip = Server.IPHost,
+                        NumberDuplicateProduct = 0,
+                        Session = this._session,
+                        StartAt = this._timeStart,
+                        TotalProduct = 0,TypeCrawler = 0,
+                        TypeEnd = "Error Init",
+                        TypeRun = "Auto"
+                    }.ToJson());
+                }
                 return false;
             }
         }
