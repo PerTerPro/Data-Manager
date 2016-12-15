@@ -12,7 +12,7 @@ namespace WSS.Crl.ProducProperties.Core
 {
     public class ProductPropertiesAdapter
     {
-        private SqlDb sqlDb = new SqlDb(ConfigStatic.ProductPropertyConnection);
+        private SqlDb sqlDb = new SqlDb(ConfigStatic.ProductConnection);
 
         public void SaveHtm(long productId, string html, string domain, string url)
         {                                            
@@ -20,14 +20,17 @@ namespace WSS.Crl.ProducProperties.Core
 
         public ConfigPropertySql GetConfig(long companyId)
         {
-            DataTable tbl = this.sqlDb.GetTblData(@"SELECT TOP 1 [Id]
-      ,[CompanyId]
-      ,[TypeLayout]
-      ,[XPath]
-      ,[JSonOtherConfig]
-      ,[JSonOtherConfigDemo]
-	  , c.UrlTest
+            DataTable tbl = this.sqlDb.GetTblData(@"
+      SELECT TOP 1 c.[Id]
+      ,c.[CompanyId]
+      ,c.[TypeLayout]
+      ,c.[XPath]
+      ,c.[JSonOtherConfig]
+      ,c.[JSonOtherConfigDemo]
+	  ,c.UrlTest
+	  , cf.CategoryXPath
   FROM [dbo].[Configuration_Property] c
+  INNER JOIN Configuration cf ON cf.CompanyID = c.CompanyId
   Where c.CompanyId = @CompanyId", CommandType.Text, new SqlParameter[]
             {
                 SqlDb.CreateParamteterSQL("@CompanyId", companyId, SqlDbType.BigInt)
@@ -37,7 +40,7 @@ namespace WSS.Crl.ProducProperties.Core
                 var row = tbl.Rows[0];
                 return new ConfigPropertySql()
                 {
-                    CategoryXPath = Common.Obj2String("CategoryXPath"),
+                    CategoryXPath = Common.Obj2String(row["CategoryXPath"]),
                     CompanyId = Common.Obj2Int64(row["CompanyId"]),
                     JSonOtherConfig = Common.Obj2String(row["JSonOtherConfig"]),
                     TypeLayout = Common.Obj2Int(row["TypeLayout"]),

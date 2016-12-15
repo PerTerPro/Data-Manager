@@ -53,6 +53,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="QT.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrawlerProductCore\DLLs\QT.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="QT.Moduls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrawlerProductCore\DLLs\QT.Moduls.dll</HintPath>
+    </Reference>
     <Reference Include="RabbitMQ.Client">
       <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
     </Reference>
@@ -93,16 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
-      <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
-      <Name>QT.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QT.Moduls\QT.Moduls.csproj">
-      <Project>{b8d02031-c0b6-4e60-a318-9f39d9b9a8a9}</Project>
-      <Name>QT.Moduls</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -53,10 +53,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="QT.Entities">
+    <Reference Include="QT.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CrawlerProductCore\DLLs\QT.Entities.dll</HintPath>
     </Reference>
-    <Reference Include="QT.Moduls">
+    <Reference Include="QT.Moduls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CrawlerProductCore\DLLs\QT.Moduls.dll</HintPath>
     </Reference>
     <Reference Include="System" />
