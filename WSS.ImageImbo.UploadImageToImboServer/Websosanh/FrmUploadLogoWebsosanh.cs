@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QT.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -53,7 +54,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                         {
                             ImboImageService.DelteImage(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, idImboOld, "logo", ConfigImbo.Host, ConfigImbo.Port);
                         }
-                        companyTableAdapter.UpdateLogoImageId(idImboNew, Convert.ToInt64(iDTextEdit.Text));
+                        companyTableAdapter.UpdateLogoImageId(idImboNew, Common.Obj2Int64(iDTextEdit.Text));
                         lbMessage.Text = "Upload success!";
                     }
                     else

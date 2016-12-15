@@ -742,7 +742,7 @@ namespace QT.Moduls.Maps
         private void btnGetProductImage_Click(object sender, EventArgs e)
         {
             Wait.Show("Get product from SQL...");
-            string querry = @"SELECT ID,Name, DetailUrl,ImageUrls,ImagePath,LastUpdate,Valid,Status FROM Product WHERE (Company = 6619858476258121218) AND (Valid = 1) AND (ImagePath IS NULL OR ImagePath = '') OR (Company = 6619858476258121218) AND (Valid = 0) AND (Status = 11)";
+            string querry = @"SELECT ID,Name, DetailUrl,ImageUrls,ImageId,LastUpdate,Valid,Status FROM Product WHERE (Company = 6619858476258121218) AND (Valid = 1) AND (ImageId IS NULL OR ImageId = '') OR (Company = 6619858476258121218) AND (Valid = 0) AND (Status = 11)";
             SqlDb sqldb = new SqlDb(Server.ConnectionString);
             DataTable productTable = new DataTable();
             try

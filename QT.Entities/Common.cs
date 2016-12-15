@@ -2016,6 +2016,7 @@ namespace QT.Entities
             
             var signleData = CreateToken(str, privateKey);
             //download image
+            url = url.Replace(@"///", @"//").Replace(@"////",@"//");
             var regexhttp = Regex.Match(url, "http").Captures;
             if (regexhttp.Count > 1)
                 url = url.Substring(url.LastIndexOf("http"));
