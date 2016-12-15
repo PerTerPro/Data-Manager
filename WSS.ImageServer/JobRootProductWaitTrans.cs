@@ -11,6 +11,8 @@ namespace WSS.ImageServer
         public long Id { get;set; }
         public string Url { get; set; }
 
+        public string ImageId { get; set; }
+
         public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
