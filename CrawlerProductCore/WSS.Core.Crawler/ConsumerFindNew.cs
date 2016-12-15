@@ -66,7 +66,7 @@ namespace WSS.Core.Crawler
                         }
                         else
                         {
-                            using (var worker = new WorkerFindNew(jobCompanyCrawler.CompanyId, _token, _nameThread))
+                            using (var worker = new WorkerFindNew(jobCompanyCrawler.CompanyId, _nameThread))
                             {
                                 worker.StartCrawler();
                             }

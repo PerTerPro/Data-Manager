@@ -195,6 +195,22 @@ namespace QT.Moduls.CrawlerProduct.Cache
             Init();
         }
 
+        public string GetVersion(string nameRun)
+        {
+            var a = this.database.HashGet("version_local", nameRun);
+            return (a.IsNull == true) ? "" : a.ToString();
+        }
+
+        public void SetVersion(string nameRun, string version)
+        {
+            database.HashSet("version_local", nameRun, version);
+        }
+
+        public string GetPara(string runner)
+        {
+            return this.database.HashGet("para", runner);
+        }
+
         public VersionAutoCrawler GetCurrentVersion()
         {
             VersionAutoCrawler v = new VersionAutoCrawler()

@@ -3229,6 +3229,12 @@ namespace WSS.Crl.ProducProperties.Manager {
             
             private global::System.Data.DataColumn columnXPath;
             
+            private global::System.Data.DataColumn columnJSonOtherConfig;
+            
+            private global::System.Data.DataColumn columnJSonOtherConfigDemo;
+            
+            private global::System.Data.DataColumn columnUrlTest;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Configuration_PropertyDataTable() {
@@ -3296,6 +3302,30 @@ namespace WSS.Crl.ProducProperties.Manager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn JSonOtherConfigColumn {
+                get {
+                    return this.columnJSonOtherConfig;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn JSonOtherConfigDemoColumn {
+                get {
+                    return this.columnJSonOtherConfigDemo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UrlTestColumn {
+                get {
+                    return this.columnUrlTest;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3331,13 +3361,16 @@ namespace WSS.Crl.ProducProperties.Manager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Configuration_PropertyRow AddConfiguration_PropertyRow(CompanyRow parentCompanyRowByFK_Configuration_Property_Company, int TypeLayout, string XPath) {
+            public Configuration_PropertyRow AddConfiguration_PropertyRow(CompanyRow parentCompanyRowByFK_Configuration_Property_Company, int TypeLayout, string XPath, string JSonOtherConfig, string JSonOtherConfigDemo, string UrlTest) {
                 Configuration_PropertyRow rowConfiguration_PropertyRow = ((Configuration_PropertyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         TypeLayout,
-                        XPath};
+                        XPath,
+                        JSonOtherConfig,
+                        JSonOtherConfigDemo,
+                        UrlTest};
                 if ((parentCompanyRowByFK_Configuration_Property_Company != null)) {
                     columnValuesArray[1] = parentCompanyRowByFK_Configuration_Property_Company[0];
                 }
@@ -3374,6 +3407,9 @@ namespace WSS.Crl.ProducProperties.Manager {
                 this.columnCompanyId = base.Columns["CompanyId"];
                 this.columnTypeLayout = base.Columns["TypeLayout"];
                 this.columnXPath = base.Columns["XPath"];
+                this.columnJSonOtherConfig = base.Columns["JSonOtherConfig"];
+                this.columnJSonOtherConfigDemo = base.Columns["JSonOtherConfigDemo"];
+                this.columnUrlTest = base.Columns["UrlTest"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3387,6 +3423,12 @@ namespace WSS.Crl.ProducProperties.Manager {
                 base.Columns.Add(this.columnTypeLayout);
                 this.columnXPath = new global::System.Data.DataColumn("XPath", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnXPath);
+                this.columnJSonOtherConfig = new global::System.Data.DataColumn("JSonOtherConfig", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJSonOtherConfig);
+                this.columnJSonOtherConfigDemo = new global::System.Data.DataColumn("JSonOtherConfigDemo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJSonOtherConfigDemo);
+                this.columnUrlTest = new global::System.Data.DataColumn("UrlTest", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUrlTest);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -3396,6 +3438,9 @@ namespace WSS.Crl.ProducProperties.Manager {
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnXPath.MaxLength = 500;
+                this.columnJSonOtherConfig.MaxLength = 2000;
+                this.columnJSonOtherConfigDemo.MaxLength = 2000;
+                this.columnUrlTest.MaxLength = 200;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7927,6 +7972,56 @@ namespace WSS.Crl.ProducProperties.Manager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string JSonOtherConfig {
+                get {
+                    try {
+                        return ((string)(this[this.tableConfiguration_Property.JSonOtherConfigColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'JSonOtherConfig\' in table \'Configuration_Property\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableConfiguration_Property.JSonOtherConfigColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string JSonOtherConfigDemo {
+                get {
+                    try {
+                        return ((string)(this[this.tableConfiguration_Property.JSonOtherConfigDemoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'JSonOtherConfigDemo\' in table \'Configuration_Property\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableConfiguration_Property.JSonOtherConfigDemoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UrlTest {
+                get {
+                    try {
+                        return ((string)(this[this.tableConfiguration_Property.UrlTestColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UrlTest\' in table \'Configuration_Property\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableConfiguration_Property.UrlTestColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CompanyRow CompanyRow {
                 get {
                     return ((CompanyRow)(this.GetParentRow(this.Table.ParentRelations["FK_Configuration_Property_Company"])));
@@ -7970,6 +8065,42 @@ namespace WSS.Crl.ProducProperties.Manager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetXPathNull() {
                 this[this.tableConfiguration_Property.XPathColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsJSonOtherConfigNull() {
+                return this.IsNull(this.tableConfiguration_Property.JSonOtherConfigColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetJSonOtherConfigNull() {
+                this[this.tableConfiguration_Property.JSonOtherConfigColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsJSonOtherConfigDemoNull() {
+                return this.IsNull(this.tableConfiguration_Property.JSonOtherConfigDemoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetJSonOtherConfigDemoNull() {
+                this[this.tableConfiguration_Property.JSonOtherConfigDemoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUrlTestNull() {
+                return this.IsNull(this.tableConfiguration_Property.UrlTestColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUrlTestNull() {
+                this[this.tableConfiguration_Property.UrlTestColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -9098,11 +9229,24 @@ namespace WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT ID, Name, Description, Website, Domain, AddDate, Phone, Fax, Yahoo, Address, Status, UseDataFeed, Image, PageRank, AlexaRank, TimeStartUp, TimeSleep, TimeDelay, TotalProduct, LastCrawler, LastFullCrawler, FullCrawlerDay, TotalValid, TotalQueue, TotalVisited, Keywords, LastCheck, LastCheckTotalValid, TotalViewMonth, LastUpdateSolr, DataFeedUrl, DataFeedType, UpdateFreq, LastUpdateDataFeed, UserDatafeed, PasswordDatafeed, LastCrawlerFindNew, LastEndCrawlerFindNew, IsStopCrawlerImediate, StatusLive, LastEndCrawlerReload, LastCrawlerReload, LastSyncProductToRedis, LastSyncClassificationToRedis, LastSyncHashNameToRedis, LastJobCrawlerFindNew, LastJobCrawlerReload, NotVisibleProduct, TotalNewProduct, CountAlive, MaxValid, WaitCrawlerReload, WaitCrawlerFindNew, Process, AllowAutoPushNewProduct, AllowAutoBlackLink, MinHourRecrawl, MinHourFindNew, NextWaiCrawler, AllowFindNew, AllowReload, ClearQueueWhenFN, UserRanking, IndexRanking, LastUpdate, LastUpdateRedisCrawler, Merchant_Ranking, StartDate_MinDirect, EndDate_MinDirect, CreateDate_MinDirect, LastupDate_MinDirect, Merchant_MinDirect, ShortTermPriorityScore, ConfigSuccess, Trusted, DeliveryInfomation, DeliveryType, LastUpdateAlexa, click, MaxLinkCrawl, LogoImageId FROM dbo.Company";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        ID, Name, Description, Website, Domain, AddDate, Phone, Fax, Yahoo, Address, Status, UseDataFeed, Image, PageRank, AlexaRank, TimeStartUp, TimeSleep, TimeDelay, TotalProduct, LastCrawler, 
+                         LastFullCrawler, FullCrawlerDay, TotalValid, TotalQueue, TotalVisited, Keywords, LastCheck, LastCheckTotalValid, TotalViewMonth, LastUpdateSolr, DataFeedUrl, DataFeedType, UpdateFreq, LastUpdateDataFeed,
+                          UserDatafeed, PasswordDatafeed, LastCrawlerFindNew, LastEndCrawlerFindNew, IsStopCrawlerImediate, StatusLive, LastEndCrawlerReload, LastCrawlerReload, LastSyncProductToRedis, 
+                         LastSyncClassificationToRedis, LastSyncHashNameToRedis, LastJobCrawlerFindNew, LastJobCrawlerReload, NotVisibleProduct, TotalNewProduct, CountAlive, MaxValid, WaitCrawlerReload, 
+                         WaitCrawlerFindNew, Process, AllowAutoPushNewProduct, AllowAutoBlackLink, MinHourRecrawl, MinHourFindNew, NextWaiCrawler, AllowFindNew, AllowReload, ClearQueueWhenFN, UserRanking, 
+                         IndexRanking, LastUpdate, LastUpdateRedisCrawler, Merchant_Ranking, StartDate_MinDirect, EndDate_MinDirect, CreateDate_MinDirect, LastupDate_MinDirect, Merchant_MinDirect, ShortTermPriorityScore, 
+                         ConfigSuccess, Trusted, DeliveryInfomation, DeliveryType, LastUpdateAlexa, click, MaxLinkCrawl, LogoImageId
+FROM            Company
+WHERE        (ID = @CompanyID)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyID", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9124,6 +9268,32 @@ namespace WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual ProductQT.CompanyDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            ProductQT.CompanyDataTable dataTable = new ProductQT.CompanyDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByID(ProductQT.CompanyDataTable dataTable, long CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ProductQT.CompanyDataTable GetDataByID(long CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID));
             ProductQT.CompanyDataTable dataTable = new ProductQT.CompanyDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -12873,11 +13043,24 @@ namespace WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT ID, VisitUrlsRegex, ProductUrlsRegex, ProductNameXPath, CategoryXPath, PriceXPath, WarrantyXPath, StatusXPath, ImageXPath, ImageGetFromRoot, ManufactureXPath, OriginXPath, CompanyID, LinkTest, UseClearHtml, TimeDelay, HoursReCrawler, ItemReCrawler, DayReFullCrawler, PromotionXPath, SummaryXPath, ContentXPath, BlockXPath, ContentAnanyticXPath, MapRowsXPath, MapColumnPropertyXPath, MapColumnValueXPath, AutoDelete, PromotionInfoXPath, VATInfoXPath, OrigrinPriceXPath, DeliveryInfoXPath, OriginPriceXPath, RegexDeliveryInfoXPath, EndDealXPath, StartDealXPath, RemoveLastItemClassification, MutilRootLink, use_selenium_crawler, RegexNotValidProduct, ValidProductXPath, UseSeleniumCrawler, IncludedVAT, ReloadAllNoValid, ReloadWhenCrawlerFindNew, WaitToNextCrawlerReload, VATStatus, MaxToNoValid, FixedLinkShow, AutoFixLinkImage, RegexNoPrice, RegexPrice, DefaultRegexPrice, MinHourReload, MinHourFindNew, CheckPrice, NumberThreadCrawler, AllowFindNew, AllowReload, MaxLinksFindNew, MaxHourFindNew, Website_SourceType, LinkAutoTest, AllowAutoCheckPrice, MaxProductToWarning, MinProductToWarning, ShortDescriptionXPath, SpecsXpath, VideoXpath, FullDescXPath, MaxDeep, LimitFailToDelProduct, LimitProductValid FROM dbo.Configuration";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        ID, VisitUrlsRegex, ProductUrlsRegex, ProductNameXPath, CategoryXPath, PriceXPath, WarrantyXPath, StatusXPath, ImageXPath, ImageGetFromRoot, ManufactureXPath, OriginXPath, CompanyID, LinkTest, 
+                         UseClearHtml, TimeDelay, HoursReCrawler, ItemReCrawler, DayReFullCrawler, PromotionXPath, SummaryXPath, ContentXPath, BlockXPath, ContentAnanyticXPath, MapRowsXPath, MapColumnPropertyXPath, 
+                         MapColumnValueXPath, AutoDelete, PromotionInfoXPath, VATInfoXPath, OrigrinPriceXPath, DeliveryInfoXPath, OriginPriceXPath, RegexDeliveryInfoXPath, EndDealXPath, StartDealXPath, 
+                         RemoveLastItemClassification, MutilRootLink, use_selenium_crawler, RegexNotValidProduct, ValidProductXPath, UseSeleniumCrawler, IncludedVAT, ReloadAllNoValid, ReloadWhenCrawlerFindNew, 
+                         WaitToNextCrawlerReload, VATStatus, MaxToNoValid, FixedLinkShow, AutoFixLinkImage, RegexNoPrice, RegexPrice, DefaultRegexPrice, MinHourReload, MinHourFindNew, CheckPrice, NumberThreadCrawler, 
+                         AllowFindNew, AllowReload, MaxLinksFindNew, MaxHourFindNew, Website_SourceType, LinkAutoTest, AllowAutoCheckPrice, MaxProductToWarning, MinProductToWarning, ShortDescriptionXPath, SpecsXpath, 
+                         VideoXpath, FullDescXPath, MaxDeep, LimitFailToDelProduct, LimitProductValid
+FROM            Configuration
+WHERE        (CompanyID = @CompanyID)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyID", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12899,6 +13082,32 @@ namespace WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual ProductQT.ConfigurationDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            ProductQT.ConfigurationDataTable dataTable = new ProductQT.ConfigurationDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByCompanyID(ProductQT.ConfigurationDataTable dataTable, long CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ProductQT.ConfigurationDataTable GetDataByCompanyID(long CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID));
             ProductQT.ConfigurationDataTable dataTable = new ProductQT.ConfigurationDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -15542,10 +15751,13 @@ namespace WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters {
             tableMapping.ColumnMappings.Add("CompanyId", "CompanyId");
             tableMapping.ColumnMappings.Add("TypeLayout", "TypeLayout");
             tableMapping.ColumnMappings.Add("XPath", "XPath");
+            tableMapping.ColumnMappings.Add("JSonOtherConfig", "JSonOtherConfig");
+            tableMapping.ColumnMappings.Add("JSonOtherConfigDemo", "JSonOtherConfigDemo");
+            tableMapping.ColumnMappings.Add("UrlTest", "UrlTest");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Configuration_Property] WHERE (([Id] = @Original_Id) AND ((@IsNull_CompanyId = 1 AND [CompanyId] IS NULL) OR ([CompanyId] = @Original_CompanyId)) AND ((@IsNull_TypeLayout = 1 AND [TypeLayout] IS NULL) OR ([TypeLayout] = @Original_TypeLayout)) AND ((@IsNull_XPath = 1 AND [XPath] IS NULL) OR ([XPath] = @Original_XPath)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Configuration_Property] WHERE (([Id] = @Original_Id) AND ((@IsNull_CompanyId = 1 AND [CompanyId] IS NULL) OR ([CompanyId] = @Original_CompanyId)) AND ((@IsNull_TypeLayout = 1 AND [TypeLayout] IS NULL) OR ([TypeLayout] = @Original_TypeLayout)) AND ((@IsNull_XPath = 1 AND [XPath] IS NULL) OR ([XPath] = @Original_XPath)) AND ((@IsNull_JSonOtherConfig = 1 AND [JSonOtherConfig] IS NULL) OR ([JSonOtherConfig] = @Original_JSonOtherConfig)) AND ((@IsNull_JSonOtherConfigDemo = 1 AND [JSonOtherConfigDemo] IS NULL) OR ([JSonOtherConfigDemo] = @Original_JSonOtherConfigDemo)) AND ((@IsNull_UrlTest = 1 AND [UrlTest] IS NULL) OR ([UrlTest] = @Original_UrlTest)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CompanyId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -15554,23 +15766,34 @@ namespace WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TypeLayout", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TypeLayout", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_XPath", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "XPath", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_XPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "XPath", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_JSonOtherConfig", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfig", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JSonOtherConfig", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfig", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_JSonOtherConfigDemo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfigDemo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JSonOtherConfigDemo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfigDemo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UrlTest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UrlTest", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UrlTest", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UrlTest", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Configuration_Property] ([CompanyId], [TypeLayout], [XPath]) V" +
-                "ALUES (@CompanyId, @TypeLayout, @XPath);\r\nSELECT Id, CompanyId, TypeLayout, XPat" +
-                "h FROM Configuration_Property WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Configuration_Property] ([CompanyId], [TypeLayout], [XPath], [JSonOtherConfig], [JSonOtherConfigDemo], [UrlTest]) VALUES (@CompanyId, @TypeLayout, @XPath, @JSonOtherConfig, @JSonOtherConfigDemo, @UrlTest);
+SELECT Id, CompanyId, TypeLayout, XPath, JSonOtherConfig, JSonOtherConfigDemo, UrlTest FROM Configuration_Property WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TypeLayout", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TypeLayout", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@XPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "XPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JSonOtherConfig", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfig", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JSonOtherConfigDemo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfigDemo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UrlTest", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UrlTest", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Configuration_Property] SET [CompanyId] = @CompanyId, [TypeLayout] = @TypeLayout, [XPath] = @XPath WHERE (([Id] = @Original_Id) AND ((@IsNull_CompanyId = 1 AND [CompanyId] IS NULL) OR ([CompanyId] = @Original_CompanyId)) AND ((@IsNull_TypeLayout = 1 AND [TypeLayout] IS NULL) OR ([TypeLayout] = @Original_TypeLayout)) AND ((@IsNull_XPath = 1 AND [XPath] IS NULL) OR ([XPath] = @Original_XPath)));
-SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Configuration_Property] SET [CompanyId] = @CompanyId, [TypeLayout] = @TypeLayout, [XPath] = @XPath, [JSonOtherConfig] = @JSonOtherConfig, [JSonOtherConfigDemo] = @JSonOtherConfigDemo, [UrlTest] = @UrlTest WHERE (([Id] = @Original_Id) AND ((@IsNull_CompanyId = 1 AND [CompanyId] IS NULL) OR ([CompanyId] = @Original_CompanyId)) AND ((@IsNull_TypeLayout = 1 AND [TypeLayout] IS NULL) OR ([TypeLayout] = @Original_TypeLayout)) AND ((@IsNull_XPath = 1 AND [XPath] IS NULL) OR ([XPath] = @Original_XPath)) AND ((@IsNull_JSonOtherConfig = 1 AND [JSonOtherConfig] IS NULL) OR ([JSonOtherConfig] = @Original_JSonOtherConfig)) AND ((@IsNull_JSonOtherConfigDemo = 1 AND [JSonOtherConfigDemo] IS NULL) OR ([JSonOtherConfigDemo] = @Original_JSonOtherConfigDemo)) AND ((@IsNull_UrlTest = 1 AND [UrlTest] IS NULL) OR ([UrlTest] = @Original_UrlTest)));
+SELECT Id, CompanyId, TypeLayout, XPath, JSonOtherConfig, JSonOtherConfigDemo, UrlTest FROM Configuration_Property WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TypeLayout", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TypeLayout", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@XPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "XPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JSonOtherConfig", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfig", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JSonOtherConfigDemo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfigDemo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UrlTest", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UrlTest", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CompanyId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CompanyId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -15578,6 +15801,12 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TypeLayout", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TypeLayout", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_XPath", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "XPath", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_XPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "XPath", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_JSonOtherConfig", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfig", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JSonOtherConfig", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfig", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_JSonOtherConfigDemo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfigDemo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JSonOtherConfigDemo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JSonOtherConfigDemo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UrlTest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UrlTest", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UrlTest", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UrlTest", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -15591,11 +15820,18 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, CompanyId, TypeLayout, XPath FROM dbo.Configuration_Property";
+            this._commandCollection[0].CommandText = "SELECT        Id, CompanyId, TypeLayout, XPath, JSonOtherConfig, JSonOtherConfigD" +
+                "emo, UrlTest\r\nFROM            Configuration_Property";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT CompanyId, Id, JSonOtherConfig, JSonOtherConfigDemo, TypeLayout, UrlTest, " +
+                "XPath FROM Configuration_Property WHERE (CompanyId = @CompanyID)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyID", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15617,6 +15853,42 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual ProductQT.Configuration_PropertyDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            ProductQT.Configuration_PropertyDataTable dataTable = new ProductQT.Configuration_PropertyDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(ProductQT.Configuration_PropertyDataTable dataTable, global::System.Nullable<long> CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CompanyID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ProductQT.Configuration_PropertyDataTable GetDataBy(global::System.Nullable<long> CompanyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CompanyID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((long)(CompanyID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             ProductQT.Configuration_PropertyDataTable dataTable = new ProductQT.Configuration_PropertyDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -15655,7 +15927,7 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, global::System.Nullable<long> Original_CompanyId, global::System.Nullable<int> Original_TypeLayout, string Original_XPath) {
+        public virtual int Delete(int Original_Id, global::System.Nullable<long> Original_CompanyId, global::System.Nullable<int> Original_TypeLayout, string Original_XPath, string Original_JSonOtherConfig, string Original_JSonOtherConfigDemo, string Original_UrlTest) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_CompanyId.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -15681,6 +15953,30 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_XPath));
             }
+            if ((Original_JSonOtherConfig == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_JSonOtherConfig));
+            }
+            if ((Original_JSonOtherConfigDemo == null)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_JSonOtherConfigDemo));
+            }
+            if ((Original_UrlTest == null)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_UrlTest));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -15701,7 +15997,7 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<long> CompanyId, global::System.Nullable<int> TypeLayout, string XPath) {
+        public virtual int Insert(global::System.Nullable<long> CompanyId, global::System.Nullable<int> TypeLayout, string XPath, string JSonOtherConfig, string JSonOtherConfigDemo, string UrlTest) {
             if ((CompanyId.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((long)(CompanyId.Value));
             }
@@ -15719,6 +16015,24 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(XPath));
+            }
+            if ((JSonOtherConfig == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(JSonOtherConfig));
+            }
+            if ((JSonOtherConfigDemo == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(JSonOtherConfigDemo));
+            }
+            if ((UrlTest == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(UrlTest));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -15740,7 +16054,7 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<long> CompanyId, global::System.Nullable<int> TypeLayout, string XPath, int Original_Id, global::System.Nullable<long> Original_CompanyId, global::System.Nullable<int> Original_TypeLayout, string Original_XPath, int Id) {
+        public virtual int Update(global::System.Nullable<long> CompanyId, global::System.Nullable<int> TypeLayout, string XPath, string JSonOtherConfig, string JSonOtherConfigDemo, string UrlTest, int Original_Id, global::System.Nullable<long> Original_CompanyId, global::System.Nullable<int> Original_TypeLayout, string Original_XPath, string Original_JSonOtherConfig, string Original_JSonOtherConfigDemo, string Original_UrlTest, int Id) {
             if ((CompanyId.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(CompanyId.Value));
             }
@@ -15759,32 +16073,74 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(XPath));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
-            if ((Original_CompanyId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_CompanyId.Value));
+            if ((JSonOtherConfig == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(JSonOtherConfig));
+            }
+            if ((JSonOtherConfigDemo == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(JSonOtherConfigDemo));
+            }
+            if ((UrlTest == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Original_TypeLayout.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_TypeLayout.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(UrlTest));
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Id));
+            if ((Original_CompanyId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(Original_CompanyId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TypeLayout.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_TypeLayout.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((Original_XPath == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_XPath));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_XPath));
             }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Id));
+            if ((Original_JSonOtherConfig == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_JSonOtherConfig));
+            }
+            if ((Original_JSonOtherConfigDemo == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_JSonOtherConfigDemo));
+            }
+            if ((Original_UrlTest == null)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_UrlTest));
+            }
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -15805,8 +16161,8 @@ SELECT Id, CompanyId, TypeLayout, XPath FROM Configuration_Property WHERE (Id = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<long> CompanyId, global::System.Nullable<int> TypeLayout, string XPath, int Original_Id, global::System.Nullable<long> Original_CompanyId, global::System.Nullable<int> Original_TypeLayout, string Original_XPath) {
-            return this.Update(CompanyId, TypeLayout, XPath, Original_Id, Original_CompanyId, Original_TypeLayout, Original_XPath, Original_Id);
+        public virtual int Update(global::System.Nullable<long> CompanyId, global::System.Nullable<int> TypeLayout, string XPath, string JSonOtherConfig, string JSonOtherConfigDemo, string UrlTest, int Original_Id, global::System.Nullable<long> Original_CompanyId, global::System.Nullable<int> Original_TypeLayout, string Original_XPath, string Original_JSonOtherConfig, string Original_JSonOtherConfigDemo, string Original_UrlTest) {
+            return this.Update(CompanyId, TypeLayout, XPath, JSonOtherConfig, JSonOtherConfigDemo, UrlTest, Original_Id, Original_CompanyId, Original_TypeLayout, Original_XPath, Original_JSonOtherConfig, Original_JSonOtherConfigDemo, Original_UrlTest, Original_Id);
         }
     }
     

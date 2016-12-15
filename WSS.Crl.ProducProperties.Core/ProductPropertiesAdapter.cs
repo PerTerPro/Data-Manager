@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QT.Entities;
 using QT.Entities.Data;
 
 namespace WSS.Crl.ProducProperties.Core
@@ -14,6 +16,39 @@ namespace WSS.Crl.ProducProperties.Core
 
         public void SaveHtm(long productId, string html, string domain, string url)
         {                                            
+        }
+
+        public ConfigPropertySql GetConfig(long companyId)
+        {
+            DataTable tbl = this.sqlDb.GetTblData(@"SELECT TOP 1 [Id]
+      ,[CompanyId]
+      ,[TypeLayout]
+      ,[XPath]
+      ,[JSonOtherConfig]
+      ,[JSonOtherConfigDemo]
+	  , c.UrlTest
+  FROM [dbo].[Configuration_Property] c
+  Where c.CompanyId = @CompanyId", CommandType.Text, new SqlParameter[]
+            {
+                SqlDb.CreateParamteterSQL("@CompanyId", companyId, SqlDbType.BigInt)
+            });
+            if (tbl.Rows.Count > 0)
+            {
+                var row = tbl.Rows[0];
+                return new ConfigPropertySql()
+                {
+                    CategoryXPath = Common.Obj2String("CategoryXPath"),
+                    CompanyId = Common.Obj2Int64(row["CompanyId"]),
+                    JSonOtherConfig = Common.Obj2String(row["JSonOtherConfig"]),
+                    TypeLayout = Common.Obj2Int(row["TypeLayout"]),
+                    XPath = Common.Obj2String(row["XPath"]),
+                    UrlTest = Common.Obj2String(row["UrlTest"])
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
         internal void UpsertProduct(Product pt)

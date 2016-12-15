@@ -120,12 +120,12 @@ namespace WebsosanhCacheTool
                     {
                         var listHash = new List<int>();
                         foreach (var keyword in synonymsKeywords.SynonymKeywords)
-                            listHash.Add(Tools.getCRC32(AutoCorrector.Correct(keyword).ToLower()));
+                            listHash.Add(Tools.getCRC32(AutoCorrector.Correct(keyword.Replace('-', ' ')).ToLower()));
                         webProductIdentity.SynonymsKeywordSet.Add(new SynonymsKeywordHash(listHash));
                     }
                     foreach (var keyword in productIdentity.ExcludeKeywords)
                     {
-                        webProductIdentity.KeywordBlackList.Add(Tools.getCRC32(AutoCorrector.Correct(keyword).ToLower()));
+                        webProductIdentity.KeywordBlackList.Add(Tools.getCRC32(AutoCorrector.Correct(keyword.Replace('-', ' ')).ToLower()));
                     }
                     foreach (var synonymsKeywords in webProductIdentity.SynonymsKeywordSet)
                     {

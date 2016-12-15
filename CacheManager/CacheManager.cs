@@ -30,6 +30,7 @@ namespace CacheManager
         private string _userConnectionString;
         private string _searchEnginesServiceUrl;
         private static readonly ILog Logger = LogManager.GetLogger(typeof(formCacheManager));
+        private static readonly ILog ProductNameLogger = LogManager.GetLogger("ProductNameLogger");
         public formCacheManager()
         {
             InitializeComponent();
@@ -858,10 +859,12 @@ namespace CacheManager
             var startTime = DateTime.Now;
             var getTotalResult = GetOnlineFridayResult(0, 1);
             var totalProduct = getTotalResult.total;
+            Logger.InfoFormat("Total Products: {0}",totalProduct);
             if (ProductNameHashTool.ProductIdentitiesDict == null)
                 ProductNameHashTool.BuildProductIdentitiesDict(_productConnectionString);
-            int taskNum = 4;
+            int taskNum = 16;
             var taskSize = totalProduct / taskNum;
+
             int[] haveRootID = new int[taskNum];
             int[] haveHashID = new int[taskNum];
             int[] haveNerID = new int[taskNum];
@@ -870,8 +873,8 @@ namespace CacheManager
             {
                 var taskIndex = i;
                 int start = taskIndex * taskSize;
-                int size = taskIndex < taskNum - 1 ? taskSize : taskSize + 400;
-                runTasks[taskIndex] = new Task(() => RunScanOnlineidayProductPart(start, size, out haveRootID[taskIndex], out haveHashID[taskIndex], out haveNerID[taskIndex]));
+                int size = taskIndex < taskNum - 1 ? taskSize : taskSize + 200;
+                runTasks[taskIndex] = new Task(() => RunScanOnlineFridayProductPart(start, size, out haveRootID[taskIndex], out haveHashID[taskIndex], out haveNerID[taskIndex]));
                 runTasks[taskIndex].Start();
             }
             Task.WaitAll(runTasks);
@@ -879,7 +882,7 @@ namespace CacheManager
             Logger.InfoFormat("Scan OnlineFriday complete. Time: {0} s. Total product: {1}. HaveRootID: {2}. HaveHashID: {3}. Have NerID: {4}", duration, totalProduct, haveRootID.Sum(), haveHashID.Sum(), haveNerID.Sum());
         }
 
-        private void RunScanOnlineidayProductPart(int start,int partSize, out int haveRootID, out int haveHashID, out int haveNerID)
+        private void RunScanOnlineFridayProductPart(int start,int partSize, out int haveRootID, out int haveHashID, out int haveNerID)
         {
             const int limit = 60;
             haveRootID = 0;
@@ -891,6 +894,7 @@ namespace CacheManager
                 if (result.data != null)
                     foreach (var product in result.data)
                     {
+                        var startTime = DateTime.Now;
                         string clusterID = Tools.getuCRC64(product.url + "wss").ToString();
                         if (ProductNameHashTool.ProductIdentitiesDict == null)
                             ProductNameHashTool.BuildProductIdentitiesDict(_productConnectionString);
@@ -907,41 +911,41 @@ namespace CacheManager
                                 rootProductMapping = RootProductMappingBAL.GetRootProductMappingFromCache(wssID, 0,
                                     RootProductMappingSortType.PriceWithVAT,false);
                             }
-                            if (rootProductMapping != null && (int) rootProductMapping.MinPrice > product.sale_price/3)
+                            if (rootProductMapping != null)
                             {
                                 haveRootID++;
                                 minPrice = (int) rootProductMapping.MinPrice;
                                 OnlineFridayIDBAL.InsertID(clusterID, wssID, 1);
-                                Logger.InfoFormat("Have RootId,{0},{1}", product.share_url, wssID);
+                                Logger.InfoFormat("Have RootId,{0},{1}", product.product_name, wssID);
                             }
                             else
                                 wssID = 0;
                         }
-                        //if (wssID == 0)
-                        //{
-                        //    //Use IdentityMapping
-                        //    List<long> productIDs = GetOnlineFridayProductMap(product.product_name);
-                        //    if (productIDs != null && productIDs.Count > 0 && productIDs.Count <= 20)
-                        //    {
-                        //        var products = WebMerchantProductBAL.GetWebMerchantProductsFromCache(productIDs);
-                        //        if (products.Count > 0)
-                        //        {
-                        //            minPrice = (int) products.Min(x => x.Value.Price);
-                        //            haveNerID ++;
-                        //            wssID = Tools.getCRC32(product.url + "wss");
-                        //            OnlineFridayIDBAL.InsertID(clusterID, wssID, 3);
-                        //            ProductNameHashBAL.InsertOnlineFridayProductMapSet(wssID, productIDs);
-                        //            Logger.InfoFormat("HaveNer,{0},{1},{2} products", product.share_url, wssID, products.Count);
-                        //        }
-                        //    }
-                        //}
                         if (wssID == 0)
                         {
+                            //Use IdentityMapping
+                            //List<long> productIDs = GetOnlineFridayProductMap(product.product_name);
+                            //if (productIDs != null && productIDs.Count > 0)
+                            //{
+                            //    var products = WebMerchantProductBAL.GetWebMerchantProductsFromCache(productIDs);
+                            //    if (products.Count > 0)
+                            //    {
+                            //        minPrice = (int)products.Min(x => x.Value.Price);
+                            //        haveNerID++;
+                            //        wssID = Tools.getCRC32(product.url + "wss");
+                            //        OnlineFridayIDBAL.InsertID(clusterID, wssID, 3);
+                            //        ProductNameHashBAL.InsertOnlineFridayProductMapSet(wssID, productIDs);
+                            //        Logger.InfoFormat("HaveNer,{0},{1},{2} products", product.product_name, wssID, products.Count);
+                            //    }}
+                        }
+                        if (wssID == 0)
+                        {
+                            ProductNameLogger.InfoFormat("Unrecognized! Name: {0} - Price: {1}", product.product_name, product.sale_price);
                             List<KeyValuePair<long, long>> productID;
                             int rootID;
                             ProductNameHashBAL.GetListProductByName(product.product_name, out productID, out minPrice,
                                 out rootID, out wssID);
-                            if (productID.Count > 0 && minPrice > product.sale_price/2)
+                            if (productID.Count > 0)
                             {
                                 haveHashID++;
                                 OnlineFridayIDBAL.InsertID(clusterID, wssID, 2);
@@ -953,12 +957,20 @@ namespace CacheManager
                         {
                             if (UpdateOnlineFridayProduct((long) product.product_id, minPrice, clusterID));
                         }
-                        else if (!string.IsNullOrEmpty(product.cluster_id_wss) || !string.IsNullOrEmpty(product.market_price_wss))
+                        else 
                         {
-                            UpdateOnlineFridayProduct((long) product.product_id, 0, "-1");
+                            //if (!string.IsNullOrEmpty(product.cluster_id_wss))
+                            //{
+                            //    long clusterId;
+                            //    long.TryParse(product.cluster_id_wss, out clusterId);
+                            //    if (clusterId != 0)
+                            //        UpdateOnlineFridayProduct((long) product.product_id, 0, "0");
+                            //}
                         }
+                        Logger.DebugFormat("Product run duration: {0:0.00} ms",(DateTime.Now-startTime).TotalMilliseconds);
                     }
             }
+            Logger.InfoFormat("RunScanOnlineFridayProductPart Task at offset {0} completed! Total product: {1}. HaveRootID: {2}. HaveHashID: {3}. Have NerID: {4}",start,partSize,haveRootID,haveHashID,haveNerID);
         }
 
         private OnlineFridayResult GetOnlineFridayResult(int offset, int limit)
@@ -996,6 +1008,7 @@ namespace CacheManager
 
         private bool UpdateOnlineFridayProduct(long productID, int price, string cluster_Id)
         {
+            var startTime = DateTime.Now;
             for (int i = 0; i < 10; i++)
             {
                 string url = "";
@@ -1022,15 +1035,20 @@ namespace CacheManager
                 }
                 
             }
+            var duration = (DateTime.Now - startTime).TotalMilliseconds;
+            if(duration > 1000)
+                Logger.DebugFormat("UpdateOnlineFridayProduct. - Time: {0:0.00} ms)", duration);
             return false;
         }
 
         private List<long> GetOnlineFridayProductMap(string productName)
         {
-
-            string url = string.Format("http://172.22.1.108/api/NerApi/recog.htm?text={0}&size=100", System.Uri.EscapeUriString(productName));
-            for (int i = 0; i < 5; i++)
+            var cacheServer = Websosanh.Core.Drivers.Caching.CacheManager.GetCacheServer("ProductMap");
+            string url = string.Format("http://172.22.1.108/api/NerApi/recog.htm?text={0}&size=100", Uri.EscapeUriString(productName.Replace(':',' ')));
+            List<long> result = cacheServer.Get<List<long>>(url,false);
+            if (result == null)
             {
+                
                 try
                 {
                     using (WebClient client = new WebClient())
@@ -1041,25 +1059,27 @@ namespace CacheManager
                         client.Headers.Add("User-Agent",
                             "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)");
                         client.Encoding = Encoding.UTF8;
+                        var startTime = DateTime.Now;
                         string s = client.DownloadString(url);
-                        var result = JsonConvert.DeserializeObject<OnlineFridayProductMappingResult>(s);
-                        return (result.answer != null && result.answer.Length > 0)
-                            ? result.answer.ToList()
+                        var duration = (DateTime.Now - startTime).TotalMilliseconds;
+                        if (duration > 3000)
+                            Logger.DebugFormat("GetOnlineFridayProductMap. Name: {0}, - Time: {1:0.00} ms)", productName, duration);
+                        var recognResult = JsonConvert.DeserializeObject<OnlineFridayProductMappingResult>(s);
+                        result = (recognResult.answer != null && recognResult.answer.Length > 0)
+                            ? recognResult.answer.ToList()
                             : new List<long>();
+                        cacheServer.Set(url, result, false, new TimeSpan(10, 0, 0, 0));
                     }
                 }
                 catch (Exception ex)
                 {
-                    if (i == 4)
-                    {
                         Logger.Error("GetOnlineFridayProductMap Error. url:" + url, ex);
-                        return null;
-                    }
-                    Thread.Sleep(100);
+                        result = null;
                 }
-
+                
             }
-            return new List<long>();
+            
+            return result;
         }
 
         public class OnlineFridayProductMappingResult

@@ -1512,36 +1512,40 @@ where id = @CompanyID", CommandType.Text, new SqlParameter[]{
         public bool UpdateEndCrawl(CrawlerSessionLog endSession)
         {
             return _sqlDb.RunQuery(@"
-IF (@TypeCrawler=0)
-BEGIN
-    UPDATE Company 
-    SET
-    LastEndCrawlerReload = @StartAt,
-    LastCrawlerReload = @EndAt,
-    TotalProduct = (select count(*) from product where company = @CompanyID),
-    TotalValid = (select count(*) from product where company = @CompanyID and Valid = 1)
-    where ID = @CompanyID
-END
+IF (@TypeCrawler=1)
+    BEGIN
+        UPDATE Company 
+        SET
+        LastEndCrawlerReload = @EndAt,
+        LastCrawlerReload = @StartAt,
+        TotalProduct = (select count(*) from product where company = @CompanyID),
+        TotalValid = (select count(*) from product where company = @CompanyID and Valid = 1)
+        where ID = @CompanyID
+    END
 ELSE
-BEGIN
-    UPDATE Company 
-    SET
-    LastEndCrawlerFindNew = @StartAt,
-    LastCrawlerFindNew = @EndAt,
-    TotalProduct = (select count(*) from product where company = @CompanyID),
-    TotalValid = (select count(*) from product where company = @CompanyID and Valid = 1)
-    where ID = @CompanyID
-END
+    BEGIN
+        UPDATE Company 
+        SET
+        LastEndCrawlerFindNew = @EndAt,
+        LastCrawlerFindNew = @StartAt,
+        TotalProduct = (select count(*) from product where company = @CompanyID),
+        TotalValid = (select count(*) from product where company = @CompanyID and Valid = 1)
+        where ID = @CompanyID
+    END
 
-INSERT INTO Company_TrackCrawler (CompanyID, TypeCrawler, StartAt, EndAt, CountLink, CountVisited, CountProduct, CountChange, session, TotalProduct, IP, Domain, TypeEnd, NumberDuplicates) 
-VALUES (@CompanyID, @TypeCrawler, @StartAt, @EndAt, @CountLink, @CountVisited, @CountProduct, @CountChange, @session, (select TotalProduct from Company where ID = @CompanyID), @IP,@Domain, @TypeEnd, @NumberDuplicates);
+INSERT INTO Company_TrackCrawler 
+    (CompanyID, TypeCrawler, StartAt, EndAt, CountLink, CountVisited, CountProduct, CountChange, session, TotalProduct, IP, Domain, TypeEnd, NumberDuplicates) 
+VALUES 
+    (@CompanyID, @TypeCrawler, @StartAt, @EndAt, @CountLink, @CountVisited, @CountProduct, @CountChange, @session, (select TotalProduct from Company where ID = @CompanyID), @IP,@Domain, @TypeEnd, @NumberDuplicates);
 
 ", CommandType.Text,
                 new SqlParameter[]
                 {
                     SqlDb.CreateParamteterSQL("@TypeRun", endSession.TypeRun, SqlDbType.NVarChar), SqlDb.CreateParamteterSQL("@CompanyID", endSession.CompanyId, SqlDbType.BigInt),
-                    SqlDb.CreateParamteterSQL("@TypeCrawler", endSession.TypeCrawler, SqlDbType.Int), SqlDb.CreateParamteterSQL("@StartAt", endSession.StartAt, SqlDbType.DateTime),
-                    SqlDb.CreateParamteterSQL("@EndAt", endSession.EndAt, SqlDbType.DateTime), SqlDb.CreateParamteterSQL("@CountLink", 0, SqlDbType.BigInt),
+                    SqlDb.CreateParamteterSQL("@TypeCrawler", endSession.TypeCrawler, SqlDbType.Int), 
+                    SqlDb.CreateParamteterSQL("@StartAt", endSession.StartAt, SqlDbType.DateTime),
+                    SqlDb.CreateParamteterSQL("@EndAt", endSession.EndAt, SqlDbType.DateTime), 
+                    SqlDb.CreateParamteterSQL("@CountLink", 0, SqlDbType.BigInt),
                     SqlDb.CreateParamteterSQL("@CountVisited", endSession.CountVisited, SqlDbType.Int), SqlDb.CreateParamteterSQL("@CountProduct", endSession.CountProduct, SqlDbType.Int),
                     SqlDb.CreateParamteterSQL("@CountChange", endSession.CountChange, SqlDbType.Int), SqlDb.CreateParamteterSQL("@Session", endSession.Session, SqlDbType.NVarChar),
                     SqlDb.CreateParamteterSQL("@LastCrawlerReload", endSession.StartAt, SqlDbType.DateTime), SqlDb.CreateParamteterSQL("@LastEndCrawlerReload", endSession.EndAt, SqlDbType.DateTime),

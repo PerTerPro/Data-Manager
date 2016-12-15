@@ -70,18 +70,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigProperty.cs" />
+    <Compile Include="ConfigPropertySql.cs" />
     <Compile Include="ConfigStatic.cs" />
+    <Compile Include="ETypeLayout.cs" />
     <Compile Include="HandlerAdayroi.cs" />
     <Compile Include="HandlerLazada.cs" />
     <Compile Include="HandlerTiki.cs" />
     <Compile Include="IHandlerData.cs" />
+    <Compile Include="IParser.cs" />
     <Compile Include="JobDownloadHtml.cs" />
     <Compile Include="JobParse.cs" />
     <Compile Include="NoSqlProductProperties.cs" />
+    <Compile Include="ParseNormal.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductPropertiesAdapter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyData.cs" />
     <Compile Include="WorkerDownloadHtml.cs" />
     <Compile Include="WorkerParseData.cs" />
   </ItemGroup>

@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigImbo.cs" />
+    <Compile Include="HanderFixRootProductImg.cs" />
     <Compile Include="HandlerCmpWaitTransf.cs" />
     <Compile Include="HandlerDelImgImbo.cs" />
     <Compile Include="HandlerExport.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedisImage.cs" />
+    <Compile Include="RedisTransfer.cs" />
     <Compile Include="SettingSystem.cs" />
     <Compile Include="Tester.cs" />
     <Compile Include="TestQerryPerformence.cs" />

@@ -51,7 +51,8 @@ order by a.id
            JobRootProductWaitTrans job = JobRootProductWaitTrans.FromJson(mss1);
            try
            {
-               string imgId = Common.DownloadImageProductWithImboServer(job.Url, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "root_product", ConfigImbo.Host, 443);
+               string url = job.Url.Replace(@"http://img.websosanh.vn/", "http://img.websosanh.net/ThumbImages/").Replace(".jpg", "_200.jpg");
+               string imgId = Common.DownloadImageProductWithImboServer(url, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "root_product", ConfigImbo.Host, 443);
                if (!string.IsNullOrEmpty(imgId))
                {
                    this.pbUpdateId.PublishString(new JobUploadedImg()
@@ -59,6 +60,7 @@ order by a.id
                        ImageId = imgId,
                        ProductId = job.Id
                    }.ToJson());
+                   this.log.Info(string.Format("Processed for {0} {1}", job.Id, imgId));
                }
            }
            catch (Exception ex)
@@ -66,6 +68,52 @@ order by a.id
                log.Error(ex);
            }
           
+       }
+
+       public void PushFixRootProduct()
+       {
+           ProducerBasic pb = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo), ConfigImbo.QueueRootProductWaitFixTrans);
+           sql.ProcessDataTableLarge(@"
+  select   a.id, ImageId
+  from product  a
+  where a.Company = 6619858476258121218
+  and a.Valid = 1
+  and isnull(ImageId,'') != ''
+order by a.id
+", 10000, (row, iRow) =>
+ {
+     long id = Common.Obj2Int64(row["Id"]);
+     string imageId = Common.Obj2String(row["ImageId"]);
+     pb.PublishString(new JobRootProductWaitTrans()
+     {
+         Id = id,
+         ImageId = imageId
+     }.ToJson());
+ });
+       }
+
+       public void ProcessFixJob(string mss1)
+       {
+
+           JobRootProductWaitTrans job = JobRootProductWaitTrans.FromJson(mss1);
+           try
+           {
+               string url = string.Format(@"https://img.websosanh.vn/users/wss/images/{0}", job.ImageId);
+               string imgId = Common.DownloadImageProductWithImboServer(url, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "root_product", ConfigImbo.Host, 443);
+               if (!string.IsNullOrEmpty(imgId))
+               {
+                   this.pbUpdateId.PublishString(new JobUploadedImg()
+                   {
+                       ImageId = imgId,
+                       ProductId = job.Id
+                   }.ToJson());
+                   this.log.Info(string.Format("Processed for {0} {1}", job.Id, imgId));
+               }
+           }
+           catch (Exception ex)
+           {
+               log.Error(ex);
+           }
        }
    }
 }

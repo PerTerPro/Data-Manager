@@ -157,6 +157,10 @@
     <Compile Include="ConsumerReload.cs" />
     <Compile Include="ConsumerSaveEndSession.cs" />
     <Compile Include="CrawlerBasic.cs" />
+    <Compile Include="CrlProduct\ControlCmpCrlw.cs" />
+    <Compile Include="CrlProduct\ReportCrawler.cs" />
+    <Compile Include="CrlProduct\WorkerFN.cs" />
+    <Compile Include="CrlProduct\WorkerRL.cs" />
     <Compile Include="DelegateShowReport.cs" />
     <Compile Include="ErrorCrawler.cs" />
     <Compile Include="FindNewVisited.cs" />
@@ -173,6 +177,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RabbitMQServerImp.cs" />
     <Compile Include="RecoverProductLost\Service.cs" />
+    <Compile Include="RedisParameterCrlAdapter.cs" />
     <Compile Include="RunnerFindNew.cs" />
     <Compile Include="RunnerPusCompanyCrawler.cs" />
     <Compile Include="SqlMutilThread.cs" />

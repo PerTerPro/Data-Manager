@@ -2012,7 +2012,7 @@ namespace QT.Entities
             // Imbo
             string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + "wss" + "|" + strDate;
+            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
             
             var signleData = CreateToken(str, privateKey);
             //download image
@@ -2037,7 +2037,7 @@ namespace QT.Entities
             var responseImageDownload = (HttpWebResponse)requestdownload.GetResponse();
             var streamImageDownload = responseImageDownload.GetResponseStream();
             var request = (HttpWebRequest)WebRequest.Create(urlQuery);
-            request.Headers.Add("X-Imbo-PublicKey", "wss");
+            request.Headers.Add("X-Imbo-PublicKey", publicKey);
             request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
             request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
             request.ContentType = "application/json";

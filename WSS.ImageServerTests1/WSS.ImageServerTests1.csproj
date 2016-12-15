@@ -71,6 +71,7 @@
     <Compile Include="HandlerProductWaitUpImgTests.cs" />
     <Compile Include="HandlerPushDlImageByCompnayTests.cs" />
     <Compile Include="HandlerTransferFolderTests.cs" />
+    <Compile Include="HandlerTransRootProductTests.cs" />
     <Compile Include="ImboImageServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceImboTests.cs" />

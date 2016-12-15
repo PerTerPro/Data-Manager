@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "000", "000\000.csproj", "{2265B7CB-1E89-4094-9C72-78E81A0F920D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -245,6 +245,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.ImageImbo.CheckErrorDownloadService", "WSS.ImageImbo.CheckErrorDownloadService\WSS.ImageImbo.CheckErrorDownloadService.csproj", "{84DF8542-235A-46B0-9C2A-2D82B1B7DFF8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.ImageImbo.UploadImageToImboServer", "WSS.ImageImbo.UploadImageToImboServer\WSS.ImageImbo.UploadImageToImboServer.csproj", "{BC8E65B3-A45D-47B3-9705-1EB9BBE018F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Crl.ProducProperties.CoreTests", "WSS.Crl.ProducProperties.CoreTests\WSS.Crl.ProducProperties.CoreTests.csproj", "{FF4C1909-9537-4B26-B0CA-77F318618936}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Service.UpdateMerchant", "WSS.Service.UpdateMerchant\WSS.Service.UpdateMerchant.csproj", "{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1343,6 +1347,26 @@ Global
 		{BC8E65B3-A45D-47B3-9705-1EB9BBE018F5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{BC8E65B3-A45D-47B3-9705-1EB9BBE018F5}.Release|x86.ActiveCfg = Release|Any CPU
 		{BC8E65B3-A45D-47B3-9705-1EB9BBE018F5}.Release|x86.Build.0 = Release|Any CPU
+		{FF4C1909-9537-4B26-B0CA-77F318618936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF4C1909-9537-4B26-B0CA-77F318618936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF4C1909-9537-4B26-B0CA-77F318618936}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FF4C1909-9537-4B26-B0CA-77F318618936}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FF4C1909-9537-4B26-B0CA-77F318618936}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FF4C1909-9537-4B26-B0CA-77F318618936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF4C1909-9537-4B26-B0CA-77F318618936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF4C1909-9537-4B26-B0CA-77F318618936}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FF4C1909-9537-4B26-B0CA-77F318618936}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FF4C1909-9537-4B26-B0CA-77F318618936}.Release|x86.ActiveCfg = Release|Any CPU
+		{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1351,6 +1375,7 @@ Global
 		{8C825289-F1A7-4699-9D54-EEA95EC6AB21} = {D6E0693A-2F8F-4D8B-BBEA-5149CEF5B8F2}
 		{7F43CEBE-F21E-4C1F-91CB-1E400B8B76FB} = {D6E0693A-2F8F-4D8B-BBEA-5149CEF5B8F2}
 		{339974F0-E9B9-40FC-8F57-92ECEC04112D} = {D6E0693A-2F8F-4D8B-BBEA-5149CEF5B8F2}
+		{2265B7CB-1E89-4094-9C72-78E81A0F920D} = {44A2F644-C320-4604-B192-B620DCC20101}
 		{13AED8DE-6167-4891-9F33-10FE917A2608} = {E98FEC24-C383-40D9-A878-F245227E81DE}
 		{21601568-D8AD-433F-998D-1500A27F3FBD} = {E98FEC24-C383-40D9-A878-F245227E81DE}
 		{3133D184-E5EC-4858-9818-66024E557F7B} = {E98FEC24-C383-40D9-A878-F245227E81DE}

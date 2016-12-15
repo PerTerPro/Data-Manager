@@ -13,9 +13,16 @@ namespace WSS.Crawler.SyncApp
         public string Parameter { get; set; }
         public string VersionCurrent { get; set; }
         public int NumberApp { get; set; }
-        public static SettingRun FromJSON (string json)
+        public string Runner { get; set; }
+        public static SettingRun FromJSON(string json)
         {
             return Newtonsoft.Json.JsonConvert.DeserializeObject<SettingRun>(json);
+
+        }
+
+        public static SettingRun[] GetArFromJson (string json)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<SettingRun[]>(json);
         }
         internal string GetJSON()
         {

@@ -52,8 +52,7 @@ namespace WSS.Crawler.Product.Report
                 lstSelectedID.Add(Convert.ToInt64(this.gridView1.GetRowCellValue(iRow, "ID")));
             }
             dic.Add(this.company_id, lstSelectedID);
-            return dic;
-        }
+            return dic;}
         private void EventGroup(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e)
         {
             GridView view = sender as GridView;
@@ -68,6 +67,7 @@ namespace WSS.Crawler.Product.Report
             string sql = @"select a.ID, a.Name, a.Price, a.ImageUrls, a.ImagePath, a.IsNews
 , a.Valid, a.DetailUrl, a.LastUpdate, a.OriginPrice, a.HashName
 , a.VATStatus
+, a.ImageId
 from Product a 
 where a.Company = @company_id";
             this.gridControl1.DataSource = this.sqlD.GetTblData(sql, CommandType.Text, new System.Data.SqlClient.SqlParameter[]{
