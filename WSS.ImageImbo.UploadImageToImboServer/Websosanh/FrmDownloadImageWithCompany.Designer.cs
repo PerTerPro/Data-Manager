@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label iDLabel;
             System.Windows.Forms.Label iDLabel1;
             System.Windows.Forms.Label domainLabel;
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.companyGridControl = new DevExpress.XtraGrid.GridControl();
-            this.companyBindingSource = new System.Windows.Forms.BindingSource();
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dBWss = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWss();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,6 +51,7 @@
             this.rbListIdFails = new System.Windows.Forms.RichTextBox();
             this.rbFail = new System.Windows.Forms.RichTextBox();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.btnDownloadImageRootProduct = new DevExpress.XtraEditors.SimpleButton();
             this.domainTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.iDTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.btnTest = new DevExpress.XtraEditors.SimpleButton();
@@ -61,10 +63,9 @@
             this.btnDownload = new DevExpress.XtraEditors.SimpleButton();
             this.tableAdapterManager = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.TableAdapterManager();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.productBindingSource = new System.Windows.Forms.BindingSource();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productTableAdapter = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.ProductTableAdapter();
             this.companyTableAdapter = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.CompanyTableAdapter();
-            this.btnDownloadImageRootProduct = new DevExpress.XtraEditors.SimpleButton();
             iDLabel = new System.Windows.Forms.Label();
             iDLabel1 = new System.Windows.Forms.Label();
             domainLabel = new System.Windows.Forms.Label();
@@ -310,6 +311,15 @@
             this.panelControl2.Size = new System.Drawing.Size(852, 62);
             this.panelControl2.TabIndex = 6;
             // 
+            // btnDownloadImageRootProduct
+            // 
+            this.btnDownloadImageRootProduct.Location = new System.Drawing.Point(717, 23);
+            this.btnDownloadImageRootProduct.Name = "btnDownloadImageRootProduct";
+            this.btnDownloadImageRootProduct.Size = new System.Drawing.Size(101, 23);
+            this.btnDownloadImageRootProduct.TabIndex = 15;
+            this.btnDownloadImageRootProduct.Text = "Download SP gốc";
+            this.btnDownloadImageRootProduct.Click += new System.EventHandler(this.btnDownloadImageRootProduct_Click);
+            // 
             // domainTextEdit
             // 
             this.domainTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "Domain", true));
@@ -409,15 +419,6 @@
             // companyTableAdapter
             // 
             this.companyTableAdapter.ClearBeforeFill = true;
-            // 
-            // btnDownloadImageRootProduct
-            // 
-            this.btnDownloadImageRootProduct.Location = new System.Drawing.Point(717, 23);
-            this.btnDownloadImageRootProduct.Name = "btnDownloadImageRootProduct";
-            this.btnDownloadImageRootProduct.Size = new System.Drawing.Size(101, 23);
-            this.btnDownloadImageRootProduct.TabIndex = 15;
-            this.btnDownloadImageRootProduct.Text = "Download SP gốc";
-            this.btnDownloadImageRootProduct.Click += new System.EventHandler(this.btnDownloadImageRootProduct_Click);
             // 
             // FrmDownloadImageWithCompany
             // 

@@ -150,7 +150,7 @@ namespace WSS.Products.UpdateSingleProductServices
                     //Jobclient update redis & solr
                     var updateProductJobClient = new JobClient(ConfigRabbitMqCacheSolrAndRedis.ExchangeProduct, GroupType.Topic, ConfigRabbitMqCacheSolrAndRedis.RoutingKeyUpdateSolrAndRedis, true, _rabbitMqServer);
                     //JobClient download image
-                    var downloadImageProductJobClient = new JobClient(ConfigImages.ExchangeImages, GroupType.Topic, ConfigImages.RoutingKeyChangeImageProduct, true, _rabbitMqServer);
+                    var downloadImageProductJobClient = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic, ConfigImages.ImboRoutingKeyDownloadImageProduct, true, _rabbitMqServer);
                     worker.JobHandler = (updateProductJob) =>
                     {
                         try
@@ -264,7 +264,7 @@ namespace WSS.Products.UpdateSingleProductServices
                 }
                 else
                     UpdateProductLastUpdateAndValid(product, productAdapter);
-                if (productTable.Rows[0]["ImagePath"] == DBNull.Value || string.IsNullOrEmpty(productTable.Rows[0]["ImagePath"].ToString()))
+                if (productTable.Rows[0]["ImageId"] == DBNull.Value || string.IsNullOrEmpty(productTable.Rows[0]["ImageId"].ToString()))
                     SendMessageDownloadImageProduct(product, downloadImageProductJobClient, false);
                 Log.Info(string.Format("CompanyId = {0} :Update ProductId = {1} . Name = {2} . DetailUrl = {3}", product.IDCongTy, product.ID, product.Name, product.DetailUrl));
 

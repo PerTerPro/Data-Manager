@@ -129,7 +129,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                                 rbFail.Clear();
                             }
                             lbFails.Text = fail.ToString();
-                            rbFail.AppendText(string.Format("CompanyId = {0}: {1}/{2} fails: {3}", idCompany, i, dBWss.Product.Count, message) + System.Environment.NewLine);
+                            rbFail.AppendText(string.Format("CompanyId = {0}: {1}/{2} {4} fails: {3}", idCompany, i, dBWss.Product.Count, message,product.ImageUrls) + System.Environment.NewLine);
                             rbListIdFails.AppendText(product.Id + System.Environment.NewLine);
                         }));
 
@@ -184,7 +184,11 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
 
         private void btnDownloadImageRootProduct_Click(object sender, EventArgs e)
         {
-
+            rbSuccess.Text = "";
+            rbFail.Text = "";
+            rbListIdFails.Clear();
+            Thread thread = new Thread(() => DownloadImageRootProduct());
+            thread.Start();
         }
 
 
@@ -249,7 +253,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                                 rbFail.Clear();
                             }
                             lbFails.Text = fail.ToString();
-                            rbFail.AppendText(string.Format("CompanyId = {0}: {1}/{2} fails: {3}", 6619858476258121218, i, dBWss.Product.Count, message) + System.Environment.NewLine);
+                            rbFail.AppendText(string.Format("CompanyId = {0}: {1}/{2} {4} fails: {3}", 6619858476258121218, i, dBWss.Product.Count, message,product.ImageUrls) + System.Environment.NewLine);
                             rbListIdFails.AppendText(product.Id + System.Environment.NewLine);
                         }));
 
