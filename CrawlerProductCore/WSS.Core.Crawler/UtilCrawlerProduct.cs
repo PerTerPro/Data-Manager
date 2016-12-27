@@ -10,7 +10,6 @@ namespace WSS.Core.Crawler
     {
         public static IEnumerable<string> NoCrawlerRegexDefault = new string[]
         {
-           
             @"(http(s?):).*(?:jpg|gif|png)$",@".*#.*",
             @".*twitter.com.*",
             @".*facebook.com.*",
@@ -25,7 +24,7 @@ namespace WSS.Core.Crawler
             @".*search.*",
             @".*rao-vat.*",@".*sort.*",
             //@".+view=.+",
-            @".+=.+=.+=.+",
+            //@".+=.+=.+=.+",
             @".*javascript.*",
             @".*report.*",
             @".*direct.*",
@@ -33,6 +32,7 @@ namespace WSS.Core.Crawler
             @".*http.*http.*",
             @".*html.*html.*",@".*respond.*",
             @".*/tag/.*"
+       
         };
     }
 }

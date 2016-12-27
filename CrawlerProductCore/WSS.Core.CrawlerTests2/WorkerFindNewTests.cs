@@ -66,7 +66,7 @@ namespace WSS.Core.Crawler.Tests
         {
             Server.ConnectionString = ConfigCrawler.ConnectProduct;
             Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler; Server.LogConnectionString = ConfigCrawler.ConnectLog;
-            WorkerFindNew w = new WorkerFindNew(15908872101896924, "");
+            WorkerFindNew w = new WorkerFindNew(6173371936664403895, "");
             w.StartCrawler();
         }
 

@@ -112,8 +112,7 @@ namespace WSS.Core.Crawler
                     if (producerReportSessionRunning != null) producerReportSessionRunning.Dispose();
                     return;
                 }
-                catch (Exception ex01)
-                {
+                catch (Exception ex01){
                     _producerReportError.PublishString(Newtonsoft.Json.JsonConvert.SerializeObject(new ErrorCrawler() { CompanyId = _companyId, ProductId = 0, TimeError = DateTime.Now, Message = ex01.Message + "\n" + ex01.StackTrace, Url = "" }), true, 0);
                 }
             }, tokenReportSession);
@@ -148,8 +147,7 @@ namespace WSS.Core.Crawler
                         ProcessJob(jobReload);
                         if (_linksQueue.Count == 0)
                         {
-                            LoadQueue();
-                        }
+                            LoadQueue();}
                     }
                 }
             }

@@ -89,6 +89,12 @@
     <Compile Include="FrmCompanyConfigProperty.Designer.cs">
       <DependentUpon>FrmCompanyConfigProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMapProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMapProperties.Designer.cs">
+      <DependentUpon>FrmMapProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductQT.cs">
       <DependentUpon>ProductQT.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -105,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCompanyConfigProperty.resx">
       <DependentUpon>FrmCompanyConfigProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMapProperties.resx">
+      <DependentUpon>FrmMapProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

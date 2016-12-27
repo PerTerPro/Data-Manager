@@ -173,6 +173,8 @@
     <Compile Include="AlexaFull.cs" />
     <Compile Include="AnaylysicData\HandlerContentOfHtml.cs" />
     <Compile Include="AutoFixSignText.cs" />
+    <Compile Include="UtilZipFile.cs" />
+    <Compile Include="WordCounting.cs" />
     <Compile Include="Classification.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Company.cs" />
@@ -245,6 +247,7 @@
     <Compile Include="DesciptionProduct.cs" />
     <Compile Include="DsQTCrawler.cs">
       <DependentUpon>DsQTCrawler.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DsQTCrawler.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -256,6 +259,7 @@
     <Compile Include="Images\LogHistoryImageProduct.cs" />
     <Compile Include="Images\RedisErrorDownloadImageProductAdapter.cs" />
     <Compile Include="Images\ThumbImageProductInfo.cs" />
+    <Compile Include="Crypto.cs" />
     <Compile Include="JobPushChangeImage.cs" />
     <Compile Include="Images\ConfigImages.cs" />
     <Compile Include="JobQueueFN.cs" />
@@ -307,6 +311,7 @@
     <Compile Include="Data\SqlDB.cs" />
     <Compile Include="DB.cs">
       <DependentUpon>DB.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DBProduct.Designer.cs">
       <AutoGen>True</AutoGen>

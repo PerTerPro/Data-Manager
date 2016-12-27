@@ -13,8 +13,11 @@ namespace WSS.Crl.ProducProperties.Core
         public string XPath { get; set; }
         public string JSonOtherConfig { get; set; }
 
-        public object CategoryXPath { get; set; }
+        public string CategoryXPath { get; set; }
 
-        public object UrlTest { get; set; }
+        public string UrlTest { get; set; }
+
+        public string Domain { get; set; }
+        public bool RemoveLastItemClassification { get; set; }
     }
 }

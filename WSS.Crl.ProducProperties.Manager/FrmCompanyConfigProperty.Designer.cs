@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label iDLabel;
             System.Windows.Forms.Label domainLabel;
             System.Windows.Forms.Label linkTestLabel;
@@ -39,30 +38,30 @@
             System.Windows.Forms.Label urlTestLabel;
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.categoryXPathTextBox = new System.Windows.Forms.TextBox();
+            this.configurationBindingSource = new System.Windows.Forms.BindingSource();
+            this.productQT = new WSS.Crl.ProducProperties.Manager.ProductQT();
             this.linkTestTextBox = new System.Windows.Forms.TextBox();
             this.domainTextBox = new System.Windows.Forms.TextBox();
+            this.companyBindingSource = new System.Windows.Forms.BindingSource();
             this.iDSpinEdit = new DevExpress.XtraEditors.SpinEdit();
             this.btnSaveConfig = new System.Windows.Forms.Button();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.urlTestTextBox = new System.Windows.Forms.TextBox();
+            this.configuration_PropertyBindingSource = new System.Windows.Forms.BindingSource();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.txtProductTest = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnTest = new System.Windows.Forms.Button();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.typeLayoutComboBox = new System.Windows.Forms.ComboBox();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.jSonOtherConfigMemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.xPathTextBox = new System.Windows.Forms.TextBox();
-            this.typeLayoutComboBox = new System.Windows.Forms.ComboBox();
-            this.configuration_PropertyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.productQT = new WSS.Crl.ProducProperties.Manager.ProductQT();
-            this.configurationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.companyTableAdapter = new WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters.CompanyTableAdapter();
             this.tableAdapterManager = new WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters.TableAdapterManager();
             this.configurationTableAdapter = new WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters.ConfigurationTableAdapter();
             this.configuration_PropertyTableAdapter = new WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters.Configuration_PropertyTableAdapter();
-            this.urlTestTextBox = new System.Windows.Forms.TextBox();
             iDLabel = new System.Windows.Forms.Label();
             domainLabel = new System.Windows.Forms.Label();
             linkTestLabel = new System.Windows.Forms.Label();
@@ -73,9 +72,13 @@
             urlTestLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.configurationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productQT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iDSpinEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.configuration_PropertyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
@@ -85,10 +88,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.jSonOtherConfigMemoEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configuration_PropertyBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productQT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurationBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // iDLabel
@@ -145,12 +144,31 @@
             jSonOtherConfigLabel.TabIndex = 0;
             jSonOtherConfigLabel.Text = "JSon Other Config:";
             // 
+            // typeLayoutLabel1
+            // 
+            typeLayoutLabel1.AutoSize = true;
+            typeLayoutLabel1.Location = new System.Drawing.Point(44, 15);
+            typeLayoutLabel1.Name = "typeLayoutLabel1";
+            typeLayoutLabel1.Size = new System.Drawing.Size(69, 13);
+            typeLayoutLabel1.TabIndex = 5;
+            typeLayoutLabel1.Text = "Type Layout:";
+            // 
+            // urlTestLabel
+            // 
+            urlTestLabel.AutoSize = true;
+            urlTestLabel.Location = new System.Drawing.Point(66, 8);
+            urlTestLabel.Name = "urlTestLabel";
+            urlTestLabel.Size = new System.Drawing.Size(47, 13);
+            urlTestLabel.TabIndex = 6;
+            urlTestLabel.Text = "Url Test:";
+            // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(categoryXPathLabel);
             this.panelControl1.Controls.Add(this.categoryXPathTextBox);
             this.panelControl1.Controls.Add(linkTestLabel);
             this.panelControl1.Controls.Add(this.linkTestTextBox);
+            this.panelControl1.Controls.Add(this.btnSaveConfig);
             this.panelControl1.Controls.Add(domainLabel);
             this.panelControl1.Controls.Add(this.domainTextBox);
             this.panelControl1.Controls.Add(iDLabel);
@@ -169,6 +187,16 @@
             this.categoryXPathTextBox.Size = new System.Drawing.Size(740, 20);
             this.categoryXPathTextBox.TabIndex = 8;
             // 
+            // configurationBindingSource
+            // 
+            this.configurationBindingSource.DataMember = "Configuration";
+            this.configurationBindingSource.DataSource = this.productQT;
+            // 
+            // productQT
+            // 
+            this.productQT.DataSetName = "ProductQT";
+            this.productQT.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // linkTestTextBox
             // 
             this.linkTestTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.configurationBindingSource, "LinkTest", true));
@@ -184,6 +212,11 @@
             this.domainTextBox.Name = "domainTextBox";
             this.domainTextBox.Size = new System.Drawing.Size(212, 20);
             this.domainTextBox.TabIndex = 3;
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataMember = "Company";
+            this.companyBindingSource.DataSource = this.productQT;
             // 
             // iDSpinEdit
             // 
@@ -202,7 +235,7 @@
             // 
             // btnSaveConfig
             // 
-            this.btnSaveConfig.Location = new System.Drawing.Point(32, 386);
+            this.btnSaveConfig.Location = new System.Drawing.Point(977, 9);
             this.btnSaveConfig.Name = "btnSaveConfig";
             this.btnSaveConfig.Size = new System.Drawing.Size(75, 23);
             this.btnSaveConfig.TabIndex = 1;
@@ -220,6 +253,19 @@
             this.panelControl2.Size = new System.Drawing.Size(1057, 42);
             this.panelControl2.TabIndex = 1;
             // 
+            // urlTestTextBox
+            // 
+            this.urlTestTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.configuration_PropertyBindingSource, "UrlTest", true));
+            this.urlTestTextBox.Location = new System.Drawing.Point(119, 5);
+            this.urlTestTextBox.Name = "urlTestTextBox";
+            this.urlTestTextBox.Size = new System.Drawing.Size(740, 20);
+            this.urlTestTextBox.TabIndex = 7;
+            // 
+            // configuration_PropertyBindingSource
+            // 
+            this.configuration_PropertyBindingSource.DataMember = "Configuration_Property";
+            this.configuration_PropertyBindingSource.DataSource = this.productQT;
+            // 
             // panelControl3
             // 
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -233,9 +279,9 @@
             this.panelControl5.Controls.Add(this.txtProductTest);
             this.panelControl5.Controls.Add(this.panel1);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl5.Location = new System.Drawing.Point(618, 147);
+            this.panelControl5.Location = new System.Drawing.Point(723, 147);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(439, 577);
+            this.panelControl5.Size = new System.Drawing.Size(334, 577);
             this.panelControl5.TabIndex = 4;
             // 
             // txtProductTest
@@ -243,7 +289,7 @@
             this.txtProductTest.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtProductTest.Location = new System.Drawing.Point(2, 33);
             this.txtProductTest.Name = "txtProductTest";
-            this.txtProductTest.Size = new System.Drawing.Size(435, 542);
+            this.txtProductTest.Size = new System.Drawing.Size(330, 542);
             this.txtProductTest.TabIndex = 1;
             this.txtProductTest.Text = "";
             // 
@@ -253,7 +299,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(435, 31);
+            this.panel1.Size = new System.Drawing.Size(330, 31);
             this.panel1.TabIndex = 0;
             // 
             // btnTest
@@ -272,48 +318,12 @@
             this.panelControl4.Controls.Add(this.typeLayoutComboBox);
             this.panelControl4.Controls.Add(this.groupControl1);
             this.panelControl4.Controls.Add(xPathLabel);
-            this.panelControl4.Controls.Add(this.btnSaveConfig);
             this.panelControl4.Controls.Add(this.xPathTextBox);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(0, 147);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(618, 577);
+            this.panelControl4.Size = new System.Drawing.Size(723, 577);
             this.panelControl4.TabIndex = 5;
-            // 
-            // groupControl1
-            // 
-            this.groupControl1.Controls.Add(jSonOtherConfigLabel);
-            this.groupControl1.Controls.Add(this.jSonOtherConfigMemoEdit);
-            this.groupControl1.Location = new System.Drawing.Point(119, 75);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(474, 288);
-            this.groupControl1.TabIndex = 4;
-            this.groupControl1.Text = "SpecialInfo";
-            // 
-            // jSonOtherConfigMemoEdit
-            // 
-            this.jSonOtherConfigMemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.configuration_PropertyBindingSource, "JSonOtherConfig", true));
-            this.jSonOtherConfigMemoEdit.Location = new System.Drawing.Point(112, 37);
-            this.jSonOtherConfigMemoEdit.Name = "jSonOtherConfigMemoEdit";
-            this.jSonOtherConfigMemoEdit.Size = new System.Drawing.Size(486, 234);
-            this.jSonOtherConfigMemoEdit.TabIndex = 1;
-            // 
-            // xPathTextBox
-            // 
-            this.xPathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.configuration_PropertyBindingSource, "XPath", true));
-            this.xPathTextBox.Location = new System.Drawing.Point(119, 39);
-            this.xPathTextBox.Name = "xPathTextBox";
-            this.xPathTextBox.Size = new System.Drawing.Size(474, 20);
-            this.xPathTextBox.TabIndex = 3;
-            // 
-            // typeLayoutLabel1
-            // 
-            typeLayoutLabel1.AutoSize = true;
-            typeLayoutLabel1.Location = new System.Drawing.Point(44, 15);
-            typeLayoutLabel1.Name = "typeLayoutLabel1";
-            typeLayoutLabel1.Size = new System.Drawing.Size(69, 13);
-            typeLayoutLabel1.TabIndex = 5;
-            typeLayoutLabel1.Text = "Type Layout:";
             // 
             // typeLayoutComboBox
             // 
@@ -324,25 +334,31 @@
             this.typeLayoutComboBox.Size = new System.Drawing.Size(121, 21);
             this.typeLayoutComboBox.TabIndex = 6;
             // 
-            // configuration_PropertyBindingSource
+            // groupControl1
             // 
-            this.configuration_PropertyBindingSource.DataMember = "Configuration_Property";
-            this.configuration_PropertyBindingSource.DataSource = this.productQT;
+            this.groupControl1.Controls.Add(jSonOtherConfigLabel);
+            this.groupControl1.Controls.Add(this.jSonOtherConfigMemoEdit);
+            this.groupControl1.Location = new System.Drawing.Point(119, 75);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(598, 288);
+            this.groupControl1.TabIndex = 4;
+            this.groupControl1.Text = "SpecialInfo";
             // 
-            // productQT
+            // jSonOtherConfigMemoEdit
             // 
-            this.productQT.DataSetName = "ProductQT";
-            this.productQT.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.jSonOtherConfigMemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.configuration_PropertyBindingSource, "JSonOtherConfig", true));
+            this.jSonOtherConfigMemoEdit.Location = new System.Drawing.Point(112, 37);
+            this.jSonOtherConfigMemoEdit.Name = "jSonOtherConfigMemoEdit";
+            this.jSonOtherConfigMemoEdit.Size = new System.Drawing.Size(449, 234);
+            this.jSonOtherConfigMemoEdit.TabIndex = 1;
             // 
-            // configurationBindingSource
+            // xPathTextBox
             // 
-            this.configurationBindingSource.DataMember = "Configuration";
-            this.configurationBindingSource.DataSource = this.productQT;
-            // 
-            // companyBindingSource
-            // 
-            this.companyBindingSource.DataMember = "Company";
-            this.companyBindingSource.DataSource = this.productQT;
+            this.xPathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.configuration_PropertyBindingSource, "XPath", true));
+            this.xPathTextBox.Location = new System.Drawing.Point(119, 39);
+            this.xPathTextBox.Name = "xPathTextBox";
+            this.xPathTextBox.Size = new System.Drawing.Size(474, 20);
+            this.xPathTextBox.TabIndex = 3;
             // 
             // companyTableAdapter
             // 
@@ -364,23 +380,6 @@
             // 
             this.configuration_PropertyTableAdapter.ClearBeforeFill = true;
             // 
-            // urlTestLabel
-            // 
-            urlTestLabel.AutoSize = true;
-            urlTestLabel.Location = new System.Drawing.Point(66, 8);
-            urlTestLabel.Name = "urlTestLabel";
-            urlTestLabel.Size = new System.Drawing.Size(47, 13);
-            urlTestLabel.TabIndex = 6;
-            urlTestLabel.Text = "Url Test:";
-            // 
-            // urlTestTextBox
-            // 
-            this.urlTestTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.configuration_PropertyBindingSource, "UrlTest", true));
-            this.urlTestTextBox.Location = new System.Drawing.Point(119, 5);
-            this.urlTestTextBox.Name = "urlTestTextBox";
-            this.urlTestTextBox.Size = new System.Drawing.Size(740, 20);
-            this.urlTestTextBox.TabIndex = 7;
-            // 
             // FrmCompanyConfigProperty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -398,10 +397,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.configurationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productQT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iDSpinEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.configuration_PropertyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
@@ -413,10 +416,6 @@
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.jSonOtherConfigMemoEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configuration_PropertyBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productQT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurationBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

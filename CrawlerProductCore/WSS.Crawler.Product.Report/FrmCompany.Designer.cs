@@ -48,8 +48,8 @@
             this.colNumberThreadCrawler = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNameType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSTTType = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLastEndCrawlerReload = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLastEndCrawlerFindNew = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLastCrawlerReload = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLastCrawlerFindNew = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNextReload = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNextFindNew = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAllowReload = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -67,8 +67,8 @@
             this.colMinProductToWarning = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMaxDeep = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLimitFailToDelProduct = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.menuCompanyPlus1 = new WSS.Crawler.Product.Report.MenuCompanyPlus();
             this.colLimitProductValid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.menuCompanyPlus1 = new WSS.Crawler.Product.Report.MenuCompanyPlus();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -132,7 +132,7 @@
             // ckSelectGroup
             // 
             this.ckSelectGroup.AutoSize = true;
-            this.ckSelectGroup.Location = new System.Drawing.Point(461, 7);
+            this.ckSelectGroup.Location = new System.Drawing.Point(655, 8);
             this.ckSelectGroup.Name = "ckSelectGroup";
             this.ckSelectGroup.Size = new System.Drawing.Size(85, 17);
             this.ckSelectGroup.TabIndex = 3;
@@ -199,8 +199,8 @@
             this.colNumberThreadCrawler,
             this.colNameType,
             this.colSTTType,
-            this.colLastEndCrawlerReload,
-            this.colLastEndCrawlerFindNew,
+            this.colLastCrawlerReload,
+            this.colLastCrawlerFindNew,
             this.colNextReload,
             this.colNextFindNew,
             this.colAllowReload,
@@ -300,23 +300,23 @@
             this.colSTTType.VisibleIndex = 7;
             this.colSTTType.Width = 55;
             // 
-            // colLastEndCrawlerReload
+            // colLastCrawlerReload
             // 
-            this.colLastEndCrawlerReload.Caption = "LastEndCrawlerReload";
-            this.colLastEndCrawlerReload.FieldName = "LastEndCrawlerReload";
-            this.colLastEndCrawlerReload.Name = "colLastEndCrawlerReload";
-            this.colLastEndCrawlerReload.Visible = true;
-            this.colLastEndCrawlerReload.VisibleIndex = 8;
-            this.colLastEndCrawlerReload.Width = 55;
+            this.colLastCrawlerReload.Caption = "LastCrawlerReload";
+            this.colLastCrawlerReload.FieldName = "LastCrawlerReload";
+            this.colLastCrawlerReload.Name = "colLastCrawlerReload";
+            this.colLastCrawlerReload.Visible = true;
+            this.colLastCrawlerReload.VisibleIndex = 8;
+            this.colLastCrawlerReload.Width = 55;
             // 
-            // colLastEndCrawlerFindNew
+            // colLastCrawlerFindNew
             // 
-            this.colLastEndCrawlerFindNew.Caption = "LastEndCrawlerFindNew";
-            this.colLastEndCrawlerFindNew.FieldName = "LastEndCrawlerFindNew";
-            this.colLastEndCrawlerFindNew.Name = "colLastEndCrawlerFindNew";
-            this.colLastEndCrawlerFindNew.Visible = true;
-            this.colLastEndCrawlerFindNew.VisibleIndex = 9;
-            this.colLastEndCrawlerFindNew.Width = 55;
+            this.colLastCrawlerFindNew.Caption = "LastCrawlerFindNew";
+            this.colLastCrawlerFindNew.FieldName = "LastCrawlerFindNew";
+            this.colLastCrawlerFindNew.Name = "colLastCrawlerFindNew";
+            this.colLastCrawlerFindNew.Visible = true;
+            this.colLastCrawlerFindNew.VisibleIndex = 9;
+            this.colLastCrawlerFindNew.Width = 55;
             // 
             // colNextReload
             // 
@@ -470,11 +470,6 @@
             this.colLimitFailToDelProduct.VisibleIndex = 25;
             this.colLimitFailToDelProduct.Width = 54;
             // 
-            // menuCompanyPlus1
-            // 
-            this.menuCompanyPlus1.Name = "menuCompanyPlus1";
-            this.menuCompanyPlus1.Size = new System.Drawing.Size(61, 4);
-            // 
             // colLimitProductValid
             // 
             this.colLimitProductValid.Caption = "LimitProductValid";
@@ -482,6 +477,11 @@
             this.colLimitProductValid.Name = "colLimitProductValid";
             this.colLimitProductValid.Visible = true;
             this.colLimitProductValid.VisibleIndex = 26;
+            // 
+            // menuCompanyPlus1
+            // 
+            this.menuCompanyPlus1.Name = "menuCompanyPlus1";
+            this.menuCompanyPlus1.Size = new System.Drawing.Size(61, 4);
             // 
             // FrmCompany
             // 
@@ -520,8 +520,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colNumberThreadCrawler;
         private DevExpress.XtraGrid.Columns.GridColumn colNameType;
         private DevExpress.XtraGrid.Columns.GridColumn colSTTType;
-        private DevExpress.XtraGrid.Columns.GridColumn colLastEndCrawlerReload;
-        private DevExpress.XtraGrid.Columns.GridColumn colLastEndCrawlerFindNew;
+        private DevExpress.XtraGrid.Columns.GridColumn colLastCrawlerReload;
+        private DevExpress.XtraGrid.Columns.GridColumn colLastCrawlerFindNew;
         private DevExpress.XtraGrid.Columns.GridColumn colNextReload;
         private System.Windows.Forms.Button btnLoadNext;
         private DevExpress.XtraGrid.Columns.GridColumn colNextFindNew;

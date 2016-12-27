@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="CrawlerProduct\Service\WorkerChangePriceToHistoryPriceSqlUiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UtilZipFileTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

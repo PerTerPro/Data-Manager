@@ -36,7 +36,6 @@ namespace WSS.Crl.ProducProperties.Manager
         {
             long companyId = Common.Obj2Int64(this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "ID"));
             string domain = Common.Obj2String(this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "Domain"));
-
             if (companyId > 0)
             {
                 FrmCompanyConfigProperty frm = new FrmCompanyConfigProperty(companyId);
@@ -46,6 +45,22 @@ namespace WSS.Crl.ProducProperties.Manager
                 frm.Show();
             }
 
+        }
+
+        private void companyGridControl_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(this.companyGridControl, new Point(e.X, e.Y));
+            }
+        }
+
+        private void mapPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            long companyId =Common.Obj2Int64( this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "ID"));
+            FrmMapProperties frm = new FrmMapProperties(companyId);
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

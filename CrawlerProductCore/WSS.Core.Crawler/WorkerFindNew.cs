@@ -144,11 +144,11 @@ namespace WSS.Core.Crawler
         {
             try
             {
+                UpdateLastStart();
                 if (Init())
                 {
                     RunReportRunning();
                     AddRootQueue();
-                    UpdateLastStart();
                     _log.Info(GetPrefixLog());
                     while (!CheckEnd())
                     {
@@ -161,7 +161,6 @@ namespace WSS.Core.Crawler
                             (_crcProductOldGroup.Count + _countNewProduct < _limitProductValid))
                         {
                             _countVisited++;
-
                             _producerVisitedLinkFindNew.PublishString(
                                 Newtonsoft.Json.JsonConvert.SerializeObject(new VisitedLinkFindNew()
                                 {
@@ -215,17 +214,13 @@ namespace WSS.Core.Crawler
             if (IsDetailUrl(jobCrawl.Url))
                 Analysic(jobCrawl, doc);
             Extraction(doc, jobCrawl);
-        }
-
-        private bool CheckEnd()
+        }private bool CheckEnd()
         {
-            if (_tokenCrawler.IsCancellationRequested)
-            {
+            if (_tokenCrawler.IsCancellationRequested){
                 _typeEnd = TypeEnd.Immediate;
                 return true;
             }
-            else if (_linkQueue.Count == 0)
-            {
+            else if (_linkQueue.Count == 0){
                 _typeEnd = TypeEnd.Success;
                 return true;
             }

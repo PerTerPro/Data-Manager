@@ -43,9 +43,9 @@
             this.cacheWaitCrawlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.exportTrackFieldCrawlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReportCrawler = new System.Windows.Forms.ToolStripButton();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +61,7 @@
             this.toolStripDropDownButton1,
             this.toolStripButton3,
             this.toolStripDropDownButton2,
-            this.toolStripButton4});
+            this.btnReportCrawler});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1276, 25);
@@ -173,26 +173,25 @@
             this.toolStripDropDownButton2.Size = new System.Drawing.Size(29, 22);
             this.toolStripDropDownButton2.Text = "toolStripDropDownButton2";
             // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click_1);
-            // 
-            // xtraTabbedMdiManager1
-            // 
-            this.xtraTabbedMdiManager1.MdiParent = this;
-            // 
             // exportTrackFieldCrawlerToolStripMenuItem
             // 
             this.exportTrackFieldCrawlerToolStripMenuItem.Name = "exportTrackFieldCrawlerToolStripMenuItem";
             this.exportTrackFieldCrawlerToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.exportTrackFieldCrawlerToolStripMenuItem.Text = "ExportTrackFieldCrawler";
             this.exportTrackFieldCrawlerToolStripMenuItem.Click += new System.EventHandler(this.exportTrackViewToolStripMenuItem_Click);
+            // 
+            // btnReportCrawler
+            // 
+            this.btnReportCrawler.Image = ((System.Drawing.Image)(resources.GetObject("btnReportCrawler.Image")));
+            this.btnReportCrawler.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportCrawler.Name = "btnReportCrawler";
+            this.btnReportCrawler.Size = new System.Drawing.Size(102, 22);
+            this.btnReportCrawler.Text = "ReportCrawler";
+            this.btnReportCrawler.Click += new System.EventHandler(this.toolStripButton4_Click_1);
+            // 
+            // xtraTabbedMdiManager1
+            // 
+            this.xtraTabbedMdiManager1.MdiParent = this;
             // 
             // FrmMain
             // 
@@ -231,7 +230,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton btnReportCrawler;
         private System.Windows.Forms.ToolStripMenuItem exportTrackFieldCrawlerToolStripMenuItem;
     }
 }
