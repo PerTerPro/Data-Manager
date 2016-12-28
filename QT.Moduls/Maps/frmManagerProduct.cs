@@ -46,13 +46,13 @@ namespace QT.Moduls.Maps
             try
             {
                 this.lastUpdateDateTimePicker.Value = DateTime.Now;
-                this.productTableAdapter.CMS_Product_SaveEditeProductSPGoc(
+                this.productTableAdapter.Update_SaveEditeRootProduct(
                      (short)cboStatus.SelectedValue,
                     lastUpdateDateTimePicker.Value,
                     nameTextBox.Text.Trim(),
                     Common.UnicodeToKoDauFulltext(nameTextBox.Text),
-                    this.validCheckBox.Checked,
-                    Common.Obj2Int64(iDTextBox.Text), imageUrlsTextEdit.Text);
+                    this.validCheckBox.Checked, imageUrlsTextEdit.Text, Common.Obj2Int(addPositionTextEdit.Text),
+                    Common.Obj2Int64(iDTextBox.Text) );
                 this.ctrProductIdentity1.SaveProductIdentity();
                 LogJobAdapter.SaveLog(JobName.FrmManagerProduct_Luu_Product, "Lưu thông tin sản phẩm ở form nhận diện", Common.Obj2Int64(iDTextBox.Text), (int)JobTypeData.Product);
                 //ctrProducAnanytic2.SaveAnanytic();

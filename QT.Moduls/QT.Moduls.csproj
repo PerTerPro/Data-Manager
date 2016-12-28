@@ -1021,6 +1021,11 @@
     <Compile Include="LogJob\frmUpdateVAT.Designer.cs">
       <DependentUpon>frmUpdateVAT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maps\DBPMan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBPMan.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Maps\FrmMapCategoryAndClassification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1435,11 +1440,6 @@
     <Compile Include="Maps\DBPMan.cs">
       <DependentUpon>DBPMan.xsd</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Maps\DBPMan.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBPMan.xsd</DependentUpon>
     </Compile>
     <Compile Include="Maps\frmChonChuyenMucGoc.cs">
       <SubType>Form</SubType>
@@ -2567,7 +2567,7 @@
     <None Include="Maps\DBPMan.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBPMan1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBPMan.Designer.cs</LastGenOutput>
     </None>
     <None Include="Maps\DBPMan.xss">
       <DependentUpon>DBPMan.xsd</DependentUpon>

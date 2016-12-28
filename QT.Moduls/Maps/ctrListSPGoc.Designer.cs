@@ -179,16 +179,16 @@
             // iDLabel
             // 
             iDLabel.AutoSize = true;
-            iDLabel.Location = new System.Drawing.Point(179, 11);
+            iDLabel.Location = new System.Drawing.Point(124, 11);
             iDLabel.Name = "iDLabel";
-            iDLabel.Size = new System.Drawing.Size(63, 13);
+            iDLabel.Size = new System.Drawing.Size(34, 13);
             iDLabel.TabIndex = 5;
-            iDLabel.Text = "ID Category";
+            iDLabel.Text = "IDCat";
             // 
             // iDLabel1
             // 
             iDLabel1.AutoSize = true;
-            iDLabel1.Location = new System.Drawing.Point(354, 12);
+            iDLabel1.Location = new System.Drawing.Point(218, 12);
             iDLabel1.Name = "iDLabel1";
             iDLabel1.Size = new System.Drawing.Size(55, 13);
             iDLabel1.TabIndex = 6;
@@ -206,7 +206,7 @@
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.Location = new System.Drawing.Point(0, 36);
             this.treeList1.Name = "treeList1";
-            this.treeList1.Size = new System.Drawing.Size(520, 447);
+            this.treeList1.Size = new System.Drawing.Size(392, 447);
             this.treeList1.TabIndex = 4;
             // 
             // colName
@@ -287,7 +287,7 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(526, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(398, 25);
             this.bindingNavigator1.TabIndex = 5;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -614,9 +614,9 @@
             // iDCategoryTextBox
             // 
             this.iDCategoryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.listClassificationBindingSource, "ID", true));
-            this.iDCategoryTextBox.Location = new System.Drawing.Point(248, 8);
+            this.iDCategoryTextBox.Location = new System.Drawing.Point(160, 8);
             this.iDCategoryTextBox.Name = "iDCategoryTextBox";
-            this.iDCategoryTextBox.Size = new System.Drawing.Size(100, 20);
+            this.iDCategoryTextBox.Size = new System.Drawing.Size(55, 20);
             this.iDCategoryTextBox.TabIndex = 6;
             // 
             // xtraTabControl1
@@ -625,7 +625,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 25);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(526, 511);
+            this.xtraTabControl1.Size = new System.Drawing.Size(398, 511);
             this.xtraTabControl1.TabIndex = 7;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -640,7 +640,7 @@
             this.xtraTabPage1.Controls.Add(this.treeList1);
             this.xtraTabPage1.Controls.Add(this.panelControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(520, 483);
+            this.xtraTabPage1.Size = new System.Drawing.Size(392, 483);
             this.xtraTabPage1.Text = "Chọn chuyên mục";
             // 
             // panelControl1
@@ -653,21 +653,21 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(520, 36);
+            this.panelControl1.Size = new System.Drawing.Size(392, 36);
             this.panelControl1.TabIndex = 8;
             // 
             // checkLoadConfig
             // 
             this.checkLoadConfig.Location = new System.Drawing.Point(5, 8);
             this.checkLoadConfig.Name = "checkLoadConfig";
-            this.checkLoadConfig.Properties.Caption = "Chỉ Load Sản phẩm Config";
-            this.checkLoadConfig.Size = new System.Drawing.Size(149, 19);
+            this.checkLoadConfig.Properties.Caption = "Chỉ Load SP Config";
+            this.checkLoadConfig.Size = new System.Drawing.Size(113, 19);
             this.checkLoadConfig.TabIndex = 8;
             // 
             // txtIDProduct
             // 
             this.txtIDProduct.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "ID", true));
-            this.txtIDProduct.Location = new System.Drawing.Point(415, 8);
+            this.txtIDProduct.Location = new System.Drawing.Point(279, 8);
             this.txtIDProduct.Name = "txtIDProduct";
             this.txtIDProduct.Size = new System.Drawing.Size(100, 20);
             this.txtIDProduct.TabIndex = 7;
@@ -1121,7 +1121,7 @@
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.bindingNavigator1);
             this.Name = "ctrListSPGoc";
-            this.Size = new System.Drawing.Size(526, 536);
+            this.Size = new System.Drawing.Size(398, 536);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listClassificationBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBPMan)).EndInit();

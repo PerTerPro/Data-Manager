@@ -1,7 +1,9 @@
-﻿namespace QT.Moduls.Maps {
-    
-    
-    public partial class DBPMan {
+﻿namespace QT.Moduls.Maps
+{
+
+
+    public partial class DBPMan
+    {
         partial class ProductIdentityDataTable
         {
         }
