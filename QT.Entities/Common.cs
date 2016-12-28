@@ -1289,6 +1289,10 @@ namespace QT.Entities
                             //{
                             //    s = s.Substring(0, s.IndexOf(".ashx"));
                             //}
+                            if (rootUri.DnsSafeHost=="bachnghe.org")
+                            {
+                                s = s.Replace("images", "site/images");
+                            }
                             if (rootUri.DnsSafeHost.IndexOf("1top.vn") >= 0)
                             {
                                 s = s + "top/products";
