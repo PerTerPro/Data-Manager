@@ -96,7 +96,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1322, 734);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1276, 734);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -106,7 +106,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.v_Company_ConfigCrawlerGridControl);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1316, 706);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1270, 706);
             this.xtraTabPage1.Text = "ReportRun";
             // 
             // v_Company_ConfigCrawlerGridControl
@@ -117,7 +117,7 @@
             this.v_Company_ConfigCrawlerGridControl.Location = new System.Drawing.Point(0, 0);
             this.v_Company_ConfigCrawlerGridControl.MainView = this.gridView1;
             this.v_Company_ConfigCrawlerGridControl.Name = "v_Company_ConfigCrawlerGridControl";
-            this.v_Company_ConfigCrawlerGridControl.Size = new System.Drawing.Size(1316, 706);
+            this.v_Company_ConfigCrawlerGridControl.Size = new System.Drawing.Size(1270, 706);
             this.v_Company_ConfigCrawlerGridControl.TabIndex = 0;
             this.v_Company_ConfigCrawlerGridControl.UseEmbeddedNavigator = true;
             this.v_Company_ConfigCrawlerGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -452,7 +452,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1322, 39);
+            this.panel1.Size = new System.Drawing.Size(1276, 39);
             this.panel1.TabIndex = 2;
             // 
             // panel2
@@ -461,14 +461,14 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 39);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1322, 734);
+            this.panel2.Size = new System.Drawing.Size(1276, 734);
             this.panel2.TabIndex = 3;
             // 
             // FrmVCompanyConfigCrawler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1322, 773);
+            this.ClientSize = new System.Drawing.Size(1276, 773);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmVCompanyConfigCrawler";

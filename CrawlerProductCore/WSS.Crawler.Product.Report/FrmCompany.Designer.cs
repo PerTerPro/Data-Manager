@@ -88,7 +88,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1362, 28);
+            this.panel1.Size = new System.Drawing.Size(1276, 28);
             this.panel1.TabIndex = 0;
             // 
             // button2
@@ -181,7 +181,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit_SourceWebsiteType});
-            this.gridControl1.Size = new System.Drawing.Size(1362, 713);
+            this.gridControl1.Size = new System.Drawing.Size(1276, 713);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -487,7 +487,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.ClientSize = new System.Drawing.Size(1276, 741);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panel1);
             this.KeyPreview = true;
