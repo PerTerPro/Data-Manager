@@ -50,7 +50,29 @@ namespace QT.Moduls.CrawlerProduct
             InitData();
         }
 
-
+        public ConfigurationHotProduct GetConfigurationHotProductBy(long companyId)
+        {
+            DataTable tbl = this._sqlDb.GetTblData("Select CompanyId,HotProduct_Link, HotProduct_Xpath, HotProduct_UseSelenium From Configuration cf WHere CompanyId = @CompanyId", CommandType.Text,
+                new SqlParameter[]
+                {
+                    SqlDb.CreateParamteterSQL("CompanyId", companyId,SqlDbType.BigInt)
+                });
+            if (tbl == null || tbl.Rows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                var row = tbl.Rows[0];
+                return new ConfigurationHotProduct()
+                {
+                    CompanyId = Common.Obj2Int64(row["CompanyId"]),
+                    HotProduct_Link = Common.Obj2String(row["HotProduct_Link"]),
+                    HotProduct_Xpath = Common.Obj2String(row["HotProduct_Xpath"]),
+                    HotProduct_UseSelenium = Common.Obj2Bool(row["HotProduct_UseSelenium"])
+                };
+            }
+        }
 
         private void InitData()
         {
@@ -347,6 +369,65 @@ where a.id in ({0})", string.Join(",", productIds));
                 new SqlParameter[] { SqlDb.CreateParamteterSQL("id", Id, SqlDbType.BigInt) });
         }
 
+        public bool UpsertProductHot(ProductEntity pt)
+        {
+            if (pt.IdCategories > 0)
+                this.UpsertCategory(pt.IdCategories, Common.ConvertToString(pt.Categories, "->"),
+                    pt.CompanyId);
+            return _sqlDb.RunQuery(@"
+                IF NOT EXISTS (SELECT ID FROM PRODUCT_HOT WHERE ID = @ID) 
+                BEGIN 
+                    Insert Into Product_HOT (Name, Id, ClassificationId, Price, Warranty, Company, LastUpdate, DetailUrl, Summary, ProductContent, 
+                    NameFT, Valid, LastPriceChange, IsNews, HashName, PriceChange, AddPosition, VATInfo, PromotionInfo, DeliveryInfo, OriginPrice,
+                    IsDeal, StartDeal, EndDeal, ImageUrls, ShortDescription, Instock, VatStatus) Values 
+                    (@Name, @Id, @ClassificationId, @Price, @Warranty, @Company, GETDATE(), @DetailUrl, @Summary, @ProductContent, 
+                    @NameFT, @Valid, GETDATE(), @IsNews, @HashName, @PriceChange, @AddPosition, @VATInfo, @PromotionInfo, @DeliveryInfo, @OriginPrice,
+                    @IsDeal, @StartDeal, @EndDeal, @ImageUrls, @ShortDescription, @Instock, @VatStatus)
+                END
+                ELSE 
+BEGIN
+            Update Product_HOT Set 
+              Price = @Price
+            , Name = @Name
+            , ProductContent = @ProductContent
+            Where Id = @Id
+END
+"
+                , CommandType.Text
+                , new SqlParameter[]
+                {
+                    _sqlDb.CreateParamteter("Name", pt.Name, SqlDbType.NVarChar),
+                    _sqlDb.CreateParamteter("Id", pt.ID, SqlDbType.BigInt),
+                    _sqlDb.CreateParamteter("ClassificationId", pt.IdCategories, SqlDbType.BigInt),
+                    _sqlDb.CreateParamteter("Price", pt.Price, SqlDbType.Int),
+                    _sqlDb.CreateParamteter("Warranty", pt.Warranty, SqlDbType.Int),
+                    _sqlDb.CreateParamteter("Instock", pt.Instock, SqlDbType.Int),
+                    _sqlDb.CreateParamteter("ImageUrls", pt.ImageUrl, SqlDbType.NVarChar),
+                    _sqlDb.CreateParamteter("Company", pt.CompanyId, SqlDbType.BigInt),
+                    _sqlDb.CreateParamteter("DetailUrl", pt.DetailUrl, SqlDbType.NVarChar),
+                    _sqlDb.CreateParamteter("Summary", pt.Summary, SqlDbType.NVarChar),
+                    _sqlDb.CreateParamteter("ProductContent", pt.ProductContent, SqlDbType.NVarChar),
+                    _sqlDb.CreateParamteter("NameFT",pt.NameFT,SqlDbType.NVarChar),
+                    _sqlDb.CreateParamteter("Valid", false, SqlDbType.Bit),
+                    _sqlDb.CreateParamteter("IsNews", true, SqlDbType.Bit),
+                    _sqlDb.CreateParamteter("HashName", pt.HashName, SqlDbType.BigInt),
+                    _sqlDb.CreateParamteter("PriceChange", 0, SqlDbType.Int),
+                    _sqlDb.CreateParamteter("AddPosition", pt.AddPosition, SqlDbType.Int),
+                    _sqlDb.CreateParamteter("VATInfo", pt.VatInfo, SqlDbType.NVarChar),
+                    _sqlDb.CreateParamteter("PromotionInfo", pt.PromotionInfo, SqlDbType.NVarChar),
+                    _sqlDb.CreateParamteter("DeliveryInfo", pt.DeliveryInfo, SqlDbType.NVarChar),
+                    _sqlDb.CreateParamteter("ShortDescription", pt.ShortDescription, SqlDbType.NVarChar),
+                    _sqlDb.CreateParamteter("OriginPrice", pt.OriginPrice, SqlDbType.Int),
+                    _sqlDb.CreateParamteter("StartDeal",
+                        (pt.StartDeal == SqlDb.MinDateDb) ? DBNull.Value : (object) pt.StartDeal, SqlDbType.DateTime),
+                    _sqlDb.CreateParamteter("EndDeal",
+                        (pt.EndDeal == SqlDb.MinDateDb) ? DBNull.Value : (object) pt.EndDeal, SqlDbType.DateTime),
+                    _sqlDb.CreateParamteter("IsDeal", pt.IsDeal, SqlDbType.Bit),
+                    _sqlDb.CreateParamteter("VATStatus", pt.VATStatus, SqlDbType.Int),
+                });
+
+        }
+
         public bool InsertProduct(ProductEntity pt)
         {
             if (pt.IdCategories > 0)
@@ -391,8 +472,6 @@ where a.id in ({0})", string.Join(",", productIds));
                     _sqlDb.CreateParamteter("IsDeal", pt.IsDeal, SqlDbType.Bit),
                     _sqlDb.CreateParamteter("VATStatus", pt.VATStatus, SqlDbType.Int),
                 });
-
-             this._sqlDb.RunQuery("prc_Product_AutoFindCategoryID", CommandType.StoredProcedure, new SqlParameter[] {SqlDb.CreateParamteterSQL("@ProductID", pt.ID, SqlDbType.BigInt)});
 
         }
 

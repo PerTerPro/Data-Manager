@@ -50,6 +50,11 @@
       <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="WebDriver, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.0.1\lib\net40\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
       <HintPath>..\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
@@ -66,7 +71,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="CrawlerProduct\ProductAdapterTests.cs" />
     <Compile Include="CrawlerProduct\Service\WorkerChangePriceToHistoryPriceSqlUiTests.cs" />
+    <Compile Include="CrawlerProduct\WorkerCrawlerHotProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilZipFileTests.cs" />
   </ItemGroup>
@@ -79,10 +86,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
+      <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
+      <Name>QT.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QT.Moduls\QT.Moduls.csproj">
       <Project>{B8D02031-C0B6-4E60-A318-9F39D9B9A8A9}</Project>
       <Name>QT.Moduls</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Html\shoptretho.html" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

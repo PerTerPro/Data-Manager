@@ -173,6 +173,7 @@
     <Compile Include="AlexaFull.cs" />
     <Compile Include="AnaylysicData\HandlerContentOfHtml.cs" />
     <Compile Include="AutoFixSignText.cs" />
+    <Compile Include="CrawlerProduct\ConfigurationHotProduct.cs" />
     <Compile Include="UtilZipFile.cs" />
     <Compile Include="WordCounting.cs" />
     <Compile Include="Classification.cs" />

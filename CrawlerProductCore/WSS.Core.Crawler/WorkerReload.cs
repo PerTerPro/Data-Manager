@@ -77,15 +77,15 @@ namespace WSS.Core.Crawler
             _log.InfoFormat("ss: {0} Start crawler for c: {1}", _session, _companyId);
             if (Init())
             {
-                RunReportRunning();
                 UpdateLastCrawler();
+                RunReportRunning();
                 Crawl();
             }
         }
 
         private void UpdateLastCrawler()
         {
-            this.sqlDb.RunQuery(string.Format("update Company Set LastCrawlerReload = GetDate(), LastEndCrawlerReload = NULL Where Id = {0}", this._companyId), CommandType.Text, null);
+            bool bOk =  this.sqlDb.RunQuery(string.Format("update Company Set LastCrawlerReload = GetDate(), LastEndCrawlerReload = NULL Where Id = {0}", this._companyId), CommandType.Text, null);
         }
 
         private void RunReportRunning()
