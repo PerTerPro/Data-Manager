@@ -1,6 +1,6 @@
 ﻿namespace WSS.Crl.ProducProperties.Manager
 {
-    partial class Form1
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.companyBindingNavigator = new System.Windows.Forms.BindingNavigator();
+            this.companyBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.companyBindingSource = new System.Windows.Forms.BindingSource();
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productQT = new WSS.Crl.ProducProperties.Manager.ProductQT();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
@@ -52,6 +53,8 @@
             this.colDomain = new DevExpress.XtraGrid.Columns.GridColumn();
             this.companyTableAdapter = new WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters.CompanyTableAdapter();
             this.tableAdapterManager = new WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters.TableAdapterManager();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mapPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingNavigator)).BeginInit();
@@ -60,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.productQT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // xtraTabbedMdiManager1
@@ -223,6 +227,7 @@
             this.companyGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             this.companyGridControl.Click += new System.EventHandler(this.companyGridControl_Click);
+            this.companyGridControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.companyGridControl_MouseDown);
             // 
             // gridView1
             // 
@@ -230,6 +235,7 @@
             this.colDomain});
             this.gridView1.GridControl = this.companyGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowAutoFilterRow = true;
             // 
             // colDomain
             // 
@@ -248,16 +254,31 @@
             this.tableAdapterManager.CompanyTableAdapter = this.companyTableAdapter;
             this.tableAdapterManager.Configuration_PropertyTableAdapter = null;
             this.tableAdapterManager.ConfigurationTableAdapter = null;
+            this.tableAdapterManager.Product_PropertyCategoryTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // Form1
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mapPropertiesToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            // 
+            // mapPropertiesToolStripMenuItem
+            // 
+            this.mapPropertiesToolStripMenuItem.Name = "mapPropertiesToolStripMenuItem";
+            this.mapPropertiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mapPropertiesToolStripMenuItem.Text = "MapProperties";
+            this.mapPropertiesToolStripMenuItem.Click += new System.EventHandler(this.mapPropertiesToolStripMenuItem_Click);
+            // 
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1374, 800);
             this.Controls.Add(this.panel1);
             this.IsMdiContainer = true;
-            this.Name = "Form1";
+            this.Name = "FrmMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
@@ -270,6 +291,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.productQT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -299,6 +321,8 @@
         private DevExpress.XtraGrid.GridControl companyGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colDomain;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mapPropertiesToolStripMenuItem;
     }
 }
 

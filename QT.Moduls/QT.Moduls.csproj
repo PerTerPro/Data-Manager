@@ -311,6 +311,7 @@
     <Compile Include="Company\DatafeedConfig.cs" />
     <Compile Include="Company\DBCom.cs">
       <DependentUpon>DBCom.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Company\DBCom.Designer.cs">
       <DependentUpon>DBCom.xsd</DependentUpon>
@@ -416,6 +417,12 @@
     <Compile Include="CrawlerProduct\Comment\WorkerDownloadHtml.cs" />
     <Compile Include="CrawlerProduct\DelegateCrawler.cs" />
     <Compile Include="CrawlerProduct\FixDuplicate.cs" />
+    <Compile Include="CrawlerProduct\FrmConfigCrawlHotProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmConfigCrawlHotProduct.Designer.cs">
+      <DependentUpon>FrmConfigCrawlHotProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="CrawlerProduct\FrmConfigDescXPath.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -475,6 +482,12 @@
     </Compile>
     <Compile Include="CrawlerProduct\FrmHistoryCrawlerForCompany.Designer.cs">
       <DependentUpon>FrmHistoryCrawlerForCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmHotProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmHotProduct.Designer.cs">
+      <DependentUpon>FrmHotProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="CrawlerProduct\FrmImportLink.cs">
       <SubType>Form</SubType>
@@ -715,6 +728,7 @@
       <DependentUpon>FrmValidCrawler.cs</DependentUpon>
     </Compile>
     <Compile Include="CrawlerProduct\Comment\WorkerCrawlerReview.cs" />
+    <Compile Include="CrawlerProduct\WorkerCrawlerHotProduct.cs" />
     <Compile Include="CrawlerProduct\WorkerDuyetID.cs" />
     <Compile Include="CrawlerProduct\WorkerFindNew.cs" />
     <Compile Include="CrawlerProduct\WorkerReload.cs" />
@@ -970,6 +984,7 @@
     <Compile Include="LogCassandra\LogCrawler.cs" />
     <Compile Include="LogJob\DBLogJob.cs">
       <DependentUpon>DBLogJob.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="LogJob\DBLogJob.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1005,6 +1020,11 @@
     </Compile>
     <Compile Include="LogJob\frmUpdateVAT.Designer.cs">
       <DependentUpon>frmUpdateVAT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\DBPMan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBPMan.xsd</DependentUpon>
     </Compile>
     <Compile Include="Maps\FrmMapCategoryAndClassification.cs">
       <SubType>Form</SubType>
@@ -1324,6 +1344,7 @@
     <Compile Include="RaoVat\SimpleCrawlerSale.cs" />
     <Compile Include="Data\KW.cs">
       <DependentUpon>KW.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\KW.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1332,6 +1353,7 @@
     </Compile>
     <Compile Include="DB.cs">
       <DependentUpon>DB.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="FrmLoadCacheCrawler.cs">
       <SubType>Form</SubType>
@@ -1408,6 +1430,7 @@
     </Compile>
     <Compile Include="Maps\DBMap.cs">
       <DependentUpon>DBMap.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Maps\DBMap.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1416,11 +1439,7 @@
     </Compile>
     <Compile Include="Maps\DBPMan.cs">
       <DependentUpon>DBPMan.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Maps\DBPMan.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBPMan.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Maps\frmChonChuyenMucGoc.cs">
       <SubType>Form</SubType>
@@ -1488,6 +1507,7 @@
     </Compile>
     <Compile Include="ProductID\DBProperties.cs">
       <DependentUpon>DBProperties.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ProductID\DBProperties.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1633,6 +1653,7 @@
     </Compile>
     <Compile Include="Tool\DBTool.cs">
       <DependentUpon>DBTool.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1641,6 +1662,7 @@
     </Compile>
     <Compile Include="Tool\DBTool2.cs">
       <DependentUpon>DBTool2.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1649,6 +1671,7 @@
     </Compile>
     <Compile Include="Tool\DBTool3.cs">
       <DependentUpon>DBTool3.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool3.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1735,6 +1758,7 @@
     <Compile Include="UtilCrawlSemi\UtilSeleiumCrawler.cs" />
     <Compile Include="View\DBView.cs">
       <DependentUpon>DBView.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\DBView.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1749,6 +1773,7 @@
     </Compile>
     <Compile Include="WebPartner\DBWebPartner.cs">
       <DependentUpon>DBWebPartner.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebPartner\DBWebPartner.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1848,6 +1873,9 @@
     <EmbeddedResource Include="Company\frmQuangCao.resx">
       <DependentUpon>frmQuangCao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmConfigCrawlHotProduct.resx">
+      <DependentUpon>FrmConfigCrawlHotProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrawlerProduct\FrmConfigDescXPath.resx">
       <DependentUpon>FrmConfigDescXPath.cs</DependentUpon>
     </EmbeddedResource>
@@ -1877,6 +1905,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrawlerProduct\FrmHistoryCrawlerForCompany.resx">
       <DependentUpon>FrmHistoryCrawlerForCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmHotProduct.resx">
+      <DependentUpon>FrmHotProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrawlerProduct\FrmImportLink.resx">
       <DependentUpon>FrmImportLink.cs</DependentUpon>
@@ -2536,7 +2567,7 @@
     <None Include="Maps\DBPMan.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBPMan1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBPMan.Designer.cs</LastGenOutput>
     </None>
     <None Include="Maps\DBPMan.xss">
       <DependentUpon>DBPMan.xsd</DependentUpon>

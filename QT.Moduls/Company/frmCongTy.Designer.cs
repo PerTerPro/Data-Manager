@@ -101,6 +101,7 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnConfigHotProduct = new System.Windows.Forms.Button();
             this.videoXpathTextBox = new System.Windows.Forms.TextBox();
             this.configurationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dB = new QT.Moduls.DB();
@@ -330,6 +331,8 @@
             this.colInStock = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colImageId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.checkEditReloadAllImage = new DevExpress.XtraEditors.CheckEdit();
             this.simpleButtonExportExcel = new DevExpress.XtraEditors.SimpleButton();
             this.checkEditValid = new DevExpress.XtraEditors.CheckEdit();
@@ -1113,7 +1116,7 @@
             this.xtraTabPage2.AutoScroll = true;
             this.xtraTabPage2.Controls.Add(this.splitContainerControl2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1238, 614);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1236, 613);
             this.xtraTabPage2.Text = "Thiết lập crawler";
             // 
             // splitContainerControl2
@@ -1128,7 +1131,7 @@
             this.splitContainerControl2.Panel2.Controls.Add(this.panelControl3);
             this.splitContainerControl2.Panel2.MinSize = 180;
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1238, 614);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1236, 613);
             this.splitContainerControl2.SplitterPosition = 336;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -1140,7 +1143,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1238, 336);
+            this.panel1.Size = new System.Drawing.Size(1236, 336);
             this.panel1.TabIndex = 1;
             // 
             // splitContainerControl1
@@ -1152,7 +1155,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.xtraScrollableControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1238, 336);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1236, 336);
             this.splitContainerControl1.SplitterPosition = 506;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -1168,6 +1171,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnConfigHotProduct);
             this.panelControl1.Controls.Add(minProductToWarningLabel);
             this.panelControl1.Controls.Add(videoXpathLabel);
             this.panelControl1.Controls.Add(this.videoXpathTextBox);
@@ -1216,6 +1220,16 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(489, 1053);
             this.panelControl1.TabIndex = 23;
+            // 
+            // btnConfigHotProduct
+            // 
+            this.btnConfigHotProduct.Location = new System.Drawing.Point(34, 997);
+            this.btnConfigHotProduct.Name = "btnConfigHotProduct";
+            this.btnConfigHotProduct.Size = new System.Drawing.Size(164, 23);
+            this.btnConfigHotProduct.TabIndex = 46;
+            this.btnConfigHotProduct.Text = "ConfigHotProduct";
+            this.btnConfigHotProduct.UseVisualStyleBackColor = true;
+            this.btnConfigHotProduct.Click += new System.EventHandler(this.btnConfigHotProduct_Click);
             // 
             // videoXpathTextBox
             // 
@@ -1768,7 +1782,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1238, 273);
+            this.panelControl3.Size = new System.Drawing.Size(1236, 269);
             this.panelControl3.TabIndex = 48;
             // 
             // splitContainerControl3
@@ -1780,7 +1794,7 @@
             this.splitContainerControl3.Panel1.Text = "Panel1";
             this.splitContainerControl3.Panel2.Controls.Add(this.txtResult);
             this.splitContainerControl3.Panel2.Text = "Panel2";
-            this.splitContainerControl3.Size = new System.Drawing.Size(763, 269);
+            this.splitContainerControl3.Size = new System.Drawing.Size(761, 265);
             this.splitContainerControl3.SplitterPosition = 263;
             this.splitContainerControl3.TabIndex = 1;
             this.splitContainerControl3.Text = "splitContainerControl3";
@@ -1790,7 +1804,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(263, 269);
+            this.pictureBox1.Size = new System.Drawing.Size(263, 265);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 49;
             this.pictureBox1.TabStop = false;
@@ -1804,7 +1818,7 @@
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResult.Size = new System.Drawing.Size(495, 269);
+            this.txtResult.Size = new System.Drawing.Size(490, 265);
             this.txtResult.TabIndex = 50;
             this.txtResult.WordWrap = false;
             this.txtResult.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtResult_KeyDown);
@@ -1815,7 +1829,7 @@
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl6.Location = new System.Drawing.Point(2, 2);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(471, 269);
+            this.panelControl6.Size = new System.Drawing.Size(471, 265);
             this.panelControl6.TabIndex = 0;
             // 
             // panelControl2
@@ -1853,7 +1867,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(2, 2);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(467, 265);
+            this.panelControl2.Size = new System.Drawing.Size(467, 261);
             this.panelControl2.TabIndex = 52;
             // 
             // btnTestXpath
@@ -2176,7 +2190,7 @@
             this.xtraTabPage1.Controls.Add(this.quanHuyenTextBox);
             this.xtraTabPage1.Controls.Add(this.thanhPhoTextBox);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1238, 614);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1236, 613);
             this.xtraTabPage1.Text = "Thông tin công ty";
             // 
             // cmbDeliveryType
@@ -2620,7 +2634,7 @@
             this.xtraTabPage7.Controls.Add(specsXpathLabel1);
             this.xtraTabPage7.Controls.Add(this.specsXpathMemoEdit);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(1238, 614);
+            this.xtraTabPage7.Size = new System.Drawing.Size(1236, 613);
             this.xtraTabPage7.Text = "XPathDesc";
             // 
             // txtShortDesc
@@ -2687,7 +2701,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.ctrLogMananger2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1238, 614);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1236, 613);
             this.xtraTabPage3.Text = "Thông báo lỗi";
             // 
             // ctrLogMananger2
@@ -2695,7 +2709,7 @@
             this.ctrLogMananger2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrLogMananger2.Location = new System.Drawing.Point(0, 0);
             this.ctrLogMananger2.Name = "ctrLogMananger2";
-            this.ctrLogMananger2.Size = new System.Drawing.Size(1238, 614);
+            this.ctrLogMananger2.Size = new System.Drawing.Size(1236, 613);
             this.ctrLogMananger2.TabIndex = 0;
             // 
             // xtraTabPageConfigDataFeedXml
@@ -2703,7 +2717,7 @@
             this.xtraTabPageConfigDataFeedXml.Controls.Add(this.gridControlListProduct);
             this.xtraTabPageConfigDataFeedXml.Controls.Add(this.panel2);
             this.xtraTabPageConfigDataFeedXml.Name = "xtraTabPageConfigDataFeedXml";
-            this.xtraTabPageConfigDataFeedXml.Size = new System.Drawing.Size(1238, 614);
+            this.xtraTabPageConfigDataFeedXml.Size = new System.Drawing.Size(1236, 613);
             this.xtraTabPageConfigDataFeedXml.Text = "Cấu hình Data Feed";
             // 
             // gridControlListProduct
@@ -2720,7 +2734,7 @@
             this.gridControlListProduct.Name = "gridControlListProduct";
             this.gridControlListProduct.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEditInstock});
-            this.gridControlListProduct.Size = new System.Drawing.Size(1238, 306);
+            this.gridControlListProduct.Size = new System.Drawing.Size(1236, 305);
             this.gridControlListProduct.TabIndex = 16;
             this.gridControlListProduct.UseEmbeddedNavigator = true;
             this.gridControlListProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2828,7 +2842,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1238, 308);
+            this.panel2.Size = new System.Drawing.Size(1236, 308);
             this.panel2.TabIndex = 17;
             // 
             // btnUpdateSolrRedis
@@ -3032,7 +3046,7 @@
             this.xtraTabPage4.Controls.Add(this.historyDatafeedGridControl);
             this.xtraTabPage4.Controls.Add(this.panelControl4);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1238, 614);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1236, 613);
             this.xtraTabPage4.Text = "Lịch sử cập nhật dữ liệu";
             // 
             // historyDatafeedGridControl
@@ -3048,7 +3062,7 @@
             this.historyDatafeedGridControl.Location = new System.Drawing.Point(0, 126);
             this.historyDatafeedGridControl.MainView = this.gridView2;
             this.historyDatafeedGridControl.Name = "historyDatafeedGridControl";
-            this.historyDatafeedGridControl.Size = new System.Drawing.Size(1238, 488);
+            this.historyDatafeedGridControl.Size = new System.Drawing.Size(1236, 487);
             this.historyDatafeedGridControl.TabIndex = 1;
             this.historyDatafeedGridControl.UseEmbeddedNavigator = true;
             this.historyDatafeedGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -3155,7 +3169,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl4.Location = new System.Drawing.Point(0, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(1238, 126);
+            this.panelControl4.Size = new System.Drawing.Size(1236, 126);
             this.panelControl4.TabIndex = 0;
             // 
             // simpleButtonReloadHistory
@@ -3181,16 +3195,16 @@
             this.xtraTabPage5.Controls.Add(this.groupControl1);
             this.xtraTabPage5.Controls.Add(this.panelControl5);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(1238, 614);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1236, 613);
             this.xtraTabPage5.Text = "DownloadImage";
             // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.productGridControl);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 61);
+            this.groupControl1.Location = new System.Drawing.Point(0, 63);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1238, 553);
+            this.groupControl1.Size = new System.Drawing.Size(1236, 550);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Danh sách sản phẩm trong Database";
             // 
@@ -3207,7 +3221,7 @@
             this.productGridControl.Location = new System.Drawing.Point(2, 21);
             this.productGridControl.MainView = this.gridView3;
             this.productGridControl.Name = "productGridControl";
-            this.productGridControl.Size = new System.Drawing.Size(1234, 530);
+            this.productGridControl.Size = new System.Drawing.Size(1232, 527);
             this.productGridControl.TabIndex = 0;
             this.productGridControl.UseEmbeddedNavigator = true;
             this.productGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -3429,6 +3443,8 @@
             // 
             // panelControl5
             // 
+            this.panelControl5.Controls.Add(this.simpleButton1);
+            this.panelControl5.Controls.Add(this.richTextBox1);
             this.panelControl5.Controls.Add(this.checkEditReloadAllImage);
             this.panelControl5.Controls.Add(this.simpleButtonExportExcel);
             this.panelControl5.Controls.Add(this.checkEditValid);
@@ -3438,8 +3454,26 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl5.Location = new System.Drawing.Point(0, 0);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(1238, 61);
+            this.panelControl5.Size = new System.Drawing.Size(1236, 63);
             this.panelControl5.TabIndex = 0;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(859, 130);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(121, 42);
+            this.simpleButton1.TabIndex = 25;
+            this.simpleButton1.Text = "PushMessage\r\nDownloadImage";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(477, 194);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(378, 125);
+            this.richTextBox1.TabIndex = 24;
+            this.richTextBox1.Text = "";
             // 
             // checkEditReloadAllImage
             // 
@@ -3488,7 +3522,7 @@
             // ButtonPushMessageDownloadImage
             // 
             this.ButtonPushMessageDownloadImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonPushMessageDownloadImage.Location = new System.Drawing.Point(1071, 11);
+            this.ButtonPushMessageDownloadImage.Location = new System.Drawing.Point(1069, 11);
             this.ButtonPushMessageDownloadImage.Name = "ButtonPushMessageDownloadImage";
             this.ButtonPushMessageDownloadImage.Size = new System.Drawing.Size(121, 42);
             this.ButtonPushMessageDownloadImage.TabIndex = 18;
@@ -3500,7 +3534,7 @@
             this.xtraTabPage6.Controls.Add(this.panelControl9);
             this.xtraTabPage6.Controls.Add(this.panelControl7);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1238, 614);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1236, 613);
             this.xtraTabPage6.Text = "Sản Phẩm Gốc";
             // 
             // panelControl9
@@ -3509,7 +3543,7 @@
             this.panelControl9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl9.Location = new System.Drawing.Point(0, 78);
             this.panelControl9.Name = "panelControl9";
-            this.panelControl9.Size = new System.Drawing.Size(1238, 536);
+            this.panelControl9.Size = new System.Drawing.Size(1236, 535);
             this.panelControl9.TabIndex = 1;
             // 
             // productGridControl1
@@ -3525,7 +3559,7 @@
             this.productGridControl1.Location = new System.Drawing.Point(2, 2);
             this.productGridControl1.MainView = this.gridView4;
             this.productGridControl1.Name = "productGridControl1";
-            this.productGridControl1.Size = new System.Drawing.Size(1234, 532);
+            this.productGridControl1.Size = new System.Drawing.Size(1232, 531);
             this.productGridControl1.TabIndex = 0;
             this.productGridControl1.UseEmbeddedNavigator = true;
             this.productGridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -3578,7 +3612,7 @@
             this.panelControl7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl7.Location = new System.Drawing.Point(0, 0);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(1238, 78);
+            this.panelControl7.Size = new System.Drawing.Size(1236, 78);
             this.panelControl7.TabIndex = 0;
             // 
             // btnExportToExel
@@ -3673,6 +3707,7 @@
             this.tableAdapterManager.Company_StatusTableAdapter = null;
             this.tableAdapterManager.CompanyTableAdapter = this.companyTableAdapter;
             this.tableAdapterManager.Config_HaravanBizwebTableAdapter = null;
+            this.tableAdapterManager.ConfigurationHotProductTableAdapter = null;
             this.tableAdapterManager.ConfigurationTableAdapter = null;
             this.tableAdapterManager.ListClassificationTableAdapter = null;
             this.tableAdapterManager.MapClassificationTableAdapter = null;
@@ -4206,5 +4241,8 @@
         //private System.Windows.Forms.BindingSource company_DeliveryTypeBindingSource;
         private System.Windows.Forms.ComboBox cmbDeliveryType;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private System.Windows.Forms.Button btnConfigHotProduct;
     }
 }

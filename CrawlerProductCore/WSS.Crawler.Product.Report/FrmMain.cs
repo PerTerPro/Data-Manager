@@ -163,7 +163,9 @@ namespace WSS.Crawler.Product.Report
 
         private void toolStripButton4_Click_1(object sender, EventArgs e)
         {
-            
+            FrmVCompanyConfigCrawler frm = new FrmVCompanyConfigCrawler();
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

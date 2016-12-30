@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.barAndDockingController1 = new DevExpress.XtraBars.BarAndDockingController(this.components);
-            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.barAndDockingController1 = new DevExpress.XtraBars.BarAndDockingController();
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.barCommand = new DevExpress.XtraBars.Bar();
             this.barComandRunAll = new DevExpress.XtraBars.BarCheckItem();
             this.barComandStart = new DevExpress.XtraBars.BarButtonItem();
@@ -165,6 +164,7 @@
             this.btnCrawlerProductLog = new DevExpress.XtraBars.BarButtonItem();
             this.btnImportLink = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemTrustedFollow = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUnValidProduct = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItemSale = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.bt_Sales_ChonKhachHang = new DevExpress.XtraBars.BarButtonItem();
@@ -203,7 +203,7 @@
             this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu();
             this.btnPushJobFindNewProduct = new DevExpress.XtraBars.BarButtonItem();
             this.btnStartConsumerCrawler = new DevExpress.XtraBars.BarButtonItem();
             this.btnStopConsumer = new DevExpress.XtraBars.BarButtonItem();
@@ -215,7 +215,7 @@
             this.btnCleanAllDuplicateProduct = new DevExpress.XtraBars.BarButtonItem();
             this.btnReport = new DevExpress.XtraBars.BarButtonItem();
             this.btnReportCrawler = new DevExpress.XtraBars.BarButtonItem();
-            this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMenu2 = new DevExpress.XtraBars.PopupMenu();
             this.btnABC = new DevExpress.XtraBars.BarButtonItem();
             this.btnTopQueue = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
@@ -225,10 +225,10 @@
             this.ListCompanyDockPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.ctrListWebSite1 = new QT.Moduls.ctrListWebSite();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.timerHistory = new System.Windows.Forms.Timer(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnUnValidProduct = new DevExpress.XtraBars.BarButtonItem();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
+            this.timerHistory = new System.Windows.Forms.Timer();
+            this.timer1 = new System.Windows.Forms.Timer();
+            this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -457,9 +457,10 @@
             this.barButtonItem12,
             this.barButtonItemTrustedFollow,
             this.btnAutoAddAdv,
-            this.btnUnValidProduct});
+            this.btnUnValidProduct,
+            this.barButtonItem20});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 207;
+            this.barManager1.MaxItemId = 208;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
@@ -1063,7 +1064,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnLoadCacheProduct),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemTagByCompany),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemConfigClassification),
-            new DevExpress.XtraBars.LinkPersistInfo(this.PriorityCategoryButton)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.PriorityCategoryButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem20)});
             this.barSubItemProduct.Name = "barSubItemProduct";
             // 
             // map_Product
@@ -1541,6 +1543,13 @@
             this.barButtonItemTrustedFollow.Name = "barButtonItemTrustedFollow";
             this.barButtonItemTrustedFollow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemTrustedFollow_ItemClick);
             // 
+            // btnUnValidProduct
+            // 
+            this.btnUnValidProduct.Caption = "Hạ sản phẩm";
+            this.btnUnValidProduct.Id = 206;
+            this.btnUnValidProduct.Name = "btnUnValidProduct";
+            this.btnUnValidProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUnValidProduct_ItemClick);
+            // 
             // barSubItemSale
             // 
             this.barSubItemSale.Caption = "Sales";
@@ -1997,12 +2006,12 @@
             this.timerHistory.Interval = 10000;
             this.timerHistory.Tick += new System.EventHandler(this.timerHistory_Tick);
             // 
-            // btnUnValidProduct
+            // barButtonItem20
             // 
-            this.btnUnValidProduct.Caption = "Hạ sản phẩm";
-            this.btnUnValidProduct.Id = 206;
-            this.btnUnValidProduct.Name = "btnUnValidProduct";
-            this.btnUnValidProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUnValidProduct_ItemClick);
+            this.barButtonItem20.Caption = "ConfigHotProduct";
+            this.barButtonItem20.Id = 207;
+            this.barButtonItem20.Name = "barButtonItem20";
+            this.barButtonItem20.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem20_ItemClick);
             // 
             // XMain
             // 
@@ -2241,5 +2250,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.BarButtonItem btnAutoAddAdv;
         private DevExpress.XtraBars.BarButtonItem btnUnValidProduct;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem20;
     }
 }

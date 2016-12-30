@@ -31,7 +31,6 @@ namespace QT.Moduls
             {
                 using (var gs = new GZipStream(mso, CompressionMode.Compress))
                 {
-                    //msi.CopyTo(gs);
                     CopyTo(msi, gs);
                 }
 
@@ -44,6 +43,11 @@ namespace QT.Moduls
             byte[] arByte = Encoding.GetEncoding("iso-8859-1").GetBytes(htmlAfterEncode); 
             string strHtml = Unzip(arByte);
             return strHtml;
+        }
+
+        public static string ZipOfEncode(string htmlAfterEncode)
+        {
+            return Unzip(Encoding.GetEncoding("iso-8859-1").GetBytes(htmlAfterEncode));
         }
 
         public static string Unzip(byte[] bytes)

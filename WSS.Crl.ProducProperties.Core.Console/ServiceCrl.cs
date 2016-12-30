@@ -14,12 +14,11 @@ namespace WSS.Crl.ProducProperties.Service
 {
     public static class ServiceCrl
     {
-        public static void PushDownloadHtml(IEnumerable<string> enumerable)
+        public static void PushDownloadHtml(IEnumerable<string> domains)
         {
             SqlDb sql = new SqlDb(ConfigStatic.ProductConnection);
             ProductAdapter productAdapter = new ProductAdapter(sql);
-
-            foreach (var domain in enumerable)
+            foreach (var domain in domains)
             {
                 ProducerBasic producerBasic = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigStatic.KeyRabbitMqCrlProductProperties),
                     ConfigStatic.GetQueueWaitDownloadHtml(domain));
@@ -31,12 +30,13 @@ namespace WSS.Crl.ProducProperties.Service
                         "
                     , productAdapter.GetCompanyIdByDomain(domain));
                 sql.ProcessDataTableLarge(queryData,
-                    1000, (Row, iRow) =>
+                    10000, (Row, iRow) =>
                     {
                         producerBasic.PublishString(new JobDownloadHtml()
                         {
                             ProductId = Convert.ToInt64(Row["Id"]),
-                            DetailUrl = Convert.ToString(Row["DetailUrl"])
+                            DetailUrl = Convert.ToString(Row["DetailUrl"]),
+                            Domain = domain
                         }.GetJson());
                     });
             }

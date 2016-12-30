@@ -46,13 +46,13 @@ namespace QT.Moduls.Maps
             try
             {
                 this.lastUpdateDateTimePicker.Value = DateTime.Now;
-                this.productTableAdapter.CMS_Product_SaveEditeProductSPGoc(
+                this.productTableAdapter.Update_SaveEditeRootProduct(
                      (short)cboStatus.SelectedValue,
                     lastUpdateDateTimePicker.Value,
                     nameTextBox.Text.Trim(),
                     Common.UnicodeToKoDauFulltext(nameTextBox.Text),
-                    this.validCheckBox.Checked,
-                    Common.Obj2Int64(iDTextBox.Text), imageUrlsTextEdit.Text);
+                    this.validCheckBox.Checked, imageUrlsTextEdit.Text, Common.Obj2Int(addPositionTextEdit.Text),
+                    Common.Obj2Int64(iDTextBox.Text) );
                 this.ctrProductIdentity1.SaveProductIdentity();
                 LogJobAdapter.SaveLog(JobName.FrmManagerProduct_Luu_Product, "Lưu thông tin sản phẩm ở form nhận diện", Common.Obj2Int64(iDTextBox.Text), (int)JobTypeData.Product);
                 //ctrProducAnanytic2.SaveAnanytic();
@@ -742,7 +742,7 @@ namespace QT.Moduls.Maps
         private void btnGetProductImage_Click(object sender, EventArgs e)
         {
             Wait.Show("Get product from SQL...");
-            string querry = @"SELECT ID,Name, DetailUrl,ImageUrls,ImagePath,LastUpdate,Valid,Status FROM Product WHERE (Company = 6619858476258121218) AND (Valid = 1) AND (ImagePath IS NULL OR ImagePath = '') OR (Company = 6619858476258121218) AND (Valid = 0) AND (Status = 11)";
+            string querry = @"SELECT ID,Name, DetailUrl,ImageUrls,ImageId,LastUpdate,Valid,Status FROM Product WHERE (Company = 6619858476258121218) AND (Valid = 1) AND (ImageId IS NULL OR ImageId = '') OR (Company = 6619858476258121218) AND (Valid = 0) AND (Status = 11)";
             SqlDb sqldb = new SqlDb(Server.ConnectionString);
             DataTable productTable = new DataTable();
             try

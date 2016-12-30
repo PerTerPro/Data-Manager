@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label iDLabel;
             System.Windows.Forms.Label logoImageIdLabel;
             System.Windows.Forms.Label domainLabel;
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.companyGridControl = new DevExpress.XtraGrid.GridControl();
-            this.companyBindingSource = new System.Windows.Forms.BindingSource();
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dBWss = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWss();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -234,7 +235,7 @@
             this.pictureBoxwebsosanh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxwebsosanh.Location = new System.Drawing.Point(67, 38);
             this.pictureBoxwebsosanh.Name = "pictureBoxwebsosanh";
-            this.pictureBoxwebsosanh.Size = new System.Drawing.Size(110, 40);
+            this.pictureBoxwebsosanh.Size = new System.Drawing.Size(142, 69);
             this.pictureBoxwebsosanh.TabIndex = 0;
             this.pictureBoxwebsosanh.TabStop = false;
             // 
@@ -325,13 +326,12 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CompanyTableAdapter = this.companyTableAdapter;
+            this.tableAdapterManager.ProductTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
-            this.openFileDialog1.InitialDirectory = "C:\\";
             this.openFileDialog1.Title = "Chọn ảnh có định dạng png, jpg, jpeg";
             // 
             // FrmUploadLogoWebsosanh

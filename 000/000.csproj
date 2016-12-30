@@ -221,8 +221,8 @@
       <HintPath>DLLs\TidyNet.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WebDriver, Version=2.53.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selenium.WebDriver.2.53.0\lib\net40\WebDriver.dll</HintPath>
+    <Reference Include="WebDriver, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.0.1\lib\net40\WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Websosanh.Core.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -290,11 +290,11 @@
       <Name>GABIZ.BASE</Name>
     </ProjectReference>
     <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
-      <Project>{7F43CEBE-F21E-4C1F-91CB-1E400B8B76FB}</Project>
+      <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
       <Name>QT.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\QT.Moduls\QT.Moduls.csproj">
-      <Project>{B8D02031-C0B6-4E60-A318-9F39D9B9A8A9}</Project>
+      <Project>{b8d02031-c0b6-4e60-a318-9f39d9b9a8a9}</Project>
       <Name>QT.Moduls</Name>
     </ProjectReference>
     <ProjectReference Include="..\QT.NewsRelation\QT.NewsRelation.csproj">

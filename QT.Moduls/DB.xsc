@@ -201,6 +201,17 @@
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
+    <TableUISetting Name="ConfigurationHotProduct">
+      <ColumnUISettings>
+        <ColumnUISetting Name="HotProduct_Link">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="MemoEdit" Type="DevExpress.XtraEditors.MemoEdit" AssemblyName="DevExpress.XtraEditors.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.5.1;.NETFramework,Version=v4.5" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
+      </ColumnUISettings>
+    </TableUISetting>
     <TableUISetting Name="TreeClassification">
       <ColumnUISettings>
         <ColumnUISetting Name="Name">

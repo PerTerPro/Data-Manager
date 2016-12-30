@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigImbo.cs" />
+    <Compile Include="HanderFixRootProductImg.cs" />
     <Compile Include="HandlerCmpWaitTransf.cs" />
     <Compile Include="HandlerDelImgImbo.cs" />
     <Compile Include="HandlerExport.cs" />

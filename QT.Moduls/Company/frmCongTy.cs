@@ -1453,6 +1453,14 @@ namespace QT.Moduls.Company
         }
         private void ButtonPushMessageDownloadImage_Click(object sender, EventArgs e)
         {
+            //var listIdCompany = richTextBox1.Text.Split('\n');
+            //foreach (var item in listIdCompany)
+            //{
+            //    long idcompany = Common.Obj2Int64(item);
+            //    if (_companyFuction == null)
+            //        _companyFuction = new CompanyFunctions();
+            //    _companyFuction.SendMessageDownloadImage(idcompany, false);
+            //}
             long idcompany = Common.Obj2Int64(iDCompanyTextBox.Text);
             bool reloadall = false;
             if (checkEditReloadAllImage.Checked)
@@ -1736,8 +1744,24 @@ namespace QT.Moduls.Company
             }
         }
 
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            var listIdCompany = richTextBox1.Text.Split('\n');
+            foreach (var item in listIdCompany)
+            {
+                long idcompany = Common.Obj2Int64(item);
+                if (_companyFuction == null)
+                    _companyFuction = new CompanyFunctions();
+                _companyFuction.SendMessageDownloadImage(idcompany, false);
+            }
+        }
 
-
+        private void btnConfigHotProduct_Click(object sender, EventArgs e)
+        {
+            FrmConfigCrawlHotProduct frm = new FrmConfigCrawlHotProduct(Common.Obj2Int64(this.companyIDTextBox.Text));
+            frm.Show();
+            
+        }
     }
 
 }

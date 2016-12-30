@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label iDLabel;
             System.Windows.Forms.Label iDLabel1;
             System.Windows.Forms.Label nameLabel;
@@ -41,8 +40,9 @@
             System.Windows.Forms.Label lastUpdateLabel;
             System.Windows.Forms.Label iDLabel2;
             System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label addPositionLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagerProduct));
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productBindingSource = new System.Windows.Forms.BindingSource();
             this.dBPMan = new QT.Moduls.Maps.DBPMan();
             this.detailUrlTextBox1 = new System.Windows.Forms.TextBox();
             this.iDTextBox = new System.Windows.Forms.TextBox();
@@ -50,7 +50,8 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.ctrListSPGoc1 = new QT.Moduls.Maps.ctrListSPGoc();
             this.iDCategoryTextBox = new System.Windows.Forms.TextBox();
-            this.listClassificationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.listClassificationBindingSource = new System.Windows.Forms.BindingSource();
+            this.addPositionTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.imageUrlsTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.UploadImageButton = new DevExpress.XtraEditors.SimpleButton();
@@ -60,7 +61,7 @@
             this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
             this.btOpenWeb = new System.Windows.Forms.Button();
             this.cboStatus = new System.Windows.Forms.ComboBox();
-            this.productStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productStatusBindingSource = new System.Windows.Forms.BindingSource();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.ctrProductIdentity1 = new QT.Moduls.Maps.CtrProductIdentity();
@@ -95,14 +96,14 @@
             this.summaryTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.validCheckBox = new System.Windows.Forms.CheckBox();
-            this.productKeyComparisonBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productKeyComparisonBindingSource = new System.Windows.Forms.BindingSource();
             this.listClassificationTableAdapter = new QT.Moduls.Maps.DBPManTableAdapters.ListClassificationTableAdapter();
             this.productTableAdapter = new QT.Moduls.Maps.DBPManTableAdapters.ProductTableAdapter();
             this.tableAdapterManager = new QT.Moduls.Maps.DBPManTableAdapters.TableAdapterManager();
             this.product_KeyComparisonTableAdapter = new QT.Moduls.Maps.DBPManTableAdapters.Product_KeyComparisonTableAdapter();
             this.productStatusTableAdapter = new QT.Moduls.Maps.DBPManTableAdapters.ProductStatusTableAdapter();
             this.dBMap = new QT.Moduls.Maps.DBMap();
-            this.productValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productValueBindingSource = new System.Windows.Forms.BindingSource();
             this.productValueTableAdapter = new QT.Moduls.Maps.DBMapTableAdapters.ProductValueTableAdapter();
             this.tableAdapterManager1 = new QT.Moduls.Maps.DBMapTableAdapters.TableAdapterManager();
             this.productPerClassTableAdapter1 = new QT.Moduls.Tool.DBToolTableAdapters.ProductPerClassTableAdapter();
@@ -118,11 +119,13 @@
             lastUpdateLabel = new System.Windows.Forms.Label();
             iDLabel2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
+            addPositionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBPMan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listClassificationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addPositionTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageUrlsTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -160,7 +163,7 @@
             // 
             iDLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             iDLabel1.AutoSize = true;
-            iDLabel1.Location = new System.Drawing.Point(168, 163);
+            iDLabel1.Location = new System.Drawing.Point(201, 163);
             iDLabel1.Name = "iDLabel1";
             iDLabel1.Size = new System.Drawing.Size(21, 13);
             iDLabel1.TabIndex = 0;
@@ -178,7 +181,7 @@
             // validLabel
             // 
             validLabel.AutoSize = true;
-            validLabel.Location = new System.Drawing.Point(203, 90);
+            validLabel.Location = new System.Drawing.Point(171, 90);
             validLabel.Name = "validLabel";
             validLabel.Size = new System.Drawing.Size(36, 13);
             validLabel.TabIndex = 14;
@@ -188,7 +191,7 @@
             // 
             detailUrlLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             detailUrlLabel1.AutoSize = true;
-            detailUrlLabel1.Location = new System.Drawing.Point(272, 118);
+            detailUrlLabel1.Location = new System.Drawing.Point(305, 118);
             detailUrlLabel1.Name = "detailUrlLabel1";
             detailUrlLabel1.Size = new System.Drawing.Size(48, 13);
             detailUrlLabel1.TabIndex = 18;
@@ -259,6 +262,15 @@
             label3.TabIndex = 5;
             label3.Text = "Delay";
             // 
+            // addPositionLabel
+            // 
+            addPositionLabel.AutoSize = true;
+            addPositionLabel.Location = new System.Drawing.Point(577, 90);
+            addPositionLabel.Name = "addPositionLabel";
+            addPositionLabel.Size = new System.Drawing.Size(69, 13);
+            addPositionLabel.TabIndex = 27;
+            addPositionLabel.Text = "Add Position:";
+            // 
             // productBindingSource
             // 
             this.productBindingSource.DataMember = "Product";
@@ -273,7 +285,7 @@
             // 
             this.detailUrlTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.detailUrlTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "DetailUrl", true));
-            this.detailUrlTextBox1.Location = new System.Drawing.Point(326, 115);
+            this.detailUrlTextBox1.Location = new System.Drawing.Point(359, 115);
             this.detailUrlTextBox1.Name = "detailUrlTextBox1";
             this.detailUrlTextBox1.ReadOnly = true;
             this.detailUrlTextBox1.Size = new System.Drawing.Size(113, 20);
@@ -283,7 +295,7 @@
             // 
             this.iDTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "ID", true));
-            this.iDTextBox.Location = new System.Drawing.Point(193, 160);
+            this.iDTextBox.Location = new System.Drawing.Point(226, 160);
             this.iDTextBox.Name = "iDTextBox";
             this.iDTextBox.ReadOnly = true;
             this.iDTextBox.Size = new System.Drawing.Size(47, 20);
@@ -310,6 +322,8 @@
             this.splitContainerControl1.Panel1.Controls.Add(iDLabel);
             this.splitContainerControl1.Panel1.Controls.Add(this.iDCategoryTextBox);
             this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(addPositionLabel);
+            this.splitContainerControl1.Panel2.Controls.Add(this.addPositionTextEdit);
             this.splitContainerControl1.Panel2.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.imageUrlsTextEdit);
             this.splitContainerControl1.Panel2.Controls.Add(this.UploadImageButton);
@@ -329,7 +343,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.validCheckBox);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1470, 634);
-            this.splitContainerControl1.SplitterPosition = 479;
+            this.splitContainerControl1.SplitterPosition = 446;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -340,7 +354,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ctrListSPGoc1.Location = new System.Drawing.Point(1, 1);
             this.ctrListSPGoc1.Name = "ctrListSPGoc1";
-            this.ctrListSPGoc1.Size = new System.Drawing.Size(479, 633);
+            this.ctrListSPGoc1.Size = new System.Drawing.Size(446, 633);
             this.ctrListSPGoc1.TabIndex = 5;
             this.ctrListSPGoc1.ProductIDChange += new QT.Moduls.Maps.ctrListSPGoc.ProductIDChangedEventHandler(this.ctrListSPGoc1_ProductIDChange);
             // 
@@ -361,9 +375,17 @@
             this.listClassificationBindingSource.DataMember = "ListClassification";
             this.listClassificationBindingSource.DataSource = this.dBPMan;
             // 
+            // addPositionTextEdit
+            // 
+            this.addPositionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.productBindingSource, "AddPosition", true));
+            this.addPositionTextEdit.Location = new System.Drawing.Point(645, 87);
+            this.addPositionTextEdit.Name = "addPositionTextEdit";
+            this.addPositionTextEdit.Size = new System.Drawing.Size(39, 20);
+            this.addPositionTextEdit.TabIndex = 28;
+            // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(391, 87);
+            this.labelControl1.Location = new System.Drawing.Point(319, 88);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(48, 13);
             this.labelControl1.TabIndex = 27;
@@ -372,14 +394,14 @@
             // imageUrlsTextEdit
             // 
             this.imageUrlsTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "ImageUrls", true));
-            this.imageUrlsTextEdit.Location = new System.Drawing.Point(458, 86);
+            this.imageUrlsTextEdit.Location = new System.Drawing.Point(386, 87);
             this.imageUrlsTextEdit.Name = "imageUrlsTextEdit";
             this.imageUrlsTextEdit.Size = new System.Drawing.Size(185, 20);
             this.imageUrlsTextEdit.TabIndex = 26;
             // 
             // UploadImageButton
             // 
-            this.UploadImageButton.Location = new System.Drawing.Point(270, 86);
+            this.UploadImageButton.Location = new System.Drawing.Point(238, 86);
             this.UploadImageButton.Name = "UploadImageButton";
             this.UploadImageButton.Size = new System.Drawing.Size(75, 20);
             this.UploadImageButton.TabIndex = 5;
@@ -396,7 +418,7 @@
             this.groupControl1.Controls.Add(this.spinEdit1);
             this.groupControl1.Controls.Add(label2);
             this.groupControl1.Controls.Add(this.btOpenWeb);
-            this.groupControl1.Location = new System.Drawing.Point(719, 0);
+            this.groupControl1.Location = new System.Drawing.Point(752, 0);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(217, 108);
             this.groupControl1.TabIndex = 25;
@@ -462,7 +484,7 @@
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.Location = new System.Drawing.Point(69, 86);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(121, 21);
+            this.cboStatus.Size = new System.Drawing.Size(98, 21);
             this.cboStatus.TabIndex = 24;
             this.cboStatus.ValueMember = "ID";
             // 
@@ -479,7 +501,7 @@
             this.xtraTabControl2.Location = new System.Drawing.Point(2, 114);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage6;
-            this.xtraTabControl2.Size = new System.Drawing.Size(969, 520);
+            this.xtraTabControl2.Size = new System.Drawing.Size(1002, 520);
             this.xtraTabControl2.TabIndex = 17;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
@@ -493,7 +515,7 @@
             // 
             this.xtraTabPage6.Controls.Add(this.ctrProductIdentity1);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(963, 492);
+            this.xtraTabPage6.Size = new System.Drawing.Size(996, 492);
             this.xtraTabPage6.Text = "Product Ananytic";
             // 
             // ctrProductIdentity1
@@ -501,7 +523,7 @@
             this.ctrProductIdentity1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrProductIdentity1.Location = new System.Drawing.Point(0, 0);
             this.ctrProductIdentity1.Name = "ctrProductIdentity1";
-            this.ctrProductIdentity1.Size = new System.Drawing.Size(963, 492);
+            this.ctrProductIdentity1.Size = new System.Drawing.Size(996, 492);
             this.ctrProductIdentity1.TabIndex = 0;
             this.ctrProductIdentity1.UpdateProductIdentityClick += new QT.Moduls.Maps.CtrProductIdentity.UpdateEventHandler(this.ctrProductIdentity1_UpdateProductIdentityClick);
             // 
@@ -802,7 +824,7 @@
             this.summaryTextBox.Multiline = true;
             this.summaryTextBox.Name = "summaryTextBox";
             this.summaryTextBox.ReadOnly = true;
-            this.summaryTextBox.Size = new System.Drawing.Size(643, 38);
+            this.summaryTextBox.Size = new System.Drawing.Size(676, 38);
             this.summaryTextBox.TabIndex = 23;
             // 
             // nameTextBox
@@ -813,14 +835,14 @@
             this.nameTextBox.Location = new System.Drawing.Point(69, 45);
             this.nameTextBox.Multiline = true;
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(643, 38);
+            this.nameTextBox.Size = new System.Drawing.Size(676, 38);
             this.nameTextBox.TabIndex = 9;
             this.nameTextBox.Leave += new System.EventHandler(this.nameTextBox_Leave);
             // 
             // validCheckBox
             // 
             this.validCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.productBindingSource, "Valid", true));
-            this.validCheckBox.Location = new System.Drawing.Point(245, 85);
+            this.validCheckBox.Location = new System.Drawing.Point(213, 85);
             this.validCheckBox.Name = "validCheckBox";
             this.validCheckBox.Size = new System.Drawing.Size(19, 24);
             this.validCheckBox.TabIndex = 15;
@@ -906,6 +928,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listClassificationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addPositionTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageUrlsTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
@@ -1000,5 +1023,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SimpleButton btnGetProductImage;
         private DevExpress.XtraEditors.SimpleButton btnExportExcel;
+        private DevExpress.XtraEditors.TextEdit addPositionTextEdit;
     }
 }

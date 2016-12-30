@@ -63,18 +63,6 @@ namespace WSS.ImageImbo.DownloadImageService
 
             _workerProduct = Common.Obj2Int(ConfigurationSettings.AppSettings["workerProduct"]);
             _workerCompany = Common.Obj2Int(ConfigurationSettings.AppSettings["workerCompany"]);
-
-
-            //6.12.2016
-            //Không phải gửi size và message thumb lên imboserver
-            //_widthHeightImages = new List<Tuple<int, int>>();
-            //var widthHeightImagesConfig = ConfigurationSettings.AppSettings["WithHeightImagesConfig"];
-            //var arrWidthHeightImages = widthHeightImagesConfig.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            //foreach (var item in arrWidthHeightImages)
-            //{
-            //    var wh = item.Split('x');
-            //    _widthHeightImages.Add(new Tuple<int, int>(Common.Obj2Int(wh[0]), Common.Obj2Int(wh[1])));
-            //}
         }
         protected sealed override void OnStart(string[] args)
         {
@@ -125,7 +113,7 @@ namespace WSS.ImageImbo.DownloadImageService
                     {
                         try
                         {
-                            DownloadImageProduct(ImageProductInfo.GetDataFromMessage(downloadImageJob.Data), producerUpdateImageIdSql);
+                            DownloadImageRootProduct(ImageProductInfo.GetDataFromMessage(downloadImageJob.Data), producerUpdateImageIdSql);
                         }
                         catch (Exception exception)
                         {
@@ -206,12 +194,25 @@ namespace WSS.ImageImbo.DownloadImageService
                         ImageProductInfo product = new ImageProductInfo();
                         product.Id = Common.Obj2Int64(productTable.Rows[i]["ID"]);
                         product.ImageUrls = productTable.Rows[i]["ImageUrls"].ToString();
-                        if (DownloadImageProduct(product, producerUpdateImageIdSql)) success++;
+                        if (idCompany == 6619858476258121218)
+                        {
+                            if (DownloadImageRootProduct(product, producerUpdateImageIdSql)) success++;
+                            else
+                            {
+                                fail++;
+                                listIdFail.Add(product.Id);
+                            }
+                        }
                         else
                         {
-                            fail++;
-                            listIdFail.Add(product.Id);
+                            if (DownloadImageProduct(product, producerUpdateImageIdSql)) success++;
+                            else
+                            {
+                                fail++;
+                                listIdFail.Add(product.Id);
+                            }
                         }
+                        
                     }
                     Log.Info(string.Format("CompanyId = {0} downloaded {1}/{2} image", idCompany, success, productTable.Count));
                     var end = DateTime.Now;
@@ -237,17 +238,45 @@ namespace WSS.ImageImbo.DownloadImageService
                 Log.Error(string.Format("CompanyId: ID = {0} ERROR: ", idCompany), exception);
             }
         }
-        private bool DownloadImageProduct(ImageProductInfo imageProductInfo, ProducerBasic producerUpdateImageIdSql, ProducerBasic producerThumbImage)
+        private bool DownloadImageProduct(ImageProductInfo imageProductInfo, ProducerBasic producerUpdateImageIdSql)
         {
             bool result = false;
             try
             {
-                var idImbo = Common.DownloadImageProductWithImboServer(imageProductInfo.ImageUrls, _publicKeyImbo, _privateKeyImbo, _userNameImbo, _hostImbo, _portImbo);
+                var idImbo = Common.DownloadImageProductWithImboServer(imageProductInfo.ImageUrls, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "wss", ConfigImbo.Host, ConfigImbo.Port);
                 if (!string.IsNullOrEmpty(idImbo))
                 {
                     UpdateImageIdSqlService(imageProductInfo.Id, idImbo, producerUpdateImageIdSql);
                     //ThumbImageService(imageProductInfo.Id, idImbo, producerThumbImage);
                     Log.Info(string.Format("Product: ID = {0} download image success!", imageProductInfo.Id));
+                    //InsertLogDownloadImageProduct(imageProductInfo.Id);
+                    result = true;
+                }
+                else
+                {
+                    imageProductInfo.ErrorMessage = "IDImbo = null";
+                    SendErrorDownloadImageToService(imageProductInfo);
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.Error(string.Format("Product: ID = {0}. ImageUrl: {1} . DetailUrl: {2}", imageProductInfo.Id, imageProductInfo.ImageUrls, imageProductInfo.DetailUrl), exception);
+                imageProductInfo.ErrorMessage = exception.ToString();
+                SendErrorDownloadImageToService(imageProductInfo);
+            }
+            return result;
+        }
+        private bool DownloadImageRootProduct(ImageProductInfo imageProductInfo, ProducerBasic producerUpdateImageIdSql)
+        {
+            bool result = false;
+            try
+            {
+                var idImbo = Common.DownloadImageProductWithImboServer(imageProductInfo.ImageUrls, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "root_product", ConfigImbo.Host, ConfigImbo.Port);
+                if (!string.IsNullOrEmpty(idImbo))
+                {
+                    UpdateImageIdSqlService(imageProductInfo.Id, idImbo, producerUpdateImageIdSql);
+                    //ThumbImageService(imageProductInfo.Id, idImbo, producerThumbImage);
+                    Log.Info(string.Format("RootProduct: ID = {0} download image success!", imageProductInfo.Id));
                     //InsertLogDownloadImageProduct(imageProductInfo.Id);
                     result = true;
                 }

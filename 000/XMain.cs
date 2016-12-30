@@ -3770,6 +3770,16 @@ order by ISNULL([LastJobCrawlerFindNew],'2010-10-10 10:10:10') ASC  --Ưu tiên 
             
         }
 
+        private void barButtonItem20_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var rowSelected = ctrListWebSite1.GetIDCompanyCurrent;
+            if (rowSelected > 0)
+            {
+                FrmConfigCrawlHotProduct frm = new FrmConfigCrawlHotProduct(rowSelected);
+                frm.Show();
+            }
+        }
+
 
 
 

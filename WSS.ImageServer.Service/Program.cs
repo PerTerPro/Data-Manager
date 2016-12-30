@@ -10,8 +10,7 @@ namespace WSS.ImageServer.Service
 {
     class Program
     {
-        static void Main(string[] args)
-        {
+        static void Main(string[] args){
             try
             {
                 //args = new[] {"-cmd UdpImgIdToSql"};
@@ -22,7 +21,7 @@ namespace WSS.ImageServer.Service
                 //args = new[] { "-cmd UdpImgIdToSql" };
 
                 //args = new[] { "-cmd PushUpImboReview" };
-                //args = new[] { "-cmd HanlderTransferImgNew1" };
+                args = new[] { "-cmd FixRootProduct" };
 
 
                 //string s = ImboImageService.PushFromFile(ConfigImbo.PublicKey, "123websosanh@195",
@@ -57,14 +56,31 @@ namespace WSS.ImageServer.Service
                         h.TransferData();
                         Thread.Sleep(6000000);
                     }
-                  
                 }
                 else if (pt.Cmd == "PushUpImboReview")
                 {
                     HandlerNewPublisher h = new HandlerNewPublisher();
                     h.RePushJob();
                 }
-
+                else if (pt.Cmd == "PushFixRootProduct")
+                {
+                    HandlerTransRootProduct h = new HandlerTransRootProduct();
+                    h.PushFixRootProduct();
+                }
+                else if (pt.Cmd == "FixRootProduct")
+                {
+                    Console.WriteLine("Input number thread:");
+                    int iThread = Convert.ToInt32(Console.ReadLine());
+                    for (int i = 0; i < iThread; i++)
+                    {
+                        Task.Factory.StartNew(() =>
+                        {
+                            WorkerFixDownloadRootProduct h = new WorkerFixDownloadRootProduct();
+                            h.StartConsume();
+                        });
+                    }
+                    Thread.Sleep(100000000);
+                }
                 else if (pt.Cmd == "PushRootProductWaitTrans")
                 {
                     HandlerTransRootProduct h = new HandlerTransRootProduct();

@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Cassandra;
 using log4net;
+using QT.Moduls;
 
 namespace WSS.Crl.ProducProperties.Core
 {
@@ -72,24 +73,26 @@ namespace WSS.Crl.ProducProperties.Core
         {
             try
             {
-                PreparedStatement ps = _session.Prepare("select html, url from html where id = ?");
-                var statement = ps.Bind(id);
-                RowSet r = _session.Execute(statement);
+                RowSet r = _session.Execute(string.Format("select html, url from html where id = {0}", id));
                 var row = r.GetRows().ElementAt(0);
                 return new Tuple<string, string>(row.GetValue(typeof (string), "url").ToString(),
                     row.GetValue(typeof (string), "html").ToString());
             }
-            catch (Exception ex1)
+            catch (ArgumentOutOfRangeException ex01)
             {
                 return null;
             }
-
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                return null;
+            }
         }
 
         public void SaveHtml(long id, string html, string url, string domain)
         {
             PreparedStatement ps = _session.Prepare("insert into html (id, html, url, domain) values (?, ?, ?, ?)");
-            var statement = ps.Bind(id, html, url, domain);
+            var statement = ps.Bind(id, QT.Entities.UtilZipFile.ZipWithEndcode(html), url, domain);
             _session.Execute(statement);
             PreparedStatement ps1 = _session.Prepare("insert into html_id (id, domain, url) values (?, ?, ?)");
             var statement1 = ps1.Bind(id, domain, url);

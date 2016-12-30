@@ -432,7 +432,7 @@ namespace QT.Moduls.Company
             {
                 try
                 {
-                    _jobClientDownloadImage.PublishJob(job, _updateProductToWebJobExpirationMs);
+                    _jobClientDownloadImage.PublishJob(job);
                     Log.InfoFormat("Published Message Company DownloadImage: {0} to RabbitMQServer {1}", companyID, _rabbitMqServerName);
                     return true;
                 }

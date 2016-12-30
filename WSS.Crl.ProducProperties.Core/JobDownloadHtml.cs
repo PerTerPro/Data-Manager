@@ -23,6 +23,6 @@ namespace WSS.Crl.ProducProperties.Core
 
         public string DetailUrl { get; set; }
 
-        public object Domain { get; set; }
+        public string Domain { get; set; }
     }
 }

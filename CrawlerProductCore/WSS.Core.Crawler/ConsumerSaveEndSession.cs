@@ -23,7 +23,7 @@ namespace WSS.Core.Crawler
     {
         private ILog _log = LogManager.GetLogger(typeof(ConsumerProductChangeToSql));
         private readonly ProductAdapter _productAdapter = null;
-        private ProducerBasic _producerNoValidTotalProduct = null;
+        private readonly ProducerBasic _producerNoValidTotalProduct = null;
 
         public ConsumerSaveEndSession(string queueName)
             : base(RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqCrawler), queueName, false)
@@ -40,8 +40,8 @@ namespace WSS.Core.Crawler
         public override void ProcessMessage(BasicDeliverEventArgs message)
         {
             var crawlerSession = CrawlerSessionLog.GetFromJson(message.Body);
-            bool bOK = _productAdapter.UpdateEndCrawl(crawlerSession);
-            _log.InfoFormat("Company: {0} UpdateOK: {1} ", crawlerSession.CompanyId, bOK);
+            bool bOk = _productAdapter.UpdateEndCrawl(crawlerSession);
+            _log.InfoFormat("Company: {0} UpdateOK: {1} ", crawlerSession.CompanyId, bOk);
             NotifyValidatedProduct(crawlerSession.CompanyId);
             GetChannel().BasicAck(message.DeliveryTag, true);
         }

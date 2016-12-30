@@ -77,15 +77,15 @@ namespace WSS.Core.Crawler
             _log.InfoFormat("ss: {0} Start crawler for c: {1}", _session, _companyId);
             if (Init())
             {
-                RunReportRunning();
                 UpdateLastCrawler();
+                RunReportRunning();
                 Crawl();
             }
         }
 
         private void UpdateLastCrawler()
         {
-            this.sqlDb.RunQuery(string.Format("update Company Set LastCrawlerReload = GetDate(), LastEndCrawlerReload = NULL Where Id = {0}", this._companyId), CommandType.Text, null);
+            bool bOk =  this.sqlDb.RunQuery(string.Format("update Company Set LastCrawlerReload = GetDate(), LastEndCrawlerReload = NULL Where Id = {0}", this._companyId), CommandType.Text, null);
         }
 
         private void RunReportRunning()
@@ -112,8 +112,7 @@ namespace WSS.Core.Crawler
                     if (producerReportSessionRunning != null) producerReportSessionRunning.Dispose();
                     return;
                 }
-                catch (Exception ex01)
-                {
+                catch (Exception ex01){
                     _producerReportError.PublishString(Newtonsoft.Json.JsonConvert.SerializeObject(new ErrorCrawler() { CompanyId = _companyId, ProductId = 0, TimeError = DateTime.Now, Message = ex01.Message + "\n" + ex01.StackTrace, Url = "" }), true, 0);
                 }
             }, tokenReportSession);
@@ -148,8 +147,7 @@ namespace WSS.Core.Crawler
                         ProcessJob(jobReload);
                         if (_linksQueue.Count == 0)
                         {
-                            LoadQueue();
-                        }
+                            LoadQueue();}
                     }
                 }
             }
@@ -390,6 +388,27 @@ namespace WSS.Core.Crawler
             catch (Exception ex)
             {
                 _log.Error(ex);
+
+                if (_producerEndCrawler != null)
+                {
+                    _producerEndCrawler.PublishString(new CrawlerSessionLog()
+                    {
+                        CompanyId = _companyId,
+                        CountChange = 0,
+                        CountProduct = 0,
+                        CountVisited = 0,
+                        Domain = "",
+                        EndAt =DateTime.Now,
+                        Ip = Server.IPHost,
+                        NumberDuplicateProduct = 0,
+                        Session = this._session,
+                        StartAt = this._timeStart,
+                        TotalProduct = 0,TypeCrawler = 0,
+                        TypeEnd = "Error Init",
+                        TypeRun = "Auto"
+                    }.ToJson());
+                }
+
                 string mss =
                     Newtonsoft.Json.JsonConvert.SerializeObject(new ErrorCrawler() {CompanyId = _companyId, ProductId = 0, TimeError = DateTime.Now, Message = "Init" + ex.Message + ex.StackTrace});
                 _producerReportError.PublishString(mss, true, 20);
