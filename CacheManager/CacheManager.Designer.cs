@@ -111,6 +111,7 @@
             this.simpleButtonBuildProductHash = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonBuildRootProductPriceLog = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPageTest = new DevExpress.XtraTab.XtraTabPage();
+            this.buttonGetAllOnlineFridayProductName = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonTestGetNameLength = new DevExpress.XtraEditors.SimpleButton();
             this.textEditIDMerchantToTestNameLength = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonScanCGDProducts = new DevExpress.XtraEditors.SimpleButton();
@@ -121,7 +122,7 @@
             this.textEditDetectionResult = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonDetectRootProduct = new DevExpress.XtraEditors.SimpleButton();
             this.textEditProductName = new DevExpress.XtraEditors.TextEdit();
-            this.buttonGetAllOnlineFridayProductName = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonFixRootProductUrl = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMain)).BeginInit();
             this.xtraTabControlMain.SuspendLayout();
             this.xtraTabPageProductIdentity.SuspendLayout();
@@ -1003,6 +1004,7 @@
             // 
             // xtraTabPageTest
             // 
+            this.xtraTabPageTest.Controls.Add(this.simpleButtonFixRootProductUrl);
             this.xtraTabPageTest.Controls.Add(this.buttonGetAllOnlineFridayProductName);
             this.xtraTabPageTest.Controls.Add(this.simpleButtonTestGetNameLength);
             this.xtraTabPageTest.Controls.Add(this.textEditIDMerchantToTestNameLength);
@@ -1017,6 +1019,15 @@
             this.xtraTabPageTest.Name = "xtraTabPageTest";
             this.xtraTabPageTest.Size = new System.Drawing.Size(897, 398);
             this.xtraTabPageTest.Text = "Test";
+            // 
+            // buttonGetAllOnlineFridayProductName
+            // 
+            this.buttonGetAllOnlineFridayProductName.Location = new System.Drawing.Point(595, 68);
+            this.buttonGetAllOnlineFridayProductName.Name = "buttonGetAllOnlineFridayProductName";
+            this.buttonGetAllOnlineFridayProductName.Size = new System.Drawing.Size(204, 23);
+            this.buttonGetAllOnlineFridayProductName.TabIndex = 24;
+            this.buttonGetAllOnlineFridayProductName.Text = "Get All OnlineFriday ProductName";
+            this.buttonGetAllOnlineFridayProductName.Click += new System.EventHandler(this.buttonGetAllOnlineFridayProductName_Click);
             // 
             // simpleButtonTestGetNameLength
             // 
@@ -1100,14 +1111,14 @@
             this.textEditProductName.Size = new System.Drawing.Size(337, 20);
             this.textEditProductName.TabIndex = 0;
             // 
-            // buttonGetAllOnlineFridayProductName
+            // simpleButtonFixRootProductUrl
             // 
-            this.buttonGetAllOnlineFridayProductName.Location = new System.Drawing.Point(595, 68);
-            this.buttonGetAllOnlineFridayProductName.Name = "buttonGetAllOnlineFridayProductName";
-            this.buttonGetAllOnlineFridayProductName.Size = new System.Drawing.Size(204, 23);
-            this.buttonGetAllOnlineFridayProductName.TabIndex = 24;
-            this.buttonGetAllOnlineFridayProductName.Text = "Get All OnlineFriday ProductName";
-            this.buttonGetAllOnlineFridayProductName.Click += new System.EventHandler(this.buttonGetAllOnlineFridayProductName_Click);
+            this.simpleButtonFixRootProductUrl.Location = new System.Drawing.Point(724, 182);
+            this.simpleButtonFixRootProductUrl.Name = "simpleButtonFixRootProductUrl";
+            this.simpleButtonFixRootProductUrl.Size = new System.Drawing.Size(118, 59);
+            this.simpleButtonFixRootProductUrl.TabIndex = 25;
+            this.simpleButtonFixRootProductUrl.Text = "Fix RootProduct  Url";
+            this.simpleButtonFixRootProductUrl.Click += new System.EventHandler(this.simpleButtonFixRootProductUrl_Click);
             // 
             // formCacheManager
             // 
@@ -1280,6 +1291,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButtonTestGetNameLength;
         private DevExpress.XtraEditors.TextEdit textEditIDMerchantToTestNameLength;
         private DevExpress.XtraEditors.SimpleButton buttonGetAllOnlineFridayProductName;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonFixRootProductUrl;
     }
 }
 

@@ -1185,6 +1185,47 @@ namespace CacheManager
             });
         }
 
+        private void simpleButtonFixRootProductUrl_Click(object sender, EventArgs e)
+        {
+            
+            
+            Task.Run(() =>
+            {
+                if (ProductNameHashTool.ProductIdentitiesDict == null)
+                    ProductNameHashTool.BuildProductIdentitiesDict(_productConnectionString);
+                var rootProductSummaryDataAccess = new RootProductSummaryDataAccess(_productConnectionString);
+                var productSummaryList = rootProductSummaryDataAccess.GetProductsWhichSummaryNotEqualName();
+                int count = 0;
+                int nothaveRootProductCount = 0;
+                int obsolatedProductCount = 0;
+                foreach (var productSummary in productSummaryList)
+                {
+                    var rootProduct = WebRootProductBAL.GetWebRootProductFromCache(productSummary.ID);
+                    if (rootProduct == null)
+                    {
+                        nothaveRootProductCount ++;
+                        continue;
+                    }
+                    if(rootProduct.NumProduct == 0)
+                    {
+                        obsolatedProductCount++;
+                        continue;
+                    }
+                    long rootID = ProductNameHashTool.IdentifyProduct(productSummary.Summary, rootProduct.Price);
+                    if (rootID == productSummary.ID)
+                        continue;
+                    var coverRatio = ProductNameAnalyser.MeasureNameCoverRatioForSummary(rootProduct.Name, productSummary.Summary);
+                    if (coverRatio >= 0.3)
+                        continue;
+                    count ++;
+                    rootProductSummaryDataAccess.UpdateProductSummaryByName(productSummary.ID);
+                    Logger.DebugFormat("Name: {0} | Summary: {1} | Ratio: {2:0.00}", rootProduct.Name, productSummary.Summary,coverRatio);
+                }
+                Logger.InfoFormat("Number product Url need to fix: {0}.",  count);
+                Logger.InfoFormat("Number product not have RootMapping: {0}.", nothaveRootProductCount);
+            });
+        }
+
 
 
 
