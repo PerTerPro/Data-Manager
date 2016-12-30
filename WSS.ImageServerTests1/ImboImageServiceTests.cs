@@ -34,7 +34,7 @@ namespace ImboForm.Tests
             DateTime dtStart = DateTime.Now;
             for (int i = 0; i < 10000; i++)
             {
-                string imgId = ImboImageService.PushFromFile("wss", "123websosanh@195", @"C:\Image\y\yes24_vn\nuo\nuoc-hoa-nu-ines-de-la-fressange-eau-de-parfum-100ml-vang_6619017604755523100.jpg",
+                string imgId = ImboImageService.PushFromFile("wss_write", "123websosanh@195", @"C:\Image\y\yes24_vn\nuo\nuoc-hoa-nu-ines-de-la-fressange-eau-de-parfum-100ml-vang_6619017604755523100.jpg",
                     "landingpage", ConfigImbo.Host, ConfigImbo.Port);
 
                 if (i % 100 == 0)
