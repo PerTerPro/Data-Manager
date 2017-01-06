@@ -19,6 +19,7 @@ using QT.Moduls.CrawlerProduct.RabbitMQ;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Framing;
 using Websosanh.Core.JobServer;
+using UtilZipFile = QT.Moduls.UtilZipFile;
 
 namespace WSS.Core.Crawler
 {

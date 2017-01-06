@@ -24,7 +24,7 @@ namespace WSS.Crawler.Product.Report
         private void btnExport_Click(object sender, EventArgs e)
         {
             this.UpdateData();
-           
+
         }
 
         private void UpdateData()
@@ -36,14 +36,15 @@ namespace WSS.Crawler.Product.Report
                     btnExport.Visible = false;
                 }));
 
-                    int countCompany = 0;
-                    ProductAdapter productAdapter = new ProductAdapter(new SqlDb(Server.ConnectionString));
+                int countCompany = 0;
+                ProductAdapter productAdapter = new ProductAdapter(new SqlDb(Server.ConnectionString));
                 foreach (long companyID in productAdapter.GetAllCompanyId())
                 {
                     while (true)
                     {
                         try
-                        {countCompany++;
+                        {
+                            countCompany++;
                             int ClassificationID = 0;
                             int Warranty = 0;
                             int Status = 0;
@@ -97,28 +98,28 @@ namespace WSS.Crawler.Product.Report
                             ShowLog(exp.Message + exp.StackTrace);
                             Thread.Sleep(1000);
                         }
-                       
+
                     }
 
                 }
 
                 this.Invoke(new Action(() =>
-                    {
-                        btnExport.Visible = true;
-                       
-                    }));
-                });
+                {
+                    btnExport.Visible = true;
+
+                }));
+            });
 
 
 
         }
 
-        private void ShowLog (string log)
+        private void ShowLog(string log)
         {
             this.Invoke(new Action(() =>
-                {
-                    this.richTextBox1.AppendText("\r\n" + log);
-                }));
+            {
+                this.richTextBox1.AppendText("\r\n" + log);
+            }));
         }
     }
 }

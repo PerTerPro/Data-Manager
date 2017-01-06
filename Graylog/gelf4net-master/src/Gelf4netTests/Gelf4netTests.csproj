@@ -70,9 +70,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\gelf4net\gelf4net.csproj">
+    <ProjectReference Include="..\Gelf4net\Gelf4net.csproj">
       <Project>{21601568-D8AD-433F-998D-1500A27F3FBD}</Project>
-      <Name>gelf4net</Name>
+      <Name>Gelf4net</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
 </Project>

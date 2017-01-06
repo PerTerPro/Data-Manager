@@ -1,10 +1,5 @@
 ﻿[{
 	"PathApp" : "001",
 	"FileRun" : "WSS.CrawlerProduct.Run.exe",
-	"Runner" : "172.22.1.73_001"
-},
-{
-	"PathApp" : "002",
-	"FileRun" : "WSS.CrawlerProduct.Run.exe",
-	"Runner" : "172.22.1.73_002"
+	"Runner" : "192.168.100.12"
 }]

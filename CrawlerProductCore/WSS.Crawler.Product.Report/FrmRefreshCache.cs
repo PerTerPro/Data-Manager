@@ -28,8 +28,7 @@ namespace WSS.Crawler.Product.Report
             this._CompanyID = CompanyID;
         }
         private void FrmRefreshCache_Load(object sender, EventArgs e)
-        {
-            Thread Start = new Thread(() => ResetCacheProduct(_CompanyID));
+        {Thread Start = new Thread(() => ResetCacheProduct(_CompanyID));
             Start.Start();
         }
 

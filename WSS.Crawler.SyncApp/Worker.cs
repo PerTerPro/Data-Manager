@@ -9,64 +9,80 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;using QT.Moduls.CrawlerProduct.Cache;
+using System.Threading.Tasks;
+using QT.Moduls.CrawlerProduct;
+using QT.Moduls.CrawlerProduct.Cache;
 using WSS.Core.Crawler;
 
 namespace WSS.Crawler.SyncApp
 {
     internal class Worker
     {
-        private log4net.ILog log = log4net.LogManager.GetLogger(typeof (Worker));
+        private log4net.ILog log = log4net.LogManager.GetLogger(typeof(Worker));
 
         public void Start()
         {
-
             List<Tuple<string, string>> lstRun = new List<Tuple<string, string>>();
 
             while (true)
             {
                 try
                 {
+                    var redisVersion = RedisVersionAutoCrawler.Instance();
                     SettingRun[] settingRuns = this.GetSettingRun();
-                    foreach (var settingRun in settingRuns)
+                    string localVersion = redisVersion.GetVersion(settingRuns[0].Runner);
+                    var cacheVersion = redisVersion.GetCurrentVersion();
+
+                    if (cacheVersion.Version == "0")
                     {
-                        DirectoryInfo di = Directory.CreateDirectory(settingRun.PathApp);
-                        DirectoryInfo dir1 = Directory.CreateDirectory("Temp");
-
-                        string fileName = DateTime.Now.ToString("yyyyMMddHHmmss.ZIP");
-                        var redisVersion = RedisVersionAutoCrawler.Instance();
-                        string localVersion = redisVersion.GetVersion(settingRun.Runner);
-                        var cacheVersion = redisVersion.GetCurrentVersion();
-                        log.Info(string.Format("CurrentVersion:{0} NewVersion:{1}", localVersion, cacheVersion.Version));
-                        if (cacheVersion.Version == "0")
+                        log.Info("Only stop app running");
+                        StopApp(settingRuns[0].FileRun);
+                    }
+                    else if (localVersion == cacheVersion.Version)
+                    {
+                        log.Info("Not change version. Wait next");
+                    }
+                    else
+                    {
+                        try
                         {
-                            StopApp(settingRun.FileRun);
-                        }
-                        else if (localVersion != cacheVersion.Version)
-                        {
-                            log.Info("Stop current running!");StopApp(settingRun.FileRun);
+                            log.Info("Start run syn new version");
                             log.Info(string.Format("Download new verrsion to temp file"));
-                            DownloadFile(cacheVersion.Url, @"Temp/" + fileName);
-                            log.Info("Extraction version to path");
-                            ExtractionFile(@"Temp\" + fileName, settingRun.PathApp);
-                            log.Info("Run app");
-                            var f = settingRun.PathApp + @"\" + settingRun.FileRun;
-                            string paraAtRedis = (new RedisParameterCrlAdapter()).GetParaOfRuner(settingRun.Runner);
-                            lstRun.Add(new Tuple<string, string>(f, paraAtRedis));
+                            string fileVersionDownload = DateTime.Now.ToString("yyyyMMddHHmmss.ZIP");
+                            DownloadFile(cacheVersion.Url, @"Temp/" + fileVersionDownload);
+
+                            settingRuns = (new RedisParameterCrlAdapter()).GetSettingRun(settingRuns[0].Runner);
+                            log.Info("Stop current running!");
+                            StopApp(settingRuns[0].FileRun);
+
+                            foreach (var settingRun in settingRuns)
+                            {
+                                DirectoryInfo di = Directory.CreateDirectory(settingRun.PathApp);
+                                DirectoryInfo dir1 = Directory.CreateDirectory("Temp");
+
+
+                                log.Info("Extraction version to path");
+                                ExtractionFile(@"Temp\" + fileVersionDownload, settingRun.PathApp);
+                                log.Info("Run app");
+                                var f = settingRun.PathApp + @"\" + settingRun.FileRun;
+                                string paraAtRedis = settingRun.Parameter;
+                                lstRun.Add(new Tuple<string, string>(f, paraAtRedis));
+
+                                redisVersion.SetVersion(settingRun.Runner, cacheVersion.Version);
+                            }
+                            foreach (var VARIABLE in lstRun)
+                            {
+                                Process p = Process.Start(VARIABLE.Item1, VARIABLE.Item2);
+                            }
+
+                            lstRun.Clear();
                         }
-                        else
+                        catch (Exception ex1)
                         {
-                            log.Info("Not change version. Sleep 1s");
+                            log.Error(ex1);
                         }
-                        redisVersion.SetVersion(settingRun.Runner, cacheVersion.Version);
                     }
-
-                    foreach (var VARIABLE in lstRun)
-                    {Process p = Process.Start(VARIABLE.Item1, VARIABLE.Item2);
-                    }
-                    lstRun.Clear();
-
-                    Thread.Sleep(1000*60);
+                    Thread.Sleep(1000 * 60);
                 }
                 catch (Exception ex)
                 {
@@ -75,10 +91,9 @@ namespace WSS.Crawler.SyncApp
                 }
             }
 
-
         }
 
-    private string GetVersionCurrent(string pathApp)
+        private string GetVersionCurrent(string pathApp)
         {
             if (!File.Exists(pathApp)) return "";
             else return Convert.ToString(File.ReadAllText(pathApp + @"\Version.txt"));
@@ -86,7 +101,7 @@ namespace WSS.Crawler.SyncApp
 
         private SettingRun[] GetSettingRun()
         {
-            return  SettingRun.GetArFromJson(File.ReadAllText("SettingRun.txt"));
+            return SettingRun.GetArFromJson(File.ReadAllText("SettingRun.txt"));
         }
         private void StopApp(string nameApp)
         {
@@ -116,7 +131,7 @@ namespace WSS.Crawler.SyncApp
             log.Info("OK");
         }
 
-        public void DownloadFile (string url, string fileName)
+        public void DownloadFile(string url, string fileName)
         {
             using (WebClient myWebClient = new WebClient())
             {
@@ -143,5 +158,5 @@ namespace WSS.Crawler.SyncApp
         }
     }
 
-    
+
 }

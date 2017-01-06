@@ -180,6 +180,7 @@
     <Compile Include="RedisParameterCrlAdapter.cs" />
     <Compile Include="RunnerFindNew.cs" />
     <Compile Include="RunnerPusCompanyCrawler.cs" />
+    <Compile Include="SettingRun.cs" />
     <Compile Include="SqlMutilThread.cs" />
     <Compile Include="TypeEnd.cs" />
     <Compile Include="UtilCrawler.cs" />

@@ -71,6 +71,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="CrawlerProduct\Cache\CacheProductHashTests.cs" />
     <Compile Include="CrawlerProduct\ProductAdapterTests.cs" />
     <Compile Include="CrawlerProduct\Service\WorkerChangePriceToHistoryPriceSqlUiTests.cs" />
     <Compile Include="CrawlerProduct\WorkerCrawlerHotProductTests.cs" />

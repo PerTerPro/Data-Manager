@@ -58,10 +58,11 @@ namespace QT.Moduls.CrawlerProduct
         {
             try
             {
+                if (pt.ID == 0) pt.ID = Common.GetIDProduct(detailUrl);
                 pt.CompanyId = conf.CompanyID;
                 pt.Domain = domain;
                 pt.DetailUrl = detailUrl;
-                pt.ID = Common.GetIDProduct(detailUrl);
+       
                 pt.Name = ParseName(doc, conf.ProductNameXPath);
                 pt.HashName = Common.GetHashNameProduct(domain, pt.Name);
                 pt.ShortDescription = ParseShortDescription(doc, conf.ShortDescriptionXPath);

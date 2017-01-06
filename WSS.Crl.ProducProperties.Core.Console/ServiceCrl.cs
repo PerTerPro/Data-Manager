@@ -18,6 +18,7 @@ namespace WSS.Crl.ProducProperties.Service
         {
             SqlDb sql = new SqlDb(ConfigStatic.ProductConnection);
             ProductAdapter productAdapter = new ProductAdapter(sql);
+
             foreach (var domain in domains)
             {
                 ProducerBasic producerBasic = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigStatic.KeyRabbitMqCrlProductProperties),

@@ -20,10 +20,30 @@ namespace WSS.Core.Crawler
 
         public void SetParaOfRuner(string computer, string value)
         {
-             db.HashSet("para", computer, value);
-            
+            db.HashSet("para", computer, value);
+
         }
 
 
+
+        public SettingRun[] GetSettingRun(string p)
+        {
+            var settingRuns = new List<SettingRun>();
+            foreach (var a in db.HashScan("para", p + "*", 10, 0))
+            {
+                string name = a.Name;
+                string folder = name.Replace(p, "");
+
+                settingRuns.Add(new SettingRun()
+                {
+                    FileRun = "WSS.CrawlerProduct.Run.exe",
+                    Parameter = a.Value,
+                    PathApp = folder,
+                    Runner = p,
+                    VersionCurrent = ""
+                });
+            }
+            return settingRuns.ToArray();
+        }
     }
 }

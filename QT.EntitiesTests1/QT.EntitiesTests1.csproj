@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CommonTests.cs" />
+    <Compile Include="ServerTests.cs" />
     <Compile Include="UtilZipFileTests.cs" />
     <Content Include="DataTest\Common_RemoveCommentXML.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

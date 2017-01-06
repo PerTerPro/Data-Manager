@@ -412,7 +412,8 @@ namespace QT.Moduls.CrawlerProduct.Cache
                 {
                     foreach (var item in this._database.HashGet("c:" + companyId, arrayKey.ToArray()))
                     {
-                        lst.Add(ProductHash.FromJSON(item.ToString()));
+                        var product = ProductHash.FromJSON(item.ToString());
+                        lst.Add(product);
                     }
                 }
                 catch (Exception ex01)
