@@ -11,8 +11,9 @@ namespace WSS.Crawler.SyncApp
     {
         static void Main()
         {
-            log4net.Config.XmlConfigurator.Configure(new FileInfo("log4net.config")); 
+            log4net.Config.XmlConfigurator.Configure(new FileInfo("log4net.config"));
             var w = new Worker();
             w.Start();
-        }}
+        }
+    }
 }

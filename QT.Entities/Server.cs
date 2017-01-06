@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 using System.Net;
+using log4net;
 
 namespace QT.Entities
 {
     public static class Server
     {
 
+        public static ILog log = LogManager.GetLogger(typeof (Server));
         public const String ConnectionStringVatGia = "Data Source=118.70.205.94,8888;Initial Catalog=PriceComparision;User ID=sa;Password=Qtsa2008R2;connection timeout=300000";
         //public const String ConnectionStringCrawler = "Data Source=118.70.205.94,8888;Initial Catalog=QTCrawler;User ID=sa;Password=Qtsa2008R2;connection timeout=300000";
 
@@ -315,18 +317,14 @@ namespace QT.Entities
         {
             get
             {
-                if (strIPHost=="")
+                try
                 {
-                    List<string> lstIP = new List<string>();
-                    foreach (var item in Dns.GetHostAddresses(Dns.GetHostName()))
-                    {
-                        string ip = item.MapToIPv4().ToString();
-                        if (!ip.StartsWith("0.0."))
-                        {
-                            lstIP.Add(ip);
-                        }
-                    }
-                    strIPHost = string.Join(";", lstIP);
+                    return Dns.GetHostName();
+                }
+                catch (Exception ex)
+                {
+                    log.Warn(ex);
+                    return "";
                 }
                 return strIPHost;
             }

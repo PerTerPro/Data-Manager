@@ -17,17 +17,18 @@ using QT.Moduls.CrawlerProduct.Cache;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Framing;
 using Websosanh.Core.Drivers.RabbitMQ;
-using Configuration = QT.Entities.Configuration;using HtmlDocument = GABIZ.Base.HtmlAgilityPack.HtmlDocument;
+using Configuration = QT.Entities.Configuration;
+using HtmlDocument = GABIZ.Base.HtmlAgilityPack.HtmlDocument;
 using QT.Moduls.CrawlerProduct;
 
 namespace WSS.Core.Crawler
 {
-    public class WorkerFindNew : IWorker,IDisposable
+    public class WorkerFindNew : IWorker, IDisposable
     {
         private SqlDb sqldb = new SqlDb(ConfigCrawler.ConnectProduct);
         public DelegateReportRun EventReportRun = null;
         private readonly IDownloadHtml htmDownloader = new DownloadHtmlCrawler();
-    
+
         private const int MaxLengthUrl = 500;
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(WorkerFindNew));
         private List<string> _detailLinkRegexs = null;
@@ -36,7 +37,7 @@ namespace WSS.Core.Crawler
 
         private Queue<JobFindNew> _linkQueue = null;
         private HashSet<long> _hsDuplicateProduct = null;
-        
+
         private TypeEnd _typeEnd = TypeEnd.None;
         private HashSet<long> _visitedCrc;
         private HashSet<long> _crcProductOldGroup;
@@ -52,7 +53,7 @@ namespace WSS.Core.Crawler
 
         private int _countVisited = 0;
         private int _countNewProduct = 0;
-        private readonly long _companyId = 0;private Uri _rootUri = null;
+        private readonly long _companyId = 0; private Uri _rootUri = null;
         private Configuration _config = null;
         private Company _company = null;
         private CancellationToken _tokenCrawler = new CancellationToken();
@@ -62,7 +63,7 @@ namespace WSS.Core.Crawler
         private ProducerBasic _producerReportError = null;
         private ProducerBasic _producerProductChange = null;
         private ProducerBasic _producerDuplicateProduct = null;
-        private ProducerBasic _producerEndCrawler = null;private ProducerBasic _producerVisitedLinkFindNew = null;
+        private ProducerBasic _producerEndCrawler = null; private ProducerBasic _producerVisitedLinkFindNew = null;
 
         private readonly string _nameThread;
         private readonly CancellationTokenSource _tokenSource = new CancellationTokenSource();
@@ -73,7 +74,7 @@ namespace WSS.Core.Crawler
         {
             _companyId = companyId;
             _nameThread = nameThread;
-     
+
         }
 
         private void LoadCrcOldProduct()
@@ -101,7 +102,7 @@ namespace WSS.Core.Crawler
             var tokenReport = _tokenSource.Token;
             Task.Factory.StartNew(() =>
             {
-                ProducerBasic producerReportSessionRunning=null;
+                ProducerBasic producerReportSessionRunning = null;
                 try
                 {
                     producerReportSessionRunning = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), ConfigCrawler.ExchangeSessionRunning, ConfigCrawler.RoutingkeySessionRunning);
@@ -112,7 +113,7 @@ namespace WSS.Core.Crawler
                             {
                                 Thread = _nameThread,
                                 CompanyId = _companyId,
-                                Ip = Server.IPHost,
+                                Ip = Dns.GetHostName(),
                                 Session = _session,
                                 StartAt = _timeStart,
                                 Type = "FindNew",
@@ -133,11 +134,12 @@ namespace WSS.Core.Crawler
                 {
                     // ignored
                 }
-            }, tokenReport);}
+            }, tokenReport);
+        }
 
         public void StartCrawler(List<string> linksStart)
         {
-            this._linksStart = linksStart;StartCrawler();
+            this._linksStart = linksStart; StartCrawler();
         }
 
         public void StartCrawler()
@@ -196,9 +198,11 @@ namespace WSS.Core.Crawler
                         CompanyId = _companyId,
                         ProductId = 0,
                         TimeError = DateTime.Now,
-                        Message = ex01.Message + "\n" + ex01.StackTrace,Url = ""
+                        Message = ex01.Message + "\n" + ex01.StackTrace,
+                        Url = ""
                     }), true, 0);
-            }}
+            }
+        }
 
         private void UpdateLastStart()
         {
@@ -208,19 +212,22 @@ namespace WSS.Core.Crawler
 
         private void ProcessLink(JobFindNew jobCrawl, string html)
         {
-           
+
             var doc = new HtmlDocument();
             doc.LoadHtml(html);
             if (IsDetailUrl(jobCrawl.Url))
                 Analysic(jobCrawl, doc);
             Extraction(doc, jobCrawl);
-        }private bool CheckEnd()
+        }
+        private bool CheckEnd()
         {
-            if (_tokenCrawler.IsCancellationRequested){
+            if (_tokenCrawler.IsCancellationRequested)
+            {
                 _typeEnd = TypeEnd.Immediate;
                 return true;
             }
-            else if (_linkQueue.Count == 0){
+            else if (_linkQueue.Count == 0)
+            {
                 _typeEnd = TypeEnd.Success;
                 return true;
             }
@@ -245,15 +252,17 @@ namespace WSS.Core.Crawler
                 ParentId = 0
             });
         }
-        private void Extraction(HtmlDocument doc, JobFindNew job){
+        private void Extraction(HtmlDocument doc, JobFindNew job)
+        {
             var countLinkAdds = 0;
             var countLinks = 0;
 
-            if (job.Deep > _config.MaxDeep){
+            if (job.Deep > _config.MaxDeep)
+            {
                 _log.Info("Over dee. Not extraction");
                 return;
             }
-            else if ( _visitedCrc.Count > _config.MaxLinksFindNew)
+            else if (_visitedCrc.Count > _config.MaxLinksFindNew)
             {
                 _log.Info("Over max link crc. Not extraction");
                 return;
@@ -307,7 +316,7 @@ namespace WSS.Core.Crawler
             return str;
         }
 
-   
+
 
         private bool IsExistsProduct(long productID)
         {
@@ -330,10 +339,11 @@ namespace WSS.Core.Crawler
                 }
                 return html;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _log.Error(ex);
-                return "";}
+                return "";
+            }
         }
 
         private bool IsNoVisitUrl(string url)
@@ -358,7 +368,7 @@ namespace WSS.Core.Crawler
             }
         }
 
-        
+
         private void DelayCrawler()
         {
 
@@ -389,7 +399,7 @@ namespace WSS.Core.Crawler
                         {
                             product.StatusChange.IsNew = true;
                             PushChangeProduct(product);
-                            _dicDuplicate.Add(product.GetHashDuplicate(), product.ID) ;
+                            _dicDuplicate.Add(product.GetHashDuplicate(), product.ID);
                             _crcProductOldGroup.Add(product.ID);
                             _countNewProduct++;
                         }
@@ -448,19 +458,19 @@ namespace WSS.Core.Crawler
                 _cacheLastUpdateProduct = RedisLastUpdateProduct.Instance();
                 _cacheProductHash = CacheProductHash.Instance();
                 _cacheCacheCompanyCrawler = RedisCacheCompanyCrawler.Instance();
-                _cacheDuplicateProduct=CacheDuplicateProduct.Instance();
+                _cacheDuplicateProduct = CacheDuplicateProduct.Instance();
                 _company = new Company(_companyId);
                 _config = new Configuration(_companyId);
                 _visitedCrc = new HashSet<long>();
                 _linkQueue = new Queue<JobFindNew>();
                 _crcProductOldGroup = new HashSet<long>();
-                _dicDuplicate =new Dictionary<long, long>();
+                _dicDuplicate = new Dictionary<long, long>();
                 _countVisited = 0;
                 _countNewProduct = 0;
                 _tokenCrawler.ThrowIfCancellationRequested();
                 _visitRegexs = _config.VisitUrlsRegex;
                 _detailLinkRegexs = _config.ProductUrlsRegex;
-                _noCrawlerRegexs = _config.NoVisitUrlRegex ?? new List<string>(); 
+                _noCrawlerRegexs = _config.NoVisitUrlRegex ?? new List<string>();
                 _noCrawlerRegexs.AddRange(UtilCrawlerProduct.NoCrawlerRegexDefault);
                 _timeStart = DateTime.Now;
                 _rootUri = Common.GetUriFromUrl(_company.Website);
@@ -475,9 +485,9 @@ namespace WSS.Core.Crawler
             }
             catch (Exception ex)
             {
-                _log.Error(string.Format("Company:{0} {1} {2}",_companyId, ex.Message, ex.StackTrace));
+                _log.Error(string.Format("Company:{0} {1} {2}", _companyId, ex.Message, ex.StackTrace));
                 string mss =
-                    Newtonsoft.Json.JsonConvert.SerializeObject(new ErrorCrawler() {CompanyId = _companyId, ProductId = 0, TimeError = DateTime.Now, Message = "Init" + ex.Message + ex.StackTrace});
+                    Newtonsoft.Json.JsonConvert.SerializeObject(new ErrorCrawler() { CompanyId = _companyId, ProductId = 0, TimeError = DateTime.Now, Message = "Init" + ex.Message + ex.StackTrace });
                 _producerReportError.PublishString(mss, true);
                 if (_producerEndCrawler != null)
                 {
@@ -488,12 +498,13 @@ namespace WSS.Core.Crawler
                         CountProduct = 0,
                         CountVisited = 0,
                         Domain = "",
-                        EndAt =DateTime.Now,
-                        Ip = Server.IPHost,
+                        EndAt = DateTime.Now,
+                        Ip = Dns.GetHostName(),
                         NumberDuplicateProduct = 0,
                         Session = this._session,
                         StartAt = this._timeStart,
-                        TotalProduct = 0,TypeCrawler = 0,
+                        TotalProduct = 0,
+                        TypeCrawler = 0,
                         TypeEnd = "Error Init",
                         TypeRun = "Auto"
                     }.ToJson());
@@ -526,7 +537,7 @@ namespace WSS.Core.Crawler
                             SqlBulkCopyOptions.TableLock |
                             SqlBulkCopyOptions.FireTriggers |
                             SqlBulkCopyOptions.UseInternalTransaction,
-                            null) {DestinationTableName = "Queue"};
+                            null) { DestinationTableName = "Queue" };
                     adapter.Connection.Open();
                     bulkCopy.WriteToServer(queueTable);
                     adapter.Connection.Close();
@@ -543,7 +554,7 @@ namespace WSS.Core.Crawler
             {
                 foreach (var link in _linksStart)
                 {
-                    _linkQueue.Enqueue(new JobFindNew() {Id = Common.CrcProductID(link), Deep = 0, ParentId = 0, Url = link});
+                    _linkQueue.Enqueue(new JobFindNew() { Id = Common.CrcProductID(link), Deep = 0, ParentId = 0, Url = link });
                 }
                 LogImportantInfo(string.Format("Loaded {0} begin links", _linksStart.Count));
             }
@@ -579,6 +590,8 @@ namespace WSS.Core.Crawler
             string strLog = string.Format("End crawler {0}", _typeEnd);
             if (EventReportRun != null) EventReportRun(strLog);
             _log.Info(strLog);
+
+            
             this.UpdateEndCrawl(new CrawlerSessionLog()
             {
                 CompanyId = _companyId,
@@ -586,7 +599,7 @@ namespace WSS.Core.Crawler
                 StartAt = _timeStart,
                 EndAt = DateTime.Now,
                 CountVisited = _countVisited,
-                Ip = Server.IPHost,
+                Ip = Dns.GetHostName(),
                 Session = _session,
                 TypeRun = "AUTO",
                 TypeCrawler = 0,
@@ -611,7 +624,7 @@ namespace WSS.Core.Crawler
             }
             _cacheWaitCrawler.SetRemoveRunningCrawler(_companyId);
             _cacheWaitCrawler.SetNexFindNew(_companyId, 1);
-                                       
+
             _tokenSource.Cancel();
         }
 

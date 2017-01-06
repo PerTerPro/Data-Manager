@@ -25,7 +25,7 @@ namespace WSS.Core.Crawler
         public DelegateReportRun EventReportRun = null;
         private SqlDb sqlDb = new SqlDb(ConfigCrawler.ConnectProduct);
 
-        public WorkerReload(long companyId , string nameThread)
+        public WorkerReload(long companyId, string nameThread)
         {
             _companyId = companyId;
             _nameThread = nameThread;
@@ -52,7 +52,7 @@ namespace WSS.Core.Crawler
 
         public CancellationTokenSource TokenSource = new CancellationTokenSource();
 
-        
+
         private ProducerBasic _producerReportError = null;
         private ProducerBasic _producerProductChange = null;
         private ProducerBasic _producerPushCompanyReload = null;
@@ -85,7 +85,7 @@ namespace WSS.Core.Crawler
 
         private void UpdateLastCrawler()
         {
-            bool bOk =  this.sqlDb.RunQuery(string.Format("update Company Set LastCrawlerReload = GetDate(), LastEndCrawlerReload = NULL Where Id = {0}", this._companyId), CommandType.Text, null);
+            bool bOk = this.sqlDb.RunQuery(string.Format("update Company Set LastCrawlerReload = GetDate(), LastEndCrawlerReload = NULL Where Id = {0}", this._companyId), CommandType.Text, null);
         }
 
         private void RunReportRunning()
@@ -93,15 +93,15 @@ namespace WSS.Core.Crawler
             var tokenReportSession = TokenSource.Token;
             Task.Factory.StartNew(() =>
             {
-                ProducerBasic producerReportSessionRunning=null;
+                ProducerBasic producerReportSessionRunning = null;
                 try
                 {
-                    
-                     producerReportSessionRunning = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), ConfigCrawler.ExchangeSessionRunning, ConfigCrawler.RoutingkeySessionRunning);
+
+                    producerReportSessionRunning = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), ConfigCrawler.ExchangeSessionRunning, ConfigCrawler.RoutingkeySessionRunning);
                     while (true)
                     {
                         tokenReportSession.ThrowIfCancellationRequested();
-                        var mss = new ReportSessionRunning() { Thread = _nameThread, CompanyId = _companyId, Ip = Server.IPHost, Session = _session, StartAt = _timeStart, Type = "Reload", MachineCode = Server.MachineCode };
+                        var mss = new ReportSessionRunning() { Thread = _nameThread, CompanyId = _companyId, Ip = Dns.GetHostName(), Session = _session, StartAt = _timeStart, Type = "Reload", MachineCode = Server.MachineCode };
                         producerReportSessionRunning.PublishString(Newtonsoft.Json.JsonConvert.SerializeObject(mss), true, 300);
                         Thread.Sleep(60000);
                     }
@@ -112,7 +112,8 @@ namespace WSS.Core.Crawler
                     if (producerReportSessionRunning != null) producerReportSessionRunning.Dispose();
                     return;
                 }
-                catch (Exception ex01){
+                catch (Exception ex01)
+                {
                     _producerReportError.PublishString(Newtonsoft.Json.JsonConvert.SerializeObject(new ErrorCrawler() { CompanyId = _companyId, ProductId = 0, TimeError = DateTime.Now, Message = ex01.Message + "\n" + ex01.StackTrace, Url = "" }), true, 0);
                 }
             }, tokenReportSession);
@@ -138,16 +139,15 @@ namespace WSS.Core.Crawler
                     }
                     else
                     {
-                        var jobReload = _linksQueue.Dequeue();
-                        string strLog = string.Format("ss: {0} cQ: {1} tP: {2} cV: {3} productId: {4} {5}", _session, _linksQueue.Count, _company.TotalProduct, _countVisited, jobReload.ProductId,
-                            jobReload.url);
-
-                        _log.Info(strLog);
+                        var job = _linksQueue.Dequeue();
+                        int statusProcess =  ProcessJob(job);
+                        string strLog = string.Format("ss: {0} cQ: {1} tP: {2} cV: {3} pt: {4} {5} sst: {6}", _session, _linksQueue.Count, _company.TotalProduct, _countVisited, job.ProductId, job.url, statusProcess);
                         if (EventReportRun != null) EventReportRun(strLog);
-                        ProcessJob(jobReload);
+                        _log.Info(strLog);
                         if (_linksQueue.Count == 0)
                         {
-                            LoadQueue();}
+                            LoadQueue();
+                        }
                     }
                 }
             }
@@ -201,8 +201,10 @@ namespace WSS.Core.Crawler
         }
 
 
-        private void ProcessJob(Job job)
+        private int ProcessJob(Job job)
         {
+            int statusEnd = 0;
+
             var pt = new ProductEntity()
             {
                 ID = job.ProductId,
@@ -228,16 +230,17 @@ namespace WSS.Core.Crawler
                 PushChangeProduct(pt);
                 if (EventReportRun != null)
                     EventReportRun(string.Format("Change product {0} {1} {2}  IsDelete:{3}", pt.ID, pt.DetailUrl, pt.StatusChange.IsChangeBasic, pt.StatusChange.IsDelete));
+                statusEnd = 1;
             }
             else
             {
-                _log.Info(string.Format("tt: {2} ss: {0} id: {1} not change", _session, pt.ID, _nameThread));
+                statusEnd = 0;
             }
-
+            return statusEnd;
         }
         private void PushChangeProduct(ProductEntity pt)
         {
-            _producerProductChange.PublishString(pt.GetJSON(), true,0);
+            _producerProductChange.PublishString(pt.GetJSON(), true, 0);
         }
 
         private void LoadProductFail(ProductEntity pt)
@@ -266,7 +269,7 @@ namespace WSS.Core.Crawler
                     {
                         CheckDeleteProduct(product);
                         CheckChangeBasic(product);
-                        CheckChangeDesc(product); 
+                        CheckChangeDesc(product);
                         CheckChangePrice(product);
                         CheckChangeImg(product);
                     }
@@ -316,9 +319,16 @@ namespace WSS.Core.Crawler
 
         private void CheckChangeBasic(ProductEntity pt)
         {
-            if (pt.GetHashChange() != _dicCacheProduct[pt.ID].HashChange)
+            try
             {
-                pt.StatusChange.IsChangeBasic = true;
+                if (pt.GetHashChange() != _dicCacheProduct[pt.ID].HashChange)
+                {
+                    pt.StatusChange.IsChangeBasic = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex);
             }
         }
 
@@ -398,19 +408,20 @@ namespace WSS.Core.Crawler
                         CountProduct = 0,
                         CountVisited = 0,
                         Domain = "",
-                        EndAt =DateTime.Now,
-                        Ip = Server.IPHost,
+                        EndAt = DateTime.Now,
+                        Ip = Dns.GetHostName(),
                         NumberDuplicateProduct = 0,
                         Session = this._session,
                         StartAt = this._timeStart,
-                        TotalProduct = 0,TypeCrawler = 0,
+                        TotalProduct = 0,
+                        TypeCrawler = 0,
                         TypeEnd = "Error Init",
                         TypeRun = "Auto"
                     }.ToJson());
                 }
 
                 string mss =
-                    Newtonsoft.Json.JsonConvert.SerializeObject(new ErrorCrawler() {CompanyId = _companyId, ProductId = 0, TimeError = DateTime.Now, Message = "Init" + ex.Message + ex.StackTrace});
+                    Newtonsoft.Json.JsonConvert.SerializeObject(new ErrorCrawler() { CompanyId = _companyId, ProductId = 0, TimeError = DateTime.Now, Message = "Init" + ex.Message + ex.StackTrace });
                 _producerReportError.PublishString(mss, true, 20);
                 return false;
             }
@@ -471,7 +482,7 @@ namespace WSS.Core.Crawler
                 StartAt = _timeStart,
                 EndAt = DateTime.Now,
                 CountVisited = _countVisited,
-                Ip = Server.IPHost,
+                Ip = Dns.GetHostName(),
                 Session = _session,
                 TypeRun = "AUTO",
                 TypeCrawler = 1,
@@ -504,7 +515,7 @@ namespace WSS.Core.Crawler
 
         public void StartCrawler(List<string> linkStarts)
         {
-            
+
         }
     }
 }

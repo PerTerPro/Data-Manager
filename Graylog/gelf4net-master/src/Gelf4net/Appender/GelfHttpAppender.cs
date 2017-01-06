@@ -41,19 +41,24 @@ namespace gelf4net.Appender
 
         protected override void Append(LoggingEvent loggingEvent)
         {
-            Task.Run(async () =>
-            {
-                try
-                {
-                    var payload = this.RenderLoggingEvent(loggingEvent);
-                    var content = new StringContent(payload, System.Text.Encoding.UTF8, "application/json");
-                    await _httpClient.PostAsync(_baseUrl, content);
-                }
-                catch (Exception ex)
-                {
-                    this.ErrorHandler.Error("Unable to send logging event to remote host " + this.Url, ex);
-                }
-            });
+            var payload = this.RenderLoggingEvent(loggingEvent);
+            var content = new StringContent(payload, System.Text.Encoding.UTF8, "application/json");
+            _httpClient.PostAsync(_baseUrl, content);
+            return;
+
+            //Task.Run(async () =>
+            //{
+            //    try
+            //    {
+            //        var payload = this.RenderLoggingEvent(loggingEvent);
+            //        var content = new StringContent(payload, System.Text.Encoding.UTF8, "application/json");
+            //        await _httpClient.PostAsync(_baseUrl, content);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        this.ErrorHandler.Error("Unable to send logging event to remote host " + this.Url, ex);
+            //    }
+            //});
         }
     }
 }
