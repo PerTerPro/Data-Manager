@@ -24,7 +24,8 @@ namespace WSS.Crl.ProducProperties.Core.Storage
         private readonly IMongoCollection<PropertyProduct> _collection;
         private CacheServer _cacheMan;
 
-        public StoragePropertiesProductMongo(){
+        public StoragePropertiesProductMongo()
+        {
             MongoDB.Driver.IMongoClient mongoClient = new MongoClient(ConfigurationManager.AppSettings[KeyMongo]);
             this._database = mongoClient.GetDatabase(NameDatabase);
             this._collection = this._database.GetCollection<PropertyProduct>(NameCollection);
@@ -45,9 +46,11 @@ namespace WSS.Crl.ProducProperties.Core.Storage
             //database.SetAdd(propertyData.ProductId.ToString(), x);
         }
 
-    public async Task<PropertyProduct> GetProperiesProduct(long productId)
-        {var x = await this._collection.FindAsync("{product_id:NumberLong(" + productId + ")}");
-            return x.FirstOrDefault(new CancellationToken(true));}
+        public async Task<PropertyProduct> GetProperiesProduct(long productId)
+        {
+            var x = await this._collection.FindAsync("{product_id:NumberLong(" + productId + ")}");
+            return x.FirstOrDefault(new CancellationToken(true));
+        }
 
         public void DelProperiesProduct(long productId)
         {

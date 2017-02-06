@@ -33,7 +33,7 @@ namespace WSS.Crl.ProducProperties.CoreTests2.Handler
 
             //Act
             HandlerDownloadHtml handlerDownloadHtml = new HandlerDownloadHtml(downloadHtml, storagHtml, publisherParse, setting);
-            handlerDownloadHtml.ProcessJob(new JobDownloadHtml()
+            handlerDownloadHtml.ProcessJob(new JobCrlProperties()
             {
                 DetailUrl = "test.html",
                 Domain = "aha.html",

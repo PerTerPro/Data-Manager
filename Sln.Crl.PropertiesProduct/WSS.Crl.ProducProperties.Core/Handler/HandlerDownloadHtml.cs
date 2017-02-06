@@ -12,7 +12,7 @@ namespace WSS.Crl.ProducProperties.Core.Handler
 {
     public interface IHandlerDownloadHtml
     {
-        void ProcessJob(JobDownloadHtml jobDownloadHtml);
+        void ProcessJob(JobCrlProperties jobDownloadHtml);
     }
 
     public class HandlerDownloadHtml : IHandlerDownloadHtml
@@ -50,13 +50,16 @@ namespace WSS.Crl.ProducProperties.Core.Handler
 
        
 
-        public void ProcessJob(JobDownloadHtml jobDownloadHtml)
+        public void ProcessJob(JobCrlProperties jobDownloadHtml)
         {
             DateTime dtFrom = DateTime.Now;
                 var html = DownloadHtml(jobDownloadHtml);
             if (!string.IsNullOrEmpty(html))
             {
-                SaveToStorage(jobDownloadHtml, html);this._producerBasic.PublishString(jobDownloadHtml.GetJson(), true);
+                //SaveToStorage(jobDownloadHtml, html);
+
+                jobDownloadHtml.Html = html;
+                this._producerBasic.PublishString(jobDownloadHtml.GetJson(), true);
                 Thread.Sleep(this._config.TimeDelay);
             }
             else
@@ -66,7 +69,7 @@ namespace WSS.Crl.ProducProperties.Core.Handler
             _logger.Info(string.Format("Processed job {0} in {1}", jobDownloadHtml.ProductId, (DateTime.Now - dtFrom).Milliseconds));
         }
 
-        private void SaveToStorage(JobDownloadHtml jobDownloadHtml, string html)
+        private void SaveToStorage(JobCrlProperties jobDownloadHtml, string html)
         {
             _storageHtml.SaveHtml(new HtmlProduct()
             {
@@ -79,7 +82,7 @@ namespace WSS.Crl.ProducProperties.Core.Handler
 
        
 
-        private string DownloadHtml(JobDownloadHtml jobDownloadHtml)
+        private string DownloadHtml(JobCrlProperties jobDownloadHtml)
         {
             WebExceptionStatus w = WebExceptionStatus.ConnectFailure;
             var html = this._downloadHtml.GetHtml(jobDownloadHtml.DetailUrl, 45, 2, out w);

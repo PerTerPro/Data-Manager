@@ -15,7 +15,7 @@ namespace WSS.Crl.ProducProperties.Core.Worker
         
         public override void ProcessMessage(RabbitMQ.Client.Events.BasicDeliverEventArgs message)
         {
-            JobDownloadHtml jobDownloadHtml = JobDownloadHtml.FromJson(UTF8Encoding.UTF8.GetString(message.Body));
+            JobCrlProperties jobDownloadHtml = JobCrlProperties.FromJson(UTF8Encoding.UTF8.GetString(message.Body));
             _handlerParserProperties.ProcessJob(jobDownloadHtml.ProductId);
             this.GetChannel().BasicAck(message.DeliveryTag, true);
             Logger.InfoFormat("Processed {0}", jobDownloadHtml.ProductId);

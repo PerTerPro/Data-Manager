@@ -29,10 +29,10 @@ namespace WSS.Crl.ProducProperties.Service
 ");
             string str = string.Join(" ", args);
 
-            // str = "-c wprpd -dm adayroi.com";if (string.IsNullOrEmpty(str)) str = Console.ReadLine();
+            // str = "-c wprpd -dm adayroi.com";
+            if (string.IsNullOrEmpty(str)) str = Console.ReadLine();
 
             Parameter pt = new Parameter(str);
-            
             if (pt.cmd == "push_download_html")
             {
                 ServiceRun.PushJobDownload(pt.domains);

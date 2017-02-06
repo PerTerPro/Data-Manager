@@ -31,7 +31,7 @@ namespace WSS.Crl.ProducProperties.Core.Worker
 
         public override void ProcessMessage(BasicDeliverEventArgs message)
         {
-            JobDownloadHtml jobDownloadHtml = JobDownloadHtml.FromJson(Encoding.UTF8.GetString(message.Body));
+            JobCrlProperties jobDownloadHtml = JobCrlProperties.FromJson(Encoding.UTF8.GetString(message.Body));
             if (jobDownloadHtml != null )
             {
                 _h1.ProcessJob(jobDownloadHtml);

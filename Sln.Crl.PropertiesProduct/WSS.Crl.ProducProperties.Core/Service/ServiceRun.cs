@@ -43,7 +43,7 @@ namespace WSS.Crl.ProducProperties.Core.Service
             int i = 0;
             storageProduct.ProcessProduct(domain, (sender, product) =>
             {
-                producer.PublishString(new JobDownloadHtml()
+                producer.PublishString(new JobCrlProperties()
                 {
                     ProductId = product.Id,
                     DetailUrl = UtilCrl.GetUrl(product.DetailUrl,domain),

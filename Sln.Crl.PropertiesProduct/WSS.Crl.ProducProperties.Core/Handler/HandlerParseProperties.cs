@@ -23,7 +23,6 @@ namespace WSS.Crl.ProducProperties.Core.Handler
         private readonly IStorageHtml _storageHtml = null;
         private readonly IStoragePropertiesProduct _storagePropertiesProduct = null;
         private readonly IParser _parser;
-
         public HandlerParseProperties(IStorageHtml storageHtml, IStoragePropertiesProduct storagePropertiesProduct, IParser parser)
         {
             _storageHtml = storageHtml;
@@ -36,8 +35,7 @@ namespace WSS.Crl.ProducProperties.Core.Handler
             var htmlProduct = this._storageHtml.GetHtml(productId);
             if (htmlProduct != null)
             {
-                HtmlDocument htmlDocument = new HtmlDocument();
-                string html = System.Web.HttpUtility.HtmlDecode(htmlProduct.Html);htmlDocument.LoadHtml(html);
+                HtmlDocument htmlDocument = new HtmlDocument();string html = System.Web.HttpUtility.HtmlDecode(htmlProduct.Html);htmlDocument.LoadHtml(html);
                 var productProperty = this._parser.ParseData(htmlDocument);
                 if (productProperty != null)
                 {
