@@ -1,4 +1,5 @@
 ﻿using QT.Entities;
+using QT.Entities.Images;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Websosanh.Core.Drivers.RabbitMQ;
+using Websosanh.Core.JobServer;
 using WSS.ImageServer;
 
 namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
@@ -17,6 +20,8 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
     public partial class FrmUploadLogoWebsosanh : Form
     {
         private string _domainLogo = "";
+        private RabbitMQServer _rabbitMqServer;
+        private JobClient _jobClientDownloadImage;
         public FrmUploadLogoWebsosanh()
         {
             InitializeComponent();
@@ -26,6 +31,8 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
         private void FrmUploadLogoWebsosanh_Load(object sender, EventArgs e)
         {
             this.companyTableAdapter.Connection.ConnectionString = ConnectionCommon.ConnectionWebsosanh;
+            _rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
+            _jobClientDownloadImage = new JobClient("Merchant", GroupType.Topic, "Update", true, _rabbitMqServer);
         }
 
         private void logoImageIdTextEdit_EditValueChanged(object sender, EventArgs e)
@@ -54,7 +61,9 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                         {
                             ImboImageService.DelteImage(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, idImboOld, "logo", ConfigImbo.Host, ConfigImbo.Port);
                         }
-                        companyTableAdapter.UpdateLogoImageId(idImboNew, Common.Obj2Int64(iDTextEdit.Text));
+                        var idCompany = Common.Obj2Int64(iDTextEdit.Text);
+                        companyTableAdapter.UpdateLogoImageId(idImboNew, idCompany );
+                        SendMessageUpdateCompany(idCompany);
                         lbMessage.Text = "Upload success!";
                     }
                     else
@@ -67,7 +76,18 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                 }
             }
         }
-        
+        private void SendMessageUpdateCompany(long idCompany)
+        {
+            try
+            {
+                var job = new Job { Data = BitConverter.GetBytes(idCompany), Type = (int)TypeJobWithRabbitMQ.Company };
+                _jobClientDownloadImage.PublishJob(job);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string domain = "%" + txtDomain.Text + "%";

@@ -132,9 +132,23 @@ namespace QT.Moduls.Bizweb
                         CultureInfo cultureInfo = CultureInfo.GetCultureInfo("vi-VN");
                         int originPrice = 0;
                         int price = 0;
+                        string compare_at_price;
+                        string price_temp;
+                        if (listproductBizweb.products[i].variants[0].compare_at_price == null || listproductBizweb.products[i].variants[0].compare_at_price == 0 || listproductBizweb.products[i].variants[0].price == 0)
+                        {
+                            Log.Error("BIZWEB : Product price equal = 0" + "Product: ID " + tmpProduct.ID + " - " + tmpProduct.Name);
+                            continue;
+                        }
+                        else
+                        {
+                            compare_at_price = listproductBizweb.products[i].variants[0].compare_at_price.ToString();
+                            compare_at_price = (compare_at_price.Contains('.')) ? compare_at_price.Remove(compare_at_price.IndexOf('.')) : compare_at_price;
+                            price_temp = listproductBizweb.products[i].variants[0].price.ToString();
+                            price_temp = (price_temp.Contains('.')) ? price_temp.Remove(price_temp.IndexOf('.')) : price_temp;
+                        }
                         try
                         {
-                            originPrice = (int)Decimal.Parse(listproductBizweb.products[i].variants[0].compare_at_price.ToString(), cultureInfo);
+                            originPrice = (int)Decimal.Parse(compare_at_price, cultureInfo);
                         }
                         catch (FormatException)
                         {
@@ -145,7 +159,7 @@ namespace QT.Moduls.Bizweb
                         }
                         try
                         {
-                            price = (int)Decimal.Parse(listproductBizweb.products[i].variants[0].price.ToString(), cultureInfo);
+                            price = (int)Decimal.Parse(price_temp, cultureInfo);
                         }
                         catch (FormatException ex)
                         {

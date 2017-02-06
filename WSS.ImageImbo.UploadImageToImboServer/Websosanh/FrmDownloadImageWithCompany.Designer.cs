@@ -428,6 +428,7 @@
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "FrmDownloadImageWithCompany";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmDownloadImageWithCompany_FormClosing);
             this.Load += new System.EventHandler(this.FrmUploadLogoWebsosanh_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
