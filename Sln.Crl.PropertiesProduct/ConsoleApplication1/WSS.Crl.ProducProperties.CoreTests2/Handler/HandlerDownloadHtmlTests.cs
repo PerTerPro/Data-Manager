@@ -32,13 +32,7 @@ namespace WSS.Crl.ProducProperties.CoreTests2.Handler
             Mock.Arrange(() => setting.Domain).Returns("domain").OccursAtLeast(1);
 
             //Act
-            HandlerDownloadHtml handlerDownloadHtml = new HandlerDownloadHtml(downloadHtml, storagHtml, publisherParse, setting);
-            handlerDownloadHtml.ProcessJob(new JobCrlProperties()
-            {
-                DetailUrl = "test.html",
-                Domain = "aha.html",
-                ProductId = 0
-            });
+        
 
             //Asert
             Mock.Assert(storagHtml);

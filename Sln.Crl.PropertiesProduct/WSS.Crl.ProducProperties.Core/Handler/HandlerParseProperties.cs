@@ -23,6 +23,7 @@ namespace WSS.Crl.ProducProperties.Core.Handler
         private readonly IStorageHtml _storageHtml = null;
         private readonly IStoragePropertiesProduct _storagePropertiesProduct = null;
         private readonly IParser _parser;
+
         public HandlerParseProperties(IStorageHtml storageHtml, IStoragePropertiesProduct storagePropertiesProduct, IParser parser)
         {
             _storageHtml = storageHtml;
