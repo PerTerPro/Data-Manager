@@ -67,7 +67,7 @@ namespace WSS.CrawlerProduct.Run
                                 var w = new WorkerMqRl(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), pr.QueueMQ, pr.AckIm);
                                 w.StartConsume();
                             });
-                            Thread.Sleep(2000);
+                            Thread.Sleep(20000);
                         }
                     }
                     else
@@ -91,7 +91,7 @@ namespace WSS.CrawlerProduct.Run
                                 var w = new WorkerMqFn(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), pr.QueueMQ);
                                 w.StartConsume();
                             }, token);
-                            Thread.Sleep(2000);
+                            Thread.Sleep(20000);
                         }
                     }
                     else

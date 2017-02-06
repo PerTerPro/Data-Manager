@@ -25,16 +25,14 @@ namespace WSS.Core.Crawler.CrlProduct
                     var fn = new WorkerReload(jobCompanyCrawler.CompanyId, "");
                     fn.StartCrawler();
                 }
-                
-             
             }
             catch (Exception ex)
             {
                 _log.Error(ex);
             }
-            int minuteRun = (int)(DateTime.Now - dtFrom).TotalMinutes;
+            int minuteRun = (int) (DateTime.Now - dtFrom).TotalMinutes;
             _log.Info(string.Format("Process {0} in {1}", mss, minuteRun));
-            this.GetChannel().BasicAck(message.DeliveryTag, true);
+            this.GetChannel().BasicAck(message.DeliveryTag, false);
         }
 
         public override void Init()

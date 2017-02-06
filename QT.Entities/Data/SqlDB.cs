@@ -77,7 +77,7 @@ namespace QT.Entities.Data
         }
 
 
-        public delegate void ProcessRow(DataRow row, int iRow);
+        public delegate bool ProcessRow(DataRow row, int iRow);
 
         /// <summary>
         /// PageNumber Is TextPage
@@ -88,8 +88,8 @@ namespace QT.Entities.Data
         /// <param name="processRow"></param>
         public void ProcessDataTableLarge(string sql, int rowsPage, ProcessRow processRow)
         {
-            int PageName = 1;
-            int iRow = 0;
+            var pageName = 1;
+            var iRow = 0;
 
             string fullSql = sql + @"
 OFFSET ((@PageNumber - 1) * @rowsPage) ROWS
@@ -103,16 +103,17 @@ FETCH NEXT @rowsPage ROWS ONLY";
                  
                     tbl = this.GetTblData(fullSql, CommandType.Text, new SqlParameter[]
                     {
-                        SqlDb.CreateParamteterSQL("PageNumber", PageName, SqlDbType.Int),
+                        SqlDb.CreateParamteterSQL("PageNumber", pageName, SqlDbType.Int),
                         SqlDb.CreateParamteterSQL("rowsPage", rowsPage, SqlDbType.Int),
                     });
-                    foreach (DataRow VARIABLE in tbl.Rows)
+                    foreach (DataRow variable in tbl.Rows)
                     {
                         iRow++;
-                        processRow(VARIABLE,iRow);
+                        bool bNext = processRow(variable, iRow);
+                        if (bNext == false) break;
                     }
-                    log.Info(string.Format("Processed {0} rows at page {1}", tbl.Rows.Count, PageName));
-                    PageName = PageName + 1;
+                    log.Info(string.Format("Processed {0} rows at page {1}", tbl.Rows.Count, pageName));
+                    pageName = pageName + 1;
                 }
                 catch (Exception exception)
                 {

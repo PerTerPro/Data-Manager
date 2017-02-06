@@ -39,6 +39,9 @@
     <Reference Include="log4net">
       <HintPath>..\000\DLLs\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="log4stash">
+      <HintPath>..\000\DLLs\log4stash.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
@@ -67,6 +70,9 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="bat_Push_ReParse_From_NoSql.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="bat_WorkerParseProperties.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

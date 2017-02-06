@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using ImboForm;
@@ -28,6 +29,7 @@ namespace ImboForm.Tests
     public class ImboImageServiceTests
     {
         private ILog log = LogManager.GetLogger(typeof (ImboImageService));
+        
         [Test()]
         public void PushFromFileTest()
         {
@@ -40,6 +42,23 @@ namespace ImboForm.Tests
                 if (i % 100 == 0)
                 {
                     log.Info(string.Format("{0} {1} => item/s {2}", i, imgId, i / (DateTime.Now - dtStart).TotalSeconds));
+                }
+            }
+        }
+
+        [Test()]
+        public void PushFromFileTest1()
+        {
+            DateTime dtStart = DateTime.Now;
+            for (int i = 0; i < 10000; i++)
+            {
+                string imgId = ImboImageService.PushFromFile("wss_write", "123websosanh@195", @"C:\Users\xuantrang\Downloads\12112320_539716226194750_3703686762757153458_n.jpg", "landingpage",
+                    "http://192.168.100.34", 40000);
+
+                if (i % 100 == 0)
+                {
+                    log.Info(string.Format("{0} {1} => item/s {2}", i, imgId, i / (DateTime.Now - dtStart).TotalSeconds));
+                    
                 }
             }
         }

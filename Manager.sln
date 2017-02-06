@@ -240,6 +240,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheManagerTests", "CacheM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QT.EntitiesTests1", "QT.EntitiesTests1\QT.EntitiesTests1.csproj", "{D02E76C7-DAD6-4AA3-886E-824A283A1CFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.LibExtra", "WSS.LibExtra\WSS.LibExtra.csproj", "{F791D80C-E370-4A79-8B49-E4CD2143FAAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1321,6 +1323,16 @@ Global
 		{D02E76C7-DAD6-4AA3-886E-824A283A1CFB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D02E76C7-DAD6-4AA3-886E-824A283A1CFB}.Release|x86.ActiveCfg = Release|Any CPU
 		{D02E76C7-DAD6-4AA3-886E-824A283A1CFB}.Release|x86.Build.0 = Release|Any CPU
+		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

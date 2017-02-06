@@ -103,6 +103,7 @@ namespace WSS.Core.Crawler
                         tokenReportSession.ThrowIfCancellationRequested();
                         var mss = new ReportSessionRunning() { Thread = _nameThread, CompanyId = _companyId, Ip = Dns.GetHostName(), Session = _session, StartAt = _timeStart, Type = "Reload", MachineCode = Server.MachineCode };
                         producerReportSessionRunning.PublishString(Newtonsoft.Json.JsonConvert.SerializeObject(mss), true, 300);
+                        _log.Info(string.Format("Running Reload {0} {1} {2}'", this._companyId, (this._company != null) ? this._company.Domain : "", (DateTime.Now - this._timeStart).Minutes));
                         Thread.Sleep(60000);
                     }
                 }
@@ -141,7 +142,9 @@ namespace WSS.Core.Crawler
                     {
                         var job = _linksQueue.Dequeue();
                         int statusProcess =  ProcessJob(job);
-                        string strLog = string.Format("ss: {0} cQ: {1} tP: {2} cV: {3} pt: {4} {5} sst: {6}", _session, _linksQueue.Count, _company.TotalProduct, _countVisited, job.ProductId, job.url, statusProcess);
+                        string strLog = string.Format("ss: {0} cQ: {1} tP: {2} cV: {3} pt: {4} {5} sst: {6} cmp: {7} {8}", _session, _linksQueue.Count, _company.TotalProduct, _countVisited, job.ProductId,
+                            job.url, statusProcess, _companyId,
+                            (this._company == null) ? "" : this._company.Domain);
                         if (EventReportRun != null) EventReportRun(strLog);
                         _log.Info(strLog);
                         if (_linksQueue.Count == 0)
