@@ -31,12 +31,21 @@ namespace WSS.Crl.ProducProperties.Core.Worker
 
         public override void ProcessMessage(BasicDeliverEventArgs message)
         {
-            JobCrlProperties jobDownloadHtml = JobCrlProperties.FromJson(Encoding.UTF8.GetString(message.Body));
-            if (jobDownloadHtml != null )
+            try
             {
-                _h1.ProcessJob(jobDownloadHtml);
+                JobCrlProperties jobDownloadHtml = JobCrlProperties.FromJson(Encoding.UTF8.GetString(message.Body));
+                if (jobDownloadHtml != null)
+                {
+                    _h1.ProcessJob(jobDownloadHtml);
+                }
+                this.GetChannel().BasicAck(message.DeliveryTag, true);
             }
-            this.GetChannel().BasicAck(message.DeliveryTag, true);
+            catch (System.Exception ex1)
+            {
+                
+                throw;
+            }
+            
         }
     }
 }
