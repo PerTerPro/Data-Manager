@@ -66,50 +66,59 @@ namespace WSS.Core.Crawler.Tests
         {
             Server.ConnectionString = ConfigCrawler.ConnectProduct;
             Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler; Server.LogConnectionString = ConfigCrawler.ConnectLog;
-            WorkerFindNew w = new WorkerFindNew(15908872101896924, "");
+            WorkerFindNew w = new WorkerFindNew(8486364876483618144, "");
+            w.StartCrawler();}
+
+
+        [Test()]
+        public void WorkerReloadTest1()
+        {
+            Server.ConnectionString = ConfigCrawler.ConnectProduct;
+            Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler; Server.LogConnectionString = ConfigCrawler.ConnectLog;
+            WorkerReload w = new WorkerReload(8486364876483618144, "");
             w.StartCrawler();
         }
+
 
         [Test()]
         public void StartCrawlerTest2()
         {
-            Assert.Fail();
+          
         }
 
         [Test()]
-        public void StartCrawlerTest3()
-        {
-            Assert.Fail();
+        public void StartCrawlerTest3(){
+           
         }
 
         [Test()]
         public void InitTest1()
         {
-            Assert.Fail();
+          
         }
 
         [Test()]
         public void LogImportantInfoTest1()
         {
-            Assert.Fail();
+           
         }
 
         [Test()]
         public void EndTest1()
         {
-            Assert.Fail();
+           
         }
 
         [Test()]
         public void StopTest1()
         {
-            Assert.Fail();
+           
         }
 
         [Test()]
         public void DisposeTest1()
         {
-            Assert.Fail();
+           
         }
     }
 }

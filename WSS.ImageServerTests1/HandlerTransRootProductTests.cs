@@ -12,14 +12,6 @@ namespace WSS.ImageServer.Tests
     {
         [Test()]
         public void ProcessFixJobTest()
-        {
-            	
-             HandlerTransRootProduct h = new HandlerTransRootProduct();
-            h.ProcessFixJob(new JobRootProductWaitTrans()
-            {
-                Id = 18779,
-                ImageId = "vB2NtEi6GlaD"
-            }.ToJson());
-        }
+        {        }
     }
 }

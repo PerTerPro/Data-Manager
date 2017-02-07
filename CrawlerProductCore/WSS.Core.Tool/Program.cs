@@ -21,8 +21,9 @@ namespace WSS.CrawlerProduct.Tool
 {
     public class Program
     {
-        private static void Main(string[] args){
-            
+        private static void Main(string[] args)
+        {
+
             WSS.Core.Crawler.RecoverProductLost.Service s = new Core.Crawler.RecoverProductLost.Service();
             Console.WriteLine("1. Push. 2.Transfer");
             int i = Convert.ToInt32(Console.ReadLine());
@@ -36,71 +37,71 @@ namespace WSS.CrawlerProduct.Tool
                 s.TransferData(0);
             return;
 
-            return;
-            Server.ConnectionString = ConfigCrawler.ConnectProduct;
-            Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;
-            Server.LogConnectionString = ConfigCrawler.ConnectLog;
-            ProductAdapter productAdapter = new ProductAdapter(new SqlDb(ConfigCrawler.ConnectProduct));
+            //   return;
+            //   Server.ConnectionString = ConfigCrawler.ConnectProduct;
+            //   Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;
+            //   Server.LogConnectionString = ConfigCrawler.ConnectLog;
+            //   ProductAdapter productAdapter = new ProductAdapter(new SqlDb(ConfigCrawler.ConnectProduct));
 
-            string strParaInput = (args.Length == 0) ? Console.ReadLine() : string.Join(" ", args);
-         //  strParaInput = @"-c svptccache -u http://maxmobile.vn/dien-thoai/lg-g5-cu.html";
+            //   string strParaInput = (args.Length == 0) ? Console.ReadLine() : string.Join(" ", args);
+            ////  strParaInput = @"-c svptccache -u http://maxmobile.vn/dien-thoai/lg-g5-cu.html";
 
-            ParameterManager p = ParameterManager.Parse(strParaInput);
-            //p.SubCmd = "svptccache";
-            if (p.SubCmd == "crlrl")
-            {
-                string domain = p.Parameters["dm"][0];
-                long idCOmpany = productAdapter.GetCompanyIDFromDomain(domain);
-                using (var worker = new WSS.Core.Crawler.WorkerReload(idCOmpany, new CancellationToken(), ""))
-                {
-                    worker.StartCrawler();
-                }
-            }
-            else if (p.SubCmd == "crlfn")
-            {
+            //   ParameterManager p = ParameterManager.Parse(strParaInput);
+            //   //p.SubCmd = "svptccache";
+            //   if (p.SubCmd == "crlrl")
+            //   {
+            //       string domain = p.Parameters["dm"][0];
+            //       long idCOmpany = productAdapter.GetCompanyIDFromDomain(domain);
+            //       using (var worker = new WSS.Core.Crawler.WorkerReload(idCOmpany, new CancellationToken(), ""))
+            //       {
+            //           worker.StartCrawler();
+            //       }
+            //   }
+            //   else if (p.SubCmd == "crlfn")
+            //   {
 
-            }
-            else if (p.SubCmd == "fn")
-            {
-                long companyId = 7627466712688617332;
-                WSS.Core.Crawler.WorkerFindNew w = new WSS.Core.Crawler.WorkerFindNew(companyId, new CancellationToken(false), "Test");
-                w.StartCrawler();
-            }
-            else if (p.SubCmd == "svcudclss")
-            {
-                //var c = new ConsumerClassificationToSql();
-                //c.StartConsume();
-            }
-            else if (p.SubCmd == "svptccache")
-            {
-                var c = new ConsumerProductChangeToCache();
-                c.StartConsume();
-            }
-            else if (p.SubCmd == "svudprsql")
-            {
-                var c = new ConsumerProductChangeToSql();
-                c.StartConsume();
-            }
-            else if (p.SubCmd == "prpt")
-            {
-                ProductAdapter pta = new ProductAdapter(new SqlDb(Server.ConnectionString));
-                string url = p.Parameters["u"][0].ToString();
-                url = "http://maxmobile.vn/dien-thoai/lg-g5-cu.html";
-                Uri uri = new Uri(url);
-                string domain = Common.GetDomainFromUrl(uri);
-                long idCompanyId = pta.GetCompanyIdByDomain(domain);
-                IDownloadHtml downloader = new DownloadHtmlCrawler();
-                Configuration config = new Configuration();
-                HtmlDocument htmlDocument = new HtmlDocument();
-                var ext = new WebExceptionStatus();
-                string html = downloader.GetHTML(url, 45, 2, out ext);
-                htmlDocument.LoadHtml(html);
-                ProductEntity pte = new ProductEntity();
-                ProductParse ppr = new ProductParse();
-                ppr.Analytics(pte, htmlDocument, url, config, domain);
-            }
-            //ConsumerSaveEndSession consumerSaveEndSession = new ConsumerSaveEndSession();
-            //consumerSaveEndSession.StartConsume();
+            //   }
+            //   else if (p.SubCmd == "fn")
+            //   {
+            //       long companyId = 7627466712688617332;
+            //       WSS.Core.Crawler.WorkerFindNew w = new WSS.Core.Crawler.WorkerFindNew(companyId, new CancellationToken(false), "Test");
+            //       w.StartCrawler();
+            //   }
+            //   else if (p.SubCmd == "svcudclss")
+            //   {
+            //       //var c = new ConsumerClassificationToSql();
+            //       //c.StartConsume();
+            //   }
+            //   else if (p.SubCmd == "svptccache")
+            //   {
+            //       var c = new ConsumerProductChangeToCache();
+            //       c.StartConsume();
+            //   }
+            //   else if (p.SubCmd == "svudprsql")
+            //   {
+            //       var c = new ConsumerProductChangeToSql();
+            //       c.StartConsume();
+            //   }
+            //   else if (p.SubCmd == "prpt")
+            //   {
+            //       ProductAdapter pta = new ProductAdapter(new SqlDb(Server.ConnectionString));
+            //       string url = p.Parameters["u"][0].ToString();
+            //       url = "http://maxmobile.vn/dien-thoai/lg-g5-cu.html";
+            //       Uri uri = new Uri(url);
+            //       string domain = Common.GetDomainFromUrl(uri);
+            //       long idCompanyId = pta.GetCompanyIdByDomain(domain);
+            //       IDownloadHtml downloader = new DownloadHtmlCrawler();
+            //       Configuration config = new Configuration();
+            //       HtmlDocument htmlDocument = new HtmlDocument();
+            //       var ext = new WebExceptionStatus();
+            //       string html = downloader.GetHTML(url, 45, 2, out ext);
+            //       htmlDocument.LoadHtml(html);
+            //       ProductEntity pte = new ProductEntity();
+            //       ProductParse ppr = new ProductParse();
+            //       ppr.Analytics(pte, htmlDocument, url, config, domain);
+            //   }
+            //   //ConsumerSaveEndSession consumerSaveEndSession = new ConsumerSaveEndSession();
+            //   //consumerSaveEndSession.StartConsume();
 
 
 
@@ -109,9 +110,9 @@ namespace WSS.CrawlerProduct.Tool
 
         }
 
-        public void TransferProductIdToRedis()
+    public void TransferProductIdToRedis()
         {
-            
+
         }
 
         public void TransferProductToLogAddProduct()
@@ -155,22 +156,22 @@ Order By p.ID";
         }
     }
 
-   
+
 
     internal class ParameterManager
     {
         public string SubCmd { get; set; }
-        public Dictionary<string,string[]> Parameters { get; set; }
+        public Dictionary<string, string[]> Parameters { get; set; }
         internal static ParameterManager Parse(string strParaInput)
         {
             ParameterManager p = new ParameterManager();
-            string[] arCmd = strParaInput.Split(new char[] {'-'}, StringSplitOptions.RemoveEmptyEntries);
+            string[] arCmd = strParaInput.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var VARIABLE in arCmd)
             {
                 string[] arPara = VARIABLE.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 if (arPara[0] == "c") p.SubCmd = arPara[1];
                 else p.Parameters.Add(arPara[0], arPara.SubArray(1, arPara.Length - 1));
-                
+
             }
             return p;
         }

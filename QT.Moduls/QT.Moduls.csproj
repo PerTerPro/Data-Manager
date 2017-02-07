@@ -416,6 +416,12 @@
     <Compile Include="CrawlerProduct\Comment\WorkerDownloadHtml.cs" />
     <Compile Include="CrawlerProduct\DelegateCrawler.cs" />
     <Compile Include="CrawlerProduct\FixDuplicate.cs" />
+    <Compile Include="CrawlerProduct\FrmConfigCrawlHotProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmConfigCrawlHotProduct.Designer.cs">
+      <DependentUpon>FrmConfigCrawlHotProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="CrawlerProduct\FrmConfigDescXPath.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -475,6 +481,12 @@
     </Compile>
     <Compile Include="CrawlerProduct\FrmHistoryCrawlerForCompany.Designer.cs">
       <DependentUpon>FrmHistoryCrawlerForCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmHotProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrawlerProduct\FrmHotProduct.Designer.cs">
+      <DependentUpon>FrmHotProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="CrawlerProduct\FrmImportLink.cs">
       <SubType>Form</SubType>
@@ -715,6 +727,7 @@
       <DependentUpon>FrmValidCrawler.cs</DependentUpon>
     </Compile>
     <Compile Include="CrawlerProduct\Comment\WorkerCrawlerReview.cs" />
+    <Compile Include="CrawlerProduct\WorkerCrawlerHotProduct.cs" />
     <Compile Include="CrawlerProduct\WorkerDuyetID.cs" />
     <Compile Include="CrawlerProduct\WorkerFindNew.cs" />
     <Compile Include="CrawlerProduct\WorkerReload.cs" />
@@ -1848,6 +1861,9 @@
     <EmbeddedResource Include="Company\frmQuangCao.resx">
       <DependentUpon>frmQuangCao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmConfigCrawlHotProduct.resx">
+      <DependentUpon>FrmConfigCrawlHotProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrawlerProduct\FrmConfigDescXPath.resx">
       <DependentUpon>FrmConfigDescXPath.cs</DependentUpon>
     </EmbeddedResource>
@@ -1877,6 +1893,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrawlerProduct\FrmHistoryCrawlerForCompany.resx">
       <DependentUpon>FrmHistoryCrawlerForCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrawlerProduct\FrmHotProduct.resx">
+      <DependentUpon>FrmHotProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrawlerProduct\FrmImportLink.resx">
       <DependentUpon>FrmImportLink.cs</DependentUpon>

@@ -15,8 +15,7 @@ using Newtonsoft.Json;
 using QT.Entities;
 using QT.Entities.Data;
 using QT.Moduls.Crawler;
-using QT.Moduls.CrawlerProduct;
-using Websosanh.Core.Drivers.RabbitMQ;
+using QT.Moduls.CrawlerProduct;using Websosanh.Core.Drivers.RabbitMQ;
 using WSS.Core.Crawler;
 using WSS.Core.Crawler.CrlProduct;
 using WorkerFindNew = WSS.Core.Crawler.WorkerFindNew;
@@ -27,31 +26,18 @@ namespace WSS.CrawlerProduct.Run
     {
         public static CancellationTokenSource Source = new CancellationTokenSource();
         private static ILog log = log4net.LogManager.GetLogger(typeof (Program));
-        static void Main(string[] args){
+
+        private static void Main(string[] args)
+        {
 
             try
             {
                 Server.ConnectionString = ConfigCrawler.ConnectProduct;
                 Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler;
                 Server.LogConnectionString = ConfigCrawler.ConnectLog;
+                InitQueue isq = new InitQueue();
+                isq.Start();
 
-                //ProductAdapter productAdapter = new ProductAdapter(new SqlDb(ConfigCrawler.ConnectProduct));
-                //long companyId = productAdapter.GetCompanyIDFromDomain("hc.com.vn");
-                //WSS.Core.Crawler.WorkerReload w1 = new WSS.Core.Crawler.WorkerReload(companyId, new CancellationToken(),
-                //    "Test");
-                //   w1.StartCrawler();//string url = @"https://www.trananh.vn/noi-com-dien/noi-com-dien-tu-shap-da-chuc-nang-ks-com19v-1-8l-pid24086cid1081";
-                //ProductParse pp = new ProductParse();//ProductEntity pe = new ProductEntity();
-                //IDownloadHtml idownloadHtm = new DownloadHtmlCrawler();
-                //WebExceptionStatus ws = new WebExceptionStatus();
-                //var html = idownloadHtm.GetHTML(url, 45, 2, out ws);
-                //Uri uri = new Uri(url);HtmlDocument htmlDocument = new HtmlDocument();
-                //htmlDocument.LoadHtml(html);
-                //pp.Analytics(pe,htmlDocument,url, new Configuration(7627466712688617332,true),"trananh.vn"); //return;
-                //WorkerFindNew w = new WorkerFindNew(companyId, new CancellationToken(false), "Test");//w.StartCrawler();
-                //return;
- 
-
-               
                 if (args == null || args.Length == 0)
                 {
                     Console.WriteLine(@"Input para:");
@@ -67,7 +53,7 @@ namespace WSS.CrawlerProduct.Run
                 var strPara = string.Join(" ", args);
                 var pr = new Parameter();
                 pr.ParseData(strPara);
-                Console.Title =  strPara;
+                Console.Title = strPara;
 
                 Console.CancelKeyPress += EndApp;
                 if (pr.TypeRun == 1)
@@ -81,7 +67,7 @@ namespace WSS.CrawlerProduct.Run
                                 var w = new WorkerMqRl(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), pr.QueueMQ, pr.AckIm);
                                 w.StartConsume();
                             });
-                            Thread.Sleep(2000);
+                            Thread.Sleep(20000);
                         }
                     }
                     else
@@ -105,7 +91,7 @@ namespace WSS.CrawlerProduct.Run
                                 var w = new WorkerMqFn(RabbitMQManager.GetRabbitMQServer(ConfigCrawler.KeyRabbitMqCrawler), pr.QueueMQ);
                                 w.StartConsume();
                             }, token);
-                            Thread.Sleep(2000);
+                            Thread.Sleep(20000);
                         }
                     }
                     else
@@ -117,7 +103,8 @@ namespace WSS.CrawlerProduct.Run
                     }
                 }
 
-                while (true){
+                while (true)
+                {
                     if (Source.IsCancellationRequested)
                     {
                         Thread.Sleep(10000);
@@ -129,16 +116,16 @@ namespace WSS.CrawlerProduct.Run
                     }
                 }
             }
-            catch(Exception ex0)
+            catch (Exception ex0)
             {
                 log.Error(ex0);
                 Console.ReadLine();
             }
-            
+
 
         }
 
-        
+
         private static void EndApp(object sender, ConsoleCancelEventArgs e)
         {
             Source.Cancel();

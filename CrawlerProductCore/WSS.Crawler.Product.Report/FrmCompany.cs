@@ -196,8 +196,8 @@ set MinHourReload=@MinHourReload, MinHourFindNew=@MinHourFindNew, NumberThreadCr
     , ISNULL(a.NumberThreadCrawler, 0) AS  NumberThreadCrawler
 	, d.Name as NameType
 	, d.STT as STTType
-	, b.LastEndCrawlerReload
-	, b.LastEndCrawlerFindNew
+	, b.LastCrawlerReload
+	, b.LastCrawlerFindNew
 	, isnull(a.AllowFindNew, 1) as AllowFindNew
 	, isnull(a.AllowReload, 1) as AllowReload 
     , b.TotalProduct

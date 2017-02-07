@@ -546,6 +546,66 @@ FROM            V_Company_FailConfig</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="V_Company_ConfigCrawlerTableAdapter" GeneratorDataComponentClassName="V_Company_ConfigCrawlerTableAdapter" Name="V_Company_ConfigCrawler" UserDataComponentName="V_Company_ConfigCrawlerTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QT_2ConnectionString (Settings)" DbObjectName="QT_2.dbo.V_Company_ConfigCrawler" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, Domain, MinHourReload, MinHourFindNew, LastCrawlerFindNew, LastEndCrawlerFindNew, LastCrawlerReload, LastEndCrawlerReload, AllowFindNew, AllowReload, TotalProduct, h_reload, h_findnew, m_run_reload, m_run_findnew FROM dbo.V_Company_ConfigCrawler</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Domain" DataSetColumn="Domain" />
+              <Mapping SourceColumn="MinHourReload" DataSetColumn="MinHourReload" />
+              <Mapping SourceColumn="MinHourFindNew" DataSetColumn="MinHourFindNew" />
+              <Mapping SourceColumn="LastCrawlerFindNew" DataSetColumn="LastCrawlerFindNew" />
+              <Mapping SourceColumn="LastEndCrawlerFindNew" DataSetColumn="LastEndCrawlerFindNew" />
+              <Mapping SourceColumn="LastCrawlerReload" DataSetColumn="LastCrawlerReload" />
+              <Mapping SourceColumn="LastEndCrawlerReload" DataSetColumn="LastEndCrawlerReload" />
+              <Mapping SourceColumn="AllowFindNew" DataSetColumn="AllowFindNew" />
+              <Mapping SourceColumn="AllowReload" DataSetColumn="AllowReload" />
+              <Mapping SourceColumn="TotalProduct" DataSetColumn="TotalProduct" />
+              <Mapping SourceColumn="h_reload" DataSetColumn="h_reload" />
+              <Mapping SourceColumn="h_findnew" DataSetColumn="h_findnew" />
+              <Mapping SourceColumn="m_run_reload" DataSetColumn="m_run_reload" />
+              <Mapping SourceColumn="m_run_findnew" DataSetColumn="m_run_findnew" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="V_Company_CrawlerFailTableAdapter" GeneratorDataComponentClassName="V_Company_CrawlerFailTableAdapter" Name="V_Company_CrawlerFail" UserDataComponentName="V_Company_CrawlerFailTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QT_2ConnectionString (Settings)" DbObjectName="QT_2.dbo.V_Company_CrawlerFail" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, Domain, MinHourReload, MinHourFindNew, LastCrawlerFindNew, LastEndCrawlerFindNew, LastCrawlerReload, LastEndCrawlerReload, AllowFindNew, AllowReload, TotalProduct, h_reload, h_findnew, m_run_reload, m_run_findnew FROM dbo.V_Company_CrawlerFail</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Domain" DataSetColumn="Domain" />
+              <Mapping SourceColumn="MinHourReload" DataSetColumn="MinHourReload" />
+              <Mapping SourceColumn="MinHourFindNew" DataSetColumn="MinHourFindNew" />
+              <Mapping SourceColumn="LastCrawlerFindNew" DataSetColumn="LastCrawlerFindNew" />
+              <Mapping SourceColumn="LastEndCrawlerFindNew" DataSetColumn="LastEndCrawlerFindNew" />
+              <Mapping SourceColumn="LastCrawlerReload" DataSetColumn="LastCrawlerReload" />
+              <Mapping SourceColumn="LastEndCrawlerReload" DataSetColumn="LastEndCrawlerReload" />
+              <Mapping SourceColumn="AllowFindNew" DataSetColumn="AllowFindNew" />
+              <Mapping SourceColumn="AllowReload" DataSetColumn="AllowReload" />
+              <Mapping SourceColumn="TotalProduct" DataSetColumn="TotalProduct" />
+              <Mapping SourceColumn="h_reload" DataSetColumn="h_reload" />
+              <Mapping SourceColumn="h_findnew" DataSetColumn="h_findnew" />
+              <Mapping SourceColumn="m_run_reload" DataSetColumn="m_run_reload" />
+              <Mapping SourceColumn="m_run_findnew" DataSetColumn="m_run_findnew" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -554,7 +614,7 @@ FROM            V_Company_FailConfig</CommandText>
   <xs:element name="DsQT2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsQT2" msprop:Generator_UserDSName="DsQT2">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Configuration" msprop:Generator_TableClassName="ConfigurationDataTable" msprop:Generator_TableVarName="tableConfiguration" msprop:Generator_RowChangedName="ConfigurationRowChanged" msprop:Generator_TablePropName="Configuration" msprop:Generator_RowDeletingName="ConfigurationRowDeleting" msprop:Generator_RowChangingName="ConfigurationRowChanging" msprop:Generator_RowEvHandlerName="ConfigurationRowChangeEventHandler" msprop:Generator_RowDeletedName="ConfigurationRowDeleted" msprop:Generator_RowClassName="ConfigurationRow" msprop:Generator_UserTableName="Configuration" msprop:Generator_RowEvArgName="ConfigurationRowChangeEvent">
+        <xs:element name="Configuration" msprop:Generator_TableClassName="ConfigurationDataTable" msprop:Generator_TableVarName="tableConfiguration" msprop:Generator_TablePropName="Configuration" msprop:Generator_RowDeletingName="ConfigurationRowDeleting" msprop:Generator_RowChangingName="ConfigurationRowChanging" msprop:Generator_RowEvHandlerName="ConfigurationRowChangeEventHandler" msprop:Generator_RowDeletedName="ConfigurationRowDeleted" msprop:Generator_UserTableName="Configuration" msprop:Generator_RowChangedName="ConfigurationRowChanged" msprop:Generator_RowEvArgName="ConfigurationRowChangeEvent" msprop:Generator_RowClassName="ConfigurationRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -852,7 +912,7 @@ FROM            V_Company_FailConfig</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="V_Company_FailConfig" msprop:Generator_TableClassName="V_Company_FailConfigDataTable" msprop:Generator_TableVarName="tableV_Company_FailConfig" msprop:Generator_TablePropName="V_Company_FailConfig" msprop:Generator_RowDeletingName="V_Company_FailConfigRowDeleting" msprop:Generator_RowChangingName="V_Company_FailConfigRowChanging" msprop:Generator_RowEvHandlerName="V_Company_FailConfigRowChangeEventHandler" msprop:Generator_RowDeletedName="V_Company_FailConfigRowDeleted" msprop:Generator_UserTableName="V_Company_FailConfig" msprop:Generator_RowChangedName="V_Company_FailConfigRowChanged" msprop:Generator_RowEvArgName="V_Company_FailConfigRowChangeEvent" msprop:Generator_RowClassName="V_Company_FailConfigRow">
+        <xs:element name="V_Company_FailConfig" msprop:Generator_TableClassName="V_Company_FailConfigDataTable" msprop:Generator_TableVarName="tableV_Company_FailConfig" msprop:Generator_RowChangedName="V_Company_FailConfigRowChanged" msprop:Generator_TablePropName="V_Company_FailConfig" msprop:Generator_RowDeletingName="V_Company_FailConfigRowDeleting" msprop:Generator_RowChangingName="V_Company_FailConfigRowChanging" msprop:Generator_RowEvHandlerName="V_Company_FailConfigRowChangeEventHandler" msprop:Generator_RowDeletedName="V_Company_FailConfigRowDeleted" msprop:Generator_RowClassName="V_Company_FailConfigRow" msprop:Generator_UserTableName="V_Company_FailConfig" msprop:Generator_RowEvArgName="V_Company_FailConfigRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -874,6 +934,60 @@ FROM            V_Company_FailConfig</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="V_Company_ConfigCrawler" msprop:Generator_TableClassName="V_Company_ConfigCrawlerDataTable" msprop:Generator_TableVarName="tableV_Company_ConfigCrawler" msprop:Generator_TablePropName="V_Company_ConfigCrawler" msprop:Generator_RowDeletingName="V_Company_ConfigCrawlerRowDeleting" msprop:Generator_RowChangingName="V_Company_ConfigCrawlerRowChanging" msprop:Generator_RowEvHandlerName="V_Company_ConfigCrawlerRowChangeEventHandler" msprop:Generator_RowDeletedName="V_Company_ConfigCrawlerRowDeleted" msprop:Generator_UserTableName="V_Company_ConfigCrawler" msprop:Generator_RowChangedName="V_Company_ConfigCrawlerRowChanged" msprop:Generator_RowEvArgName="V_Company_ConfigCrawlerRowChangeEvent" msprop:Generator_RowClassName="V_Company_ConfigCrawlerRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Domain" msprop:Generator_ColumnVarNameInTable="columnDomain" msprop:Generator_ColumnPropNameInRow="Domain" msprop:Generator_ColumnPropNameInTable="DomainColumn" msprop:Generator_UserColumnName="Domain" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MinHourReload" msprop:Generator_ColumnVarNameInTable="columnMinHourReload" msprop:Generator_ColumnPropNameInRow="MinHourReload" msprop:Generator_ColumnPropNameInTable="MinHourReloadColumn" msprop:Generator_UserColumnName="MinHourReload" type="xs:int" minOccurs="0" />
+              <xs:element name="MinHourFindNew" msprop:Generator_ColumnVarNameInTable="columnMinHourFindNew" msprop:Generator_ColumnPropNameInRow="MinHourFindNew" msprop:Generator_ColumnPropNameInTable="MinHourFindNewColumn" msprop:Generator_UserColumnName="MinHourFindNew" type="xs:int" minOccurs="0" />
+              <xs:element name="LastCrawlerFindNew" msprop:Generator_ColumnVarNameInTable="columnLastCrawlerFindNew" msprop:Generator_ColumnPropNameInRow="LastCrawlerFindNew" msprop:Generator_ColumnPropNameInTable="LastCrawlerFindNewColumn" msprop:Generator_UserColumnName="LastCrawlerFindNew" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LastEndCrawlerFindNew" msprop:Generator_ColumnVarNameInTable="columnLastEndCrawlerFindNew" msprop:Generator_ColumnPropNameInRow="LastEndCrawlerFindNew" msprop:Generator_ColumnPropNameInTable="LastEndCrawlerFindNewColumn" msprop:Generator_UserColumnName="LastEndCrawlerFindNew" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LastCrawlerReload" msprop:Generator_ColumnVarNameInTable="columnLastCrawlerReload" msprop:Generator_ColumnPropNameInRow="LastCrawlerReload" msprop:Generator_ColumnPropNameInTable="LastCrawlerReloadColumn" msprop:Generator_UserColumnName="LastCrawlerReload" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LastEndCrawlerReload" msprop:Generator_ColumnVarNameInTable="columnLastEndCrawlerReload" msprop:Generator_ColumnPropNameInRow="LastEndCrawlerReload" msprop:Generator_ColumnPropNameInTable="LastEndCrawlerReloadColumn" msprop:Generator_UserColumnName="LastEndCrawlerReload" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="AllowFindNew" msprop:Generator_ColumnVarNameInTable="columnAllowFindNew" msprop:Generator_ColumnPropNameInRow="AllowFindNew" msprop:Generator_ColumnPropNameInTable="AllowFindNewColumn" msprop:Generator_UserColumnName="AllowFindNew" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AllowReload" msprop:Generator_ColumnVarNameInTable="columnAllowReload" msprop:Generator_ColumnPropNameInRow="AllowReload" msprop:Generator_ColumnPropNameInTable="AllowReloadColumn" msprop:Generator_UserColumnName="AllowReload" type="xs:boolean" minOccurs="0" />
+              <xs:element name="TotalProduct" msprop:Generator_ColumnVarNameInTable="columnTotalProduct" msprop:Generator_ColumnPropNameInRow="TotalProduct" msprop:Generator_ColumnPropNameInTable="TotalProductColumn" msprop:Generator_UserColumnName="TotalProduct" type="xs:int" minOccurs="0" />
+              <xs:element name="h_reload" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnh_reload" msprop:Generator_ColumnPropNameInRow="h_reload" msprop:Generator_ColumnPropNameInTable="h_reloadColumn" msprop:Generator_UserColumnName="h_reload" type="xs:int" minOccurs="0" />
+              <xs:element name="h_findnew" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnh_findnew" msprop:Generator_ColumnPropNameInRow="h_findnew" msprop:Generator_ColumnPropNameInTable="h_findnewColumn" msprop:Generator_UserColumnName="h_findnew" type="xs:int" minOccurs="0" />
+              <xs:element name="m_run_reload" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnm_run_reload" msprop:Generator_ColumnPropNameInRow="m_run_reload" msprop:Generator_ColumnPropNameInTable="m_run_reloadColumn" msprop:Generator_UserColumnName="m_run_reload" type="xs:int" minOccurs="0" />
+              <xs:element name="m_run_findnew" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnm_run_findnew" msprop:Generator_ColumnPropNameInRow="m_run_findnew" msprop:Generator_ColumnPropNameInTable="m_run_findnewColumn" msprop:Generator_UserColumnName="m_run_findnew" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="V_Company_CrawlerFail" msprop:Generator_TableClassName="V_Company_CrawlerFailDataTable" msprop:Generator_TableVarName="tableV_Company_CrawlerFail" msprop:Generator_TablePropName="V_Company_CrawlerFail" msprop:Generator_RowDeletingName="V_Company_CrawlerFailRowDeleting" msprop:Generator_RowChangingName="V_Company_CrawlerFailRowChanging" msprop:Generator_RowEvHandlerName="V_Company_CrawlerFailRowChangeEventHandler" msprop:Generator_RowDeletedName="V_Company_CrawlerFailRowDeleted" msprop:Generator_UserTableName="V_Company_CrawlerFail" msprop:Generator_RowChangedName="V_Company_CrawlerFailRowChanged" msprop:Generator_RowEvArgName="V_Company_CrawlerFailRowChangeEvent" msprop:Generator_RowClassName="V_Company_CrawlerFailRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Domain" msprop:Generator_ColumnVarNameInTable="columnDomain" msprop:Generator_ColumnPropNameInRow="Domain" msprop:Generator_ColumnPropNameInTable="DomainColumn" msprop:Generator_UserColumnName="Domain" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MinHourReload" msprop:Generator_ColumnVarNameInTable="columnMinHourReload" msprop:Generator_ColumnPropNameInRow="MinHourReload" msprop:Generator_ColumnPropNameInTable="MinHourReloadColumn" msprop:Generator_UserColumnName="MinHourReload" type="xs:int" minOccurs="0" />
+              <xs:element name="MinHourFindNew" msprop:Generator_ColumnVarNameInTable="columnMinHourFindNew" msprop:Generator_ColumnPropNameInRow="MinHourFindNew" msprop:Generator_ColumnPropNameInTable="MinHourFindNewColumn" msprop:Generator_UserColumnName="MinHourFindNew" type="xs:int" minOccurs="0" />
+              <xs:element name="LastCrawlerFindNew" msprop:Generator_ColumnVarNameInTable="columnLastCrawlerFindNew" msprop:Generator_ColumnPropNameInRow="LastCrawlerFindNew" msprop:Generator_ColumnPropNameInTable="LastCrawlerFindNewColumn" msprop:Generator_UserColumnName="LastCrawlerFindNew" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LastEndCrawlerFindNew" msprop:Generator_ColumnVarNameInTable="columnLastEndCrawlerFindNew" msprop:Generator_ColumnPropNameInRow="LastEndCrawlerFindNew" msprop:Generator_ColumnPropNameInTable="LastEndCrawlerFindNewColumn" msprop:Generator_UserColumnName="LastEndCrawlerFindNew" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LastCrawlerReload" msprop:Generator_ColumnVarNameInTable="columnLastCrawlerReload" msprop:Generator_ColumnPropNameInRow="LastCrawlerReload" msprop:Generator_ColumnPropNameInTable="LastCrawlerReloadColumn" msprop:Generator_UserColumnName="LastCrawlerReload" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LastEndCrawlerReload" msprop:Generator_ColumnVarNameInTable="columnLastEndCrawlerReload" msprop:Generator_ColumnPropNameInRow="LastEndCrawlerReload" msprop:Generator_ColumnPropNameInTable="LastEndCrawlerReloadColumn" msprop:Generator_UserColumnName="LastEndCrawlerReload" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="AllowFindNew" msprop:Generator_ColumnVarNameInTable="columnAllowFindNew" msprop:Generator_ColumnPropNameInRow="AllowFindNew" msprop:Generator_ColumnPropNameInTable="AllowFindNewColumn" msprop:Generator_UserColumnName="AllowFindNew" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AllowReload" msprop:Generator_ColumnVarNameInTable="columnAllowReload" msprop:Generator_ColumnPropNameInRow="AllowReload" msprop:Generator_ColumnPropNameInTable="AllowReloadColumn" msprop:Generator_UserColumnName="AllowReload" type="xs:boolean" minOccurs="0" />
+              <xs:element name="TotalProduct" msprop:Generator_ColumnVarNameInTable="columnTotalProduct" msprop:Generator_ColumnPropNameInRow="TotalProduct" msprop:Generator_ColumnPropNameInTable="TotalProductColumn" msprop:Generator_UserColumnName="TotalProduct" type="xs:int" minOccurs="0" />
+              <xs:element name="h_reload" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnh_reload" msprop:Generator_ColumnPropNameInRow="h_reload" msprop:Generator_ColumnPropNameInTable="h_reloadColumn" msprop:Generator_UserColumnName="h_reload" type="xs:int" minOccurs="0" />
+              <xs:element name="h_findnew" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnh_findnew" msprop:Generator_ColumnPropNameInRow="h_findnew" msprop:Generator_ColumnPropNameInTable="h_findnewColumn" msprop:Generator_UserColumnName="h_findnew" type="xs:int" minOccurs="0" />
+              <xs:element name="m_run_reload" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnm_run_reload" msprop:Generator_ColumnPropNameInRow="m_run_reload" msprop:Generator_ColumnPropNameInTable="m_run_reloadColumn" msprop:Generator_UserColumnName="m_run_reload" type="xs:int" minOccurs="0" />
+              <xs:element name="m_run_findnew" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnm_run_findnew" msprop:Generator_ColumnPropNameInRow="m_run_findnew" msprop:Generator_ColumnPropNameInTable="m_run_findnewColumn" msprop:Generator_UserColumnName="m_run_findnew" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -883,6 +997,14 @@ FROM            V_Company_FailConfig</CommandText>
     <xs:unique name="V_Company_FailConfig_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:V_Company_FailConfig" />
       <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="V_Company_ConfigCrawler_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:V_Company_ConfigCrawler" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="V_Company_CrawlerFail_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:V_Company_CrawlerFail" />
+      <xs:field xpath="mstns:ID" />
     </xs:unique>
   </xs:element>
 </xs:schema>

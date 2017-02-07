@@ -16,11 +16,15 @@ using System.Data;
 
 namespace QT.Moduls.CrawlerProduct
 {
-    public class ProductParse
+    public interface IProductParser
+    {
+         void ParseProduct(ProductEntity pt, DataRow row);
+         void Analytics(ProductEntity pt, HtmlDocument doc, String detailUrl, Configuration conf, string domain);
+    }
+
+    public class ProductParse : IProductParser
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(ProductParse));
-
-
         public void ParseProduct(ProductEntity pt, DataRow row)
         {
             pt.CompanyId = Convert.ToInt64(row["CompanyId"]);
@@ -54,10 +58,11 @@ namespace QT.Moduls.CrawlerProduct
         {
             try
             {
+                if (pt.ID == 0) pt.ID = Common.GetIDProduct(detailUrl);
                 pt.CompanyId = conf.CompanyID;
                 pt.Domain = domain;
                 pt.DetailUrl = detailUrl;
-                pt.ID = Common.GetIDProduct(detailUrl);
+       
                 pt.Name = ParseName(doc, conf.ProductNameXPath);
                 pt.HashName = Common.GetHashNameProduct(domain, pt.Name);
                 pt.ShortDescription = ParseShortDescription(doc, conf.ShortDescriptionXPath);

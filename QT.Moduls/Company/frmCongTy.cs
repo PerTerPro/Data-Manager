@@ -1755,6 +1755,13 @@ namespace QT.Moduls.Company
                 _companyFuction.SendMessageDownloadImage(idcompany, false);
             }
         }
+
+        private void btnConfigHotProduct_Click(object sender, EventArgs e)
+        {
+            FrmConfigCrawlHotProduct frm = new FrmConfigCrawlHotProduct(Common.Obj2Int64(this.companyIDTextBox.Text));
+            frm.Show();
+            
+        }
     }
 
 }

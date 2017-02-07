@@ -1,0 +1,2 @@
+﻿1. Chạy lệnh lọc những dữ liệu đã có của LogAddProduct (Destination) => Redis.
+2. Chạy lệnh duyệt sản phẩm từ bảng Product (Source) => LogAddProduct (Destination).

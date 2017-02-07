@@ -17,10 +17,11 @@ namespace QT.Moduls.CrawlerProduct.Cache
 {
     public class CacheTrackDeleteProduct
     {
-        static CacheTrackDeleteProduct obj;
-        RedisServer redisServer = null;
-        ILog log = log4net.LogManager.GetLogger(typeof(CacheTrackDeleteProduct));
-        IDatabase database = null;
+        private static CacheTrackDeleteProduct obj;
+        private RedisServer redisServer = null;
+        private ILog log = log4net.LogManager.GetLogger(typeof (CacheTrackDeleteProduct));
+        private IDatabase database = null;
+
         private CacheTrackDeleteProduct()
         {
             redisServer = RedisManager.GetRedisServer("cacheTrackValidProduct");
@@ -124,7 +125,7 @@ namespace QT.Moduls.CrawlerProduct.Cache
     {
         private static CacheDuplicateProduct _obj;
         private readonly RedisServer _redisServer = null;
-        private readonly ILog _log = LogManager.GetLogger(typeof(CacheProductDesciptioHash));
+        private readonly ILog _log = LogManager.GetLogger(typeof (CacheProductDesciptioHash));
         private readonly IDatabase _database = null;
 
         private CacheDuplicateProduct()
@@ -150,7 +151,7 @@ namespace QT.Moduls.CrawlerProduct.Cache
             return _obj ?? (_obj = new CacheDuplicateProduct());
         }
 
-        public HashSet<long> GetHashDuplicate(long companyId )
+        public HashSet<long> GetHashDuplicate(long companyId)
         {
             try
             {
@@ -167,7 +168,7 @@ namespace QT.Moduls.CrawlerProduct.Cache
             }
             catch (Exception ex)
             {
-                return  new HashSet<long>();
+                return new HashSet<long>();
             }
         }
 
@@ -185,7 +186,7 @@ namespace QT.Moduls.CrawlerProduct.Cache
         public Dictionary<long, long> GetDicDuplicateProduct(long companyId)
         {
             var dicResult = new Dictionary<long, long>();
-           var dataRedis =  _database.HashGetAll("cdup:" + companyId);
+            var dataRedis = _database.HashGetAll("cdup:" + companyId);
             foreach (var variable in dataRedis)
             {
                 dicResult.Add(Convert.ToInt64(variable.Key), Convert.ToInt64(variable.Value));
@@ -193,7 +194,7 @@ namespace QT.Moduls.CrawlerProduct.Cache
             return dicResult;
         }
 
-        public void SetDuplicate (ProductDuplicate pd)
+        public void SetDuplicate(ProductDuplicate pd)
         {
             while (true)
             {
@@ -215,7 +216,7 @@ namespace QT.Moduls.CrawlerProduct.Cache
         public List<ProductDuplicate> GetAllDuplicateOfCompany(long company)
         {
             List<ProductDuplicate> lst = new List<ProductDuplicate>();
-            var arEntry =  _database.HashGetAll("cdup:" + company);
+            var arEntry = _database.HashGetAll("cdup:" + company);
             if (arEntry != null)
             {
                 foreach (var entry in arEntry)
@@ -228,12 +229,12 @@ namespace QT.Moduls.CrawlerProduct.Cache
     }
 
 
-    public class CacheProductDesciptioHash 
+    public class CacheProductDesciptioHash
     {
-        static CacheProductDesciptioHash obj;
-        RedisServer redisServer = null;
-        ILog log = log4net.LogManager.GetLogger(typeof(CacheProductDesciptioHash));
-        IDatabase database = null;
+        private static CacheProductDesciptioHash obj;
+        private RedisServer redisServer = null;
+        private ILog log = log4net.LogManager.GetLogger(typeof (CacheProductDesciptioHash));
+        private IDatabase database = null;
 
         public static CacheProductDesciptioHash Instance()
         {
@@ -247,8 +248,10 @@ namespace QT.Moduls.CrawlerProduct.Cache
             {
                 try
                 {
-                    redisServer = RedisManager.GetRedisServer("redisCacheCrawlerDuplicate");database = redisServer.GetDatabase(3);
-                    break;}
+                    redisServer = RedisManager.GetRedisServer("redisCacheCrawlerDuplicate");
+                    database = redisServer.GetDatabase(3);
+                    break;
+                }
                 catch (Exception ex)
                 {
                     log.Error(ex);
@@ -330,10 +333,10 @@ namespace QT.Moduls.CrawlerProduct.Cache
 
     public class CacheProductHash
     {
-        static CacheProductHash obj;
-        RedisServer redisServer = null;
-        ILog _log = log4net.LogManager.GetLogger(typeof(CacheProductHash));
-        IDatabase _database = null;
+        private static CacheProductHash obj;
+        private RedisServer redisServer = null;
+        private ILog _log = log4net.LogManager.GetLogger(typeof (CacheProductHash));
+        private IDatabase _database = null;
 
         private CacheProductHash()
         {
@@ -410,10 +413,7 @@ namespace QT.Moduls.CrawlerProduct.Cache
             {
                 try
                 {
-                    foreach (var item in this._database.HashGet("c:" + companyId, arrayKey.ToArray()))
-                    {
-                        lst.Add(ProductHash.FromJSON(item.ToString()));
-                    }
+                    lst.AddRange(this._database.HashGet("c:" + companyId, arrayKey.ToArray()).Select(item => ProductHash.FromJSON(item.ToString())));
                 }
                 catch (Exception ex01)
                 {
@@ -425,33 +425,26 @@ namespace QT.Moduls.CrawlerProduct.Cache
 
         public List<ProductHash> GetAllProductHash(long companyId, List<long> productIds)
         {
-            int iTry = 0;
-            while (true)
+            List<ProductHash> productHashs = new List<ProductHash>();
+            foreach (var subProductIds in Common.SplitArray(productIds.ToArray(), 100))
             {
-                try
-                {
-                    iTry++;
-                    var lst = new List<ProductHash>();
-                    foreach (var listSub in Common.SplitArray(productIds.ToArray(), 100))
+                while (true){
+                    int iTry = 0;
+                    try
                     {
-                        var arKey = new RedisValue[listSub.Count];
-                        for (int i = 0; i < listSub.Count; i++) arKey[i] = listSub[i];
-                        foreach (var item in this._database.HashGet("c:" + companyId, arKey))
-                        {
-                            if (item.HasValue)
-                            {
-                                lst.Add(ProductHash.FromJSON(item.ToString()));
-                            }
-                        }
+                        iTry++;
+                        var arKey = new RedisValue[subProductIds.Count];
+                        for (int i = 0; i < subProductIds.Count; i++) arKey[i] = subProductIds[i];
+                        productHashs.AddRange((from item in this._database.HashGet("c:" + companyId, arKey) where item.HasValue select ProductHash.FromJSON(item.ToString())).ToList());
+                        break;
                     }
-                    return lst;
-                }
-                catch (Exception ex)
-                {
-                    _log.Error(string.Format("Try {0} {1} company {2} {3}", iTry, ex.Message, companyId, ex.StackTrace));
-                    Thread.Sleep(1000);
-                }
-            }
+                    catch (Exception exception)
+                    {
+                        if (iTry > 5) _log.Error(string.Format("Try {0} Mss {1}", exception.Message + exception.StackTrace, iTry));
+                        Thread.Sleep(10000);
+                    }
+                }}
+            return productHashs;
         }
 
         public void RemoveBathProduct(long companyId, List<long> productIds)

@@ -41,6 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLs\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="log4stash">
+      <HintPath>..\..\000\DLLs\log4stash.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLs\Newtonsoft.Json.dll</HintPath>
@@ -51,7 +54,7 @@
     </Reference>
     <Reference Include="QT.Moduls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLLs\QT.Moduls.dll</HintPath>
+      <HintPath>..\..\QT.Moduls\bin\Release\QT.Moduls.dll</HintPath>
     </Reference>
     <Reference Include="QT.Users, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -120,7 +123,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
-    <None Include="SettingRun.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WSS.Core.CrawlerTests2\WSS.Core.CrawlerTests2.csproj">
@@ -131,11 +133,6 @@
       <Project>{f81a0ebe-34e3-4d1d-b2a8-432204e09cd9}</Project>
       <Name>WSS.Core.Crawler</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Version.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
