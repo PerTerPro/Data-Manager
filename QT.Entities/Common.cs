@@ -3224,6 +3224,40 @@ namespace QT.Entities
             }
             return dataTable;
         }
+        public static DataTable GetDataTableFromExcelUsingOLEDB(string directoryName, string header)
+        {
+            DataTable dataTable = null;
+            string pathOnly = string.Empty;
+            string fileName = string.Empty;
+            string sql = string.Empty;
+            try
+            {
+                pathOnly = Path.GetDirectoryName(directoryName);
+                fileName = Path.GetFileName(directoryName);
+                sql = @"SELECT * FROM [" + fileName + "]";
+                using (OleDbConnection connection = new OleDbConnection(
+                    @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + pathOnly +
+                    ";Extended Properties=\"Excel 12.0 Xml;IMEX=1;HDR=" + header + "\""))
+                {
+                    //connection.Open();
+                    using (OleDbCommand command = new OleDbCommand(sql, connection))
+                    {
+                        //int rowCount = (int)command.ExecuteScalar();
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
+                        {
+                            dataTable = new DataTable();
+                            dataTable.Locale = CultureInfo.CurrentCulture;
+                            adapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(string.Format("Connect by OleDbConnection fails with directory {0}!", directoryName), ex);
+            }
+            return dataTable;
+        }
         public static string GetDomainFromUrl(string p)
         {
             try

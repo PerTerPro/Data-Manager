@@ -22,6 +22,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
 {
     public partial class FrmDownloadImageWithCompany : Form
     {
+        private RabbitMQServer _rabbitMqServer;
         public FrmDownloadImageWithCompany()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
         {
             this.productTableAdapter.Connection.ConnectionString = ConnectionCommon.ConnectionWebsosanh;
             this.companyTableAdapter.Connection.ConnectionString = ConnectionCommon.ConnectionWebsosanh;
+            _rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -94,9 +96,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                     lbCount.Text = dBWss.Product.Rows.Count.ToString();
                     rbSuccess.AppendText(string.Format("Get {1} product need download from Database with CompanyId = {0}", idCompany, dBWss.Product.Rows.Count) + System.Environment.NewLine);
                 }));
-
-                var rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
-                var producerUpdateImageIdSql = new ProducerBasic(rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
+                var producerUpdateImageIdSql = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
                 int success = 0;
                 int fail = 0;
                 for (int i = 0; i < dBWss.Product.Rows.Count; i++)
@@ -139,8 +139,6 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                 {
                     rbSuccess.AppendText(string.Format("CompanyId = {0} downloaded {1}/{2} image", idCompany, success, dBWss.Product.Count) + System.Environment.NewLine);
                 }));
-
-                rabbitMqServer.Stop();
             }
             else
                 this.Invoke(new Action(() =>
@@ -218,9 +216,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                     lbCount.Text = dBWss.Product.Rows.Count.ToString();
                     rbSuccess.AppendText(string.Format("Get {1} product need download from Database with CompanyId = {0}", 6619858476258121218, dBWss.Product.Rows.Count) + System.Environment.NewLine);
                 }));
-
-                var rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
-                var producerUpdateImageIdSql = new ProducerBasic(rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
+                var producerUpdateImageIdSql = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
                 int success = 0;
                 int fail = 0;
                 for (int i = 0; i < dBWss.Product.Rows.Count; i++)
@@ -264,7 +260,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                     rbSuccess.AppendText(string.Format("CompanyId = {0} downloaded {1}/{2} image", 6619858476258121218, success, dBWss.Product.Count) + System.Environment.NewLine);
                 }));
 
-                rabbitMqServer.Stop();
+                
             }
             else
                 this.Invoke(new Action(() =>
@@ -272,6 +268,11 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                     rbSuccess.AppendText(string.Format("CompanyId {0} 0 product download image", 6619858476258121218) + System.Environment.NewLine);
                 }));
 
+        }
+
+        private void FrmDownloadImageWithCompany_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _rabbitMqServer.Stop();
         }
     }
 }

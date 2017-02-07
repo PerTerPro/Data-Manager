@@ -44,7 +44,7 @@ namespace QT.Entities.Datafeed
                 try
                 {
                     if (_database.HashGet("prdid:" + productId, "hash_prdinfo").HasValue)
-                        result = Convert.ToInt64(_database.HashGet("prdid:" + productId, "hash_productinfo"));
+                        result = Convert.ToInt64(_database.HashGet("prdid:" + productId, "hash_prdinfo"));
                     break;
                 }
                 catch (Exception exception)
@@ -63,7 +63,8 @@ namespace QT.Entities.Datafeed
         public static bool CheckChangeInfoProduct(long productId, long hashproductcheck)
         {
             var result = true;
-            var hashProductInRedis = GetHashProductInfo(productId);if (hashproductcheck == hashProductInRedis)
+            var hashProductInRedis = GetHashProductInfo(productId);
+            if (hashproductcheck == hashProductInRedis)
                 result = false;
             else
                 SetHashProductInfo(productId,hashproductcheck);

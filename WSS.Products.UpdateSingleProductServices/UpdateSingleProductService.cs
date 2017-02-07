@@ -178,13 +178,13 @@ namespace WSS.Products.UpdateSingleProductServices
         {
             #region Check Price
 
-            if (_isPriceBySku)
-            {
-                if (_priceWithSku.ContainsKey(product.MerchantSku))
-                {
-                    product.Price = _priceWithSku[product.MerchantSku];
-                }
-            }
+            //if (_isPriceBySku)
+            //{
+            //    if (_priceWithSku.ContainsKey(product.MerchantSku))
+            //    {
+            //        product.Price = _priceWithSku[product.MerchantSku];
+            //    }
+            //}
             #endregion
             #region Check Promotion
             switch (_isPromotion)
