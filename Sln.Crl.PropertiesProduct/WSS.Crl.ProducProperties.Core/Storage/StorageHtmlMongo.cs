@@ -18,18 +18,18 @@ namespace WSS.Crl.ProducProperties.Core.Storage
         private IProducerBasic producerBasic = null;
         public  StorageHtmlMongo ()
         {
-            IMongoDatabase database;
-            MongoDB.Driver.IMongoClient mongoClient = new MongoClient(ConfigurationManager.AppSettings[KeyMongo]);
-            this._database = mongoClient.GetDatabase(NameDatabase);
-            this._collection = this._database.GetCollection<HtmlProduct>(NameCollection);
+            //IMongoDatabase database;
+            //MongoDB.Driver.IMongoClient mongoClient = new MongoClient(ConfigurationManager.AppSettings[KeyMongo]);
+            //this._database = mongoClient.GetDatabase(NameDatabase);
+            //this._collection = this._database.GetCollection<HtmlProduct>(NameCollection);
         }
 
         public void SaveHtml(HtmlProduct htmlProduct){
             string queryDelete = "{product_id:NumberLong(" + htmlProduct.ProductId + ")}";
             //htmlProduct.HtmlZip = (new WSS.LibExtra.UtilZipFile()).ZipOfEncode(htmlProduct.Html);
             //htmlProduct.HtmlZip = (new WSS.LibExtra.UtilZipFile()).UnzipOfEncode(htmlProduct.Html);
-            this._collection.DeleteMany(queryDelete);
-            this._collection.InsertOne(htmlProduct);
+            //this._collection.DeleteMany(queryDelete);
+            //this._collection.InsertOne(htmlProduct);
 
             if (producerBasic != null)
             {

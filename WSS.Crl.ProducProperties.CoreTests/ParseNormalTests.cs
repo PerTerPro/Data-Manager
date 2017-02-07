@@ -27,12 +27,12 @@ namespace WSS.Crl.ProducProperties.Core.Tests
             Assert.IsNotNullOrEmpty(str);
         }
 
-        
 
-       [Test()]
+
+        [Test()]
         public void ParseNormal_Adayroi_1_Test()
-       {
-           string str1 = "https://www.adayroi.com/nap-rua-bon-cau-dien-tu-ls-daewon-dib-1500r-p-N6891-f1-2?pi=MYVnp&w=K69N";
+        {
+            string str1 = "https://www.adayroi.com/nap-rua-bon-cau-dien-tu-ls-daewon-dib-1500r-p-N6891-f1-2?pi=MYVnp&w=K69N";
             ProductPropertiesAdapter ppa = new ProductPropertiesAdapter();
             var x = ppa.GetConfig(3433481253691794480);
             HtmlDocument htmlDocument = new HtmlDocument();
