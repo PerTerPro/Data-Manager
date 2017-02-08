@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "000", "000\000.csproj", "{2265B7CB-1E89-4094-9C72-78E81A0F920D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -239,6 +239,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheManagerTests", "CacheManagerTests\CacheManagerTests.csproj", "{336989AC-3484-4800-A7E7-6E140016DE05}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QT.EntitiesTests1", "QT.EntitiesTests1\QT.EntitiesTests1.csproj", "{D02E76C7-DAD6-4AA3-886E-824A283A1CFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsosanhCacheToolTests", "WebsosanhCacheToolTests\WebsosanhCacheToolTests.csproj", "{CECD405B-AD4A-432E-92DE-2597C65465FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1321,6 +1323,18 @@ Global
 		{D02E76C7-DAD6-4AA3-886E-824A283A1CFB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D02E76C7-DAD6-4AA3-886E-824A283A1CFB}.Release|x86.ActiveCfg = Release|Any CPU
 		{D02E76C7-DAD6-4AA3-886E-824A283A1CFB}.Release|x86.Build.0 = Release|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Debug|x86.Build.0 = Debug|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{CECD405B-AD4A-432E-92DE-2597C65465FF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
