@@ -96,7 +96,8 @@ namespace WSS.Crl.ProducProperties.Manager
         {
            
 
-            ConfigProperty conf = this.GetConfig();this._storageConfigCrl.Save(conf);
+            ConfigProperty conf = this.GetConfig();
+            this._storageConfigCrl.Save(conf);
            
             this.RefreshData();
 

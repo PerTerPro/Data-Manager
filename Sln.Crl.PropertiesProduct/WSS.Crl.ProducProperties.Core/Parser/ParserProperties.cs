@@ -12,15 +12,15 @@ using WSS.LibExtra;
 
 namespace WSS.Crl.ProducProperties.Core.Parser
 {
-    public class ParserProperties:IParser
+    public class ParserProperties : IParser
     {
-        private  ConfigProperty _configPropertyNomal;
+        private ConfigProperty _configPropertyNomal;
         private readonly IStorageConfigCrl _storageConfigCrl;
 
         public ParserProperties(IStorageConfigCrl storageConfigCrl)
         {
             this._storageConfigCrl = storageConfigCrl;
-            
+
         }
 
         public void Init(string domain)
@@ -28,7 +28,7 @@ namespace WSS.Crl.ProducProperties.Core.Parser
             this._configPropertyNomal = _storageConfigCrl.GetConfig(domain);
         }
 
-      
+
 
         public PropertyProduct ParseData(HtmlDocument document)
         {
@@ -49,9 +49,13 @@ namespace WSS.Crl.ProducProperties.Core.Parser
                     {
                         try
                         {
-                            propertyData.Properties.Add(
+                            if (!string.IsNullOrEmpty(nodeCell[Convert.ToInt32(colH)].InnerText.Trim()) && !string.IsNullOrEmpty(nodeCell[Convert.ToInt32(colB)].InnerText.Trim()))
+                            {
+                                propertyData.Properties.Add(
                                 nodeCell[Convert.ToInt32(colH)].InnerText.Trim(),
                                 nodeCell[Convert.ToInt32(colB)].InnerText.Trim());
+                            }
+
                         }
                         catch (Exception ex)
                         {

@@ -74,6 +74,7 @@
     <Compile Include="Storage\StoragePropertiesProductMongo.cs" />
     <Compile Include="UtilCrl.cs" />
     <Compile Include="Worker\WorkerDownloadHtml.cs" />
+    <Compile Include="Worker\WorkerMapProduct.cs" />
     <Compile Include="Worker\WorkerParseData.cs" />
   </ItemGroup>
   <ItemGroup>

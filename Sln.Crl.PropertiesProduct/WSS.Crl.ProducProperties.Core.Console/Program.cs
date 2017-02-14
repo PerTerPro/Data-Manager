@@ -58,6 +58,10 @@ namespace WSS.Crl.ProducProperties.Service
                 MongoAdapter m = MongoAdapter.Instance();
                 m.FattenData();
             }
+            else if (pt.cmd == "worker_map_product")
+            {
+                ServiceRun.MapProductToSql(pt.domains);
+            }
             Thread.Sleep(1000000);
         }
     }

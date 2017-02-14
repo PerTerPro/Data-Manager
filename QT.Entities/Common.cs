@@ -1767,6 +1767,18 @@ namespace QT.Entities
 
             var responseImageDownload = (HttpWebResponse)requestdownload.GetResponse();
             var streamImageDownload = responseImageDownload.GetResponseStream();
+
+            //check transparent
+            Bitmap bmImageDownload = new Bitmap(streamImageDownload);
+            if (ContainsTransparent(bmImageDownload)==true)
+            {
+                Bitmap target = new Bitmap(bmImageDownload.Size.Width, bmImageDownload.Size.Height);
+                Graphics g = Graphics.FromImage(target);
+                g.Clear(Color.White);
+                g.DrawImage(bmImageDownload, 0, 0);
+                ((Image)target).Save(streamImageDownload, System.Drawing.Imaging.ImageFormat.Png);
+            }
+
             var request = (HttpWebRequest)WebRequest.Create(urlQuery);
             request.Headers.Add("X-Imbo-PublicKey", publicKey);
             request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
@@ -1791,6 +1803,20 @@ namespace QT.Entities
             }
 
             return idImageNew;
+        }
+        public static bool ContainsTransparent(Bitmap image)
+        {
+            for (int y = 0; y < image.Height; ++y)
+            {
+                for (int x = 0; x < image.Width; ++x)
+                {
+                    if (image.GetPixel(x, y).A != 255)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
         private static string CreateToken(string message, string secret)
         {

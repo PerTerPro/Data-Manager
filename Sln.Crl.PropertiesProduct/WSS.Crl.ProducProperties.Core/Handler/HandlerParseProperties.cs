@@ -38,7 +38,8 @@ namespace WSS.Crl.ProducProperties.Core.Handler
             if (htmlProduct != null)
             {
                 HtmlDocument htmlDocument = new HtmlDocument();
-                //string html = System.Web.HttpUtility.HtmlDecode(htmlProduct.Html);htmlDocument.LoadHtml(html);
+                //string html = System.Web.HttpUtility.HtmlDecode(htmlProduct.Html);
+                htmlDocument.LoadHtml(html);
                 var productProperty = this._parser.ParseData(htmlDocument);
                 if (productProperty != null)
                 {
