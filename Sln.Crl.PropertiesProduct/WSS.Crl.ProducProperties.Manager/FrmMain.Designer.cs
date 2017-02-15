@@ -124,7 +124,7 @@
             this.mapPropertiesToolStripMenuItem,
             this.mapPropertiesWSSToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(175, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(175, 48);
             // 
             // mapPropertiesToolStripMenuItem
             // 
@@ -144,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1276, 800);
+            this.ClientSize = new System.Drawing.Size(1693, 800);
             this.Controls.Add(this.panel1);
             this.IsMdiContainer = true;
             this.Name = "FrmMain";

@@ -11,7 +11,7 @@
     <Shape ID="DesignTable:Configuration_Property" ZOrder="5" X="332" Y="475" Height="229" Width="281" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
     <Shape ID="DesignTable:Product_PropertyCategory" ZOrder="3" X="1140" Y="330" Height="153" Width="299" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:PropertiesWss" ZOrder="2" X="842" Y="646" Height="134" Width="227" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:PropertiesMerchant" ZOrder="1" X="1213" Y="581" Height="191" Width="276" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="0" SplitterPosition="121" />
+    <Shape ID="DesignTable:PropertiesMerchant" ZOrder="1" X="1213" Y="581" Height="210" Width="276" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="0" SplitterPosition="121" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:FK_Configuration_Company" ZOrder="6" LineWidth="11">

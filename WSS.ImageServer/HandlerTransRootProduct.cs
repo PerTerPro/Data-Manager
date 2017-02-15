@@ -30,15 +30,16 @@ namespace WSS.ImageServer
   and isnull(ImageId,'') = ''
 order by a.id
 ", 50000, (row, iRow) =>
-           {
-               long id = Common.Obj2Int64(row["Id"]);
-               string url = string.Format("http://img.websosanh.vn/{0}", Common.Obj2String(row["ImagePath"]));
-               pb.PublishString(new JobRootProductWaitTrans()
-               {
-                   Id = id,
-                   Url = url
-               }.ToJson());
-           });
+ {
+     long id = Common.Obj2Int64(row["Id"]);
+     string url = string.Format("http://img.websosanh.vn/{0}", Common.Obj2String(row["ImagePath"]));
+     pb.PublishString(new JobRootProductWaitTrans()
+     {
+         Id = id,
+         Url = url
+     }.ToJson());
+     return true;
+ });
        }
 
        public void StartDownload()
@@ -89,6 +90,7 @@ order by a.id
          Id = id,
          ImageId = imageId
      }.ToJson());
+     return true;
  });
        }
 

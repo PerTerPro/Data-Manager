@@ -168,6 +168,7 @@ order by Id", 10000, (rowData,iRow) =>
                             ProductId = Id
                         }.ToJson());
                     }
+                    return true;
                 });
         }
 
