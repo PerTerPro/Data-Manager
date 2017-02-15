@@ -32,20 +32,21 @@
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.companyGridControl = new DevExpress.XtraGrid.GridControl();
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productQT = new WSS.Crl.ProducProperties.Manager.ProductQT();
-            this.companyGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colDomain = new DevExpress.XtraGrid.Columns.GridColumn();
             this.companyTableAdapter = new WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters.CompanyTableAdapter();
             this.tableAdapterManager = new WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters.TableAdapterManager();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mapPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapPropertiesWSSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.companyGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productQT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -63,16 +64,6 @@
             this.panel1.Size = new System.Drawing.Size(251, 800);
             this.panel1.TabIndex = 1;
             // 
-            // companyBindingSource
-            // 
-            this.companyBindingSource.DataMember = "Company";
-            this.companyBindingSource.DataSource = this.productQT;
-            // 
-            // productQT
-            // 
-            this.productQT.DataSetName = "ProductQT";
-            this.productQT.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // companyGridControl
             // 
             this.companyGridControl.Cursor = System.Windows.Forms.Cursors.Default;
@@ -87,6 +78,16 @@
             this.gridView1});
             this.companyGridControl.Click += new System.EventHandler(this.companyGridControl_Click);
             this.companyGridControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.companyGridControl_MouseDown);
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataMember = "Company";
+            this.companyBindingSource.DataSource = this.productQT;
+            // 
+            // productQT
+            // 
+            this.productQT.DataSetName = "ProductQT";
+            this.productQT.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // gridView1
             // 
@@ -114,21 +115,30 @@
             this.tableAdapterManager.Configuration_PropertyTableAdapter = null;
             this.tableAdapterManager.ConfigurationTableAdapter = null;
             this.tableAdapterManager.Product_PropertyCategoryTableAdapter = null;
+            this.tableAdapterManager.PropertiesMerchantTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = WSS.Crl.ProducProperties.Manager.ProductQTTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mapPropertiesToolStripMenuItem});
+            this.mapPropertiesToolStripMenuItem,
+            this.mapPropertiesWSSToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(152, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(175, 70);
             // 
             // mapPropertiesToolStripMenuItem
             // 
             this.mapPropertiesToolStripMenuItem.Name = "mapPropertiesToolStripMenuItem";
-            this.mapPropertiesToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.mapPropertiesToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.mapPropertiesToolStripMenuItem.Text = "MapProperties";
             this.mapPropertiesToolStripMenuItem.Click += new System.EventHandler(this.mapPropertiesToolStripMenuItem_Click);
+            // 
+            // mapPropertiesWSSToolStripMenuItem
+            // 
+            this.mapPropertiesWSSToolStripMenuItem.Name = "mapPropertiesWSSToolStripMenuItem";
+            this.mapPropertiesWSSToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.mapPropertiesWSSToolStripMenuItem.Text = "MapPropertiesWSS";
+            this.mapPropertiesWSSToolStripMenuItem.Click += new System.EventHandler(this.mapPropertiesWSSToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -142,9 +152,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.companyGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productQT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -165,6 +175,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDomain;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mapPropertiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mapPropertiesWSSToolStripMenuItem;
     }
 }
 

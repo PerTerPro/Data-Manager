@@ -1776,6 +1776,7 @@ namespace QT.Entities
                 Graphics g = Graphics.FromImage(target);
                 g.Clear(Color.White);
                 g.DrawImage(bmImageDownload, 0, 0);
+                
                 ((Image)target).Save(streamImageDownload, System.Drawing.Imaging.ImageFormat.Png);
             }
 
