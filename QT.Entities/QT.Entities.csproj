@@ -248,6 +248,7 @@
     <Compile Include="DesciptionProduct.cs" />
     <Compile Include="DsQTCrawler.cs">
       <DependentUpon>DsQTCrawler.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DsQTCrawler.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -311,6 +312,7 @@
     <Compile Include="Data\SqlDB.cs" />
     <Compile Include="DB.cs">
       <DependentUpon>DB.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DBProduct.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -443,6 +445,10 @@
     <ProjectReference Include="..\GABIZ_BASE\GABIZ.BASE.csproj">
       <Project>{8C825289-F1A7-4699-9D54-EEA95EC6AB21}</Project>
       <Name>GABIZ.BASE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WSS.ImageImbo.Lib\WSS.ImageImbo.Lib.csproj">
+      <Project>{294a2fa6-9fd6-4a23-a58e-764aeaa642a3}</Project>
+      <Name>WSS.ImageImbo.Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
