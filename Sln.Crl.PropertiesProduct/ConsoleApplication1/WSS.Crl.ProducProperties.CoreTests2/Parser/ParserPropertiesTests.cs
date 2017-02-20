@@ -18,8 +18,7 @@ namespace WSS.Crl.ProducProperties.CoreTests2.Parser
             //ParserProperties parser = new ParserProperties(Newtonsoft.Json.JsonConvert.DeserializeObject<ConfigProperty>(json));
             //string html = File.ReadAllText("DataTest/HtmlProductLazada.html");
             //HtmlDocument htmlDocument =new HtmlDocument();
-            //htmlDocument.LoadHtml(html);
-            //var productProperty =  parser.ParseData(htmlDocument);
+            //htmlDocument.LoadHtml(html);//var productProperty =  parser.ParseData(htmlDocument);
             //Assert.Greater(productProperty.Properties.Count, 1);
         }
 

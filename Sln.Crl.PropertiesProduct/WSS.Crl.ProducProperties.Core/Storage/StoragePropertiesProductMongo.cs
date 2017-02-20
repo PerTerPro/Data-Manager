@@ -33,7 +33,6 @@ namespace WSS.Crl.ProducProperties.Core.Storage
             this.database = RedisManager.GetRedisServer("redisPropertiesProduct").GetDatabase(1);
             this._cacheMan = CacheManager.GetCacheServer("redisPropertiesProduct");
         }
-
         public void SaveProperiesProduct(PropertyProduct propertyData)
         {
             string queryDelete = "{product_id:NumberLong(" + propertyData.ProductId + ")}";
