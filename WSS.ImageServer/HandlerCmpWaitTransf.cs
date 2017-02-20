@@ -31,6 +31,7 @@ from Product p
 where p.Company = {0}
 order by ID asc
 ", companyId);
+            
             sqlDb.ProcessDataTableLarge(sql, 100, (row,iRow) =>
             {
                 _producerProductWaitUpImg.PublishString(new JobProductWaitUpImg()
@@ -40,6 +41,7 @@ order by ID asc
                     ProductId = Convert.ToInt64(row["ID"])
                 }.ToJson());
                 countProduct++;
+                return true;
             });
             return countProduct;
         }

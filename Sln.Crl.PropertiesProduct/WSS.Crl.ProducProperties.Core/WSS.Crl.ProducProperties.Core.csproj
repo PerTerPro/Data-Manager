@@ -74,6 +74,7 @@
     <Compile Include="Storage\StoragePropertiesProductMongo.cs" />
     <Compile Include="UtilCrl.cs" />
     <Compile Include="Worker\WorkerDownloadHtml.cs" />
+    <Compile Include="Worker\WorkerMapProduct.cs" />
     <Compile Include="Worker\WorkerParseData.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,9 +136,9 @@
       <HintPath>..\ConsoleApplication1\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="protobuf-net, Version=2.1.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
-      <HintPath>..\ConsoleApplication1\packages\protobuf-net.2.1.0\lib\net451\protobuf-net.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\000\DLLs\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="RabbitMQ.Client, Version=3.5.6.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -149,6 +150,9 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>..\..\000\DLLs\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
@@ -167,7 +171,7 @@
       <HintPath>..\..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
     </Reference>
     <Reference Include="WSS.LibExtra">
-      <HintPath>..\..\WSS.LibExtra\bin\Debug\WSS.LibExtra.dll</HintPath>
+      <HintPath>..\..\WSS.LibExtra\WSS.LibExtra.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup />

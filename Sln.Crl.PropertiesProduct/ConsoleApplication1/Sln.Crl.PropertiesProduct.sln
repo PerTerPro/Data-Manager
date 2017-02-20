@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Crl.ProducProperties.Core", "..\WSS.Crl.ProducProperties.Core\WSS.Crl.ProducProperties.Core.csproj", "{9771D1AC-961E-4EFF-893B-A4EAC8398CAB}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Crl.ProducProperties.Manager", "..\WSS.Crl.ProducProperties.Manager\WSS.Crl.ProducProperties.Manager.csproj", "{0280568A-9F86-49E0-AD03-150F5E0B4903}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Crl.ProducProperties.CoreTests2", "WSS.Crl.ProducProperties.CoreTests2\WSS.Crl.ProducProperties.CoreTests2.csproj", "{C6BC62E1-8400-462A-9FB6-BFB3142A3871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Crl.MapProductProperties.Service", "WSS.Crl.MapProductProperties.Service\WSS.Crl.MapProductProperties.Service.csproj", "{BB0B3067-91F5-452F-824A-794E31240FB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C6BC62E1-8400-462A-9FB6-BFB3142A3871}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6BC62E1-8400-462A-9FB6-BFB3142A3871}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6BC62E1-8400-462A-9FB6-BFB3142A3871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB0B3067-91F5-452F-824A-794E31240FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB0B3067-91F5-452F-824A-794E31240FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB0B3067-91F5-452F-824A-794E31240FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB0B3067-91F5-452F-824A-794E31240FB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

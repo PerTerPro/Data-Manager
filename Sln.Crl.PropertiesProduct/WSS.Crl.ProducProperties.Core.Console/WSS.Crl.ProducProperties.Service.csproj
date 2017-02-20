@@ -34,13 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GABIZ.Base">
-      <HintPath>..\000\DLLs\GABIZ.Base.dll</HintPath>
+      <HintPath>..\..\000\DLLs\GABIZ.Base.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\000\DLLs\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="log4stash">
-      <HintPath>..\000\DLLs\log4stash.dll</HintPath>
+      <HintPath>..\..\000\DLLs\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -50,16 +47,15 @@
       <HintPath>..\ConsoleApplication1\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\..\000\DLLs\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="RabbitMQ.Client">
-      <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
+      <HintPath>..\..\000\DLLs\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\ConsoleApplication1\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,10 +65,10 @@
       <HintPath>..\..\000\DLLs\Websosanh.Core.Drivers.Caching.dll</HintPath>
     </Reference>
     <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
-      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
+      <HintPath>..\..\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
     <Reference Include="WSS.LibExtra">
-      <HintPath>..\..\WSS.LibExtra\bin\Debug\WSS.LibExtra.dll</HintPath>
+      <HintPath>..\..\WSS.LibExtra\WSS.LibExtra.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

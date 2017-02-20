@@ -1767,6 +1767,19 @@ namespace QT.Entities
 
             var responseImageDownload = (HttpWebResponse)requestdownload.GetResponse();
             var streamImageDownload = responseImageDownload.GetResponseStream();
+
+            //check transparent
+            Bitmap bmImageDownload = new Bitmap(streamImageDownload);
+            if (ContainsTransparent(bmImageDownload)==true)
+            {
+                Bitmap target = new Bitmap(bmImageDownload.Size.Width, bmImageDownload.Size.Height);
+                Graphics g = Graphics.FromImage(target);
+                g.Clear(Color.White);
+                g.DrawImage(bmImageDownload, 0, 0);
+                
+                ((Image)target).Save(streamImageDownload, System.Drawing.Imaging.ImageFormat.Png);
+            }
+
             var request = (HttpWebRequest)WebRequest.Create(urlQuery);
             request.Headers.Add("X-Imbo-PublicKey", publicKey);
             request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
@@ -1791,6 +1804,20 @@ namespace QT.Entities
             }
 
             return idImageNew;
+        }
+        public static bool ContainsTransparent(Bitmap image)
+        {
+            for (int y = 0; y < image.Height; ++y)
+            {
+                for (int x = 0; x < image.Width; ++x)
+                {
+                    if (image.GetPixel(x, y).A != 255)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
         private static string CreateToken(string message, string secret)
         {
@@ -3204,6 +3231,40 @@ namespace QT.Entities
                 using (OleDbConnection connection = new OleDbConnection(
                     @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + pathOnly +
                     ";Extended Properties=\"Text;CharacterSet=65001;IMEX=1;TypeGuessRows=2;ImportMixedTypes=Text;HDR=" + header + "\""))
+                {
+                    //connection.Open();
+                    using (OleDbCommand command = new OleDbCommand(sql, connection))
+                    {
+                        //int rowCount = (int)command.ExecuteScalar();
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
+                        {
+                            dataTable = new DataTable();
+                            dataTable.Locale = CultureInfo.CurrentCulture;
+                            adapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(string.Format("Connect by OleDbConnection fails with directory {0}!", directoryName), ex);
+            }
+            return dataTable;
+        }
+        public static DataTable GetDataTableFromExcelUsingOLEDB(string directoryName, string header)
+        {
+            DataTable dataTable = null;
+            string pathOnly = string.Empty;
+            string fileName = string.Empty;
+            string sql = string.Empty;
+            try
+            {
+                pathOnly = Path.GetDirectoryName(directoryName);
+                fileName = Path.GetFileName(directoryName);
+                sql = @"SELECT * FROM [" + fileName + "]";
+                using (OleDbConnection connection = new OleDbConnection(
+                    @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + pathOnly +
+                    ";Extended Properties=\"Excel 12.0 Xml;IMEX=1;HDR=" + header + "\""))
                 {
                     //connection.Open();
                     using (OleDbCommand command = new OleDbCommand(sql, connection))

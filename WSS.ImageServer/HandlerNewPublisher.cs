@@ -41,6 +41,7 @@ ORDER BY News_ID
                     Id = newsId,
                     Url = newsImage
                 }.ToJson());
+                return true;
             });
         }
 

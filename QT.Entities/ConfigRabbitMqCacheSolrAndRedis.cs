@@ -8,6 +8,7 @@ namespace QT.Entities
 {
     public class ConfigRabbitMqCacheSolrAndRedis
     {
+        public static string RabbitMqServerName = "rabbitMQ177";
         public static string ExchangeProduct = "UpdateProduct";
         public static string ExchangeProductRedis = "UpdateProduct.InsertProductToRedis";
         public static string RoutingKeyUpdateSolrAndRedis = "UpdateProduct.ToWeb.#";

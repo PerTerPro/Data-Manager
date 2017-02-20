@@ -20,11 +20,12 @@ namespace WSS.Crl.ProducProperties.Manager
         }
 
         private void companyBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {this.Validate();this.companyBindingSource.EndEdit();
+        {
+            this.Validate(); this.companyBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.productQT);
 
         }
-        
+
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'productQT.Company' table. You can move, or remove it, as needed.
@@ -57,8 +58,16 @@ namespace WSS.Crl.ProducProperties.Manager
 
         private void mapPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            long companyId =CommonConvert.Obj2Int64( this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "ID"));
-            FrmMapProperties frm = new FrmMapProperties(companyId);
+            //long companyId = CommonConvert.Obj2Int64(this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "ID"));
+            //FrmMapProperties frm = new FrmMapProperties(companyId);
+            //frm.MdiParent = this;
+            //frm.Show();
+        }
+
+        private void mapPropertiesWSSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            long companyId = CommonConvert.Obj2Int64(this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "ID"));
+            FrmMapWssProperties frm = new FrmMapWssProperties(companyId);
             frm.MdiParent = this;
             frm.Show();
         }

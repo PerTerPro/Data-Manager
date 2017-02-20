@@ -8,30 +8,30 @@ using Product = WSS.Crl.ProducProperties.Core.Entity.Product;
 
 namespace WSS.Crl.ProducProperties.Core.Storage
 {
-    public class StorageProduct:IStorageProduct
+    public class StorageProduct : IStorageProduct
     {
         private readonly SqlDb _sqlDb = new SqlDb(ConfigStatic.ProductConnection);
 
         public void ProcessProduct(string domain, EventHandler<Product> eventHandler)
         {
-            this._sqlDb.ProcessDataTableLarge(string.Format(@" 
+
+            long companyID = CommonConvert.Obj2Int64(this._sqlDb.GetTblData((string.Format("select ID from Company where Domain = '{0}'", domain))).Rows[0]["ID"]);
+            this._sqlDb.ProcessDataTableLarge(string.Format(@"
 select 
---top 100  
-pt.ID, pt.DetailUrl, x.Name as Classification
-, pt.ClassificationID
-from COmpany  c
-inner join Product pt on c.id = pt.Company
-inner join Classification x on x.ID = pt.ClassificationID
-where domain = '{0}'
+--top 1000  
+pt.ID, pt.DetailUrl
+from  Product pt
+where pt.Company = {0}
 order by pt.ID
-", domain), 10000, (obj, iRow) =>
+", companyID),
+ 1000, (obj, iRow) =>
             {
                 eventHandler(this, new Product()
                 {
                     Id = Convert.ToInt64(obj["ID"]),
                     DetailUrl = Convert.ToString(obj["DetailUrl"]),
-                    ClassificationId = CommonConvert.Obj2Int64(obj["ClassificationID"]),
-                    Classification = CommonConvert.Obj2String(obj["Classification"])
+                    ClassificationId = 0,// CommonConvert.Obj2Int64(obj["ClassificationID"]),
+                    Classification = ""//Convert.Obj2String(obj["Classification"])
                 });
                 return true;
             });

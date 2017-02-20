@@ -15,7 +15,7 @@ namespace WSS.Crl.ProducProperties.Core.Handler
     public interface IHandlerParserProperties
     {
         void Init(string domain);
-        void ProcessJob(long productId);
+        void ProcessJob(long productId, string html);
     }
 
     public class HandlerParseProperties:IHandlerParserProperties
@@ -31,16 +31,19 @@ namespace WSS.Crl.ProducProperties.Core.Handler
             _storagePropertiesProduct = storagePropertiesProduct;
         }
 
-        public void ProcessJob(long productId)
+        public void ProcessJob(long productId, string html)
         {
-            var htmlProduct = this._storageHtml.GetHtml(productId);
+            var htmlProduct = html;
+
             if (htmlProduct != null)
             {
-                HtmlDocument htmlDocument = new HtmlDocument();string html = System.Web.HttpUtility.HtmlDecode(htmlProduct.Html);htmlDocument.LoadHtml(html);
+                HtmlDocument htmlDocument = new HtmlDocument();
+                //string html = System.Web.HttpUtility.HtmlDecode(htmlProduct.Html);
+                htmlDocument.LoadHtml(html);
                 var productProperty = this._parser.ParseData(htmlDocument);
                 if (productProperty != null)
                 {
-                    productProperty.Category = htmlProduct.Classification;
+                    //productProperty.Category = htmlProduct.Classification;
                     productProperty.ProductId = productId;
                     this._storagePropertiesProduct.SaveProperiesProduct(productProperty);
                 }

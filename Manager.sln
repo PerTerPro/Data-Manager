@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "000", "000\000.csproj", "{2265B7CB-1E89-4094-9C72-78E81A0F920D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -235,12 +235,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Crl.ProducProperties.CoreTests", "WSS.Crl.ProducProperties.CoreTests\WSS.Crl.ProducProperties.CoreTests.csproj", "{FF4C1909-9537-4B26-B0CA-77F318618936}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Service.UpdateMerchant", "WSS.Service.UpdateMerchant\WSS.Service.UpdateMerchant.csproj", "{6EDCB3B1-8743-4531-8B7E-735AAB9A42AA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheManagerTests", "CacheManagerTests\CacheManagerTests.csproj", "{336989AC-3484-4800-A7E7-6E140016DE05}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QT.EntitiesTests1", "QT.EntitiesTests1\QT.EntitiesTests1.csproj", "{D02E76C7-DAD6-4AA3-886E-824A283A1CFB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.LibExtra", "WSS.LibExtra\WSS.LibExtra.csproj", "{F791D80C-E370-4A79-8B49-E4CD2143FAAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1333,6 +1327,18 @@ Global
 		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F791D80C-E370-4A79-8B49-E4CD2143FAAC}.Release|x86.ActiveCfg = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|x86.Build.0 = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

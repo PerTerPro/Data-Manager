@@ -10,11 +10,13 @@ using StackExchange.Redis;
 using Websosanh.Core.Drivers.Caching;
 using Websosanh.Core.Drivers.Redis;
 using WSS.Crl.ProducProperties.Core.Entity;
+using log4net;
 
 namespace WSS.Crl.ProducProperties.Core.Storage
 {
     public class StoragePropertiesProductMongo : IStoragePropertiesProduct
     {
+        private static ILog log = LogManager.GetLogger(typeof(StoragePropertiesProductMongo));
         private IDatabase database = null;
         private const string NameCollection = "product_property";
         private const string NameDatabase = "property_data";
@@ -28,6 +30,7 @@ namespace WSS.Crl.ProducProperties.Core.Storage
         {
             MongoDB.Driver.IMongoClient mongoClient = new MongoClient(ConfigurationManager.AppSettings[KeyMongo]);
             this._database = mongoClient.GetDatabase(NameDatabase);
+           
             this._collection = this._database.GetCollection<PropertyProduct>(NameCollection);
 
             this.database = RedisManager.GetRedisServer("redisPropertiesProduct").GetDatabase(1);
@@ -37,7 +40,15 @@ namespace WSS.Crl.ProducProperties.Core.Storage
         {
             string queryDelete = "{product_id:NumberLong(" + propertyData.ProductId + ")}";
             this._collection.DeleteMany(queryDelete);
-            this._collection.InsertOne(propertyData);
+            try
+            {
+                this._collection.InsertOne(propertyData);
+            }
+            catch (Exception ex)
+            {
+                log.Info(ex);
+            }
+            
 
             //SaveToRedis
             var properties = propertyData.Properties.Select(variable => new KeyValuePair<string, string>(variable.Key, variable.Value)).ToList();

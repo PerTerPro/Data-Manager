@@ -66,7 +66,7 @@ order by id
                     }
 
                     _log.Info(string.Format("Uploaded {0} {1}", iRow, id));
-
+                    return true;
                 });
         }
     }

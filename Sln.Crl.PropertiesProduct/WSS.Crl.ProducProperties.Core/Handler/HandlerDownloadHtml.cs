@@ -7,6 +7,10 @@ using Websosanh.Core.Drivers.RabbitMQ;
 using WSS.Crl.ProducProperties.Core.Entity;
 using WSS.Crl.ProducProperties.Core.Storage;
 using WSS.LibExtra;
+using System.IO;
+using ProtoBuf;
+using System.Text;
+using System.IO.Compression;
 
 namespace WSS.Crl.ProducProperties.Core.Handler
 {
@@ -22,7 +26,7 @@ namespace WSS.Crl.ProducProperties.Core.Handler
             string Domain { get; set; }
         }
 
-        private readonly ILog _logger ;
+        private readonly ILog _logger;
         private readonly IStorageHtml _storageHtml;
         private readonly IDownloadHtml _downloadHtml;
         private readonly IStorageConfigCrl _storageConfigCrl;
@@ -38,28 +42,33 @@ namespace WSS.Crl.ProducProperties.Core.Handler
             this._config = _storageConfigCrl.GetConfig(this._domain);
         }
 
-     
+
         public HandlerDownloadHtml(IDownloadHtml downloader, IStorageHtml storageHtml, IStorageConfigCrl configCrl)
         {
             this._downloadHtml = downloader;
             this._storageHtml = storageHtml;
             this._storageConfigCrl = configCrl;
-            this._logger = LogManager.GetLogger(typeof (HandlerDownloadHtml));
-  
+            this._logger = LogManager.GetLogger(typeof(HandlerDownloadHtml));
+
         }
 
-       
+
 
         public void ProcessJob(JobCrlProperties jobDownloadHtml)
         {
             DateTime dtFrom = DateTime.Now;
-                var html = DownloadHtml(jobDownloadHtml);
+            var html = DownloadHtml(jobDownloadHtml);
             if (!string.IsNullOrEmpty(html))
             {
                 //SaveToStorage(jobDownloadHtml, html);
 
                 jobDownloadHtml.Html = html;
-                this._producerBasic.PublishString(jobDownloadHtml.GetJson(), true);
+
+                byte[] mss = Compress(UTF8Encoding.UTF8.GetBytes(jobDownloadHtml.GetJson()));
+                this._producerBasic.Publish(mss, true);
+
+
+
                 Thread.Sleep(this._config.TimeDelay);
             }
             else
@@ -68,7 +77,18 @@ namespace WSS.Crl.ProducProperties.Core.Handler
             }
             _logger.Info(string.Format("Processed job {0} in {1}", jobDownloadHtml.ProductId, (DateTime.Now - dtFrom).Milliseconds));
         }
-
+        public static byte[] Compress(byte[] raw)
+        {
+            using (MemoryStream memory = new MemoryStream())
+            {
+                using (GZipStream gzip = new GZipStream(memory,
+                    CompressionMode.Compress, true))
+                {
+                    gzip.Write(raw, 0, raw.Length);
+                }
+                return memory.ToArray();
+            }
+        }
         private void SaveToStorage(JobCrlProperties jobDownloadHtml, string html)
         {
             _storageHtml.SaveHtml(new HtmlProduct()
@@ -80,7 +100,7 @@ namespace WSS.Crl.ProducProperties.Core.Handler
             });
         }
 
-       
+
 
         private string DownloadHtml(JobCrlProperties jobDownloadHtml)
         {
@@ -89,7 +109,7 @@ namespace WSS.Crl.ProducProperties.Core.Handler
             html = CommonConvert.RemoveScripTag(html);
             html = CommonConvert.RemoveCommentXML(html);
 
-            
+
 
             return html;
         }
