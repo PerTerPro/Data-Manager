@@ -1739,6 +1739,7 @@ namespace QT.Entities
         #region DownloadImage with ImboServer
         public static string DownloadImageProductWithImboServer(string url, string publicKey, string privateKey, string userName, string host, int port)
         {
+            url = @"http://static.lazada.vn/p/image-1432154-64f78fae16dfbb3ca1287d05ccfdc98c-product.jpg";
             string idImageNew = "";
             // Imbo
             string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
@@ -1768,24 +1769,31 @@ namespace QT.Entities
             var responseImageDownload = (HttpWebResponse)requestdownload.GetResponse();
             var streamImageDownload = responseImageDownload.GetResponseStream();
 
+            //Image img = Image.FromStream(streamImageDownload);
             //check transparent
-            Bitmap bmImageDownload = new Bitmap(streamImageDownload);
-            if (ContainsTransparent(bmImageDownload)==true)
+            using (var bmImageDownload = new Bitmap(streamImageDownload))
             {
-                Bitmap target = new Bitmap(bmImageDownload.Size.Width, bmImageDownload.Size.Height);
-                Graphics g = Graphics.FromImage(target);
-                g.Clear(Color.White);
-                g.DrawImage(bmImageDownload, 0, 0);
-                
-                ((Image)target).Save(streamImageDownload, System.Drawing.Imaging.ImageFormat.Png);
+                if (ContainsTransparent(bmImageDownload) == true)
+                {
+                    Bitmap target = new Bitmap(bmImageDownload.Size.Width, bmImageDownload.Size.Height);
+                    Graphics g = Graphics.FromImage(target);
+                    g.Clear(Color.White);
+                    g.DrawImage(bmImageDownload, 0, 0);
+                    ((Image)target).Save(@"C:\ImageTemplate\Temp.png");
+                }
+
             }
+
+            
 
             var request = (HttpWebRequest)WebRequest.Create(urlQuery);
             request.Headers.Add("X-Imbo-PublicKey", publicKey);
             request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
             request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
             request.ContentType = "application/json";
+
             request.Method = "POST";
+
             using (var streamPushToImbo = request.GetRequestStream())
             {
                 streamImageDownload.CopyTo(streamPushToImbo);
