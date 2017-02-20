@@ -1735,69 +1735,65 @@ namespace QT.Entities
         }
         #endregion
 
-
-        #region DownloadImage with ImboServer
-        public static string DownloadImageProductWithImboServer(string url, string publicKey, string privateKey, string userName, string host, int port)
+        public static string PostImgToImboWithChangeBackgroundTransference(string url, string publicKey, string privateKey, string userName, string host, int port)
         {
-            url = @"http://static.lazada.vn/p/image-1432154-64f78fae16dfbb3ca1287d05ccfdc98c-product.jpg";
+            string dir = Path.GetTempPath();
+            string pathTempImage = dir + "/" + Guid.NewGuid().ToString() + ".png";
             string idImageNew = "";
-            // Imbo
-            string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
-            string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
-            
-            var signleData = CreateToken(str, privateKey);
             //download image
-            url = url.Replace(@"///", @"//").Replace(@"////",@"//");
+            url = url.Replace(@"///", @"//").Replace(@"////", @"//");
             var regexhttp = Regex.Match(url, "http").Captures;
             if (regexhttp.Count > 1)
-                url = url.Substring(url.LastIndexOf("http"));
+                url = url.Substring(url.LastIndexOf("http", StringComparison.Ordinal));
             else if (regexhttp.Count == 0)
                 url = "http://" + url;
             var requestdownload = (HttpWebRequest)WebRequest.Create(url);
             requestdownload.Credentials = CredentialCache.DefaultCredentials;
-            requestdownload.UserAgent ="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
+            requestdownload.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
                                                    | SecurityProtocolType.Tls11
                                                    | SecurityProtocolType.Tls12
                                                    | SecurityProtocolType.Ssl3;
-
             ServicePointManager
                 .ServerCertificateValidationCallback +=
                 (sender, cert, chain, sslPolicyErrors) => true;
-
             var responseImageDownload = (HttpWebResponse)requestdownload.GetResponse();
             var streamImageDownload = responseImageDownload.GetResponseStream();
+            Image myImage = System.Drawing.Image.FromStream(streamImageDownload);
 
-            //Image img = Image.FromStream(streamImageDownload);
-            //check transparent
-            using (var bmImageDownload = new Bitmap(streamImageDownload))
+
+            using (var b = new Bitmap(myImage.Width, myImage.Height))
             {
-                if (ContainsTransparent(bmImageDownload) == true)
+                b.SetResolution(myImage.HorizontalResolution, myImage.VerticalResolution);
+
+                using (var g = Graphics.FromImage(b))
                 {
-                    Bitmap target = new Bitmap(bmImageDownload.Size.Width, bmImageDownload.Size.Height);
-                    Graphics g = Graphics.FromImage(target);
                     g.Clear(Color.White);
-                    g.DrawImage(bmImageDownload, 0, 0);
-                    ((Image)target).Save(@"C:\ImageTemplate\Temp.png");
+                    g.DrawImageUnscaled(myImage, 0, 0);
                 }
+                b.Save(pathTempImage, ImageFormat.Png);
 
             }
 
-            
+            // Imbo
+            string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
+            string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
+            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
+            var signleData = CreateToken(str, privateKey);
 
             var request = (HttpWebRequest)WebRequest.Create(urlQuery);
             request.Headers.Add("X-Imbo-PublicKey", publicKey);
             request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
             request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
             request.ContentType = "application/json";
-
             request.Method = "POST";
 
             using (var streamPushToImbo = request.GetRequestStream())
             {
-                streamImageDownload.CopyTo(streamPushToImbo);
+                var memoryStream = File.OpenRead(pathTempImage);
+                if (memoryStream != null) memoryStream.CopyTo(streamPushToImbo);
             }
+
             using (WebResponse response = request.GetResponse())
             {
                 using (var stream = response.GetResponseStream())
@@ -1811,8 +1807,17 @@ namespace QT.Entities
                 }
             }
 
+            File.Delete(pathTempImage);
             return idImageNew;
         }
+
+
+        #region DownloadImage with ImboServer
+        public static string DownloadImageProductWithImboServer(string url, string publicKey, string privateKey, string userName, string host, int port)
+        {
+          return  WSS.ImageImbo.Lib.ImboService.PostImgToImboChangeBackgroundTransference(url, publicKey, privateKey, userName, host, port);
+        }
+
         public static bool ContainsTransparent(Bitmap image)
         {
             for (int y = 0; y < image.Height; ++y)
