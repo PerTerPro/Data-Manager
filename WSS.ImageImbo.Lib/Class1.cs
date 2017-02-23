@@ -116,6 +116,7 @@ namespace WSS.ImageImbo.Lib
             {
                 var memoryStream = File.OpenRead(pathTemp);
                 if (memoryStream != null) memoryStream.CopyTo(streamPushToImbo);
+                memoryStream.Close();
             }
 
             using (WebResponse response = request.GetResponse())
@@ -130,7 +131,6 @@ namespace WSS.ImageImbo.Lib
                     }
                 }
             }
-
 
             File.Delete(pathTemp);
             return idImageNew;

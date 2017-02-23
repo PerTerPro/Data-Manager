@@ -20,5 +20,6 @@ namespace WSS.ImageImbo.LibTests
             string url = @"http://nobacks.com/wp-content/uploads/2014/11/Peach-50-500x329.png";
             string x = ImboService.PostImgToImboChangeBackgroundTransference(url, "wss_write", "123websosanh@195", "wss", @"https://172.22.1.226", 443);
             Assert.Greater(x.Length, 10);
-        }}
+        }
+    }
 }
