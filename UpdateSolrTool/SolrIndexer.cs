@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 using log4net;
 using QT.Entities;
 using UpdateSolrTools.CompanyDataSetTableAdapters;
@@ -12,14 +11,11 @@ using Websosanh.Core.Common.BO;
 using Websosanh.Core.Product.DAL;
 using Websosanh.Core.Product.BO;
 using UpdateSolrTools.ProductDatasetTableAdapters;
-using UpdateSolrTools.UserDataSetTableAdapters;
 using Websosanh.Core.Product.BAL;
 using System.Data;
-using Cms.PoolConnection;
-using System.Data.SqlClient;
-using Websosanh.Core.Drivers.Caching;
 using Websosanh.Core.Merchant.BAL;
 using WebsosanhCacheTool;
+using SolrNet;
 
 namespace UpdateSolrTools
 {
@@ -47,15 +43,12 @@ namespace UpdateSolrTools
             var numProductInserted = 0;
             var productTableAdapter = new ProductTableAdapter
             {
-                Connection = { ConnectionString = ConnectionStringProducts }
+                Connection = { ConnectionString = ConnectionStringProducts, }                
             };
-            HashSet<long> oldProductIDSet = new HashSet<long>();
+            IndexProductTools.SetAllCommandTimeouts(productTableAdapter, 300);
             try
             {
                 dtProduct = productTableAdapter.GetAllProductOfCompany(companyId);
-                var oldProductIDList = SolrClient.GetAllProductIDOfCompany(companyId);
-                foreach (var oldProductID in oldProductIDList)
-                    oldProductIDSet.Add(oldProductID);
             }
             catch (Exception ex)
             {
@@ -216,19 +209,17 @@ namespace UpdateSolrTools
                                 if (item.ViewCount < 8)
                                     item.ViewCount = 8;
                             }
+                        item.IndexedTime = DateTime.Now;
                         listProducts.Add(item);
                     }
                     if (listProducts.Count > 0)
                     {
-                        SolrClient.IndexItems(listProducts);
-                        foreach (var product in listProducts)
-                            if (oldProductIDSet.Contains(product.Id))
-                                oldProductIDSet.Remove(product.Id);
+                        SolrClient.IndexItems(listProducts);                        
                         numProductInserted += listProducts.Count;
                     }
                 }
-                DeleteProducts(oldProductIDSet, false);
-                Logger.InfoFormat("Updated company {0} - ID: {1}. Indexed {2}/{3} products, deleted {4} products. Time: {5} s", companyName, companyId, numProductInserted, totalProduct, oldProductIDSet.Count, (DateTime.Now - startTime).TotalSeconds);
+                DeleteExpiredProduct(companyId,startTime, false);
+                Logger.InfoFormat("Updated company {0} - ID: {1}. Indexed {2}/{3} products. Time: {4} s", companyName, companyId, numProductInserted, totalProduct, (DateTime.Now - startTime).TotalSeconds);
                 var adtCom = new CompanyTableAdapter
                 {
                     Connection = { ConnectionString = ConnectionStringProducts }
@@ -434,6 +425,7 @@ namespace UpdateSolrTools
                             if (item.ViewCount < 8)
                                 item.ViewCount = 8;
                         }
+                    item.IndexedTime = DateTime.Now;
                     isProductIndexed = true;
                     productsToIndex.Add(item);
                 }
@@ -460,10 +452,6 @@ namespace UpdateSolrTools
             try
             {
                 var dtProduct = productTableAdapter.GetAllRootProducts();
-                HashSet<long> oldProductIDSet = new HashSet<long>();
-                var oldProductIDList = SolrClient.GetAllProductIDOfCompany(IDWebsosanh);
-                foreach (var oldProductID in oldProductIDList)
-                    oldProductIDSet.Add(oldProductID);
                 totalProduct = dtProduct.Rows.Count;
                 var productParts = dtProduct.Partition(1000);
                 int partIndex = 0;
@@ -578,7 +566,6 @@ namespace UpdateSolrTools
                         }
                         if (rootProductMapping.NumMerchant == 0)
                         {
-                            //Logger.DebugFormat("UpdateRootProduct: Product have 0 merchant. ProductID: {0}", item.Id);
                             continue;
                         }
                         item.Price = rootProductMapping.MinPrice;
@@ -598,6 +585,7 @@ namespace UpdateSolrTools
                             BuildProductProperty(item, properties);
                         }
                         item.MerchantScore = 1;
+                        item.IndexedTime = DateTime.Now;
                         listProducts.Add(item);
                     }
                     if (listProducts.Count > 0)
@@ -605,18 +593,15 @@ namespace UpdateSolrTools
                         var startIndex = DateTime.Now;
                         SolrClient.IndexItems(listProducts);
                         indexTime += (DateTime.Now - startIndex).TotalSeconds;
-                        foreach (var product in listProducts)
-                            if (oldProductIDSet.Contains(product.Id))
-                                oldProductIDSet.Remove(product.Id);
                         numProductInserted += listProducts.Count;
                     }
                     if (partIndex % 10 == 0)
                         Logger.InfoFormat("UpdateAllRootProducts. Inserted part {0}/{1}", partIndex, productParts.Count());
                     partIndex++;
                 }
-                DeleteProducts(oldProductIDSet, false);
-                Logger.InfoFormat("Deleted {0} oldProducts.Update Finish RootProducts", oldProductIDSet.Count);
-                messageBuilder.Append(BuildLog("Deleted {0} oldProducts.Update Finish RootProducts", oldProductIDSet.Count));
+                DeleteExpiredProduct(IDWebsosanh, startTime, false);
+                Logger.InfoFormat("Update Finish RootProducts");
+                messageBuilder.Append("Update Finish RootProducts");
                 returnValue = numProductInserted;
             }
             catch (Exception ex)
@@ -735,6 +720,7 @@ namespace UpdateSolrTools
                         var tags = productRow["Tag"].ToString().ToLower().Split("|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                         if (tags.Length > 0)
                             item.Tags.AddRange(tags);
+                        
                     }
                     if (item.Tags.Count == 0)
                         item.Tags = null;
@@ -759,6 +745,7 @@ namespace UpdateSolrTools
                     if (item.MerchantDistricts != null && item.MerchantDistricts.Contains(1000000))
                         item.MerchantProvins = new List<int> { 1000000 };
                     item.MerchantScore = 1;
+                    item.IndexedTime = DateTime.Now;
                     isProductIndexed = true;
                     productsToIndex.Add(item);
                 }
@@ -803,6 +790,13 @@ namespace UpdateSolrTools
             var productChunks = productIDs.Partition(1000);
             foreach (var productChunk in productChunks)
                 SolrClient.Delete(productChunk.Select(x => x.ToString()).ToList());
+            if (commit)
+                SolrClient.Commit();
+        }
+
+        public void DeleteExpiredProduct(long merchantId, DateTime time, bool commit)
+        {
+            SolrClient.DeleteByQuery(new SolrQueryByRange<DateTime>(SolrProductConstants.SOLR_FIELD_INDEXED_TIME, DateTime.Now.AddYears(-20), time) && new SolrQueryByField(SolrProductConstants.SOLR_FIELD_MERCHANT_ID,merchantId.ToString()));
             if (commit)
                 SolrClient.Commit();
         }

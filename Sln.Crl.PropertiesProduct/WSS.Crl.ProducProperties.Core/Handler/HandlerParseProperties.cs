@@ -9,6 +9,8 @@ using Newtonsoft.Json.Linq;
 using WSS.Crl.ProducProperties.Core.Entity;
 using WSS.Crl.ProducProperties.Core.Parser;
 using WSS.Crl.ProducProperties.Core.Storage;
+using WSS.LibExtra;
+using Websosanh.Core.Drivers.RabbitMQ;
 
 namespace WSS.Crl.ProducProperties.Core.Handler
 {
@@ -23,6 +25,7 @@ namespace WSS.Crl.ProducProperties.Core.Handler
         private readonly IStorageHtml _storageHtml = null;
         private readonly IStoragePropertiesProduct _storagePropertiesProduct = null;
         private readonly IParser _parser;
+        private ProducerBasic _producerBasic;
 
         public HandlerParseProperties(IStorageHtml storageHtml, IStoragePropertiesProduct storagePropertiesProduct, IParser parser)
         {
@@ -45,7 +48,13 @@ namespace WSS.Crl.ProducProperties.Core.Handler
                 {
                     //productProperty.Category = htmlProduct.Classification;
                     productProperty.ProductId = productId;
+                    
+                    
                     this._storagePropertiesProduct.SaveProperiesProduct(productProperty);
+
+                    this._producerBasic = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigStatic.KeyRabbitMqCrlProductProperties), "Crl.Properties.Fatten");
+                    byte[] byteArray = BitConverter.GetBytes(productId);
+                    this._producerBasic.Publish(byteArray, true);
                 }
             }
         }
