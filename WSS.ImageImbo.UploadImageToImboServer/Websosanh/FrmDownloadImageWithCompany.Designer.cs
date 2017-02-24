@@ -66,6 +66,7 @@
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productTableAdapter = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.ProductTableAdapter();
             this.companyTableAdapter = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.CompanyTableAdapter();
+            this.splitContainerControl4 = new DevExpress.XtraEditors.SplitContainerControl();
             iDLabel = new System.Windows.Forms.Label();
             iDLabel1 = new System.Windows.Forms.Label();
             domainLabel = new System.Windows.Forms.Label();
@@ -93,12 +94,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtImageUrlsTest.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditReloadAll.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
+            this.splitContainerControl4.SuspendLayout();
             this.SuspendLayout();
             // 
             // iDLabel
             // 
             iDLabel.AutoSize = true;
-            iDLabel.Location = new System.Drawing.Point(11, 28);
+            iDLabel.Location = new System.Drawing.Point(5, 27);
             iDLabel.Name = "iDLabel";
             iDLabel.Size = new System.Drawing.Size(21, 13);
             iDLabel.TabIndex = 0;
@@ -107,7 +110,7 @@
             // iDLabel1
             // 
             iDLabel1.AutoSize = true;
-            iDLabel1.Location = new System.Drawing.Point(11, 28);
+            iDLabel1.Location = new System.Drawing.Point(5, 27);
             iDLabel1.Name = "iDLabel1";
             iDLabel1.Size = new System.Drawing.Size(21, 13);
             iDLabel1.TabIndex = 12;
@@ -116,7 +119,7 @@
             // domainLabel
             // 
             domainLabel.AutoSize = true;
-            domainLabel.Location = new System.Drawing.Point(203, 28);
+            domainLabel.Location = new System.Drawing.Point(197, 27);
             domainLabel.Name = "domainLabel";
             domainLabel.Size = new System.Drawing.Size(46, 13);
             domainLabel.TabIndex = 13;
@@ -292,19 +295,7 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.btnDownloadImageRootProduct);
-            this.panelControl2.Controls.Add(domainLabel);
-            this.panelControl2.Controls.Add(this.domainTextEdit);
-            this.panelControl2.Controls.Add(iDLabel1);
-            this.panelControl2.Controls.Add(this.iDTextEdit);
-            this.panelControl2.Controls.Add(this.btnTest);
-            this.panelControl2.Controls.Add(this.txtImageUrlsTest);
-            this.panelControl2.Controls.Add(this.lbFails);
-            this.panelControl2.Controls.Add(this.lbSuccess);
-            this.panelControl2.Controls.Add(this.lbCount);
-            this.panelControl2.Controls.Add(this.checkEditReloadAll);
-            this.panelControl2.Controls.Add(this.btnDownload);
-            this.panelControl2.Controls.Add(iDLabel);
+            this.panelControl2.Controls.Add(this.splitContainerControl4);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
@@ -313,7 +304,7 @@
             // 
             // btnDownloadImageRootProduct
             // 
-            this.btnDownloadImageRootProduct.Location = new System.Drawing.Point(717, 23);
+            this.btnDownloadImageRootProduct.Location = new System.Drawing.Point(679, 21);
             this.btnDownloadImageRootProduct.Name = "btnDownloadImageRootProduct";
             this.btnDownloadImageRootProduct.Size = new System.Drawing.Size(101, 23);
             this.btnDownloadImageRootProduct.TabIndex = 15;
@@ -323,7 +314,7 @@
             // domainTextEdit
             // 
             this.domainTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "Domain", true));
-            this.domainTextEdit.Location = new System.Drawing.Point(255, 25);
+            this.domainTextEdit.Location = new System.Drawing.Point(249, 24);
             this.domainTextEdit.Name = "domainTextEdit";
             this.domainTextEdit.Size = new System.Drawing.Size(167, 20);
             this.domainTextEdit.TabIndex = 14;
@@ -331,14 +322,14 @@
             // iDTextEdit
             // 
             this.iDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "ID", true));
-            this.iDTextEdit.Location = new System.Drawing.Point(38, 25);
+            this.iDTextEdit.Location = new System.Drawing.Point(32, 24);
             this.iDTextEdit.Name = "iDTextEdit";
             this.iDTextEdit.Size = new System.Drawing.Size(154, 20);
             this.iDTextEdit.TabIndex = 13;
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(468, 259);
+            this.btnTest.Location = new System.Drawing.Point(285, 27);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(90, 23);
             this.btnTest.TabIndex = 12;
@@ -347,15 +338,15 @@
             // 
             // txtImageUrlsTest
             // 
-            this.txtImageUrlsTest.Location = new System.Drawing.Point(111, 262);
+            this.txtImageUrlsTest.Location = new System.Drawing.Point(8, 30);
             this.txtImageUrlsTest.Name = "txtImageUrlsTest";
-            this.txtImageUrlsTest.Size = new System.Drawing.Size(311, 20);
+            this.txtImageUrlsTest.Size = new System.Drawing.Size(231, 20);
             this.txtImageUrlsTest.TabIndex = 11;
             // 
             // lbFails
             // 
             this.lbFails.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.lbFails.Location = new System.Drawing.Point(685, 28);
+            this.lbFails.Location = new System.Drawing.Point(647, 26);
             this.lbFails.Name = "lbFails";
             this.lbFails.Size = new System.Drawing.Size(12, 13);
             this.lbFails.TabIndex = 10;
@@ -364,7 +355,7 @@
             // lbSuccess
             // 
             this.lbSuccess.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.lbSuccess.Location = new System.Drawing.Point(648, 28);
+            this.lbSuccess.Location = new System.Drawing.Point(610, 26);
             this.lbSuccess.Name = "lbSuccess";
             this.lbSuccess.Size = new System.Drawing.Size(12, 13);
             this.lbSuccess.TabIndex = 9;
@@ -372,14 +363,14 @@
             // 
             // lbCount
             // 
-            this.lbCount.Location = new System.Drawing.Point(599, 28);
+            this.lbCount.Location = new System.Drawing.Point(593, 27);
             this.lbCount.Name = "lbCount";
             this.lbCount.Size = new System.Drawing.Size(0, 13);
             this.lbCount.TabIndex = 8;
             // 
             // checkEditReloadAll
             // 
-            this.checkEditReloadAll.Location = new System.Drawing.Point(428, 25);
+            this.checkEditReloadAll.Location = new System.Drawing.Point(422, 24);
             this.checkEditReloadAll.Name = "checkEditReloadAll";
             this.checkEditReloadAll.Properties.Caption = "Reload All";
             this.checkEditReloadAll.Size = new System.Drawing.Size(75, 19);
@@ -387,7 +378,7 @@
             // 
             // btnDownload
             // 
-            this.btnDownload.Location = new System.Drawing.Point(509, 23);
+            this.btnDownload.Location = new System.Drawing.Point(503, 22);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(75, 23);
             this.btnDownload.TabIndex = 6;
@@ -420,6 +411,31 @@
             // 
             this.companyTableAdapter.ClearBeforeFill = true;
             // 
+            // splitContainerControl4
+            // 
+            this.splitContainerControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl4.Location = new System.Drawing.Point(2, 2);
+            this.splitContainerControl4.Name = "splitContainerControl4";
+            this.splitContainerControl4.Panel1.Controls.Add(this.domainTextEdit);
+            this.splitContainerControl4.Panel1.Controls.Add(this.btnDownloadImageRootProduct);
+            this.splitContainerControl4.Panel1.Controls.Add(this.lbFails);
+            this.splitContainerControl4.Panel1.Controls.Add(iDLabel);
+            this.splitContainerControl4.Panel1.Controls.Add(this.lbSuccess);
+            this.splitContainerControl4.Panel1.Controls.Add(domainLabel);
+            this.splitContainerControl4.Panel1.Controls.Add(this.btnDownload);
+            this.splitContainerControl4.Panel1.Controls.Add(this.checkEditReloadAll);
+            this.splitContainerControl4.Panel1.Controls.Add(iDLabel1);
+            this.splitContainerControl4.Panel1.Controls.Add(this.lbCount);
+            this.splitContainerControl4.Panel1.Controls.Add(this.iDTextEdit);
+            this.splitContainerControl4.Panel1.Text = "Panel1";
+            this.splitContainerControl4.Panel2.Controls.Add(this.txtImageUrlsTest);
+            this.splitContainerControl4.Panel2.Controls.Add(this.btnTest);
+            this.splitContainerControl4.Panel2.Text = "Panel2";
+            this.splitContainerControl4.Size = new System.Drawing.Size(848, 58);
+            this.splitContainerControl4.SplitterPosition = 792;
+            this.splitContainerControl4.TabIndex = 16;
+            this.splitContainerControl4.Text = "splitContainerControl4";
+            // 
             // FrmDownloadImageWithCompany
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -449,12 +465,13 @@
             this.splitContainerControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.domainTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iDTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtImageUrlsTest.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditReloadAll.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).EndInit();
+            this.splitContainerControl4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -495,5 +512,6 @@
         private DevExpress.XtraEditors.SimpleButton btnTest;
         private DevExpress.XtraEditors.TextEdit txtImageUrlsTest;
         private DevExpress.XtraEditors.SimpleButton btnDownloadImageRootProduct;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl4;
     }
 }
