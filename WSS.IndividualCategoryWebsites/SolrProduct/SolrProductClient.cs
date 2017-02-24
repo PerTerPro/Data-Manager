@@ -118,8 +118,10 @@ namespace WSS.IndividualCategoryWebsites.SolrProduct
             }
             //
             var blackListProductDataAccess = new BlackListProductDataAccess();
-            var listIdBlock = blackListProductDataAccess.GetBlackListProducts();
-            var listIdBlockString = listIdBlock.Select(id => id.ToString()).ToList();
+            //24.1.2017 cmt de ra tet fix
+            //var listIdBlock = blackListProductDataAccess.GetBlackListProducts();
+            //var listIdBlockString = listIdBlock.Select(id => id.ToString()).ToList();
+            var listIdBlockString = new List<string>();
             //
             SolrQueryResults<SolrProductItem> queryResult = new SolrQueryResults<SolrProductItem>();
             if (string.IsNullOrEmpty(keyword))
@@ -211,8 +213,10 @@ namespace WSS.IndividualCategoryWebsites.SolrProduct
             }
             //
             var blackListProductDataAccess = new BlackListProductDataAccess();
-            var listIdBlock = blackListProductDataAccess.GetBlackListProducts();
-            var listIdBlockString = listIdBlock.Select(id => id.ToString()).ToList();
+            //cmt 24.1.2017 ra tet fix
+            //var listIdBlock = blackListProductDataAccess.GetBlackListProducts();
+            //var listIdBlockString = listIdBlock.Select(id => id.ToString()).ToList();
+            var listIdBlockString = new List<string>();
             //
             SolrQueryResults<SolrProductItem> queryResult = new SolrQueryResults<SolrProductItem>();
             if (string.IsNullOrEmpty(keyword) && categoryId == 0)

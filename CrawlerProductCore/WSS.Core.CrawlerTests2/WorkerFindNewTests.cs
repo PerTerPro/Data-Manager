@@ -66,9 +66,8 @@ namespace WSS.Core.Crawler.Tests
         {
             Server.ConnectionString = ConfigCrawler.ConnectProduct;
             Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler; Server.LogConnectionString = ConfigCrawler.ConnectLog;
-            WorkerFindNew w = new WorkerFindNew(6173371936664403895, "");
-            w.StartCrawler();
-        }
+            WorkerFindNew w = new WorkerFindNew(8486364876483618144, "");
+            w.StartCrawler();}
 
 
         [Test()]
@@ -76,7 +75,7 @@ namespace WSS.Core.Crawler.Tests
         {
             Server.ConnectionString = ConfigCrawler.ConnectProduct;
             Server.ConnectionStringCrawler = ConfigCrawler.ConnectionCrawler; Server.LogConnectionString = ConfigCrawler.ConnectLog;
-            WorkerReload w = new WorkerReload(2365377961928198678, "");
+            WorkerReload w = new WorkerReload(8486364876483618144, "");
             w.StartCrawler();
         }
 
@@ -88,8 +87,7 @@ namespace WSS.Core.Crawler.Tests
         }
 
         [Test()]
-        public void StartCrawlerTest3()
-        {
+        public void StartCrawlerTest3(){
            
         }
 

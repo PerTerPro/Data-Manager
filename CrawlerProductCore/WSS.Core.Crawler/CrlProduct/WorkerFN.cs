@@ -29,11 +29,9 @@ namespace WSS.Core.Crawler.CrlProduct
             {
                 _log.Error(ex);
             }
-
-        
             int minuteRun = (int)(DateTime.Now - dtFrom).TotalMinutes;
             _log.Info(string.Format("Processed {0} in {1}", mss, minuteRun));
-            this.GetChannel().BasicAck(message.DeliveryTag, true);
+            this.GetChannel().BasicAck(message.DeliveryTag, false);
 
         }
 

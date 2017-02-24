@@ -42,6 +42,10 @@ namespace WSS.Crl.ProducProperties.Service
             {
                 ServiceCrl.RunDownloadHtml(pt.domains);
             }
+            else if (pt.cmd == "re_push_parse_from_cas")
+            {
+                ServiceCrl.PushParseFromNoSql(pt.domains);
+            }
             else if (pt.cmd == "updcatid")
             {
                 MongoAdapter m = MongoAdapter.Instance();

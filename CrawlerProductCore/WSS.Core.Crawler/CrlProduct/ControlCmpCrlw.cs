@@ -37,7 +37,8 @@ namespace WSS.Core.Crawler.CrlProduct
                 var chanl = server.CreateChannel();
                 QueueDeclareOk dcl = chanl.QueueDeclare(tuple.Item2, true, false, false, null);
                 if (dcl.MessageCount < 1)
-                {var tblCmpFn = sqldb.GetTblData("[prc_Company_GetCmpToPushCrl]", CommandType.StoredProcedure, new[]
+                {
+                    var tblCmpFn = sqldb.GetTblData("[prc_Company_GetCmpToPushCrl]", CommandType.StoredProcedure, new[]
                     {
                         SqlDb.CreateParamteterSQL("@TypeCrl", tuple.Item1, SqlDbType.VarChar)
                     });
@@ -53,9 +54,14 @@ namespace WSS.Core.Crawler.CrlProduct
                             }.GetJSon());
                             Log.Info(string.Format("Pushed for cmp: {0}", companyId));
                         }
+                        else
+                        {
+                            Log.Info("Not push because running");
+                        }
                     }
                 }
             }
-            return;}
+            return;
+        }
     }
 }

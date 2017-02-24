@@ -1735,48 +1735,65 @@ namespace QT.Entities
         }
         #endregion
 
-
-        #region DownloadImage with ImboServer
-        public static string DownloadImageProductWithImboServer(string url, string publicKey, string privateKey, string userName, string host, int port)
+        public static string PostImgToImboWithChangeBackgroundTransference(string url, string publicKey, string privateKey, string userName, string host, int port)
         {
+            string dir = Path.GetTempPath();
+            string pathTempImage = dir + "/" + Guid.NewGuid().ToString() + ".png";
             string idImageNew = "";
-            // Imbo
-            string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
-            string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
-            
-            var signleData = CreateToken(str, privateKey);
             //download image
-            url = url.Replace(@"///", @"//").Replace(@"////",@"//");
+            url = url.Replace(@"///", @"//").Replace(@"////", @"//");
             var regexhttp = Regex.Match(url, "http").Captures;
             if (regexhttp.Count > 1)
-                url = url.Substring(url.LastIndexOf("http"));
+                url = url.Substring(url.LastIndexOf("http", StringComparison.Ordinal));
             else if (regexhttp.Count == 0)
                 url = "http://" + url;
             var requestdownload = (HttpWebRequest)WebRequest.Create(url);
             requestdownload.Credentials = CredentialCache.DefaultCredentials;
-            requestdownload.UserAgent ="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
+            requestdownload.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
                                                    | SecurityProtocolType.Tls11
                                                    | SecurityProtocolType.Tls12
                                                    | SecurityProtocolType.Ssl3;
-
             ServicePointManager
                 .ServerCertificateValidationCallback +=
                 (sender, cert, chain, sslPolicyErrors) => true;
-
             var responseImageDownload = (HttpWebResponse)requestdownload.GetResponse();
             var streamImageDownload = responseImageDownload.GetResponseStream();
+            Image myImage = System.Drawing.Image.FromStream(streamImageDownload);
+
+
+            using (var b = new Bitmap(myImage.Width, myImage.Height))
+            {
+                b.SetResolution(myImage.HorizontalResolution, myImage.VerticalResolution);
+
+                using (var g = Graphics.FromImage(b))
+                {
+                    g.Clear(Color.White);
+                    g.DrawImageUnscaled(myImage, 0, 0);
+                }
+                b.Save(pathTempImage, ImageFormat.Png);
+
+            }
+
+            // Imbo
+            string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
+            string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
+            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
+            var signleData = CreateToken(str, privateKey);
+
             var request = (HttpWebRequest)WebRequest.Create(urlQuery);
             request.Headers.Add("X-Imbo-PublicKey", publicKey);
             request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
             request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
             request.ContentType = "application/json";
             request.Method = "POST";
+
             using (var streamPushToImbo = request.GetRequestStream())
             {
-                streamImageDownload.CopyTo(streamPushToImbo);
+                var memoryStream = File.OpenRead(pathTempImage);
+                if (memoryStream != null) memoryStream.CopyTo(streamPushToImbo);
             }
+
             using (WebResponse response = request.GetResponse())
             {
                 using (var stream = response.GetResponseStream())
@@ -1790,7 +1807,30 @@ namespace QT.Entities
                 }
             }
 
+            File.Delete(pathTempImage);
             return idImageNew;
+        }
+
+
+        #region DownloadImage with ImboServer
+        public static string DownloadImageProductWithImboServer(string url, string publicKey, string privateKey, string userName, string host, int port)
+        {
+          return  WSS.ImageImbo.Lib.ImboService.PostImgToImboChangeBackgroundTransference(url, publicKey, privateKey, userName, host, port);
+        }
+
+        public static bool ContainsTransparent(Bitmap image)
+        {
+            for (int y = 0; y < image.Height; ++y)
+            {
+                for (int x = 0; x < image.Width; ++x)
+                {
+                    if (image.GetPixel(x, y).A != 255)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
         private static string CreateToken(string message, string secret)
         {
@@ -3204,6 +3244,40 @@ namespace QT.Entities
                 using (OleDbConnection connection = new OleDbConnection(
                     @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + pathOnly +
                     ";Extended Properties=\"Text;CharacterSet=65001;IMEX=1;TypeGuessRows=2;ImportMixedTypes=Text;HDR=" + header + "\""))
+                {
+                    //connection.Open();
+                    using (OleDbCommand command = new OleDbCommand(sql, connection))
+                    {
+                        //int rowCount = (int)command.ExecuteScalar();
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
+                        {
+                            dataTable = new DataTable();
+                            dataTable.Locale = CultureInfo.CurrentCulture;
+                            adapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(string.Format("Connect by OleDbConnection fails with directory {0}!", directoryName), ex);
+            }
+            return dataTable;
+        }
+        public static DataTable GetDataTableFromExcelUsingOLEDB(string directoryName, string header)
+        {
+            DataTable dataTable = null;
+            string pathOnly = string.Empty;
+            string fileName = string.Empty;
+            string sql = string.Empty;
+            try
+            {
+                pathOnly = Path.GetDirectoryName(directoryName);
+                fileName = Path.GetFileName(directoryName);
+                sql = @"SELECT * FROM [" + fileName + "]";
+                using (OleDbConnection connection = new OleDbConnection(
+                    @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + pathOnly +
+                    ";Extended Properties=\"Excel 12.0 Xml;IMEX=1;HDR=" + header + "\""))
                 {
                     //connection.Open();
                     using (OleDbCommand command = new OleDbCommand(sql, connection))

@@ -94,6 +94,7 @@ order by a.TotalProduct asc
                     _database.SetAdd("product_valid", lst.Select(variable => (RedisValue) variable).ToArray());
                     lst.Clear();
                 }
+                return true;
             });
 
         }

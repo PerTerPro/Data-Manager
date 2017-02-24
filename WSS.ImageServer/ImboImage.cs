@@ -76,7 +76,7 @@ namespace WSS.ImageServer
 
             string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "POST" + "|" + host + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
+            string str = "POST" + "|" + host + ":" + port + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
 
             var signleData = CreateToken(str, privateKey);
             try

@@ -95,6 +95,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBFacebook.cs">
+      <DependentUpon>DBFacebook.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DBFacebook.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

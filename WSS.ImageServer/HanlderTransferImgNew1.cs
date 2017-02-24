@@ -52,6 +52,7 @@ ORDER BY AdvID
                         {
                             _log.Info(string.Format("Transfered for {0}", advId));
                         }
+                        return true;
                     });
                 Thread.Sleep(30000);
             }

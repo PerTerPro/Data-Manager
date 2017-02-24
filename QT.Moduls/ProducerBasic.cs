@@ -12,7 +12,16 @@ using RabbitMQ.Client.Events;
 
 namespace QT.Moduls
 {
-    public class ProducerBasic : Producer
+
+    public interface IProducerBasic
+    {
+        void PublishString(string mss, bool persistence = true, int timeLiveBySecond = 0);
+        void Publish(byte[] mss, bool persistence = true, int timeLiveBySecond = 0);
+
+
+    }
+
+    public class ProducerBasic : Producer, IProducerBasic
     {
         private readonly log4net.ILog _log = LogManager.GetLogger(typeof (ProducerBasic));
 
@@ -73,21 +82,28 @@ namespace QT.Moduls
 
         public void Publish(byte[] mss, bool persistence = true, int timeLiveBySecond = 0)
         {
-            while (true)
+            if (mss != null)
             {
-                try
-                {IBasicProperties properties = new BasicProperties();
-                    if (timeLiveBySecond > 0) properties.Expiration = Convert.ToString(timeLiveBySecond * 1000);
-                    properties.Persistent = persistence;
-                    Publish(true, properties, mss);
-                    break;
-                }
-                catch (Exception exception)
+                int iTry = 0;
+                while (true)
                 {
-                    _log.Error(exception);
-                    Thread.Sleep(5000);
+                    try
+                    {
+                        iTry++;
+                        IBasicProperties properties = new BasicProperties();
+                        if (timeLiveBySecond > 0) properties.Expiration = Convert.ToString(timeLiveBySecond*1000);
+                        properties.Persistent = persistence;
+                        Publish(true, properties, mss);
+                        break;
+                    }
+                    catch (Exception exception)
+                    {
+                        _log.Error(string.Format("Try: {0} Mss: {1} {2}", iTry, exception.Message, exception.StackTrace));
+                        Thread.Sleep(5000);
+                    }
                 }
             }
+
         }
 
         public void PublishString(string mss, bool persistence = true, int timeLiveBySecond = 0)
@@ -99,7 +115,7 @@ namespace QT.Moduls
                     IBasicProperties properties = new BasicProperties();
                     if (timeLiveBySecond > 0) properties.Expiration = Convert.ToString(timeLiveBySecond * 1000);
                     properties.Persistent = persistence;
-                    Publish(true, properties, UTF8Encoding.UTF8.GetBytes(mss));
+                    Publish(UTF8Encoding.UTF8.GetBytes(mss), persistence, timeLiveBySecond);
                     break;
                 }
                 catch(Exception exception)

@@ -24,56 +24,54 @@ namespace WSS.FacebookMerchant
 
         private void merchant_FacebookBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
+            ////this.Validate();
+            ////this.merchant_FacebookBindingSource.EndEdit();
+            ////this.tableAdapterManager.UpdateAll(this.dBFacebook);
+            ////MessageBox.Show("Save thành công!");
+        }
+        private void companyBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
             this.Validate();
-            this.merchant_FacebookBindingSource.EndEdit();
+            this.companyBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.dBFacebook);
             MessageBox.Show("Save thành công!");
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dBFacebook.Company' table. You can move, or remove it, as needed.
+            this.companyTableAdapter.Connection.ConnectionString = _connectionString;
+            this.companyTableAdapter.Fill(this.dBFacebook.Company);
             // TODO: This line of code loads data into the 'dBFacebook.Merchant_Facebook' table. You can move, or remove it, as needed.
-            this.merchant_FacebookTableAdapter.Connection.ConnectionString = _connectionString;
-            this.merchant_FacebookTableAdapter.Fill(this.dBFacebook.Merchant_Facebook);
+            //this.merchant_FacebookTableAdapter.Connection.ConnectionString = _connectionString;
+            //this.merchant_FacebookTableAdapter.Fill(this.dBFacebook.Merchant_Facebook);
 
             DataTable dtTypeTable = new DataTable();
-            dtTypeTable.Columns.Add("Type", typeof (string));
+            dtTypeTable.Columns.Add("TypeFanpage", typeof(string));
             dtTypeTable.Columns.Add("Value", typeof(int));
             DataRow dr = dtTypeTable.NewRow();
-            dr["Type"] = "Fanpage";
+            dr["TypeFanpage"] = "Fanpage";
             dr["Value"] = 1;
             dtTypeTable.Rows.Add(dr);
             DataRow dr2 = dtTypeTable.NewRow();
-            dr2["Type"] = "Cá nhân";
+            dr2["TypeFanpage"] = "Cá nhân";
             dr2["Value"] = 2;
             dtTypeTable.Rows.Add(dr2);
             typeFanpageLookUpEdit.Properties.DataSource = dtTypeTable;
 
             DataTable dtStatus = new DataTable();
-            dtStatus.Columns.Add("Status", typeof(string));
+            dtStatus.Columns.Add("StatusFanpage", typeof(string));
             dtStatus.Columns.Add("Value", typeof(int));
             DataRow drx = dtStatus.NewRow();
-            drx["Status"] = "Done";
+            drx["StatusFanpage"] = "Done";
             drx["Value"] = 1;
             dtStatus.Rows.Add(drx);
             DataRow drx2 = dtStatus.NewRow();
-            drx2["Status"] = "New";
+            drx2["StatusFanpage"] = "New";
             drx2["Value"] = 0;
             dtStatus.Rows.Add(drx2);
-            statusLookUpEdit.Properties.DataSource = dtStatus;
+            statusFanpageLookUpEdit.Properties.DataSource = dtStatus;
         }
 
-        private void domainTextEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            merchantIdTextEdit.Text = Common.GetIDCompany(domainTextEdit.Text).ToString();
-        }
-
-        private void domainTextEdit_TextChanged(object sender, EventArgs e)
-        {
-            merchantIdTextEdit.Text = Common.GetIDCompany(domainTextEdit.Text).ToString();
-            statusLookUpEdit.EditValue = 1;
-            typeFanpageLookUpEdit.EditValue = 1;
-        }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
@@ -105,12 +103,24 @@ namespace WSS.FacebookMerchant
             {
                 try
                 {
-                    merchant_FacebookTableAdapter.Insert(item.MerchantId, item.UrlFanpageFacebook, 1, 1, item.Domain);
+                    companyTableAdapter.Insert(item.MerchantId,item.Domain, item.UrlFanpageFacebook, 1, 1);
                 }
                 catch (Exception)
                 { 
                 }
             }
+        }
+
+        private void domainTextEdit_TextChanged_1(object sender, EventArgs e)
+        {
+            iDTextEdit.Text = Common.GetIDCompany(domainTextEdit.Text).ToString();
+            statusFanpageLookUpEdit.EditValue = 1;
+            typeFanpageLookUpEdit.EditValue = 1;
+        }
+
+        private void domainTextEdit_EditValueChanged_1(object sender, EventArgs e)
+        {
+            iDTextEdit.Text = Common.GetIDCompany(domainTextEdit.Text).ToString();
         }
     }
 }

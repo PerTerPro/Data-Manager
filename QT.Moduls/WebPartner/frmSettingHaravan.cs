@@ -303,14 +303,14 @@ namespace QT.Moduls.WebPartner
                             int price = 0;
                             try
                             {
-                                originPrice = (int)Decimal.Parse(listproductHaravan.products[i].variants[0].compare_at_price.ToString(), cultureInfo);
+                                originPrice = (int)Decimal.Parse(listproductHaravan.products[i].variants[j].compare_at_price.ToString(), cultureInfo);
                             }
                             catch (FormatException)
                             {
                             }
                             try
                             {
-                                price = (int)Decimal.Parse(listproductHaravan.products[i].variants[0].price.ToString(), cultureInfo);
+                                price = (int)Decimal.Parse(listproductHaravan.products[i].variants[j].price.ToString(), cultureInfo);
                             }
                             catch (FormatException ex)
                             {

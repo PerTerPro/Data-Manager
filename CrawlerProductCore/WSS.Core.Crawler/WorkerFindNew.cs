@@ -119,6 +119,7 @@ namespace WSS.Core.Crawler
                                 Type = "FindNew",
                                 MachineCode = Server.MachineCode
                             });
+                        _log.Info(string.Format("Running Findnew {0} {1} {2}'", this._companyId, (this._company != null) ? this._company.Domain : "", (DateTime.Now - this._timeStart).Minutes));
                         tokenReport.ThrowIfCancellationRequested();
                         producerReportSessionRunning.PublishString(mss, true, 300);
                         Thread.Sleep(20000);
@@ -159,9 +160,11 @@ namespace WSS.Core.Crawler
                         _log.Info(strLog);
                         if (EventReportRun != null) EventReportRun(strLog);
                         DelayCrawler();
+
                         if (!IsNoVisitUrl(jobCrawl.Url) &&
                             (_crcProductOldGroup.Count + _countNewProduct < _limitProductValid))
                         {
+                            
                             _countVisited++;
                             _producerVisitedLinkFindNew.PublishString(
                                 Newtonsoft.Json.JsonConvert.SerializeObject(new VisitedLinkFindNew()
@@ -212,7 +215,6 @@ namespace WSS.Core.Crawler
 
         private void ProcessLink(JobFindNew jobCrawl, string html)
         {
-
             var doc = new HtmlDocument();
             doc.LoadHtml(html);
             if (IsDetailUrl(jobCrawl.Url))
@@ -221,8 +223,7 @@ namespace WSS.Core.Crawler
         }
         private bool CheckEnd()
         {
-            if (_tokenCrawler.IsCancellationRequested)
-            {
+            if (_tokenCrawler.IsCancellationRequested){
                 _typeEnd = TypeEnd.Immediate;
                 return true;
             }
@@ -297,11 +298,11 @@ namespace WSS.Core.Crawler
                                 ParentId = job.Id,
                                 Id = Common.CrcProductID(link)
                             });
+                            _log.Debug("Add link to queue:" + link);
                         }
                     }
                 }
-            }
-            _log.Info(GetPrefixLog() + string.Format("NumberLinkAdded {0}/{1}", countLinkAdds, countLinks));
+            }_log.Info(GetPrefixLog() + string.Format("NumberLinkAdded {0}/{1}", countLinkAdds, countLinks));
         }
 
         private string GetPrefixLog()
