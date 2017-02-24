@@ -48,7 +48,7 @@ namespace WSS.ImageImbo.DownloadImageService
         {
             InitializeComponent();
             LoadAppConfig();
-            //OnStart(new string[] { });
+            OnStart(new string[] { });
         }
 
         private void LoadAppConfig()
