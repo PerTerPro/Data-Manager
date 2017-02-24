@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -126,5 +127,17 @@ namespace UpdateSolrTools
             return (int)Math.Round(realLenght);
         }
 
+        public static void SetAllCommandTimeouts(object adapter, int timeout)
+        {
+            var commands = adapter.GetType().InvokeMember(
+                    "CommandCollection",
+                    BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+                    null, adapter, new object[0]);
+            var sqlCommand = (SqlCommand[])commands;
+            foreach (var cmd in sqlCommand)
+            {
+                cmd.CommandTimeout = timeout;
+            }
+        }
     }
 }
