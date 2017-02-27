@@ -55,11 +55,19 @@
   <ItemGroup>
     <Compile Include="ImboServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestFixImageRootProduct.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WSS.AutoFixLinkRootProduct\WSS.AutoFixLinkRootProduct.csproj">
+      <Project>{77191a07-7fb9-47f5-b32d-12318f813728}</Project>
+      <Name>WSS.AutoFixLinkRootProduct</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WSS.ImageImbo.Lib\WSS.ImageImbo.Lib.csproj">
       <Project>{294A2FA6-9FD6-4A23-A58E-764AEAA642A3}</Project>
       <Name>WSS.ImageImbo.Lib</Name>

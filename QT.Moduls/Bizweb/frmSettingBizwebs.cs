@@ -134,7 +134,7 @@ namespace QT.Moduls.Bizweb
                         int price = 0;
                         string compare_at_price;
                         string price_temp;
-                        if (listproductBizweb.products[i].variants[0].compare_at_price == null || listproductBizweb.products[i].variants[0].compare_at_price == 0 || listproductBizweb.products[i].variants[0].price == 0)
+                        if ((listproductBizweb.products[i].variants[0].compare_at_price == null || listproductBizweb.products[i].variants[0].compare_at_price == 0) && listproductBizweb.products[i].variants[0].price == 0)
                         {
                             Log.Error("BIZWEB : Product price equal = 0" + "Product: ID " + tmpProduct.ID + " - " + tmpProduct.Name);
                             continue;

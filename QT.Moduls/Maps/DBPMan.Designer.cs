@@ -10935,7 +10935,14 @@ FROM            Product";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"SELECT Product.AddPosition, Product.CategoryID, Product.ClassificationID, Product.Company, Product.ContentFT, Product.DetailUrl, Product.HashName, Product.ID, Product.ImagePath, Product.ImageUrls, Product.IsNews, Product.LastPriceChange, Product.LastUpdate, Product.Name, Product.NameFT, Product.Price, Product.PriceChange, Product.ProductContent, Product.ProductID, Product.Promotion, Product.Status, Product.Summary, Product.Valid, Product.Warranty FROM Product INNER JOIN ListClassification ON Product.CategoryID = ListClassification.ID LEFT OUTER JOIN ListClassification AS ListClassification_1 ON ListClassification.ParentID = ListClassification_1.ID WHERE (Product.Company = 6619858476258121218) ORDER BY ISNULL(ListClassification_1.Name, '') + N'-->' + ListClassification.Name, Product.LastUpdate DESC";
+            this._commandCollection[3].CommandText = @"SELECT        Product.AddPosition, Product.CategoryID, Product.ClassificationID, Product.Company, Product.ContentFT, Product.DetailUrl, Product.HashName, Product.ID, Product.ImagePath, Product.ImageUrls, Product.IsNews,
+                          Product.LastPriceChange, Product.LastUpdate, Product.Name, Product.NameFT, Product.Price, Product.PriceChange, Product.ProductContent, Product.ProductID, Product.Promotion, Product.Status, 
+                         Product.Summary, Product.Valid, Product.Warranty, Product.ViewCount
+FROM            Product INNER JOIN
+                         ListClassification ON Product.CategoryID = ListClassification.ID LEFT OUTER JOIN
+                         ListClassification AS ListClassification_1 ON ListClassification.ParentID = ListClassification_1.ID
+WHERE        (Product.Company = 6619858476258121218)
+ORDER BY ISNULL(ListClassification_1.Name, '') + N'-->' + ListClassification.Name, Product.LastUpdate DESC, Product.ViewCount DESC";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
