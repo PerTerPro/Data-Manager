@@ -60,7 +60,6 @@ namespace WSS.ImageImbo.Lib
             if (!url.ToLower().Contains(".png"))
                 return PostImageToImbo(url, publicKey, privateKey, userName, host, port);
 
-
             string dir = Path.GetTempPath();
             string pathTemp = dir + "/" + Guid.NewGuid().ToString() + ".png";
             string idImageNew = "";
@@ -116,6 +115,7 @@ namespace WSS.ImageImbo.Lib
             {
                 var memoryStream = File.OpenRead(pathTemp);
                 if (memoryStream != null) memoryStream.CopyTo(streamPushToImbo);
+                memoryStream.Close();
             }
 
             using (WebResponse response = request.GetResponse())
@@ -130,8 +130,6 @@ namespace WSS.ImageImbo.Lib
                     }
                 }
             }
-
-
             File.Delete(pathTemp);
             return idImageNew;
         }
