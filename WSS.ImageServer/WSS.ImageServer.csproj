@@ -161,6 +161,10 @@
       <Project>{b8d02031-c0b6-4e60-a318-9f39d9b9a8a9}</Project>
       <Name>QT.Moduls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WSS.ImageImbo.Lib\WSS.ImageImbo.Lib.csproj">
+      <Project>{294a2fa6-9fd6-4a23-a58e-764aeaa642a3}</Project>
+      <Name>WSS.ImageImbo.Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
