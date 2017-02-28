@@ -335,7 +335,14 @@ WHERE        (Company = 6619858476258121218) AND (Status = 12)</CommandText>
               <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="QT_2.dbo.Product" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy_AllProductID" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy_AllProductID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillBy_AllProductID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Product.AddPosition, Product.CategoryID, Product.ClassificationID, Product.Company, Product.ContentFT, Product.DetailUrl, Product.HashName, Product.ID, Product.ImagePath, Product.ImageUrls, Product.IsNews, Product.LastPriceChange, Product.LastUpdate, Product.Name, Product.NameFT, Product.Price, Product.PriceChange, Product.ProductContent, Product.ProductID, Product.Promotion, Product.Status, Product.Summary, Product.Valid, Product.Warranty FROM Product INNER JOIN ListClassification ON Product.CategoryID = ListClassification.ID LEFT OUTER JOIN ListClassification AS ListClassification_1 ON ListClassification.ParentID = ListClassification_1.ID WHERE (Product.Company = 6619858476258121218) ORDER BY ISNULL(ListClassification_1.Name, '') + N'--&gt;' + ListClassification.Name, Product.LastUpdate DESC</CommandText>
+                    <CommandText>SELECT        Product.AddPosition, Product.CategoryID, Product.ClassificationID, Product.Company, Product.ContentFT, Product.DetailUrl, Product.HashName, Product.ID, Product.ImagePath, Product.ImageUrls, Product.IsNews,
+                          Product.LastPriceChange, Product.LastUpdate, Product.Name, Product.NameFT, Product.Price, Product.PriceChange, Product.ProductContent, Product.ProductID, Product.Promotion, Product.Status, 
+                         Product.Summary, Product.Valid, Product.Warranty, Product.ViewCount
+FROM            Product INNER JOIN
+                         ListClassification ON Product.CategoryID = ListClassification.ID LEFT OUTER JOIN
+                         ListClassification AS ListClassification_1 ON ListClassification.ParentID = ListClassification_1.ID
+WHERE        (Product.Company = 6619858476258121218)
+ORDER BY ISNULL(ListClassification_1.Name, '') + N'--&gt;' + ListClassification.Name, Product.LastUpdate DESC, Product.ViewCount DESC</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -547,7 +554,7 @@ VALUES        (@ID,@Company,@LastUpdate,@Summary,@ProductContent,@Name,@DetailUr
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Update_SaveEditeRootProduct" Modifier="Public" Name="Update_SaveEditeRootProduct" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy26" UserSourceName="Update_SaveEditeRootProduct">
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Update_SaveEditeRootProduct" Modifier="Public" Name="Update_SaveEditeRootProduct" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy19" UserSourceName="Update_SaveEditeRootProduct">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Product
@@ -566,7 +573,7 @@ WHERE        (ID = @Original_ID)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_ContentFT_CategoryID_ByProductID" Modifier="Public" Name="UpdateQuery_ContentFT_CategoryID_ByProductID" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy19" UserSourceName="UpdateQuery_ContentFT_CategoryID_ByProductID">
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_ContentFT_CategoryID_ByProductID" Modifier="Public" Name="UpdateQuery_ContentFT_CategoryID_ByProductID" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy20" UserSourceName="UpdateQuery_ContentFT_CategoryID_ByProductID">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Product
@@ -580,7 +587,7 @@ WHERE        (ProductID = @ProductID)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_ContentFT_NameFT_ByID" Modifier="Public" Name="UpdateQuery_ContentFT_NameFT_ByID" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy20" UserSourceName="UpdateQuery_ContentFT_NameFT_ByID">
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_ContentFT_NameFT_ByID" Modifier="Public" Name="UpdateQuery_ContentFT_NameFT_ByID" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy21" UserSourceName="UpdateQuery_ContentFT_NameFT_ByID">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Product
@@ -594,7 +601,7 @@ WHERE        (ID = @Original_ID)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_Price_LastUpdate" Modifier="Public" Name="UpdateQuery_Price_LastUpdate" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy21" UserSourceName="UpdateQuery_Price_LastUpdate">
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_Price_LastUpdate" Modifier="Public" Name="UpdateQuery_Price_LastUpdate" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy22" UserSourceName="UpdateQuery_Price_LastUpdate">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Product
@@ -608,7 +615,7 @@ WHERE        (ID = @Original_ID)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_PriceChangeWeek" Modifier="Public" Name="UpdateQuery_PriceChangeWeek" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy22" UserSourceName="UpdateQuery_PriceChangeWeek">
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_PriceChangeWeek" Modifier="Public" Name="UpdateQuery_PriceChangeWeek" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy23" UserSourceName="UpdateQuery_PriceChangeWeek">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Product
@@ -621,7 +628,7 @@ WHERE        (ID = @Original_ID)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_ProductID" Modifier="Public" Name="UpdateQuery_ProductID" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy23" UserSourceName="UpdateQuery_ProductID">
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_ProductID" Modifier="Public" Name="UpdateQuery_ProductID" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy24" UserSourceName="UpdateQuery_ProductID">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Product
@@ -634,7 +641,7 @@ WHERE        (ID = @Original_ID)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_SPGoc" Modifier="Public" Name="UpdateQuery_SPGoc" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy24" UserSourceName="UpdateQuery_SPGoc">
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_SPGoc" Modifier="Public" Name="UpdateQuery_SPGoc" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy25" UserSourceName="UpdateQuery_SPGoc">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Product
@@ -649,7 +656,7 @@ WHERE        (ID = @Original_ID)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_ViewCount" Modifier="Public" Name="UpdateQuery_ViewCount" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy25" UserSourceName="UpdateQuery_ViewCount">
+              <DbSource ConnectionRef="QTConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery_ViewCount" Modifier="Public" Name="UpdateQuery_ViewCount" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy26" UserSourceName="UpdateQuery_ViewCount">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Product
@@ -1780,7 +1787,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
   <xs:element name="DBPMan" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DBPMan" msprop:Generator_UserDSName="DBPMan">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ListClassification" msprop:Generator_TableClassName="ListClassificationDataTable" msprop:Generator_TableVarName="tableListClassification" msprop:Generator_TablePropName="ListClassification" msprop:Generator_RowDeletingName="ListClassificationRowDeleting" msprop:Generator_RowChangingName="ListClassificationRowChanging" msprop:Generator_RowEvHandlerName="ListClassificationRowChangeEventHandler" msprop:Generator_RowDeletedName="ListClassificationRowDeleted" msprop:Generator_UserTableName="ListClassification" msprop:Generator_RowChangedName="ListClassificationRowChanged" msprop:Generator_RowEvArgName="ListClassificationRowChangeEvent" msprop:Generator_RowClassName="ListClassificationRow">
+        <xs:element name="ListClassification" msprop:Generator_TableClassName="ListClassificationDataTable" msprop:Generator_TableVarName="tableListClassification" msprop:Generator_RowChangedName="ListClassificationRowChanged" msprop:Generator_TablePropName="ListClassification" msprop:Generator_RowDeletingName="ListClassificationRowDeleting" msprop:Generator_RowChangingName="ListClassificationRowChanging" msprop:Generator_RowEvHandlerName="ListClassificationRowChangeEventHandler" msprop:Generator_RowDeletedName="ListClassificationRowDeleted" msprop:Generator_RowClassName="ListClassificationRow" msprop:Generator_UserTableName="ListClassification" msprop:Generator_RowEvArgName="ListClassificationRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1804,7 +1811,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Product" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct" msprop:Generator_TablePropName="Product" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_UserTableName="Product" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_RowEvArgName="ProductRowChangeEvent" msprop:Generator_RowClassName="ProductRow">
+        <xs:element name="Product" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_TablePropName="Product" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_RowClassName="ProductRow" msprop:Generator_UserTableName="Product" msprop:Generator_RowEvArgName="ProductRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
@@ -1893,7 +1900,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Product_KeyComparison" msprop:Generator_TableClassName="Product_KeyComparisonDataTable" msprop:Generator_TableVarName="tableProduct_KeyComparison" msprop:Generator_TablePropName="Product_KeyComparison" msprop:Generator_RowDeletingName="Product_KeyComparisonRowDeleting" msprop:Generator_RowChangingName="Product_KeyComparisonRowChanging" msprop:Generator_RowEvHandlerName="Product_KeyComparisonRowChangeEventHandler" msprop:Generator_RowDeletedName="Product_KeyComparisonRowDeleted" msprop:Generator_UserTableName="Product_KeyComparison" msprop:Generator_RowChangedName="Product_KeyComparisonRowChanged" msprop:Generator_RowEvArgName="Product_KeyComparisonRowChangeEvent" msprop:Generator_RowClassName="Product_KeyComparisonRow">
+        <xs:element name="Product_KeyComparison" msprop:Generator_TableClassName="Product_KeyComparisonDataTable" msprop:Generator_TableVarName="tableProduct_KeyComparison" msprop:Generator_RowChangedName="Product_KeyComparisonRowChanged" msprop:Generator_TablePropName="Product_KeyComparison" msprop:Generator_RowDeletingName="Product_KeyComparisonRowDeleting" msprop:Generator_RowChangingName="Product_KeyComparisonRowChanging" msprop:Generator_RowEvHandlerName="Product_KeyComparisonRowChangeEventHandler" msprop:Generator_RowDeletedName="Product_KeyComparisonRowDeleted" msprop:Generator_RowClassName="Product_KeyComparisonRow" msprop:Generator_UserTableName="Product_KeyComparison" msprop:Generator_RowEvArgName="Product_KeyComparisonRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1937,7 +1944,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProductAnanytic" msprop:Generator_TableClassName="ProductAnanyticDataTable" msprop:Generator_TableVarName="tableProductAnanytic" msprop:Generator_TablePropName="ProductAnanytic" msprop:Generator_RowDeletingName="ProductAnanyticRowDeleting" msprop:Generator_RowChangingName="ProductAnanyticRowChanging" msprop:Generator_RowEvHandlerName="ProductAnanyticRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductAnanyticRowDeleted" msprop:Generator_UserTableName="ProductAnanytic" msprop:Generator_RowChangedName="ProductAnanyticRowChanged" msprop:Generator_RowEvArgName="ProductAnanyticRowChangeEvent" msprop:Generator_RowClassName="ProductAnanyticRow">
+        <xs:element name="ProductAnanytic" msprop:Generator_TableClassName="ProductAnanyticDataTable" msprop:Generator_TableVarName="tableProductAnanytic" msprop:Generator_RowChangedName="ProductAnanyticRowChanged" msprop:Generator_TablePropName="ProductAnanytic" msprop:Generator_RowDeletingName="ProductAnanyticRowDeleting" msprop:Generator_RowChangingName="ProductAnanyticRowChanging" msprop:Generator_RowEvHandlerName="ProductAnanyticRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductAnanyticRowDeleted" msprop:Generator_RowClassName="ProductAnanyticRow" msprop:Generator_UserTableName="ProductAnanytic" msprop:Generator_RowEvArgName="ProductAnanyticRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
@@ -2020,7 +2027,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Product_Properties" msprop:Generator_TableClassName="Product_PropertiesDataTable" msprop:Generator_TableVarName="tableProduct_Properties" msprop:Generator_TablePropName="Product_Properties" msprop:Generator_RowDeletingName="Product_PropertiesRowDeleting" msprop:Generator_RowChangingName="Product_PropertiesRowChanging" msprop:Generator_RowEvHandlerName="Product_PropertiesRowChangeEventHandler" msprop:Generator_RowDeletedName="Product_PropertiesRowDeleted" msprop:Generator_UserTableName="Product_Properties" msprop:Generator_RowChangedName="Product_PropertiesRowChanged" msprop:Generator_RowEvArgName="Product_PropertiesRowChangeEvent" msprop:Generator_RowClassName="Product_PropertiesRow">
+        <xs:element name="Product_Properties" msprop:Generator_TableClassName="Product_PropertiesDataTable" msprop:Generator_TableVarName="tableProduct_Properties" msprop:Generator_RowChangedName="Product_PropertiesRowChanged" msprop:Generator_TablePropName="Product_Properties" msprop:Generator_RowDeletingName="Product_PropertiesRowDeleting" msprop:Generator_RowChangingName="Product_PropertiesRowChanging" msprop:Generator_RowEvHandlerName="Product_PropertiesRowChangeEventHandler" msprop:Generator_RowDeletedName="Product_PropertiesRowDeleted" msprop:Generator_RowClassName="Product_PropertiesRow" msprop:Generator_UserTableName="Product_Properties" msprop:Generator_RowEvArgName="Product_PropertiesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -2032,7 +2039,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProductStatus" msprop:Generator_TableClassName="ProductStatusDataTable" msprop:Generator_TableVarName="tableProductStatus" msprop:Generator_TablePropName="ProductStatus" msprop:Generator_RowDeletingName="ProductStatusRowDeleting" msprop:Generator_RowChangingName="ProductStatusRowChanging" msprop:Generator_RowEvHandlerName="ProductStatusRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductStatusRowDeleted" msprop:Generator_UserTableName="ProductStatus" msprop:Generator_RowChangedName="ProductStatusRowChanged" msprop:Generator_RowEvArgName="ProductStatusRowChangeEvent" msprop:Generator_RowClassName="ProductStatusRow">
+        <xs:element name="ProductStatus" msprop:Generator_TableClassName="ProductStatusDataTable" msprop:Generator_TableVarName="tableProductStatus" msprop:Generator_RowChangedName="ProductStatusRowChanged" msprop:Generator_TablePropName="ProductStatus" msprop:Generator_RowDeletingName="ProductStatusRowDeleting" msprop:Generator_RowChangingName="ProductStatusRowChanging" msprop:Generator_RowEvHandlerName="ProductStatusRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductStatusRowDeleted" msprop:Generator_RowClassName="ProductStatusRow" msprop:Generator_UserTableName="ProductStatus" msprop:Generator_RowEvArgName="ProductStatusRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:short" />
@@ -2046,7 +2053,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Product_Logs" msprop:Generator_TableClassName="Product_LogsDataTable" msprop:Generator_TableVarName="tableProduct_Logs" msprop:Generator_TablePropName="Product_Logs" msprop:Generator_RowDeletingName="Product_LogsRowDeleting" msprop:Generator_RowChangingName="Product_LogsRowChanging" msprop:Generator_RowEvHandlerName="Product_LogsRowChangeEventHandler" msprop:Generator_RowDeletedName="Product_LogsRowDeleted" msprop:Generator_UserTableName="Product_Logs" msprop:Generator_RowChangedName="Product_LogsRowChanged" msprop:Generator_RowEvArgName="Product_LogsRowChangeEvent" msprop:Generator_RowClassName="Product_LogsRow">
+        <xs:element name="Product_Logs" msprop:Generator_TableClassName="Product_LogsDataTable" msprop:Generator_TableVarName="tableProduct_Logs" msprop:Generator_RowChangedName="Product_LogsRowChanged" msprop:Generator_TablePropName="Product_Logs" msprop:Generator_RowDeletingName="Product_LogsRowDeleting" msprop:Generator_RowChangingName="Product_LogsRowChanging" msprop:Generator_RowEvHandlerName="Product_LogsRowChangeEventHandler" msprop:Generator_RowDeletedName="Product_LogsRowDeleted" msprop:Generator_RowClassName="Product_LogsRow" msprop:Generator_UserTableName="Product_Logs" msprop:Generator_RowEvArgName="Product_LogsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
@@ -2057,7 +2064,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="News" msprop:Generator_TableClassName="NewsDataTable" msprop:Generator_TableVarName="tableNews" msprop:Generator_TablePropName="News" msprop:Generator_RowDeletingName="NewsRowDeleting" msprop:Generator_RowChangingName="NewsRowChanging" msprop:Generator_RowEvHandlerName="NewsRowChangeEventHandler" msprop:Generator_RowDeletedName="NewsRowDeleted" msprop:Generator_UserTableName="News" msprop:Generator_RowChangedName="NewsRowChanged" msprop:Generator_RowEvArgName="NewsRowChangeEvent" msprop:Generator_RowClassName="NewsRow">
+        <xs:element name="News" msprop:Generator_TableClassName="NewsDataTable" msprop:Generator_TableVarName="tableNews" msprop:Generator_RowChangedName="NewsRowChanged" msprop:Generator_TablePropName="News" msprop:Generator_RowDeletingName="NewsRowDeleting" msprop:Generator_RowChangingName="NewsRowChanging" msprop:Generator_RowEvHandlerName="NewsRowChangeEventHandler" msprop:Generator_RowDeletedName="NewsRowDeleted" msprop:Generator_RowClassName="NewsRow" msprop:Generator_UserTableName="News" msprop:Generator_RowEvArgName="NewsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NewsID" msprop:Generator_ColumnVarNameInTable="columnNewsID" msprop:Generator_ColumnPropNameInRow="NewsID" msprop:Generator_ColumnPropNameInTable="NewsIDColumn" msprop:Generator_UserColumnName="NewsID" type="xs:int" />
@@ -2114,7 +2121,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Price_Logs" msprop:Generator_TableClassName="Price_LogsDataTable" msprop:Generator_TableVarName="tablePrice_Logs" msprop:Generator_TablePropName="Price_Logs" msprop:Generator_RowDeletingName="Price_LogsRowDeleting" msprop:Generator_RowChangingName="Price_LogsRowChanging" msprop:Generator_RowEvHandlerName="Price_LogsRowChangeEventHandler" msprop:Generator_RowDeletedName="Price_LogsRowDeleted" msprop:Generator_UserTableName="Price_Logs" msprop:Generator_RowChangedName="Price_LogsRowChanged" msprop:Generator_RowEvArgName="Price_LogsRowChangeEvent" msprop:Generator_RowClassName="Price_LogsRow">
+        <xs:element name="Price_Logs" msprop:Generator_TableClassName="Price_LogsDataTable" msprop:Generator_TableVarName="tablePrice_Logs" msprop:Generator_RowChangedName="Price_LogsRowChanged" msprop:Generator_TablePropName="Price_Logs" msprop:Generator_RowDeletingName="Price_LogsRowDeleting" msprop:Generator_RowChangingName="Price_LogsRowChanging" msprop:Generator_RowEvHandlerName="Price_LogsRowChangeEventHandler" msprop:Generator_RowDeletedName="Price_LogsRowDeleted" msprop:Generator_RowClassName="Price_LogsRow" msprop:Generator_UserTableName="Price_Logs" msprop:Generator_RowEvArgName="Price_LogsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
@@ -2125,7 +2132,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ListClassificationSelect" msprop:Generator_TableClassName="ListClassificationSelectDataTable" msprop:Generator_TableVarName="tableListClassificationSelect" msprop:Generator_TablePropName="ListClassificationSelect" msprop:Generator_RowDeletingName="ListClassificationSelectRowDeleting" msprop:Generator_RowChangingName="ListClassificationSelectRowChanging" msprop:Generator_RowEvHandlerName="ListClassificationSelectRowChangeEventHandler" msprop:Generator_RowDeletedName="ListClassificationSelectRowDeleted" msprop:Generator_UserTableName="ListClassificationSelect" msprop:Generator_RowChangedName="ListClassificationSelectRowChanged" msprop:Generator_RowEvArgName="ListClassificationSelectRowChangeEvent" msprop:Generator_RowClassName="ListClassificationSelectRow">
+        <xs:element name="ListClassificationSelect" msprop:Generator_TableClassName="ListClassificationSelectDataTable" msprop:Generator_TableVarName="tableListClassificationSelect" msprop:Generator_RowChangedName="ListClassificationSelectRowChanged" msprop:Generator_TablePropName="ListClassificationSelect" msprop:Generator_RowDeletingName="ListClassificationSelectRowDeleting" msprop:Generator_RowChangingName="ListClassificationSelectRowChanging" msprop:Generator_RowEvHandlerName="ListClassificationSelectRowChangeEventHandler" msprop:Generator_RowDeletedName="ListClassificationSelectRowDeleted" msprop:Generator_RowClassName="ListClassificationSelectRow" msprop:Generator_UserTableName="ListClassificationSelect" msprop:Generator_RowEvArgName="ListClassificationSelectRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -2163,7 +2170,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProductID" msprop:Generator_TableClassName="ProductIDDataTable" msprop:Generator_TableVarName="tableProductID" msprop:Generator_TablePropName="ProductID" msprop:Generator_RowDeletingName="ProductIDRowDeleting" msprop:Generator_RowChangingName="ProductIDRowChanging" msprop:Generator_RowEvHandlerName="ProductIDRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductIDRowDeleted" msprop:Generator_UserTableName="ProductID" msprop:Generator_RowChangedName="ProductIDRowChanged" msprop:Generator_RowEvArgName="ProductIDRowChangeEvent" msprop:Generator_RowClassName="ProductIDRow">
+        <xs:element name="ProductID" msprop:Generator_TableClassName="ProductIDDataTable" msprop:Generator_TableVarName="tableProductID" msprop:Generator_RowChangedName="ProductIDRowChanged" msprop:Generator_TablePropName="ProductID" msprop:Generator_RowDeletingName="ProductIDRowDeleting" msprop:Generator_RowChangingName="ProductIDRowChanging" msprop:Generator_RowEvHandlerName="ProductIDRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductIDRowDeleted" msprop:Generator_RowClassName="ProductIDRow" msprop:Generator_UserTableName="ProductID" msprop:Generator_RowEvArgName="ProductIDRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -2188,7 +2195,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tag_Product" msprop:Generator_TableClassName="Tag_ProductDataTable" msprop:Generator_TableVarName="tableTag_Product" msprop:Generator_TablePropName="Tag_Product" msprop:Generator_RowDeletingName="Tag_ProductRowDeleting" msprop:Generator_RowChangingName="Tag_ProductRowChanging" msprop:Generator_RowEvHandlerName="Tag_ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="Tag_ProductRowDeleted" msprop:Generator_UserTableName="Tag_Product" msprop:Generator_RowChangedName="Tag_ProductRowChanged" msprop:Generator_RowEvArgName="Tag_ProductRowChangeEvent" msprop:Generator_RowClassName="Tag_ProductRow">
+        <xs:element name="Tag_Product" msprop:Generator_TableClassName="Tag_ProductDataTable" msprop:Generator_TableVarName="tableTag_Product" msprop:Generator_RowChangedName="Tag_ProductRowChanged" msprop:Generator_TablePropName="Tag_Product" msprop:Generator_RowDeletingName="Tag_ProductRowDeleting" msprop:Generator_RowChangingName="Tag_ProductRowChanging" msprop:Generator_RowEvHandlerName="Tag_ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="Tag_ProductRowDeleted" msprop:Generator_RowClassName="Tag_ProductRow" msprop:Generator_UserTableName="Tag_Product" msprop:Generator_RowEvArgName="Tag_ProductRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProductID" msprop:Generator_ColumnVarNameInTable="columnProductID" msprop:Generator_ColumnPropNameInRow="ProductID" msprop:Generator_ColumnPropNameInTable="ProductIDColumn" msprop:Generator_UserColumnName="ProductID" type="xs:long" />
@@ -2203,7 +2210,7 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tag_Category" msprop:Generator_TableClassName="Tag_CategoryDataTable" msprop:Generator_TableVarName="tableTag_Category" msprop:Generator_RowChangedName="Tag_CategoryRowChanged" msprop:Generator_TablePropName="Tag_Category" msprop:Generator_RowDeletingName="Tag_CategoryRowDeleting" msprop:Generator_RowChangingName="Tag_CategoryRowChanging" msprop:Generator_RowEvHandlerName="Tag_CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="Tag_CategoryRowDeleted" msprop:Generator_RowClassName="Tag_CategoryRow" msprop:Generator_UserTableName="Tag_Category" msprop:Generator_RowEvArgName="Tag_CategoryRowChangeEvent">
+        <xs:element name="Tag_Category" msprop:Generator_TableClassName="Tag_CategoryDataTable" msprop:Generator_TableVarName="tableTag_Category" msprop:Generator_TablePropName="Tag_Category" msprop:Generator_RowDeletingName="Tag_CategoryRowDeleting" msprop:Generator_RowChangingName="Tag_CategoryRowChanging" msprop:Generator_RowEvHandlerName="Tag_CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="Tag_CategoryRowDeleted" msprop:Generator_UserTableName="Tag_Category" msprop:Generator_RowChangedName="Tag_CategoryRowChanged" msprop:Generator_RowEvArgName="Tag_CategoryRowChangeEvent" msprop:Generator_RowClassName="Tag_CategoryRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CategoryID" msprop:Generator_ColumnVarNameInTable="columnCategoryID" msprop:Generator_ColumnPropNameInRow="CategoryID" msprop:Generator_ColumnPropNameInTable="CategoryIDColumn" msprop:Generator_UserColumnName="CategoryID" type="xs:int" />
@@ -2267,10 +2274,10 @@ WHERE        (CategoryID = @CategoryID)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Product_KeyComparison_Product" msdata:parent="Product" msdata:child="Product_KeyComparison" msdata:parentkey="ID" msdata:childkey="IDProduct" msprop:Generator_UserChildTable="Product_KeyComparison" msprop:Generator_ChildPropName="GetProduct_KeyComparisonRows" msprop:Generator_UserRelationName="FK_Product_KeyComparison_Product" msprop:Generator_ParentPropName="ProductRow" msprop:Generator_RelationVarName="relationFK_Product_KeyComparison_Product" msprop:Generator_UserParentTable="Product" />
-      <msdata:Relationship name="FK_Product_KeyComparison_Product1" msdata:parent="ProductAnanytic" msdata:child="Product_KeyComparison" msdata:parentkey="ID" msdata:childkey="IDProduct" msprop:Generator_UserChildTable="Product_KeyComparison" msprop:Generator_ChildPropName="GetProduct_KeyComparisonRows" msprop:Generator_UserRelationName="FK_Product_KeyComparison_Product1" msprop:Generator_ParentPropName="ProductAnanyticRow" msprop:Generator_RelationVarName="relationFK_Product_KeyComparison_Product1" msprop:Generator_UserParentTable="ProductAnanytic" />
-      <msdata:Relationship name="FK_Product_Properties_Product" msdata:parent="Product" msdata:child="Product_Properties" msdata:parentkey="ID" msdata:childkey="ProductID" msprop:Generator_UserChildTable="Product_Properties" msprop:Generator_ChildPropName="GetProduct_PropertiesRows" msprop:Generator_UserRelationName="FK_Product_Properties_Product" msprop:Generator_ParentPropName="ProductRow" msprop:Generator_RelationVarName="relationFK_Product_Properties_Product" msprop:Generator_UserParentTable="Product" />
-      <msdata:Relationship name="FK_Product_Properties_Product1" msdata:parent="ProductAnanytic" msdata:child="Product_Properties" msdata:parentkey="ID" msdata:childkey="ProductID" msprop:Generator_UserChildTable="Product_Properties" msprop:Generator_ChildPropName="GetProduct_PropertiesRows" msprop:Generator_UserRelationName="FK_Product_Properties_Product1" msprop:Generator_ParentPropName="ProductAnanyticRow" msprop:Generator_RelationVarName="relationFK_Product_Properties_Product1" msprop:Generator_UserParentTable="ProductAnanytic" />
+      <msdata:Relationship name="FK_Product_KeyComparison_Product" msdata:parent="Product" msdata:child="Product_KeyComparison" msdata:parentkey="ID" msdata:childkey="IDProduct" msprop:Generator_UserChildTable="Product_KeyComparison" msprop:Generator_ChildPropName="GetProduct_KeyComparisonRows" msprop:Generator_UserRelationName="FK_Product_KeyComparison_Product" msprop:Generator_RelationVarName="relationFK_Product_KeyComparison_Product" msprop:Generator_UserParentTable="Product" msprop:Generator_ParentPropName="ProductRow" />
+      <msdata:Relationship name="FK_Product_KeyComparison_Product1" msdata:parent="ProductAnanytic" msdata:child="Product_KeyComparison" msdata:parentkey="ID" msdata:childkey="IDProduct" msprop:Generator_UserChildTable="Product_KeyComparison" msprop:Generator_ChildPropName="GetProduct_KeyComparisonRows" msprop:Generator_UserRelationName="FK_Product_KeyComparison_Product1" msprop:Generator_RelationVarName="relationFK_Product_KeyComparison_Product1" msprop:Generator_UserParentTable="ProductAnanytic" msprop:Generator_ParentPropName="ProductAnanyticRow" />
+      <msdata:Relationship name="FK_Product_Properties_Product" msdata:parent="Product" msdata:child="Product_Properties" msdata:parentkey="ID" msdata:childkey="ProductID" msprop:Generator_UserChildTable="Product_Properties" msprop:Generator_ChildPropName="GetProduct_PropertiesRows" msprop:Generator_UserRelationName="FK_Product_Properties_Product" msprop:Generator_RelationVarName="relationFK_Product_Properties_Product" msprop:Generator_UserParentTable="Product" msprop:Generator_ParentPropName="ProductRow" />
+      <msdata:Relationship name="FK_Product_Properties_Product1" msdata:parent="ProductAnanytic" msdata:child="Product_Properties" msdata:parentkey="ID" msdata:childkey="ProductID" msprop:Generator_UserChildTable="Product_Properties" msprop:Generator_ChildPropName="GetProduct_PropertiesRows" msprop:Generator_UserRelationName="FK_Product_Properties_Product1" msprop:Generator_RelationVarName="relationFK_Product_Properties_Product1" msprop:Generator_UserParentTable="ProductAnanytic" msprop:Generator_ParentPropName="ProductAnanyticRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

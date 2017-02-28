@@ -38,49 +38,48 @@ namespace WSS.ImageImbo.UpdateErrorBlackBackground
         {
             _rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
             var producerUpdateImageIdSql = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
-
-            var tblCompany = sqldb.GetTblData("select ID from Company where status = 1 or Status = 18 or Status = 19");
-            foreach (DataRow rowCompany in tblCompany.Rows)
+            long CompanyID = 7501950358591465227;
+            var tblProduct = sqldb.GetTblData(string.Format("Select ID,ImageUrls from Product where Company = {0} and Valid = 1 and ImageUrls like '%.png' order by ID", CompanyID));
+            foreach (DataRow row in tblProduct.Rows)
             {
-                long CompanyID = Common.Obj2Int64(rowCompany["ID"]);
-                sqldb.ProcessDataTableLarge(string.Format("Select ID,ImageUrls from Product where Company = {0} and Valid = 1 and ImageUrls like '%.png' order by ID", CompanyID), 1000, (row, iRow) =>
+                try
                 {
                     long ProductID = Common.Obj2Int64(row["ID"]);
                     string ImageUrls = row["ImageUrls"].ToString().Trim();
-
-                    //ImageUrls = ImageUrls.Replace(@"///", @"//").Replace(@"////", @"//");
-                    //var regexhttp = Regex.Match(ImageUrls, "http").Captures;
-                    //if (regexhttp.Count > 1)
-                    //    ImageUrls = ImageUrls.Substring(ImageUrls.LastIndexOf("http"));
-                    //else if (regexhttp.Count == 0)
-                    //    ImageUrls = "http://" + ImageUrls;
-                    //var requestdownload = (HttpWebRequest)WebRequest.Create(ImageUrls);
-                    //requestdownload.Credentials = CredentialCache.DefaultCredentials;
-                    //requestdownload.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
-                    //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
-                    //                                       | SecurityProtocolType.Tls11
-                    //                                       | SecurityProtocolType.Tls12
-                    //                                       | SecurityProtocolType.Ssl3;
-
-                    //ServicePointManager
-                    //    .ServerCertificateValidationCallback +=
-                    //    (sender, cert, chain, sslPolicyErrors) => true;
-
-                    //var responseImageDownload = (HttpWebResponse)requestdownload.GetResponse();
-
-                    //var streamImageDownload = responseImageDownload.GetResponseStream();
                     DownloadImageProduct(ImageUrls, ProductID, producerUpdateImageIdSql);
-                    //check transparent
-                    //Bitmap bmImageDownload = new Bitmap(streamImageDownload);
-                    //if (ContainsTransparent(bmImageDownload) == true)
-                    //{
-                    //    DownloadImageProduct(ImageUrls, ProductID, producerUpdateImageIdSql);
-                    //    Log.InfoFormat("Update image error product: {0}", ProductID);
-                    //}
-                    Log.InfoFormat("Product: {0}", ProductID);
-                    return true;
-                });
+                    Log.InfoFormat("Update image error product: {0}", ProductID);
+                }
+                catch (Exception)
+                {
+
+                }
+
             }
+            //var tblCompany = sqldb.GetTblData("select ID from Company where status = 1 or Status = 18 or Status = 19");
+            //foreach (DataRow rowCompany in tblCompany.Rows)
+            //{
+            //    int iCount = 1;
+            //    long CompanyID = Common.Obj2Int64(rowCompany["ID"]);
+            //    var tblProduct = sqldb.GetTblData(string.Format("Select ID,ImageUrls from Product where Company = {0} and Valid = 1 and ImageUrls like '%.png' order by ID", CompanyID));
+            //    foreach (DataRow row in tblProduct.Rows)
+            //    {
+            //        try
+            //        {
+            //            long ProductID = Common.Obj2Int64(row["ID"]);
+            //            string ImageUrls = row["ImageUrls"].ToString().Trim();
+            //            DownloadImageProduct(ImageUrls, ProductID, producerUpdateImageIdSql);
+            //            Log.InfoFormat("Update image error product: {0}", ProductID);
+            //        }
+            //        catch (Exception)
+            //        {
+
+            //        }
+                    
+            //    }
+            //    Log.InfoFormat("{0} Company Success:{1}", iCount, CompanyID);
+            //    iCount++;
+            //}
+            Log.InfoFormat("Download all image Compant: {0}", CompanyID);
         }
         private static bool DownloadImageProduct(string ImageUrls, long ProductId, ProducerBasic producerUpdateImageIdSql)
         {
@@ -105,6 +104,7 @@ namespace WSS.ImageImbo.UpdateErrorBlackBackground
             catch (Exception exception)
             {
                 Log.Error(string.Format("Product: ID = {0}. ImageUrl: {1} . DetailUrl: {2}", ProductId, ImageUrls), exception);
+                Thread.Sleep(10000);
                 //imageProductInfo.ErrorMessage = exception.ToString();
                 //SendErrorDownloadImageToService(imageProductInfo);
             }
@@ -127,7 +127,7 @@ namespace WSS.ImageImbo.UpdateErrorBlackBackground
                 catch (Exception exception)
                 {
                     Thread.Sleep(600000);
-                    Log.Error(string.Format("Product: ID = {0} Send message to service check error download image. Thread Sleep 10p",productId), exception);
+                    Log.Error(string.Format("Product: ID = {0} Send message to service check error download image. Thread Sleep 10p", productId), exception);
                     if (index == 5)
                         break;
                     else
