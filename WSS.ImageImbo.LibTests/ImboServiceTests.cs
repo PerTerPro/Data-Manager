@@ -18,7 +18,7 @@ namespace WSS.ImageImbo.LibTests
         public void PostImgToImboTest()
         {
             string url = @"https://img.websosanh.vn/users/wss/images/1KVlyFMDkU9r";
-            string x = ImboService.PostImgToImboChangeBackgroundTransference(url, "wss_write", "123websosanh@195", "wss", @"http:/192.168.100.34", 40000);
+            string x = ImboService.PostImgToImboChangeBackgroundTransference(url, "wss_write", "123websosanh@195", "wss", @"http://192.168.100.34", 40000);
             Assert.Greater(x.Length, 10);
         }
     }

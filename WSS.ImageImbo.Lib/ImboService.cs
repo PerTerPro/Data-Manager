@@ -169,7 +169,7 @@ namespace WSS.ImageImbo.Lib
             string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
 
-            string str = "POST" + "|" + host + ((port == 443) ? (":" + port) : "") + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
+            string str = "POST" + "|" + host + ((port != 443) ? (":" + port) : "") + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
             var signleData = CreateToken(str, privateKey);
 
             var request = (HttpWebRequest) WebRequest.Create(urlQuery);
