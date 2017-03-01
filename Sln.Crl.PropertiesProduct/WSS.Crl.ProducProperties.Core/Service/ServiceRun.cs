@@ -14,6 +14,7 @@ using WSS.Crl.ProducProperties.Core.Worker;
 using WSS.LibExtra;
 using System.Web;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace WSS.Crl.ProducProperties.Core.Service
 {
@@ -44,18 +45,24 @@ namespace WSS.Crl.ProducProperties.Core.Service
             IStorageProduct storageProduct = new StorageProduct();
             int i = 0;
             string DetailUrl = "";
-
+            Regex regex = new Regex(@"http://www.+html");
             storageProduct.ProcessProduct(domain, (sender, product) =>
             {
                 if (domain == "lazada.vn")
                 {
                     string urlencode = product.DetailUrl;
-                    string urldecode = HttpUtility.UrlDecode(product.DetailUrl);
-                    char charRange = '?';
-                    int startIndex = urldecode.IndexOf(charRange) + 1;
-                    int endIndex = urldecode.LastIndexOf(charRange) - 1;
-                    int length = endIndex - startIndex + 1;
-                    DetailUrl = urldecode.Substring(startIndex, length).Replace("url=", "");
+                    string urldecode = HttpUtility.UrlDecode(HttpUtility.UrlDecode(urlencode));
+                    MatchCollection matches = regex.Matches(urldecode);
+
+                    DetailUrl = matches[0].Value.ToString();
+
+                    ////string urlencode = product.DetailUrl;
+                    ////string urldecode = HttpUtility.UrlDecode(product.DetailUrl);
+                    ////char charRange = '?';
+                    ////int startIndex = urldecode.IndexOf(charRange) + 1;
+                    ////int endIndex = urldecode.LastIndexOf(charRange) - 1;
+                    ////int length = endIndex - startIndex + 1;
+                    ////DetailUrl = urldecode.Substring(startIndex, length).Replace("url=", "");
                 }
                 else
                 {

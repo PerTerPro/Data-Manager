@@ -66,9 +66,6 @@ namespace WSS.Crl.ProducProperties.Core.Handler
 
                 byte[] mss = Compress(UTF8Encoding.UTF8.GetBytes(jobDownloadHtml.GetJson()));
                 this._producerBasic.Publish(mss, true);
-
-
-
                 Thread.Sleep(this._config.TimeDelay);
             }
             else

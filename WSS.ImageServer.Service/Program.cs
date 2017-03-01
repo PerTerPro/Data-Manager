@@ -21,8 +21,8 @@ namespace WSS.ImageServer.Service
                 //args = new[] { "-cmd UdpImgIdToSql" };
 
                 //args = new[] { "-cmd PushUpImboReview" };
-                args = new[] { "-cmd FixRootProduct" };
-
+                //args = new[] { "-cmd DelImgImbo" };
+                
 
                 //string s = ImboImageService.PushFromFile(ConfigImbo.PublicKey, "123websosanh@195",
                 //    @"C:\Image\y\yes24_vn\nuo\nuoc-hoa-nu-ines-de-la-fressange-eau-de-parfum-100ml-vang_6619017604755523100.jpg",

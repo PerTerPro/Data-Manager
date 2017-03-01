@@ -117,39 +117,13 @@ namespace WSS.ImageServer
 
         public static bool DelteImage(string publicKey, string privateKey, string imageId, string userName, string host, int port)
         {
-            ServicePointManager
-                .ServerCertificateValidationCallback +=
-                (sender, cert, chain, sslPolicyErrors) => true;
-
-            string urlQuery = host + ":" + port + @"/users/" + userName + @"/images" + "/" + imageId;
-            string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "DELETE" + "|" + host + @"/users/" + userName + @"/images" + "/" + imageId + "|" + "wss" + "|" + strDate;
-            var signleData = CreateToken(str, privateKey);
             try
             {
-
-                var request = WebRequest.Create(urlQuery);
-                request.Headers.Add("X-Imbo-PublicKey", "wss");
-                request.Headers.Add("X-Imbo-Authenticate-Timestamp", strDate);
-                request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
-                request.ContentType = "application/json";
-                request.Method = "DELETE";
-                using (var stream = (HttpWebResponse) request.GetResponse())
-                {
-                    Stream x = stream.GetResponseStream();
-                    var y = new StreamReader(x);
-                    var mss = y.ReadToEnd();
-                    dynamic d = JObject.Parse(mss);
-                }
+                WSS.ImageImbo.Lib.ImboService.DeleteImg(publicKey, privateKey, imageId, userName, host, port);
             }
-            catch (WebException ex1)
+            catch (Exception ex)
             {
-                Log.Info(ex1.Message);
-                return true;
-            }
-            catch (Exception ex2)
-            {
-                Log.Error(ex2);
+                Log.Error(imageId + ":" + ex.Message);
                 return false;
             }
             return true;
