@@ -10,7 +10,7 @@ namespace UpdateSolrTools.Tests
     [TestFixture()]
     public class IndexProductToolsTests
     {
-        const string productConnectionString = "Data Source=42.112.28.93;Initial Catalog=QT_2;Persist Security Info=True;User ID=wss_price";
+        const string productConnectionString = "Data Source=42.112.28.93;Initial Catalog=QT_2;Persist Security Info=True;User ID=wss_price;Password=HzlRt4$$axzG-*UlpuL2gYDu";
         [Test()]
         public void GetUnitNormalizedNameTest()
         {

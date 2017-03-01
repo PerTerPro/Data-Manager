@@ -196,7 +196,7 @@ namespace UpdateSolrTools
                         if (ListMerchantUseDatafeedID.Contains(companyId))
                             clickCountMultipliers = 3;
                         if (ListSpecialMerchantID.Contains(companyId))
-                            clickCountMultipliers = 3;
+                            clickCountMultipliers = 4;
                         item.ViewCount = Common.Obj2Int(productRow["ViewCount"]) * clickCountMultipliers;
                         if (clickCountMultipliers == 3)
                         {
@@ -505,7 +505,7 @@ namespace UpdateSolrTools
                         var otherNames = UnitNormalization.GetUnitNormalizedName(productName);
                         otherNames.AddRange(ProductCodeNormalization.GetOtherNames(productName));
                         var rootProductMappingWithBlackList = RootProductMappingBAL.GetRootProductMappingFromCache(item.Id, 0, RootProductMappingSortType.PriceWithVAT, false);
-                        if (rootProductMappingWithBlackList.ListMerchantProducts != null)
+                        if (rootProductMappingWithBlackList!=null && rootProductMappingWithBlackList.ListMerchantProducts != null)
                         {
                             var listMerchantProductId =
                                 rootProductMappingWithBlackList.ListMerchantProducts.SelectMany(x => x.Value).ToList();
