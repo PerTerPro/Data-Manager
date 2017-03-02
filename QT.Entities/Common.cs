@@ -32,7 +32,7 @@ namespace QT.Entities
 {
     public delegate string EventProcessString<T>(T itemInput);
 
-   
+
 
     //public sealed class Cryption
     //{
@@ -120,7 +120,7 @@ namespace QT.Entities
 
     //}
 
-    
+
     public static class Common
     {
         public static T[] SubArray<T>(this T[] data, int index, int length)
@@ -251,19 +251,19 @@ namespace QT.Entities
             ReloadManual = 3,
             CrawlerAll = 4,
             CrawlerAllSanPhamCu = 5,
-            CrawlerSanPhamCu = 6, 
-            ViewWeb, 
-            ViewProfile, 
-            AddNewWeb, 
+            CrawlerSanPhamCu = 6,
+            ViewWeb,
+            ViewProfile,
+            AddNewWeb,
             ViewProduct,
             ExportProduct,
-            ViewProduct1, 
-            LoadImage, 
-            DownloadAllImage, 
-            DownloadImage, 
-            DownloadAll_Image, 
-            ViewQuangCao, 
-            ViewThongKeClick, 
+            ViewProduct1,
+            LoadImage,
+            DownloadAllImage,
+            DownloadImage,
+            DownloadAll_Image,
+            ViewQuangCao,
+            ViewThongKeClick,
             AddNewProductMerchant,
             CrawlerByNewSystem,
             CrawlProductInRedis,
@@ -354,7 +354,7 @@ namespace QT.Entities
             public const int Free = 1;
             public const int FreeAndCondition = 2;
             public const int UndefinedDelivery = 3;
-        } 
+        }
         public struct WEBPartnerStatus
         {
             public const byte NEWS = 0;
@@ -1016,7 +1016,7 @@ namespace QT.Entities
                             //{
                             //    s = s.Substring(0, s.IndexOf(".ashx"));
                             //}
-                            if (rootUri.DnsSafeHost=="bachnghe.org")
+                            if (rootUri.DnsSafeHost == "bachnghe.org")
                             {
                                 s = s.Replace("images", "site/images");
                             }
@@ -1399,7 +1399,7 @@ namespace QT.Entities
             return dt;
         }
 
-      
+
 
         public static Alexa GetRankAlexa(String c_url)
         {
@@ -1724,7 +1724,7 @@ namespace QT.Entities
         /// </summary>
         public static string GetImagePathProduct(string folder, string fileName)
         {
-            return "Store/" + folder.Replace("\\","/") + "/" + fileName ;
+            return "Store/" + folder.Replace("\\", "/") + "/" + fileName;
         }
         /// <summary>
         /// ImagePath of RootProduct in SQL
@@ -1815,7 +1815,7 @@ namespace QT.Entities
         #region DownloadImage with ImboServer
         public static string DownloadImageProductWithImboServer(string url, string publicKey, string privateKey, string userName, string host, int port)
         {
-          return  WSS.ImageImbo.Lib.ImboService.PostImgToImboChangeBackgroundTransference(url, publicKey, privateKey, userName, host, port);
+            return WSS.ImageImbo.Lib.ImboService.PostImgToImboChangeBackgroundTransference(url, publicKey, privateKey, userName, host, port);
         }
 
         public static bool ContainsTransparent(Bitmap image)
@@ -2124,7 +2124,7 @@ namespace QT.Entities
             else return Convert.ToBoolean(dataRow[column]);
         }
 
-      
+
 
         internal static DateTime ParseToDateTime()
         {
@@ -2318,7 +2318,7 @@ namespace QT.Entities
             throw new NotImplementedException();
         }
 
-      
+
 
         public static int CellToInt(DataRow rowInfo, string field, int defaultValue)
         {
@@ -3074,7 +3074,7 @@ namespace QT.Entities
         {
             string result = p;
             const string regex = @"<!--(.|\s)*?-->";
-            
+
 
             while (Regex.IsMatch(result, regex))
             {
@@ -3386,7 +3386,7 @@ namespace QT.Entities
             }
             catch (Exception ex)
             {
-                Log.Error(ImageUrl+ex.Message+ex.StackTrace);
+                Log.Error(ImageUrl + ex.Message + ex.StackTrace);
                 return ImageUrl;
             }
         }
@@ -3768,7 +3768,7 @@ namespace QT.Entities
 
     public static class NewWebInGoogle
     {
-        
+
         public static Dictionary<string, string> GetWebsiteFromGoogle(string keyword, int pages, int timeSleep)
         {
             log4net.ILog log = log4net.LogManager.GetLogger(typeof(NewWebInGoogle));
@@ -3999,7 +3999,7 @@ namespace QT.Entities
                 if (frm == null)
                 {
                     frm = new DevExpress.Utils.WaitDialogForm();
-                    frm.Size = new Size(20,1000);
+                    frm.Size = new Size(20, 1000);
                     frm.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
                 }
                 frm.Show();
