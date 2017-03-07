@@ -37,6 +37,14 @@ namespace WSS.Image.Download.All
         private int _portImbo = 443;
         public Program()
         {
+            _connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+            //imbo
+            _publicKeyImbo = ConfigurationManager.AppSettings["PublicKeyImboImageProduct"];
+            _privateKeyImbo = ConfigurationManager.AppSettings["PrivateKeyImboImageProduct"];
+            _userNameImbo = ConfigurationManager.AppSettings["UserNameImboImageProduct"];
+            _hostImbo = ConfigurationManager.AppSettings["HostImboImageProduct"];
+            _portImbo = Common.Obj2Int(ConfigurationManager.AppSettings["PortImboImageProduct"]);
+
             _workerProduct = Common.Obj2Int(ConfigurationManager.AppSettings["workerProduct"]);
             _workerCompany = Common.Obj2Int(ConfigurationManager.AppSettings["workerCompany"]);
         }
@@ -47,45 +55,6 @@ namespace WSS.Image.Download.All
             Console.ReadLine();
             Console.WriteLine("Done");
         }
-        //public void Analysic()
-        //{
-        //    _rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
-        //    var producerUpdateImageIdSql = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
-        //    //var producerDelByImageId = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
-
-
-        //    _checkErrorJobClient = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic, ConfigImages.ImboRoutingKeyCheckErrorDownload, true, _rabbitMqServer);
-        //    Producer productcer = new Producer();
-        //    CompanyProcess companyProcess = new CompanyProcess();
-        //    var lstCompany = companyProcess.GetListCompany();
-
-        //    foreach (var item in lstCompany)
-        //    {
-        //        List<ImageProductInfo> lstProduct = new List<ImageProductInfo>();
-        //        int PageIndex = 1;
-        //        if (companyProcess.CheckCount(item.ID) < 10000)
-        //        {
-        //            lstProduct = productcer.GetListProductDownloadImg(item.ID);
-        //            foreach (var product in lstProduct)
-        //            {
-        //                DownloadImageProduct(product, producerUpdateImageIdSql);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            do
-        //            {
-        //                lstProduct = productcer.GetListProductDownloadImgPagging(item.ID, PageIndex);
-        //                foreach (var product in lstProduct)
-        //                {
-        //                    DownloadImageProduct(product, producerUpdateImageIdSql);
-        //                }
-        //                PageIndex++;
-        //            } while (lstProduct != null && lstProduct.Count > 0);
-        //        }
-        //    }
-        //    Log.Info("Done!");
-        //}
         public void Download()
         {
             
@@ -101,6 +70,6 @@ namespace WSS.Image.Download.All
                 Log.InfoFormat("Worker {0} started", i);
             }
         }
-        
+
     }
 }

@@ -13,6 +13,9 @@ using Websosanh.Core.Drivers.RabbitMQ;
 using Websosanh.Core.JobServer;
 using WSS.ImageImbo.Lib;
 using WSS.ImageServer;
+using Dapper;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace WSS.Image.Download.All
 {
@@ -35,8 +38,26 @@ namespace WSS.Image.Download.All
         private string _userNameImbo = "wss";
         private string _hostImbo = "https://172.22.1.226";
         private int _portImbo = 443;
+
+        private ProducerBasic producerCountDownloaded;
+        private ProducerBasic producerCountDownloadError;
+        //public WorkerDownload()
+        //    : base(RabbitMQManager.GetRabbitMQServer("rabbitMqCrlProperties"), "Product.Ads.Img.Wait.Download", false)
+        //{
+        //    _connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+        //    //imbo
+        //    _publicKeyImbo = ConfigurationManager.AppSettings["PublicKeyImboImageProduct"];
+        //    _privateKeyImbo = ConfigurationManager.AppSettings["PrivateKeyImboImageProduct"];
+        //    _userNameImbo = ConfigurationManager.AppSettings["UserNameImboImageProduct"];
+        //    _hostImbo = ConfigurationManager.AppSettings["HostImboImageProduct"];
+        //    _portImbo = Common.Obj2Int(ConfigurationManager.AppSettings["PortImboImageProduct"]);
+
+
+        //    producerCountDownloaded = new ProducerBasic(RabbitMQManager.GetRabbitMQServer("rabbitMqCrlProperties"), "Product.Ads.Img.Downloaded");
+        //    producerCountDownloadError = new ProducerBasic(RabbitMQManager.GetRabbitMQServer("rabbitMqCrlProperties"), "Product.Ads.Img.Download.Error");
+        //}
         public WorkerDownload()
-            : base(RabbitMQManager.GetRabbitMQServer("rabbitMqCrlProperties"), "Product.Img.Download", false)
+            : base(RabbitMQManager.GetRabbitMQServer("rabbitMQ177"), "Product.All.Img.Wait.Download", false)
         {
             _connectionString = ConfigurationManager.AppSettings["ConnectionString"];
             //imbo
@@ -47,61 +68,80 @@ namespace WSS.Image.Download.All
             _portImbo = Common.Obj2Int(ConfigurationManager.AppSettings["PortImboImageProduct"]);
 
 
+            producerCountDownloaded = new ProducerBasic(RabbitMQManager.GetRabbitMQServer("rabbitMQ177"), "Product.All.Img.Downloaded");
+            producerCountDownloadError = new ProducerBasic(RabbitMQManager.GetRabbitMQServer("rabbitMQ177"), "Product.All.Img.Download.Error");
         }
         public override void ProcessMessage(RabbitMQ.Client.Events.BasicDeliverEventArgs message)
         {
             _rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
-            _rabbitMqServerDownload = RabbitMQManager.GetRabbitMQServer("rabbitMqCrlProperties");
+            //_rabbitMqServerDownload = RabbitMQManager.GetRabbitMQServer("rabbitMqCrlProperties");
             _checkErrorJobClient = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic, ConfigImages.ImboRoutingKeyCheckErrorDownload, true, _rabbitMqServer);
             var producerUpdateImageIdSql = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
             try
             {
-                var a = ImageProductInfo.FromJson(Encoding.UTF8.GetString(message.Body));
-
                 DownloadImageProduct(ImageProductInfo.FromJson(Encoding.UTF8.GetString(message.Body)), producerUpdateImageIdSql);
             }
             catch (Exception exception)
             {
                 Log.Error("Execute Job Error.", exception);
             }
+            this.GetChannel().BasicAck(message.DeliveryTag, true);
         }
 
         public override void Init()
         {
 
         }
-
-
-
-
         public bool DownloadImageProduct(ImageProductInfo imageProductInfo, ProducerBasic producerUpdateImageIdSql)
         {
             bool result = false;
 
             try
             {
-                var idImbo = ImboService.PostImgToImboChangeBackgroundTransference(imageProductInfo.ImageUrls, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "wss", ConfigImbo.Host, ConfigImbo.Port);
-                //var idImbo = Common.DownloadImageProductWithImboServer(imageProductInfo.ImageUrls, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "wss", ConfigImbo.Host, ConfigImbo.Port);
-                if (!string.IsNullOrEmpty(idImbo))
+                if (!string.IsNullOrEmpty(imageProductInfo.ImageUrls))
                 {
-                    UpdateImageIdSqlService(imageProductInfo.Id, idImbo, producerUpdateImageIdSql);
+                    var idImbo = ImboService.PostImgToImboChangeBackgroundTransference(imageProductInfo.ImageUrls, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "wss", ConfigImbo.Host, ConfigImbo.Port);
+                    //var idImbo = Common.DownloadImageProductWithImboServer(imageProductInfo.ImageUrls, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "wss", ConfigImbo.Host, ConfigImbo.Port);
+                    if (!string.IsNullOrEmpty(idImbo))
+                    {
+                        UpdateImageIdSqlService(imageProductInfo.Id, idImbo, producerUpdateImageIdSql);
+                        Log.Info(string.Format("Product: ID = {0} download image success!", imageProductInfo.Id));
 
-                    Log.Info(string.Format("Product: ID = {0} download image success!", imageProductInfo.Id));
-                    result = true;
+                        producerCountDownloaded.Publish(ImageProductInfo.GetMessage(imageProductInfo));
+                        result = true;
+                    }
+                    else
+                    {
+                        //UpdateImageIdSqlService(imageProductInfo.Id, "", producerUpdateImageIdSql);
+                        imageProductInfo.ErrorMessage = "IDImbo = null";
+                        SendErrorDownloadImageToService(imageProductInfo);
+                        producerCountDownloadError.Publish(ImageProductInfo.GetMessage(imageProductInfo));
+                    }
                 }
                 else
                 {
-                    imageProductInfo.ErrorMessage = "IDImbo = null";
-                    SendErrorDownloadImageToService(imageProductInfo);
+                    imageProductInfo.ErrorMessage = "ImageUrls = null";
+                    producerCountDownloadError.Publish(ImageProductInfo.GetMessage(imageProductInfo));
+                    UpdateImageIdNullToSql(imageProductInfo);
                 }
+                
             }
             catch (Exception exception)
             {
                 Log.Error(string.Format("Product: ID = {0}. ImageUrl: {1} . DetailUrl: {2}", imageProductInfo.Id, imageProductInfo.ImageUrls, imageProductInfo.DetailUrl), exception);
                 imageProductInfo.ErrorMessage = exception.ToString();
                 SendErrorDownloadImageToService(imageProductInfo);
+                producerCountDownloadError.Publish(ImageProductInfo.GetMessage(imageProductInfo));
             }
             return result;
+        }
+
+        private void UpdateImageIdNullToSql(ImageProductInfo imageProductInfo)
+        {
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
+            {
+                db.Execute("Update Product set ImageId = null where Id = @Id", new { Id = imageProductInfo.Id });
+            }
         }
         public void UpdateImageIdSqlService(long productId, string idImageImbo, ProducerBasic producerUpdateImageIdSql)
         {
