@@ -59,7 +59,16 @@ namespace WSS.ImageImbo.Lib
             }
             return false;
         }
-
+        public static string NormalizeUrl(string url)
+        {
+            url = url.Replace(@"///", @"//").Replace(@"////", @"//");
+            var regexhttp = Regex.Match(url, "http").Captures;
+            if (regexhttp.Count > 1)
+                url = url.Substring(url.LastIndexOf("http", StringComparison.Ordinal));
+            else if (regexhttp.Count == 0)
+                url = "http://" + url;
+            return url;
+        }
         public static string PostImgToImboChangeBackgroundTransference(string url, string publicKey, string privateKey, string userName, string host, int port)
         {
             if (!url.ToLower().Contains(".png"))
@@ -70,13 +79,7 @@ namespace WSS.ImageImbo.Lib
             string pathTemp = dir + "/" + Guid.NewGuid().ToString() + ".png";
             string idImageNew = "";
             //download image
-            url = url.Replace(@"///", @"//").Replace(@"////", @"//");
-            var regexhttp = Regex.Match(url, "http").Captures;
-            if (regexhttp.Count > 1)
-                url = url.Substring(url.LastIndexOf("http", StringComparison.Ordinal));
-            else if (regexhttp.Count == 0)
-                url = "http://" + url;
-            var requestdownload = (HttpWebRequest) WebRequest.Create(url);
+            var requestdownload = (HttpWebRequest) WebRequest.Create(NormalizeUrl(url));
             requestdownload.Credentials = CredentialCache.DefaultCredentials;
             requestdownload.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
@@ -106,7 +109,7 @@ namespace WSS.ImageImbo.Lib
             // Imbo
             string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "POST" + "|" + host + ":" + port + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
+            string str = "POST" + "|" + host + ((port != 443) ? (":" + port) : "") + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
             var signleData = CreateToken(str, privateKey);
 
             var request = (HttpWebRequest) WebRequest.Create(urlQuery);
