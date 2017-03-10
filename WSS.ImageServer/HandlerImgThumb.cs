@@ -26,7 +26,7 @@ namespace WSS.ImageServer
                     ImageId = imageIdOld
                 }.ToJson());
             }
-            _imgAdapterSql.UpdateImboProcess(job.ProductId, job.ImageId);
+            _imgAdapterSql.UpdateImboProcess(job.ProductId, job.ImageId,0,0);
         }
     }
 }

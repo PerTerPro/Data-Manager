@@ -41,6 +41,18 @@
     <Reference Include="log4net">
       <HintPath>..\000\DLLs\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.4.2.27, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.4.2\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.4.2.27, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.4.2\lib\net45\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.4.2.27, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.4.2\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
@@ -61,6 +73,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.FtpClient, Version=1.0.5824.34026, Culture=neutral, PublicKeyToken=fa4be07daa57c2b7, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.FtpClient.1.0.5824.34026\lib\net40\System.Net.FtpClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq">
@@ -87,6 +103,9 @@
     </Reference>
     <Reference Include="Websosanh.Core.JobServer">
       <HintPath>..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
+    </Reference>
+    <Reference Include="WSS.ImageImbo.Lib">
+      <HintPath>..\..\..\..\GitProject\websosanh-manager-ver2\WSS.ImageImbo.Lib\bin\Debug\WSS.ImageImbo.Lib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -160,10 +179,6 @@
     <ProjectReference Include="..\QT.Moduls\QT.Moduls.csproj">
       <Project>{b8d02031-c0b6-4e60-a318-9f39d9b9a8a9}</Project>
       <Name>QT.Moduls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WSS.ImageImbo.Lib\WSS.ImageImbo.Lib.csproj">
-      <Project>{294a2fa6-9fd6-4a23-a58e-764aeaa642a3}</Project>
-      <Name>WSS.ImageImbo.Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

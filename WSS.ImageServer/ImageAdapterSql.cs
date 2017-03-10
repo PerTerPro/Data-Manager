@@ -74,12 +74,15 @@ order by a.TotalProduct asc
             else return QT.Entities.Common.Obj2String(tbl.Rows[0]["ImageId"]);
         }
 
-        internal void UpdateImboProcess(long p1, string p2)
+        internal void UpdateImboProcess(long productId, string imageId, int with, int height)
         {
-            bool bOK = this.GetSqlDb().RunQuery("Update Product Set ImageId = @ImageId, Valid = 1 where Id = @Id", CommandType.Text, new[]
+            bool bOK = this.GetSqlDb().RunQuery("Update Product Set ImageId = @ImageId, Valid = 1, ImageWidth=@ImageWidth, ImageHeight = @ImageHeight where Id = @Id", CommandType.Text, new[]
             {
-                SqlDb.CreateParamteterSQL("ImageId", p2, SqlDbType.NVarChar),
-                SqlDb.CreateParamteterSQL("Id", p1, SqlDbType.BigInt)
+                SqlDb.CreateParamteterSQL("ImageId", imageId, SqlDbType.NVarChar),
+                SqlDb.CreateParamteterSQL("Id", productId, SqlDbType.BigInt),
+                SqlDb.CreateParamteterSQL("ImageWidth", with, SqlDbType.Int),
+                SqlDb.CreateParamteterSQL("ImageHeight", height, SqlDbType.Int)
+
             });
         }
 

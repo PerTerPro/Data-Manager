@@ -14,8 +14,6 @@ namespace WSS.ImageServer
 {
     public class HandlerDelImgImbo
     {
-
-
         ProducerBasic pb = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigImbo.KeyRabbitMqTransferImbo),ConfigImbo.QueueDelImgImbo);
         public void ProcessJob(string imageId)
         {
