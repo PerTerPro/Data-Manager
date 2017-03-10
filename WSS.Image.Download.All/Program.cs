@@ -60,7 +60,6 @@ namespace WSS.Image.Download.All
             
             for (var i = 0; i < _workerProduct; i++)
             {
-                var worker = new WorkerDownload();
                 var workerTask = new Task(() =>
                 {
                     WorkerDownload wk = new WorkerDownload();

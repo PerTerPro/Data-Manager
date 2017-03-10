@@ -1817,7 +1817,10 @@ namespace QT.Entities
         {
             return WSS.ImageImbo.Lib.ImboService.PostImgToImboChangeBackgroundTransference(url, publicKey, privateKey, userName, host, port);
         }
-
+        public static string UploadImageProductWithImboServerByHand(string path, string publicKey, string privateKey, string userName, string host, int port)
+        {
+            return WSS.ImageImbo.Lib.ImboService.ImboImageByHand(path, publicKey, privateKey, userName, host, port);
+        }
         public static bool ContainsTransparent(Bitmap image)
         {
             for (int y = 0; y < image.Height; ++y)

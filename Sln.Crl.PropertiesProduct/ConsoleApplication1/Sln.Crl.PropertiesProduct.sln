@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Crl.ProducProperties.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Crl.MapProductProperties.Service", "WSS.Crl.MapProductProperties.Service\WSS.Crl.MapProductProperties.Service.csproj", "{BB0B3067-91F5-452F-824A-794E31240FB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Crl.MapProperties.Product.Has.ProductId", "WSS.Crl.MapProperties.Product.Has.ProductId\WSS.Crl.MapProperties.Product.Has.ProductId.csproj", "{9E4E50AE-4A2A-4F7B-99F0-1AFC47C1DD0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BB0B3067-91F5-452F-824A-794E31240FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB0B3067-91F5-452F-824A-794E31240FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB0B3067-91F5-452F-824A-794E31240FB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E4E50AE-4A2A-4F7B-99F0-1AFC47C1DD0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E4E50AE-4A2A-4F7B-99F0-1AFC47C1DD0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E4E50AE-4A2A-4F7B-99F0-1AFC47C1DD0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E4E50AE-4A2A-4F7B-99F0-1AFC47C1DD0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

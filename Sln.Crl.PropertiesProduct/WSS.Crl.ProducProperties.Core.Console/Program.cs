@@ -23,7 +23,7 @@ namespace WSS.Crl.ProducProperties.Service
 -c push_download_html -dm adayroi.com 
 -c worker_parse_product -dm adayroi.com #Worker parse product properties 
 -c worker_download_html   -dm adayroi.com #Worker donwload html for adayroi.com
-
+-c worker_map_product -dm
 -c updcatid 
 -c FattenData
 ");

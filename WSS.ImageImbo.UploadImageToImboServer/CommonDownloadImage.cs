@@ -117,5 +117,32 @@ namespace WSS.ImageImbo.UploadImageToImboServer
                 }
             }
         }
+        public static bool UploadImageProductByHand(string path,ImageProductInfo imageProductInfo, ProducerBasic producerUpdateImageIdSql, ref string messageError)
+        {
+            bool result = false;
+            try
+            {
+                var idImbo = Common.UploadImageProductWithImboServerByHand(path, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "wss", ConfigImbo.Host, ConfigImbo.Port);
+                if (!string.IsNullOrEmpty(idImbo))
+                {
+                    UpdateImageIdSqlService(imageProductInfo.Id, idImbo, producerUpdateImageIdSql);
+                    Log.Info(string.Format("Product: ID = {0} download image success!", imageProductInfo.Id));
+                    messageError = "";
+                    result = true;
+                }
+                else
+                {
+                    messageError = "IDImbo null";
+                    result = false;
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.Error(string.Format("Product: ID = {0}. ImageUrl: {1} . DetailUrl: {2}", imageProductInfo.Id, imageProductInfo.ImageUrls, imageProductInfo.DetailUrl), exception);
+                messageError = exception.ToString();
+            }
+            return result;
+        }
+    
     }
 }

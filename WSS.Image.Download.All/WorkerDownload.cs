@@ -76,7 +76,12 @@ namespace WSS.Image.Download.All
             _rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
             //_rabbitMqServerDownload = RabbitMQManager.GetRabbitMQServer("rabbitMqCrlProperties");
             _checkErrorJobClient = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic, ConfigImages.ImboRoutingKeyCheckErrorDownload, true, _rabbitMqServer);
-            var producerUpdateImageIdSql = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
+
+            //Tam thoi tat
+            //var producerUpdateImageIdSql = new ProducerBasic(_rabbitMqServer, ConfigImages.ImboExchangeImages, ConfigImages.ImboRoutingKeyUploadImageIdSql);
+
+            //tam thoi bat
+            var producerUpdateImageIdSql = new ProducerBasic(_rabbitMqServer, "ImboImageBatchTemp", "ImboImage.UpdateImageIdSql.Temp.#");
             try
             {
                 DownloadImageProduct(ImageProductInfo.FromJson(Encoding.UTF8.GetString(message.Body)), producerUpdateImageIdSql);
