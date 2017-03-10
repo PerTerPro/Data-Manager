@@ -59,7 +59,16 @@ namespace WSS.ImageImbo.Lib
             }
             return false;
         }
-
+        public static string NormalizeUrl(string url)
+        {
+            url = url.Replace(@"///", @"//").Replace(@"////", @"//");
+            var regexhttp = Regex.Match(url, "http").Captures;
+            if (regexhttp.Count > 1)
+                url = url.Substring(url.LastIndexOf("http", StringComparison.Ordinal));
+            else if (regexhttp.Count == 0)
+                url = "http://" + url;
+            return url;
+        }
         public static string PostImgToImboChangeBackgroundTransference(string url, string publicKey, string privateKey, string userName, string host, int port)
         {
             if (!url.ToLower().Contains(".png"))
@@ -70,13 +79,7 @@ namespace WSS.ImageImbo.Lib
             string pathTemp = dir + "/" + Guid.NewGuid().ToString() + ".png";
             string idImageNew = "";
             //download image
-            url = url.Replace(@"///", @"//").Replace(@"////", @"//");
-            var regexhttp = Regex.Match(url, "http").Captures;
-            if (regexhttp.Count > 1)
-                url = url.Substring(url.LastIndexOf("http", StringComparison.Ordinal));
-            else if (regexhttp.Count == 0)
-                url = "http://" + url;
-            var requestdownload = (HttpWebRequest) WebRequest.Create(url);
+            var requestdownload = (HttpWebRequest) WebRequest.Create(NormalizeUrl(url));
             requestdownload.Credentials = CredentialCache.DefaultCredentials;
             requestdownload.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
@@ -106,7 +109,7 @@ namespace WSS.ImageImbo.Lib
             // Imbo
             string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-            string str = "POST" + "|" + host + ":" + port + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
+            string str = "POST" + "|" + host + ((port != 443) ? (":" + port) : "") + @"/users/" + userName + @"/images" + "|" + publicKey + "|" + strDate;
             var signleData = CreateToken(str, privateKey);
 
             var request = (HttpWebRequest) WebRequest.Create(urlQuery);
@@ -144,6 +147,8 @@ namespace WSS.ImageImbo.Lib
 
         public static string PostImageToImbo(string url, string publicKey, string privateKey, string userName, string host, int port)
         {
+            string dir = Path.GetTempPath();
+            
             string idImageNew = "";
             //download image
             url = url.Replace(@"///", @"//").Replace(@"////", @"//");
@@ -165,6 +170,12 @@ namespace WSS.ImageImbo.Lib
             var responseImageDownload = (HttpWebResponse) requestdownload.GetResponse();
             var streamImageDownload = responseImageDownload.GetResponseStream();
 
+            Image myImage = System.Drawing.Image.FromStream(streamImageDownload);
+            string extension = ImageType(myImage);
+            ImageFormat imageFomart = myImage.RawFormat;
+            string pathTemp = dir + "/" + Guid.NewGuid().ToString() + "." + extension;
+            myImage.Save(pathTemp, imageFomart);
+
             // Imbo
             string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
@@ -178,11 +189,16 @@ namespace WSS.ImageImbo.Lib
             request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
             request.ContentType = "application/json";
             request.Method = "POST";
-
             using (var streamPushToImbo = request.GetRequestStream())
             {
-                if (streamImageDownload != null) streamImageDownload.CopyTo(streamPushToImbo);
+                var memoryStream = File.OpenRead(pathTemp);
+                if (memoryStream != null) memoryStream.CopyTo(streamPushToImbo);
+                memoryStream.Close();
             }
+            //using (var streamPushToImbo = request.GetRequestStream())
+            //{
+            //    if (streamImageDownload != null) streamImageDownload.CopyTo(streamPushToImbo);
+            //}
 
             using (WebResponse response = request.GetResponse())
             {
@@ -196,9 +212,56 @@ namespace WSS.ImageImbo.Lib
                     }
                 }
             }
+            File.Delete(pathTemp);
             return idImageNew;
         }
 
+        private static string ImageType(Image image)
+        {
+            if (image.RawFormat.Equals(ImageFormat.Bmp))
+            {
+                return "Bmp";
+            }
+            else if (image.RawFormat.Equals(ImageFormat.MemoryBmp))
+            {
+                return "BMP";
+            }
+            else if (image.RawFormat.Equals(ImageFormat.Emf))
+            {
+                return "Emf";
+            }
+            else if (image.RawFormat.Equals(ImageFormat.Wmf))
+            {
+                return "Wmf";
+            }
+            else if (image.RawFormat.Equals(ImageFormat.Gif))
+            {
+                return "Gif";
+            }
+            else if (image.RawFormat.Equals(ImageFormat.Jpeg))
+            {
+                return "Jpeg";
+            }
+            else if (image.RawFormat.Equals(ImageFormat.Png))
+            {
+                return "Png";
+            }
+            else if (image.RawFormat.Equals(ImageFormat.Tiff))
+            {
+                return "Tiff";
+            }
+            else if (image.RawFormat.Equals(ImageFormat.Exif))
+            {
+                return "Exif";
+            }
+            else if (image.RawFormat.Equals(ImageFormat.Icon))
+            {
+                return "Ico";
+            }
+
+            return "";
+        }
+        
         public static void DeleteImg(string publicKey, string privateKey, string imageId, string userName, string host, int port)
         {
             ServicePointManager
@@ -228,7 +291,7 @@ namespace WSS.ImageImbo.Lib
 
             }
         }
-
+        
 
     }
 }

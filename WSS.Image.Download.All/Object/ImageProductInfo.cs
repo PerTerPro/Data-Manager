@@ -1,12 +1,12 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProtoBuf;
 
-namespace QT.Entities.Images
+namespace WSS.Image.Download.All.Object
 {
     [ProtoBuf.ProtoContract]
     public class ImageProductInfo
@@ -34,12 +34,9 @@ namespace QT.Entities.Images
         [ProtoBuf.ProtoMember(9)]
         public DateTime DownloadedTime { set; get; }
 
-        [ProtoBuf.ProtoMember(10)]
-        public string ImageId { get; set; }
-
         public ImageProductInfo()
         {
-            
+
         }
         public ImageProductInfo(long id, string name, string detailUrl, string imageUrl, bool isnew)
         {
@@ -57,7 +54,8 @@ namespace QT.Entities.Images
         public static byte[] GetMessage(ImageProductInfo mss)
         {
             byte[] msgOut;
-            using (var stream = new MemoryStream()){
+            using (var stream = new MemoryStream())
+            {
                 Serializer.Serialize(stream, mss);
                 msgOut = stream.ToArray();
             }
@@ -72,22 +70,5 @@ namespace QT.Entities.Images
             }
             return result;
         }
-
-        public string GetJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static ImageProductInfo FromJson(string str)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ImageProductInfo>(str);
-        }
     }
-
-    //public enum MqChangeImageType
-    //{
-    //    NormalProduct = 1,
-    //    AutoValidProduct = 2,
-    //    RootProduct = 3
-    //};
 }
