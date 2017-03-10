@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using log4net;
 using Newtonsoft.Json.Linq;
 using System.Security.Cryptography;
+using WSS.ImageImbo.Lib;
 
 namespace WSS.ImageServer
 {
@@ -119,7 +120,7 @@ namespace WSS.ImageServer
         {
             try
             {
-                WSS.ImageImbo.Lib.ImboService.DeleteImg(publicKey, privateKey, imageId, userName, host, port);
+                (new ImboService()).DeleteImg(publicKey, privateKey, imageId, userName, host, port);
             }
             catch (Exception ex)
             {

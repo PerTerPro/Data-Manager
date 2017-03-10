@@ -1815,7 +1815,8 @@ namespace QT.Entities
         #region DownloadImage with ImboServer
         public static string DownloadImageProductWithImboServer(string url, string publicKey, string privateKey, string userName, string host, int port)
         {
-          return  WSS.ImageImbo.Lib.ImboService.PostImgToImboChangeBackgroundTransference(url, publicKey, privateKey, userName, host, port);
+            return "";
+            //return  WSS.ImageImbo.Lib.ImboService.PostImgToImboChangeBackgroundTransference(url, publicKey, privateKey, userName, host, port);
         }
 
         public static bool ContainsTransparent(Bitmap image)

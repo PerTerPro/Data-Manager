@@ -11,6 +11,8 @@ using System.Threading;
 
 namespace QT.Entities.Data
 {
+
+
     public class SqlDb
     {
         public static char[] arSplit = new char[] {';', '\n'};
@@ -331,10 +333,5 @@ FETCH NEXT @rowsPage ROWS ONLY";
         {
             if (this.connection.State == ConnectionState.Open) this.connection.Close();
         }
-
-
-
-
-
     }
 }

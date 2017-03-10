@@ -256,6 +256,8 @@ namespace WSS.Core.Crawler
             DelayTime();
             WebExceptionStatus status;
             var htm = GetHtmlCode(job.url, out status);
+
+
             _countVisited++;
             if (status == WebExceptionStatus.Timeout || status == WebExceptionStatus.ConnectFailure)
             {
@@ -263,12 +265,15 @@ namespace WSS.Core.Crawler
             }
             else
             {
+
                 var doc = new HtmlDocument();
                 doc.LoadHtml(htm);
+
                 _productParse.Analytics(product, doc, job.url, _config, _company.Domain);
                 if (product.IsSuccessData(_config.CheckPrice))
                 {
-                    CheckDuplicate(product); if (!product.StatusChange.IsDuplicate)
+                    CheckDuplicate(product); 
+                    if (!product.StatusChange.IsDuplicate)
                     {
                         CheckDeleteProduct(product);
                         CheckChangeBasic(product);
