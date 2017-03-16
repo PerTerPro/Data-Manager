@@ -75,8 +75,8 @@
       <HintPath>..\packages\System.Net.FtpClient.1.0.5824.34026\lib\net40\System.Net.FtpClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq">
@@ -105,7 +105,7 @@
       <HintPath>..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
     </Reference>
     <Reference Include="WSS.ImageImbo.Lib">
-      <HintPath>..\..\..\..\GitProject\websosanh-manager-ver2\WSS.ImageImbo.Lib\bin\Debug\WSS.ImageImbo.Lib.dll</HintPath>
+      <HintPath>..\WSS.ImageImbo.Lib\bin\Debug\WSS.ImageImbo.Lib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

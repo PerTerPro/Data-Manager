@@ -44,7 +44,8 @@ namespace WSS.Crl.MapProperties.Product.Has.ProductId.Workers
         }
         public override void ProcessMessage(RabbitMQ.Client.Events.BasicDeliverEventArgs message)
         {
-
+            var lstProperties = _cacheMan.Get<List<KeyValuePair<string, string>>>("prs:" + 7359876249405784780, true);
+             
             var msRootProduct = MsRootProduct.FromJson(Encoding.UTF8.GetString(message.Body));
             var isSave = MapProperties(msRootProduct.RootID);
             this.GetChannel().BasicAck(message.DeliveryTag, true);
@@ -56,6 +57,7 @@ namespace WSS.Crl.MapProperties.Product.Has.ProductId.Workers
         }
         public bool MapProperties(int RootId)
         {
+            
             var isDone = false;
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
@@ -76,40 +78,42 @@ namespace WSS.Crl.MapProperties.Product.Has.ProductId.Workers
                 {
                     var lstProductByRoot = db.Query<Entity.Product>("select a.ID,a.Company,a.ProductID,b.Domain,a.DetailUrl,a.ImageUrls,a.ClassificationID,a.CategoryID from Product a inner join Company b on a.Company = b.ID where a.ProductID = @ProductID",
                     new { ProductID = RootId }).ToList();
-
+                    Dictionary<string, string> dicProperties = new Dictionary<string, string>();
+                    foreach (var property in lstRootProperties)
+                    {
+                        if (!dicProperties.ContainsKey(property.Name))
+                        {
+                            if (!string.IsNullOrEmpty(property.Unit))
+                            {
+                                property.Value += " " + property.Unit;
+                            }
+                            dicProperties.Add(property.Name, property.Value);
+                        }
+                    }
                     foreach (var item in lstProductByRoot)
                     {
                         PropertyProduct productProperty = new PropertyProduct();
                         productProperty.ProductId = item.ID;
-                        ////string ClassificationName = db.Query<string>("Select Name from Classification where ID = @ID", new { ID = item.ClassificationID }).FirstOrDefault();
-                        foreach (var property in lstRootProperties)
+                        try
                         {
-                            //string PropertyName = ClassificationName + ":" + property.Name.ToString();
-                            //string PropertyValue = property.Value.ToString();
-                            //long PropertyID = CommonConvert.CrcProductID(PropertyName);
-                            try
-                            {
-                                if (!string.IsNullOrEmpty(property.Unit))
-                                {
-                                    property.Value = property.Value + " " + property.Unit;
-                                    property.Value += " " + property.Unit;
-                                }
-                                productProperty.Properties.Add(property.Name, property.Value);
-                                SaveProperiesProduct(productProperty);
-
-                                log.InfoFormat("Product: {0} Map Success!", productProperty.ProductId);
-                                isDone = true;
-                            }
-                            catch (Exception ex01)
-                            {
-                                log.ErrorFormat("Product: {0} Map error {1}", productProperty.ProductId, ex01);
-                                isDone = false;
-                            }
-
+                            productProperty.Properties = dicProperties;
+                            SaveProperiesProduct(productProperty);
+                            //productProperty.Properties.Clear();
+                            isDone = true;
+                            log.InfoFormat("Product: {0} Map Success!", productProperty.ProductId);
+                        }
+                        catch (Exception ex01)
+                        {
+                            log.ErrorFormat("Product: {0} Map error {1}", productProperty.ProductId, ex01);
+                            isDone = false;
                         }
                     }
+                    dicProperties.Clear();
                 }
+
+
             }
+            log.InfoFormat("Product: {0} Map Success!", RootId);
             return isDone;
 
         }

@@ -120,7 +120,7 @@ namespace WSS.ImageServer
         {
             try
             {
-                (new ImboService()).DeleteImg(publicKey, privateKey, imageId, userName, host, port);
+                ImboService.DeleteImg(publicKey, privateKey, imageId, userName, host, port);
             }
             catch (Exception ex)
             {
