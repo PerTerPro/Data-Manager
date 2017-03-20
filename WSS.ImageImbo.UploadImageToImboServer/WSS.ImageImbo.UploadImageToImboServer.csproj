@@ -114,6 +114,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
     </Reference>
+    <Reference Include="WSS.ImageImbo.Lib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WSS.ImageImbo.Lib\bin\Debug\WSS.ImageImbo.Lib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonDownloadImage.cs" />
@@ -128,6 +132,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Websosanh\DBWss.cs">
       <DependentUpon>DBWss.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Websosanh\DBWss.Designer.cs">
       <AutoGen>True</AutoGen>

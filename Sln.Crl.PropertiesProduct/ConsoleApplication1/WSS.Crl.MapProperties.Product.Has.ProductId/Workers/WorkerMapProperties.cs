@@ -44,7 +44,7 @@ namespace WSS.Crl.MapProperties.Product.Has.ProductId.Workers
         }
         public override void ProcessMessage(RabbitMQ.Client.Events.BasicDeliverEventArgs message)
         {
-            var lstProperties = _cacheMan.Get<List<KeyValuePair<string, string>>>("prs:" + 7359876249405784780, true);
+            //var lstProperties = _cacheMan.Get<List<KeyValuePair<string, string>>>("prs:" + 7359876249405784780, true);
              
             var msRootProduct = MsRootProduct.FromJson(Encoding.UTF8.GetString(message.Body));
             var isSave = MapProperties(msRootProduct.RootID);

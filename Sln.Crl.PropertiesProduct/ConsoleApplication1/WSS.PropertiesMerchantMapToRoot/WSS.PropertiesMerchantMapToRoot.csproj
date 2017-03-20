@@ -45,6 +45,9 @@
     <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="StackExchange.Redis">
+      <HintPath>..\..\..\000\DLLs\StackExchange.Redis.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -56,11 +59,20 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Websosanh.Core.Drivers.Caching">
+      <HintPath>..\..\..\000\DLLs\Websosanh.Core.Drivers.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.Drivers.Redis">
+      <HintPath>..\..\..\000\DLLs\Websosanh.Core.Drivers.Redis.dll</HintPath>
+    </Reference>
     <Reference Include="WSS.LibExtra">
       <HintPath>..\..\..\WSS.LibExtra\WSS.LibExtra.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CommonConvert.cs" />
+    <Compile Include="Entity\Product.cs" />
+    <Compile Include="Entity\Property.cs" />
     <Compile Include="Entity\RootProduct.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
@@ -107,9 +119,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
