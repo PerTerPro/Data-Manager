@@ -17,7 +17,7 @@ namespace WSS.Service.Delete.ProductAdsScore
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
             { 
-                new Service1() 
+                new ServiceDeleteProductAds() 
             };
             ServiceBase.Run(ServicesToRun);
         }

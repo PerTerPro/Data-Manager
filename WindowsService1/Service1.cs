@@ -8,7 +8,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WSS.Service.Delete.ProductAdsScore
+namespace WindowsService1
 {
     public partial class Service1 : ServiceBase
     {

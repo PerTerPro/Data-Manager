@@ -1,6 +1,6 @@
 ﻿namespace WSS.Service.Delete.ProductAdsScore
 {
-    partial class Service1
+    partial class ServiceDeleteProductAds
     {
         /// <summary> 
         /// Required designer variable.
