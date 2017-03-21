@@ -79,7 +79,13 @@ namespace WSS.ImageImbo.Lib
             string pathTemp = dir + "/" + Guid.NewGuid().ToString() + ".png";
             string idImageNew = "";
             //download image
-            var requestdownload = (HttpWebRequest)WebRequest.Create(NormalizeUrl(url));
+            url = url.Replace(@"///", @"//").Replace(@"////", @"//");
+            var regexhttp = Regex.Match(url, "http").Captures;
+            if (regexhttp.Count > 1)
+                url = url.Substring(url.LastIndexOf("http", StringComparison.Ordinal));
+            else if (regexhttp.Count == 0)
+                url = "http://" + url;
+            var requestdownload = (HttpWebRequest)WebRequest.Create(url);
             requestdownload.Credentials = CredentialCache.DefaultCredentials;
             requestdownload.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
@@ -147,8 +153,6 @@ namespace WSS.ImageImbo.Lib
 
         public static string PostImageToImbo(string url, string publicKey, string privateKey, string userName, string host, int port)
         {
-            string dir = Path.GetTempPath();
-
             string idImageNew = "";
             //download image
             url = url.Replace(@"///", @"//").Replace(@"////", @"//");
@@ -171,10 +175,20 @@ namespace WSS.ImageImbo.Lib
             var streamImageDownload = responseImageDownload.GetResponseStream();
 
             Image myImage = System.Drawing.Image.FromStream(streamImageDownload);
-            string extension = ImageType(myImage);
-            ImageFormat imageFomart = myImage.RawFormat;
-            string pathTemp = dir + "/" + Guid.NewGuid().ToString() + "." + extension;
-            myImage.Save(pathTemp, imageFomart);
+
+            string dir = Path.GetTempPath();
+            string pathTemp = dir + "/" + Guid.NewGuid().ToString() + ".png";
+            using (var b = new Bitmap(myImage.Width, myImage.Height))
+            {
+                b.SetResolution(myImage.HorizontalResolution, myImage.VerticalResolution);
+                using (var g = Graphics.FromImage(b))
+                {
+                    g.Clear(Color.White);
+                    g.DrawImageUnscaled(myImage, 0, 0);
+                }
+                b.Save(pathTemp, ImageFormat.Png);
+            }
+
 
             // Imbo
             string urlQuery = host + ":" + port + @"/users/" + userName + @"/images";
@@ -189,16 +203,16 @@ namespace WSS.ImageImbo.Lib
             request.Headers.Add("X-Imbo-Authenticate-Signature", signleData);
             request.ContentType = "application/json";
             request.Method = "POST";
+
             using (var streamPushToImbo = request.GetRequestStream())
             {
                 var memoryStream = File.OpenRead(pathTemp);
                 if (memoryStream != null) memoryStream.CopyTo(streamPushToImbo);
                 memoryStream.Close();
+
+
+                //if (streamImageDownload != null) streamImageDownload.CopyTo(streamPushToImbo);
             }
-            //using (var streamPushToImbo = request.GetRequestStream())
-            //{
-            //    if (streamImageDownload != null) streamImageDownload.CopyTo(streamPushToImbo);
-            //}
 
             using (WebResponse response = request.GetResponse())
             {
@@ -212,11 +226,17 @@ namespace WSS.ImageImbo.Lib
                     }
                 }
             }
-            File.Delete(pathTemp);
             return idImageNew;
         }
         public static string ImboImageByHand(string path, string publicKey, string privateKey, string userName, string host, int port)
         {
+
+            System.Net.ServicePointManager.ServerCertificateValidationCallback +=
+    (se, cert, chain, sslerror) =>
+    {
+        return true;
+    };
+
             string dir = Path.GetTempPath();
             string idImageNew = "";
             //Image myImage = System.Drawing.Image.FromFile(path);

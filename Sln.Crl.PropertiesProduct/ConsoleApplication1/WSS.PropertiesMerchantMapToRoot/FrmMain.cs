@@ -11,7 +11,8 @@ using System.Windows.Forms;
 using Dapper;
 using System.Data.SqlClient;
 using WSS.PropertiesMerchantMapToRoot.Entity;
-using WSS.LibExtra;
+using WSS.PropertiesMerchantMapToRoot.Common;
+
 
 namespace WSS.PropertiesMerchantMapToRoot
 {
@@ -26,8 +27,7 @@ namespace WSS.PropertiesMerchantMapToRoot
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            var lstRootProduct = GetLstRootProduct(50, 1);
-            gridControlRootProduct.DataSource = lstRootProduct;
+            RefreshData();
         }
 
         private List<RootProduct> GetLstRootProduct(int pageSize, int pageIndex)
@@ -44,9 +44,10 @@ namespace WSS.PropertiesMerchantMapToRoot
 
         private void viewPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            long RootId = Convert.ToInt64(this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "ID").ToString());
+
+            long RootId = CommonConvert.Obj2Int64(this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "ID").ToString());
             FrmProperties frm = new FrmProperties(RootId);
-            frm.Text = RootId.ToString();
+            frm.Text = this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "Name").ToString();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -80,6 +81,36 @@ namespace WSS.PropertiesMerchantMapToRoot
         {
             xtraTabbedMdiManager1.MdiParent = null;
             this.LayoutMdi(MdiLayout.TileHorizontal);
+        }
+        private void RefreshData()
+        {
+            var lstRootProduct = GetLstRootProduct(1000, 1);
+            gridControlRootProduct.DataSource = lstRootProduct;
+        }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "Nhập sản phẩm gốc cần tìm ... ")
+            {
+                txtSearch.Text = "";
+            }
+        }
+        private List<RootProduct> SearchByName(string nameSearch)
+        {
+
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                return db.Query<RootProduct>(@"Select Id, Name from Product where Company = 6619858476258121218 and contains(Name, @Name)", new { Name = nameSearch.Trim().Replace(" ", "*") }).ToList();
+            }
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var lstSearch = SearchByName(txtSearch.Text.Trim());
+                gridControlRootProduct.DataSource = lstSearch;
+            }
         }
     }
 }
