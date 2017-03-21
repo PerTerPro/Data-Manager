@@ -21,6 +21,7 @@ using System.Configuration;
 using Websosanh.Core.Drivers.RabbitMQ;
 using Websosanh.Core.JobServer;
 using QT.Entities.Images;
+using System.Text;
 
 namespace QT.Moduls.Company
 {
@@ -212,7 +213,7 @@ namespace QT.Moduls.Company
                 JobClient jobclient = new JobClient("UpdateProductBatch", GroupType.Topic,
                     "UpdateProduct.UpdateSingleProduct", true, rabbitMqServer);
                 foreach (var item in ListProducts)
-                { 
+                {
                     SendMessageToUpdateSingleProductServices(item, jobclient);
                 }
                 jobclient.Dispose();
@@ -226,8 +227,8 @@ namespace QT.Moduls.Company
                 //Nếu thay đổi hoặc giảm sản phẩm thì dừng update và ghi log
                 //Dung TotalVaid để so sánh nhưng để đỡ phải sửa code thì dùng totalproduct luôn nên k check đc lazada =))
                 //Comment bá đạo
-                if (company.TotalProduct > 0 && ((int)(ListProducts.Count*100/company.TotalProduct) < 50 || (company.TotalProduct - ListProducts.Count)>10000))
-                    HistoryDatafeedAdapter.InsertHistory(company.ID, company.DataFeedPath, ListProducts.Count, 0, 0, string.Format("Dừng update do số product ({0}) lấy trong datafeed chênh lệch với totalproduct {1}",ListProducts.Count,company.TotalProduct));
+                if (company.TotalProduct > 0 && ((int)(ListProducts.Count * 100 / company.TotalProduct) < 50 || (company.TotalProduct - ListProducts.Count) > 10000))
+                    HistoryDatafeedAdapter.InsertHistory(company.ID, company.DataFeedPath, ListProducts.Count, 0, 0, string.Format("Dừng update do số product ({0}) lấy trong datafeed chênh lệch với totalproduct {1}", ListProducts.Count, company.TotalProduct));
                 else
                     UpdateProductsToSql(company, ListProducts, cancelUpdateDataFeedTokenSource);
             }
@@ -424,7 +425,7 @@ namespace QT.Moduls.Company
         }
         public bool SendMessageDownloadImage(long companyID, bool reloadall = false)
         {
-            
+
             var job = new Job { Data = BitConverter.GetBytes(companyID), Type = (int)TypeJobWithRabbitMQ.Company };
             if (reloadall)
                 job.Type = (int)TypeJobWithRabbitMQ.ReloadAll;
@@ -884,6 +885,23 @@ namespace QT.Moduls.Company
         public List<Product> ReadDataFeedProductsFromUrl(string xmlUrl, QT.Entities.Company company, DatafeedConfig datafeedConfig = null)
         {
             //Log.Info("ReadDataFeedProductsFromUrl");
+            //if (company.ID == 4930516967363387239)
+            //{
+            //    var req = (HttpWebRequest)WebRequest.Create(xmlUrl);
+            //    req.ContentType = "application/soap+xml;";
+            //    req.Method = "POST";
+            //    req.KeepAlive = false;
+            //    req.Timeout = System.Threading.Timeout.Infinite;
+            //    req.ReadWriteTimeout = System.Threading.Timeout.Infinite;
+            //    req.ProtocolVersion = HttpVersion.Version10;
+            //    req.AllowWriteStreamBuffering = false;
+
+            //    using (var webResponse = req.GetResponse())
+            //    {
+            //        var responseStream = webResponse.GetResponseStream();
+            //        return ExtractDataFeedProducts(ReadFully(responseStream), company, datafeedConfig);
+            //    }
+            //}
             using (var webClient = new WebClient())
             {
                 if (!string.IsNullOrEmpty(company.UserDatafeed) && !string.IsNullOrEmpty(company.PasswordDatafeed))
@@ -899,15 +917,18 @@ namespace QT.Moduls.Company
                     return ExtractDataFeedProducts(webStream, company, datafeedConfig);
                 }
             }
-            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xmlUrl);
-            //request.MaximumAutomaticRedirections = 4;
-            //request.MaximumResponseHeadersLength = 4;
-            ////request.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36");
-            //request.KeepAlive = true;
-            //// Set credentials to use for this request.
-            //request.Credentials = CredentialCache.DefaultCredentials;
-            //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            //return ExtractDataFeedProducts(response.GetResponseStream(), company, datafeedConfig);
+        }
+        public static Stream ReadFully(Stream stream)
+        {
+            var buffer = new byte[32768];
+            var ms = new MemoryStream();
+            while (true)
+            {
+                int read = stream.Read(buffer, 0, buffer.Length);
+                if (read <= 0)
+                    return ms;
+                ms.Write(buffer, 0, read);
+            }
         }
 
         public List<Product> ExtractDataFeedProducts(Stream xmlStream, QT.Entities.Company company, DatafeedConfig datafeedConfig)
@@ -1248,7 +1269,7 @@ namespace QT.Moduls.Company
                     {
                         decodedUrl = HttpUtility.UrlDecode(decodedUrl);
                     }
-                    
+
                     string originalUrl = string.Empty;
                     if (!string.IsNullOrEmpty(datafeedConfig.RegexConfigUrl))
                     {

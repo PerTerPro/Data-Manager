@@ -79,7 +79,7 @@ namespace WSS.Image.DownloadImageServices
                             }
                             catch (Exception exception)
                             {
-                                Log.Error("Execute Job Error.", exception);
+                                Log.Error("Execute Job Error.", exception);   
                             }
                             return true;
                         };
