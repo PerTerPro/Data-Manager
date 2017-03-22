@@ -71,6 +71,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                     ImageProductInfo product = new ImageProductInfo();
                     product.Id = Common.Obj2Int64(iDTextEdit.Text);
                     string message = string.Empty;
+                    openFileDialog1.Dispose();
                     if (CommonDownloadImage.UploadImageProductByHand(path, product, _producerUpdateImageIdSql, ref message))
                         rbMessage.AppendText(string.Format("ProductId {0} success", product.Id) + System.Environment.NewLine);
                     else rbMessage.AppendText(string.Format("ProductId {0} success fails: {1}", product.Id, message) + System.Environment.NewLine);

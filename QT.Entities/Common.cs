@@ -1815,12 +1815,11 @@ namespace QT.Entities
         #region DownloadImage with ImboServer
         public static string DownloadImageProductWithImboServer(string url, string publicKey, string privateKey, string userName, string host, int port)
         {
-            
-            return new WSS.ImageImbo.Lib.ImboService().PostImgWithChangeTransference(url, publicKey, privateKey, userName, host, port);
+            return new WSS.ImageImbo.Lib.ImboService().PostImgToImbo(url, publicKey, privateKey, userName, host, port, true);
         }
         public static string UploadImageProductWithImboServerByHand(string path, string publicKey, string privateKey, string userName, string host, int port)
         {
-            return new WSS.ImageImbo.Lib.ImboService().PostImgToImboFromFile(path, publicKey, privateKey, userName, host, port);
+            return new WSS.ImageImbo.Lib.ImboService().PostImgToImboFromFile(path, publicKey, privateKey, userName, host, port, true);
         }
         public static bool ContainsTransparent(Bitmap image)
         {

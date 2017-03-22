@@ -17,7 +17,7 @@ namespace WSS.Service.Delete.ProductAdsScore
 
         private string _connectinString;
         private int MAX_HOUR_LOOP = 24;
-        private int HOUR_RUN = 13;
+        private int HOUR_RUN = 1;
         DateTime NextRun = new DateTime();
         public Runner()
         {

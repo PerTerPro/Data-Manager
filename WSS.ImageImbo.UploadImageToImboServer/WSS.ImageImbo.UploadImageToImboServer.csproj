@@ -116,7 +116,7 @@
     </Reference>
     <Reference Include="WSS.ImageImbo.Lib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WSS.ImageImbo.Lib\bin\Debug\WSS.ImageImbo.Lib.dll</HintPath>
+      <HintPath>..\000\DLLs\WSS.ImageImbo.Lib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

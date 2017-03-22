@@ -41,28 +41,29 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
             {
                 var linkLogo = _domainLogo + logoImageIdTextEdit.Text + ".png";
                 pictureBoxwebsosanh.ImageLocation = linkLogo;
-            }       
+            }
         }
 
         private void btnChooseFile_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
             {
                 try
                 {
-                    pictureBoxNew.Image = Image.FromFile(openFileDialog1.FileName);
-                    
+                    string path = openFileDialog1.FileName;
                     string idImboOld = logoImageIdTextEdit.Text;
-                    string idImboNew = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, openFileDialog1.FileName, "logo", ConfigImbo.Host, ConfigImbo.Port);
+                    openFileDialog1.Dispose();
+                    string idImboNew = Common.UploadImageProductWithImboServerByHand(path, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "logo", ConfigImbo.Host, ConfigImbo.Port);
                     if (!string.IsNullOrEmpty(idImboNew))
                     {
                         logoImageIdTextEdit.Text = idImboNew;
-                        if (!string.IsNullOrEmpty(idImboOld))
-                        {
-                            ImboImageService.DelteImage(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, idImboOld, "logo", ConfigImbo.Host, ConfigImbo.Port);
-                        }
+                        //if (!string.IsNullOrEmpty(idImboOld))
+                        //{
+                        //    new WSS.ImageImbo.Lib.ImboService().DeleteImg(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, idImboOld, "logo", ConfigImbo.Host, ConfigImbo.Port);
+                        //}
                         var idCompany = Common.Obj2Int64(iDTextEdit.Text);
-                        companyTableAdapter.UpdateLogoImageId(idImboNew, idCompany );
+                        companyTableAdapter.UpdateLogoImageId(idImboNew, idCompany);
                         SendMessageUpdateCompany(idCompany);
                         lbMessage.Text = "Upload success!";
                     }
