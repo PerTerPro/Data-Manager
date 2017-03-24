@@ -42,6 +42,16 @@
     <Reference Include="log4net">
       <HintPath>..\000\DLLs\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\000\DLLs\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -74,6 +84,12 @@
     </Reference>
     <Reference Include="System.Xml">
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
+      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
+    </Reference>
+    <Reference Include="Websosanh.Core.JobServer">
+      <HintPath>..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
     </Reference>
     <Reference Include="WSS.LibExtra">
       <HintPath>..\WSS.LibExtra\WSS.LibExtra.dll</HintPath>

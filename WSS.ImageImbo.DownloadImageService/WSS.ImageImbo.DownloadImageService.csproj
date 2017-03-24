@@ -86,6 +86,9 @@
     <Reference Include="Websosanh.Core.JobServer">
       <HintPath>..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
     </Reference>
+    <Reference Include="WSS.ImageImbo.Lib">
+      <HintPath>..\000\DLLs\WSS.ImageImbo.Lib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBImage.Designer.cs">

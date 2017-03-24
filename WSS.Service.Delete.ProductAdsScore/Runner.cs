@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Configuration;
 using WSS.LibExtra;
+using Websosanh.Core.Drivers.RabbitMQ;
 
 namespace WSS.Service.Delete.ProductAdsScore
 {
@@ -15,13 +16,18 @@ namespace WSS.Service.Delete.ProductAdsScore
     {
         log4net.ILog log = log4net.LogManager.GetLogger(typeof(Runner));
 
+        ProducerBasic _producer;
+        private string _queueName = "";
+
         private string _connectinString;
         private int MAX_HOUR_LOOP = 24;
         private int HOUR_RUN = 1;
         DateTime NextRun = new DateTime();
         public Runner()
         {
+
             _connectinString = ConfigurationManager.AppSettings["ConnectionString"];
+            _producer = new ProducerBasic(RabbitMQManager.GetRabbitMQServer("rabbitMqCrlProperties"), "Product.AdsScore.Deleted");
             MAX_HOUR_LOOP = CommonConvert.Obj2Int(ConfigurationManager.AppSettings["MAX_HOUR_LOOP"]);
             HOUR_RUN = CommonConvert.Obj2Int(ConfigurationManager.AppSettings["HOUR_RUN"]);
         }
@@ -35,7 +41,7 @@ namespace WSS.Service.Delete.ProductAdsScore
                 List<Entity.ProductAdsScore> lstProductAds = new List<Entity.ProductAdsScore>();
                 do
                 {
-                    lstProductAds = db.Query<Entity.ProductAdsScore>(@"SELECT distinct ProductId
+                    lstProductAds = db.Query<Entity.ProductAdsScore>(@"SELECT *
                                         FROM Product_AdsScore
                                         ORDER BY ProductId Desc
                                         OFFSET ((@PageIndex - 1) * @PageSize) ROWS
@@ -45,7 +51,13 @@ namespace WSS.Service.Delete.ProductAdsScore
                     {
                         if (CheckExists(item.ProductId) == false)
                         {
-                            db.Execute("Delete from Product_AdsScore where ProductId = @ProductId", new { ProductId = item.ProductId });
+                            //db.Execute("Delete from Product_AdsScore where ProductId = @ProductId", new { ProductId = item.ProductId });
+                            _producer.PublishString(new Entity.ProductAdsScore
+                            {
+                                ProductId = item.ProductId,
+                                CompanyId = item.CompanyId,
+                                Keyword = item.Keyword
+                            }.GetJson());
                             log.InfoFormat("Product: {0} not exists", item.ProductId);
                         }
                     }

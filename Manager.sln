@@ -250,6 +250,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Service.Report.ProductO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Service.Delete.ProductAdsScore", "WSS.Service.Delete.ProductAdsScore\WSS.Service.Delete.ProductAdsScore.csproj", "{D98551C9-2498-470C-BBAB-C27D890E2E77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Image.Download.All", "WSS.Image.Download.All\WSS.Image.Download.All.csproj", "{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1387,6 +1389,16 @@ Global
 		{D98551C9-2498-470C-BBAB-C27D890E2E77}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D98551C9-2498-470C-BBAB-C27D890E2E77}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D98551C9-2498-470C-BBAB-C27D890E2E77}.Release|x86.ActiveCfg = Release|Any CPU
+		{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
