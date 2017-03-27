@@ -105,7 +105,7 @@ namespace WSS.Image.Download.All
             {
                 if (!string.IsNullOrEmpty(imageProductInfo.ImageUrls))
                 {
-                    var idImbo = ImboService.PostImgToImboChangeBackgroundTransference(imageProductInfo.ImageUrls, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "wss", ConfigImbo.Host, ConfigImbo.Port);
+                    var idImbo = Common.DownloadImageProductWithImboServer(imageProductInfo.ImageUrls, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "wss", ConfigImbo.Host, ConfigImbo.Port);
                     //var idImbo = Common.DownloadImageProductWithImboServer(imageProductInfo.ImageUrls, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "wss", ConfigImbo.Host, ConfigImbo.Port);
                     if (!string.IsNullOrEmpty(idImbo))
                     {
@@ -136,6 +136,7 @@ namespace WSS.Image.Download.All
                 Log.Error(string.Format("Product: ID = {0}. ImageUrl: {1} . DetailUrl: {2}", imageProductInfo.Id, imageProductInfo.ImageUrls, imageProductInfo.DetailUrl), exception);
                 imageProductInfo.ErrorMessage = exception.ToString();
                 SendErrorDownloadImageToService(imageProductInfo);
+                UpdateImageIdNullToSql(imageProductInfo);
                 producerCountDownloadError.Publish(ImageProductInfo.GetMessage(imageProductInfo));
             }
             return result;
