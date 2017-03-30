@@ -1024,6 +1024,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBPMan.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Maps\frmAddRouterRootID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maps\frmAddRouterRootID.Designer.cs">
+      <DependentUpon>frmAddRouterRootID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Maps\FrmMapCategoryAndClassification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2113,6 +2119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LogJob\frmUpdateVAT.resx">
       <DependentUpon>frmUpdateVAT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\frmAddRouterRootID.resx">
+      <DependentUpon>frmAddRouterRootID.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Maps\FrmMapCategoryAndClassification.resx">
       <DependentUpon>FrmMapCategoryAndClassification.cs</DependentUpon>
