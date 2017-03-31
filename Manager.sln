@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "000", "000\000.csproj", "{2265B7CB-1E89-4094-9C72-78E81A0F920D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -253,6 +253,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Image.Download.All", "WSS.Image.Download.All\WSS.Image.Download.All.csproj", "{76F403F1-6CA8-4CF7-8FB7-01E44A7BEBA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Service.LogDeleteProductAdsScore", "WSS.Service.LogDeleteProductAdsScore\WSS.Service.LogDeleteProductAdsScore.csproj", "{817B5CA1-37EE-472B-8DFA-D2C2E442A313}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Product.SetPromotionAndPriceManual", "WSS.Product.SetPromotionAndPriceManual\WSS.Product.SetPromotionAndPriceManual.csproj", "{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1411,6 +1413,18 @@ Global
 		{817B5CA1-37EE-472B-8DFA-D2C2E442A313}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{817B5CA1-37EE-472B-8DFA-D2C2E442A313}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{817B5CA1-37EE-472B-8DFA-D2C2E442A313}.Release|x86.ActiveCfg = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Debug|x86.Build.0 = Debug|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

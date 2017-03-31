@@ -30,6 +30,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer
                 }
                 else
                 {
+                    Log.Info(string.Format("Product: ID = {0} download image fails idImbo null!", imageProductInfo.Id));
                     messageError = "IDImbo null";
                     result = false;
                 }
@@ -79,11 +80,12 @@ namespace WSS.ImageImbo.UploadImageToImboServer
                         ImageId = idImageImbo,
                         ProductId = productId
                     }.ToJson());
+                    Log.Info(string.Format("Send message update image id :prd {0} imboid {1}",productId,idImageImbo));
                     break;
                 }
                 catch (Exception exception)
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(10000);
                     Log.Error(
                         string.Format("Product: ID = {0} Send message to service check error download image. Thread Sleep 10p",
                             productId), exception);

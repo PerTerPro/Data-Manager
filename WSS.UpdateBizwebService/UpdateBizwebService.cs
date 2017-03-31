@@ -65,7 +65,7 @@ namespace WSS.UpdateBizwebService
                             try
                             {
                                 id = BitConverter.ToInt64(updateProductJob.Data, 0);
-                                UpdateProductBizweb(companyFunctions,id);
+                                UpdateProductBizweb(companyFunctions, id);
                             }
                             catch (Exception ex)
                             {
@@ -86,7 +86,7 @@ namespace WSS.UpdateBizwebService
             }
         }
 
-        private void UpdateProductBizweb(CompanyFunctions companyFunctions,long idWebsosanh)
+        private void UpdateProductBizweb(CompanyFunctions companyFunctions, long idWebsosanh)
         {
             DBBizTableAdapters.Company_BizwebTableAdapter bizwebTableAdapter = new DBBizTableAdapters.Company_BizwebTableAdapter();
             bizwebTableAdapter.Connection.ConnectionString = connectionString;
@@ -104,21 +104,9 @@ namespace WSS.UpdateBizwebService
                         string shopname = bizwebTable.Rows[0]["ShopName"].ToString();
                         string accesstoken = bizwebTable.Rows[0]["AccessToken"].ToString();
                         List<QT.Entities.Product> ListProducts = QT.Moduls.Bizweb.frmSettingBizwebs.GetProductFromBizweb(shopname, accesstoken, company);
-                        if (ListProducts.Count == 0)
-                        {
-                            HistoryDatafeedAdapter.InsertHistory(company.ID, company.DataFeedPath, ListProducts.Count, 0, 0, string.Format("Get 0 product from API BIZWEB"));
-                        }
-                        else if (ListProducts.Count < company.TotalProduct && ((company.TotalProduct - ListProducts.Count) < 10000 || (ListProducts.Count / company.TotalProduct) < 0.8))
-                        {
-                            HistoryDatafeedAdapter.InsertHistory(company.ID, company.DataFeedPath, ListProducts.Count, 0, 0, string.Format("Số sản phẩm lấy về quá ít so với số có trong database. Kiểm tra lại"));
-                        }
-                        else
-                        {
-                            Log.InfoFormat("Get {0} product of Company {1}, ID = {2}", ListProducts.Count, company.Domain, company.ID);
-                            var cancelUpdateDataFeedTokenSource = new CancellationTokenSource();
-                            companyFunctions.UpdateProductsToSql(company, ListProducts, cancelUpdateDataFeedTokenSource);
-                        }
-
+                        Log.InfoFormat("Get {0} product of Company {1}, ID = {2}", ListProducts.Count, company.Domain, company.ID);
+                        var cancelUpdateDataFeedTokenSource = new CancellationTokenSource();
+                        companyFunctions.UpdateProductsToSql(company, ListProducts, cancelUpdateDataFeedTokenSource);
                     }
                 }
                 else

@@ -52,7 +52,7 @@ namespace QT.Moduls.Maps
                     nameTextBox.Text.Trim(),
                     Common.UnicodeToKoDauFulltext(nameTextBox.Text),
                     this.validCheckBox.Checked, imageUrlsTextEdit.Text, Common.Obj2Int(addPositionTextEdit.Text),
-                    Common.Obj2Int64(iDTextBox.Text) );
+                    Common.Obj2Int64(iDTextBox.Text));
                 this.ctrProductIdentity1.SaveProductIdentity();
                 LogJobAdapter.SaveLog(JobName.FrmManagerProduct_Luu_Product, "Lưu thông tin sản phẩm ở form nhận diện", Common.Obj2Int64(iDTextBox.Text), (int)JobTypeData.Product);
                 //ctrProducAnanytic2.SaveAnanytic();
@@ -664,10 +664,10 @@ namespace QT.Moduls.Maps
                 }
                 else
                 {
-                    if(_rabbitMqServer == null)
+                    if (_rabbitMqServer == null)
                         _rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
-                    if(_downloadImageProductJobClient == null)
-                        _downloadImageProductJobClient = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic,ConfigImages.ImboRoutingKeyDownloadImageRootProduct, true, _rabbitMqServer);
+                    if (_downloadImageProductJobClient == null)
+                        _downloadImageProductJobClient = new JobClient(ConfigImages.ImboExchangeImages, GroupType.Topic, ConfigImages.ImboRoutingKeyDownloadImageRootProduct, true, _rabbitMqServer);
                     ImageProductInfo product = new ImageProductInfo();
                     product.Id = productid;
                     product.ImageUrls = imageUrlsTextEdit.Text;
@@ -795,13 +795,27 @@ namespace QT.Moduls.Maps
                             gridcontrol.ExportToHtml(exportFilePath);
                             break;
                         case ".mht":
-                            gridcontrol.ExportToMht(exportFilePath);break;
+                            gridcontrol.ExportToMht(exportFilePath); break;
                         default:
                             break;
                     }
                 }
             }
             //MessageBox.Show("Export Excel to Documents");
+        }
+
+        private void btnMappingRootId_Click(object sender, EventArgs e)
+        {
+            long productid = CommonUtilities.Object2Long(iDTextBox.Text, 0);
+            if (productid == 0)
+            {
+                MessageBox.Show("Chọn sản phẩm gốc cần mapping!");
+            }
+            else
+            {
+                frmAddRouterRootID frm = new frmAddRouterRootID(productid);
+                frm.ShowDialog();
+            }
         }
     }
 }

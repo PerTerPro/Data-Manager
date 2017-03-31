@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label iDLabel;
             System.Windows.Forms.Label iDLabel1;
             System.Windows.Forms.Label nameLabel;
@@ -42,7 +43,7 @@
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label addPositionLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagerProduct));
-            this.productBindingSource = new System.Windows.Forms.BindingSource();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dBPMan = new QT.Moduls.Maps.DBPMan();
             this.detailUrlTextBox1 = new System.Windows.Forms.TextBox();
             this.iDTextBox = new System.Windows.Forms.TextBox();
@@ -50,7 +51,9 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.ctrListSPGoc1 = new QT.Moduls.Maps.ctrListSPGoc();
             this.iDCategoryTextBox = new System.Windows.Forms.TextBox();
-            this.listClassificationBindingSource = new System.Windows.Forms.BindingSource();
+            this.listClassificationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.btnMappingRootId = new DevExpress.XtraEditors.SimpleButton();
             this.addPositionTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.imageUrlsTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -61,7 +64,7 @@
             this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
             this.btOpenWeb = new System.Windows.Forms.Button();
             this.cboStatus = new System.Windows.Forms.ComboBox();
-            this.productStatusBindingSource = new System.Windows.Forms.BindingSource();
+            this.productStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.ctrProductIdentity1 = new QT.Moduls.Maps.CtrProductIdentity();
@@ -96,14 +99,14 @@
             this.summaryTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.validCheckBox = new System.Windows.Forms.CheckBox();
-            this.productKeyComparisonBindingSource = new System.Windows.Forms.BindingSource();
+            this.productKeyComparisonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listClassificationTableAdapter = new QT.Moduls.Maps.DBPManTableAdapters.ListClassificationTableAdapter();
             this.productTableAdapter = new QT.Moduls.Maps.DBPManTableAdapters.ProductTableAdapter();
             this.tableAdapterManager = new QT.Moduls.Maps.DBPManTableAdapters.TableAdapterManager();
             this.product_KeyComparisonTableAdapter = new QT.Moduls.Maps.DBPManTableAdapters.Product_KeyComparisonTableAdapter();
             this.productStatusTableAdapter = new QT.Moduls.Maps.DBPManTableAdapters.ProductStatusTableAdapter();
             this.dBMap = new QT.Moduls.Maps.DBMap();
-            this.productValueBindingSource = new System.Windows.Forms.BindingSource();
+            this.productValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productValueTableAdapter = new QT.Moduls.Maps.DBMapTableAdapters.ProductValueTableAdapter();
             this.tableAdapterManager1 = new QT.Moduls.Maps.DBMapTableAdapters.TableAdapterManager();
             this.productPerClassTableAdapter1 = new QT.Moduls.Tool.DBToolTableAdapters.ProductPerClassTableAdapter();
@@ -172,7 +175,7 @@
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(25, 47);
+            nameLabel.Location = new System.Drawing.Point(25, 43);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(38, 13);
             nameLabel.TabIndex = 8;
@@ -181,7 +184,7 @@
             // validLabel
             // 
             validLabel.AutoSize = true;
-            validLabel.Location = new System.Drawing.Point(171, 90);
+            validLabel.Location = new System.Drawing.Point(171, 73);
             validLabel.Name = "validLabel";
             validLabel.Size = new System.Drawing.Size(36, 13);
             validLabel.TabIndex = 14;
@@ -191,7 +194,7 @@
             // 
             detailUrlLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             detailUrlLabel1.AutoSize = true;
-            detailUrlLabel1.Location = new System.Drawing.Point(305, 118);
+            detailUrlLabel1.Location = new System.Drawing.Point(307, 159);
             detailUrlLabel1.Name = "detailUrlLabel1";
             detailUrlLabel1.Size = new System.Drawing.Size(48, 13);
             detailUrlLabel1.TabIndex = 18;
@@ -200,7 +203,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(8, 90);
+            label1.Location = new System.Drawing.Point(8, 73);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(55, 13);
             label1.TabIndex = 18;
@@ -265,7 +268,7 @@
             // addPositionLabel
             // 
             addPositionLabel.AutoSize = true;
-            addPositionLabel.Location = new System.Drawing.Point(577, 90);
+            addPositionLabel.Location = new System.Drawing.Point(238, 73);
             addPositionLabel.Name = "addPositionLabel";
             addPositionLabel.Size = new System.Drawing.Size(69, 13);
             addPositionLabel.TabIndex = 27;
@@ -285,7 +288,7 @@
             // 
             this.detailUrlTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.detailUrlTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "DetailUrl", true));
-            this.detailUrlTextBox1.Location = new System.Drawing.Point(359, 115);
+            this.detailUrlTextBox1.Location = new System.Drawing.Point(361, 156);
             this.detailUrlTextBox1.Name = "detailUrlTextBox1";
             this.detailUrlTextBox1.ReadOnly = true;
             this.detailUrlTextBox1.Size = new System.Drawing.Size(113, 20);
@@ -309,7 +312,7 @@
             this.productContentTextBox.Location = new System.Drawing.Point(0, 0);
             this.productContentTextBox.Multiline = true;
             this.productContentTextBox.Name = "productContentTextBox";
-            this.productContentTextBox.Size = new System.Drawing.Size(963, 492);
+            this.productContentTextBox.Size = new System.Drawing.Size(996, 467);
             this.productContentTextBox.TabIndex = 1;
             this.productContentTextBox.TextChanged += new System.EventHandler(this.productContentTextBox_TextChanged);
             // 
@@ -322,6 +325,8 @@
             this.splitContainerControl1.Panel1.Controls.Add(iDLabel);
             this.splitContainerControl1.Panel1.Controls.Add(this.iDCategoryTextBox);
             this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.labelControl2);
+            this.splitContainerControl1.Panel2.Controls.Add(this.btnMappingRootId);
             this.splitContainerControl1.Panel2.Controls.Add(addPositionLabel);
             this.splitContainerControl1.Panel2.Controls.Add(this.addPositionTextEdit);
             this.splitContainerControl1.Panel2.Controls.Add(this.labelControl1);
@@ -375,17 +380,34 @@
             this.listClassificationBindingSource.DataMember = "ListClassification";
             this.listClassificationBindingSource.DataSource = this.dBPMan;
             // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(460, 94);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(228, 13);
+            this.labelControl2.TabIndex = 30;
+            this.labelControl2.Text = "(Thiết lập ID SP gốc này trỏ về ID SP gốc chính)";
+            // 
+            // btnMappingRootId
+            // 
+            this.btnMappingRootId.Location = new System.Drawing.Point(361, 91);
+            this.btnMappingRootId.Name = "btnMappingRootId";
+            this.btnMappingRootId.Size = new System.Drawing.Size(93, 20);
+            this.btnMappingRootId.TabIndex = 29;
+            this.btnMappingRootId.Text = "Thiếp lập Link 301";
+            this.btnMappingRootId.Click += new System.EventHandler(this.btnMappingRootId_Click);
+            // 
             // addPositionTextEdit
             // 
             this.addPositionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.productBindingSource, "AddPosition", true));
-            this.addPositionTextEdit.Location = new System.Drawing.Point(645, 87);
+            this.addPositionTextEdit.Location = new System.Drawing.Point(306, 70);
             this.addPositionTextEdit.Name = "addPositionTextEdit";
             this.addPositionTextEdit.Size = new System.Drawing.Size(39, 20);
             this.addPositionTextEdit.TabIndex = 28;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(319, 88);
+            this.labelControl1.Location = new System.Drawing.Point(4, 92);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(48, 13);
             this.labelControl1.TabIndex = 27;
@@ -394,14 +416,14 @@
             // imageUrlsTextEdit
             // 
             this.imageUrlsTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "ImageUrls", true));
-            this.imageUrlsTextEdit.Location = new System.Drawing.Point(386, 87);
+            this.imageUrlsTextEdit.Location = new System.Drawing.Point(69, 91);
             this.imageUrlsTextEdit.Name = "imageUrlsTextEdit";
             this.imageUrlsTextEdit.Size = new System.Drawing.Size(185, 20);
             this.imageUrlsTextEdit.TabIndex = 26;
             // 
             // UploadImageButton
             // 
-            this.UploadImageButton.Location = new System.Drawing.Point(238, 86);
+            this.UploadImageButton.Location = new System.Drawing.Point(262, 91);
             this.UploadImageButton.Name = "UploadImageButton";
             this.UploadImageButton.Size = new System.Drawing.Size(75, 20);
             this.UploadImageButton.TabIndex = 5;
@@ -482,7 +504,7 @@
             this.cboStatus.DataSource = this.productStatusBindingSource;
             this.cboStatus.DisplayMember = "Name";
             this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(69, 86);
+            this.cboStatus.Location = new System.Drawing.Point(69, 69);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(98, 21);
             this.cboStatus.TabIndex = 24;
@@ -498,10 +520,10 @@
             this.xtraTabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.xtraTabControl2.Location = new System.Drawing.Point(2, 114);
+            this.xtraTabControl2.Location = new System.Drawing.Point(2, 139);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage6;
-            this.xtraTabControl2.Size = new System.Drawing.Size(1002, 520);
+            this.xtraTabControl2.Size = new System.Drawing.Size(1002, 495);
             this.xtraTabControl2.TabIndex = 17;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
@@ -515,7 +537,7 @@
             // 
             this.xtraTabPage6.Controls.Add(this.ctrProductIdentity1);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(996, 492);
+            this.xtraTabPage6.Size = new System.Drawing.Size(996, 467);
             this.xtraTabPage6.Text = "Product Ananytic";
             // 
             // ctrProductIdentity1
@@ -523,7 +545,7 @@
             this.ctrProductIdentity1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrProductIdentity1.Location = new System.Drawing.Point(0, 0);
             this.ctrProductIdentity1.Name = "ctrProductIdentity1";
-            this.ctrProductIdentity1.Size = new System.Drawing.Size(996, 492);
+            this.ctrProductIdentity1.Size = new System.Drawing.Size(996, 467);
             this.ctrProductIdentity1.TabIndex = 0;
             this.ctrProductIdentity1.UpdateProductIdentityClick += new QT.Moduls.Maps.CtrProductIdentity.UpdateEventHandler(this.ctrProductIdentity1_UpdateProductIdentityClick);
             // 
@@ -531,14 +553,14 @@
             // 
             this.xtraTabPage3.Controls.Add(this.productContentTextBox);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(963, 492);
+            this.xtraTabPage3.Size = new System.Drawing.Size(996, 467);
             this.xtraTabPage3.Text = "Html";
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.webContent);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(963, 492);
+            this.xtraTabPage4.Size = new System.Drawing.Size(996, 467);
             this.xtraTabPage4.Text = "View";
             // 
             // webContent
@@ -547,7 +569,7 @@
             this.webContent.Location = new System.Drawing.Point(0, 0);
             this.webContent.MinimumSize = new System.Drawing.Size(20, 20);
             this.webContent.Name = "webContent";
-            this.webContent.Size = new System.Drawing.Size(963, 492);
+            this.webContent.Size = new System.Drawing.Size(996, 467);
             this.webContent.TabIndex = 16;
             // 
             // xtraTabPage5
@@ -555,7 +577,7 @@
             this.xtraTabPage5.Controls.Add(this.btBuildContent);
             this.xtraTabPage5.Controls.Add(this.webBuildContent);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(963, 492);
+            this.xtraTabPage5.Size = new System.Drawing.Size(996, 467);
             this.xtraTabPage5.Text = "Build content";
             // 
             // btBuildContent
@@ -597,7 +619,7 @@
             this.xtraTabPage7.Controls.Add(this.btUpdateFulltext_catid);
             this.xtraTabPage7.Controls.Add(this.btUpdateGiaSPGoc);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(963, 492);
+            this.xtraTabPage7.Size = new System.Drawing.Size(996, 467);
             this.xtraTabPage7.Text = "Tool";
             // 
             // txtDelay
@@ -747,7 +769,7 @@
             this.DownloadImageTab.Controls.Add(this.grdProductImage);
             this.DownloadImageTab.Controls.Add(this.panelControl1);
             this.DownloadImageTab.Name = "DownloadImageTab";
-            this.DownloadImageTab.Size = new System.Drawing.Size(963, 492);
+            this.DownloadImageTab.Size = new System.Drawing.Size(996, 467);
             this.DownloadImageTab.Text = "Download Image";
             // 
             // grdProductImage
@@ -762,7 +784,7 @@
             this.grdProductImage.Location = new System.Drawing.Point(0, 56);
             this.grdProductImage.MainView = this.gvProductImage;
             this.grdProductImage.Name = "grdProductImage";
-            this.grdProductImage.Size = new System.Drawing.Size(963, 436);
+            this.grdProductImage.Size = new System.Drawing.Size(996, 411);
             this.grdProductImage.TabIndex = 1;
             this.grdProductImage.UseEmbeddedNavigator = true;
             this.grdProductImage.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -782,7 +804,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(963, 56);
+            this.panelControl1.Size = new System.Drawing.Size(996, 56);
             this.panelControl1.TabIndex = 0;
             // 
             // btnExportExcel
@@ -807,7 +829,7 @@
             // 
             this.UploadAllImageProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UploadAllImageProductButton.Image = ((System.Drawing.Image)(resources.GetObject("UploadAllImageProductButton.Image")));
-            this.UploadAllImageProductButton.Location = new System.Drawing.Point(779, 5);
+            this.UploadAllImageProductButton.Location = new System.Drawing.Point(812, 5);
             this.UploadAllImageProductButton.Name = "UploadAllImageProductButton";
             this.UploadAllImageProductButton.Size = new System.Drawing.Size(179, 38);
             this.UploadAllImageProductButton.TabIndex = 9;
@@ -824,7 +846,7 @@
             this.summaryTextBox.Multiline = true;
             this.summaryTextBox.Name = "summaryTextBox";
             this.summaryTextBox.ReadOnly = true;
-            this.summaryTextBox.Size = new System.Drawing.Size(676, 38);
+            this.summaryTextBox.Size = new System.Drawing.Size(676, 32);
             this.summaryTextBox.TabIndex = 23;
             // 
             // nameTextBox
@@ -832,17 +854,17 @@
             this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(69, 45);
+            this.nameTextBox.Location = new System.Drawing.Point(69, 41);
             this.nameTextBox.Multiline = true;
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(676, 38);
+            this.nameTextBox.Size = new System.Drawing.Size(676, 26);
             this.nameTextBox.TabIndex = 9;
             this.nameTextBox.Leave += new System.EventHandler(this.nameTextBox_Leave);
             // 
             // validCheckBox
             // 
             this.validCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.productBindingSource, "Valid", true));
-            this.validCheckBox.Location = new System.Drawing.Point(213, 85);
+            this.validCheckBox.Location = new System.Drawing.Point(213, 68);
             this.validCheckBox.Name = "validCheckBox";
             this.validCheckBox.Size = new System.Drawing.Size(19, 24);
             this.validCheckBox.TabIndex = 15;
@@ -872,6 +894,7 @@
             this.tableAdapterManager.ProductIDTableAdapter = null;
             this.tableAdapterManager.ProductStatusTableAdapter = null;
             this.tableAdapterManager.ProductTableAdapter = this.productTableAdapter;
+            this.tableAdapterManager.RouterRootProductTableAdapter = null;
             this.tableAdapterManager.Tag_CategoryTableAdapter = null;
             this.tableAdapterManager.Tag_ProductTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QT.Moduls.Maps.DBPManTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -1024,5 +1047,7 @@
         private DevExpress.XtraEditors.SimpleButton btnGetProductImage;
         private DevExpress.XtraEditors.SimpleButton btnExportExcel;
         private DevExpress.XtraEditors.TextEdit addPositionTextEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.SimpleButton btnMappingRootId;
     }
 }
