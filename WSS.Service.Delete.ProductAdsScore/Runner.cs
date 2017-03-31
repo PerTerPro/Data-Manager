@@ -34,6 +34,7 @@ namespace WSS.Service.Delete.ProductAdsScore
 
         public void Run(System.Threading.CancellationToken token)
         {
+            var DateNow = DateTime.Now.ToString("yyyy-MM-dd");
             log.InfoFormat("start: {0}", DateTime.Now.ToString());
             int PageIndex = 1;
             using (IDbConnection db = new SqlConnection(_connectinString))
@@ -43,6 +44,7 @@ namespace WSS.Service.Delete.ProductAdsScore
                 {
                     lstProductAds = db.Query<Entity.ProductAdsScore>(@"SELECT *
                                         FROM Product_AdsScore
+                                        Where EndDate > '2017-03-28'
                                         ORDER BY ProductId Desc
                                         OFFSET ((@PageIndex - 1) * @PageSize) ROWS
                                         FETCH NEXT @PageSize ROWS ONLY;", new { PageIndex = PageIndex, PageSize = 1000 }).ToList();
