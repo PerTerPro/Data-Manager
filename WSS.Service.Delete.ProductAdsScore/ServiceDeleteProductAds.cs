@@ -26,7 +26,7 @@ namespace WSS.Service.Delete.ProductAdsScore
         public ServiceDeleteProductAds()
         {
             InitializeComponent();
-            //OnStart(new string[] { });
+            OnStart(new string[] { });
         }
 
         protected override void OnStart(string[] args)
