@@ -175,7 +175,7 @@
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(25, 43);
+            nameLabel.Location = new System.Drawing.Point(11, 46);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(38, 13);
             nameLabel.TabIndex = 8;
@@ -184,7 +184,7 @@
             // validLabel
             // 
             validLabel.AutoSize = true;
-            validLabel.Location = new System.Drawing.Point(171, 73);
+            validLabel.Location = new System.Drawing.Point(171, 94);
             validLabel.Name = "validLabel";
             validLabel.Size = new System.Drawing.Size(36, 13);
             validLabel.TabIndex = 14;
@@ -203,7 +203,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(8, 73);
+            label1.Location = new System.Drawing.Point(11, 94);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(55, 13);
             label1.TabIndex = 18;
@@ -221,7 +221,7 @@
             // summaryLabel
             // 
             summaryLabel.AutoSize = true;
-            summaryLabel.Location = new System.Drawing.Point(16, 9);
+            summaryLabel.Location = new System.Drawing.Point(11, 9);
             summaryLabel.Name = "summaryLabel";
             summaryLabel.Size = new System.Drawing.Size(47, 13);
             summaryLabel.TabIndex = 22;
@@ -268,7 +268,7 @@
             // addPositionLabel
             // 
             addPositionLabel.AutoSize = true;
-            addPositionLabel.Location = new System.Drawing.Point(238, 73);
+            addPositionLabel.Location = new System.Drawing.Point(238, 94);
             addPositionLabel.Name = "addPositionLabel";
             addPositionLabel.Size = new System.Drawing.Size(69, 13);
             addPositionLabel.TabIndex = 27;
@@ -382,7 +382,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(460, 94);
+            this.labelControl2.Location = new System.Drawing.Point(460, 115);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(228, 13);
             this.labelControl2.TabIndex = 30;
@@ -390,7 +390,7 @@
             // 
             // btnMappingRootId
             // 
-            this.btnMappingRootId.Location = new System.Drawing.Point(361, 91);
+            this.btnMappingRootId.Location = new System.Drawing.Point(361, 112);
             this.btnMappingRootId.Name = "btnMappingRootId";
             this.btnMappingRootId.Size = new System.Drawing.Size(93, 20);
             this.btnMappingRootId.TabIndex = 29;
@@ -400,14 +400,14 @@
             // addPositionTextEdit
             // 
             this.addPositionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.productBindingSource, "AddPosition", true));
-            this.addPositionTextEdit.Location = new System.Drawing.Point(306, 70);
+            this.addPositionTextEdit.Location = new System.Drawing.Point(306, 91);
             this.addPositionTextEdit.Name = "addPositionTextEdit";
             this.addPositionTextEdit.Size = new System.Drawing.Size(39, 20);
             this.addPositionTextEdit.TabIndex = 28;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(4, 92);
+            this.labelControl1.Location = new System.Drawing.Point(15, 115);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(48, 13);
             this.labelControl1.TabIndex = 27;
@@ -416,14 +416,14 @@
             // imageUrlsTextEdit
             // 
             this.imageUrlsTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "ImageUrls", true));
-            this.imageUrlsTextEdit.Location = new System.Drawing.Point(69, 91);
+            this.imageUrlsTextEdit.Location = new System.Drawing.Point(69, 112);
             this.imageUrlsTextEdit.Name = "imageUrlsTextEdit";
             this.imageUrlsTextEdit.Size = new System.Drawing.Size(185, 20);
             this.imageUrlsTextEdit.TabIndex = 26;
             // 
             // UploadImageButton
             // 
-            this.UploadImageButton.Location = new System.Drawing.Point(262, 91);
+            this.UploadImageButton.Location = new System.Drawing.Point(262, 112);
             this.UploadImageButton.Name = "UploadImageButton";
             this.UploadImageButton.Size = new System.Drawing.Size(75, 20);
             this.UploadImageButton.TabIndex = 5;
@@ -504,7 +504,7 @@
             this.cboStatus.DataSource = this.productStatusBindingSource;
             this.cboStatus.DisplayMember = "Name";
             this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(69, 69);
+            this.cboStatus.Location = new System.Drawing.Point(69, 90);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(98, 21);
             this.cboStatus.TabIndex = 24;
@@ -846,7 +846,7 @@
             this.summaryTextBox.Multiline = true;
             this.summaryTextBox.Name = "summaryTextBox";
             this.summaryTextBox.ReadOnly = true;
-            this.summaryTextBox.Size = new System.Drawing.Size(676, 32);
+            this.summaryTextBox.Size = new System.Drawing.Size(676, 38);
             this.summaryTextBox.TabIndex = 23;
             // 
             // nameTextBox
@@ -854,17 +854,17 @@
             this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(69, 41);
+            this.nameTextBox.Location = new System.Drawing.Point(69, 46);
             this.nameTextBox.Multiline = true;
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(676, 26);
+            this.nameTextBox.Size = new System.Drawing.Size(676, 42);
             this.nameTextBox.TabIndex = 9;
             this.nameTextBox.Leave += new System.EventHandler(this.nameTextBox_Leave);
             // 
             // validCheckBox
             // 
             this.validCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.productBindingSource, "Valid", true));
-            this.validCheckBox.Location = new System.Drawing.Point(213, 68);
+            this.validCheckBox.Location = new System.Drawing.Point(213, 89);
             this.validCheckBox.Name = "validCheckBox";
             this.validCheckBox.Size = new System.Drawing.Size(19, 24);
             this.validCheckBox.TabIndex = 15;
