@@ -40,16 +40,17 @@
             this.dBWss = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWss();
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.idCheck = new DevExpress.XtraEditors.TextEdit();
+            this.iDTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnChooseFile = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDownloadByLink = new DevExpress.XtraEditors.SimpleButton();
             this.imageUrlsTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.imageIdTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.idCheck = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.rbMessage = new System.Windows.Forms.RichTextBox();
-            this.btnDownloadByLink = new DevExpress.XtraEditors.SimpleButton();
-            this.btnChooseFile = new DevExpress.XtraEditors.SimpleButton();
-            this.iDTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.lblPath = new System.Windows.Forms.Label();
             imageUrlsLabel = new System.Windows.Forms.Label();
             imageIdLabel = new System.Windows.Forms.Label();
             iDLabel = new System.Windows.Forms.Label();
@@ -58,14 +59,41 @@
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.idCheck.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iDTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageUrlsTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageIdTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iDTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.idCheck.Properties)).BeginInit();
             this.SuspendLayout();
+            // 
+            // imageUrlsLabel
+            // 
+            imageUrlsLabel.AutoSize = true;
+            imageUrlsLabel.Location = new System.Drawing.Point(13, 155);
+            imageUrlsLabel.Name = "imageUrlsLabel";
+            imageUrlsLabel.Size = new System.Drawing.Size(60, 13);
+            imageUrlsLabel.TabIndex = 3;
+            imageUrlsLabel.Text = "Image Urls:";
+            // 
+            // imageIdLabel
+            // 
+            imageIdLabel.AutoSize = true;
+            imageIdLabel.Location = new System.Drawing.Point(13, 120);
+            imageIdLabel.Name = "imageIdLabel";
+            imageIdLabel.Size = new System.Drawing.Size(51, 13);
+            imageIdLabel.TabIndex = 5;
+            imageIdLabel.Text = "Image Id:";
+            // 
+            // iDLabel
+            // 
+            iDLabel.AutoSize = true;
+            iDLabel.Location = new System.Drawing.Point(13, 84);
+            iDLabel.Name = "iDLabel";
+            iDLabel.Size = new System.Drawing.Size(21, 13);
+            iDLabel.TabIndex = 7;
+            iDLabel.Text = "ID:";
             // 
             // productTableAdapter
             // 
@@ -106,6 +134,7 @@
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblPath);
             this.splitContainerControl1.Panel1.Controls.Add(iDLabel);
             this.splitContainerControl1.Panel1.Controls.Add(this.iDTextEdit);
             this.splitContainerControl1.Panel1.Controls.Add(this.btnChooseFile);
@@ -123,79 +152,27 @@
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
-            // panelControl1
+            // iDTextEdit
             // 
-            this.panelControl1.Controls.Add(this.idCheck);
-            this.panelControl1.Controls.Add(this.simpleButton1);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(332, 71);
-            this.panelControl1.TabIndex = 0;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Location = new System.Drawing.Point(217, 29);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "Check ID";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
-            // idCheck
-            // 
-            this.idCheck.Location = new System.Drawing.Point(12, 31);
-            this.idCheck.Name = "idCheck";
-            this.idCheck.Size = new System.Drawing.Size(189, 20);
-            this.idCheck.TabIndex = 1;
+            this.iDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.productBindingSource1, "ID", true));
+            this.iDTextEdit.Location = new System.Drawing.Point(79, 81);
+            this.iDTextEdit.Name = "iDTextEdit";
+            this.iDTextEdit.Size = new System.Drawing.Size(228, 20);
+            this.iDTextEdit.TabIndex = 8;
             // 
             // productBindingSource1
             // 
             this.productBindingSource1.DataMember = "Product";
             this.productBindingSource1.DataSource = this.dBWss;
             // 
-            // imageUrlsLabel
+            // btnChooseFile
             // 
-            imageUrlsLabel.AutoSize = true;
-            imageUrlsLabel.Location = new System.Drawing.Point(13, 155);
-            imageUrlsLabel.Name = "imageUrlsLabel";
-            imageUrlsLabel.Size = new System.Drawing.Size(60, 13);
-            imageUrlsLabel.TabIndex = 3;
-            imageUrlsLabel.Text = "Image Urls:";
-            // 
-            // imageUrlsTextEdit
-            // 
-            this.imageUrlsTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.productBindingSource1, "ImageUrls", true));
-            this.imageUrlsTextEdit.Location = new System.Drawing.Point(79, 152);
-            this.imageUrlsTextEdit.Name = "imageUrlsTextEdit";
-            this.imageUrlsTextEdit.Size = new System.Drawing.Size(228, 20);
-            this.imageUrlsTextEdit.TabIndex = 4;
-            // 
-            // imageIdLabel
-            // 
-            imageIdLabel.AutoSize = true;
-            imageIdLabel.Location = new System.Drawing.Point(13, 120);
-            imageIdLabel.Name = "imageIdLabel";
-            imageIdLabel.Size = new System.Drawing.Size(51, 13);
-            imageIdLabel.TabIndex = 5;
-            imageIdLabel.Text = "Image Id:";
-            // 
-            // imageIdTextEdit
-            // 
-            this.imageIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.productBindingSource1, "ImageId", true));
-            this.imageIdTextEdit.Location = new System.Drawing.Point(79, 117);
-            this.imageIdTextEdit.Name = "imageIdTextEdit";
-            this.imageIdTextEdit.Size = new System.Drawing.Size(228, 20);
-            this.imageIdTextEdit.TabIndex = 6;
-            // 
-            // rbMessage
-            // 
-            this.rbMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rbMessage.Location = new System.Drawing.Point(0, 0);
-            this.rbMessage.Name = "rbMessage";
-            this.rbMessage.Size = new System.Drawing.Size(352, 603);
-            this.rbMessage.TabIndex = 0;
-            this.rbMessage.Text = "";
+            this.btnChooseFile.Location = new System.Drawing.Point(79, 231);
+            this.btnChooseFile.Name = "btnChooseFile";
+            this.btnChooseFile.Size = new System.Drawing.Size(122, 29);
+            this.btnChooseFile.TabIndex = 0;
+            this.btnChooseFile.Text = "Upload = File";
+            this.btnChooseFile.Click += new System.EventHandler(this.btnChooseFile_Click);
             // 
             // btnDownloadByLink
             // 
@@ -206,30 +183,64 @@
             this.btnDownloadByLink.Text = "Download By Link";
             this.btnDownloadByLink.Click += new System.EventHandler(this.btnDownloadByLink_Click);
             // 
-            // btnChooseFile
+            // imageUrlsTextEdit
             // 
-            this.btnChooseFile.Location = new System.Drawing.Point(79, 231);
-            this.btnChooseFile.Name = "btnChooseFile";
-            this.btnChooseFile.Size = new System.Drawing.Size(122, 29);
-            this.btnChooseFile.TabIndex = 0;
-            this.btnChooseFile.Text = "Upload = File";
+            this.imageUrlsTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.productBindingSource1, "ImageUrls", true));
+            this.imageUrlsTextEdit.Location = new System.Drawing.Point(79, 152);
+            this.imageUrlsTextEdit.Name = "imageUrlsTextEdit";
+            this.imageUrlsTextEdit.Size = new System.Drawing.Size(228, 20);
+            this.imageUrlsTextEdit.TabIndex = 4;
             // 
-            // iDLabel
+            // imageIdTextEdit
             // 
-            iDLabel.AutoSize = true;
-            iDLabel.Location = new System.Drawing.Point(13, 84);
-            iDLabel.Name = "iDLabel";
-            iDLabel.Size = new System.Drawing.Size(21, 13);
-            iDLabel.TabIndex = 7;
-            iDLabel.Text = "ID:";
+            this.imageIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.productBindingSource1, "ImageId", true));
+            this.imageIdTextEdit.Location = new System.Drawing.Point(79, 117);
+            this.imageIdTextEdit.Name = "imageIdTextEdit";
+            this.imageIdTextEdit.Size = new System.Drawing.Size(228, 20);
+            this.imageIdTextEdit.TabIndex = 6;
             // 
-            // iDTextEdit
+            // panelControl1
             // 
-            this.iDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.productBindingSource1, "ID", true));
-            this.iDTextEdit.Location = new System.Drawing.Point(79, 81);
-            this.iDTextEdit.Name = "iDTextEdit";
-            this.iDTextEdit.Size = new System.Drawing.Size(228, 20);
-            this.iDTextEdit.TabIndex = 8;
+            this.panelControl1.Controls.Add(this.idCheck);
+            this.panelControl1.Controls.Add(this.simpleButton1);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(332, 71);
+            this.panelControl1.TabIndex = 0;
+            // 
+            // idCheck
+            // 
+            this.idCheck.Location = new System.Drawing.Point(12, 31);
+            this.idCheck.Name = "idCheck";
+            this.idCheck.Size = new System.Drawing.Size(189, 20);
+            this.idCheck.TabIndex = 1;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(217, 29);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 0;
+            this.simpleButton1.Text = "Check ID";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // rbMessage
+            // 
+            this.rbMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbMessage.Location = new System.Drawing.Point(0, 0);
+            this.rbMessage.Name = "rbMessage";
+            this.rbMessage.Size = new System.Drawing.Size(352, 603);
+            this.rbMessage.TabIndex = 0;
+            this.rbMessage.Text = "";
+            // 
+            // lblPath
+            // 
+            this.lblPath.AutoSize = true;
+            this.lblPath.Location = new System.Drawing.Point(38, 286);
+            this.lblPath.Name = "lblPath";
+            this.lblPath.Size = new System.Drawing.Size(0, 13);
+            this.lblPath.TabIndex = 9;
             // 
             // FrmDownloadImageProduct
             // 
@@ -245,13 +256,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.idCheck.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iDTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageUrlsTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageIdTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iDTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.idCheck.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -276,5 +287,6 @@
         private DevExpress.XtraEditors.SimpleButton btnChooseFile;
         private DevExpress.XtraEditors.SimpleButton btnDownloadByLink;
         private DevExpress.XtraEditors.TextEdit iDTextEdit;
+        private System.Windows.Forms.Label lblPath;
     }
 }

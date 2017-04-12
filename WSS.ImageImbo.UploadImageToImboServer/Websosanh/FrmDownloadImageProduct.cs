@@ -58,5 +58,25 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                 rbMessage.AppendText(string.Format("ProductId {0} check Error: {1}", Id, ex.ToString()) + System.Environment.NewLine);
             }
         }
+
+        private void btnChooseFile_Click(object sender, EventArgs e)
+        {
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                lblPath.Text = openFileDialog1.FileName;
+                string path = openFileDialog1.FileName;
+                if (!string.IsNullOrEmpty(path))
+                {
+                    ImageProductInfo product = new ImageProductInfo();
+                    product.Id = Common.Obj2Int64(iDTextEdit.Text);
+                    string message = string.Empty;
+                    if (CommonDownloadImage.UploadImageProductByHand(path, product, _producerUpdateImageIdSql, ref message))
+                        rbMessage.AppendText(string.Format("ProductId {0} success", product.Id) + System.Environment.NewLine);
+                    else rbMessage.AppendText(string.Format("ProductId {0} success fails: {1}", product.Id, message) + System.Environment.NewLine);
+                }
+            }
+
+        }
     }
 }

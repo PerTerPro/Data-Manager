@@ -782,5 +782,44 @@ namespace QT.Moduls.LogJob
             return data;
         }
         #endregion
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "Excel (2003)(.xls)|*.xls|Excel (2010) (.xlsx)|*.xlsx |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
+                if (saveDialog.ShowDialog() != DialogResult.Cancel)
+                {
+                    //saveDialog.FileName = string.Format("{0}_click_date_{1}-{2}.xls", _domain, ctrBaseDateRange1.FromDate.ToString("dd_MM_yyyy"), ctrBaseDateRange1.ToDate.ToString("dd_MM_yyyy"));
+                    string exportFilePath = saveDialog.FileName;
+                    string fileExtenstion = new FileInfo(exportFilePath).Extension;
+                    //NImageExporter imageExporter = chartControl.ImageExporter;
+                    switch (fileExtenstion)
+                    {
+                        case ".xls":
+                            gridControlReportData.ExportToXls(exportFilePath);
+                            break;
+                        case ".xlsx":
+                            gridControlReportData.ExportToXlsx(exportFilePath);
+                            break;
+                        case ".rtf":
+                            gridControlReportData.ExportToRtf(exportFilePath);
+                            break;
+                        case ".pdf":
+                            gridControlReportData.ExportToPdf(exportFilePath);
+                            break;
+                        case ".html":
+                            gridControlReportData.ExportToHtml(exportFilePath);
+                            break;
+                        case ".mht":
+                            gridControlReportData.ExportToMht(exportFilePath);
+                            break;
+                        default:
+                            break;
+                    }
+                    MessageBox.Show("Export success!");
+                }
+            }
+        }
     }
 }

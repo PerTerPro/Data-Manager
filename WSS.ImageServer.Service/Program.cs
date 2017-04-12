@@ -40,7 +40,6 @@ namespace WSS.ImageServer.Service
                 else
                 {
                     pt = Parameter.FromStr(string.Join(" ", args));
-
                 }
 
                 if (pt.Cmd == "PushImgLocalToImbo")

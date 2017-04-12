@@ -65,7 +65,7 @@ namespace WSS.UpdateHaravanService
                             try
                             {
                                 id = BitConverter.ToInt64(updateProductJob.Data, 0);
-                                UpdateProductHaravan(companyFunctions,id);
+                                UpdateProductHaravan(companyFunctions, id);
                             }
                             catch (Exception ex)
                             {
@@ -86,7 +86,7 @@ namespace WSS.UpdateHaravanService
             }
 
         }
-        private void UpdateProductHaravan(CompanyFunctions companyFunctions,long idWebsosanh)
+        private void UpdateProductHaravan(CompanyFunctions companyFunctions, long idWebsosanh)
         {
             //Log.Info(string.Format("Nhan message {0}", idWebsosanh));
             DBHarTableAdapters.Company_HaravanTableAdapter haravanAdapter = new DBHarTableAdapters.Company_HaravanTableAdapter();
@@ -97,8 +97,8 @@ namespace WSS.UpdateHaravanService
                 haravanAdapter.FillBy_IDWSS(haravanTable, idWebsosanh);
                 if (haravanTable.Rows.Count > 0)
                 {
-                    
-                     QT.Entities.Company company = new QT.Entities.Company(idWebsosanh);
+
+                    QT.Entities.Company company = new QT.Entities.Company(idWebsosanh);
                     if (company.Name.ToLower() == "not in database")
                         Log.ErrorFormat("HARAVAN : ID received in RabbitMQ not in Company... ID = {0} ", idWebsosanh);
                     else
@@ -106,36 +106,21 @@ namespace WSS.UpdateHaravanService
                         string shopname = haravanTable.Rows[0]["ShopName"].ToString();
                         string accesstoken = haravanTable.Rows[0]["AccessToken"].ToString();
                         List<QT.Entities.Product> ListProducts = QT.Moduls.WebPartner.frmSettingHaravan.GetProductFromHaravan(shopname, accesstoken, company);
-                        if (ListProducts.Count == 0)
-                        {
-                            HistoryDatafeedAdapter.InsertHistory(company.ID, company.DataFeedPath, ListProducts.Count, 0, 0, string.Format("Get 0 product from API BIZWEB"));
-                        }
-                        else if (ListProducts.Count < company.TotalProduct &&
-                                 ((company.TotalProduct - ListProducts.Count) < 10000 ||
-                                  (ListProducts.Count/company.TotalProduct) < 0.8))
-                        {
-                            HistoryDatafeedAdapter.InsertHistory(company.ID, company.DataFeedPath,
-                                ListProducts.Count, 0, 0,
-                                string.Format("Số sản phẩm lấy về quá ít so với số có trong database. Kiểm tra lại"));
-                        }
-                        else
-                        {
-                            Log.InfoFormat("Get {0} product of Company {1}, ID = {2}", ListProducts.Count,
-                                company.Domain, company.ID);
-                            var cancelUpdateDataFeedTokenSource = new CancellationTokenSource();
-                            companyFunctions.UpdateProductsToSql(company, ListProducts,
-                                cancelUpdateDataFeedTokenSource);
-                        }
+                        Log.InfoFormat("Get {0} product of Company {1}, ID = {2}", ListProducts.Count,
+                            company.Domain, company.ID);
+                        var cancelUpdateDataFeedTokenSource = new CancellationTokenSource();
+                        companyFunctions.UpdateProductsToSql(company, ListProducts,
+                            cancelUpdateDataFeedTokenSource);
                     }
                 }
                 else
                     Log.ErrorFormat("HARAVAN: ID received in RabbitMQ not in Company_Haravan... ID = {0}", idWebsosanh);
-                
+
             }
             catch (Exception exx)
             {
-                Log.Error("HARAVAN ERROR: ",exx);
-            }            
+                Log.Error("HARAVAN ERROR: ", exx);
+            }
         }
         protected override void OnStop()
         {

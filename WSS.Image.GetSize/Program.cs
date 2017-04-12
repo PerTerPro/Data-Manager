@@ -30,7 +30,7 @@ namespace WSS.Image.GetSize
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
-                var lstCompany = db.Query<Company>("Select a.ID,b.TimeDelay from Company a inner join Configuration b on a.ID = b.CompanyID where TotalValid > 0 and (status = 1 or status = 18 or status = 19) order by a.TotalValid desc").ToList();
+                var lstCompany = db.Query<Company>("Select a.ID,b.TimeDelay from Company a inner join Configuration b on a.ID = b.CompanyID where TotalValid > 0 and (status = 1 or status = 18 or status = 19) order by a.TotalValid asc").ToList();
                 foreach (var item in lstCompany)
                 {
                     //item.ID = 3502170206813664485;
@@ -96,26 +96,27 @@ namespace WSS.Image.GetSize
         }
         public void UdpateSize(Product product)
         {
-            string url = product.ImageUrls;
-            url = url.Replace(@"///", @"//").Replace(@"////", @"//");
-            var regexhttp = Regex.Match(url, "http").Captures;
-            if (regexhttp.Count > 1)
-                url = url.Substring(url.LastIndexOf("http", StringComparison.Ordinal));
-            else if (regexhttp.Count == 0)
-                url = "http://" + url;
-            var requestdownload = (HttpWebRequest)WebRequest.Create(url);
-            requestdownload.Credentials = CredentialCache.DefaultCredentials;
-            requestdownload.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
-                                                   | SecurityProtocolType.Tls11
-                                                   | SecurityProtocolType.Tls12
-                                                   | SecurityProtocolType.Ssl3;
-            ServicePointManager
-                .ServerCertificateValidationCallback +=
-                (sender, cert, chain, sslPolicyErrors) => true;
-            
             try
             {
+                string url = product.ImageUrls;
+                url = url.Replace(@"///", @"//").Replace(@"////", @"//");
+                var regexhttp = Regex.Match(url, "http").Captures;
+                if (regexhttp.Count > 1)
+                    url = url.Substring(url.LastIndexOf("http", StringComparison.Ordinal));
+                else if (regexhttp.Count == 0)
+                    url = "http://" + url;
+                var requestdownload = (HttpWebRequest)WebRequest.Create(url);
+                requestdownload.Credentials = CredentialCache.DefaultCredentials;
+                requestdownload.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36";
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                                                       | SecurityProtocolType.Tls11
+                                                       | SecurityProtocolType.Tls12
+                                                       | SecurityProtocolType.Ssl3;
+                ServicePointManager
+                    .ServerCertificateValidationCallback +=
+                    (sender, cert, chain, sslPolicyErrors) => true;
+
+
                 var responseImageDownload = (HttpWebResponse)requestdownload.GetResponse();
                 var streamImageDownload = responseImageDownload.GetResponseStream();
                 System.Drawing.Image img = System.Drawing.Image.FromStream(streamImageDownload);
@@ -136,7 +137,7 @@ namespace WSS.Image.GetSize
             {
                 Log.ErrorFormat("Error when Update Product: {0} ({1})", product.ID, ex);
                 Thread.Sleep(10000);
-                
+
             }
         }
     }

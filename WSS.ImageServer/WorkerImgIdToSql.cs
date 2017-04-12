@@ -19,7 +19,10 @@ namespace WSS.ImageServer
             : base(RabbitMQManager.GetRabbitMQServer(QT.Entities.Images.ConfigImages.RabbitMqServerName), QT.Entities.Images.ConfigImages.ImboQueueUploadImageIdSql, false)
         {
         }
-
+        //public WorkerImgIdToSql()
+        //    : base(RabbitMQManager.GetRabbitMQServer(QT.Entities.Images.ConfigImages.RabbitMqServerName), "ImboImage.UpdateImageIdSql.Temp", false)
+        //{
+        //}
         public override void Init()
         {
             

@@ -34,6 +34,9 @@ namespace QT.Entities.Images
         [ProtoBuf.ProtoMember(9)]
         public DateTime DownloadedTime { set; get; }
 
+        [ProtoBuf.ProtoMember(10)]
+        public string ImageId { get; set; }
+
         public ImageProductInfo()
         {
             
@@ -68,6 +71,16 @@ namespace QT.Entities.Images
                 result = Serializer.Deserialize<ImageProductInfo>(stream);
             }
             return result;
+        }
+
+        public string GetJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static ImageProductInfo FromJson(string str)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<ImageProductInfo>(str);
         }
     }
 

@@ -30,6 +30,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer
                 }
                 else
                 {
+                    Log.Info(string.Format("Product: ID = {0} download image fails idImbo null!", imageProductInfo.Id));
                     messageError = "IDImbo null";
                     result = false;
                 }
@@ -79,11 +80,12 @@ namespace WSS.ImageImbo.UploadImageToImboServer
                         ImageId = idImageImbo,
                         ProductId = productId
                     }.ToJson());
+                    Log.Info(string.Format("Send message update image id :prd {0} imboid {1}",productId,idImageImbo));
                     break;
                 }
                 catch (Exception exception)
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(10000);
                     Log.Error(
                         string.Format("Product: ID = {0} Send message to service check error download image. Thread Sleep 10p",
                             productId), exception);
@@ -117,5 +119,32 @@ namespace WSS.ImageImbo.UploadImageToImboServer
                 }
             }
         }
+        public static bool UploadImageProductByHand(string path,ImageProductInfo imageProductInfo, ProducerBasic producerUpdateImageIdSql, ref string messageError)
+        {
+            bool result = false;
+            try
+            {
+                var idImbo = Common.UploadImageProductWithImboServerByHand(path, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "wss", ConfigImbo.Host, ConfigImbo.Port);
+                if (!string.IsNullOrEmpty(idImbo))
+                {
+                    UpdateImageIdSqlService(imageProductInfo.Id, idImbo, producerUpdateImageIdSql);
+                    Log.Info(string.Format("Product: ID = {0} download image success!", imageProductInfo.Id));
+                    messageError = "";
+                    result = true;
+                }
+                else
+                {
+                    messageError = "IDImbo null";
+                    result = false;
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.Error(string.Format("Product: ID = {0}. ImageUrl: {1} . DetailUrl: {2}", imageProductInfo.Id, imageProductInfo.ImageUrls, imageProductInfo.DetailUrl), exception);
+                messageError = exception.ToString();
+            }
+            return result;
+        }
+    
     }
 }
