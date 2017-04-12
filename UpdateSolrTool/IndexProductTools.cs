@@ -64,10 +64,10 @@ namespace UpdateSolrTools
                     listSpecialMerchantID.Add(companyID);
             }
             //add lazada(3502170206813664485) and adayroi(3433481253691794480)
-            if (!listSpecialMerchantID.Contains(3502170206813664485))
-                listSpecialMerchantID.Add(3502170206813664485);
-            if (!listSpecialMerchantID.Contains(3433481253691794480))
-                listSpecialMerchantID.Add(3433481253691794480);
+            //if (!listSpecialMerchantID.Contains(3502170206813664485))
+            //    listSpecialMerchantID.Add(3502170206813664485);
+            //if (!listSpecialMerchantID.Contains(3433481253691794480))
+            //    listSpecialMerchantID.Add(3433481253691794480);
             return listSpecialMerchantID;
         }
 
@@ -98,6 +98,9 @@ namespace UpdateSolrTools
             {
                 badMerchantIdSet.Add(merchantScoreDataTable[rowIndex].MerchantId);
             }
+            //add  Adayroi
+            if (!badMerchantIdSet.Contains(3433481253691794480))
+                badMerchantIdSet.Add(3433481253691794480);
             return badMerchantIdSet;
         }
 
@@ -120,6 +123,7 @@ namespace UpdateSolrTools
             var badMerchantDataTable = badMerchantTableAdapter.GetAllBadMerchantIds();
             for (int rowIndex = 0; rowIndex < badMerchantDataTable.Rows.Count; rowIndex++)
             {
+                if(!allPriorMerchants.ContainsKey(badMerchantDataTable[rowIndex].MerchantId))
                 allPriorMerchants.Add(badMerchantDataTable[rowIndex].MerchantId, -1);
             }
             return allPriorMerchants;

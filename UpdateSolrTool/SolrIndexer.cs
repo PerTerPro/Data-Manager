@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using log4net;
-using QT.Entities;
 using UpdateSolrTools.CompanyDataSetTableAdapters;
 using UTF_Converter;
 using Websosanh.Core.Common.BAL;
@@ -16,6 +15,7 @@ using System.Data;
 using Websosanh.Core.Merchant.BAL;
 using WebsosanhCacheTool;
 using SolrNet;
+using Websosanh.Core.Drivers.Solr;
 
 namespace UpdateSolrTools
 {
@@ -154,7 +154,8 @@ namespace UpdateSolrTools
                             if (tags.Length > 0)
                                 item.Tags.AddRange(tags);
                         }
-                        item.Tags = item.Tags.Count == 0 ? null : item.Tags.Select(x => StringUtilities.GetUCRC32(x, true, true).ToString()).Distinct().ToList();
+                        item.Tags = item.Tags.Count == 0 ? null : item.Tags.Select(x => StringUtilities.GetUCRC32(SolrDriverUtilities.NormalizeToExactQuery(AutoCorrector.Correct(x),
+                        SolrProductConstants.IGNORE_CHARS), true, true).ToString()).Distinct().ToList();
                         if (merchantRegions != null)
                         {
                             if (merchantRegions.AllMerchantProvins != null)
@@ -176,7 +177,7 @@ namespace UpdateSolrTools
                                 BuildProductProperty(item, productProperties[productRow.ProductID]);
                         }
 
-                        item.Priority = Common.Obj2Int(productRow["AddPosition"]);
+                        item.Priority = CommonUtilities.Object2Int(productRow["AddPosition"]);
 
                         //Set PriorityScore
                         var priorityScore = GetProductPriorityScore(merchantPriorityScore, productIndex, totalProduct);
@@ -197,7 +198,7 @@ namespace UpdateSolrTools
                             clickCountMultipliers = 3;
                         if (ListSpecialMerchantID.Contains(companyId))
                             clickCountMultipliers = 4;
-                        item.ViewCount = Common.Obj2Int(productRow["ViewCount"]) * clickCountMultipliers;
+                        item.ViewCount = CommonUtilities.Object2Int(productRow["ViewCount"]) * clickCountMultipliers;
                         if (clickCountMultipliers == 3)
                         {
                             if (item.ViewCount < 5)
@@ -370,7 +371,8 @@ namespace UpdateSolrTools
                     if (item.Tags.Count == 0)
                         item.Tags = null;
                     else
-                        item.Tags = item.Tags.Select(x => StringUtilities.GetUCRC32(x,true,true).ToString()).Distinct().ToList();
+                        item.Tags = item.Tags.Select(x => StringUtilities.GetUCRC32(SolrDriverUtilities.NormalizeToExactQuery(AutoCorrector.Correct(x),
+                        SolrProductConstants.IGNORE_CHARS), true,true).ToString()).Distinct().ToList();
                     var merchantRegions = MerchantRegionBAL.GetMerchantRegionsFromCache(item.MerchantID);
                     if (merchantRegions != null)
                     {
@@ -394,7 +396,7 @@ namespace UpdateSolrTools
                             BuildProductProperty(item, productProperties[productRow.ProductID]);
                     }
 
-                    item.Priority = Common.Obj2Int(productRow["AddPosition"]);
+                    item.Priority = CommonUtilities.Object2Int(productRow["AddPosition"]);
                     int merchantPriorityScore = ListPriorMerchants.ContainsKey(item.MerchantID) ? ListPriorMerchants[item.MerchantID] : 0;
                     if (merchantPriorityScore < 0 || merchantPriorityScore > item.Priority)
                         item.Priority = merchantPriorityScore;
@@ -413,7 +415,7 @@ namespace UpdateSolrTools
                         clickCountMultipliers = 3;
                     if (ListSpecialMerchantID.Contains(item.MerchantID))
                         clickCountMultipliers = 4;
-                    item.ViewCount = Common.Obj2Int(productRow["ViewCount"]) * clickCountMultipliers;
+                    item.ViewCount = CommonUtilities.Object2Int(productRow["ViewCount"]) * clickCountMultipliers;
                     if (clickCountMultipliers == 3)
                     {
                         if (item.ViewCount < 5)
@@ -533,8 +535,8 @@ namespace UpdateSolrTools
                             }
                             item.NameOther.Add(categoryPrefix + item.Name);
                         }
-                        item.ViewCount = Common.Obj2Int(productRow["ViewCount"]);
-                        item.Priority = Common.Obj2Int(productRow["AddPosition"]);
+                        item.ViewCount = CommonUtilities.Object2Int(productRow["ViewCount"]);
+                        item.Priority = CommonUtilities.Object2Int(productRow["AddPosition"]);
                         item.Tags = new List<string>();
                         if (productRow["Tag"] != DBNull.Value && productRow["StartDate"] != DBNull.Value &&
                             productRow["EndDate"] != DBNull.Value && productRow.StartDate < DateTime.Now &&
@@ -710,8 +712,8 @@ namespace UpdateSolrTools
                         }
                         item.NameOther.Add(categoryPrefix + item.Name);
                     }
-                    item.ViewCount = Common.Obj2Int(productRow["ViewCount"]);
-                    item.Priority = Common.Obj2Int(productRow["AddPosition"]);
+                    item.ViewCount = CommonUtilities.Object2Int(productRow["ViewCount"]);
+                    item.Priority = CommonUtilities.Object2Int(productRow["AddPosition"]);
                     item.Tags = new List<string>();
                     if (productRow["Tag"] != DBNull.Value && productRow["StartDate"] != DBNull.Value &&
                             productRow["EndDate"] != DBNull.Value && productRow.StartDate < DateTime.Now &&
