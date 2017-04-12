@@ -1,8 +1,9 @@
 ﻿namespace UpdateSolrTools
 {
-    
-    
-    public partial class CompanyDataSet {
+
+
+    public partial class CompanyDataSet
+    {
     }
 }
 

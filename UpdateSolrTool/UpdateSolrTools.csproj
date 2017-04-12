@@ -205,10 +205,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
-      <Project>{7F43CEBE-F21E-4C1F-91CB-1E400B8B76FB}</Project>
-      <Name>QT.Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebsosanhCacheTool\WebsosanhCacheTool.csproj">
       <Project>{4641b45a-9c00-4911-a822-e8a984a60d04}</Project>
       <Name>WebsosanhCacheTool</Name>
