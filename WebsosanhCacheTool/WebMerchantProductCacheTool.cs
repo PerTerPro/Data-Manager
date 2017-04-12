@@ -12,7 +12,7 @@ using UTF_Converter;
 using WebsosanhCacheTool.ProductDataSetTableAdapters;
 using Websosanh.Core.Drivers.Redis;
 using ProtoBuf;
-using QT.Entities.MasOffer;
+using WebsosanhCacheTool.MasOffer;
 
 namespace WebsosanhCacheTool
 {
