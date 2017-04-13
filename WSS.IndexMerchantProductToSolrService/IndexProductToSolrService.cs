@@ -6,7 +6,6 @@ using System.ServiceProcess;
 using System.Threading;
 using System.Threading.Tasks;
 using log4net;
-using QT.Entities;
 using UpdateSolrTools;
 using Websosanh.Core.Common.BAL;
 using Websosanh.Core.Drivers.RabbitMQ;
@@ -133,8 +132,6 @@ namespace WSS.IndexMerchantProductToSolrService
                 var userConnectionString = ConfigurationManager.ConnectionStrings["userConnectionString"].ConnectionString;
                 _productConnectionString = productConnectionString;
                 _userConnectionString = userConnectionString;
-                Server.ConnectionString = productConnectionString;
-                Server.UserConnectionString = userConnectionString;
                 string rabbitMQServerName = ConfigurationManager.AppSettings["rabbitMQServerName"];
                 rabbitMQServer = RabbitMQManager.GetRabbitMQServer(rabbitMQServerName);
                 string indexAllProductOfMerchantJobName = ConfigurationManager.AppSettings["indexAllProductOfMerchantJobName"];

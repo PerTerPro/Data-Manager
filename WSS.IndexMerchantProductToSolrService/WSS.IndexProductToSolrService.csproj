@@ -117,10 +117,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
-      <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
-      <Name>QT.Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UpdateSolrTool\UpdateSolrTools.csproj">
       <Project>{a8737cd0-bf23-4194-bfdc-6df477701bee}</Project>
       <Name>UpdateSolrTools</Name>

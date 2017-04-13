@@ -6,6 +6,7 @@ using QT.Entities;
 using QT.Entities.CrawlerProduct;
 using Websosanh.Core.Drivers.RabbitMQ;
 using Websosanh.Core.JobServer;
+using WSS.Product.Utilities;
 
 namespace QT.Moduls.CrawlerProduct.Service
 {

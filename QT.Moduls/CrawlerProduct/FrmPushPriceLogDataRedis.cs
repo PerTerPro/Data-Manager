@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Websosanh.Core.Drivers.Redis;
+using WSS.Product.Utilities;
 
 namespace QT.Moduls.CrawlerProduct
 {
