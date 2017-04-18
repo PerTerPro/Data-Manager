@@ -1,22 +1,16 @@
 ﻿using log4net;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
 using System.ServiceProcess;
-using System.Text;
 using System.Threading.Tasks;
-using QT.Entities.MasOffer;
 using Websosanh.Core.Common.BAL;
 using Websosanh.Core.Drivers.RabbitMQ;
 using Websosanh.Core.JobServer;
 using Websosanh.Core.Merchant.BAL;
 using Websosanh.Core.Product.BAL;
 using WebsosanhCacheTool;
+using WebsosanhCacheTool.MasOffer;
 
 namespace WSS.UpdateProductToRedisService
 {

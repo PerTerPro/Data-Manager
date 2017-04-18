@@ -164,7 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
-      <Project>{7F43CEBE-F21E-4C1F-91CB-1E400B8B76FB}</Project>
+      <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
       <Name>QT.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\UpdateSolrTool\UpdateSolrTools.csproj">

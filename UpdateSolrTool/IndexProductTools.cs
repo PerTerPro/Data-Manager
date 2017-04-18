@@ -126,6 +126,9 @@ namespace UpdateSolrTools
                 if(!allPriorMerchants.ContainsKey(badMerchantDataTable[rowIndex].MerchantId))
                 allPriorMerchants.Add(badMerchantDataTable[rowIndex].MerchantId, -1);
             }
+            //add  Adayroi
+            if (!allPriorMerchants.ContainsKey(3433481253691794480))
+                allPriorMerchants.Add(3433481253691794480, -2);
             return allPriorMerchants;
         }
 

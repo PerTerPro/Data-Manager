@@ -19,9 +19,8 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using GABIZ.Base;
-using QT.Entities;
-using QT.Entities.MasOffer;
 using WSS.Product.Utilities;
+using WebsosanhCacheTool.MasOffer;
 
 namespace CacheManager
 {
