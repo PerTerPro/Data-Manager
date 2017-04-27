@@ -11,6 +11,7 @@ using Websosanh.Core.SearchEngines.BO.SolrDriverTypes;
 using Websosanh.Core.SearchEngines.DAL;
 using Websosanh.Core.ServiceStackUtilities;
 using Websosanh.ProductSearchEnginesService.ServiceModel;
+using WSS.Product.Utilities;
 
 namespace WebsosanhCacheTool
 {
@@ -54,7 +55,7 @@ namespace WebsosanhCacheTool
             if (response.RootProductMapping != null)
             {
                 if (response.RootProductMapping.NumMerchant > 0)
-                    QT.Entities.RedisPriceLogAdapter.PushRootProductPrice(productID, response.RootProductMapping.MinPrice, response.RootProductMapping.MaxPrice, response.RootProductMapping.MeanPrice, DateTime.Now.Date);
+                   RedisPriceLogAdapter.PushRootProductPrice(productID, response.RootProductMapping.MinPrice, response.RootProductMapping.MaxPrice, response.RootProductMapping.MeanPrice, DateTime.Now.Date);
                 RootProductMappingBAL.InsertRootProductMappingIntoCache(response.RootProductMapping, 0, RootProductMappingSortType.PriceWithVAT,false, expiry);
                 return true;
             }

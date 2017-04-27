@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Websosanh.Core.Drivers.RabbitMQ;
 using Websosanh.Core.JobServer;
+using WSS.Product.Utilities;
 
 namespace WSS.Service.LogProduct
 {

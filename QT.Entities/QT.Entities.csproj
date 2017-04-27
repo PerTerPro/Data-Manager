@@ -361,7 +361,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="RaoVat\WebsiteRaoVat.cs" />
-    <Compile Include="RedisPriceLogAdapter.cs" />
     <Compile Include="SeoUrl.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Solr\HistoryProductSorl.cs" />

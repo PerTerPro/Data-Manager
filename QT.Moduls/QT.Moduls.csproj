@@ -2788,6 +2788,10 @@
       <Project>{4069E230-57AE-4F67-9288-D8222CCE4C46}</Project>
       <Name>QT.Users</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WSS.Product.Utilities\WSS.Product.Utilities.csproj">
+      <Project>{f664f323-0527-46e2-b963-f349f3abb340}</Project>
+      <Name>WSS.Product.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\add.png" />

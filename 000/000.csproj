@@ -374,6 +374,8 @@
     <Content Include="DLLs\Websosanh.Core.Product.pdb" />
     <Content Include="DLLs\Websosanh.Core.ServiceStackUtilities.dll" />
     <Content Include="DLLs\Websosanh.Core.ServiceStackUtilities.pdb" />
+    <Content Include="DLLs\Websosanh.Core.SqlUtilities.dll" />
+    <Content Include="DLLs\Websosanh.Core.SqlUtilities.pdb" />
     <Content Include="DLLs\Websosanh.Imaging.dll" />
     <Content Include="DLLs\Websosanh.ProductSearchEnginesService.ServiceModel.dll" />
     <Content Include="DLLs\Websosanh.ProductSearchEnginesService.ServiceModel.pdb" />

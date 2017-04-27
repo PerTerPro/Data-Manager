@@ -19,8 +19,8 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using GABIZ.Base;
-using QT.Entities;
-using QT.Entities.MasOffer;
+using WSS.Product.Utilities;
+using WebsosanhCacheTool.MasOffer;
 
 namespace CacheManager
 {
@@ -645,7 +645,7 @@ namespace CacheManager
                 }
                 foreach (long productID in productIDs)
                 {
-                    var productPriceLog = QT.Entities.RedisPriceLogAdapter.GetMerchantProductPriceLog(productID);
+                    var productPriceLog = RedisPriceLogAdapter.GetMerchantProductPriceLog(productID);
                     if (productPriceLog.Count > 0)
                         storedPriceLogDict.Add(productID, productPriceLog.Select(x => new KeyValuePair<DateTime, long>(x.Key.Date, x.Value)).ToList());
                 }
@@ -683,7 +683,7 @@ namespace CacheManager
                 foreach (var filledPricelogEntry in filledPricelogDict)
                 {
                     var priceList = filledPricelogEntry.Value.Values;
-                    QT.Entities.RedisPriceLogAdapter.PushRootProductPrice(rootProductID, priceList.Min(), priceList.Max(), priceList.Sum() / priceList.Count, filledPricelogEntry.Key);
+                    RedisPriceLogAdapter.PushRootProductPrice(rootProductID, priceList.Min(), priceList.Max(), priceList.Sum() / priceList.Count, filledPricelogEntry.Key);
                 }
                 return true;
             }        

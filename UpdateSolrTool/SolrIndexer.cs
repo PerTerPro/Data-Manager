@@ -183,7 +183,9 @@ namespace UpdateSolrTools
                         var priorityScore = GetProductPriorityScore(merchantPriorityScore, productIndex, totalProduct);
                         if (priorityScore > item.Priority || priorityScore < 0)
                             item.Priority = priorityScore;
-
+                        if (!productRow.IsIsTopSearchNull() && !productRow.IsPriorityStartDateNull() && !productRow.IsPriorityEndDateNull())
+                            if (productRow.IsTopSearch && productRow.PriorityStartDate < DateTime.Now.AddHours(12) && productRow.PriorityEndDate > DateTime.Now)
+                                item.Priority = 20;
                         //AdsScore
                         if (productRow["OrderAdsScore"] != DBNull.Value && productRow["StartDate"] != DBNull.Value &&
                             productRow["EndDate"] != DBNull.Value && productRow.StartDate < DateTime.Now &&
@@ -400,7 +402,9 @@ namespace UpdateSolrTools
                     int merchantPriorityScore = ListPriorMerchants.ContainsKey(item.MerchantID) ? ListPriorMerchants[item.MerchantID] : 0;
                     if (merchantPriorityScore < 0 || merchantPriorityScore > item.Priority)
                         item.Priority = merchantPriorityScore;
-
+                    if (!productRow.IsIsTopSearchNull() && !productRow.IsPriorityStartDateNull() && !productRow.IsPriorityEndDateNull())
+                        if (productRow.IsTopSearch && productRow.PriorityStartDate < DateTime.Now.AddHours(12) && productRow.PriorityEndDate > DateTime.Now)
+                            item.Priority = 20;
                     //AdsScore
                     if (productRow["OrderAdsScore"] != DBNull.Value && productRow["StartDate"] != DBNull.Value &&
                         productRow["EndDate"] != DBNull.Value && productRow.StartDate < DateTime.Now &&

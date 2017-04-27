@@ -61,10 +61,12 @@ FROM            Tag_Category</CommandText>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Product.Name, Product.NameFT, Product.CategoryID, Product.ViewCount, Product.AddPosition, Product_AdsScore.Keyword AS Tag, Product.ID, Product.Price, 
                          Product.ProductID, Product.Company, Product.InStock, Product.AdsScore, Product_AdsScore.StartDate, Product_AdsScore.EndDate, 
-                         Product_AdsScore.OrderAdsScore, Product.VATStatus
+                         Product_AdsScore.OrderAdsScore, Product.VATStatus, ProductTopSearch.StartDate AS PriorityStartDate, ProductTopSearch.EndDate AS PriorityEndDate, 
+                         ProductTopSearch.IsTopSearch
 FROM            Product LEFT OUTER JOIN
                          ProductIdentity ON Product.ID = ProductIdentity.ProductID LEFT OUTER JOIN
-                         Product_AdsScore ON Product.ID = Product_AdsScore.ProductId
+                         Product_AdsScore ON Product.ID = Product_AdsScore.ProductId LEFT OUTER JOIN
+                         ProductTopSearch ON Product.ID = ProductTopSearch.ProductId
 WHERE        (Product.Valid = 1) AND (Product.IsBlackList IS NULL OR
                          Product.IsBlackList = 0)</CommandText>
                     <Parameters />
@@ -89,6 +91,9 @@ WHERE        (Product.Valid = 1) AND (Product.IsBlackList IS NULL OR
               <Mapping SourceColumn="EndDate" DataSetColumn="EndDate" />
               <Mapping SourceColumn="OrderAdsScore" DataSetColumn="OrderAdsScore" />
               <Mapping SourceColumn="VATStatus" DataSetColumn="VATStatus" />
+              <Mapping SourceColumn="PriorityStartDate" DataSetColumn="PriorityStartDate" />
+              <Mapping SourceColumn="PriorityEndDate" DataSetColumn="PriorityEndDate" />
+              <Mapping SourceColumn="IsTopSearch" DataSetColumn="IsTopSearch" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="QT_2_FPT (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetAllProductOfCompany" GeneratorSourceName="FillAllProductOfCompany" GetMethodModifier="Public" GetMethodName="GetAllProductOfCompany" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAllProductOfCompany" UserSourceName="GetAllProductOfCompany">
@@ -96,9 +101,11 @@ WHERE        (Product.Valid = 1) AND (Product.IsBlackList IS NULL OR
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Product.AddPosition, Product.CategoryID, Product.Company, Product.Name, Product.NameFT, Product.Price, Product.ViewCount, 
                          Product_AdsScore.Keyword AS Tag, Product.ID, Product.ProductID, Product.InStock, Product.AdsScore, Product_AdsScore.StartDate, 
-                         Product_AdsScore.EndDate, Product_AdsScore.OrderAdsScore, Product.VATStatus
+                         Product_AdsScore.EndDate, Product_AdsScore.OrderAdsScore, Product.VATStatus, ProductTopSearch.StartDate AS PriorityStartDate, ProductTopSearch.EndDate AS PriorityEndDate,
+                         ProductTopSearch.IsTopSearch
 FROM            Product LEFT OUTER JOIN
-                         Product_AdsScore ON Product.ID = Product_AdsScore.ProductId
+                         Product_AdsScore ON Product.ID = Product_AdsScore.ProductId LEFT OUTER JOIN
+                         ProductTopSearch ON Product.ID = ProductTopSearch.ProductId
 WHERE        (Product.Company = @Company) AND (Product.Valid = 1) AND (Product.IsBlackList IS NULL OR
                          Product.IsBlackList = 0)
 ORDER BY Product.ViewCount DESC</CommandText>
@@ -127,9 +134,11 @@ ORDER BY Product.ID</CommandText>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Product.AddPosition, Product.CategoryID, Product.Company, Product.Name, Product.NameFT, Product.Price, Product.ViewCount, 
                          Product_AdsScore.Keyword AS Tag, Product.ID, Product.ProductID, Product.InStock, Product.AdsScore, Product_AdsScore.StartDate, 
-                         Product_AdsScore.EndDate, Product_AdsScore.OrderAdsScore, Product.VATStatus
+                         Product_AdsScore.EndDate, Product_AdsScore.OrderAdsScore, Product.VATStatus, ProductTopSearch.StartDate AS PriorityStartDate, ProductTopSearch.EndDate AS PriorityEndDate,
+                         ProductTopSearch.IsTopSearch
 FROM            Product LEFT OUTER JOIN
-                         Product_AdsScore ON Product.ID = Product_AdsScore.ProductId
+                         Product_AdsScore ON Product.ID = Product_AdsScore.ProductId LEFT OUTER JOIN
+                         ProductTopSearch ON Product.ID = ProductTopSearch.ProductId
 WHERE        (Product.ID = @productID) AND (Product.Valid = 1) AND (Product.IsBlackList IS NULL OR
                          Product.IsBlackList = 0) AND (Product.Company &lt;&gt; 6619858476258121218)</CommandText>
                     <Parameters>
@@ -183,7 +192,7 @@ WHERE        (ListClassification_Checked.CheckData = 1)</CommandText>
   <xs:element name="ProductDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ProductDataset" msprop:Generator_UserDSName="ProductDataset">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Tag_Category" msprop:Generator_TableClassName="Tag_CategoryDataTable" msprop:Generator_TableVarName="tableTag_Category" msprop:Generator_TablePropName="Tag_Category" msprop:Generator_RowDeletingName="Tag_CategoryRowDeleting" msprop:Generator_RowChangingName="Tag_CategoryRowChanging" msprop:Generator_RowEvHandlerName="Tag_CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="Tag_CategoryRowDeleted" msprop:Generator_UserTableName="Tag_Category" msprop:Generator_RowChangedName="Tag_CategoryRowChanged" msprop:Generator_RowEvArgName="Tag_CategoryRowChangeEvent" msprop:Generator_RowClassName="Tag_CategoryRow">
+        <xs:element name="Tag_Category" msprop:Generator_TableClassName="Tag_CategoryDataTable" msprop:Generator_TableVarName="tableTag_Category" msprop:Generator_RowChangedName="Tag_CategoryRowChanged" msprop:Generator_TablePropName="Tag_Category" msprop:Generator_RowDeletingName="Tag_CategoryRowDeleting" msprop:Generator_RowChangingName="Tag_CategoryRowChanging" msprop:Generator_RowEvHandlerName="Tag_CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="Tag_CategoryRowDeleted" msprop:Generator_RowClassName="Tag_CategoryRow" msprop:Generator_UserTableName="Tag_Category" msprop:Generator_RowEvArgName="Tag_CategoryRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CategoryID" msprop:Generator_ColumnVarNameInTable="columnCategoryID" msprop:Generator_ColumnPropNameInRow="CategoryID" msprop:Generator_ColumnPropNameInTable="CategoryIDColumn" msprop:Generator_UserColumnName="CategoryID" type="xs:int" />
@@ -197,7 +206,7 @@ WHERE        (ListClassification_Checked.CheckData = 1)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Product" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct" msprop:Generator_TablePropName="Product" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_UserTableName="Product" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_RowEvArgName="ProductRowChangeEvent" msprop:Generator_RowClassName="ProductRow">
+        <xs:element name="Product" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_TablePropName="Product" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_RowClassName="ProductRow" msprop:Generator_UserTableName="Product" msprop:Generator_RowEvArgName="ProductRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
@@ -234,10 +243,13 @@ WHERE        (ListClassification_Checked.CheckData = 1)</CommandText>
               <xs:element name="EndDate" msprop:Generator_ColumnVarNameInTable="columnEndDate" msprop:Generator_ColumnPropNameInRow="EndDate" msprop:Generator_ColumnPropNameInTable="EndDateColumn" msprop:Generator_UserColumnName="EndDate" type="xs:dateTime" minOccurs="0" />
               <xs:element name="OrderAdsScore" msprop:Generator_ColumnVarNameInTable="columnOrderAdsScore" msprop:Generator_ColumnPropNameInRow="OrderAdsScore" msprop:Generator_ColumnPropNameInTable="OrderAdsScoreColumn" msprop:Generator_UserColumnName="OrderAdsScore" type="xs:int" minOccurs="0" />
               <xs:element name="VATStatus" msprop:Generator_ColumnVarNameInTable="columnVATStatus" msprop:Generator_ColumnPropNameInRow="VATStatus" msprop:Generator_ColumnPropNameInTable="VATStatusColumn" msprop:Generator_UserColumnName="VATStatus" type="xs:int" minOccurs="0" />
+              <xs:element name="PriorityStartDate" msprop:Generator_ColumnVarNameInTable="columnPriorityStartDate" msprop:Generator_ColumnPropNameInRow="PriorityStartDate" msprop:Generator_ColumnPropNameInTable="PriorityStartDateColumn" msprop:Generator_UserColumnName="PriorityStartDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PriorityEndDate" msprop:Generator_ColumnVarNameInTable="columnPriorityEndDate" msprop:Generator_ColumnPropNameInRow="PriorityEndDate" msprop:Generator_ColumnPropNameInTable="PriorityEndDateColumn" msprop:Generator_UserColumnName="PriorityEndDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IsTopSearch" msprop:Generator_ColumnVarNameInTable="columnIsTopSearch" msprop:Generator_ColumnPropNameInRow="IsTopSearch" msprop:Generator_ColumnPropNameInTable="IsTopSearchColumn" msprop:Generator_UserColumnName="IsTopSearch" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ListClassification" msprop:Generator_TableClassName="ListClassificationDataTable" msprop:Generator_TableVarName="tableListClassification" msprop:Generator_TablePropName="ListClassification" msprop:Generator_RowDeletingName="ListClassificationRowDeleting" msprop:Generator_RowChangingName="ListClassificationRowChanging" msprop:Generator_RowEvHandlerName="ListClassificationRowChangeEventHandler" msprop:Generator_RowDeletedName="ListClassificationRowDeleted" msprop:Generator_UserTableName="ListClassification" msprop:Generator_RowChangedName="ListClassificationRowChanged" msprop:Generator_RowEvArgName="ListClassificationRowChangeEvent" msprop:Generator_RowClassName="ListClassificationRow">
+        <xs:element name="ListClassification" msprop:Generator_TableClassName="ListClassificationDataTable" msprop:Generator_TableVarName="tableListClassification" msprop:Generator_RowChangedName="ListClassificationRowChanged" msprop:Generator_TablePropName="ListClassification" msprop:Generator_RowDeletingName="ListClassificationRowDeleting" msprop:Generator_RowChangingName="ListClassificationRowChanging" msprop:Generator_RowEvHandlerName="ListClassificationRowChangeEventHandler" msprop:Generator_RowDeletedName="ListClassificationRowDeleted" msprop:Generator_RowClassName="ListClassificationRow" msprop:Generator_UserTableName="ListClassification" msprop:Generator_RowEvArgName="ListClassificationRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
