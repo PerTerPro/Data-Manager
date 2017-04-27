@@ -18,7 +18,8 @@ namespace QT.Entities
             AllProductsFromURL = 2,
             SpecialProductsFromFile = 3,
             SpecialProductsFromUrl = 4,
-            MasOfferDatafeed =5
+            MasOfferDatafeed =5,
+            Accesstrade=6
         };
         
         private DB.CompanyDataTable _dt;

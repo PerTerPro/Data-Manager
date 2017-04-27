@@ -16,22 +16,18 @@ namespace WSS.Service.Report.ProductOnClick.Error.Class
     {
         public static bool IsAdsScore(long ProductId)
         {
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
+            using (IDbConnection db = new SqlConnection(CommonConnection.ConnectionStringSQL))
             {
-                var productAds = (ProductAds)db.Query<ProductAds>("Select * from Product_AdsScore where ProductId = @ProductID", new { ProductId = ProductId });
+                var productAds = db.Query<ProductAds>("Select TOP 1 * from Product_AdsScore where ProductId = @ProductID", new { ProductId = ProductId }).SingleOrDefault();
                 if (productAds != null)
-                {
                     return true;
-                }
                 else
-                {
                     return false;
-                }
             }
         }
         public static void UpdateError(ProductError errProduct)
         {
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
+            using (IDbConnection db = new SqlConnection(CommonConnection.ConnectionStringSQL))
             {
                 if (IsExist(errProduct.ProductId))
                 {
@@ -39,10 +35,11 @@ namespace WSS.Service.Report.ProductOnClick.Error.Class
                         new
                         {
                             CompanyId = errProduct.CompanyId,
-                            DetailUrl = errProduct.DetailUrl,
-                            Keyword = errProduct.Keyword,
+                            DetailUrl = errProduct.DetailUrl??"",
+                            Keyword = errProduct.Keyword ?? "",
                             Type = errProduct.Type,
-                            DateLog = errProduct.DateLog
+                            DateLog = errProduct.DateLog,
+                            ProductId = errProduct.ProductId
                         });
                 }
                 else
@@ -52,9 +49,9 @@ namespace WSS.Service.Report.ProductOnClick.Error.Class
                         {
                             ProductId = errProduct.ProductId,
                             CompanyId = errProduct.CompanyId,
-                            DetailUrl = errProduct.DetailUrl,
+                            DetailUrl = errProduct.DetailUrl ?? "",
                             DateLog = errProduct.DateLog,
-                            Keyword = errProduct.Keyword,
+                            Keyword = errProduct.Keyword ?? "",
                             Type = errProduct.Type
                         });
                 }
@@ -66,24 +63,20 @@ namespace WSS.Service.Report.ProductOnClick.Error.Class
         }
         public static bool IsExist(long ProductId)
         {
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
+            using (IDbConnection db = new SqlConnection(CommonConnection.ConnectionStringSQL))
             {
-                var productError = (ProductError)db.Query<ProductError>("Select * from Product_Error_Link where ProductId = @ProductId", new { ProductId = ProductId });
+                var productError = db.Query<ProductError>("Select TOP 1 * from Product_Error_Link where ProductId = @ProductId", new { ProductId = ProductId }).SingleOrDefault();
                 if (productError != null)
-                {
-                    return false;
-                }
-                else
-                {
                     return true;
-                }
+                else
+                    return false;
             }
         }
 
 
         public static string GetKeywordAds(long ProductId)
         {
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
+            using (IDbConnection db = new SqlConnection(CommonConnection.ConnectionStringSQL))
             {
                 return db.Query<ProductAds>("Select Keyword from Product_AdsScore where ProductId = @ProductId", new { ProductId = ProductId }).FirstOrDefault().Keyword;
             }

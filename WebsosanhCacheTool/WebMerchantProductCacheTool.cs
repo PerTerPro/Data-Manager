@@ -19,7 +19,7 @@ namespace WebsosanhCacheTool
     public class WebMerchantProductCacheTool
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof (WebMerchantProductCacheTool));
-        //private static MasOfferAdapter masOffer = MasOfferAdapter.Instance();
+        private static MasOfferAdapter masOffer = MasOfferAdapter.Instance();
 
         public static void InsertAllWebMerchantProductToCache(string connProductString)
         {
