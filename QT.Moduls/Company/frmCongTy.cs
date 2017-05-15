@@ -91,6 +91,11 @@ namespace QT.Moduls.Company
                 Text = Entities.Company.DataFeedType.MasOfferDatafeed.ToString("G"),
                 Value = (int)Entities.Company.DataFeedType.MasOfferDatafeed
             });
+            comboBoxDataFeedType.Items.Add(new ComboboxItem()
+            {
+                Text = Entities.Company.DataFeedType.Accesstrade.ToString("G"),
+                Value = (int)Entities.Company.DataFeedType.Accesstrade
+            });
             comboBoxDataFeedType.SelectedIndex = 0;
 
            
@@ -1227,8 +1232,8 @@ namespace QT.Moduls.Company
                 {
                     groupBoxDataFeedFromFile.Enabled = true;
                 }
-                else if (selectType == Entities.Company.DataFeedType.AllProductsFromURL ||
-                    selectType == Entities.Company.DataFeedType.SpecialProductsFromUrl || selectType== Entities.Company.DataFeedType.MasOfferDatafeed)
+                else if (selectType == Entities.Company.DataFeedType.AllProductsFromURL ||selectType == Entities.Company.DataFeedType.SpecialProductsFromUrl 
+                    || selectType== Entities.Company.DataFeedType.MasOfferDatafeed || selectType == Entities.Company.DataFeedType.Accesstrade)
                 {
                     groupBoxDataFeedFromUrl.Enabled = true;
                 }
@@ -1258,7 +1263,8 @@ namespace QT.Moduls.Company
                 companyTest.CompanyDataFeedType = datafeedType;
                 companyTest.DataFeedPath = txtDataFeedFileDir.Text;
             }
-            else if (datafeedType == Entities.Company.DataFeedType.AllProductsFromURL || datafeedType == Entities.Company.DataFeedType.SpecialProductsFromUrl || datafeedType == Entities.Company.DataFeedType.MasOfferDatafeed)
+            else if (datafeedType == Entities.Company.DataFeedType.AllProductsFromURL || datafeedType == Entities.Company.DataFeedType.SpecialProductsFromUrl 
+                || datafeedType == Entities.Company.DataFeedType.MasOfferDatafeed || datafeedType == Entities.Company.DataFeedType.Accesstrade)
             {
                 companyTest.CompanyDataFeedType = datafeedType;
                 companyTest.DataFeedPath = textBoxDataFeedUrl.Text;

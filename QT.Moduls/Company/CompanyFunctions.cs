@@ -170,6 +170,10 @@ namespace QT.Moduls.Company
             {
                 listProducts.AddRange(ReadDatafeedProductsFromJsonOfMasOffer(company.DataFeedPath, company));
             }
+            else if (company.CompanyDataFeedType == Entities.Company.DataFeedType.Accesstrade)
+            {
+                listProducts.AddRange(ReadDatafeedProductsFromJsonOfAccesstrade(company));
+            }
             else// other type => return
             {
                 listProducts = null;
@@ -1540,7 +1544,70 @@ namespace QT.Moduls.Company
                 Log.Error(string.Format("Page 1 data empty!!! Company: {0} . DataFeedUrl: {1} ", company.ID, datafeedUrl));
             return result;
         }
+        public List<Product> ReadDatafeedProductsFromJsonOfAccesstrade(Entities.Company company)
+        {
+            var result = new List<Product>();
+            //fix riêng cho accesstrade
+            var jsonAccesstrade = string.Empty;
+            try
+            {
+                using (var wc = new WebClient())
+                {
+                    wc.Headers.Add("Authorization", "Token coFgC9Ah8scmIw6bAVXwvVk3GBWuK0sQ");
+                    wc.Headers.Add("Content-Type", "application/json");
+                    jsonAccesstrade = wc.DownloadString(company.DataFeedPath + "&limit=1");
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.Error(exception);
+            }
+            if (!string.IsNullOrEmpty(jsonAccesstrade))
+            {
+                var accesstradeDatafeed = JsonConvert.DeserializeObject<DatafeedAccesstrade>(jsonAccesstrade);
+                var totalProduct = accesstradeDatafeed.total;
+                if (totalProduct > 0)
+                {
+                    int limit = 200;
+                    int totalPage = (int)totalProduct / limit + 1;
+                    #region Load next page
+                    for (int i = 1; i <= totalPage; i++)
+                    {
+                        var datafeedUrlnextpage = string.Format("{0}&limit={1}&offset={2}", company.DataFeedPath, limit, i);
+                        var jsonAccesstradePage = string.Empty;
+                        try
+                        {
+                            using (var wc = new WebClient())
+                            {
+                                wc.Headers.Add("user-agent",
+                                    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36");
+                                wc.Headers.Add("Authorization", "Token coFgC9Ah8scmIw6bAVXwvVk3GBWuK0sQ");
+                                wc.Headers.Add("Content-Type", "application/json");
+                                jsonAccesstradePage = wc.DownloadString(datafeedUrlnextpage);
+                            }
+                        }
+                        catch (Exception exception)
+                        {
+                            Log.Error(exception);
+                        }
+                        if (!string.IsNullOrEmpty(jsonAccesstradePage))
+                        {
+                            var listProductInPage = JsonConvert.DeserializeObject<DatafeedAccesstrade>(jsonAccesstradePage);
+                            result.AddRange(ConvertProductAccesstradeToProductWebsosanh(listProductInPage.data,
+                                    company));
 
+                        }
+                        else
+                            Log.Error(string.Format("Page {2} data empty!!! Company: {0} . DataFeedUrl: {1}", company.ID,
+                                company.DataFeedPath, i));
+                    }
+                    #endregion
+                }
+            }
+            else
+                Log.Error(string.Format("Page 1 data empty!!! Company: {0} . DataFeedUrl: {1} ", company.ID, company.DataFeedPath));
+            return result;
+        }
         public List<Product> ConvertProductMasOfferToProductWebsosanh(List<ProductMasOffer> listProductMasOffers, Entities.Company company, DatafeedConfig datafeedConfig = null)
         {
             var result = new List<Product>();
@@ -1571,7 +1638,44 @@ namespace QT.Moduls.Company
             }
             return result;
         }
-
+        public List<Product> ConvertProductAccesstradeToProductWebsosanh(List<ProductAccesstrade> listProductAccesstrade, Entities.Company company, DatafeedConfig datafeedConfig = null)
+        {
+            var result = new List<Product>();
+            foreach (var item in listProductAccesstrade)
+            {
+                if (item.price <= 0)
+                {
+                    Log.Info(string.Format("Product {0} {1} price = 0", item.name, item.url));
+                    continue;
+                }
+                else
+                {
+                    var originalUrl = item.url;
+                    var tmpProduct = new Product
+                    {
+                        Domain = company.Domain,
+                        IDCongTy = company.ID,
+                        DetailUrl = item.aff_link,
+                        MerchantSku = item.sku,
+                        Name = item.name,
+                        OriginPrice = (int)item.price,
+                        Price = (int)(item.price - item.discount),
+                        ImageUrls = new List<string>() { item.image },
+                        Categories = new List<string>() { company.Domain },
+                        OriginalUrl = new List<string> { originalUrl }
+                    };
+                    tmpProduct.ID = Common.GetIDProduct(string.IsNullOrEmpty(originalUrl) ? tmpProduct.DetailUrl : originalUrl);
+                    tmpProduct.Status = Common.ProductStatus.Available;
+                    tmpProduct.Instock = Common.GetProductInstockFormStatus(tmpProduct.Status);
+                    tmpProduct.HashName = Common.GetHashNameProduct(company.Domain, tmpProduct.Name.Trim());
+                    tmpProduct.Categories.Add(item.category);
+                    tmpProduct.IDCategories = Common.GetIDClassification(Common.ConvertToString(tmpProduct.Categories, " -> "));
+                    tmpProduct.VATStatus = 1;
+                    result.Add(tmpProduct);
+                }
+            }
+            return result;
+        }
         public List<Product> ReadDataFeedProductsFromJSONFile(string jsonPath, QT.Entities.Company company, DatafeedConfig datafeedConfig = null)
         {
             if (datafeedConfig == null)

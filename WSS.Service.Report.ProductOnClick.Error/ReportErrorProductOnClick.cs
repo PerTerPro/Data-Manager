@@ -24,15 +24,13 @@ namespace WSS.Service.Report.ProductOnClick.Error
 
         protected override void OnStart(string[] args)
         {
+            CommonConnection.ConnectionStringSQL = ConfigurationManager.AppSettings["ConnectionString"];
             for (int i = 0; i < WorkerCount; i++)
             {
-                var worker = new WorkerCheckError();
                 var workerTask = new Task(() =>
                 {
                     WorkerReportErrorProductOnClick wk = new WorkerReportErrorProductOnClick();
                     wk.StartConsume();
-                    //WorkerCheckError wk = new WorkerCheckError();
-                    //wk.StartConsume();
                 });
                 workerTask.Start();
                 //Log.InfoFormat("Worker {0} started", i);

@@ -308,6 +308,7 @@
     <Compile Include="Company\ctrLogMananger.Designer.cs">
       <DependentUpon>ctrLogMananger.cs</DependentUpon>
     </Compile>
+    <Compile Include="Company\DatafeedAccesstrade.cs" />
     <Compile Include="Company\DatafeedConfig.cs" />
     <Compile Include="Company\DBCom.cs">
       <DependentUpon>DBCom.xsd</DependentUpon>

@@ -238,7 +238,7 @@ namespace WSS.ImageImbo.DownloadImageService
                 Log.Error(string.Format("CompanyId: ID = {0} ERROR: ", idCompany), exception);
             }
         }
-        private bool DownloadImageProduct(ImageProductInfo imageProductInfo, ProducerBasic producerUpdateImageIdSql)
+        private bool DownloadImageProduct(ImageProductInfo imageProductInfo, ProducerBasic producerUpdateImageIdSql) 
         {
             bool result = false;
             try

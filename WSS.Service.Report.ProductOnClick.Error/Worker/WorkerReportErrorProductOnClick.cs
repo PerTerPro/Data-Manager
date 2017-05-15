@@ -36,12 +36,14 @@ namespace WSS.Service.Report.ProductOnClick.Error.Worker
                 int Type = 2;
                 if (ProductProcess.IsUrlEncoded(url))
                 {
-                    string urlencode = url;
-                    string urldecode = HttpUtility.UrlDecode(HttpUtility.UrlDecode(urlencode));
-                    MatchCollection matches = regex.Matches(urldecode);
-                    url = matches[0].Value.ToString().Trim();
-                    Regex regexReplace = new Regex(@"http.+url=");
-                    url = regexReplace.Replace(url, "");
+                    url = HttpUtility.UrlDecode(HttpUtility.UrlDecode(url));
+                    MatchCollection matches = regex.Matches(url);
+                    if (matches != null && matches.Count > 0)
+                    {
+                        url = matches[0].Value.ToString().Trim();
+                        Regex regexReplace = new Regex(@"http.+url=");
+                        url = regexReplace.Replace(url, "");
+                    }
                 }
                 try
                 {
@@ -81,7 +83,6 @@ namespace WSS.Service.Report.ProductOnClick.Error.Worker
                         Log.InfoFormat("Saved Product: {0}", ProductId);
                     }
                     response.Close();
-                    Thread.Sleep(3000);
                 }
                 catch (WebException ex)
                 {
@@ -90,8 +91,8 @@ namespace WSS.Service.Report.ProductOnClick.Error.Worker
                     reqError.DetailUrlMerchant = url;
                     reqError.Error = ex.ToString();
                     PushlishErrorWhenRequest(reqError);
-                    Log.ErrorFormat("Error: {0}", ex.Status);
-                    Thread.Sleep(60000);
+                    Log.Error(string.Format("Product: {0} ... Error: {1}", Newtonsoft.Json.JsonConvert.SerializeObject(reqError), ex));
+                    Thread.Sleep(6000);
                 }
             }
             this.GetChannel().BasicAck(message.DeliveryTag, true);

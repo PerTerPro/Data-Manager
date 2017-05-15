@@ -17,7 +17,7 @@ namespace WSS.Service.Report.ProductOnClick.Error.Class
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
-                return db.Query<Company>("Select b.Id, b.Domain from Product a inner join Company b on a.Company = b.Id where aId = @ProductId", new { ProductId = ProductId }).FirstOrDefault();
+                return db.Query<Company>("Select b.Id, b.Domain from Product a inner join Company b on a.Company = b.Id where a.Id = @ProductId", new { ProductId = ProductId }).FirstOrDefault();
             }
         }
     }
