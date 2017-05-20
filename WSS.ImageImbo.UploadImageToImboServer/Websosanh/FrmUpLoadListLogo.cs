@@ -24,6 +24,7 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
         {
             InitializeComponent();
             companyTableAdapter.Connection.ConnectionString = ConnectionCommon.ConnectionWebsosanh;
+            company_AutoGenerateLogoTableAdapter.Connection.ConnectionString = ConnectionCommon.ConnectionWebsosanh;
             _rabbitMqServer = RabbitMQManager.GetRabbitMQServer(ConfigImages.RabbitMqServerName);
             _jobClientDownloadImage = new JobClient("Merchant", GroupType.Topic, "Update", true, _rabbitMqServer);
         }
@@ -41,13 +42,14 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
                     {
                         try
                         {
-                            string idImboNew = ImboImageService.PushFromFile(ConfigImbo.PublicKey, ConfigImbo.PrivateKey, item, "logo", ConfigImbo.Host, ConfigImbo.Port);
+                            string idImboNew = Common.UploadImageProductWithImboServerByHand(item, ConfigImbo.PublicKey, ConfigImbo.PrivateKey, "logo", ConfigImbo.Host, ConfigImbo.Port);
                             string fileName = Path.GetFileName(item);
                             if (!string.IsNullOrEmpty(idImboNew))
                             {
                                 string domain = fileName.Split('.')[0];
                                 var idCompany = Common.GetIDCompany(domain.Replace("_", "."));
                                 companyTableAdapter.UpdateLogoImageId(idImboNew, idCompany);
+                                //company_AutoGenerateLogoTableAdapter.Insert(idCompany, DateTime.Now); ()
                                 SendMessageUpdateCompany(idCompany);
                                 success++;
                                 rbSuccess.AppendText(string.Format("{0} success with IDimbo: {1}!", fileName, idImboNew) + System.Environment.NewLine);
@@ -92,6 +94,8 @@ namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh
 
         private void FrmUpLoadListLogo_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dBWss.Company_AutoGenerateLogo' table. You can move, or remove it, as needed.
+            //this.company_AutoGenerateLogoTableAdapter.Fill(this.dBWss.Company_AutoGenerateLogo);
             // TODO: This line of code loads data into the 'dBWss.Company' table. You can move, or remove it, as needed.
             //is.companyTableAdapter.Fill(this.dBWss.Company);
 

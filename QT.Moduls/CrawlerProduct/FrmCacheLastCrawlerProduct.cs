@@ -55,7 +55,7 @@ namespace QT.Moduls.CrawlerProduct
                     string Name = QT.Entities.Common.Obj2String(rowInfo["Name"]);
                     string ImageUrl = QT.Entities.Common.Obj2String(rowInfo["ImageUrls"]);
                     long HashDuplicate = QT.Entities.Product.GetHashDuplicate(Domain, Price, Name, ImageUrl);
-                    RedisCacheLastUpdateProduct.Instance().SetLastUpdateProduct(ProductID, CompanyID, HashDuplicate);
+                    //RedisCacheLastUpdateProduct.Instance().SetLastUpdateProduct(ProductID, CompanyID, HashDuplicate);
                 }
 
             this.Invoke(new Action(() =>

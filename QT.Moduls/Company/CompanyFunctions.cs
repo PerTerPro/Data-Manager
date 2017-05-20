@@ -22,6 +22,7 @@ using Websosanh.Core.Drivers.RabbitMQ;
 using Websosanh.Core.JobServer;
 using QT.Entities.Images;
 using System.Text;
+using WSS.Product.Utilities;
 
 namespace QT.Moduls.Company
 {
@@ -1221,6 +1222,7 @@ namespace QT.Moduls.Company
                         try
                         {
                             var productName = dtProduct.Rows[i][datafeedConfig.ProductNameNode].ToString();
+                            
                             if (!string.IsNullOrEmpty(productName))
                                 tmpProduct.Name = productName;
                             else
