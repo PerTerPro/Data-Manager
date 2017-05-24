@@ -24,22 +24,28 @@ namespace WSS.LibExtra
     public class ProducerBasic : Producer, IProducerBasic
     {
         private readonly log4net.ILog _log = LogManager.GetLogger(typeof(ProducerBasic));
-
+        private string _queueName;
         public ProducerBasic(RabbitMQServer rabbitmqServer, string exchangeName, string routingKey)
-            : base(rabbitmqServer, exchangeName, routingKey, "")
+            : base(rabbitmqServer, exchangeName, routingKey)
         {
         }
 
         public ProducerBasic(RabbitMQServer rabbitmqServer, string queueName)
-            : base(rabbitmqServer, "", queueName, queueName)
+            : base(rabbitmqServer)
         {
-            InitQueue(rabbitmqServer, queueName);
+            this._queueName = queueName;
+            this.ExchangeName = "";
+            this.RoutingKey = queueName;
 
+            InitQueue(rabbitmqServer, queueName);
         }
 
         public ProducerBasic(RabbitMQServer rabbitmqServer, string queueName, bool autoDeclareQueue)
-            : base(rabbitmqServer, "", queueName, queueName)
+            : base(rabbitmqServer)
         {
+            this._queueName = queueName;
+            this.ExchangeName = "";
+            this.RoutingKey = queueName;
             if (autoDeclareQueue) InitQueue(rabbitmqServer, queueName);
         }
 
@@ -93,7 +99,7 @@ namespace WSS.LibExtra
                         IBasicProperties properties = new BasicProperties();
                         if (timeLiveBySecond > 0) properties.Expiration = Convert.ToString(timeLiveBySecond * 1000);
                         properties.Persistent = persistence;
-                        Publish(true, properties, mss);
+                        base.Publish(base.GetChannel(), true, properties, mss);
                         break;
                     }
                     catch (Exception exception)
@@ -127,4 +133,5 @@ namespace WSS.LibExtra
 
         }
     }
+
 }

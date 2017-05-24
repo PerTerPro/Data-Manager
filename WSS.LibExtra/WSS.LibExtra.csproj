@@ -45,7 +45,7 @@
       <HintPath>..\000\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RabbitMQ.Client">
-      <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
+      <HintPath>..\..\wss-dlls\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,7 +55,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
-      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
+      <HintPath>..\..\wss-dlls\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
