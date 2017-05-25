@@ -15,7 +15,7 @@ namespace QT.Moduls.CrawlerProduct.Comment
         private ILog _log = log4net.LogManager.GetLogger(typeof(PublisherDownloadHtml));
 
         public PublisherDownloadHtml(RabbitMQServer rabbitmqServer, string exchangeName, string routingKey,
-            string queueName) : base(rabbitmqServer, exchangeName, routingKey, queueName)
+            string queueName) : base(rabbitmqServer,"",queueName)
         {
             while (true)
             {

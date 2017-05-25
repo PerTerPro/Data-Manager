@@ -11,30 +11,17 @@ using Websosanh.Core.Drivers.RabbitMQ;
 
 namespace QT.Moduls.CrawlerProduct
 {
-    public class PublisherDesciption:Producer
+    public class PublisherDesciption
     {
         private ILog _log = LogManager.GetLogger(typeof(PublisherDesciption));
 
-        public PublisherDesciption() : base(RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqProduct)
-            , "", ConfigRun.QueueChangeDescription, ConfigRun.QueueChangeDescription)
+        public PublisherDesciption() 
         {
 
         }
-
         public void Publish(JobMqChangeDesc mss)
         {
-            this.Publish(true, null, UtilZipFile.Zip(mss.GetJSON()));
-        }
-
-        public override bool Init()
-        {
-
-            return true;
-        }
-
-        protected override void MessageReturn(object sender, BasicReturnEventArgs args)
-        {
-           
+            
         }
     }
 }

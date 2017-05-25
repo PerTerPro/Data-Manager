@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QT.Entities;
 using Websosanh.Core.Drivers.RabbitMQ;
+using Wss.Lib.RabbitMq;
 
 
 

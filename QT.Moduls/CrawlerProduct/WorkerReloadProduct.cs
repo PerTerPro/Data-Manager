@@ -530,14 +530,14 @@ namespace QT.Moduls.CrawlerProduct
             var lsTuple = new List<Tuple<long, long>>();
             foreach (var variable in _productsWaitChangeDesc)
             {
-                _publiserDesciption.Publish(true, null, UtilZipFile.Zip(new JobMqChangeDesc()
+                _publiserDesciption.Publish(new JobMqChangeDesc()
                 {
                     Id = variable.ID,
                     FullDesc = variable.FullDescHtml,
                     SpecDesc = variable.SpecsDescHtml,
                     ShortDesc = variable.ShortDescHtml,
                     VideoDesc = variable.VideoDescHtml
-                }.GetJSON()));
+                });
                 lsTuple.Add(new Tuple<long, long>(variable.ID, variable.GetHashDesc()));
             }
             _redisDesHash.SetHashDesc(_companyId, lsTuple);

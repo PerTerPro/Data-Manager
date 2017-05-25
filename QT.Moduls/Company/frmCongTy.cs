@@ -160,6 +160,7 @@ namespace QT.Moduls.Company
 
 
 
+
             this.configurationTableAdapter.FillBy_CompanyID(dB.Configuration, ID);
             if (dB.Configuration.Rows.Count <= 0)
             {

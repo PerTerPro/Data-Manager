@@ -17,6 +17,7 @@ using QT.Moduls.Company;
 using System.Threading;
 using DevExpress.XtraGrid.Views.Grid;
 using Websosanh.Core.Drivers.RabbitMQ;
+using Wss.Lib.RabbitMq;
 
 namespace QT.Moduls
 {

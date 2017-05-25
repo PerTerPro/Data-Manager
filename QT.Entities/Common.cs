@@ -899,6 +899,11 @@ namespace QT.Entities
         {
             if (relative.EndsWith("/")) relative = relative.Remove(relative.Length - 1, 1);
             if (relative.ToLower().StartsWith("http:") || relative.ToLower().StartsWith("https:")) return relative;
+            else if (relative.StartsWith("//"))
+            {
+                Uri uri = new Uri(baseUrl);
+                return uri.Scheme + ":" + relative;
+            }
             else
             {
                 return baseUrl + (relative.StartsWith("/") ? relative : "/" + relative);

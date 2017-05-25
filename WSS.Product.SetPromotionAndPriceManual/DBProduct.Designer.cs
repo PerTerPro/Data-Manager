@@ -996,22 +996,21 @@ namespace WSS.Product.SetPromotionAndPriceManual.DBProductTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        P.ID, P.Price, P.Company, P.Name, P.DetailUrl, P.PromotionInfo, C.D" +
-                "omain\r\nFROM            Product AS P INNER JOIN\r\n                         Company" +
-                " AS C ON P.Company = C.ID";
+                "omain\nFROM            Product AS P INNER JOIN\n                         Company A" +
+                "S C ON P.Company = C.ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        P.ID, P.Price, P.Company, P.Name, P.DetailUrl, P.PromotionInfo, C.D" +
-                "omain\r\nFROM            Product AS P INNER JOIN\r\n                         Company" +
-                " AS C ON P.Company = C.ID\r\nWHERE        (P.Company = @CompanyId) AND (P.Valid = " +
-                "1)";
+                "omain\nFROM            Product AS P INNER JOIN\n                         Company A" +
+                "S C ON P.Company = C.ID\nWHERE        (P.Company = @CompanyId) AND (P.Valid = 1)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyId", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Company", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT        P.ID, P.Price, P.Company, P.Name, P.DetailUrl, P.PromotionInfo, C.D" +
-                "omain\r\nFROM            Product AS P INNER JOIN\r\n                         Company" +
-                " AS C ON P.Company = C.ID\r\nWHERE        (P.ID = @Id)";
+                "omain\nFROM            Product AS P INNER JOIN\n                         Company A" +
+                "S C ON P.Company = C.ID\nWHERE        (P.ID = @Id)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -1023,21 +1022,21 @@ namespace WSS.Product.SetPromotionAndPriceManual.DBProductTableAdapters {
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyId", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 19, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "UPDATE       Product\r\nSET                Price = @Price\r\nWHERE        (ID = @Id)";
+            this._commandCollection[4].CommandText = "UPDATE       Product\nSET                Price = @Price\nWHERE        (ID = @Id)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "UPDATE       Product\r\nSET                PromotionInfo = @PromotionInfo\r\nWHERE   " +
-                "     (ID = @Id)";
+            this._commandCollection[5].CommandText = "UPDATE       Product\nSET                PromotionInfo = @PromotionInfo\nWHERE     " +
+                "   (ID = @Id)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PromotionInfo", global::System.Data.SqlDbType.NVarChar, 1000, global::System.Data.ParameterDirection.Input, 0, 0, "PromotionInfo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "UPDATE       Product\r\nSET                PromotionInfo = @PromotionInfo, Price = " +
-                "@Price\r\nWHERE        (ID = @Id)";
+            this._commandCollection[6].CommandText = "UPDATE       Product\nSET                PromotionInfo = @PromotionInfo, Price = @" +
+                "Price\nWHERE        (ID = @Id)";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PromotionInfo", global::System.Data.SqlDbType.NVarChar, 1000, global::System.Data.ParameterDirection.Input, 0, 0, "PromotionInfo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

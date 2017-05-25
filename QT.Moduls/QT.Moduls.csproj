@@ -174,9 +174,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
     </Reference>
-    <Reference Include="RabbitMQ.Client, Version=3.5.6.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RabbitMQ.Client.3.5.6\lib\net40\RabbitMQ.Client.dll</HintPath>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\..\wss-dlls\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Client">
       <HintPath>..\packages\ServiceStack.Client.4.0.46\lib\net40\ServiceStack.Client.dll</HintPath>
@@ -236,7 +235,7 @@
       <HintPath>..\000\DLLs\Websosanh.Core.Common.dll</HintPath>
     </Reference>
     <Reference Include="Websosanh.Core.Drivers.RabbitMQ">
-      <HintPath>..\000\DLLs\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
+      <HintPath>..\..\wss-dlls\Websosanh.Core.Drivers.RabbitMQ.dll</HintPath>
     </Reference>
     <Reference Include="Websosanh.Core.Drivers.Redis">
       <HintPath>..\000\DLLs\Websosanh.Core.Drivers.Redis.dll</HintPath>
@@ -245,7 +244,7 @@
       <HintPath>..\000\DLLs\Websosanh.Core.Drivers.Solr.dll</HintPath>
     </Reference>
     <Reference Include="Websosanh.Core.JobServer">
-      <HintPath>..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
+      <HintPath>..\..\wss-dlls\Websosanh.Core.JobServer.dll</HintPath>
     </Reference>
     <Reference Include="Websosanh.Core.Product, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -263,6 +262,9 @@
     </Reference>
     <Reference Include="Websosanh.ProductSearchEnginesService.ServiceModel">
       <HintPath>..\000\DLLs\Websosanh.ProductSearchEnginesService.ServiceModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Wss.Lib.RabbitMq">
+      <HintPath>..\..\wss-dlls\Wss.Lib.RabbitMq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +314,7 @@
     <Compile Include="Company\DatafeedConfig.cs" />
     <Compile Include="Company\DBCom.cs">
       <DependentUpon>DBCom.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Company\DBCom.Designer.cs">
       <DependentUpon>DBCom.xsd</DependentUpon>
@@ -984,6 +987,7 @@
     <Compile Include="LogCassandra\LogCrawler.cs" />
     <Compile Include="LogJob\DBLogJob.cs">
       <DependentUpon>DBLogJob.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="LogJob\DBLogJob.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1349,6 +1353,7 @@
     <Compile Include="RaoVat\SimpleCrawlerSale.cs" />
     <Compile Include="Data\KW.cs">
       <DependentUpon>KW.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\KW.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1357,6 +1362,7 @@
     </Compile>
     <Compile Include="DB.cs">
       <DependentUpon>DB.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="FrmLoadCacheCrawler.cs">
       <SubType>Form</SubType>
@@ -1433,6 +1439,7 @@
     </Compile>
     <Compile Include="Maps\DBMap.cs">
       <DependentUpon>DBMap.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Maps\DBMap.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1441,6 +1448,7 @@
     </Compile>
     <Compile Include="Maps\DBPMan.cs">
       <DependentUpon>DBPMan.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Maps\frmChonChuyenMucGoc.cs">
       <SubType>Form</SubType>
@@ -1508,6 +1516,7 @@
     </Compile>
     <Compile Include="ProductID\DBProperties.cs">
       <DependentUpon>DBProperties.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ProductID\DBProperties.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1653,6 +1662,7 @@
     </Compile>
     <Compile Include="Tool\DBTool.cs">
       <DependentUpon>DBTool.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1661,6 +1671,7 @@
     </Compile>
     <Compile Include="Tool\DBTool2.cs">
       <DependentUpon>DBTool2.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1669,6 +1680,7 @@
     </Compile>
     <Compile Include="Tool\DBTool3.cs">
       <DependentUpon>DBTool3.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool3.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1755,6 +1767,7 @@
     <Compile Include="UtilCrawlSemi\UtilSeleiumCrawler.cs" />
     <Compile Include="View\DBView.cs">
       <DependentUpon>DBView.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\DBView.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1769,6 +1782,7 @@
     </Compile>
     <Compile Include="WebPartner\DBWebPartner.cs">
       <DependentUpon>DBWebPartner.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebPartner\DBWebPartner.Designer.cs">
       <AutoGen>True</AutoGen>

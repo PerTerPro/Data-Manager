@@ -16,6 +16,7 @@ using QT.Moduls;
 using System.Configuration;
 using System.Threading;
 using QT.Moduls.CrawlerAlexa;
+using Wss.Lib.RabbitMq;
 
 namespace QT.Moduls.CrawlerCompanyInfo
 {
