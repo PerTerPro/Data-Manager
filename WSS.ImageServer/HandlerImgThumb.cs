@@ -7,6 +7,7 @@ using ImboForm;
 using log4net;
 using QT.Moduls;
 using Websosanh.Core.Drivers.RabbitMQ;
+using Wss.Lib.RabbitMq;
 
 namespace WSS.ImageServer
 {

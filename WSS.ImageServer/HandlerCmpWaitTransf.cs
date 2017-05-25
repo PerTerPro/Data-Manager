@@ -8,6 +8,7 @@ using QT.Moduls;
 using QT.Moduls.CrawlerProduct;
 using Websosanh.Core.Drivers.RabbitMQ;
 using DB = QT.Entities.DB;
+using Wss.Lib.RabbitMq;
 
 namespace WSS.ImageServer
 {

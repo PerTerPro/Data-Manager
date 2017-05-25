@@ -17,7 +17,7 @@ using Newtonsoft.Json.Linq;
 using QT.Moduls;
 using QT.Moduls.CrawlerProduct;
 using Websosanh.Core.Drivers.RabbitMQ;
-
+using Wss.Lib.RabbitMq;
 
 namespace ImboForm
 {

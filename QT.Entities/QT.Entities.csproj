@@ -66,7 +66,7 @@
       <HintPath>..\..\..\..\..\..\DLLRedis\Solr\Solr Driver &amp; Example\Websosanh.Core.SearchEngines\Cms.PoolConnection.dll</HintPath>
     </Reference>
     <Reference Include="Dapper">
-      <HintPath>..\..\wss-dlls\Dapper.dll</HintPath>
+      <HintPath>..\000\DLLs\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
@@ -111,7 +111,7 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
-      <HintPath>..\..\wss-dlls\Ninject.dll</HintPath>
+      <HintPath>..\000\DLLs\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
@@ -259,7 +259,6 @@
     <Compile Include="DesciptionProduct.cs" />
     <Compile Include="DsQTCrawler.cs">
       <DependentUpon>DsQTCrawler.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DsQTCrawler.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -323,7 +322,6 @@
     <Compile Include="Data\SqlDB.cs" />
     <Compile Include="DB.cs">
       <DependentUpon>DB.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DBProduct.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -1,6 +1,5 @@
 ﻿using QT.Entities;
 using QT.Entities.Images;
-using QT.Moduls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +15,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Websosanh.Core.Drivers.RabbitMQ;
+using Wss.Lib.RabbitMq;
 using WSS.ImageServer;
 
 namespace WSS.ImageImbo.UploadImageToImboServer.Websosanh

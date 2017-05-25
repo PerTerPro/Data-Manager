@@ -1,13 +1,13 @@
 ﻿using log4net;
 using QT.Entities;
 using QT.Entities.Images;
-using QT.Moduls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Wss.Lib.RabbitMq;
 using WSS.ImageServer;
 
 namespace WSS.ImageImbo.UploadImageToImboServer

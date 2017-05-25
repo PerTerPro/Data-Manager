@@ -9,6 +9,7 @@ using log4net;
 using log4net.Filter;
 using QT.Moduls;
 using Websosanh.Core.Drivers.RabbitMQ;
+using Wss.Lib.RabbitMq;
 
 namespace WSS.ImageServer
 {
