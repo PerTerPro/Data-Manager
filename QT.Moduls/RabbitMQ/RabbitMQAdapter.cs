@@ -118,6 +118,23 @@ namespace QT.Moduls
             }
         }
 
+        public void PushToQueueChangeRootProductToWeb(long rootProductId)
+        {
+            try
+            {
+                var jobMQ = new Job
+                {
+                    Data = BitConverter.GetBytes(rootProductId),
+                    Type = 1
+                };
+                jobclient_ProductChangeData.PublishJob(jobMQ, updateProductJobExpirationMS);
+            }
+            catch (Exception ex)
+            {
+                log.Error(string.Format("Error PushToQueneChangeRootProductToWeb:{0}.{1}", ex.Message, ex.StackTrace));
+            }
+        }
+
         public void PushProductToQueueChangeMainInfo(List<long> ProductID)
         {
             foreach (var item in ProductID) PushProductToQueueChangeMainInfo(item);

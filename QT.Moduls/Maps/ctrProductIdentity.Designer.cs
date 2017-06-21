@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label iDLabel1;
             System.Windows.Forms.Label companyLabel1;
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -73,7 +74,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBoxKeywords = new System.Windows.Forms.RichTextBox();
             this.dBMap = new QT.Moduls.Maps.DBMap();
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -87,7 +88,7 @@
             this.btLoaiSanPham = new System.Windows.Forms.ToolStripButton();
             this.btLoaiCongTy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonAddProductID = new System.Windows.Forms.ToolStripButton();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmLoaiSanPham = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmLoaiCongTy = new System.Windows.Forms.ToolStripMenuItem();
             this.gridViewListProduct = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -99,16 +100,17 @@
             this.columnUrl = new DevExpress.XtraGrid.Columns.GridColumn();
             this.columnCompany = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControlListProduct = new DevExpress.XtraGrid.GridControl();
-            this.productInfoBindingSource1 = new System.Windows.Forms.BindingSource();
-            this.listProductBindingSource = new System.Windows.Forms.BindingSource();
-            this.productInfoBindingSource = new System.Windows.Forms.BindingSource();
+            this.productInfoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.listProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBoxSelectedProductID = new DevExpress.XtraEditors.SpinEdit();
             this.textBoxSelectedProductCompany = new DevExpress.XtraEditors.SpinEdit();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.chartControl = new DevExpress.XtraCharts.ChartControl();
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.buttonUpdateToWeb = new System.Windows.Forms.Button();
             iDLabel1 = new System.Windows.Forms.Label();
             companyLabel1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -195,6 +197,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonUpdateToWeb);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.richTextBoxConfusedProductList);
             this.panel1.Controls.Add(this.label13);
@@ -273,9 +276,9 @@
             // buttonSaveTemporary
             // 
             this.buttonSaveTemporary.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSaveTemporary.Location = new System.Drawing.Point(607, 231);
+            this.buttonSaveTemporary.Location = new System.Drawing.Point(607, 217);
             this.buttonSaveTemporary.Name = "buttonSaveTemporary";
-            this.buttonSaveTemporary.Size = new System.Drawing.Size(88, 32);
+            this.buttonSaveTemporary.Size = new System.Drawing.Size(88, 27);
             this.buttonSaveTemporary.TabIndex = 38;
             this.buttonSaveTemporary.Text = "Lưu Tạm";
             this.buttonSaveTemporary.UseVisualStyleBackColor = true;
@@ -420,7 +423,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(491, 231);
+            this.btnSave.Location = new System.Drawing.Point(488, 232);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 32);
             this.btnSave.TabIndex = 20;
@@ -893,6 +896,17 @@
             this.chartControl.ObjectHotTracked += new DevExpress.XtraCharts.HotTrackEventHandler(this.chartControl_ObjectHotTracked);
             this.chartControl.CustomDrawSeriesPoint += new DevExpress.XtraCharts.CustomDrawSeriesPointEventHandler(this.EventDrawPoint);
             // 
+            // buttonUpdateToWeb
+            // 
+            this.buttonUpdateToWeb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdateToWeb.Location = new System.Drawing.Point(599, 246);
+            this.buttonUpdateToWeb.Name = "buttonUpdateToWeb";
+            this.buttonUpdateToWeb.Size = new System.Drawing.Size(109, 27);
+            this.buttonUpdateToWeb.TabIndex = 44;
+            this.buttonUpdateToWeb.Text = "Update lên wss";
+            this.buttonUpdateToWeb.UseVisualStyleBackColor = true;
+            this.buttonUpdateToWeb.Click += new System.EventHandler(this.buttonUpdateToWeb_Click);
+            // 
             // CtrProductIdentity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1025,7 +1039,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.RichTextBox richTextBoxConfusedProductList;
         private System.Windows.Forms.ToolStripButton toolStripButtonMarkConfused;
-
-       
+        private System.Windows.Forms.Button buttonUpdateToWeb;
     }
 }

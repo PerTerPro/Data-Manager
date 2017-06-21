@@ -406,6 +406,10 @@ namespace QT.Moduls.Maps
 
         }
 
+        private void buttonUpdateToWeb_Click(object sender, EventArgs e)
+        {
+            RabbitMQAdapter.Instance.PushToQueueChangeRootProductToWeb(_productID);
+        }
     }
 
     public enum SaveStatus

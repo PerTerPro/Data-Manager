@@ -111,6 +111,7 @@
             this.simpleButtonBuildProductHash = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonBuildRootProductPriceLog = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPageTest = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButtonFixRootProductUrl = new DevExpress.XtraEditors.SimpleButton();
             this.buttonGetAllOnlineFridayProductName = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonTestGetNameLength = new DevExpress.XtraEditors.SimpleButton();
             this.textEditIDMerchantToTestNameLength = new DevExpress.XtraEditors.TextEdit();
@@ -122,7 +123,6 @@
             this.textEditDetectionResult = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonDetectRootProduct = new DevExpress.XtraEditors.SimpleButton();
             this.textEditProductName = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButtonFixRootProductUrl = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMain)).BeginInit();
             this.xtraTabControlMain.SuspendLayout();
             this.xtraTabPageProductIdentity.SuspendLayout();
@@ -195,7 +195,7 @@
             // 
             this.xtraTabPageProductIdentity.Controls.Add(this.splitContainer3);
             this.xtraTabPageProductIdentity.Name = "xtraTabPageProductIdentity";
-            this.xtraTabPageProductIdentity.Size = new System.Drawing.Size(897, 398);
+            this.xtraTabPageProductIdentity.Size = new System.Drawing.Size(895, 397);
             this.xtraTabPageProductIdentity.Text = "Bộ nhận diện sản phẩm";
             // 
             // splitContainer3
@@ -216,8 +216,8 @@
             this.splitContainer3.Panel2.Controls.Add(this.simpleButtonScheduleUpdateRootProductMapping);
             this.splitContainer3.Panel2.Controls.Add(this.groupControlInsertOneRootProductMapping);
             this.splitContainer3.Panel2.Controls.Add(this.buttonInsertAllRootProductMapping);
-            this.splitContainer3.Size = new System.Drawing.Size(897, 398);
-            this.splitContainer3.SplitterDistance = 419;
+            this.splitContainer3.Size = new System.Drawing.Size(895, 397);
+            this.splitContainer3.SplitterDistance = 418;
             this.splitContainer3.TabIndex = 3;
             // 
             // buttonInsertProductIdentities
@@ -1020,6 +1020,15 @@
             this.xtraTabPageTest.Size = new System.Drawing.Size(897, 398);
             this.xtraTabPageTest.Text = "Test";
             // 
+            // simpleButtonFixRootProductUrl
+            // 
+            this.simpleButtonFixRootProductUrl.Location = new System.Drawing.Point(724, 182);
+            this.simpleButtonFixRootProductUrl.Name = "simpleButtonFixRootProductUrl";
+            this.simpleButtonFixRootProductUrl.Size = new System.Drawing.Size(118, 59);
+            this.simpleButtonFixRootProductUrl.TabIndex = 25;
+            this.simpleButtonFixRootProductUrl.Text = "Fix RootProduct  Url";
+            this.simpleButtonFixRootProductUrl.Click += new System.EventHandler(this.simpleButtonFixRootProductUrl_Click);
+            // 
             // buttonGetAllOnlineFridayProductName
             // 
             this.buttonGetAllOnlineFridayProductName.Location = new System.Drawing.Point(595, 68);
@@ -1110,15 +1119,6 @@
             this.textEditProductName.Name = "textEditProductName";
             this.textEditProductName.Size = new System.Drawing.Size(337, 20);
             this.textEditProductName.TabIndex = 0;
-            // 
-            // simpleButtonFixRootProductUrl
-            // 
-            this.simpleButtonFixRootProductUrl.Location = new System.Drawing.Point(724, 182);
-            this.simpleButtonFixRootProductUrl.Name = "simpleButtonFixRootProductUrl";
-            this.simpleButtonFixRootProductUrl.Size = new System.Drawing.Size(118, 59);
-            this.simpleButtonFixRootProductUrl.TabIndex = 25;
-            this.simpleButtonFixRootProductUrl.Text = "Fix RootProduct  Url";
-            this.simpleButtonFixRootProductUrl.Click += new System.EventHandler(this.simpleButtonFixRootProductUrl_Click);
             // 
             // formCacheManager
             // 
