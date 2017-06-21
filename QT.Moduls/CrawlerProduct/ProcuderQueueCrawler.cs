@@ -15,7 +15,7 @@ namespace QT.Moduls.CrawlerProduct
             
         }
 
-        public ProcuderQueueCrawler(RabbitMQServer rabbitmqServer, string exchangeName, string routingKey, string queueName) : base(rabbitmqServer, exchangeName, routingKey, queueName)
+        public ProcuderQueueCrawler(RabbitMQServer rabbitmqServer, string exchangeName, string routingKey, string queueName) : base(rabbitmqServer, "", queueName)
         {
         }
 

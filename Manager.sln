@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "000", "000\000.csproj", "{2265B7CB-1E89-4094-9C72-78E81A0F920D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -257,6 +257,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Product.SetPromotionAndPriceManual", "WSS.Product.SetPromotionAndPriceManual\WSS.Product.SetPromotionAndPriceManual.csproj", "{DCE8D88D-DA86-42C9-9B66-EBE5686211A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Product.Utilities", "WSS.Product.Utilities\WSS.Product.Utilities.csproj", "{F664F323-0527-46E2-B963-F349F3ABB340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSS.Image.AutoGenLogoMerchant", "WSS.Image.AutoGenLogoMerchant\WSS.Image.AutoGenLogoMerchant.csproj", "{3CCA4E01-52EC-4029-8A85-AA200318219E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1439,6 +1441,18 @@ Global
 		{F664F323-0527-46E2-B963-F349F3ABB340}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F664F323-0527-46E2-B963-F349F3ABB340}.Release|x86.ActiveCfg = Release|Any CPU
 		{F664F323-0527-46E2-B963-F349F3ABB340}.Release|x86.Build.0 = Release|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Debug|x86.Build.0 = Debug|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Release|x86.ActiveCfg = Release|Any CPU
+		{3CCA4E01-52EC-4029-8A85-AA200318219E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

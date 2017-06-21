@@ -174,9 +174,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
     </Reference>
-    <Reference Include="RabbitMQ.Client, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
-      <HintPath>..\packages\RabbitMQ.Client.4.1.3\lib\net451\RabbitMQ.Client.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\000\DLLs\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Client">
       <HintPath>..\packages\ServiceStack.Client.4.0.46\lib\net40\ServiceStack.Client.dll</HintPath>
@@ -263,6 +262,9 @@
     </Reference>
     <Reference Include="Websosanh.ProductSearchEnginesService.ServiceModel">
       <HintPath>..\000\DLLs\Websosanh.ProductSearchEnginesService.ServiceModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Wss.Lib.RabbitMq">
+      <HintPath>..\000\DLLs\Wss.Lib.RabbitMq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

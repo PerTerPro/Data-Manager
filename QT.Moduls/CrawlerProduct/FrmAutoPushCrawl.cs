@@ -81,53 +81,53 @@ namespace QT.Moduls.CrawlerProduct
         public void PushJob(string sql, bool allowSaveOld, bool allowSaveNew
             , bool bIsTest, int typeCrawler, int numberJob)
         {
-            try
-            {
+            //try
+            //{
 
-                var connectionMQ = RabbitMQCreator.CreateConnection();
-                var channel = connectionMQ.CreateModel();
-                var a2 = channel.QueueDeclare(this.queueNameTextBox.Text, true, false, false, null);
-                if (a2.MessageCount > numberJob)
-                {
-                    WriteLog("Overload message RabbitMQ. Wait next!");
-                }
-                else
-                {
-                    DataTable tbl = SqlDb.Instance.GetTblData(sql, CommandType.Text, null);
+            //    var connectionMQ = RabbitMQCreator.CreateConnection();
+            //    var channel = connectionMQ.CreateModel();
+            //    var a2 = channel.QueueDeclare(this.queueNameTextBox.Text, true, false, false, null);
+            //    if (a2.MessageCount > numberJob)
+            //    {
+            //        WriteLog("Overload message RabbitMQ. Wait next!");
+            //    }
+            //    else
+            //    {
+            //        DataTable tbl = SqlDb.Instance.GetTblData(sql, CommandType.Text, null);
 
-                    foreach (DataRow row in tbl.Rows)
-                    {
-                        long company = Convert.ToInt64(row["Company"]);
-                        string url = QT.Entities.Common.Obj2String(row["Detailurl"]);
-                        QT.Entities.CrawlerProduct.TaskMQProduct task = new QT.Entities.CrawlerProduct.TaskMQProduct()
-                        {
-                            CompanyID = company,
-                            Deep = 0,
-                            ImageUrl = "",
-                            IsExtraction = false,
-                            IsProduct = true,
-                            Session = 0,
-                            TypeCrawler = typeCrawler,
-                            Url = url,
-                            IsTest = bIsTest,
-                            AllowSaveNewProduct = allowSaveNew,
-                            AllowSaveOldProduct = allowSaveOld
-                        };
+            //        foreach (DataRow row in tbl.Rows)
+            //        {
+            //            long company = Convert.ToInt64(row["Company"]);
+            //            string url = QT.Entities.Common.Obj2String(row["Detailurl"]);
+            //            QT.Entities.CrawlerProduct.TaskMQProduct task = new QT.Entities.CrawlerProduct.TaskMQProduct()
+            //            {
+            //                CompanyID = company,
+            //                Deep = 0,
+            //                ImageUrl = "",
+            //                IsExtraction = false,
+            //                IsProduct = true,
+            //                Session = 0,
+            //                TypeCrawler = typeCrawler,
+            //                Url = url,
+            //                IsTest = bIsTest,
+            //                AllowSaveNewProduct = allowSaveNew,
+            //                AllowSaveOldProduct = allowSaveOld
+            //            };
 
-                        var a1 = Websosanh.Core.Common.BAL.ProtobufTool.Serialize(task);
-                        channel.BasicPublish("", this.queueNameTextBox.Text, null, a1);
+            //            var a1 = Websosanh.Core.Common.BAL.ProtobufTool.Serialize(task);
+            //            channel.BasicPublish("", this.queueNameTextBox.Text, null, a1);
 
-                        WriteLog(string.Format
-                            ("Pushed job: config:{0} allowSaveOld:{1} allowSaveNew:{2} url:{3} test:{4} session:{5} typeCrawle:{6}",
-                           company, allowSaveOld, allowSaveNew, url, bIsTest, "0", typeCrawler));
-                    }
-                }
-                connectionMQ.Close();
-            }
-            catch (Exception ex)
-            {
+            //            WriteLog(string.Format
+            //                ("Pushed job: config:{0} allowSaveOld:{1} allowSaveNew:{2} url:{3} test:{4} session:{5} typeCrawle:{6}",
+            //               company, allowSaveOld, allowSaveNew, url, bIsTest, "0", typeCrawler));
+            //        }
+            //    }
+            //    connectionMQ.Close();
+            //}
+            //catch (Exception ex)
+            //{
 
-            }
+            //}
         }
 
         private void btnStop_Click(object sender, EventArgs e)

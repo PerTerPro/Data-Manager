@@ -13,6 +13,7 @@ using QT.Moduls.CrawlerProduct;
 using RabbitMQ.Client.Events;
 using Websosanh.Core.Drivers.RabbitMQ;
 using QT.Entities;
+using Wss.Lib.RabbitMq;
 
 namespace QT.Moduls.CrawlerAlexa
 {

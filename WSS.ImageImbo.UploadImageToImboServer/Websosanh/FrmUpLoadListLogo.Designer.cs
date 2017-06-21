@@ -36,22 +36,25 @@
             this.btnChooseFile = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.rbSuccess = new System.Windows.Forms.RichTextBox();
+            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.rbFail = new System.Windows.Forms.RichTextBox();
+            this.rbError = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.dBWss = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWss();
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.companyTableAdapter = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.CompanyTableAdapter();
             this.tableAdapterManager = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.TableAdapterManager();
-            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.rbError = new System.Windows.Forms.RichTextBox();
+            this.company_AutoGenerateLogoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.company_AutoGenerateLogoTableAdapter = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.Company_AutoGenerateLogoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dBWss)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dBWss)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.company_AutoGenerateLogoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -63,7 +66,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1017, 66);
+            this.panelControl1.Size = new System.Drawing.Size(1017, 63);
             this.panelControl1.TabIndex = 0;
             // 
             // lbFail
@@ -107,13 +110,13 @@
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 66);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 63);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.rbSuccess);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.splitContainerControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1017, 559);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1017, 562);
             this.splitContainerControl1.SplitterPosition = 294;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -123,18 +126,41 @@
             this.rbSuccess.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rbSuccess.Location = new System.Drawing.Point(0, 0);
             this.rbSuccess.Name = "rbSuccess";
-            this.rbSuccess.Size = new System.Drawing.Size(294, 559);
+            this.rbSuccess.Size = new System.Drawing.Size(294, 562);
             this.rbSuccess.TabIndex = 1;
             this.rbSuccess.Text = "";
+            // 
+            // splitContainerControl2
+            // 
+            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl2.Name = "splitContainerControl2";
+            this.splitContainerControl2.Panel1.Controls.Add(this.rbFail);
+            this.splitContainerControl2.Panel1.Text = "Panel1";
+            this.splitContainerControl2.Panel2.Controls.Add(this.rbError);
+            this.splitContainerControl2.Panel2.Text = "Panel2";
+            this.splitContainerControl2.Size = new System.Drawing.Size(718, 562);
+            this.splitContainerControl2.SplitterPosition = 317;
+            this.splitContainerControl2.TabIndex = 1;
+            this.splitContainerControl2.Text = "splitContainerControl2";
             // 
             // rbFail
             // 
             this.rbFail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rbFail.Location = new System.Drawing.Point(0, 0);
             this.rbFail.Name = "rbFail";
-            this.rbFail.Size = new System.Drawing.Size(317, 559);
+            this.rbFail.Size = new System.Drawing.Size(317, 562);
             this.rbFail.TabIndex = 0;
             this.rbFail.Text = "";
+            // 
+            // rbError
+            // 
+            this.rbError.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbError.Location = new System.Drawing.Point(0, 0);
+            this.rbError.Name = "rbError";
+            this.rbError.Size = new System.Drawing.Size(396, 562);
+            this.rbError.TabIndex = 0;
+            this.rbError.Text = "";
             // 
             // openFileDialog1
             // 
@@ -159,31 +185,19 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.Company_AutoGenerateLogoTableAdapter = null;
             this.tableAdapterManager.CompanyTableAdapter = this.companyTableAdapter;
+            this.tableAdapterManager.ProductTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // splitContainerControl2
+            // company_AutoGenerateLogoBindingSource
             // 
-            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl2.Name = "splitContainerControl2";
-            this.splitContainerControl2.Panel1.Controls.Add(this.rbFail);
-            this.splitContainerControl2.Panel1.Text = "Panel1";
-            this.splitContainerControl2.Panel2.Controls.Add(this.rbError);
-            this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(718, 559);
-            this.splitContainerControl2.SplitterPosition = 317;
-            this.splitContainerControl2.TabIndex = 1;
-            this.splitContainerControl2.Text = "splitContainerControl2";
+            this.company_AutoGenerateLogoBindingSource.DataMember = "Company_AutoGenerateLogo";
+            this.company_AutoGenerateLogoBindingSource.DataSource = this.dBWss;
             // 
-            // rbError
+            // company_AutoGenerateLogoTableAdapter
             // 
-            this.rbError.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rbError.Location = new System.Drawing.Point(0, 0);
-            this.rbError.Name = "rbError";
-            this.rbError.Size = new System.Drawing.Size(396, 559);
-            this.rbError.TabIndex = 0;
-            this.rbError.Text = "";
+            this.company_AutoGenerateLogoTableAdapter.ClearBeforeFill = true;
             // 
             // FrmUpLoadListLogo
             // 
@@ -200,10 +214,11 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dBWss)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dBWss)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.company_AutoGenerateLogoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -224,5 +239,7 @@
         private DBWssTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
         private System.Windows.Forms.RichTextBox rbError;
+        private System.Windows.Forms.BindingSource company_AutoGenerateLogoBindingSource;
+        private DBWssTableAdapters.Company_AutoGenerateLogoTableAdapter company_AutoGenerateLogoTableAdapter;
     }
 }

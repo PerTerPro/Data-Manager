@@ -118,6 +118,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\WSS.ImageImbo.Lib.dll</HintPath>
     </Reference>
+    <Reference Include="Wss.Lib.RabbitMq">
+      <HintPath>..\000\DLLs\Wss.Lib.RabbitMq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonDownloadImage.cs" />
@@ -132,7 +135,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Websosanh\DBWss.cs">
       <DependentUpon>DBWss.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Websosanh\DBWss.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -231,10 +233,6 @@
     <ProjectReference Include="..\QT.Entities\QT.Entities.csproj">
       <Project>{7f43cebe-f21e-4c1f-91cb-1e400b8b76fb}</Project>
       <Name>QT.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QT.Moduls\QT.Moduls.csproj">
-      <Project>{b8d02031-c0b6-4e60-a318-9f39d9b9a8a9}</Project>
-      <Name>QT.Moduls</Name>
     </ProjectReference>
     <ProjectReference Include="..\WSS.ImageServer\WSS.ImageServer.csproj">
       <Project>{D0E78D4A-3598-440F-BDCF-F2BDC8926F2D}</Project>

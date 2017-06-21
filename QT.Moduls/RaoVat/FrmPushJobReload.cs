@@ -24,50 +24,50 @@ namespace QT.Moduls.CrawlSale
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Thread threadRun = new Thread(() =>
-             {
-                 string strQueueName = txtQueueName.Text;
-                 int iLimitJob = 10;
-                 while (!this.IsClosed)
-                 {
-                     this.WriteLog("Begin push data!");
-                     MongoDbRaoVat mongoDb = new MongoDbRaoVat();
-                     var connectMQ1 = RabbitMQCreator.CreateConnection();
-                     var channel = connectMQ1.CreateModel();
-                     var resultMQ = channel.QueueDeclare(strQueueName, true, false, false, null);
-                     var listReload = mongoDb.GetProductNeedReload(10000).Result;
-                     uint iCurrentMSS = resultMQ.MessageCount;
-                     if (iCurrentMSS < iLimitJob)
-                     {
-                         foreach (var item in listReload)
-                         {
-                             var taskReload = new TaskMQ()
-                             {
-                                 Url = item["url"].AsString,
-                                 ConfigID = item["source_id"].AsInt32,
-                                 Deep = 0,
-                                 Session = 0,
-                                 TypeCrawler = 2,
-                                 IsExtraction = false,
-                                 IsProduct = true
-                             };
-                             var a = Websosanh.Core.Common.BAL.ProtobufTool.Serialize(taskReload);
-                             channel.QueueDeclare(strQueueName, true, false, false, null);
-                             channel.BasicPublish("", strQueueName, null, a);
-                         }
-                         WriteLog(string.Format("CurrentMss:{1} Pushed {0} job", listReload.Count,iCurrentMSS));
-                     }
-                     else
-                     {
-                         WriteLog(string.Format("Over message:{0}>{1}", iCurrentMSS, iLimitJob.ToString()));
-                     }
-                     channel.Close();
-                     connectMQ1.Close();
+            //Thread threadRun = new Thread(() =>
+            // {
+            //     string strQueueName = txtQueueName.Text;
+            //     int iLimitJob = 10;
+            //     while (!this.IsClosed)
+            //     {
+            //         this.WriteLog("Begin push data!");
+            //         MongoDbRaoVat mongoDb = new MongoDbRaoVat();
+            //         var connectMQ1 = RabbitMQCreator.CreateConnection();
+            //         var channel = connectMQ1.CreateModel();
+            //         var resultMQ = channel.QueueDeclare(strQueueName, true, false, false, null);
+            //         var listReload = mongoDb.GetProductNeedReload(10000).Result;
+            //         uint iCurrentMSS = resultMQ.MessageCount;
+            //         if (iCurrentMSS < iLimitJob)
+            //         {
+            //             foreach (var item in listReload)
+            //             {
+            //                 var taskReload = new TaskMQ()
+            //                 {
+            //                     Url = item["url"].AsString,
+            //                     ConfigID = item["source_id"].AsInt32,
+            //                     Deep = 0,
+            //                     Session = 0,
+            //                     TypeCrawler = 2,
+            //                     IsExtraction = false,
+            //                     IsProduct = true
+            //                 };
+            //                 var a = Websosanh.Core.Common.BAL.ProtobufTool.Serialize(taskReload);
+            //                 channel.QueueDeclare(strQueueName, true, false, false, null);
+            //                 channel.BasicPublish("", strQueueName, null, a);
+            //             }
+            //             WriteLog(string.Format("CurrentMss:{1} Pushed {0} job", listReload.Count,iCurrentMSS));
+            //         }
+            //         else
+            //         {
+            //             WriteLog(string.Format("Over message:{0}>{1}", iCurrentMSS, iLimitJob.ToString()));
+            //         }
+            //         channel.Close();
+            //         connectMQ1.Close();
 
-                     Thread.Sleep(10000);
-                 }
-             });
-            threadRun.Start();
+            //         Thread.Sleep(10000);
+            //     }
+            // });
+            //threadRun.Start();
         }
 
         private void FrmPushJobReload_Load(object sender, EventArgs e)

@@ -51,22 +51,22 @@
             this.rbListIdFails = new System.Windows.Forms.RichTextBox();
             this.rbFail = new System.Windows.Forms.RichTextBox();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.btnDownloadImageRootProduct = new DevExpress.XtraEditors.SimpleButton();
+            this.splitContainerControl4 = new DevExpress.XtraEditors.SplitContainerControl();
             this.domainTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.iDTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.btnTest = new DevExpress.XtraEditors.SimpleButton();
-            this.txtImageUrlsTest = new DevExpress.XtraEditors.TextEdit();
+            this.btnDownloadImageRootProduct = new DevExpress.XtraEditors.SimpleButton();
             this.lbFails = new DevExpress.XtraEditors.LabelControl();
             this.lbSuccess = new DevExpress.XtraEditors.LabelControl();
-            this.lbCount = new DevExpress.XtraEditors.LabelControl();
-            this.checkEditReloadAll = new DevExpress.XtraEditors.CheckEdit();
             this.btnDownload = new DevExpress.XtraEditors.SimpleButton();
+            this.checkEditReloadAll = new DevExpress.XtraEditors.CheckEdit();
+            this.lbCount = new DevExpress.XtraEditors.LabelControl();
+            this.iDTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.txtImageUrlsTest = new DevExpress.XtraEditors.TextEdit();
+            this.btnTest = new DevExpress.XtraEditors.SimpleButton();
             this.tableAdapterManager = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.TableAdapterManager();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productTableAdapter = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.ProductTableAdapter();
             this.companyTableAdapter = new WSS.ImageImbo.UploadImageToImboServer.Websosanh.DBWssTableAdapters.CompanyTableAdapter();
-            this.splitContainerControl4 = new DevExpress.XtraEditors.SplitContainerControl();
             iDLabel = new System.Windows.Forms.Label();
             iDLabel1 = new System.Windows.Forms.Label();
             domainLabel = new System.Windows.Forms.Label();
@@ -89,13 +89,13 @@
             this.splitContainerControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.domainTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iDTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtImageUrlsTest.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditReloadAll.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             this.splitContainerControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.domainTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditReloadAll.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iDTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtImageUrlsTest.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // iDLabel
@@ -227,7 +227,7 @@
             this.splitContainerControl2.Panel1.Text = "Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.groupControl2);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(852, 541);
+            this.splitContainerControl2.Size = new System.Drawing.Size(849, 541);
             this.splitContainerControl2.SplitterPosition = 306;
             this.splitContainerControl2.TabIndex = 7;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -257,7 +257,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(541, 541);
+            this.groupControl2.Size = new System.Drawing.Size(535, 541);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Download Lỗi";
             // 
@@ -270,7 +270,7 @@
             this.splitContainerControl3.Panel1.Text = "Panel1";
             this.splitContainerControl3.Panel2.Controls.Add(this.rbFail);
             this.splitContainerControl3.Panel2.Text = "Panel2";
-            this.splitContainerControl3.Size = new System.Drawing.Size(537, 518);
+            this.splitContainerControl3.Size = new System.Drawing.Size(531, 518);
             this.splitContainerControl3.SplitterPosition = 167;
             this.splitContainerControl3.TabIndex = 2;
             this.splitContainerControl3.Text = "splitContainerControl3";
@@ -289,7 +289,7 @@
             this.rbFail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rbFail.Location = new System.Drawing.Point(0, 0);
             this.rbFail.Name = "rbFail";
-            this.rbFail.Size = new System.Drawing.Size(365, 518);
+            this.rbFail.Size = new System.Drawing.Size(356, 518);
             this.rbFail.TabIndex = 1;
             this.rbFail.Text = "";
             // 
@@ -299,17 +299,33 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(852, 62);
+            this.panelControl2.Size = new System.Drawing.Size(849, 62);
             this.panelControl2.TabIndex = 6;
             // 
-            // btnDownloadImageRootProduct
+            // splitContainerControl4
             // 
-            this.btnDownloadImageRootProduct.Location = new System.Drawing.Point(679, 21);
-            this.btnDownloadImageRootProduct.Name = "btnDownloadImageRootProduct";
-            this.btnDownloadImageRootProduct.Size = new System.Drawing.Size(101, 23);
-            this.btnDownloadImageRootProduct.TabIndex = 15;
-            this.btnDownloadImageRootProduct.Text = "Download SP gốc";
-            this.btnDownloadImageRootProduct.Click += new System.EventHandler(this.btnDownloadImageRootProduct_Click);
+            this.splitContainerControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl4.Location = new System.Drawing.Point(2, 2);
+            this.splitContainerControl4.Name = "splitContainerControl4";
+            this.splitContainerControl4.Panel1.Controls.Add(this.domainTextEdit);
+            this.splitContainerControl4.Panel1.Controls.Add(this.btnDownloadImageRootProduct);
+            this.splitContainerControl4.Panel1.Controls.Add(this.lbFails);
+            this.splitContainerControl4.Panel1.Controls.Add(iDLabel);
+            this.splitContainerControl4.Panel1.Controls.Add(this.lbSuccess);
+            this.splitContainerControl4.Panel1.Controls.Add(domainLabel);
+            this.splitContainerControl4.Panel1.Controls.Add(this.btnDownload);
+            this.splitContainerControl4.Panel1.Controls.Add(this.checkEditReloadAll);
+            this.splitContainerControl4.Panel1.Controls.Add(iDLabel1);
+            this.splitContainerControl4.Panel1.Controls.Add(this.lbCount);
+            this.splitContainerControl4.Panel1.Controls.Add(this.iDTextEdit);
+            this.splitContainerControl4.Panel1.Text = "Panel1";
+            this.splitContainerControl4.Panel2.Controls.Add(this.txtImageUrlsTest);
+            this.splitContainerControl4.Panel2.Controls.Add(this.btnTest);
+            this.splitContainerControl4.Panel2.Text = "Panel2";
+            this.splitContainerControl4.Size = new System.Drawing.Size(845, 58);
+            this.splitContainerControl4.SplitterPosition = 792;
+            this.splitContainerControl4.TabIndex = 16;
+            this.splitContainerControl4.Text = "splitContainerControl4";
             // 
             // domainTextEdit
             // 
@@ -319,29 +335,14 @@
             this.domainTextEdit.Size = new System.Drawing.Size(167, 20);
             this.domainTextEdit.TabIndex = 14;
             // 
-            // iDTextEdit
+            // btnDownloadImageRootProduct
             // 
-            this.iDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "ID", true));
-            this.iDTextEdit.Location = new System.Drawing.Point(32, 24);
-            this.iDTextEdit.Name = "iDTextEdit";
-            this.iDTextEdit.Size = new System.Drawing.Size(154, 20);
-            this.iDTextEdit.TabIndex = 13;
-            // 
-            // btnTest
-            // 
-            this.btnTest.Location = new System.Drawing.Point(285, 27);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(90, 23);
-            this.btnTest.TabIndex = 12;
-            this.btnTest.Text = "Download Test";
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
-            // txtImageUrlsTest
-            // 
-            this.txtImageUrlsTest.Location = new System.Drawing.Point(8, 30);
-            this.txtImageUrlsTest.Name = "txtImageUrlsTest";
-            this.txtImageUrlsTest.Size = new System.Drawing.Size(231, 20);
-            this.txtImageUrlsTest.TabIndex = 11;
+            this.btnDownloadImageRootProduct.Location = new System.Drawing.Point(679, 21);
+            this.btnDownloadImageRootProduct.Name = "btnDownloadImageRootProduct";
+            this.btnDownloadImageRootProduct.Size = new System.Drawing.Size(101, 23);
+            this.btnDownloadImageRootProduct.TabIndex = 15;
+            this.btnDownloadImageRootProduct.Text = "Download SP gốc";
+            this.btnDownloadImageRootProduct.Click += new System.EventHandler(this.btnDownloadImageRootProduct_Click);
             // 
             // lbFails
             // 
@@ -361,12 +362,14 @@
             this.lbSuccess.TabIndex = 9;
             this.lbSuccess.Text = "...";
             // 
-            // lbCount
+            // btnDownload
             // 
-            this.lbCount.Location = new System.Drawing.Point(593, 27);
-            this.lbCount.Name = "lbCount";
-            this.lbCount.Size = new System.Drawing.Size(0, 13);
-            this.lbCount.TabIndex = 8;
+            this.btnDownload.Location = new System.Drawing.Point(503, 22);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(75, 23);
+            this.btnDownload.TabIndex = 6;
+            this.btnDownload.Text = "Download";
+            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
             // 
             // checkEditReloadAll
             // 
@@ -376,14 +379,36 @@
             this.checkEditReloadAll.Size = new System.Drawing.Size(75, 19);
             this.checkEditReloadAll.TabIndex = 7;
             // 
-            // btnDownload
+            // lbCount
             // 
-            this.btnDownload.Location = new System.Drawing.Point(503, 22);
-            this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Size = new System.Drawing.Size(75, 23);
-            this.btnDownload.TabIndex = 6;
-            this.btnDownload.Text = "Download";
-            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            this.lbCount.Location = new System.Drawing.Point(593, 27);
+            this.lbCount.Name = "lbCount";
+            this.lbCount.Size = new System.Drawing.Size(0, 13);
+            this.lbCount.TabIndex = 8;
+            // 
+            // iDTextEdit
+            // 
+            this.iDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "ID", true));
+            this.iDTextEdit.Location = new System.Drawing.Point(32, 24);
+            this.iDTextEdit.Name = "iDTextEdit";
+            this.iDTextEdit.Size = new System.Drawing.Size(154, 20);
+            this.iDTextEdit.TabIndex = 13;
+            // 
+            // txtImageUrlsTest
+            // 
+            this.txtImageUrlsTest.Location = new System.Drawing.Point(8, 30);
+            this.txtImageUrlsTest.Name = "txtImageUrlsTest";
+            this.txtImageUrlsTest.Size = new System.Drawing.Size(231, 20);
+            this.txtImageUrlsTest.TabIndex = 11;
+            // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(285, 27);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(90, 23);
+            this.btnTest.TabIndex = 12;
+            this.btnTest.Text = "Download Test";
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // tableAdapterManager
             // 
@@ -410,31 +435,6 @@
             // companyTableAdapter
             // 
             this.companyTableAdapter.ClearBeforeFill = true;
-            // 
-            // splitContainerControl4
-            // 
-            this.splitContainerControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl4.Location = new System.Drawing.Point(2, 2);
-            this.splitContainerControl4.Name = "splitContainerControl4";
-            this.splitContainerControl4.Panel1.Controls.Add(this.domainTextEdit);
-            this.splitContainerControl4.Panel1.Controls.Add(this.btnDownloadImageRootProduct);
-            this.splitContainerControl4.Panel1.Controls.Add(this.lbFails);
-            this.splitContainerControl4.Panel1.Controls.Add(iDLabel);
-            this.splitContainerControl4.Panel1.Controls.Add(this.lbSuccess);
-            this.splitContainerControl4.Panel1.Controls.Add(domainLabel);
-            this.splitContainerControl4.Panel1.Controls.Add(this.btnDownload);
-            this.splitContainerControl4.Panel1.Controls.Add(this.checkEditReloadAll);
-            this.splitContainerControl4.Panel1.Controls.Add(iDLabel1);
-            this.splitContainerControl4.Panel1.Controls.Add(this.lbCount);
-            this.splitContainerControl4.Panel1.Controls.Add(this.iDTextEdit);
-            this.splitContainerControl4.Panel1.Text = "Panel1";
-            this.splitContainerControl4.Panel2.Controls.Add(this.txtImageUrlsTest);
-            this.splitContainerControl4.Panel2.Controls.Add(this.btnTest);
-            this.splitContainerControl4.Panel2.Text = "Panel2";
-            this.splitContainerControl4.Size = new System.Drawing.Size(848, 58);
-            this.splitContainerControl4.SplitterPosition = 792;
-            this.splitContainerControl4.TabIndex = 16;
-            this.splitContainerControl4.Text = "splitContainerControl4";
             // 
             // FrmDownloadImageWithCompany
             // 
@@ -465,13 +465,13 @@
             this.splitContainerControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.domainTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iDTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtImageUrlsTest.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditReloadAll.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).EndInit();
             this.splitContainerControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.domainTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditReloadAll.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iDTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtImageUrlsTest.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

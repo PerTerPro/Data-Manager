@@ -65,6 +65,9 @@
     <Reference Include="Cms.PoolConnection">
       <HintPath>..\..\..\..\..\..\DLLRedis\Solr\Solr Driver &amp; Example\Websosanh.Core.SearchEngines\Cms.PoolConnection.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper">
+      <HintPath>..\000\DLLs\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
@@ -106,6 +109,9 @@
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\000\DLLs\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
@@ -179,6 +185,7 @@
     <Compile Include="AnaylysicData\HandlerContentOfHtml.cs" />
     <Compile Include="AutoFixSignText.cs" />
     <Compile Include="CrawlerProduct\ConfigurationHotProduct.cs" />
+    <Compile Include="ICompanyDelivery.cs" />
     <Compile Include="UtilZipFile.cs" />
     <Compile Include="WordCounting.cs" />
     <Compile Include="Classification.cs" />

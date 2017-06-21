@@ -20,8 +20,8 @@ namespace QT.Moduls.CrawlerProduct
 
         private void btnReloadData_Click(object sender, EventArgs e)
         {
-            var a =  RedisCacheCurrentCrawlerCompany.Instance().GetAllCurrentRunning();
-            this.gridControl1.DataSource = a;
+            //var a =  RedisCacheCurrentCrawlerCompany.Instance().GetAllCurrentRunning();
+            //this.gridControl1.DataSource = a;
         }
 
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)

@@ -107,6 +107,9 @@
     <Reference Include="WSS.ImageImbo.Lib">
       <HintPath>..\WSS.ImageImbo.Lib\bin\Debug\WSS.ImageImbo.Lib.dll</HintPath>
     </Reference>
+    <Reference Include="Wss.Lib.RabbitMq">
+      <HintPath>..\000\DLLs\Wss.Lib.RabbitMq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigImbo.cs" />

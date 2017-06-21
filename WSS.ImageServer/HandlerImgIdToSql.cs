@@ -10,6 +10,7 @@ using MongoDB.Driver;
 using QT.Entities;
 using QT.Moduls;
 using Websosanh.Core.Drivers.RabbitMQ;
+using Wss.Lib.RabbitMq;
 
 namespace WSS.ImageServer
 {
