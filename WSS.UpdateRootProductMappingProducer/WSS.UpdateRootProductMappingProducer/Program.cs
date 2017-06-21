@@ -32,11 +32,9 @@ namespace WSS.UpdateRootProductMappingProducer
                 Log.InfoFormat("ConnectionString = {0}", connectionstring);
                 var listProductIdentities = ProductIdentityBAL.GetListCompletedProductIdentity(connectionstring);
                 Log.InfoFormat("Got {0} products.", listProductIdentities.Count);
-                
 
                 foreach(var productIdentity in listProductIdentities)
                 {
-
                     var job = new Job {Data = BitConverter.GetBytes(productIdentity.ProductID)};
                     try
                     {

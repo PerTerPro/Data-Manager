@@ -63,11 +63,6 @@ namespace UpdateSolrTools
                 if (!listSpecialMerchantID.Contains(companyID))
                     listSpecialMerchantID.Add(companyID);
             }
-            //add lazada(3502170206813664485) and adayroi(3433481253691794480)
-            //if (!listSpecialMerchantID.Contains(3502170206813664485))
-            //    listSpecialMerchantID.Add(3502170206813664485);
-            //if (!listSpecialMerchantID.Contains(3433481253691794480))
-            //    listSpecialMerchantID.Add(3433481253691794480);
             return listSpecialMerchantID;
         }
 

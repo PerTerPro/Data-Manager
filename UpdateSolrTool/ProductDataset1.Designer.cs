@@ -660,6 +660,8 @@ namespace UpdateSolrTools {
             
             private global::System.Data.DataColumn columnIsTopSearch;
             
+            private global::System.Data.DataColumn columnOriginPrice;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ProductDataTable() {
@@ -847,6 +849,14 @@ namespace UpdateSolrTools {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OriginPriceColumn {
+                get {
+                    return this.columnOriginPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -901,7 +911,8 @@ namespace UpdateSolrTools {
                         int VATStatus, 
                         System.DateTime PriorityStartDate, 
                         System.DateTime PriorityEndDate, 
-                        bool IsTopSearch) {
+                        bool IsTopSearch, 
+                        int OriginPrice) {
                 ProductRow rowProductRow = ((ProductRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
@@ -922,7 +933,8 @@ namespace UpdateSolrTools {
                         VATStatus,
                         PriorityStartDate,
                         PriorityEndDate,
-                        IsTopSearch};
+                        IsTopSearch,
+                        OriginPrice};
                 rowProductRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProductRow);
                 return rowProductRow;
@@ -971,6 +983,7 @@ namespace UpdateSolrTools {
                 this.columnPriorityStartDate = base.Columns["PriorityStartDate"];
                 this.columnPriorityEndDate = base.Columns["PriorityEndDate"];
                 this.columnIsTopSearch = base.Columns["IsTopSearch"];
+                this.columnOriginPrice = base.Columns["OriginPrice"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1014,6 +1027,8 @@ namespace UpdateSolrTools {
                 base.Columns.Add(this.columnPriorityEndDate);
                 this.columnIsTopSearch = new global::System.Data.DataColumn("IsTopSearch", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsTopSearch);
+                this.columnOriginPrice = new global::System.Data.DataColumn("OriginPrice", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOriginPrice);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnName.MaxLength = 500;
@@ -1793,6 +1808,22 @@ namespace UpdateSolrTools {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int OriginPrice {
+                get {
+                    try {
+                        return ((int)(this[this.tableProduct.OriginPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OriginPrice\' in table \'Product\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProduct.OriginPriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableProduct.NameColumn);
             }
@@ -2005,6 +2036,18 @@ namespace UpdateSolrTools {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetIsTopSearchNull() {
                 this[this.tableProduct.IsTopSearchColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOriginPriceNull() {
+                return this.IsNull(this.tableProduct.OriginPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOriginPriceNull() {
+                this[this.tableProduct.OriginPriceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2511,6 +2554,7 @@ namespace UpdateSolrTools.ProductDatasetTableAdapters {
             tableMapping.ColumnMappings.Add("PriorityStartDate", "PriorityStartDate");
             tableMapping.ColumnMappings.Add("PriorityEndDate", "PriorityEndDate");
             tableMapping.ColumnMappings.Add("IsTopSearch", "IsTopSearch");
+            tableMapping.ColumnMappings.Add("OriginPrice", "OriginPrice");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2530,7 +2574,7 @@ namespace UpdateSolrTools.ProductDatasetTableAdapters {
             this._commandCollection[0].CommandText = @"SELECT        Product.Name, Product.NameFT, Product.CategoryID, Product.ViewCount, Product.AddPosition, Product_AdsScore.Keyword AS Tag, Product.ID, Product.Price, 
                          Product.ProductID, Product.Company, Product.InStock, Product.AdsScore, Product_AdsScore.StartDate, Product_AdsScore.EndDate, 
                          Product_AdsScore.OrderAdsScore, Product.VATStatus, ProductTopSearch.StartDate AS PriorityStartDate, ProductTopSearch.EndDate AS PriorityEndDate, 
-                         ProductTopSearch.IsTopSearch
+                         ProductTopSearch.IsTopSearch, Product.OriginPrice
 FROM            Product LEFT OUTER JOIN
                          ProductIdentity ON Product.ID = ProductIdentity.ProductID LEFT OUTER JOIN
                          Product_AdsScore ON Product.ID = Product_AdsScore.ProductId LEFT OUTER JOIN
@@ -2540,7 +2584,7 @@ WHERE        (Product.Valid = 1) AND (Product.IsBlackList IS NULL OR
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        Product.AddPosition, Product.CategoryID, Product.Company, Product.Name, Product.NameFT, Product.Price, Product.ViewCount, 
+            this._commandCollection[1].CommandText = @"SELECT        Product.AddPosition, Product.CategoryID, Product.Company, Product.Name, Product.NameFT, Product.Price, Product.ViewCount,  Product.OriginPrice,
                          Product_AdsScore.Keyword AS Tag, Product.ID, Product.ProductID, Product.InStock, Product.AdsScore, Product_AdsScore.StartDate, 
                          Product_AdsScore.EndDate, Product_AdsScore.OrderAdsScore, Product.VATStatus, ProductTopSearch.StartDate AS PriorityStartDate, ProductTopSearch.EndDate AS PriorityEndDate,
                          ProductTopSearch.IsTopSearch
@@ -2564,7 +2608,7 @@ ORDER BY Product.ID";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"SELECT        Product.AddPosition, Product.CategoryID, Product.Company, Product.Name, Product.NameFT, Product.Price, Product.ViewCount, 
+            this._commandCollection[3].CommandText = @"SELECT        Product.AddPosition, Product.CategoryID, Product.Company, Product.Name, Product.NameFT, Product.Price, Product.ViewCount, Product.OriginPrice,
                          Product_AdsScore.Keyword AS Tag, Product.ID, Product.ProductID, Product.InStock, Product.AdsScore, Product_AdsScore.StartDate, 
                          Product_AdsScore.EndDate, Product_AdsScore.OrderAdsScore, Product.VATStatus, ProductTopSearch.StartDate AS PriorityStartDate, ProductTopSearch.EndDate AS PriorityEndDate,
                          ProductTopSearch.IsTopSearch

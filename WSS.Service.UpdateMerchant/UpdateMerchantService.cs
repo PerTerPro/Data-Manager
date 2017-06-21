@@ -22,8 +22,8 @@ namespace WSS.Service.UpdateMerchant
         {
             InitializeComponent();
             _updateMerchantJobName = ConfigurationManager.AppSettings["UpdateMerchantJobName"];
-            _productConnectionString = ConfigurationManager.AppSettings["ProductConnectionString"];
-            _userConnectionString = ConfigurationManager.AppSettings["UserConnectionString"];
+            _productConnectionString = ConfigurationManager.ConnectionStrings["ProductConnectionString"].ConnectionString;
+            _userConnectionString = ConfigurationManager.ConnectionStrings["UserConnectionString"].ConnectionString;
         }
         protected override void OnStart(string[] args)
         {
@@ -57,7 +57,7 @@ namespace WSS.Service.UpdateMerchant
                         catch (Exception jobHandlerEx)
                         {
                             Logger.Error("Update Merchant Error! ID: " + merchantID +jobHandlerEx);
-                            return true;
+                            return false;
                         }
                         return true;
                     };
