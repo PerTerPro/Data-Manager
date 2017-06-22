@@ -84,6 +84,8 @@ namespace UpdateSolrTools
                             item.Price = productRow.Price;
                         else
                             continue;
+                        if (productRow["OriginPrice"] != DBNull.Value && productRow.OriginPrice > productRow.Price)
+                            item.DiscountPercent = (int)((100 * (double)(productRow.OriginPrice - productRow.Price)) / productRow.OriginPrice);
                         bool isPriceIncludeVat;
                         if (productRow.IsVATStatusNull() || productRow.VATStatus == 2)
                             isPriceIncludeVat = merchantShortInfo.VATStatus == 1;
@@ -99,8 +101,8 @@ namespace UpdateSolrTools
                             continue;
                         item.Name = productName;
                         item.NameIdentity = productName;
-                        if (productRow["NameFT"] != DBNull.Value)
-                            item.NameAscii = productRow.NameFT;
+                        item.NameAscii = StringUtilities.ToAscii(productName);
+                        item.NameAsciiAndDomain = item.NameAscii + " " + merchantShortInfo.Domain.Replace('.', ' ');
                         item.NameLength = IndexProductTools.GetNameLength(productName);
                         if (productRow["InStock"] != DBNull.Value)
                             item.InstockStatus = productRow.InStock;
@@ -194,7 +196,8 @@ namespace UpdateSolrTools
 
                         //MerchantScore
                         item.MerchantScore = isBadMerchant ? 0 : 1;
-
+                        if (merchantPriorityScore > 1)
+                            item.MerchantScore = merchantPriorityScore;
                         var clickCountMultipliers = 1;
                         if (ListMerchantUseDatafeedID.Contains(companyId))
                             clickCountMultipliers = 3;
@@ -292,7 +295,8 @@ namespace UpdateSolrTools
                         Logger.DebugFormat("Product {0} rejected", productID);
                         continue;
                     }
-
+                    if (productRow["OriginPrice"] != DBNull.Value && productRow.OriginPrice > productRow.Price)
+                        item.DiscountPercent = (int)((100 * (double)(productRow.OriginPrice - productRow.Price)) / productRow.OriginPrice);
                     if (productRow["Company"] != DBNull.Value && productRow.Company > 0)
                         item.MerchantID = productRow.Company;
                     else
@@ -319,8 +323,8 @@ namespace UpdateSolrTools
                     }
                     item.Name = productName;
                     item.NameIdentity = productName;
-                    if (productRow["NameFT"] != DBNull.Value)
-                        item.NameAscii = productRow.NameFT;
+                    item.NameAscii = StringUtilities.ToAscii(productName);
+                    item.NameAsciiAndDomain = item.NameAscii + " " + merchantShortInfo.Domain.Replace('.', ' ');
                     item.NameLength = IndexProductTools.GetNameLength(productName);
                     if (productRow["InStock"] != DBNull.Value)
                         item.InstockStatus = productRow.InStock;
@@ -485,9 +489,8 @@ namespace UpdateSolrTools
                         }
                         item.Name = productName;
                         item.NameIdentity = productName;
-
-                        if (productRow["NameFT"] != DBNull.Value)
-                            item.NameAscii = productRow["NameFT"].ToString();
+                        item.NameAscii = StringUtilities.ToAscii(productName);
+                        item.NameAsciiAndDomain = item.NameAscii;
                         item.NameLength = IndexProductTools.GetNameLength(productName);
                         int categoryID = 0;
                         if (productRow["CategoryID"] != DBNull.Value)
@@ -663,8 +666,8 @@ namespace UpdateSolrTools
                         continue;
                     item.Name = productName;
                     item.NameIdentity = productName;
-                    if (productRow["NameFT"] != DBNull.Value)
-                        item.NameAscii = productRow["NameFT"].ToString();
+                    item.NameAscii = StringUtilities.ToAscii(productName);
+                    item.NameAsciiAndDomain = item.NameAscii;
                     item.NameLength = IndexProductTools.GetNameLength(productName);
                     int categoryID = 0;
                     if (productRow["CategoryID"] != DBNull.Value)

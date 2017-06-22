@@ -312,7 +312,7 @@
             this.productContentTextBox.Location = new System.Drawing.Point(0, 0);
             this.productContentTextBox.Multiline = true;
             this.productContentTextBox.Name = "productContentTextBox";
-            this.productContentTextBox.Size = new System.Drawing.Size(996, 467);
+            this.productContentTextBox.Size = new System.Drawing.Size(994, 466);
             this.productContentTextBox.TabIndex = 1;
             this.productContentTextBox.TextChanged += new System.EventHandler(this.productContentTextBox_TextChanged);
             // 
@@ -537,7 +537,7 @@
             // 
             this.xtraTabPage6.Controls.Add(this.ctrProductIdentity1);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(996, 467);
+            this.xtraTabPage6.Size = new System.Drawing.Size(994, 466);
             this.xtraTabPage6.Text = "Product Ananytic";
             // 
             // ctrProductIdentity1
@@ -545,7 +545,7 @@
             this.ctrProductIdentity1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrProductIdentity1.Location = new System.Drawing.Point(0, 0);
             this.ctrProductIdentity1.Name = "ctrProductIdentity1";
-            this.ctrProductIdentity1.Size = new System.Drawing.Size(996, 467);
+            this.ctrProductIdentity1.Size = new System.Drawing.Size(994, 466);
             this.ctrProductIdentity1.TabIndex = 0;
             this.ctrProductIdentity1.UpdateProductIdentityClick += new QT.Moduls.Maps.CtrProductIdentity.UpdateEventHandler(this.ctrProductIdentity1_UpdateProductIdentityClick);
             // 
@@ -553,14 +553,14 @@
             // 
             this.xtraTabPage3.Controls.Add(this.productContentTextBox);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(996, 467);
+            this.xtraTabPage3.Size = new System.Drawing.Size(994, 466);
             this.xtraTabPage3.Text = "Html";
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.webContent);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(996, 467);
+            this.xtraTabPage4.Size = new System.Drawing.Size(994, 466);
             this.xtraTabPage4.Text = "View";
             // 
             // webContent
@@ -569,7 +569,7 @@
             this.webContent.Location = new System.Drawing.Point(0, 0);
             this.webContent.MinimumSize = new System.Drawing.Size(20, 20);
             this.webContent.Name = "webContent";
-            this.webContent.Size = new System.Drawing.Size(996, 467);
+            this.webContent.Size = new System.Drawing.Size(994, 466);
             this.webContent.TabIndex = 16;
             // 
             // xtraTabPage5
@@ -577,7 +577,7 @@
             this.xtraTabPage5.Controls.Add(this.btBuildContent);
             this.xtraTabPage5.Controls.Add(this.webBuildContent);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(996, 467);
+            this.xtraTabPage5.Size = new System.Drawing.Size(994, 466);
             this.xtraTabPage5.Text = "Build content";
             // 
             // btBuildContent
@@ -619,7 +619,7 @@
             this.xtraTabPage7.Controls.Add(this.btUpdateFulltext_catid);
             this.xtraTabPage7.Controls.Add(this.btUpdateGiaSPGoc);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(996, 467);
+            this.xtraTabPage7.Size = new System.Drawing.Size(994, 466);
             this.xtraTabPage7.Text = "Tool";
             // 
             // txtDelay
@@ -769,7 +769,7 @@
             this.DownloadImageTab.Controls.Add(this.grdProductImage);
             this.DownloadImageTab.Controls.Add(this.panelControl1);
             this.DownloadImageTab.Name = "DownloadImageTab";
-            this.DownloadImageTab.Size = new System.Drawing.Size(996, 467);
+            this.DownloadImageTab.Size = new System.Drawing.Size(994, 466);
             this.DownloadImageTab.Text = "Download Image";
             // 
             // grdProductImage
@@ -784,7 +784,7 @@
             this.grdProductImage.Location = new System.Drawing.Point(0, 56);
             this.grdProductImage.MainView = this.gvProductImage;
             this.grdProductImage.Name = "grdProductImage";
-            this.grdProductImage.Size = new System.Drawing.Size(996, 411);
+            this.grdProductImage.Size = new System.Drawing.Size(994, 410);
             this.grdProductImage.TabIndex = 1;
             this.grdProductImage.UseEmbeddedNavigator = true;
             this.grdProductImage.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -804,7 +804,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(996, 56);
+            this.panelControl1.Size = new System.Drawing.Size(994, 56);
             this.panelControl1.TabIndex = 0;
             // 
             // btnExportExcel
@@ -829,7 +829,7 @@
             // 
             this.UploadAllImageProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UploadAllImageProductButton.Image = ((System.Drawing.Image)(resources.GetObject("UploadAllImageProductButton.Image")));
-            this.UploadAllImageProductButton.Location = new System.Drawing.Point(812, 5);
+            this.UploadAllImageProductButton.Location = new System.Drawing.Point(810, 5);
             this.UploadAllImageProductButton.Name = "UploadAllImageProductButton";
             this.UploadAllImageProductButton.Size = new System.Drawing.Size(179, 38);
             this.UploadAllImageProductButton.TabIndex = 9;
