@@ -9,7 +9,7 @@ namespace WSS.ImageImbo.LibTests
         [Test()]
         public void DownloadImageProductWithImboServerTest()
         {
-            string url = @"http://nobacks.com/wp-content/uploads/2014/11/Peach-50-500x329.png";
+            string url = @"http://shopdepmoingay.com/images/gianhang/item/item_s12326709.png?d=1";
             string x = ImboService.PostImageToImbo(url, "wss_write", "123websosanh@195", "wss", @"https://172.22.1.226", 443);
             Assert.Greater(x.Length, 10);
         }

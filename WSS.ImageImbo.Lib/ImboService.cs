@@ -329,17 +329,15 @@ namespace WSS.ImageImbo.Lib
             return "";
         }
 
-        public static void DeleteImg(string publicKey, string privateKey, string imageId, string userName, string host, int port)
+        public static void  DeleteImg(string publicKey, string privateKey, string imageId, string userName, string host, int port)
         {
             ServicePointManager
                 .ServerCertificateValidationCallback +=
                 (sender, cert, chain, sslPolicyErrors) => true;
-
             string urlQuery = host + ":" + port + @"/users/" + userName + @"/images" + "/" + imageId;
             string strDate = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
             string str = "DELETE" + "|" + host + @"/users/" + userName + @"/images" + "/" + imageId + "|" + "wss" + "|" + strDate;
             var signleData = CreateToken(str, privateKey);
-
 
             var request = WebRequest.Create(urlQuery);
             request.Headers.Add("X-Imbo-PublicKey", "wss");

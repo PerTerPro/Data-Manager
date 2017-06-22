@@ -29,6 +29,7 @@ using System.Drawing;
 using QT.Moduls.DBTableAdapters;
 using Keys = OpenQA.Selenium.Keys;
 using QT.Moduls.Crawler;
+using System.Linq;
 
 namespace QT.Moduls.Company
 {
@@ -36,6 +37,7 @@ namespace QT.Moduls.Company
     {
 
         private IDownloadHtml htmlDownloader = new DownloadHtmlCrawler();
+        private  List<Product> lstProductTemp = new List<Product>();
 
         private long _idCongTy = 0;
         private bool _upSpilit = true;
@@ -1253,37 +1255,66 @@ namespace QT.Moduls.Company
 
         private void buttonTestDataFeed_Click(object sender, EventArgs e)
         {
-            //Wait.Show("Đang load dữ liệu!");
-            buttonTestDataFeed.Enabled = false;
-            _companyFuction = new CompanyFunctions();
-            List<Product> expected = new List<Product>();
             QT.Entities.Company companyTest = new Entities.Company(Common.Obj2Int64(iDCompanyTextBox.Text));
             var datafeedType = (Entities.Company.DataFeedType)(comboBoxDataFeedType.SelectedItem as ComboboxItem).Value;
+
             if (datafeedType == Entities.Company.DataFeedType.AllProductsFromFile || datafeedType == Entities.Company.DataFeedType.SpecialProductsFromFile)
             {
                 companyTest.CompanyDataFeedType = datafeedType;
                 companyTest.DataFeedPath = txtDataFeedFileDir.Text;
             }
-            else if (datafeedType == Entities.Company.DataFeedType.AllProductsFromURL || datafeedType == Entities.Company.DataFeedType.SpecialProductsFromUrl 
-                || datafeedType == Entities.Company.DataFeedType.MasOfferDatafeed || datafeedType == Entities.Company.DataFeedType.Accesstrade)
+            else if (datafeedType == Entities.Company.DataFeedType.AllProductsFromURL || datafeedType == Entities.Company.DataFeedType.SpecialProductsFromUrl || datafeedType == Entities.Company.DataFeedType.MasOfferDatafeed || datafeedType == Entities.Company.DataFeedType.Accesstrade)
             {
                 companyTest.CompanyDataFeedType = datafeedType;
                 companyTest.DataFeedPath = textBoxDataFeedUrl.Text;
             }
+            //Wait.Show("Đang load dữ liệu!");
+            Task.Factory.StartNew(() =>
+            {
+                TestDataFeed(companyTest, datafeedType);
+            });
+            
+        }
+
+        private void TestDataFeed(Entities.Company companyTest, Entities.Company.DataFeedType datafeedType)
+        {
+            this.Invoke(new Action(() =>
+            {
+                buttonTestDataFeed.Enabled = false;
+            }));
+            _companyFuction = new CompanyFunctions();
+            List<Product> expected = new List<Product>();
             try
             {
-
-                expected = _companyFuction.ReturnListProduct(companyTest);
-                gridControlListProduct.DataSource = expected;
-                richTextBoxDataFeedError.AppendText(string.Format("[{0}] Result: {1} products\n", DateTime.Now, expected.Count));
-                LogJobAdapter.SaveLog(JobName.FrmCompany_TestDatafeed, string.Format("Test datafeed...ImagePath(url or file){0}", companyTest.DataFeedPath), companyTest.ID, (int)JobTypeData.Company);
+                expected = _companyFuction.ReturnListProduct(companyTest, true, (string strLog) =>
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        this.lblStatus.Text = strLog;
+                    }));
+                });
+                this.Invoke(new Action(() =>
+                {
+                    if (ckLoadToSource.Checked)
+                    {
+                        gridControlListProduct.DataSource = expected;
+                        richTextBoxDataFeedError.AppendText(string.Format("[{0}] Result: {1} products\n", DateTime.Now, expected.Count));
+                        LogJobAdapter.SaveLog(JobName.FrmCompany_TestDatafeed, string.Format("Test datafeed...ImagePath(url or file){0}", companyTest.DataFeedPath), companyTest.ID,
+                            (int)JobTypeData.Company);
+                    }
+                }));
+                
             }
             catch (Exception ex)
             {
                 richTextBoxDataFeedError.AppendText(string.Format("[{0}] Error:{1}\n", DateTime.Now, ex.Message));
                 richTextBoxDataFeedError.AppendText(string.Format("{0}\n", ex.StackTrace));
             }
-            buttonTestDataFeed.Enabled = true;
+            this.Invoke(new Action(() =>
+            {
+                buttonTestDataFeed.Enabled = true;
+            }));
+            
             //Wait.Close();
         }
 
@@ -1768,6 +1799,21 @@ namespace QT.Moduls.Company
             FrmConfigCrawlHotProduct frm = new FrmConfigCrawlHotProduct(Common.Obj2Int64(this.companyIDTextBox.Text));
             frm.Show();
             
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Regex regexName = new Regex(txtName.Text);
+            Regex regexUrl = new Regex(txtDetail.Text);
+            var lstSearchResutl = lstProductTemp.Where(a => regexName.IsMatch(a.Name)).Where(b => regexUrl.IsMatch(b.DetailUrl)).Take(10000).ToList();
+            gridControlListProduct.DataSource = lstSearchResutl;
+            richTextBoxDataFeedError.AppendText(string.Format("[{0}] Result: {1} products\n", DateTime.Now, lstSearchResutl.Count));
+        }
+
+        private void btnClearCache_Click(object sender, EventArgs e)
+        {
+            this.lstProductTemp.Clear();
+            this.lstProductTemp=new List<Product>();
         }
     }
 

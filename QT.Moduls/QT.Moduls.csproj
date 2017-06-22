@@ -45,6 +45,24 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BizwebAPIAdapterLibrary">
       <HintPath>..\000\DLLs\BizwebAPIAdapterLibrary.dll</HintPath>
@@ -63,6 +81,10 @@
     <Reference Include="Cms.PoolConnection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\Cms.PoolConnection.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -263,8 +285,14 @@
     <Reference Include="Websosanh.ProductSearchEnginesService.ServiceModel">
       <HintPath>..\000\DLLs\Websosanh.ProductSearchEnginesService.ServiceModel.dll</HintPath>
     </Reference>
+    <Reference Include="Wss.Lib.CsvHelper">
+      <HintPath>..\..\wss-dlls\Wss.Lib.CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="Wss.Lib.RabbitMq">
       <HintPath>..\000\DLLs\Wss.Lib.RabbitMq.dll</HintPath>
+    </Reference>
+    <Reference Include="Wss.Lib.Utilities">
+      <HintPath>..\..\wss-dlls\Wss.Lib.Utilities.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -314,6 +342,7 @@
     <Compile Include="Company\DatafeedConfig.cs" />
     <Compile Include="Company\DBCom.cs">
       <DependentUpon>DBCom.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Company\DBCom.Designer.cs">
       <DependentUpon>DBCom.xsd</DependentUpon>
@@ -942,6 +971,7 @@
     <Compile Include="FrmNotification.Designer.cs">
       <DependentUpon>FrmNotification.cs</DependentUpon>
     </Compile>
+    <Compile Include="IDatafeedParser.cs" />
     <Compile Include="JobPushChangeImage.cs" />
     <Compile Include="KeywordSuggest\FrmPushTopKeyword.cs">
       <SubType>Form</SubType>
@@ -986,6 +1016,7 @@
     <Compile Include="LogCassandra\LogCrawler.cs" />
     <Compile Include="LogJob\DBLogJob.cs">
       <DependentUpon>DBLogJob.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="LogJob\DBLogJob.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1351,6 +1382,7 @@
     <Compile Include="RaoVat\SimpleCrawlerSale.cs" />
     <Compile Include="Data\KW.cs">
       <DependentUpon>KW.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\KW.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1359,6 +1391,7 @@
     </Compile>
     <Compile Include="DB.cs">
       <DependentUpon>DB.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="FrmLoadCacheCrawler.cs">
       <SubType>Form</SubType>
@@ -1435,6 +1468,7 @@
     </Compile>
     <Compile Include="Maps\DBMap.cs">
       <DependentUpon>DBMap.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Maps\DBMap.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1443,6 +1477,7 @@
     </Compile>
     <Compile Include="Maps\DBPMan.cs">
       <DependentUpon>DBPMan.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Maps\frmChonChuyenMucGoc.cs">
       <SubType>Form</SubType>
@@ -1510,6 +1545,7 @@
     </Compile>
     <Compile Include="ProductID\DBProperties.cs">
       <DependentUpon>DBProperties.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ProductID\DBProperties.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1655,6 +1691,7 @@
     </Compile>
     <Compile Include="Tool\DBTool.cs">
       <DependentUpon>DBTool.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1663,6 +1700,7 @@
     </Compile>
     <Compile Include="Tool\DBTool2.cs">
       <DependentUpon>DBTool2.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1671,6 +1709,7 @@
     </Compile>
     <Compile Include="Tool\DBTool3.cs">
       <DependentUpon>DBTool3.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\DBTool3.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1757,6 +1796,7 @@
     <Compile Include="UtilCrawlSemi\UtilSeleiumCrawler.cs" />
     <Compile Include="View\DBView.cs">
       <DependentUpon>DBView.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\DBView.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1771,6 +1811,7 @@
     </Compile>
     <Compile Include="WebPartner\DBWebPartner.cs">
       <DependentUpon>DBWebPartner.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebPartner\DBWebPartner.Designer.cs">
       <AutoGen>True</AutoGen>

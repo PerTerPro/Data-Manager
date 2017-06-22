@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace QT.Entities
     public interface ISettingRepository
     {
         string ConnectionProduct { get; }
+        int WorkerCount { get; }
+        string RabbitMq { get;  }
+        string QueueProductClick { get; }
     }
 
     public class SettingRepository : ISettingRepository
@@ -19,7 +23,17 @@ namespace QT.Entities
 
         public string ConnectionProduct
         {
-            get { throw new NotImplementedException(); }
+            get { return Common.Obj2String(ConfigurationManager.AppSettings["ConnectionString"]); }
+        }
+
+        public int WorkerCount
+        {
+            get { return Common.Obj2Int(ConfigurationManager.AppSettings["WorkerCount"]); }
+        }
+
+        public string RabbitMq
+        {
+            get { return "rabbitMQ177"; }
         }
 
         public class CompanyDelivery
@@ -28,24 +42,30 @@ namespace QT.Entities
             public string DeliveryInfo { get; set; }
         }
 
-        public interface ICompanyDeliveryRepository
+        public string QueueProductClick
         {
-             void Upsert(CompanyDelivery companyDelivery);
+            get { return @"Product.OnClick"; }
+        }
+    }
+
+    public interface ICompanyDeliveryRepository
+    {
+        void Upsert(SettingRepository.CompanyDelivery companyDelivery);
+    }
+
+
+    public class CompanyDeliveryRepository : ICompanyDeliveryRepository
+    {
+        SqlConnection _sqlConnection;
+
+        public CompanyDeliveryRepository(ISettingRepository settingRepository)
+        {
+            _sqlConnection = new SqlConnection(settingRepository.ConnectionProduct);
         }
 
-
-        public class CompanyDeliveryRepository : ICompanyDeliveryRepository
+        public void Upsert(SettingRepository.CompanyDelivery companyDelivery)
         {
-            SqlConnection _sqlConnection;
-
-            public CompanyDeliveryRepository(ISettingRepository settingRepository)
-            {
-                _sqlConnection = new SqlConnection(settingRepository.ConnectionProduct);
-            }
-
-            public void Upsert(CompanyDelivery companyDelivery)
-            {
-                string query = @"
+            string query = @"
 If Not Exists (Select Id From Company_Delivery Where CompanyId = @CompanyId) 
 Begin
 End
@@ -56,12 +76,12 @@ Where CompanyId = @CompanyId
 
 ";
 
-                _sqlConnection.Execute(query, new
-                {
-                    @DeliveryInfo = companyDelivery.DeliveryInfo,
-                    @CompanyId = companyDelivery.CompanyId
-                });
-            }
+            _sqlConnection.Execute(query, new
+            {
+                @DeliveryInfo = companyDelivery.DeliveryInfo,
+                @CompanyId = companyDelivery.CompanyId
+            });
         }
     }
+
 }

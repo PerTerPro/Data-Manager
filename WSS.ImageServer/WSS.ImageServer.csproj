@@ -105,7 +105,7 @@
       <HintPath>..\000\DLLs\Websosanh.Core.JobServer.dll</HintPath>
     </Reference>
     <Reference Include="WSS.ImageImbo.Lib">
-      <HintPath>..\WSS.ImageImbo.Lib\bin\Debug\WSS.ImageImbo.Lib.dll</HintPath>
+      <HintPath>..\WSS.ImageImbo.Lib\obj\x64\Debug\WSS.ImageImbo.Lib.dll</HintPath>
     </Reference>
     <Reference Include="Wss.Lib.RabbitMq">
       <HintPath>..\000\DLLs\Wss.Lib.RabbitMq.dll</HintPath>

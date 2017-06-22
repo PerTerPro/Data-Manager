@@ -15,6 +15,7 @@ using System.Data.SqlClient;
 using QT.Moduls;
 using WebsosanhCacheTool;
 using System.Configuration;
+using Wss.Lib.RabbitMq;
 
 namespace WSS.Service.UpdateCompanyToWeb
 {

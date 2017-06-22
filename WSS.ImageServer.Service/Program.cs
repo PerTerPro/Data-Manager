@@ -13,21 +13,6 @@ namespace WSS.ImageServer.Service
         static void Main(string[] args){
             try
             {
-                //args = new[] {"-cmd UdpImgIdToSql"};
-                //args = new[] {"-cmd DelImgImbo"};\
-                //args = new[] {"-cmd PushImgCompany"};
-                //args = new[] {"-cmd ImgCallThumb"};
-                //args = new[] { "-cmd PushRootProductWaitTrans" };
-                //args = new[] { "-cmd UdpImgIdToSql" };
-
-                //args = new[] { "-cmd PushUpImboReview" };
-                //args = new[] { "-cmd DelImgImbo" };
-                
-
-                //string s = ImboImageService.PushFromFile(ConfigImbo.PublicKey, "123websosanh@195",
-                //    @"C:\Image\y\yes24_vn\nuo\nuoc-hoa-nu-ines-de-la-fressange-eau-de-parfum-100ml-vang_6619017604755523100.jpg",
-                //    "landingpage", ConfigImbo.Host, ConfigImbo.Port);
-
                 string strDeirectory = "";
                 Parameter pt = null;
 
@@ -133,24 +118,6 @@ namespace WSS.ImageServer.Service
             }
             return;
 
-
-            //switch (pt.Cmd)
-            //{
-            //    case "p_cpn_transf":
-            //    {
-                    
-            //    } break;
-            //    case "w_phc_tranf":
-            //    {
-                    
-            //    }
-            //        break;
-            //    case "upbylocal":
-            //    {
-                    
-            //    }
-            //        break;
-            //}
 
         }
     }

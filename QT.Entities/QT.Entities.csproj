@@ -44,6 +44,24 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cassandra">
       <HintPath>..\000\DLLs\Cassandra.dll</HintPath>
@@ -178,6 +196,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\000\DLLs\WSS.ImageImbo.Lib.dll</HintPath>
     </Reference>
+    <Reference Include="Wss.Lib.RabbitMq">
+      <HintPath>..\000\DLLs\Wss.Lib.RabbitMq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlexaFull.cs" />
@@ -185,6 +206,11 @@
     <Compile Include="AutoFixSignText.cs" />
     <Compile Include="CrawlerProduct\ConfigurationHotProduct.cs" />
     <Compile Include="ICompanyDelivery.cs" />
+    <Compile Include="IProductRepository.cs" />
+    <Compile Include="ProductManager\IPushisherProductChange.cs" />
+    <Compile Include="ProductManager\ISettingRepository.cs" />
+    <Compile Include="ProductManager\JobMqChangeProduct.cs" />
+    <Compile Include="ProductWeb\IProductService.cs" />
     <Compile Include="UtilZipFile.cs" />
     <Compile Include="WordCounting.cs" />
     <Compile Include="Classification.cs" />
@@ -259,6 +285,7 @@
     <Compile Include="DesciptionProduct.cs" />
     <Compile Include="DsQTCrawler.cs">
       <DependentUpon>DsQTCrawler.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DsQTCrawler.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -322,6 +349,7 @@
     <Compile Include="Data\SqlDB.cs" />
     <Compile Include="DB.cs">
       <DependentUpon>DB.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DBProduct.Designer.cs">
       <AutoGen>True</AutoGen>

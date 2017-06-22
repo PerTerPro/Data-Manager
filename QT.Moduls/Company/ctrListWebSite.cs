@@ -16,7 +16,9 @@ using QT.Entities.Data;
 using QT.Moduls.Company;
 using System.Threading;
 using DevExpress.XtraGrid.Views.Grid;
+using ServiceStack;
 using Websosanh.Core.Drivers.RabbitMQ;
+using Websosanh.Core.JobServer;
 using Wss.Lib.RabbitMq;
 
 namespace QT.Moduls
@@ -1234,9 +1236,16 @@ namespace QT.Moduls
         private void btnPushCompanyInfoReset_Click(object sender, EventArgs e)
         {
             long companyInfo = this.GetIDCompanyCurrent;
-            ProducerBasic producerBasic = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqProduct), ConfigRun.QueueUpdateCompanyInfoToWeb);
-            producerBasic.PublishString(companyInfo.ToString());
-            MessageBox.Show("Pushed company!");
+            JobClient jobClient = new JobClient("", GroupType.Direct, "Merchant.Update", true, RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqProduct));
+            jobClient.PublishJob(new Job()
+            {
+                Data = BitConverter.GetBytes(companyInfo),
+                Type = 1
+            }, 0);
+            var dialogResult = MessageBox.Show("Pushed company!");
+            //ProducerBasic producerBasic = new ProducerBasic(RabbitMQManager.GetRabbitMQServer(ConfigRun.KeyRabbitMqProduct), ConfigRun.QueueUpdateCompanyInfoToWeb);
+            //producerBasic.PublishString(companyInfo.ToString());
+           
         }
         private void StatisticsPriceToolStripMenuItem_Click(object sender, EventArgs e)
         {

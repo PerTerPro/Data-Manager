@@ -8,7 +8,6 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using QT.Entities;
-using WSS.Core.Crawler;
 using log4net;
 using Websosanh.Core.Drivers.RabbitMQ;
 

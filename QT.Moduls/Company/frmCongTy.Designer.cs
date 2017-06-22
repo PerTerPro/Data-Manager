@@ -373,6 +373,16 @@
             this.productTableAdapter = new QT.Moduls.DBTableAdapters.ProductTableAdapter();
             this.job_SPGocNhapLieuTempTableAdapter1 = new QT.Users.DBPhanSPTableAdapters.Job_SPGocNhapLieuTempTableAdapter();
             this.companyTableAdapter1 = new QT.Users.DBTableAdapters.CompanyTableAdapter();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtDetail = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.ckLoadToSource = new System.Windows.Forms.CheckBox();
+            this.btnClearCache = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             websiteLabel = new System.Windows.Forms.Label();
@@ -516,6 +526,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ckNotOriginalProduct.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyStatusBindingSource)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -1116,7 +1128,7 @@
             this.xtraTabPage2.AutoScroll = true;
             this.xtraTabPage2.Controls.Add(this.splitContainerControl2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1236, 613);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1238, 614);
             this.xtraTabPage2.Text = "Thiết lập crawler";
             // 
             // splitContainerControl2
@@ -1131,7 +1143,7 @@
             this.splitContainerControl2.Panel2.Controls.Add(this.panelControl3);
             this.splitContainerControl2.Panel2.MinSize = 180;
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1236, 613);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1238, 614);
             this.splitContainerControl2.SplitterPosition = 336;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -1143,7 +1155,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1236, 336);
+            this.panel1.Size = new System.Drawing.Size(1238, 336);
             this.panel1.TabIndex = 1;
             // 
             // splitContainerControl1
@@ -1155,7 +1167,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.xtraScrollableControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1236, 336);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1238, 336);
             this.splitContainerControl1.SplitterPosition = 506;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -1782,7 +1794,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1236, 269);
+            this.panelControl3.Size = new System.Drawing.Size(1238, 273);
             this.panelControl3.TabIndex = 48;
             // 
             // splitContainerControl3
@@ -1794,7 +1806,7 @@
             this.splitContainerControl3.Panel1.Text = "Panel1";
             this.splitContainerControl3.Panel2.Controls.Add(this.txtResult);
             this.splitContainerControl3.Panel2.Text = "Panel2";
-            this.splitContainerControl3.Size = new System.Drawing.Size(761, 265);
+            this.splitContainerControl3.Size = new System.Drawing.Size(763, 269);
             this.splitContainerControl3.SplitterPosition = 263;
             this.splitContainerControl3.TabIndex = 1;
             this.splitContainerControl3.Text = "splitContainerControl3";
@@ -1804,7 +1816,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(263, 265);
+            this.pictureBox1.Size = new System.Drawing.Size(263, 269);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 49;
             this.pictureBox1.TabStop = false;
@@ -1818,7 +1830,7 @@
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResult.Size = new System.Drawing.Size(490, 265);
+            this.txtResult.Size = new System.Drawing.Size(495, 269);
             this.txtResult.TabIndex = 50;
             this.txtResult.WordWrap = false;
             this.txtResult.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtResult_KeyDown);
@@ -1829,7 +1841,7 @@
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl6.Location = new System.Drawing.Point(2, 2);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(471, 265);
+            this.panelControl6.Size = new System.Drawing.Size(471, 269);
             this.panelControl6.TabIndex = 0;
             // 
             // panelControl2
@@ -1867,7 +1879,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(2, 2);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(467, 261);
+            this.panelControl2.Size = new System.Drawing.Size(467, 265);
             this.panelControl2.TabIndex = 52;
             // 
             // btnTestXpath
@@ -2190,7 +2202,7 @@
             this.xtraTabPage1.Controls.Add(this.quanHuyenTextBox);
             this.xtraTabPage1.Controls.Add(this.thanhPhoTextBox);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1236, 613);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1238, 614);
             this.xtraTabPage1.Text = "Thông tin công ty";
             // 
             // cmbDeliveryType
@@ -2634,7 +2646,7 @@
             this.xtraTabPage7.Controls.Add(specsXpathLabel1);
             this.xtraTabPage7.Controls.Add(this.specsXpathMemoEdit);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(1236, 613);
+            this.xtraTabPage7.Size = new System.Drawing.Size(1238, 614);
             this.xtraTabPage7.Text = "XPathDesc";
             // 
             // txtShortDesc
@@ -2701,7 +2713,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.ctrLogMananger2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1236, 613);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1238, 614);
             this.xtraTabPage3.Text = "Thông báo lỗi";
             // 
             // ctrLogMananger2
@@ -2709,15 +2721,16 @@
             this.ctrLogMananger2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrLogMananger2.Location = new System.Drawing.Point(0, 0);
             this.ctrLogMananger2.Name = "ctrLogMananger2";
-            this.ctrLogMananger2.Size = new System.Drawing.Size(1236, 613);
+            this.ctrLogMananger2.Size = new System.Drawing.Size(1238, 614);
             this.ctrLogMananger2.TabIndex = 0;
             // 
             // xtraTabPageConfigDataFeedXml
             // 
+            this.xtraTabPageConfigDataFeedXml.Controls.Add(this.statusStrip1);
             this.xtraTabPageConfigDataFeedXml.Controls.Add(this.gridControlListProduct);
             this.xtraTabPageConfigDataFeedXml.Controls.Add(this.panel2);
             this.xtraTabPageConfigDataFeedXml.Name = "xtraTabPageConfigDataFeedXml";
-            this.xtraTabPageConfigDataFeedXml.Size = new System.Drawing.Size(1236, 613);
+            this.xtraTabPageConfigDataFeedXml.Size = new System.Drawing.Size(1238, 614);
             this.xtraTabPageConfigDataFeedXml.Text = "Cấu hình Data Feed";
             // 
             // gridControlListProduct
@@ -2729,12 +2742,12 @@
             this.gridControlListProduct.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.gridControlListProduct.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.gridControlListProduct.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridControlListProduct.Location = new System.Drawing.Point(0, 308);
+            this.gridControlListProduct.Location = new System.Drawing.Point(0, 397);
             this.gridControlListProduct.MainView = this.gridViewListProduct;
             this.gridControlListProduct.Name = "gridControlListProduct";
             this.gridControlListProduct.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEditInstock});
-            this.gridControlListProduct.Size = new System.Drawing.Size(1236, 305);
+            this.gridControlListProduct.Size = new System.Drawing.Size(1238, 217);
             this.gridControlListProduct.TabIndex = 16;
             this.gridControlListProduct.UseEmbeddedNavigator = true;
             this.gridControlListProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2828,6 +2841,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.btnUpdateSolrRedis);
             this.panel2.Controls.Add(this.DatafeedConfigButton);
             this.panel2.Controls.Add(this.comboBoxDataFeedType);
@@ -2842,7 +2856,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1236, 308);
+            this.panel2.Size = new System.Drawing.Size(1238, 397);
             this.panel2.TabIndex = 17;
             // 
             // btnUpdateSolrRedis
@@ -3046,7 +3060,7 @@
             this.xtraTabPage4.Controls.Add(this.historyDatafeedGridControl);
             this.xtraTabPage4.Controls.Add(this.panelControl4);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1236, 613);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1238, 614);
             this.xtraTabPage4.Text = "Lịch sử cập nhật dữ liệu";
             // 
             // historyDatafeedGridControl
@@ -3062,7 +3076,7 @@
             this.historyDatafeedGridControl.Location = new System.Drawing.Point(0, 126);
             this.historyDatafeedGridControl.MainView = this.gridView2;
             this.historyDatafeedGridControl.Name = "historyDatafeedGridControl";
-            this.historyDatafeedGridControl.Size = new System.Drawing.Size(1236, 487);
+            this.historyDatafeedGridControl.Size = new System.Drawing.Size(1238, 488);
             this.historyDatafeedGridControl.TabIndex = 1;
             this.historyDatafeedGridControl.UseEmbeddedNavigator = true;
             this.historyDatafeedGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -3169,7 +3183,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl4.Location = new System.Drawing.Point(0, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(1236, 126);
+            this.panelControl4.Size = new System.Drawing.Size(1238, 126);
             this.panelControl4.TabIndex = 0;
             // 
             // simpleButtonReloadHistory
@@ -3195,7 +3209,7 @@
             this.xtraTabPage5.Controls.Add(this.groupControl1);
             this.xtraTabPage5.Controls.Add(this.panelControl5);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(1236, 613);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1238, 614);
             this.xtraTabPage5.Text = "DownloadImage";
             // 
             // groupControl1
@@ -3204,7 +3218,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 63);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1236, 550);
+            this.groupControl1.Size = new System.Drawing.Size(1238, 551);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Danh sách sản phẩm trong Database";
             // 
@@ -3221,7 +3235,7 @@
             this.productGridControl.Location = new System.Drawing.Point(2, 21);
             this.productGridControl.MainView = this.gridView3;
             this.productGridControl.Name = "productGridControl";
-            this.productGridControl.Size = new System.Drawing.Size(1232, 527);
+            this.productGridControl.Size = new System.Drawing.Size(1234, 528);
             this.productGridControl.TabIndex = 0;
             this.productGridControl.UseEmbeddedNavigator = true;
             this.productGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -3454,13 +3468,13 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl5.Location = new System.Drawing.Point(0, 0);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(1236, 63);
+            this.panelControl5.Size = new System.Drawing.Size(1238, 63);
             this.panelControl5.TabIndex = 0;
             // 
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(859, 130);
+            this.simpleButton1.Location = new System.Drawing.Point(861, 130);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(121, 42);
             this.simpleButton1.TabIndex = 25;
@@ -3522,7 +3536,7 @@
             // ButtonPushMessageDownloadImage
             // 
             this.ButtonPushMessageDownloadImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonPushMessageDownloadImage.Location = new System.Drawing.Point(1069, 11);
+            this.ButtonPushMessageDownloadImage.Location = new System.Drawing.Point(1071, 11);
             this.ButtonPushMessageDownloadImage.Name = "ButtonPushMessageDownloadImage";
             this.ButtonPushMessageDownloadImage.Size = new System.Drawing.Size(121, 42);
             this.ButtonPushMessageDownloadImage.TabIndex = 18;
@@ -3534,7 +3548,7 @@
             this.xtraTabPage6.Controls.Add(this.panelControl9);
             this.xtraTabPage6.Controls.Add(this.panelControl7);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1236, 613);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1238, 614);
             this.xtraTabPage6.Text = "Sản Phẩm Gốc";
             // 
             // panelControl9
@@ -3543,7 +3557,7 @@
             this.panelControl9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl9.Location = new System.Drawing.Point(0, 78);
             this.panelControl9.Name = "panelControl9";
-            this.panelControl9.Size = new System.Drawing.Size(1236, 535);
+            this.panelControl9.Size = new System.Drawing.Size(1238, 536);
             this.panelControl9.TabIndex = 1;
             // 
             // productGridControl1
@@ -3559,7 +3573,7 @@
             this.productGridControl1.Location = new System.Drawing.Point(2, 2);
             this.productGridControl1.MainView = this.gridView4;
             this.productGridControl1.Name = "productGridControl1";
-            this.productGridControl1.Size = new System.Drawing.Size(1232, 531);
+            this.productGridControl1.Size = new System.Drawing.Size(1234, 532);
             this.productGridControl1.TabIndex = 0;
             this.productGridControl1.UseEmbeddedNavigator = true;
             this.productGridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -3612,7 +3626,7 @@
             this.panelControl7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl7.Location = new System.Drawing.Point(0, 0);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(1236, 78);
+            this.panelControl7.Size = new System.Drawing.Size(1238, 78);
             this.panelControl7.TabIndex = 0;
             // 
             // btnExportToExel
@@ -3814,6 +3828,100 @@
             // 
             this.companyTableAdapter1.ClearBeforeFill = true;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnClearCache);
+            this.panel3.Controls.Add(this.ckLoadToSource);
+            this.panel3.Controls.Add(this.btnSearch);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.txtDetail);
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.txtName);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 361);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1238, 36);
+            this.panel3.TabIndex = 18;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(124, 10);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(196, 20);
+            this.txtName.TabIndex = 0;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(77, 14);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(35, 13);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Name";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(352, 13);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(47, 13);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "DetailUrl";
+            // 
+            // txtDetail
+            // 
+            this.txtDetail.Location = new System.Drawing.Point(399, 10);
+            this.txtDetail.Name = "txtDetail";
+            this.txtDetail.Size = new System.Drawing.Size(196, 20);
+            this.txtDetail.TabIndex = 2;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Enabled = false;
+            this.btnSearch.Location = new System.Drawing.Point(612, 7);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(98, 24);
+            this.btnSearch.TabIndex = 19;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // ckLoadToSource
+            // 
+            this.ckLoadToSource.AutoSize = true;
+            this.ckLoadToSource.Location = new System.Drawing.Point(733, 13);
+            this.ckLoadToSource.Name = "ckLoadToSource";
+            this.ckLoadToSource.Size = new System.Drawing.Size(97, 17);
+            this.ckLoadToSource.TabIndex = 20;
+            this.ckLoadToSource.Text = "LoadToSource";
+            this.ckLoadToSource.UseVisualStyleBackColor = true;
+            // 
+            // btnClearCache
+            // 
+            this.btnClearCache.Enabled = false;
+            this.btnClearCache.Location = new System.Drawing.Point(844, 9);
+            this.btnClearCache.Name = "btnClearCache";
+            this.btnClearCache.Size = new System.Drawing.Size(98, 20);
+            this.btnClearCache.TabIndex = 21;
+            this.btnClearCache.Text = "ClearCache";
+            this.btnClearCache.UseVisualStyleBackColor = false;
+            this.btnClearCache.Click += new System.EventHandler(this.btnClearCache_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 592);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1238, 22);
+            this.statusStrip1.TabIndex = 18;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 17);
+            // 
             // frmCongTy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3900,6 +4008,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.specsXpathMemoEdit.Properties)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPageConfigDataFeedXml.ResumeLayout(false);
+            this.xtraTabPageConfigDataFeedXml.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlListProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewListProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditInstock)).EndInit();
@@ -3942,6 +4051,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ckNotOriginalProduct.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyStatusBindingSource)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4244,5 +4357,15 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.Button btnConfigHotProduct;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtDetail;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.CheckBox ckLoadToSource;
+        private System.Windows.Forms.Button btnClearCache;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
     }
 }

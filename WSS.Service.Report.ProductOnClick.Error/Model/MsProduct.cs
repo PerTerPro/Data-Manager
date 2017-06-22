@@ -1,12 +1,7 @@
-﻿using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using ProtoBuf;
 
-namespace WSS.Service.Report.ProductOnClick.Error.Object
+namespace WSS.Service.Report.ProductOnClick.Error.Model
 {
     [ProtoContract]
     public class MsProduct
@@ -44,6 +39,11 @@ namespace WSS.Service.Report.ProductOnClick.Error.Object
                 result = Serializer.Deserialize<MsProduct>(stream);
             }
             return result;
+        }
+
+        public override string ToString()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
         }
     }
 }

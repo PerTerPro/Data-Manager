@@ -71,7 +71,9 @@ namespace QT.Moduls.Company
             }
 
         }
-        public List<Product> ReturnListProduct(QT.Entities.Company company)
+
+
+        public List<Product> ReturnListProduct(QT.Entities.Company company, bool bIsTest = false, Action<string> eventLogLoadData=null)
         {
             //Log.Info("Vào đây r");
             List<Product> listProducts = new List<Product>();
@@ -87,8 +89,10 @@ namespace QT.Moduls.Company
                     string filetype = temp[temp.Length - 1];
                     switch (filetype)
                     {
+
                         case "csv":
-                            listProducts.AddRange(ReadDataFeedProductsFromCsvFile(datafeedFileName, company));
+                            if (bIsTest) listProducts.AddRange(new DatafeedParser().GetAllProduct(datafeedFileName, company, this.GetDatafeedConfig(company.ID), eventLogLoadData));
+                            else listProducts.AddRange(ReadDataFeedProductsFromCsvFile(datafeedFileName, company));
                             break;
                         case "xml":
                             listProducts.AddRange(ReadDataFeedProductsFromXmlFile(datafeedFileName, company));
@@ -182,6 +186,8 @@ namespace QT.Moduls.Company
             }
             return listProducts;
         }
+
+
         public void UpdateDataFeedProducts(QT.Entities.Company company, CancellationTokenSource cancelUpdateDataFeedTokenSource)
         {
             Log.InfoFormat("Start Update Company : {0}", company.Domain);
@@ -1201,6 +1207,8 @@ namespace QT.Moduls.Company
                 throw;
             }
         }
+
+        
 
         public List<Product> ReadDataFeedProductsFromCsvFile(string csvPath, QT.Entities.Company company, DatafeedConfig datafeedConfig = null)
         {

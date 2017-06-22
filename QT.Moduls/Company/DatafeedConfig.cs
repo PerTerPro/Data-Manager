@@ -32,7 +32,6 @@ namespace QT.Moduls.Company
         public string PictureUrl5Node {get; set; }
         public string UrlNode {get; set; }
         public CurrencyFormat CurrencyFormat { get; set; }
-
         public string WarrantyNode { set; get; }
         public string XNameSpace { set; get; }
         public string RegexConfigUrl { set; get; }
